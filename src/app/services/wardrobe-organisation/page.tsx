@@ -1,0 +1,58 @@
+import type { Metadata } from "next";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { MobileStickyCta } from "@/components/mobile-sticky-cta";
+import { ServiceHero } from "@/components/service-detail/service-hero";
+import { ServiceOverview } from "@/components/service-detail/service-overview";
+import { ServiceWhatsIncluded } from "@/components/service-detail/service-whats-included";
+import { ServiceProcess } from "@/components/service-detail/service-process";
+import { ServiceBenefits } from "@/components/service-detail/service-benefits";
+import { ServiceGallery } from "@/components/service-detail/service-gallery";
+import { ServiceTestimonials } from "@/components/service-detail/service-testimonials";
+import { ServiceFaq } from "@/components/service-detail/service-faq";
+import { ServiceRelated } from "@/components/service-detail/service-related";
+import { ServiceFinalCta } from "@/components/service-detail/service-final-cta";
+import { wardrobeOrganisation } from "@/lib/service-detail-data";
+
+export const metadata: Metadata = {
+  title: wardrobeOrganisation.metaTitle,
+  description: wardrobeOrganisation.metaDescription,
+  keywords: [
+    "wardrobe organisation Scotland",
+    "declutter wardrobe",
+    "Marie Kondo wardrobe",
+    "hang colour-grouped",
+    "vacuum storage bags",
+    "sentimental archive",
+    "Maundy Clean wardrobe",  ],
+  openGraph: {
+    title: wardrobeOrganisation.metaTitle,
+    description: wardrobeOrganisation.metaDescription,
+    type: "website",
+    images: [{ url: wardrobeOrganisation.heroImage }],
+  },
+  alternates: { canonical: `/services/${wardrobeOrganisation.slug}` },
+};
+
+export default function WardrobeOrganisationPage() {
+  const service = wardrobeOrganisation;
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <SiteHeader />
+      <main className="flex-1">
+        <ServiceHero service={service} />
+        <ServiceOverview service={service} />
+        <ServiceWhatsIncluded service={service} />
+        <ServiceProcess service={service} />
+        <ServiceBenefits service={service} />
+        <ServiceGallery service={service} />
+        <ServiceTestimonials service={service} />
+        <ServiceFaq service={service} />
+        <ServiceRelated service={service} />
+        <ServiceFinalCta service={service} />
+      </main>
+      <SiteFooter />
+      <MobileStickyCta />
+    </div>
+  );
+}

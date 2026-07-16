@@ -1,0 +1,492 @@
+   760→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   761→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   762→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   763→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   764→                    {step.step}
+   765→                  </span>
+   766→                </div>
+   767→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   768→                  {step.title}
+   769→                </h3>
+   770→                <p
+   771→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   772→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   773→                />
+   774→              </motion.div>
+   775→            );
+   776→          })}
+   777→        </div>
+   778→
+   779→        <motion.div
+   780→          initial={{ opacity: 0, y: 16 }}
+   781→          whileInView={{ opacity: 1, y: 0 }}
+   782→          viewport={{ once: true }}
+   783→          transition={{ duration: 0.5, delay: 0.3 }}
+   784→          className="text-center mt-10"
+   785→        >
+   786→          <Button
+   787→            size="lg"
+   788→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   789→            asChild
+   790→          >
+   791→            <Link href="/quote">
+   792→              Book Your Free Consultation Today
+   793→              <ArrowRight className="w-5 h-5" />
+   794→            </Link>
+   795→          </Button>
+   796→        </motion.div>
+   797→      </div>
+   798→    </section>
+   799→  );
+   800→}
+   801→
+   802→// ============================================================
+   803→// Section 5 - Commercial Solutions for Every Stage
+   804→// (Semantic H2: "Commercial Solutions for Every Stage")
+   805→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   806→// Image-topped cards with internal links to specialist services
+   807→// ============================================================
+   808→
+   809→const INTERLINK_SOLUTIONS = [
+   810→  {
+   811→    icon: Sparkles,
+   812→    title: "Seasonal Resets &middot; Deep House Cleaning",
+   813→    href: "/services/deep-house-cleaning",
+   814→    image: IMG.leaseDeep,
+   815→    imageAlt: "Top-to-bottom seasonal deep clean of a Scottish restaurant before the Christmas or Spring rush",
+   816→    description:
+   817→      "Prepare for the busy Christmas or Spring rush with a top-to-bottom Deep House Cleaning protocol applied to your commercial space. We pull equipment away from walls, detail ceiling vents and high shelving, degrease extraction ductwork, machine-scrub kitchen floors, and reset the entire venue to a &ldquo;like-new&rdquo; baseline. The single most effective way to start a new trading season with a spotless, EHO-ready venue.",
+   818→    cta: "Explore deep house cleaning",
+   819→  },
+   820→  {
+   821→    icon: KeyRound,
+   822→    title: "Property Transitions &middot; End of Tenancy Cleaning",
+   823→    href: "/services/move-in-out-cleaning",
+   824→    image: IMG.leaseTenancy,
+   825→    imageAlt: "Empty restaurant unit being deep cleaned for lease handover by Maundy Clean in Scotland",
+   826→    description:
+   827→      "Opening a new site? Our End of Tenancy Cleaning ensures the property is front-line ready for your launch. We work to the letting agent&rsquo;s inventory, restore the unit to its original condition, and come back free of charge if anything is flagged on the inspection &mdash; the most stress-free way to close out a restaurant lease or open a new bar.",
+   828→    cta: "Explore end of tenancy",
+   829→  },
+   830→  {
+   831→    icon: Hammer,
+   832→    title: "Post-Renovation &middot; After Builders Clean",
+   833→    href: "/services/post-construction-cleaning",
+   834→    image: IMG.leaseBuilders,
+   835→    imageAlt: "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish bar and restaurant",
+   836→    description:
+   837→      "If your venue has recently had home improvements or shopfitting, our After Builders Clean is designed to remove heavy construction dust. Fine dust left on a kitchen floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect every surface before the dust has a chance to damage equipment, soft furnishings, or your customers&rsquo; first impression on reopening day.",
+   838→    cta: "Explore after builders cleaning",
+   839→  },
+   840→  {
+   841→    icon: HeartPulse,
+   842→    title: "Specialist Fabric Care &middot; Upholstery Cleaning",
+   843→    href: "/services/upholstery-cleaning",
+   844→    image: IMG.leaseUpholstery,
+   845→    imageAlt: "Booth seating and banquettes being deep cleaned to remove food and drink odours in a Scottish restaurant",
+   846→    description:
+   847→      "Rejuvenate your seating with our Upholstery Cleaning service to remove unwanted odours and stains. Booth banquettes, bar stools, and soft furnishings absorb food, drink, and grease odours over months of trading &mdash; our hot-water extraction process lifts the soil and the smell, extending the life of your investment and refreshing the dining-room ambience before a busy service.",
+   848→    cta: "Explore upholstery cleaning",
+   849→  },
+   850→];
+   851→
+   852→export function RestaurantSeoInterlinking() {
+   853→  return (
+   854→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   855→      <div className="max-w-[1400px] mx-auto px-6">
+   856→        <motion.div
+   857→          initial={{ opacity: 0, y: 20 }}
+   858→          whileInView={{ opacity: 1, y: 0 }}
+   859→          viewport={{ once: true, margin: "-80px" }}
+   860→          transition={{ duration: 0.5 }}
+   861→          className="max-w-3xl mb-12"
+   862→        >
+   863→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   864→            Beyond the daily clean &middot; restaurant milestones
+   865→          </span>
+   866→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   867→            Commercial Solutions for Every Stage
+   868→          </h2>
+   869→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   870→            Our recurring cleaning keeps your business running, but we offer specialized
+   871→            &ldquo;resets&rdquo; for major property milestones &mdash; from seasonal refreshes before
+   872→            peak trading, through lease handovers and post-shopfitting dust clear-outs, to specialist
+   873→            fabric care that rejuvenates your seating. The same trusted crew can step up whenever your
+   874→            venue needs more than a standard visit.
+   875→          </p>
+   876→        </motion.div>
+   877→
+   878→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   879→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   880→            const Icon = sol.icon;
+   881→            return (
+   882→              <motion.div
+   883→                key={sol.title}
+   884→                initial={{ opacity: 0, y: 24 }}
+   885→                whileInView={{ opacity: 1, y: 0 }}
+   886→                viewport={{ once: true, margin: "-40px" }}
+   887→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   888→              >
+   889→                <Link
+   890→                  href={sol.href}
+   891→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   892→                >
+   893→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   894→                    <img
+   895→                      src={sol.image}
+   896→                      alt={sol.imageAlt}
+   897→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   898→                      loading="lazy"
+   899→                    />
+   900→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   901→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   902→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   903→                    </div>
+   904→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   905→                      {sol.title}
+   906→                    </h3>
+   907→                  </div>
+   908→                  <div className="p-5">
+   909→                    <p
+   910→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   911→                      dangerouslySetInnerHTML={{ __html: sol.description }}
+   912→                    />
+   913→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   914→                      {sol.cta}
+   915→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   916→                    </span>
+   917→                  </div>
+   918→                </Link>
+   919→              </motion.div>
+   920→            );
+   921→          })}
+   922→        </div>
+   923→      </div>
+   924→    </section>
+   925→  );
+   926→}
+   927→
+   928→// ============================================================
+   929→// Section 6 - "Near Me" Location Internal Links
+   930→// (Semantic H2: "Restaurant Cleaning Near Me, Across Scotland")
+   931→// Split layout with map image + 36-location grid
+   932→// ============================================================
+   933→
+   934→export function RestaurantSeoNearMe() {
+   935→  return (
+   936→    <section className="py-16 lg:py-24 bg-background">
+   937→      <div className="max-w-[1400px] mx-auto px-6">
+   938→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   939→          {/* Left: copy + map image */}
+   940→          <motion.div
+   941→            initial={{ opacity: 0, y: 20 }}
+   942→            whileInView={{ opacity: 1, y: 0 }}
+   943→            viewport={{ once: true, margin: "-80px" }}
+   944→            transition={{ duration: 0.5 }}
+   945→          >
+   946→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   947→              Local restaurant &amp; bar cleaning across Scotland
+   948→            </span>
+   949→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   950→              Restaurant Cleaning Near Me, Across Scotland
+   951→            </h2>
+   952→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   953→              Searching for &ldquo;restaurant cleaning near me&rdquo; or &ldquo;bar cleaning company
+   954→              near me&rdquo; in Scotland? Maundy Clean covers city-centre bars, neighbourhood pubs,
+   955→              and standalone restaurants across the Central Belt, Highlands, Borders, and Islands.
+   956→              Same vetted uniformed crews, same guest-safe eco-friendly supplies, same dedicated crew
+   957→              every visit &mdash; wherever your venue happens to be. Find your local restaurant
+   958→              cleaning specialist below.
+   959→            </p>
+   960→
+   961→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   962→              <img
+   963→                src={IMG.nearMeMap}
+   964→                alt="Map of Scotland showing Maundy Clean restaurant and bar cleaning service coverage areas"
+   965→                className="absolute inset-0 w-full h-full object-cover"
+   966→                loading="lazy"
+   967→              />
+   968→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   969→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   970→                <div className="flex items-center gap-2 mb-1">
+   971→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   972→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   973→                    72+ Scottish towns covered
+   974→                  </span>
+   975→                </div>
+   976→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   977→                  Same vetted uniformed crews, same 100% satisfaction guarantee &mdash; from Glasgow
+   978→                  to Inverness.
+   979→                </p>
+   980→              </div>
+   981→            </div>
+   982→          </motion.div>
+   983→
+   984→          {/* Right: location grid */}
+   985→          <motion.div
+   986→            initial={{ opacity: 0, y: 20 }}
+   987→            whileInView={{ opacity: 1, y: 0 }}
+   988→            viewport={{ once: true, margin: "-60px" }}
+   989→            transition={{ duration: 0.5 }}
+   990→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   991→          >
+   992→            <div className="flex items-center justify-between mb-5">
+   993→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   994→                Find your local restaurant crew
+   995→              </h3>
+   996→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   997→            </div>
+   998→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   999→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1000→                <motion.div
+  1001→                  key={loc.slug}
+  1002→                  initial={{ opacity: 0 }}
+  1003→                  whileInView={{ opacity: 1 }}
+  1004→                  viewport={{ once: true }}
+  1005→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1006→                >
+  1007→                  <Link
+  1008→                    href={`/services/restaurant-cleaning-near-me#${loc.slug}`}
+  1009→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1010→                  >
+  1011→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1012→                    <span>
+  1013→                      <span className="font-medium">{loc.city}</span>
+  1014→                      <span className="text-[var(--muted-foreground)]"> restaurant</span>
+  1015→                    </span>
+  1016→                  </Link>
+  1017→                </motion.div>
+  1018→              ))}
+  1019→            </div>
+  1020→
+  1021→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1022→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1023→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1024→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1025→              </div>
+  1026→              <div className="flex flex-col sm:flex-row gap-3 items-center">
+  1027→                <Link
+  1028→                  href="/services/restaurant-cleaning-near-me"
+  1029→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1030→                >
+  1031→                  <MapPin className="w-4 h-4" />
+  1032→                  Browse the near-me directory
+  1033→                  <ArrowRight className="w-4 h-4" />
+  1034→                </Link>
+  1035→                <Link
+  1036→                  href="/locations"
+  1037→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1038→                >
+  1039→                  View all 72 Scottish locations
+  1040→                  <ArrowRight className="w-4 h-4" />
+  1041→                </Link>
+  1042→              </div>
+  1043→            </div>
+  1044→          </motion.div>
+  1045→        </div>
+  1046→
+  1047→        {/* SEO long-form paragraph for "near me" search intent */}
+  1048→        <motion.div
+  1049→          initial={{ opacity: 0, y: 16 }}
+  1050→          whileInView={{ opacity: 1, y: 0 }}
+  1051→          viewport={{ once: true, margin: "-40px" }}
+  1052→          transition={{ duration: 0.5, delay: 0.2 }}
+  1053→          className="mt-10 max-w-4xl mx-auto text-center"
+  1054→        >
+  1055→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1056→            Our local restaurant and bar cleaning crews operate across Glasgow&rsquo;s Merchant City,
+  1057→            Edinburgh&rsquo;s New Town, Aberdeen&rsquo;s Union Street, Dundee&rsquo;s West End, and
+  1058→            the Highlands &mdash; from Inverness to Perth, Falkirk to Ayr. Whether you&rsquo;re
+  1059→            searching for daily FOH reset in Glasgow, after-hours BOH turnover in Edinburgh,
+  1060→            kitchen-extraction TR19 deep cleans in Aberdeen, or neighbourhood pub cleaning anywhere
+  1061→            in between, Maundy Clean assigns a vetted, PAYE-employed crew that stays with you for the
+  1062→            long run. Same crew, same standard, same locked-in rate for 12 months.
+  1063→          </p>
+  1064→        </motion.div>
+  1065→      </div>
+  1066→    </section>
+  1067→  );
+  1068→}
+  1069→
+  1070→// ============================================================
+  1071→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1072→// (Semantic H2: "Book Your Free Consultation Today")
+  1073→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1074→// ============================================================
+  1075→
+  1076→export function RestaurantSeoFinalCta() {
+  1077→  return (
+  1078→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1079→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1080→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1081→
+  1082→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1083→        <motion.div
+  1084→          initial={{ opacity: 0, y: 20 }}
+  1085→          whileInView={{ opacity: 1, y: 0 }}
+  1086→          viewport={{ once: true, margin: "-80px" }}
+  1087→          transition={{ duration: 0.5 }}
+  1088→        >
+  1089→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1090→            Ready to book your consultation?
+  1091→          </span>
+  1092→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1093→            Book Your Free Consultation Today
+  1094→          </h2>
+  1095→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1096→            Book a free, no-obligation site survey with our management team and receive an itemised
+  1097→            proposal within 2 business days. Vetted uniformed crews, kitchen-deep-clean expertise,
+  1098→            EHO-ready compliance documentation, signed daily checklists, and a 100% satisfaction
+  1099→            guarantee &mdash; from &pound;16 per hour for a small independent bar through to a fully
+  1100→            bespoke multi-site restaurant retainer. No pushy sales call, no waiting 24 hours for a
+  1101→            callback.
+  1102→          </p>
+  1103→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1104→            <Button
+  1105→              size="lg"
+  1106→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1107→              asChild
+  1108→            >
+  1109→              <Link href="/quote">
+  1110→                Book Your Free Consultation Today
+  1111→                <ArrowRight className="w-5 h-5" />
+  1112→              </Link>
+  1113→            </Button>
+  1114→            <Button
+  1115→              size="lg"
+  1116→              variant="outline"
+  1117→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1118→              asChild
+  1119→            >
+  1120→              <Link href="#checklist">
+  1121→                <CheckCircle2 className="w-4 h-4" />
+  1122→                View Our Commercial Cleaning Checklist
+  1123→              </Link>
+  1124→            </Button>
+  1125→          </div>
+  1126→        </motion.div>
+  1127→      </div>
+  1128→    </section>
+  1129→  );
+  1130→}
+  1131→
+  1132→// ============================================================
+  1133→// Section 8 - SEO FAQ block
+  1134→// (Semantic H2: "Frequently Asked Questions")
+  1135→// 3 Q&As from the brief (insured for hospitality, all supplies, quality control)
+  1136→// ============================================================
+  1137→
+  1138→const SEO_FAQS = [
+  1139→  {
+  1140→    q: "Are your cleaners insured for hospitality venues?",
+  1141→    a: "Yes. MaundyClean is a fully insured professional cleaning company with years of experience in both residential and commercial sectors. We hold &pound;5m public liability cover (suitable for independent bars, leased pub tenancies, restaurant groups, and licensed premises), &pound;5m employer&rsquo;s liability cover, and contingent employers&rsquo; liability. Every crew member carries Disclosure Scotland PVG scheme membership, wears an official uniform with photo I.D., and is trained on food-safety protocols (HACCP-aware, allergen-aware, colour-coded microfibre). We can name your venue on our policy as additional insured &mdash; a common requirement for licensed premises, brewery-tied leases, and shopping-centre restaurant units &mdash; and provide enhanced background checks for staff handling high-value stock or operating in sensitive locations. Certificates of insurance and our full compliance file (COSHH datasheets, risk assessments, method statements, training records) are available on request; we will not begin work until your facilities team and your EHO inspector have the documentation they need.",
+  1142→  },
+  1143→  {
+  1144→    q: "Do you provide all cleaning supplies?",
+  1145→    a: "Absolutely. We supply all of our own professional-grade equipment and eco-friendly supplies, which are included in your competitive quote. Every crew arrives in a liveried van with commercial-grade vacuums (Sebo BS36/BS46, Henry HVR200), microfibre flat-mop systems with separate dirty-water extraction, colour-coded cloths (red for raw-meat prep, blue for cooked-food prep, green for salad and fruit, yellow for bar and washroom), HSE-compliant chemicals with COSHH datasheets on file, PPE, squeegees for windows and mirrors, and EN 1276 food-safe bactericidal chemistry for kitchen surfaces and prep zones. We use non-toxic, guest-safe products by default &mdash; no harsh chemical odours left in dining areas &mdash; with eco-labelled alternatives for kitchens, bars, and FOH. You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser tablets) or we can manage consumable restocking for an additional monthly fee so you never run out during service.",
+  1146→  },
+  1147→  {
+  1148→    q: "Can you provide regular quality control inspections?",
+  1149→    a: "Yes. We perform regular inspections to ensure our high standards are consistently maintained and that there are no issues with reliability. Every restaurant client gets a dedicated account manager who knows your venue, your team, your access protocols, and your HACCP plan &mdash; direct mobile number, 24-hour response, quarterly on-site walk-throughs alongside your duty manager. After every visit you receive a signed daily checklist (cleaner signature, duty manager counter-signature), arrival and departure times, tasks completed, and any issues flagged &mdash; like a leaking tap, a blown bulb, or a canopy filter due for TR19 deep clean &mdash; before they become complaints. We also conduct unannounced quality audits (typically monthly for high-volume venues, quarterly for low-volume sites) using our internal scoring rubric, share the results with you, and trigger a free re-clean within 24 to 48 hours if any line item drops below standard. Our visit-completion rate in 2025 was 99.6%.",
+  1150→  },
+  1151→];
+  1152→
+  1153→export function RestaurantSeoFaq() {
+  1154→  return (
+  1155→    <section className="py-16 lg:py-24 bg-background">
+  1156→      <div className="max-w-4xl mx-auto px-6">
+  1157→        <motion.div
+  1158→          initial={{ opacity: 0, y: 20 }}
+  1159→          whileInView={{ opacity: 1, y: 0 }}
+  1160→          viewport={{ once: true, margin: "-80px" }}
+  1161→          transition={{ duration: 0.5 }}
+  1162→          className="text-center mb-12"
+  1163→        >
+  1164→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1165→            Restaurant cleaning &middot; FAQ
+  1166→          </span>
+  1167→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1168→            Frequently Asked Questions
+  1169→          </h2>
+  1170→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1171→            Straight answers to the questions our restaurant and bar cleaning clients ask most often.
+  1172→            Can&rsquo;t find what you need? Call us on{" "}
+  1173→            <a
+  1174→              href={contactInfo.phoneHref}
+  1175→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1176→            >
+  1177→              {contactInfo.phone}
+  1178→            </a>{" "}
+  1179→            and we&rsquo;ll talk it through.
+  1180→          </p>
+  1181→        </motion.div>
+  1182→
+  1183→        <div className="space-y-4">
+  1184→          {SEO_FAQS.map((faq, i) => (
+  1185→            <motion.div
+  1186→              key={faq.q}
+  1187→              initial={{ opacity: 0, y: 16 }}
+  1188→              whileInView={{ opacity: 1, y: 0 }}
+  1189→              viewport={{ once: true, margin: "-40px" }}
+  1190→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1191→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1192→            >
+  1193→              <details className="group">
+  1194→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1195→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1196→                    {faq.q}
+  1197→                  </h3>
+  1198→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1199→                    <span className="relative w-3.5 h-3.5">
+  1200→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1201→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1202→                    </span>
+  1203→                  </span>
+  1204→                </summary>
+  1205→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1206→                  <p
+  1207→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1208→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1209→                  />
+  1210→                </div>
+  1211→              </details>
+  1212→            </motion.div>
+  1213→          ))}
+  1214→        </div>
+  1215→
+  1216→        <motion.div
+  1217→          initial={{ opacity: 0, y: 16 }}
+  1218→          whileInView={{ opacity: 1, y: 0 }}
+  1219→          viewport={{ once: true, margin: "-40px" }}
+  1220→          transition={{ duration: 0.5, delay: 0.3 }}
+  1221→          className="mt-10 text-center"
+  1222→        >
+  1223→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1224→            <Button
+  1225→              size="lg"
+  1226→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1227→              asChild
+  1228→            >
+  1229→              <Link href="/quote">
+  1230→                Book Your Free Consultation Today
+  1231→                <ArrowRight className="w-5 h-5" />
+  1232→              </Link>
+  1233→            </Button>
+  1234→            <Button
+  1235→              size="lg"
+  1236→              variant="outline"
+  1237→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1238→              asChild
+  1239→            >
+  1240→              <Link href="#checklist">
+  1241→                <CheckCircle2 className="w-4 h-4" />
+  1242→                View Our Commercial Cleaning Checklist
+  1243→              </Link>
+  1244→            </Button>
+  1245→          </div>
+  1246→        </motion.div>
+  1247→      </div>
+  1248→    </section>
+  1249→  );
+  1250→}
+  1251→

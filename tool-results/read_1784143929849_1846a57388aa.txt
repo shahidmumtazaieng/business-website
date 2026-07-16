@@ -1,0 +1,909 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Shield,
+     7→  Leaf,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  Gem,
+    16→  Layers,
+    17→  Brush,
+    18→  Users,
+    19→  Zap,
+    20→  UserCheck,
+    21→  CalendarCheck,
+    22→  Home,
+    23→  KeyRound,
+    24→  Hammer,
+    25→  HeartPulse,
+    26→  Award,
+    27→  Phone,
+    28→  Building2,
+    29→} from "lucide-react";
+    30→import { Button } from "@/components/ui/button";
+    31→import { contactInfo } from "@/lib/site-data";
+    32→
+    33→// ============================================================
+    34→// Images - hand-picked from in-house search service
+    35→// ============================================================
+    36→const IMG = {
+    37→  heroWide:
+    38→    "https://sfile.chatglm.cn/images-ppt/floor-care-stripping.jpg",
+    39→  scotlandMap:
+    40→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    41→  localCrew:
+    42→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    43→  homeClean:
+    44→    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    45→};
+    46→
+    47→// ============================================================
+    48→// 36 Scottish locations covered by the near-me page
+    49→// ============================================================
+    50→const LOCATIONS: { city: string; slug: string; region: string }[] = [
+    51→  // Central Belt
+    52→  { city: "Glasgow", slug: "glasgow", region: "Central Belt" },
+    53→  { city: "Edinburgh", slug: "edinburgh", region: "Central Belt" },
+    54→  { city: "Stirling", slug: "stirling", region: "Central Belt" },
+    55→  { city: "Falkirk", slug: "falkirk", region: "Central Belt" },
+    56→  { city: "Livingston", slug: "livingston", region: "Central Belt" },
+    57→  { city: "East Kilbride", slug: "east-kilbride", region: "Central Belt" },
+    58→  { city: "Paisley", slug: "paisley", region: "Central Belt" },
+    59→  { city: "Hamilton", slug: "hamilton", region: "Central Belt" },
+    60→  { city: "Motherwell", slug: "motherwell", region: "Central Belt" },
+    61→  { city: "Cumbernauld", slug: "cumbernauld", region: "Central Belt" },
+    62→  { city: "Coatbridge", slug: "coatbridge", region: "Central Belt" },
+    63→  { city: "Ayr", slug: "ayr", region: "Central Belt" },
+    64→  { city: "Kilmarnock", slug: "kilmarnock", region: "Central Belt" },
+    65→  { city: "Dunfermline", slug: "dunfermline", region: "Central Belt" },
+    66→  { city: "Kirkcaldy", slug: "kirkcaldy", region: "Central Belt" },
+    67→  { city: "Musselburgh", slug: "musselburgh", region: "Central Belt" },
+    68→  { city: "Dalkeith", slug: "dalkeith", region: "Central Belt" },
+    69→  { city: "Bathgate", slug: "bathgate", region: "Central Belt" },
+    70→  // East
+    71→  { city: "Dundee", slug: "dundee", region: "East" },
+    72→  { city: "Perth", slug: "perth", region: "East" },
+    73→  { city: "St Andrews", slug: "st-andrews", region: "East" },
+    74→  // North East
+    75→  { city: "Aberdeen", slug: "aberdeen", region: "North East" },
+    76→  { city: "Elgin", slug: "elgin", region: "North East" },
+    77→  { city: "Peterhead", slug: "peterhead", region: "North East" },
+    78→  { city: "Stonehaven", slug: "stonehaven", region: "North East" },
+    79→  { city: "Inverurie", slug: "inverurie", region: "North East" },
+    80→  // Highlands & Islands
+    81→  { city: "Inverness", slug: "inverness", region: "Highlands & Islands" },
+    82→  { city: "Oban", slug: "oban", region: "Highlands & Islands" },
+    83→  { city: "Fort William", slug: "fort-william", region: "Highlands & Islands" },
+    84→  { city: "Aviemore", slug: "aviemore", region: "Highlands & Islands" },
+    85→  { city: "Wick", slug: "wick", region: "Highlands & Islands" },
+    86→  { city: "Thurso", slug: "thurso", region: "Highlands & Islands" },
+    87→  { city: "Lerwick", slug: "lerwick", region: "Highlands & Islands" },
+    88→  { city: "Kirkwall", slug: "kirkwall", region: "Highlands & Islands" },
+    89→  // South
+    90→  { city: "Dumfries", slug: "dumfries", region: "South" },
+    91→  { city: "Stranraer", slug: "stranraer", region: "South" },
+    92→];
+    93→
+    94→// Group by region for cleaner display
+    95→const REGION_ORDER = ["Central Belt", "East", "North East", "Highlands & Islands", "South"];
+    96→const locationsByRegion = REGION_ORDER.map((region) => ({
+    97→  region,
+    98→  cities: LOCATIONS.filter((l) => l.region === region),
+    99→}));
+   100→
+   101→// ============================================================
+   102→// Trust badges for the hero
+   103→// ============================================================
+   104→const HERO_BADGES = [
+   105→  { icon: Star, label: "4.9/5 \u00b7 6,200+ reviews" },
+   106→  { icon: Shield, label: "Fully Insured & PVG-Checked" },
+   107→  { icon: Leaf, label: "Eco-Friendly Non-Toxic Products" },
+   108→  { icon: Clock, label: "100% Satisfaction Guarantee" },
+   109→];
+   110→
+   111→// ============================================================
+   112→// The 4 trust pillars
+   113→// ============================================================
+   114→const TRUST_PILLARS = [
+   115→  {
+   116→    icon: Users,
+   117→    title: "The Same Trusted Floor Care Crew Every Time",
+   118→    description:
+   119→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, and background-checked floor care specialists who manage your regular cleaning are the ones performing your floor stripping, refinishing, and restoration. Continuity matters when the stakes are a 130-year-old Marchmont pine board, a Glasgow IFSD corporate VCT entrance, or an Aberdeen granite-entrance terrazzo &mdash; we don&rsquo;t send rotating crews of strangers to your property.",
+   120→  },
+   121→  {
+   122→    icon: Gem,
+   123→    title: "Material-Matched Chemistry & Diamond-Grit Restoration",
+   124→    description:
+   125→      "Our floor care specialists understand every variety of Scottish hard floor &mdash; from VCT, linoleum, rubber, terrazzo, sealed concrete, natural stone (marble, granite, slate, limestone), solid timber, engineered wood, parquet, and laminate. We identify the substrate, the finish, and the condition before we touch the floor, then apply the right protocol: alkaline stripper for VCT, pH-neutral for linoleum, water-based acrylic for rubber, lithium-silicate densifier for concrete, diamond-grit honing (50 through 3000-grit) for natural stone and terrazzo, hardwax oil for oiled wood, Bona Traffic HD lacquer for film-forming wood. Wrong chemistry on wrong material equals permanent damage &mdash; we refuse to clean what we cannot safely treat.",
+   126→  },
+   127→  {
+   128→    icon: Layers,
+   129→    title: "Latest Technology in Machinery & Eco-Friendly Products",
+   130→    description:
+   131→      "Low-speed rotary machines (175 RPM) for stripping and scrubbing, high-speed burnishers (1500-2000 RPM) for wet-look gloss restoration, diamond-grit honing systems for natural stone and terrazzo, HEPA-filtered dust extractors for dust-free stripping where possible, professional wet/dry vacuums for slurry pickup, air movers for fast curing, gloss meters for objective measurement, and colour-coded pad systems (black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish) to prevent cross-contamination. All cleaning solutions are certified non-toxic, biodegradable, child-safe, and pet-safe &mdash; no harsh solvents, no optical brighteners. The floor is safe for crawling babies and pets once dry.",
+   132→  },
+   133→  {
+   134→    icon: Award,
+   135→    title: "Fully Insured & 100% Satisfaction Guaranteed",
+   136→    description:
+   137→      "Every floor care specialist is Disclosure Scotland PVG-checked, we hold &pound;5m public liability cover, and we offer a free re-clean within 24 to 48 hours if you are not 100% satisfied. We are a registered Scottish company &mdash; not a gig-economy agency &mdash; and the Maundy Clean standard applies on every visit. From &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;28/m&sup2; for full diamond-grit restoration of natural stone and terrazzo, with a 5-10 year guarantee on every full refinish.",
+   138→  },
+   139→];
+   140→
+   141→// ============================================================
+   142→// The 3-step booking process
+   143→// ============================================================
+   144→const BOOKING_STEPS = [
+   145→  {
+   146→    icon: Zap,
+   147→    step: "01",
+   148→    title: "Free Estimate & Floor Analysis",
+   149→    description:
+   150→      "Tell us about your floor type, footprint, and traffic pattern &mdash; and receive a fixed-price floor care quote in under a minute. Our team will advise on the best specialist cleaning, sealing, and finishing options for your unique floor type. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months, with no on-the-day upsells for sealer or polish.",
+   151→  },
+   152→  {
+   153→    icon: UserCheck,
+   154→    step: "02",
+   155→    title: "Local Technician Matching",
+   156→    description:
+   157→      "We match you with a vetted, material-trained floor care specialist in your postcode. They confirm the substrate, finish type, and condition of your floor, flag any permanent stains, scratch patterns, or polish build-up, and walk you through the cleaning and restoration plan before any chemistry touches the surface &mdash; so there are no surprises on the day.",
+   158→  },
+   159→  {
+   160→    icon: CalendarCheck,
+   161→    step: "03",
+   162→    title: "A Pristine Foundation",
+   163→    description:
+   164→      "Walk onto a floor that looks, feels, and stays fresh, backed by our 100% satisfaction guarantee. We finish every visit with a gloss meter reading, a wear-pattern inspection, a care card update, and a re-clean reminder for the next quarter. From &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;28/m&sup2; for full diamond-grit restoration with a 5-10 year guarantee.",
+   165→  },
+   166→];
+   167→
+   168→// ============================================================
+   169→// FAQ for the near-me page
+   170→// ============================================================
+   171→const NEAR_ME_FAQS = [
+   172→  {
+   173→    q: "How do I know if you cover my area?",
+   174→    a: "We cover 72+ towns and cities across Scotland &mdash; from Glasgow and Edinburgh in the Central Belt to Lerwick in Shetland and everywhere in between. Use the location grid above to find your town. If you don&rsquo;t see your postcode listed, call us &mdash; we add new coverage areas every month and may already have a floor care specialist near you.",
+   175→  },
+   176→  {
+   177→    q: "How quickly can a local floor care specialist start?",
+   178→    a: "From quote to clean in under 48 hours for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 5-7 working days for technician routing and travel planning. Same-day starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee &mdash; call us to check availability. Full strip-and-refinish bookings typically schedule 1-2 weeks out to allow for polish curing; full diamond-grit restoration typically 2-3 weeks out to allow for multi-day honing through 50-grit to 3000-grit.",
+   179→  },
+   180→  {
+   181→    q: "Will the technician travel to me, or do I need to bring the floor to you?",
+   182→    a: "All floor care and restoration is performed on-site at your property &mdash; we never transport your floor anywhere. Our crews arrive in fully-equipped vans with low-speed rotary machines, high-speed burnishers, diamond-grit honing systems, HEPA-filtered dust extractors, professional wet/dry vacuums, air movers, gloss meters, colour-coded pad systems, and chemistry matched to every floor type. The only exception is small loose items like oak off-cuts or marble tile samples, which can be brought to our workshop for colour-matching.",
+   183→  },
+   184→  {
+   185→    q: "Do you have floor care specialists available in rural Scotland?",
+   186→    a: "Yes. We cover rural Scotland including Perthshire, Angus, Fife, the Borders, Argyll, Aberdeenshire, and parts of the Highlands. For very remote properties (Islands, far North), we may operate on a minimum-area basis or schedule combined visits with neighbouring properties to keep travel costs down. Call us to discuss your specific location &mdash; we&rsquo;ll always give you a straight answer on coverage and lead time.",
+   187→  },
+   188→  {
+   189→    q: "Can you sand the original pine boards in my Edinburgh tenement?",
+   190→    a: "Absolutely &mdash; original tenement pine board restoration is one of our specialities, particularly in Edinburgh&rsquo;s Marchmont, Bruntsfield, Stockbridge, and New Town areas. These boards are typically 100-130 years old, often covered in old varnish, paint splashes, and decades of wear. We sand them back to beautiful golden pine using L&auml;gler Hummel drum sanders with Festool HEPA dust extraction (virtually dust-free), and finish with Osmo Polyx-Oil or Bona Traffic HD lacquer. References and before-and-after photos from recent Edinburgh tenement projects available on request.",
+   191→  },
+   192→  {
+   193→    q: "What&rsquo;s the difference between scrub-and-recoat, full strip-and-refinish, and diamond-grit restoration near me?",
+   194→    a: "Scrub-and-recoat (&pound;4/m&sup2;) is the quarterly top-up &mdash; light scrub with red pad and neutral cleaner, 2 top-up coats of metal-interlock polish, 12-hour cure. Extends polish life by 6-12 months. Full strip-and-refinish (&pound;12/m&sup2;) is the annual cycle for high-traffic VCT, linoleum, and rubber &mdash; full strip back to bare floor, 4-6 coats of high-solids polish, 24-hour cure. Diamond-grit restoration (&pound;28/m&sup2;) is the natural stone, terrazzo, and sealed concrete protocol &mdash; 50-grit through 3000-grit honing, crystallisation or densifier, impregnating sealer, mirror finish. We&rsquo;ll recommend the right approach at the free floor analysis.",
+   195→  },
+   196→];
+   197→
+   198→// ============================================================
+   199→// Main page component
+   200→// ============================================================
+   201→
+   202→export function FloorCareStrippingNearMeHero() {
+   203→  return (
+   204→    <>
+   205→      {/* ============================================================ */}
+   206→      {/* SECTION 1 - Hero */}
+   207→      {/* H1: Floor Care & Stripping Services Near Me in Scotland */}
+   208→      {/* ============================================================ */}
+   209→      <section className="relative overflow-hidden">
+   210→        <div className="absolute inset-0">
+   211→          <img
+   212→            src={IMG.heroWide}
+   213→            alt="Maundy Clean floor care specialist stripping, refinishing and burnishing a hard floor to a wet-look gloss in a Scottish property"
+   214→            className="w-full h-full object-cover"
+   215→            loading="eager"
+   216→            fetchPriority="high"
+   217→          />
+   218→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   219→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   220→        </div>
+   221→
+   222→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   223→          <motion.div
+   224→            initial="hidden"
+   225→            animate="visible"
+   226→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   227→            className="max-w-3xl"
+   228→          >
+   229→            <motion.div
+   230→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   231→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   232→            >
+   233→              <span className="relative flex w-2 h-2">
+   234→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   235→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   236→              </span>
+   237→              72+ Scottish towns &middot; Local material-trained floor care specialists &middot; Same crew every visit
+   238→            </motion.div>
+   239→
+   240→            <motion.h1
+   241→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   242→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   243→            >
+   244→              Floor Care &amp; Stripping Services Near Me in Scotland
+   245→            </motion.h1>
+   246→
+   247→            <motion.p
+   248→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   249→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   250→            >
+   251→              Searching for &ldquo;floor care near me&rdquo; or &ldquo;floor stripping
+   252→              and refinishing near me&rdquo; in Scotland? Maundy Clean covers 72+ towns
+   253→              and cities across the Central Belt, Highlands, Borders, and Islands. Same
+   254→              material-trained standard, same diamond-grit technology, same dedicated
+   255→              floor care specialist &mdash; wherever your property happens to be. From
+   256→              &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;28/m&sup2;
+   257→              for full diamond-grit restoration with a 5-10 year guarantee.
+   258→            </motion.p>
+   259→
+   260→            <motion.div
+   261→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   262→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   263→            >
+   264→              <Button
+   265→                size="lg"
+   266→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   267→                asChild
+   268→              >
+   269→                <Link href="/quote">
+   270→                  Request Your Free Floor Estimate Today
+   271→                  <ArrowRight className="w-5 h-5" />
+   272→                </Link>
+   273→              </Button>
+   274→              <Button
+   275→                size="lg"
+   276→                variant="outline"
+   277→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   278→                asChild
+   279→              >
+   280→                <Link href="#locations">
+   281→                  <MapPin className="w-4 h-4" />
+   282→                  Find Your Local Floor Care Crew
+   283→                </Link>
+   284→              </Button>
+   285→            </motion.div>
+   286→
+   287→            <motion.div
+   288→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   289→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   290→            >
+   291→              {HERO_BADGES.map((badge) => {
+   292→                const Icon = badge.icon;
+   293→                return (
+   294→                  <div key={badge.label} className="flex items-center gap-1.5">
+   295→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   296→                  </div>
+   297→                );
+   298→              })}
+   299→            </motion.div>
+   300→          </motion.div>
+   301→        </div>
+   302→      </section>
+   303→
+   304→      {/* ============================================================ */}
+   305→      {/* SECTION 2 - Intro + stats */}
+   306→      {/* H2: Local Floor Care & Stripping You Can Trust */}
+   307→      {/* ============================================================ */}
+   308→      <section className="py-16 lg:py-24 bg-background">
+   309→        <div className="max-w-[1100px] mx-auto px-6">
+   310→          <motion.div
+   311→            initial={{ opacity: 0, y: 20 }}
+   312→            whileInView={{ opacity: 1, y: 0 }}
+   313→            viewport={{ once: true, margin: "-80px" }}
+   314→            transition={{ duration: 0.5 }}
+   315→            className="max-w-3xl mx-auto text-center mb-10"
+   316→          >
+   317→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   318→              Local floor care, stripping &amp; refinishing &middot; Scotland-wide
+   319→            </span>
+   320→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   321→              Local Floor Care &amp; Stripping You Can Trust
+   322→            </h2>
+   323→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   324→              Maundy Clean is a Scottish floor care company built on the Maundy tradition
+   325→              of service and care. We don&rsquo;t operate as an impersonal national
+   326→              agency &mdash; we&rsquo;re a local specialist with material-trained floor
+   327→              care crews living and working in your area. Whether you&rsquo;re searching
+   328→              for VCT strip-and-refinish in Glasgow&rsquo;s IFSD, marble diamond-grit
+   329→              restoration in Edinburgh&rsquo;s New Town, terrazzo polishing in
+   330→              Aberdeen&rsquo;s granite-built suburbs, or heritage pine board
+   331→              sand-and-refinish anywhere in between, we assign a vetted, PAYE-employed
+   332→              professional that stays with you for the long run. Same crew, same
+   333→              standard, same locked-in rate for 12 months.
+   334→            </p>
+   335→          </motion.div>
+   336→
+   337→          <motion.div
+   338→            initial={{ opacity: 0, y: 16 }}
+   339→            whileInView={{ opacity: 1, y: 0 }}
+   340→            viewport={{ once: true, margin: "-60px" }}
+   341→            transition={{ duration: 0.5 }}
+   342→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   343→          >
+   344→            {[
+   345→              { label: "Floor types covered", value: "10+" },
+   346→              { label: "Diamond-grit honing", value: "50&ndash;3000" },
+   347→              { label: "Refinish guarantee", value: "5-10 yrs" },
+   348→              { label: "Star rating", value: "4.9/5" },
+   349→            ].map((stat) => (
+   350→              <div
+   351→                key={stat.label}
+   352→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   353→              >
+   354→                <div
+   355→                  className="font-display font-extrabold text-2xl text-gradient-brand"
+   356→                  dangerouslySetInnerHTML={{ __html: stat.value }}
+   357→                />
+   358→                <div
+   359→                  className="text-xs text-[var(--muted-foreground)] mt-1"
+   360→                  dangerouslySetInnerHTML={{ __html: stat.label }}
+   361→                />
+   362→              </div>
+   363→            ))}
+   364→          </motion.div>
+   365→        </div>
+   366→      </section>
+   367→
+   368→      {/* ============================================================ */}
+   369→      {/* SECTION 3 - Location grid (id="locations" anchor target) */}
+   370→      {/* H2: Find Your Local Floor Care Crew */}
+   371→      {/* ============================================================ */}
+   372→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   373→        <div className="max-w-[1400px] mx-auto px-6">
+   374→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   375→            {/* Left: copy + map */}
+   376→            <motion.div
+   377→              initial={{ opacity: 0, y: 20 }}
+   378→              whileInView={{ opacity: 1, y: 0 }}
+   379→              viewport={{ once: true, margin: "-80px" }}
+   380→              transition={{ duration: 0.5 }}
+   381→            >
+   382→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   383→                Coverage across Scotland
+   384→              </span>
+   385→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   386→                Find Your Local Floor Care Crew
+   387→              </h2>
+   388→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   389→                Our network of vetted, material-trained floor care specialists spans
+   390→                the entire country. From the Central Belt to the Highlands and Islands,
+   391→                we have a local professional ready to care for your hard floors. Browse
+   392→                by region below, or call us to confirm coverage for your specific
+   393→                postcode.
+   394→              </p>
+   395→
+   396→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   397→                <img
+   398→                  src={IMG.scotlandMap}
+   399→                  alt="Map of Scotland showing Maundy Clean floor care &amp; stripping coverage areas"
+   400→                  className="absolute inset-0 w-full h-full object-cover"
+   401→                  loading="lazy"
+   402→                />
+   403→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   404→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   405→                  <div className="flex items-center gap-2 mb-1">
+   406→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   407→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   408→                      72+ Scottish towns covered
+   409→                    </span>
+   410→                  </div>
+   411→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   412→                    Same material-trained floor care specialists, same 100% satisfaction
+   413→                    guarantee &mdash; from Glasgow to Lerwick.
+   414→                  </p>
+   415→                </div>
+   416→              </div>
+   417→
+   418→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   419→                <Button
+   420→                  size="lg"
+   421→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   422→                  asChild
+   423→                >
+   424→                  <Link href="/quote">
+   425→                    <Zap className="w-4 h-4" />
+   426→                    Request Your Free Floor Estimate
+   427→                  </Link>
+   428→                </Button>
+   429→                <Button
+   430→                  size="lg"
+   431→                  variant="outline"
+   432→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   433→                  asChild
+   434→                >
+   435→                  <a href={contactInfo.phoneHref}>
+   436→                    <Phone className="w-4 h-4" />
+   437→                    {contactInfo.phone}
+   438→                  </a>
+   439→                </Button>
+   440→              </div>
+   441→            </motion.div>
+   442→
+   443→            {/* Right: regional location grid */}
+   444→            <motion.div
+   445→              initial={{ opacity: 0, y: 20 }}
+   446→              whileInView={{ opacity: 1, y: 0 }}
+   447→              viewport={{ once: true, margin: "-60px" }}
+   448→              transition={{ duration: 0.5 }}
+   449→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   450→            >
+   451→              <div className="flex items-center justify-between mb-5">
+   452→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   453→                  Browse by region
+   454→                </h3>
+   455→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   456→              </div>
+   457→
+   458→              <div className="space-y-6">
+   459→                {locationsByRegion.map((regionGroup) => (
+   460→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   461→                    <div className="flex items-center gap-2 mb-3">
+   462→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   463→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   464→                        {regionGroup.region}
+   465→                      </span>
+   466→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   467→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   468→                        {regionGroup.cities.length} towns
+   469→                      </span>
+   470→                    </div>
+   471→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   472→                      {regionGroup.cities.map((loc) => (
+   473→                        <Link
+   474→                          key={loc.slug}
+   475→                          id={loc.slug}
+   476→                          href={`/services/floor-care-stripping-near-me#${loc.slug}`}
+   477→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   478→                        >
+   479→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   480→                          <span>
+   481→                            <span className="font-medium">{loc.city}</span>
+   482→                            <span className="text-[var(--muted-foreground)]"> floors</span>
+   483→                          </span>
+   484→                        </Link>
+   485→                      ))}
+   486→                    </div>
+   487→                  </div>
+   488→                ))}
+   489→              </div>
+   490→
+   491→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   492→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   493→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   494→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   495→                </div>
+   496→                <Link
+   497→                  href="/locations"
+   498→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   499→                >
+   500→                  View all 72 Scottish locations
+   501→                  <ArrowRight className="w-4 h-4" />
+   502→                </Link>
+   503→              </div>
+   504→            </motion.div>
+   505→          </div>
+   506→        </div>
+   507→      </section>
+   508→
+   509→      {/* ============================================================ */}
+   510→      {/* SECTION 4 - Why Maundy Clean for your local floor care */}
+   511→      {/* H2: Why Scottish Property Owners Choose Maundy Clean */}
+   512→      {/* ============================================================ */}
+   513→      <section className="py-16 lg:py-24 bg-background">
+   514→        <div className="max-w-[1400px] mx-auto px-6">
+   515→          <motion.div
+   516→            initial={{ opacity: 0, y: 20 }}
+   517→            whileInView={{ opacity: 1, y: 0 }}
+   518→            viewport={{ once: true, margin: "-80px" }}
+   519→            transition={{ duration: 0.5 }}
+   520→            className="max-w-3xl mx-auto text-center mb-14"
+   521→          >
+   522→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   523→              The Maundy Clean difference
+   524→            </span>
+   525→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   526→              Why Scottish Property Owners Choose Maundy Clean
+   527→            </h2>
+   528→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   529→              We&rsquo;re a local specialist, not an impersonal national agency. Our
+   530→              material-trained floor care specialists live in your area, know your
+   531→              neighbourhood, and stay with you for the long run. Here&rsquo;s what sets
+   532→              us apart from the gig-economy apps and high-turnover agencies operating
+   533→              in Scotland.
+   534→            </p>
+   535→          </motion.div>
+   536→
+   537→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   538→            {TRUST_PILLARS.map((pillar, i) => {
+   539→              const Icon = pillar.icon;
+   540→              return (
+   541→                <motion.div
+   542→                  key={pillar.title}
+   543→                  initial={{ opacity: 0, y: 24 }}
+   544→                  whileInView={{ opacity: 1, y: 0 }}
+   545→                  viewport={{ once: true, margin: "-40px" }}
+   546→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   547→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   548→                >
+   549→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   550→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   551→                  </div>
+   552→                  <div>
+   553→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   554→                      {pillar.title}
+   555→                    </h3>
+   556→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   557→                      {pillar.description}
+   558→                    </p>
+   559→                  </div>
+   560→                </motion.div>
+   561→              );
+   562→            })}
+   563→          </div>
+   564→        </div>
+   565→      </section>
+   566→
+   567→      {/* ============================================================ */}
+   568→      {/* SECTION 5 - 3-step booking */}
+   569→      {/* H2: From Quote to Clean in 48 Hours */}
+   570→      {/* ============================================================ */}
+   571→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   572→        <div className="max-w-[1400px] mx-auto px-6">
+   573→          <motion.div
+   574→            initial={{ opacity: 0, y: 20 }}
+   575→            whileInView={{ opacity: 1, y: 0 }}
+   576→            viewport={{ once: true, margin: "-80px" }}
+   577→            transition={{ duration: 0.5 }}
+   578→            className="text-center mb-14"
+   579→          >
+   580→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   581→              Hassle-free booking
+   582→            </span>
+   583→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   584→              From Quote to Clean in 48 Hours
+   585→            </h2>
+   586→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   587→              We have optimized our booking experience to be uncomplicated and
+   588→              straightforward. Tell us about your floor type, footprint, and traffic
+   589→              pattern, get matched with a local material-trained floor care
+   590→              specialist, and enjoy a pristine foundation &mdash; no friction, no
+   591→              waiting, no surprises.
+   592→            </p>
+   593→          </motion.div>
+   594→
+   595→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   596→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   597→
+   598→            {BOOKING_STEPS.map((step, i) => {
+   599→              const Icon = step.icon;
+   600→              return (
+   601→                <motion.div
+   602→                  key={step.step}
+   603→                  initial={{ opacity: 0, y: 24 }}
+   604→                  whileInView={{ opacity: 1, y: 0 }}
+   605→                  viewport={{ once: true, margin: "-40px" }}
+   606→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   607→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   608→                >
+   609→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   610→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   611→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   612→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   613→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   614→                      {step.step}
+   615→                    </span>
+   616→                  </div>
+   617→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   618→                    {step.title}
+   619→                  </h3>
+   620→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   621→                    {step.description}
+   622→                  </p>
+   623→                </motion.div>
+   624→              );
+   625→            })}
+   626→          </div>
+   627→
+   628→          <motion.div
+   629→            initial={{ opacity: 0, y: 16 }}
+   630→            whileInView={{ opacity: 1, y: 0 }}
+   631→            viewport={{ once: true }}
+   632→            transition={{ duration: 0.5, delay: 0.3 }}
+   633→            className="text-center mt-10"
+   634→          >
+   635→            <Button
+   636→              size="lg"
+   637→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   638→              asChild
+   639→            >
+   640→              <Link href="/quote">
+   641→                Request Your Free Floor Estimate Today
+   642→                <ArrowRight className="w-5 h-5" />
+   643→              </Link>
+   644→            </Button>
+   645→          </motion.div>
+   646→        </div>
+   647→      </section>
+   648→
+   649→      {/* ============================================================ */}
+   650→      {/* SECTION 6 - Cross-links to specialist pages */}
+   651→      {/* H2: Specialist Services for Every Property Cycle */}
+   652→      {/* ============================================================ */}
+   653→      <section className="py-16 lg:py-24 bg-background">
+   654→        <div className="max-w-[1400px] mx-auto px-6">
+   655→          <motion.div
+   656→            initial={{ opacity: 0, y: 20 }}
+   657→            whileInView={{ opacity: 1, y: 0 }}
+   658→            viewport={{ once: true, margin: "-80px" }}
+   659→            transition={{ duration: 0.5 }}
+   660→            className="max-w-3xl mb-12"
+   661→          >
+   662→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   663→              Beyond the floor &middot; property cycles
+   664→            </span>
+   665→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   666→              Specialist Services for Every Property Cycle
+   667→            </h2>
+   668→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   669→              Our floor care and stripping is the perfect reset to combine with our
+   670→              other specialist services. Restore the floor today, then keep the
+   671→              interior pristine with the right ongoing routine for your household,
+   672→              your tenancy cycle, your sale timeline, or your upholstery &mdash; the
+   673→              same trusted crew can step up whenever life changes.
+   674→            </p>
+   675→          </motion.div>
+   676→
+   677→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   678→            {[
+   679→              {
+   680→                icon: CalendarCheck,
+   681→                title: "Recurring Home Cleaning",
+   682→                href: "/services/recurring-home-cleaning",
+   683→                description:
+   684→                  "After your floors are restored, keep them pristine with a recurring home cleaning schedule &mdash; weekly or fortnightly. Our same trusted crew maintains your floors with pH-neutral, surface-safe products as part of every visit, catching wear patterns early and extending the life of the finish.",
+   685→                cta: "Explore recurring cleaning",
+   686→              },
+   687→              {
+   688→                icon: KeyRound,
+   689→                title: "End of Tenancy Cleaning",
+   690→                href: "/services/move-in-out-cleaning",
+   691→                description:
+   692→                  "Moving homes? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee and professional hard floor care to ensure you PASS your inspection. We work to the letting agent&rsquo;s inventory, restore the floor to its original appearance, and come back free of charge if anything is flagged.",
+   693→                cta: "Explore end of tenancy",
+   694→              },
+   695→              {
+   696→                icon: Hammer,
+   697→                title: "After Builders Clean",
+   698→                href: "/services/post-construction-cleaning",
+   699→                description:
+   700→                  "If you&rsquo;ve recently had construction work, our After Builders Clean removes the fine abrasive dust that settles on hard floors. Fine dust left on a freshly stripped floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect the finish before the dust causes permanent scratches.",
+   701→                cta: "Explore after builders cleaning",
+   702→              },
+   703→              {
+   704→                icon: HeartPulse,
+   705→                title: "Upholstery Cleaning",
+   706→                href: "/services/upholstery-cleaning",
+   707→                description:
+   708→                  "Refresh your furniture alongside your floors for a comprehensive property refresh. Stain-specific chemistry for fabric, leather, and microfibre suites, hot-water extraction for deep soil, and the same &ldquo;Maundy&rdquo; standard applied to every cushion, arm, and back.",
+   709→                cta: "Explore upholstery cleaning",
+   710→              },
+   711→            ].map((sol, i) => {
+   712→              const Icon = sol.icon;
+   713→              return (
+   714→                <motion.div
+   715→                  key={sol.title}
+   716→                  initial={{ opacity: 0, y: 24 }}
+   717→                  whileInView={{ opacity: 1, y: 0 }}
+   718→                  viewport={{ once: true, margin: "-40px" }}
+   719→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   720→                >
+   721→                  <Link
+   722→                    href={sol.href}
+   723→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   724→                  >
+   725→                    <div className="p-6">
+   726→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   727→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   728→                      </div>
+   729→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   730→                        {sol.title}
+   731→                      </h3>
+   732→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   733→                        {sol.description}
+   734→                      </p>
+   735→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   736→                        {sol.cta}
+   737→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   738→                      </span>
+   739→                    </div>
+   740→                  </Link>
+   741→                </motion.div>
+   742→              );
+   743→            })}
+   744→          </div>
+   745→
+   746→          <motion.div
+   747→            initial={{ opacity: 0, y: 16 }}
+   748→            whileInView={{ opacity: 1, y: 0 }}
+   749→            viewport={{ once: true }}
+   750→            transition={{ duration: 0.5, delay: 0.2 }}
+   751→            className="mt-10 text-center"
+   752→          >
+   753→            <Link
+   754→              href="/services/floor-care-stripping"
+   755→              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] bg-[var(--brand-light)]/40 hover:bg-[var(--brand-light)]/70 transition-colors px-5 py-3 rounded-full"
+   756→            >
+   757→              <Layers className="w-4 h-4" />
+   758→              Explore the full floor care &amp; stripping service
+   759→              <ArrowRight className="w-4 h-4" />
+   760→            </Link>
+   761→          </motion.div>
+   762→        </div>
+   763→      </section>
+   764→
+   765→      {/* ============================================================ */}
+   766→      {/* SECTION 7 - Final CTA */}
+   767→      {/* H2: Ready for a Floor Care Crew Near You? */}
+   768→      {/* ============================================================ */}
+   769→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   770→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   771→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   772→
+   773→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   774→          <motion.div
+   775→            initial={{ opacity: 0, y: 20 }}
+   776→            whileInView={{ opacity: 1, y: 0 }}
+   777→            viewport={{ once: true, margin: "-80px" }}
+   778→            transition={{ duration: 0.5 }}
+   779→          >
+   780→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   781→              Ready to book your local floor care crew?
+   782→            </span>
+   783→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   784→              Ready for a Floor Care Crew Near You?
+   785→            </h2>
+   786→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   787→              Get a fixed-price floor care and stripping quote in 30 seconds. No pushy
+   788→              sales call, no waiting 24 hours for a callback. Material-trained floor
+   789→              care specialists, diamond-grit technology, eco-friendly non-toxic
+   790→              products, a 100% satisfaction guarantee, and a 5-10 year guarantee on
+   791→              every full refinish &mdash; from &pound;4/m&sup2; for quarterly
+   792→              scrub-and-recoat through to &pound;28/m&sup2; for full diamond-grit
+   793→              restoration. Coverage across 72+ Scottish towns.
+   794→            </p>
+   795→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   796→              <Button
+   797→                size="lg"
+   798→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   799→                asChild
+   800→              >
+   801→                <Link href="/quote">
+   802→                  Request Your Free Floor Estimate Today
+   803→                  <ArrowRight className="w-5 h-5" />
+   804→                </Link>
+   805→              </Button>
+   806→              <Button
+   807→                size="lg"
+   808→                variant="outline"
+   809→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   810→                asChild
+   811→              >
+   812→                <a href={contactInfo.phoneHref}>
+   813→                  <Phone className="w-4 h-4" />
+   814→                  Call {contactInfo.phone}
+   815→                </a>
+   816→              </Button>
+   817→            </div>
+   818→          </motion.div>
+   819→        </div>
+   820→      </section>
+   821→
+   822→      {/* ============================================================ */}
+   823→      {/* SECTION 8 - Near-me FAQ */}
+   824→      {/* H2: Frequently Asked Questions */}
+   825→      {/* ============================================================ */}
+   826→      <section className="py-16 lg:py-24 bg-background">
+   827→        <div className="max-w-4xl mx-auto px-6">
+   828→          <motion.div
+   829→            initial={{ opacity: 0, y: 20 }}
+   830→            whileInView={{ opacity: 1, y: 0 }}
+   831→            viewport={{ once: true, margin: "-80px" }}
+   832→            transition={{ duration: 0.5 }}
+   833→            className="text-center mb-12"
+   834→          >
+   835→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   836→              Floor care &amp; stripping near me &middot; FAQ
+   837→            </span>
+   838→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   839→              Frequently Asked Questions
+   840→            </h2>
+   841→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   842→              Straight answers to the questions our local floor care clients ask most
+   843→              often. Can&rsquo;t find what you need? Call us on{" "}
+   844→              <a
+   845→                href={contactInfo.phoneHref}
+   846→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   847→              >
+   848→                {contactInfo.phone}
+   849→              </a>{" "}
+   850→              and we&rsquo;ll talk it through.
+   851→            </p>
+   852→          </motion.div>
+   853→
+   854→          <div className="space-y-4">
+   855→            {NEAR_ME_FAQS.map((faq, i) => (
+   856→              <motion.div
+   857→                key={faq.q}
+   858→                initial={{ opacity: 0, y: 16 }}
+   859→                whileInView={{ opacity: 1, y: 0 }}
+   860→                viewport={{ once: true, margin: "-40px" }}
+   861→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   862→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   863→              >
+   864→                <details className="group">
+   865→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   866→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   867→                      {faq.q}
+   868→                    </h3>
+   869→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   870→                      <span className="relative w-3.5 h-3.5">
+   871→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   872→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   873→                      </span>
+   874→                    </span>
+   875→                  </summary>
+   876→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   877→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   878→                      {faq.a}
+   879→                    </p>
+   880→                  </div>
+   881→                </details>
+   882→              </motion.div>
+   883→            ))}
+   884→          </div>
+   885→
+   886→          <motion.div
+   887→            initial={{ opacity: 0, y: 16 }}
+   888→            whileInView={{ opacity: 1, y: 0 }}
+   889→            viewport={{ once: true, margin: "-40px" }}
+   890→            transition={{ duration: 0.5, delay: 0.3 }}
+   891→            className="mt-10 text-center"
+   892→          >
+   893→            <Button
+   894→              size="lg"
+   895→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   896→              asChild
+   897→            >
+   898→              <Link href="/quote">
+   899→                Request Your Free Floor Estimate Today
+   900→                <ArrowRight className="w-5 h-5" />
+   901→              </Link>
+   902→            </Button>
+   903→          </motion.div>
+   904→        </div>
+   905→      </section>
+   906→    </>
+   907→  );
+   908→}
+   909→

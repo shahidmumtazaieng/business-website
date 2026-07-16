@@ -1,0 +1,700 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Shield,
+     7→  Leaf,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Droplets,
+    15→  Wind,
+    16→  SprayCan,
+    17→  Crown,
+    18→  Users,
+    19→  Home,
+    20→  KeyRound,
+    21→  Hammer,
+    22→  Zap,
+    23→  UserCheck,
+    24→  CalendarCheck,
+    25→  Award,
+    26→  Gem,
+    27→  Building2,
+    28→  Briefcase,
+    29→  Phone,
+    30→  ClipboardList,
+    31→  FileText,
+    32→  UtensilsCrossed,
+    33→  HeartPulse,
+    34→  Server,
+    35→  Microwave,
+    36→  Printer,
+    37→  Keyboard,
+    38→  DoorOpen,
+    39→  Trees,
+    40→  Flame,
+    41→  Wrench,
+    42→} from "lucide-react";
+    43→import { Button } from "@/components/ui/button";
+    44→import { contactInfo } from "@/lib/site-data";
+    45→
+    46→// ============================================================
+    47→// Images - hand-picked from in-house search service
+    48→// (matches office-cleaning + housekeeping image pool)
+    49→// ============================================================
+    50→const IMG = {
+    51→  heroWide:
+    52→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    53→  introSplit:
+    54→    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    55→  whyCrew:
+    56→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    57→  checklistWorkstation:
+    58→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    59→  checklistFloor:
+    60→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    61→  checklistWashroom:
+    62→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    63→  leaseRecurring:
+    64→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    65→  leaseDeep:
+    66→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    67→  leaseTenancy:
+    68→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    69→  leaseBuilders:
+    70→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    71→  leaseRestaurant:
+    72→    "https://sfile.chatglm.cn/images-ppt/4d2b9e8c1a73.jpg",
+    73→  leaseDisinfection:
+    74→    "https://sfile.chatglm.cn/images-ppt/8a7c4d6e0b51.jpg",
+    75→  nearMeMap:
+    76→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    77→};
+    78→
+    79→// ============================================================
+    80→// 36 Scottish locations covered by the near-me grid
+    81→// ============================================================
+    82→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    83→  { city: "Glasgow", slug: "glasgow" },
+    84→  { city: "Edinburgh", slug: "edinburgh" },
+    85→  { city: "Aberdeen", slug: "aberdeen" },
+    86→  { city: "Dundee", slug: "dundee" },
+    87→  { city: "Stirling", slug: "stirling" },
+    88→  { city: "Perth", slug: "perth" },
+    89→  { city: "Falkirk", slug: "falkirk" },
+    90→  { city: "Inverness", slug: "inverness" },
+    91→  { city: "Ayr", slug: "ayr" },
+    92→  { city: "Kilmarnock", slug: "kilmarnock" },
+    93→  { city: "Livingston", slug: "livingston" },
+    94→  { city: "East Kilbride", slug: "east-kilbride" },
+    95→  { city: "Paisley", slug: "paisley" },
+    96→  { city: "Hamilton", slug: "hamilton" },
+    97→  { city: "Motherwell", slug: "motherwell" },
+    98→  { city: "Dunfermline", slug: "dunfermline" },
+    99→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   100→  { city: "Musselburgh", slug: "musselburgh" },
+   101→  { city: "Dalkeith", slug: "dalkeith" },
+   102→  { city: "Bathgate", slug: "bathgate" },
+   103→  { city: "Cumbernauld", slug: "cumbernauld" },
+   104→  { city: "Coatbridge", slug: "coatbridge" },
+   105→  { city: "St Andrews", slug: "st-andrews" },
+   106→  { city: "Elgin", slug: "elgin" },
+   107→  { city: "Peterhead", slug: "peterhead" },
+   108→  { city: "Stonehaven", slug: "stonehaven" },
+   109→  { city: "Inverurie", slug: "inverurie" },
+   110→  { city: "Oban", slug: "oban" },
+   111→  { city: "Fort William", slug: "fort-william" },
+   112→  { city: "Aviemore", slug: "aviemore" },
+   113→  { city: "Dumfries", slug: "dumfries" },
+   114→  { city: "Galashiels", slug: "galashiels" },
+   115→  { city: "Stranraer", slug: "stranraer" },
+   116→  { city: "Wick", slug: "wick" },
+   117→  { city: "Thurso", slug: "thurso" },
+   118→  { city: "Lerwick", slug: "lerwick" },
+   119→  { city: "Kirkwall", slug: "kirkwall" },
+   120→];
+   121→
+   122→// ============================================================
+   123→// Section 0 - Full-width hero banner
+   124→// Semantic H1: "Professional Corporate Facility Cleaning Services Scotland"
+   125→// ============================================================
+   126→
+   127→export function CorporateFacilitySeoHeroBanner() {
+   128→  return (
+   129→    <section className="relative overflow-hidden">
+   130→      {/* Full-width background image */}
+   131→      <div className="absolute inset-0">
+   132→        <img
+   133→          src={IMG.heroWide}
+   134→          alt="Maundy Clean uniformed facility management team resetting a corporate HQ in Glasgow after hours"
+   135→          className="w-full h-full object-cover"
+   136→          loading="eager"
+   137→          fetchPriority="high"
+   138→        />
+   139→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   140→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   141→      </div>
+   142→
+   143→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   144→        <motion.div
+   145→          initial="hidden"
+   146→          animate="visible"
+   147→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   148→          className="max-w-3xl"
+   149→        >
+   150→          <motion.div
+   151→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   152→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   153→          >
+   154→            <span className="relative flex w-2 h-2">
+   155→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   156→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   157→            </span>
+   158→            Corporate Facility Cleaning &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   159→          </motion.div>
+   160→
+   161→          <motion.h1
+   162→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   163→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   164→          >
+   165→            Professional Corporate Facility Cleaning Services Scotland
+   166→          </motion.h1>
+   167→
+   168→          <motion.p
+   169→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   170→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   171→          >
+   172→            Meticulous Commercial Maintenance, Reliable Vetted Teams, and the Maundy Tradition of
+   173→            Care. In the competitive business environments of Glasgow, Edinburgh, and across the
+   174→            Central Belt, the state of your workspace is often the first and longest-lasting
+   175→            impression you make on clients and staff. A sparkling clean workplace is not just an
+   176→            aesthetic choice &mdash; it is a critical component of business success that reinforces
+   177→            staff morale and keeps your workforce healthy. At Maundy Clean, we provide a premium
+   178→            corporate facility cleaning service that goes beyond the basic surface wipe to truly
+   179→            elevate your professional environment.
+   180→          </motion.p>
+   181→
+   182→          <motion.div
+   183→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   184→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   185→          >
+   186→            <Button
+   187→              size="lg"
+   188→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   189→              asChild
+   190→            >
+   191→              <Link href="/quote">
+   192→                Book My Free Site Survey Today
+   193→                <ArrowRight className="w-5 h-5" />
+   194→              </Link>
+   195→            </Button>
+   196→            <Button
+   197→              size="lg"
+   198→              variant="outline"
+   199→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   200→              asChild
+   201→            >
+   202→              <Link href="#checklist">
+   203→                <CheckCircle2 className="w-4 h-4" />
+   204→                View Our Commercial Cleaning Checklist
+   205→              </Link>
+   206→            </Button>
+   207→          </motion.div>
+   208→
+   209→          <motion.div
+   210→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   211→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   212→          >
+   213→            <div className="flex items-center gap-1.5">
+   214→              <div className="flex">
+   215→                {[1, 2, 3, 4, 5].map((s) => (
+   216→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   217→                ))}
+   218→              </div>
+   219→              <span className="font-semibold text-white">4.9/5</span>
+   220→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   221→            </div>
+   222→            <div className="flex items-center gap-1.5">
+   223→              <Shield className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; PVG-Checked
+   224→            </div>
+   225→            <div className="flex items-center gap-1.5">
+   226→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> HSE-Compliant Supplies
+   227→            </div>
+   228→            <div className="flex items-center gap-1.5">
+   229→              <Clock className="w-4 h-4 text-[var(--gold)]" /> 7 Days a Week Availability
+   230→            </div>
+   231→          </motion.div>
+   232→        </motion.div>
+   233→      </div>
+   234→    </section>
+   235→  );
+   236→}
+   237→
+   238→// ============================================================
+   239→// Section 1 - Long-form semantic SEO intro
+   240→// Sits right after the hero, before the existing ServiceOverview.
+   241→// Split-layout with aspect-[4/3] image on the left and the two
+   242→// verbatim intro paragraphs on the right (the second paragraph
+   243→// contains the inline <Link> to /services/recurring-home-cleaning).
+   244→// ============================================================
+   245→
+   246→export function CorporateFacilitySeoIntro() {
+   247→  return (
+   248→    <section className="py-16 lg:py-24 bg-background">
+   249→      <div className="max-w-[1400px] mx-auto px-6">
+   250→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   251→          {/* Image side */}
+   252→          <motion.div
+   253→            initial={{ opacity: 0, scale: 0.96 }}
+   254→            whileInView={{ opacity: 1, scale: 1 }}
+   255→            viewport={{ once: true, margin: "-80px" }}
+   256→            transition={{ duration: 0.6 }}
+   257→            className="relative order-2 lg:order-1"
+   258→          >
+   259→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   260→              <img
+   261→                src={IMG.introSplit}
+   262→                alt="Maundy Clean facility management team resetting a corporate reception and open-plan office in Scotland"
+   263→                className="absolute inset-0 w-full h-full object-cover"
+   264→                loading="lazy"
+   265→              />
+   266→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   267→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   268→                <div className="flex items-center gap-2 mb-1">
+   269→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   270→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   271→                    Beyond the Basic Surface Wipe
+   272→                  </span>
+   273→                </div>
+   274→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   275→                  The same level of intimacy and sanctuary care we bring to Scotland&rsquo;s finest
+   276→                  residences &mdash; applied to your corporate environment.
+   277→                </p>
+   278→              </div>
+   279→            </div>
+   280→            <motion.div
+   281→              animate={{ y: [0, -8, 0] }}
+   282→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   283→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   284→            >
+   285→              <div className="flex items-center gap-2">
+   286→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   287→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   288→                </div>
+   289→                <div>
+   290→                  <div className="text-[10px] text-[var(--muted-foreground)]">Visit completion</div>
+   291→                  <div className="text-xs font-bold text-[var(--ink)]">99.6% in 2025</div>
+   292→                </div>
+   293→              </div>
+   294→            </motion.div>
+   295→          </motion.div>
+   296→
+   297→          {/* Copy side */}
+   298→          <motion.div
+   299→            initial={{ opacity: 0, y: 20 }}
+   300→            whileInView={{ opacity: 1, y: 0 }}
+   301→            viewport={{ once: true, margin: "-80px" }}
+   302→            transition={{ duration: 0.5 }}
+   303→            className="order-1 lg:order-2"
+   304→          >
+   305→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   306→              Corporate facility care &middot; Scotland
+   307→            </span>
+   308→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   309→              The Maundy Clean Standard for Corporate Facility Care
+   310→            </h2>
+   311→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   312→              In the competitive business environments of Glasgow, Edinburgh, and across the Central
+   313→              Belt, the state of your workspace is often the first and longest-lasting impression
+   314→              you make on clients and staff. A sparkling clean workplace is not just an aesthetic
+   315→              choice; it is a critical component of business success that reinforces staff morale
+   316→              and keeps your workforce healthy. At <strong className="font-semibold text-[var(--ink)]">Maundy
+   317→              Clean</strong>, we provide a premium corporate facility cleaning service that goes
+   318→              beyond the basic surface wipe to truly elevate your professional environment.
+   319→            </p>
+   320→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   321→              While we are the recognized authority in{" "}
+   322→              <Link
+   323→                href="/services/recurring-home-cleaning"
+   324→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   325→              >
+   326→                Recurring Home Cleaning
+   327→              </Link>{" "}
+   328→              for Scotland&rsquo;s finest residences, we bring that same level of technical detail,
+   329→              intimacy, and &ldquo;sanctuary&rdquo; care to the corporate world. Whether you manage
+   330→              a corporate office, a GP surgery, a retail space, or a bustling caf&eacute;, we
+   331→              deliver a consistently pristine environment that reflects your commitment to quality.
+   332→            </p>
+   333→
+   334→            {/* Compact trust strip */}
+   335→            <motion.div
+   336→              initial={{ opacity: 0, y: 16 }}
+   337→              whileInView={{ opacity: 1, y: 0 }}
+   338→              viewport={{ once: true, margin: "-40px" }}
+   339→              transition={{ duration: 0.5, delay: 0.15 }}
+   340→              className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3"
+   341→            >
+   342→              {[
+   343→                { label: "Visits completed in 2025", value: "99.6%" },
+   344→                { label: "PVG-checked crews", value: "100%" },
+   345→                { label: "From per visit", value: "&pound;15" },
+   346→                { label: "Star rating", value: "4.9/5" },
+   347→              ].map((stat) => (
+   348→                <div
+   349→                  key={stat.label}
+   350→                  className="bg-[var(--cream)] rounded-xl p-3 border border-[var(--brand)]/10 text-center"
+   351→                >
+   352→                  <div
+   353→                    className="font-display font-extrabold text-xl text-gradient-brand"
+   354→                    dangerouslySetInnerHTML={{ __html: stat.value }}
+   355→                  />
+   356→                  <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">{stat.label}</div>
+   357→                </div>
+   358→              ))}
+   359→            </motion.div>
+   360→          </motion.div>
+   361→        </div>
+   362→      </div>
+   363→    </section>
+   364→  );
+   365→}
+   366→
+   367→// ============================================================
+   368→// Section 2 - Why MaundyClean is Scotland's Strategic Commercial Partner
+   369→// (Semantic H2: "Why MaundyClean is Scotland's Strategic Commercial Partner")
+   370→// Image+copy split layout with 4 trust cards
+   371→// ============================================================
+   372→
+   373→const TRUST_CARDS = [
+   374→  {
+   375→    icon: UserCheck,
+   376→    title: "Experienced & Fully Vetted Teams",
+   377→    description:
+   378→      "Reliability and trust are paramount. Every Maundy Clean professional is fully trained, background-checked, insured to &pound;10m public liability, and wears an official uniform with photo I.D. to represent your business with the highest standards. Our crews carry Disclosure Scotland PVG scheme membership, arrive in liveried vehicles, and are briefed on your corporate brand standard, security protocols, and reception presentation before they walk through the door. We never use subcontractors or gig-economy labour &mdash; every cleaner on your site is a PAYE employee of Maundy Clean, accountable to our name and our training.",
+   379→  },
+   380→  {
+   381→    icon: Users,
+   382→    title: "The Same Dedicated Crew",
+   383→    description:
+   384→      "Unlike &ldquo;revolving door&rdquo; cleaning apps, each Maundy Clean team has a portfolio of properties and will get to know your premises very well &mdash; ensuring cleaning is performed efficiently and without disruption. Crew consistency means the team that cleans your reception on a Monday night knows which meeting room gets heavy use, knows which desk surfaces are screen-sensitive, and knows your access preferences without re-briefing. When the regular crew lead is on leave, we send a trained backup who has been briefed on your site specifics &mdash; and we tell you in advance. The same faces, every visit, building real accountability to your space.",
+   385→  },
+   386→  {
+   387→    icon: Clock,
+   388→    title: "Flexible Around Your Business",
+   389→    description:
+   390→      "If you depend on us in the early morning, during the day, or late evening, we are at your service 7 days a week to fulfil your unique requirements. The most common windows are 6pm-10pm (after your team logs off) or 5am-7am (before your team arrives), but we also support split schedules (light touch during the day, deep clean after hours), day porter service for reception and high-traffic areas, and 24/7 emergency callout for flood, fire, or post-incident restoration. We are trained on all major alarm systems (Texecom, Honeywell, Pyronix, Risco) and follow strict key-handling protocols &mdash; keys stored in a coded safe, alarm codes encrypted, never labelled with your address.",
+   391→  },
+   392→  {
+   393→    icon: Leaf,
+   394→    title: "Eco-Friendly & Safe Standards",
+   395→    description:
+   396→      "We provide all equipment and materials, utilising only certified non-toxic and safe products to ensure a healthy workspace for your staff and clients. COSHH datasheets are available for every product we use, and we default to eco-labelled chemicals with hospital-grade alternatives for medical, GP surgery, or food-prep areas. All PPE is provided. Colour-coded microfibre cloths prevent cross-contamination between kitchens, washrooms, and desk areas. Your sustainability team will love the audit-ready monthly logs (cleaning product use, water use, waste segregation, energy use) that feed directly into your ESG, SECR, and ISO 14001 reporting.",
+   397→  },
+   398→];
+   399→
+   400→export function CorporateFacilitySeoWhy() {
+   401→  return (
+   402→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   403→      <div className="max-w-[1400px] mx-auto px-6">
+   404→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   405→          {/* Image side */}
+   406→          <motion.div
+   407→            initial={{ opacity: 0, scale: 0.96 }}
+   408→            whileInView={{ opacity: 1, scale: 1 }}
+   409→            viewport={{ once: true, margin: "-80px" }}
+   410→            transition={{ duration: 0.6 }}
+   411→            className="relative order-2 lg:order-1"
+   412→          >
+   413→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   414→              <img
+   415→                src={IMG.whyCrew}
+   416→                alt="Maundy Clean corporate facility cleaning crew &mdash; uniformed, PVG-checked, and trained for corporate-grade service"
+   417→                className="absolute inset-0 w-full h-full object-cover"
+   418→                loading="lazy"
+   419→              />
+   420→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   421→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   422→                <div className="flex items-center gap-2 mb-1">
+   423→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   424→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   425→                    A Strategic Business Partner, Not a Janitorial Vendor
+   426→                  </span>
+   427→                </div>
+   428→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   429→                  Employed, vetted, uniformed, and trained in corporate compliance. Same crew every
+   430→                  visit &mdash; never a rotating cast of strangers.
+   431→                </p>
+   432→              </div>
+   433→            </div>
+   434→            <motion.div
+   435→              animate={{ y: [0, -8, 0] }}
+   436→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   437→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   438→            >
+   439→              <div className="flex items-center gap-2">
+   440→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   441→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   442→                </div>
+   443→                <div>
+   444→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   445→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;10m cover</div>
+   446→                </div>
+   447→              </div>
+   448→            </motion.div>
+   449→          </motion.div>
+   450→
+   451→          {/* Copy side */}
+   452→          <motion.div
+   453→            initial={{ opacity: 0, y: 20 }}
+   454→            whileInView={{ opacity: 1, y: 0 }}
+   455→            viewport={{ once: true, margin: "-80px" }}
+   456→            transition={{ duration: 0.5 }}
+   457→            className="order-1 lg:order-2"
+   458→          >
+   459→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   460→              Why choose Maundy Clean
+   461→            </span>
+   462→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   463→              Why Maundy Clean is Scotland&rsquo;s Strategic Commercial Partner
+   464→            </h2>
+   465→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   466→              While many agencies offer generic branding and impersonal service, Maundy Clean focuses
+   467→              on building high-trust, local relationships. We address the technical needs of your site
+   468→              while ensuring a seamless service that fits effortlessly around your day-to-day
+   469→              operations &mdash; combining vetted uniformed teams, the same dedicated crew every
+   470→              visit, flexible 7-day scheduling, and HSE-compliant eco-friendly supplies as standard.
+   471→            </p>
+   472→
+   473→            <div className="space-y-3">
+   474→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   475→                const Icon = card.icon;
+   476→                return (
+   477→                  <div
+   478→                    key={card.title}
+   479→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   480→                  >
+   481→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   482→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   483→                    </div>
+   484→                    <div>
+   485→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   486→                        {card.title}
+   487→                      </h3>
+   488→                      <p
+   489→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   490→                        dangerouslySetInnerHTML={{ __html: card.description }}
+   491→                      />
+   492→                    </div>
+   493→                  </div>
+   494→                );
+   495→              })}
+   496→            </div>
+   497→          </motion.div>
+   498→        </div>
+   499→
+   500→        {/* Third + fourth cards as a 2-column strip */}
+   501→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   502→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   503→            const Icon = card.icon;
+   504→            return (
+   505→              <motion.div
+   506→                key={card.title}
+   507→                initial={{ opacity: 0, y: 20 }}
+   508→                whileInView={{ opacity: 1, y: 0 }}
+   509→                viewport={{ once: true, margin: "-40px" }}
+   510→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   511→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   512→              >
+   513→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   514→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   515→                </div>
+   516→                <div>
+   517→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   518→                    {card.title}
+   519→                  </h3>
+   520→                  <p
+   521→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   522→                    dangerouslySetInnerHTML={{ __html: card.description }}
+   523→                  />
+   524→                </div>
+   525→              </motion.div>
+   526→            );
+   527→          })}
+   528→        </div>
+   529→      </div>
+   530→    </section>
+   531→  );
+   532→}
+   533→
+   534→// ============================================================
+   535→// Section 3 - Our Total Facility Maintenance & Deep Cleaning Checklist
+   536→// (Semantic H2: "Our Total Facility Maintenance & Deep Cleaning Checklist")
+   537→// Brief-specific section with 3 H3 sub-sections:
+   538→//   1. General Workspace & High-Touch Areas
+   539→//   2. Specialized Floor & Fabric Care
+   540→//   3. Washroom & Kitchen Hygiene
+   541→// Carries the id="checklist" anchor that the CTA buttons link to.
+   542→// ============================================================
+   543→
+   544→const CHECKLIST_ITEMS = [
+   545→  {
+   546→    icon: Building2,
+   547→    image: IMG.checklistWorkstation,
+   548→    imageAlt: "Corporate office workstations being sanitised with anti-static screen-safe wipes by Maundy Clean",
+   549→    title: "1. General Workspace & High-Touch Areas",
+   550→    description:
+   551→      "The technical core of every corporate visit. Workstations are the highest-risk zone in any facility &mdash; keyboards and phones harbour more bacteria than a toilet seat, and the wrong cleaning chemistry on a &pound;2,000 monitor causes permanent damage. We follow a GDPR-aware protocol: don&rsquo;t touch documents on desks, don&rsquo;t plug or unplug devices, don&rsquo;t photograph the space. Then we get to work on the surfaces.",
+   552→    points: [
+   553→      {
+   554→        icon: Keyboard,
+   555→        title: "Workstation Sanitization",
+   556→        text: "Deep cleaning of keyboards, phones, and desks to keep staff healthy and germs at bay. Each device is treated with 70% isopropyl on a non-abrasive swab &mdash; never sprayed directly &mdash; and dried immediately. Phones, headsets, mice, and trackpads get the same protocol. This is the single highest-impact task for reducing winter illness absence across your facility.",
+   557→      },
+   558→      {
+   559→        icon: Sparkles,
+   560→        title: "Surface Restoration",
+   561→        text: "Meticulous dusting of all fixtures and fittings, polishing wood, glass, and mirrors to a streak-free shine. We use pH-neutral screen-safe cloths &mdash; colour-coded so the cloth that cleaned a washroom never touches a desk. Monitor stands, cable trays, planters, light switches, and reception signage all get detailed attention.",
+   562→      },
+   563→      {
+   564→        icon: DoorOpen,
+   565→        title: "Often-Missed Details",
+   566→        text: "Our cleaners meticulously wipe visible skirting boards, door frames, and even the inside of the windows as standard. These are the surfaces that visiting clients notice subconsciously &mdash; a dusty skirting board undermines a polished reception. We hand-detail every perimeter surface so the room feels genuinely reset, not just the centre of the floor.",
+   567→      },
+   568→    ],
+   569→  },
+   570→  {
+   571→    icon: Droplets,
+   572→    image: IMG.checklistFloor,
+   573→    imageAlt: "Corporate hard floor being machine-scrubbed and disinfected in a Glasgow business park reception",
+   574→    title: "2. Specialized Floor & Fabric Care",
+   575→    description:
+   576→      "Corporate facility floors take more punishment than any residential surface &mdash; hundreds of footsteps per day, spilled coffee, chair castors grinding grit into the finish. Generic mopping destroys commercial flooring over time. Our floor protocol uses the right machine for the right surface: hot-water extraction for carpet, low-moisture scrubbing for hard floors, and dry-only methods for laminate joins.",
+   577→    points: [
+   578→      {
+   579→        icon: SprayCan,
+   580→        title: "Office Carpet Cleaning",
+   581→        text: "Utilising the latest technology to remove city-centre dust and allergens. We use hot-water extraction (HWE) with a commercial wand for open areas and a hand tool for under desks and along edges. Quarterly extraction is included on Corporate HQ and Major Corporate plans at no extra cost &mdash; the single most effective way to extend carpet life from 5 years to 10+.",
+   582→      },
+   583→      {
+   584→        icon: Wind,
+   585→        title: "Hard Floor Maintenance",
+   586→        text: "Intensive vacuuming and disinfecting of all hard floors to kill germs and maintain freshness. We use a low-moisture flat-mop system with separate dirty-water extraction &mdash; never a string mop that just spreads contamination. For vinyl, LVT, and polished concrete we add a periodic machine scrub and re-seal programme on a quarterly cycle to protect your floor investment.",
+   587→      },
+   588→    ],
+   589→  },
+   590→  {
+   591→    icon: Shield,
+   592→    image: IMG.checklistWashroom,
+   593→    imageAlt: "Corporate washroom being deep sanitised by Maundy Clean crew in an Edinburgh business centre",
+   594→    title: "3. Washroom & Kitchen Hygiene",
+   595→    description:
+   596→      "Washrooms and kitchens make or break staff satisfaction with a cleaning service. A spotless corporate office with a smelly washroom is a failure. Our hygiene protocol for these zones uses hospital-grade disinfectants, separate colour-coded cloths (red for toilets, blue for sinks, green for kitchens), and a final-fragrance pass that leaves the space genuinely fresh &mdash; not masked with cheap air freshener.",
+   597→    points: [
+   598→      {
+   599→        icon: HeartPulse,
+   600→        title: "Deep Sanitization",
+   601→        text: "Disinfecting and cleaning all ceramic items, toilets, and sinks to the highest industry standards. We descale toilets with a non-abrasive acid, disinfect with an EN 1276-certified bacteriacide, and polish chrome fittings to a streak-free shine. Mirrors are squeegeed, never wiped. Sanitary bins are checked, emptied, and replaced. Extractor vents are vacuumed to remove dust build-up that harbours bacteria.",
+   602→      },
+   603→      {
+   604→        icon: Microwave,
+   605→        title: "Kitchen Refresh",
+   606→        text: "Thorough cleaning of worktops, splashbacks, and the exterior of all communal appliances. Sinks are descaled and sanitised. Microwave interiors are wiped (the most-requested detail by corporate staff). Fridge exteriors are cleaned; interiors are available as an add-on or on a rota. Dishwashers are emptied if a cycle has completed. Floors are mopped with a food-safe sanitiser.",
+   607→      },
+   608→    ],
+   609→  },
+   610→];
+   611→
+   612→export function CorporateFacilitySeoChecklist() {
+   613→  return (
+   614→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   615→      <div className="max-w-[1400px] mx-auto px-6">
+   616→        <motion.div
+   617→          initial={{ opacity: 0, y: 20 }}
+   618→          whileInView={{ opacity: 1, y: 0 }}
+   619→          viewport={{ once: true, margin: "-80px" }}
+   620→          transition={{ duration: 0.5 }}
+   621→          className="max-w-3xl mb-12"
+   622→        >
+   623→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   624→            Beyond the basic surface wipe
+   625→          </span>
+   626→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   627→            Our Total Facility Maintenance &amp; Deep Cleaning Checklist
+   628→          </h2>
+   629→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   630→            Our corporate facility cleaning follows a rigorous, agency-approved checklist designed to
+   631→            address areas you didn&rsquo;t even know needed attention. We offer technical depth in
+   632→            every room &mdash; from GDPR-aware workstation care, through specialized floor and fabric
+   633→            maintenance, to the hospital-grade hygiene we apply to washrooms and kitchens. Below is
+   634→            the scope we deliver as standard on every visit, regardless of contract size.
+   635→          </p>
+   636→        </motion.div>
+   637→
+   638→        <div className="grid lg:grid-cols-3 gap-6">
+   639→          {CHECKLIST_ITEMS.map((item, i) => {
+   640→            const Icon = item.icon;
+   641→            return (
+   642→              <motion.div
+   643→                key={item.title}
+   644→                initial={{ opacity: 0, y: 24 }}
+   645→                whileInView={{ opacity: 1, y: 0 }}
+   646→                viewport={{ once: true, margin: "-40px" }}
+   647→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   648→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   649→              >
+   650→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   651→                  <img
+   652→                    src={item.image}
+   653→                    alt={item.imageAlt}
+   654→                    className="absolute inset-0 w-full h-full object-cover"
+   655→                    loading="lazy"
+   656→                  />
+   657→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   658→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   659→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   660→                  </div>
+   661→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   662→                    {item.title}
+   663→                  </h3>
+   664→                </div>
+   665→                <div className="p-6 flex-1 flex flex-col">
+   666→                  <p
+   667→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   668→                    dangerouslySetInnerHTML={{ __html: item.description }}
+   669→                  />
+   670→                  <ul className="space-y-3 mt-auto">
+   671→                    {item.points.map((point) => {
+   672→                      const PointIcon = point.icon;
+   673→                      return (
+   674→                        <li
+   675→                          key={point.title}
+   676→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   677→                        >
+   678→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   679→                          <span>
+   680→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   681→                            &mdash; <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   682→                          </span>
+   683→                        </li>
+   684→                      );
+   685→                    })}
+   686→                  </ul>
+   687→                </div>
+   688→              </motion.div>
+   689→            );
+   690→          })}
+   691→        </div>
+   692→      </div>
+   693→    </section>
+   694→  );
+   695→}
+   696→
+   697→// ============================================================
+   698→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   699→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   700→// ============================================================

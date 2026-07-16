@@ -1,0 +1,1126 @@
+     1→     1→"use client";
+     2→     2→
+     3→     3→import Link from "next/link";
+     4→     4→import { motion } from "framer-motion";
+     5→     5→import {
+     6→     6→  Users,
+     7→     7→  Shield,
+     8→     8→  Leaf,
+     9→     9→  Clock,
+    10→    10→  Sparkles,
+    11→    11→  MapPin,
+    12→    12→  ArrowRight,
+    13→    13→  CheckCircle2,
+    14→    14→  Home,
+    15→    15→  KeyRound,
+    16→    16→  Hammer,
+    17→    17→  Star,
+    18→    18→  Zap,
+    19→    19→  UserCheck,
+    20→    20→  CalendarCheck,
+    21→    21→  SprayCan,
+    22→    22→  Wind,
+    23→    23→  Bath,
+    24→    24→  Sun,
+    25→    25→} from "lucide-react";
+    26→    26→import { Button } from "@/components/ui/button";
+    27→    27→import { contactInfo } from "@/lib/site-data";
+    28→    28→
+    29→    29→// ============================================================
+    30→    30→// Images — hand-picked from in-house search service
+    31→    31→// ============================================================
+    32→    32→const IMG = {
+    33→    33→  heroWide:
+    34→    34→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg", // bright bungalow living room, morning light
+    35→    35→  whyCrew:
+    36→    36→    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    37→    37→  checklistKitchen:
+    38→    38→    "https://sfile.chatglm.cn/images-ppt/8fce1b536378.jpg", // eco-spray kitchen
+    39→    39→  checklistBathroom:
+    40→    40→    "https://sfile.chatglm.cn/images-ppt/b9a3fe6960e9.webp", // sparkling bathroom chrome
+    41→    41→  checklistLiving:
+    42→    42→    "https://sfile.chatglm.cn/images-ppt/8c109fd7dbba.jpg", // spotless living room sunlight
+    43→    43→  checklistWindows:
+    44→    44→    "https://sfile.chatglm.cn/images-ppt/0ae5e527798e.jpg", // squeegee window cleaning
+    45→    45→  leaseDeep:
+    46→    46→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // deep clean living room
+    47→    47→  leaseTenancy:
+    48→    48→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty flat move-in
+    49→    49→  leaseBuilders:
+    50→    50→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg", // post-builders cleanup
+    51→    51→  leaseSpring:
+    52→    52→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg", // sparkling kitchen after spring clean
+    53→    53→  nearMeMap:
+    54→    54→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    55→    55→};
+    56→    56→
+    57→    57→// ============================================================
+    58→    58→// Section 0 — Full-width hero banner
+    59→    59→// Semantic H1: "Professional Recurring Bungalow Cleaning Services in Scotland"
+    60→    60→// ============================================================
+    61→    61→
+    62→    62→export function BungalowSeoHeroBanner() {
+    63→    63→  return (
+    64→    64→    <section className="relative overflow-hidden">
+    65→    65→      {/* Full-width background image */}
+    66→    66→      <div className="absolute inset-0">
+    67→    67→        <img
+    68→    68→          src={IMG.heroWide}
+    69→    69→          alt="Bright, spotless Scottish bungalow living room maintained by Maundy Clean recurring cleaning crew"
+    70→    70→          className="w-full h-full object-cover"
+    71→    71→          loading="eager"
+    72→    72→          fetchPriority="high"
+    73→    73→        />
+    74→    74→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+    75→    75→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+    76→    76→      </div>
+    77→    77→
+    78→    78→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+    79→    79→        <motion.div
+    80→    80→          initial="hidden"
+    81→    81→          animate="visible"
+    82→    82→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+    83→    83→          className="max-w-3xl"
+    84→    84→        >
+    85→    85→          <motion.div
+    86→    86→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+    87→    87→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+    88→    88→          >
+    89→    89→            <span className="relative flex w-2 h-2">
+    90→    90→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+    91→    91→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+    92→    92→            </span>
+    93→    93→            Recurring Home Cleaning · Bungalows · Glasgow · Edinburgh · Central Belt
+    94→    94→          </motion.div>
+    95→    95→
+    96→    96→          <motion.h1
+    97→    97→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+    98→    98→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+    99→    99→          >
+   100→   100→            Professional Recurring Home Cleaning for Scottish Bungalows
+   101→   101→          </motion.h1>
+   102→   102→
+   103→   103→          <motion.p
+   104→   104→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   105→   105→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   106→   106→          >
+   107→   107→            Consistent, Meticulous, and Trusted Housekeeping for Single-Story Living. A premium
+   108→   108→            recurring home cleaning service designed specifically for bungalow owners in Glasgow,
+   109→   109→            Edinburgh, and across the Central Belt — built on the Maundy tradition of care, with
+   110→   110→            weekly, fortnightly &amp; monthly plans from £62/visit.
+   111→   111→          </motion.p>
+   112→   112→
+   113→   113→          <motion.div
+   114→   114→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   115→   115→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   116→   116→          >
+   117→   117→            <Button
+   118→   118→              size="lg"
+   119→   119→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   120→   120→              asChild
+   121→   121→            >
+   122→   122→              <Link href="/quote">
+   123→   123→                Get My 30-Second Instant Quote
+   124→   124→                <ArrowRight className="w-5 h-5" />
+   125→   125→              </Link>
+   126→   126→            </Button>
+   127→   127→            <Button
+   128→   128→              size="lg"
+   129→   129→              variant="outline"
+   130→   130→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   131→   131→              asChild
+   132→   132→            >
+   133→   133→              <a href={contactInfo.phoneHref}>
+   134→   134→                <Zap className="w-4 h-4" />
+   135→   135→                Same-day quote
+   136→   136→              </a>
+   137→   137→            </Button>
+   138→   138→          </motion.div>
+   139→   139→
+   140→   140→          <motion.div
+   141→   141→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   142→   142→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   143→   143→          >
+   144→   144→            <div className="flex items-center gap-1.5">
+   145→   145→              <div className="flex">
+   146→   146→                {[1, 2, 3, 4, 5].map((s) => (
+   147→   147→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   148→   148→                ))}
+   149→   149→              </div>
+   150→   150→              <span className="font-semibold text-white">4.9/5</span>
+   151→   151→              <span className="text-white/70">· 6,200+ reviews</span>
+   152→   152→            </div>
+   153→   153→            <div className="flex items-center gap-1.5">
+   154→   154→              <Shield className="w-4 h-4 text-[var(--gold)]" /> PVG-Checked &amp; £5m Insured
+   155→   155→            </div>
+   156→   156→            <div className="flex items-center gap-1.5">
+   157→   157→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe Products
+   158→   158→            </div>
+   159→   159→            <div className="flex items-center gap-1.5">
+   160→   160→              <Clock className="w-4 h-4 text-[var(--gold)]" /> Same Pro Every Visit
+   161→   161→            </div>
+   162→   162→          </motion.div>
+   163→   163→        </motion.div>
+   164→   164→      </div>
+   165→   165→    </section>
+   166→   166→  );
+   167→   167→}
+   168→   168→
+   169→   169→// ============================================================
+   170→   170→// Section 1 — Long-form semantic SEO intro
+   171→   171→// Sits right after the hero, before the existing ServiceOverview.
+   172→   172→// ============================================================
+   173→   173→
+   174→   174→export function BungalowSeoIntro() {
+   175→   175→  return (
+   176→   176→    <section className="py-16 lg:py-24 bg-background">
+   177→   177→      <div className="max-w-[1100px] mx-auto px-6">
+   178→   178→        <motion.div
+   179→   179→          initial={{ opacity: 0, y: 20 }}
+   180→   180→          whileInView={{ opacity: 1, y: 0 }}
+   181→   181→          viewport={{ once: true, margin: "-80px" }}
+   182→   182→          transition={{ duration: 0.5 }}
+   183→   183→          className="max-w-3xl mx-auto text-center mb-10"
+   184→   184→        >
+   185→   185→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   186→   186→            Specialist bungalow cleaning · Scotland
+   187→   187→          </span>
+   188→   188→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   189→   189→            The Maundy Clean Standard for Single-Story Living
+   190→   190→          </h2>
+   191→   191→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   192→   192→            Maintaining the comfort and pristine appearance of a bungalow requires more than a
+   193→   193→            simple tidy-up — it requires a specialized approach to{" "}
+   194→   194→            <strong className="font-semibold text-[var(--ink)]">domestic cleaning</strong> that
+   195→   195→            respects the unique flow of your home. At Maundy Clean, we provide a premium{" "}
+   196→   196→            <strong className="font-semibold text-[var(--ink)]">recurring home cleaning</strong>{" "}
+   197→   197→            service designed specifically for bungalow owners in Glasgow, Edinburgh, and across the
+   198→   198→            Central Belt. Our service is built on the Maundy tradition of care and service, providing
+   199→   199→            an uncomplicated and straightforward solution for busy families and professionals who
+   200→   200→            demand the highest standards from their professional house cleaners.
+   201→   201→          </p>
+   202→   202→        </motion.div>
+   203→   203→
+   204→   204→        {/* Trust strip */}
+   205→   205→        <motion.div
+   206→   206→          initial={{ opacity: 0, y: 16 }}
+   207→   207→          whileInView={{ opacity: 1, y: 0 }}
+   208→   208→          viewport={{ once: true, margin: "-60px" }}
+   209→   209→          transition={{ duration: 0.5 }}
+   210→   210→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   211→   211→        >
+   212→   212→          {[
+   213→   213→            { label: "4.9★ rating", value: "6,200+ reviews" },
+   214→   214→            { label: "Bungalow client tenure", value: "3.4 years avg" },
+   215→   215→            { label: "Re-clean rate", value: "1.2% of visits" },
+   216→   216→            { label: "Crew retention", value: "4.2 years avg" },
+   217→   217→          ].map((stat) => (
+   218→   218→            <div
+   219→   219→              key={stat.label}
+   220→   220→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   221→   221→            >
+   222→   222→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   223→   223→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   224→   224→            </div>
+   225→   225→          ))}
+   226→   226→        </motion.div>
+   227→   227→      </div>
+   228→   228→    </section>
+   229→   229→  );
+   230→   230→}
+   231→   231→
+   232→   232→// ============================================================
+   233→   233→// Section 2 — Why Maundy Clean is the Authority in Regular Bungalow Maintenance
+   234→   234→// (Semantic H2: "Why Maundy Clean is the Authority in Regular Bungalow Maintenance")
+   235→   235→// Image+copy split layout with 4 trust cards (single-story specialist framing)
+   236→   236→// ============================================================
+   237→   237→
+   238→   238→const TRUST_CARDS = [
+   239→   239→  {
+   240→   240→    icon: Users,
+   241→   241→    title: "The Same Trusted Professional Every Visit",
+   242→   242→    description:
+   243→   243→      "We believe reliability is built on familiarity. We ensure the same vetted staff member visits your home every time to learn your specific preferences, ensuring your house clean is tailored exactly to your specifications. Our crew leads stay with us an average of 4.2 years — you'll know them by name, and they'll know your bungalow inside out.",
+   244→   244→  },
+   245→   245→  {
+   246→   246→    icon: Shield,
+   247→   247→    title: "Fully Vetted & Vocationally Trained",
+   248→   248→    description:
+   249→   249→      "We are a registered, professional service — not a gig-economy agency. Every member of our team is a full-time, fully trained, and background-checked professional. Disclosure Scotland PVG scheme membership, £5m public liability cover, and official Maundy Clean identification as standard on every visit. No contractor grey areas, ever.",
+   250→   250→  },
+   251→   251→  {
+   252→   252→    icon: Leaf,
+   253→   253→    title: "Safety for the Whole Family",
+   254→   254→    description:
+   255→   255→      "Your health is paramount. We use only certified child and pet-safe products and environmentally friendly supplies as standard — EU Ecolabel and DEFRA-approved low-VOC products that are safe for kids, pets, and sensitive airways. Hospital-grade alternatives are available on request for medical needs.",
+   256→   256→  },
+   257→   257→  {
+   258→   258→    icon: Clock,
+   259→   259→    title: "Total Flexibility with No Contracts",
+   260→   260→    description:
+   261→   261→      "We let our work and professionalism speak for us. We offer flexible appointments across five days a week with no long-term contracts to tie you in. Pause for holidays or renovations with 48 hours' notice, cancel entirely with one tap — if we're not earning your repeat business every visit, we don't deserve it.",
+   262→   262→  },
+   263→   263→];
+   264→   264→
+   265→   265→export function BungalowSeoWhy() {
+   266→   266→  return (
+   267→   267→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   268→   268→      <div className="max-w-[1400px] mx-auto px-6">
+   269→   269→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   270→   270→          {/* Image side */}
+   271→   271→          <motion.div
+   272→   272→            initial={{ opacity: 0, scale: 0.96 }}
+   273→   273→            whileInView={{ opacity: 1, scale: 1 }}
+   274→   274→            viewport={{ once: true, margin: "-80px" }}
+   275→   275→            transition={{ duration: 0.6 }}
+   276→   276→            className="relative order-2 lg:order-1"
+   277→   277→          >
+   278→   278→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   279→   279→              <img
+   280→   280→                src={IMG.whyCrew}
+   281→   281→                alt="Maundy Clean recurring bungalow cleaning crew in uniform arriving at a Scottish single-story home"
+   282→   282→                className="absolute inset-0 w-full h-full object-cover"
+   283→   283→                loading="lazy"
+   284→   284→              />
+   285→   285→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   286→   286→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   287→   287→                <div className="flex items-center gap-2 mb-1">
+   288→   288→                  <Home className="w-4 h-4 text-[var(--brand)]" />
+   289→   289→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   290→   290→                    Single-Story Specialists
+   291→   291→                  </span>
+   292→   292→                </div>
+   293→   293→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   294→   294→                  Trained for high ceilings, exposed beams, and bungalow window care. PVG-checked,
+   295→   295→                  PAYE-employed, and uniformed — every visit.
+   296→   296→                </p>
+   297→   297→              </div>
+   298→   298→            </div>
+   299→   299→            <motion.div
+   300→   300→              animate={{ y: [0, -8, 0] }}
+   301→   301→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   302→   302→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   303→   303→            >
+   304→   304→              <div className="flex items-center gap-2">
+   305→   305→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   306→   306→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   307→   307→                </div>
+   308→   308→                <div>
+   309→   309→                  <div className="text-[10px] text-[var(--muted-foreground)]">Client retention</div>
+   310→   310→                  <div className="text-xs font-bold text-[var(--ink)]">98%</div>
+   311→   311→                </div>
+   312→   312→              </div>
+   313→   313→            </motion.div>
+   314→   314→          </motion.div>
+   315→   315→
+   316→   316→          {/* Copy side */}
+   317→   317→          <motion.div
+   318→   318→            initial={{ opacity: 0, y: 20 }}
+   319→   319→            whileInView={{ opacity: 1, y: 0 }}
+   320→   320→            viewport={{ once: true, margin: "-80px" }}
+   321→   321→            transition={{ duration: 0.5 }}
+   322→   322→            className="order-1 lg:order-2"
+   323→   323→          >
+   324→   324→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   325→   325→              Why choose Maundy Clean
+   326→   326→            </span>
+   327→   327→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   328→   328→              Why Maundy Clean is the Authority in Regular Bungalow Maintenance
+   329→   329→            </h2>
+   330→   330→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   331→   331→              While many national agencies offer impersonal, revolving-door staff, Maundy Clean is a
+   332→   332→              local specialist focused on building trust and understanding. We address the primary
+   333→   333→              weaknesses of our competitors by focusing on consistency and technical excellence —
+   334→   334→              the same vetted professional every visit, vocationally trained staff, family-safe
+   335→   335→              products, and total flexibility with no long-term contracts.
+   336→   336→            </p>
+   337→   337→
+   338→   338→            <div className="space-y-3">
+   339→   339→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   340→   340→                const Icon = card.icon;
+   341→   341→                return (
+   342→   342→                  <div
+   343→   343→                    key={card.title}
+   344→   344→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   345→   345→                  >
+   346→   346→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   347→   347→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   348→   348→                    </div>
+   349→   349→                    <div>
+   350→   350→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   351→   351→                        {card.title}
+   352→   352→                      </h3>
+   353→   353→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   354→   354→                        {card.description}
+   355→   355→                      </p>
+   356→   356→                    </div>
+   357→   357→                  </div>
+   358→   358→                );
+   359→   359→              })}
+   360→   360→            </div>
+   361→   361→          </motion.div>
+   362→   362→        </div>
+   363→   363→
+   364→   364→        {/* Third + fourth cards as a 2-column strip */}
+   365→   365→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   366→   366→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   367→   367→            const Icon = card.icon;
+   368→   368→            return (
+   369→   369→              <motion.div
+   370→   370→                key={card.title}
+   371→   371→                initial={{ opacity: 0, y: 20 }}
+   372→   372→                whileInView={{ opacity: 1, y: 0 }}
+   373→   373→                viewport={{ once: true, margin: "-40px" }}
+   374→   374→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   375→   375→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   376→   376→              >
+   377→   377→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   378→   378→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   379→   379→                </div>
+   380→   380→                <div>
+   381→   381→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   382→   382→                    {card.title}
+   383→   383→                  </h3>
+   384→   384→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   385→   385→                    {card.description}
+   386→   386→                  </p>
+   387→   387→                </div>
+   388→   388→              </motion.div>
+   389→   389→            );
+   390→   390→          })}
+   391→   391→        </div>
+   392→   392→      </div>
+   393→   393→    </section>
+   394→   394→  );
+   395→   395→}
+   396→   396→
+   397→   397→// ============================================================
+   398→   398→// Section 3 — Detailed What's Included (4 categories)
+   399→   399→// (Semantic H2: "Our Comprehensive Bungalow Cleaning Checklist")
+   400→   400→// Image-per-card layout — single-story specialist framing
+   401→   401→// ============================================================
+   402→   402→
+   403→   403→const INCLUDED_DETAIL = [
+   404→   404→  {
+   405→   405→    icon: Home,
+   406→   406→    title: "Living Areas & Bedrooms",
+   407→   407→    image: IMG.checklistLiving,
+   408→   408→    imageAlt: "Spotless bungalow living room with polished surfaces and streak-free mirrors",
+   409→   409→    description:
+   410→   410→      "We provide meticulous dusting and wiping of all surfaces, ornaments, family photos, and light fixtures. We polish wood, glass, and mirrors to a streak-free shine — going beyond the basics to ensure every visible surface in your living areas and bedrooms is cared for during every visit.",
+   411→   411→    points: [
+   412→   412→      "Dust all surfaces and ornaments",
+   413→   413→      "Wipe family photos and light fixtures",
+   414→   414→      "Polish wood to a rich shine",
+   415→   415→      "Polish glass and mirrors streak-free",
+   416→   416→      "Refresh open-plan living zones",
+   417→   417→    ],
+   418→   418→  },
+   419→   419→  {
+   420→   420→    icon: SprayCan,
+   421→   421→    title: "Sanitization of High-Touch Points",
+   422→   422→    image: IMG.checklistKitchen,
+   423→   423→    imageAlt: "Maundy Clean technician disinfecting high-touch surfaces with eco-friendly spray",
+   424→   424→    description:
+   425→   425→      "We disinfect and clean all ceramic items, worktops, and shower doors. Our teams are trained to buff and polish chrome fixtures to remove water spots and limescale — tackling the high-touch points where germs accumulate and ensuring your kitchen and bathroom surfaces are properly sanitised, not just wiped.",
+   426→   426→    points: [
+   427→   427→      "Disinfect all ceramic items",
+   428→   428→      "Sanitise worktops and shower doors",
+   429→   429→      "Buff chrome to remove water spots",
+   430→   430→      "Remove limescale from taps and shower heads",
+   431→   431→      "Clean high-touch points thoroughly",
+   432→   432→    ],
+   433→   433→  },
+   434→   434→  {
+   435→   435→    icon: Sparkles,
+   436→   436→    title: "Floor & Surface Care",
+   437→   437→    image: IMG.checklistBathroom,
+   438→   438→    imageAlt: "Meticulously cleaned bungalow floor with sparkling chrome fittings and skirting boards",
+   439→   439→    description:
+   440→   440→      "Intensive vacuuming of carpets and deep mopping of hard floors. We also meticulously wipe all visible skirting boards, door frames, and window sills — the detail surfaces that standard cleaners often skip but that make the difference between a tidy home and a genuinely clean one.",
+   441→   441→    points: [
+   442→   442→      "Intensive carpet vacuuming edge-to-edge",
+   443→   443→      "Deep mop all hard floors",
+   444→   444→      "Wipe visible skirting boards",
+   445→   445→      "Clean door frames and window sills",
+   446→   446→      "Scrub tile & grout in high-traffic zones",
+   447→   447→    ],
+   448→   448→  },
+   449→   449→  {
+   450→   450→    icon: Sun,
+   451→   451→    title: "The Maundy View",
+   452→   452→    image: IMG.checklistWindows,
+   453→   453→    imageAlt: "Professional cleaner using a squeegee on bungalow interior window glass for maximum natural light",
+   454→   454→    description:
+   455→   455→      "Unlike many standard cleaners, we include the cleaning of the inside of your windows as part of our regular routine to maximize natural light. Streak-free, chemical-free, and finished with a squeegee — the difference is immediately visible when the Scottish sun comes through your single-story home.",
+   456→   456→    points: [
+   457→   457→      "Interior window glass cleaned",
+   458→   458→      "Window sills and tracks wiped",
+   459→   459→      "Frames and handles cleaned",
+   460→   460→      "Streak-free squeegee finish",
+   461→   461→      "Maximise single-story natural light",
+   462→   462→    ],
+   463→   463→  },
+   464→   464→];
+   465→   465→
+   466→   466→export function BungalowSeoIncludedDetail() {
+   467→   467→  return (
+   468→   468→    <section id="checklist" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   469→   469→      <div className="max-w-[1400px] mx-auto px-6">
+   470→   470→        <motion.div
+   471→   471→          initial={{ opacity: 0, y: 20 }}
+   472→   472→          whileInView={{ opacity: 1, y: 0 }}
+   473→   473→          viewport={{ once: true, margin: "-80px" }}
+   474→   474→          transition={{ duration: 0.5 }}
+   475→   475→          className="max-w-3xl mb-12"
+   476→   476→        >
+   477→   477→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   478→   478→            What&apos;s included · the detail
+   479→   479→          </span>
+   480→   480→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   481→   481→            Our Comprehensive Bungalow Cleaning Checklist
+   482→   482→          </h2>
+   483→   483→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   484→   484→            Our regular bungalow cleaning ensures your property is maintained from top to bottom,
+   485→   485→            including the technical extras that standard cleaners often ignore. Every item below is
+   486→   486→            included as standard — no add-on fees, no surprise charges, no skipped zones.
+   487→   487→          </p>
+   488→   488→        </motion.div>
+   489→   489→
+   490→   490→        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   491→   491→          {INCLUDED_DETAIL.map((item, i) => {
+   492→   492→            const Icon = item.icon;
+   493→   493→            return (
+   494→   494→              <motion.div
+   495→   495→                key={item.title}
+   496→   496→                initial={{ opacity: 0, y: 24 }}
+   497→   497→                whileInView={{ opacity: 1, y: 0 }}
+   498→   498→                viewport={{ once: true, margin: "-40px" }}
+   499→   499→                transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
+   500→   500→                className="bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/30 transition-all flex flex-col"
+   501→   501→              >
+   502→   502→                {/* Image header */}
+   503→   503→                <div className="relative aspect-[16/10] bg-[var(--brand-dark)] overflow-hidden">
+   504→   504→                  <img
+   505→   505→                    src={item.image}
+   506→   506→                    alt={item.imageAlt}
+   507→   507→                    className="absolute inset-0 w-full h-full object-cover"
+   508→   508→                    loading="lazy"
+   509→   509→                  />
+   510→   510→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   511→   511→                  <div className="absolute top-4 left-4 w-11 h-11 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   512→   512→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   513→   513→                  </div>
+   514→   514→                  <div className="absolute bottom-4 left-4 right-4">
+   515→   515→                    <h3 className="font-display font-bold text-lg text-white leading-tight">
+   516→   516→                      {item.title}
+   517→   517→                    </h3>
+   518→   518→                  </div>
+   519→   519→                </div>
+   520→   520→
+   521→   521→                {/* Body */}
+   522→   522→                <div className="p-6 flex-1 flex flex-col">
+   523→   523→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   524→   524→                    {item.description}
+   525→   525→                  </p>
+   526→   526→                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mt-auto">
+   527→   527→                    {item.points.map((point) => (
+   528→   528→                      <li
+   529→   529→                        key={point}
+   530→   530→                        className="flex items-start gap-2 text-sm text-[var(--ink)]/85"
+   531→   531→                      >
+   532→   532→                        <CheckCircle2 className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   533→   533→                        <span>{point}</span>
+   534→   534→                      </li>
+   535→   535→                    ))}
+   536→   536→                  </ul>
+   537→   537→                </div>
+   538→   538→              </motion.div>
+   539→   539→            );
+   540→   540→          })}
+   541→   541→        </div>
+   542→   542→      </div>
+   543→   543→    </section>
+   544→   544→  );
+   545→   545→}
+   546→   546→
+   547→   547→// ============================================================
+   548→   548→// Section 4 — 3-Step "Hassle-Free" Booking Process
+   549→   549→// (Semantic H2: "Our 3-Step 'Hassle-Free' Process")
+   550→   550→// ============================================================
+   551→   551→
+   552→   552→const BOOKING_STEPS = [
+   553→   553→  {
+   554→   554→    icon: Zap,
+   555→   555→    step: "01",
+   556→   556→    title: "Get Your 30-Second Quote",
+   557→   557→    description:
+   558→   558→      "Use our online tool to receive an instant, simple, fixed-price quote for your bungalow cleaning services — in under 30 seconds. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay, locked in for 12 months from your start date.",
+   559→   559→  },
+   560→   560→  {
+   561→   561→    icon: UserCheck,
+   562→   562→    step: "02",
+   563→   563→    title: "Professional Matching",
+   564→   564→    description:
+   565→   565→      "We match you with a reliable local cleaner who fits your schedule, offering flexible appointments across five days a week. Your crew lead is briefed on bungalow-specific cleaning priorities before the first visit. If you are away, we operate a secure key safe system to protect your property.",
+   566→   566→  },
+   567→   567→  {
+   568→   568→    icon: CalendarCheck,
+   569→   569→    step: "03",
+   570→   570→    title: "A Fresh Start Every Visit",
+   571→   571→    description:
+   572→   572→      "Enjoy a home that has been professionally cleaned and sanitised, leaving it feeling fresh and welcoming. Adjust your personalised checklist anytime from your phone — your crew receives the update automatically before the next visit. Not happy? We re-clean within 24 hours, free.",
+   573→   573→  },
+   574→   574→];
+   575→   575→
+   576→   576→export function BungalowSeoBooking() {
+   577→   577→  return (
+   578→   578→    <section className="py-16 lg:py-24 bg-background">
+   579→   579→      <div className="max-w-[1400px] mx-auto px-6">
+   580→   580→        <motion.div
+   581→   581→          initial={{ opacity: 0, y: 20 }}
+   582→   582→          whileInView={{ opacity: 1, y: 0 }}
+   583→   583→          viewport={{ once: true, margin: "-80px" }}
+   584→   584→          transition={{ duration: 0.5 }}
+   585→   585→          className="text-center mb-14"
+   586→   586→        >
+   587→   587→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   588→   588→            Hassle-free booking
+   589→   589→          </span>
+   590→   590→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   591→   591→            The Hassle-Free 3-Step Booking Process
+   592→   592→          </h3>
+   593→   593→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   594→   594→            We have optimized our system to be straightforward and helpful, beating the slow response
+   595→   595→            times common in the Scottish market. From quote to first clean in under 48 hours — no
+   596→   596→            friction, no waiting.
+   597→   597→          </p>
+   598→   598→        </motion.div>
+   599→   599→
+   600→   600→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   601→   601→          {/* Connector line */}
+   602→   602→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   603→   603→
+   604→   604→          {BOOKING_STEPS.map((step, i) => {
+   605→   605→            const Icon = step.icon;
+   606→   606→            return (
+   607→   607→              <motion.div
+   608→   608→                key={step.step}
+   609→   609→                initial={{ opacity: 0, y: 24 }}
+   610→   610→                whileInView={{ opacity: 1, y: 0 }}
+   611→   611→                viewport={{ once: true, margin: "-40px" }}
+   612→   612→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   613→   613→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   614→   614→              >
+   615→   615→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   616→   616→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   617→   617→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   618→   618→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   619→   619→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   620→   620→                    {step.step}
+   621→   621→                  </span>
+   622→   622→                </div>
+   623→   623→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   624→   624→                  {step.title}
+   625→   625→                </h3>
+   626→   626→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   627→   627→                  {step.description}
+   628→   628→                </p>
+   629→   629→              </motion.div>
+   630→   630→            );
+   631→   631→          })}
+   632→   632→        </div>
+   633→   633→
+   634→   634→        <motion.div
+   635→   635→          initial={{ opacity: 0, y: 16 }}
+   636→   636→          whileInView={{ opacity: 1, y: 0 }}
+   637→   637→          viewport={{ once: true }}
+   638→   638→          transition={{ duration: 0.5, delay: 0.3 }}
+   639→   639→          className="text-center mt-10"
+   640→   640→        >
+   641→   641→          <Button
+   642→   642→            size="lg"
+   643→   643→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   644→   644→            asChild
+   645→   645→          >
+   646→   646→            <Link href="/quote">
+   647→   647→              Get My 30-Second Instant Quote
+   648→   648→              <ArrowRight className="w-5 h-5" />
+   649→   649→            </Link>
+   650→   650→          </Button>
+   651→   651→        </motion.div>
+   652→   652→      </div>
+   653→   653→    </section>
+   654→   654→  );
+   655→   655→}
+   656→   656→
+   657→   657→// ============================================================
+   658→   658→// Section 5 — Specialist Solutions for Every Stage of Your Home
+   659→   659→// (Semantic H2: "Specialist Solutions for Every Stage of Your Home")
+   660→   660→// Image-topped cards with internal links
+   661→   661→// ============================================================
+   662→   662→
+   663→   663→const INTERLINK_SOLUTIONS = [
+   664→   664→  {
+   665→   665→    icon: KeyRound,
+   666→   666→    title: "The Move-In Reset · End of Tenancy Cleaning",
+   667→   667→    href: "/services/move-in-out-cleaning",
+   668→   668→    image: IMG.leaseTenancy,
+   669→   669→    imageAlt: "Empty bungalow being deep cleaned for new tenant move-in",
+   670→   670→    description:
+   671→   671→      "Preparing a home for a new occupant? Our End of Tenancy Cleaning is front-line ready for tenants, landlords, and letting agents — with a Deposit-Back Guarantee. We work to the letting agent's inventory, not ours, and we'll come back free of charge if the agent flags anything.",
+   672→   672→    cta: "Book end of tenancy cleaning",
+   673→   673→  },
+   674→   674→  {
+   675→   675→    icon: SprayCan,
+   676→   676→    title: "Intensive Maintenance · Deep House Cleaning",
+   677→   677→    href: "/services/deep-house-cleaning",
+   678→   678→    image: IMG.leaseDeep,
+   679→   679→    imageAlt: "Deep clean of a single-story bungalow living room with furniture moved",
+   680→   680→    description:
+   681→   681→      "If your bungalow hasn't had professional attention in 6 months, we recommend an initial Deep House Cleaning where we move all furniture to clean behind and underneath. The perfect foundation for a recurring plan — book as a one-off or quarterly reset.",
+   682→   682→    cta: "Explore deep house cleaning",
+   683→   683→  },
+   684→   684→  {
+   685→   685→    icon: Hammer,
+   686→   686→    title: "Post-Renovation Care · After Builders Cleaning",
+   687→   687→    href: "/services/post-construction-cleaning",
+   688→   688→    image: IMG.leaseBuilders,
+   689→   689→    imageAlt: "Post-builders cleanup removing fine construction dust from a bungalow",
+   690→   690→    description:
+   691→   691→      "If you've recently had home improvements, our After Builders Cleaning removes heavy-duty dust and grime. Includes steam-cleaning of grout, extraction of upholstery, and the fine-dust wipe-down that builders never include in their quote.",
+   692→   692→    cta: "Get after builders cleaning quote",
+   693→   693→  },
+   694→   694→  {
+   695→   695→    icon: Sparkles,
+   696→   696→    title: "Seasonal Refresh · Spring Cleaning Service",
+   697→   697→    href: "/services/spring-cleaning",
+   698→   698→    image: IMG.leaseSpring,
+   699→   699→    imageAlt: "Sparkling bungalow kitchen after a comprehensive spring clean",
+   700→   700→    description:
+   701→   701→      "Perfect for those who want a one-off visit without moving heavy furniture, our Spring Cleaning Service brings your home back to its best. Book as a seasonal reset on top of your recurring plan — or as a standalone treat when your bungalow needs a little extra love.",
+   702→   702→    cta: "Book a spring cleaning service",
+   703→   703→  },
+   704→   704→];
+   705→   705→
+   706→   706→export function BungalowSeoInterlinking() {
+   707→   707→  return (
+   708→   708→    <section className="py-16 lg:py-24 bg-background">
+   709→   709→      <div className="max-w-[1400px] mx-auto px-6">
+   710→   710→        <motion.div
+   711→   711→          initial={{ opacity: 0, y: 20 }}
+   712→   712→          whileInView={{ opacity: 1, y: 0 }}
+   713→   713→          viewport={{ once: true, margin: "-80px" }}
+   714→   714→          transition={{ duration: 0.5 }}
+   715→   715→          className="max-w-3xl mb-12"
+   716→   716→        >
+   717→   717→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   718→   718→            Beyond recurring · transitions
+   719→   719→          </span>
+   720→   720→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   721→   721→            Solutions for Every Property Need
+   722→   722→          </h2>
+   723→   723→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   724→   724→            Our recurring home cleaning provides daily peace of mind, but we offer a full spectrum of
+   725→   725→            specialist hygiene services for major property milestones — from end-of-tenancy handovers
+   726→   726→            to post-renovation cleanup. The same trusted crew can step up when life changes.
+   727→   727→          </p>
+   728→   728→        </motion.div>
+   729→   729→
+   730→   730→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   731→   731→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   732→   732→            const Icon = sol.icon;
+   733→   733→            return (
+   734→   734→              <motion.div
+   735→   735→                key={sol.title}
+   736→   736→                initial={{ opacity: 0, y: 24 }}
+   737→   737→                whileInView={{ opacity: 1, y: 0 }}
+   738→   738→                viewport={{ once: true, margin: "-40px" }}
+   739→   739→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   740→   740→              >
+   741→   741→                <Link
+   742→   742→                  href={sol.href}
+   743→   743→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   744→   744→                >
+   745→   745→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   746→   746→                    <img
+   747→   747→                      src={sol.image}
+   748→   748→                      alt={sol.imageAlt}
+   749→   749→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   750→   750→                      loading="lazy"
+   751→   751→                    />
+   752→   752→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   753→   753→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   754→   754→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   755→   755→                    </div>
+   756→   756→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   757→   757→                      {sol.title}
+   758→   758→                    </h3>
+   759→   759→                  </div>
+   760→   760→                  <div className="p-5">
+   761→   761→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   762→   762→                      {sol.description}
+   763→   763→                    </p>
+   764→   764→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   765→   765→                      {sol.cta}
+   766→   766→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   767→   767→                    </span>
+   768→   768→                  </div>
+   769→   769→                </Link>
+   770→   770→              </motion.div>
+   771→   771→            );
+   772→   772→          })}
+   773→   773→        </div>
+   774→   774→      </div>
+   775→   775→    </section>
+   776→   776→  );
+   777→   777→}
+   778→   778→
+   779→   779→// ============================================================
+   780→   780→// Section 6 — "Near Me" Location Internal Links
+   781→   781→// (Semantic H2: "Bungalow Cleaning Near Me in Scotland")
+   782→   782→// Split layout with map image + 36-location grid
+   783→   783→// ============================================================
+   784→   784→
+   785→   785→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   786→   786→  { city: "Glasgow", slug: "glasgow" },
+   787→   787→  { city: "Edinburgh", slug: "edinburgh" },
+   788→   788→  { city: "Aberdeen", slug: "aberdeen" },
+   789→   789→  { city: "Dundee", slug: "dundee" },
+   790→   790→  { city: "Stirling", slug: "stirling" },
+   791→   791→  { city: "Perth", slug: "perth" },
+   792→   792→  { city: "Falkirk", slug: "falkirk" },
+   793→   793→  { city: "Inverness", slug: "inverness" },
+   794→   794→  { city: "Ayr", slug: "ayr" },
+   795→   795→  { city: "Kilmarnock", slug: "kilmarnock" },
+   796→   796→  { city: "Livingston", slug: "livingston" },
+   797→   797→  { city: "East Kilbride", slug: "east-kilbride" },
+   798→   798→  { city: "Paisley", slug: "paisley" },
+   799→   799→  { city: "Hamilton", slug: "hamilton" },
+   800→   800→  { city: "Motherwell", slug: "motherwell" },
+   801→   801→  { city: "Dunfermline", slug: "dunfermline" },
+   802→   802→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   803→   803→  { city: "Musselburgh", slug: "musselburgh" },
+   804→   804→  { city: "Dalkeith", slug: "dalkeith" },
+   805→   805→  { city: "Bathgate", slug: "bathgate" },
+   806→   806→  { city: "Cumbernauld", slug: "cumbernauld" },
+   807→   807→  { city: "Coatbridge", slug: "coatbridge" },
+   808→   808→  { city: "St Andrews", slug: "st-andrews" },
+   809→   809→  { city: "Elgin", slug: "elgin" },
+   810→   810→  { city: "Peterhead", slug: "peterhead" },
+   811→   811→  { city: "Stonehaven", slug: "stonehaven" },
+   812→   812→  { city: "Inverurie", slug: "inverurie" },
+   813→   813→  { city: "Oban", slug: "oban" },
+   814→   814→  { city: "Fort William", slug: "fort-william" },
+   815→   815→  { city: "Aviemore", slug: "aviemore" },
+   816→   816→  { city: "Dumfries", slug: "dumfries" },
+   817→   817→  { city: "Stranraer", slug: "stranraer" },
+   818→   818→  { city: "Wick", slug: "wick" },
+   819→   819→  { city: "Thurso", slug: "thurso" },
+   820→   820→  { city: "Lerwick", slug: "lerwick" },
+   821→   821→  { city: "Kirkwall", slug: "kirkwall" },
+   822→   822→];
+   823→   823→
+   824→   824→export function BungalowSeoNearMe() {
+   825→   825→  return (
+   826→   826→    <section className="py-16 lg:py-24 bg-background">
+   827→   827→      <div className="max-w-[1400px] mx-auto px-6">
+   828→   828→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   829→   829→          {/* Left: copy + map image */}
+   830→   830→          <motion.div
+   831→   831→            initial={{ opacity: 0, y: 20 }}
+   832→   832→            whileInView={{ opacity: 1, y: 0 }}
+   833→   833→            viewport={{ once: true, margin: "-80px" }}
+   834→   834→            transition={{ duration: 0.5 }}
+   835→   835→          >
+   836→   836→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   837→   837→              Local bungalow crews across Scotland
+   838→   838→            </span>
+   839→   839→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   840→   840→              Bungalow Cleaning Near Me in Scotland
+   841→   841→            </h2>
+   842→   842→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   843→   843→              Searching for &ldquo;bungalow cleaning near me&rdquo; in Scotland? Maundy Clean covers
+   844→   844→              72+ towns and cities across the Central Belt, Highlands, Borders, and Islands. Same
+   845→   845→              PVG-checked standard, same 100% re-clean guarantee, same dedicated professional every
+   846→   846→              visit — wherever your single-story home happens to be. Find your local bungalow crew
+   847→   847→              below.
+   848→   848→            </p>
+   849→   849→
+   850→   850→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   851→   851→              <img
+   852→   852→                src={IMG.nearMeMap}
+   853→   853→                alt="Map of Scotland showing Maundy Clean bungalow cleaning coverage areas"
+   854→   854→                className="absolute inset-0 w-full h-full object-cover"
+   855→   855→                loading="lazy"
+   856→   856→              />
+   857→   857→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   858→   858→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   859→   859→                <div className="flex items-center gap-2 mb-1">
+   860→   860→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   861→   861→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   862→   862→                    72+ Scottish towns covered
+   863→   863→                  </span>
+   864→   864→                </div>
+   865→   865→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   866→   866→                  Same PVG-checked crews, same trusted professional every visit, same 100% re-clean
+   867→   867→                  guarantee — from Glasgow to Lerwick.
+   868→   868→                </p>
+   869→   869→              </div>
+   870→   870→            </div>
+   871→   871→          </motion.div>
+   872→   872→
+   873→   873→          {/* Right: location grid */}
+   874→   874→          <motion.div
+   875→   875→            initial={{ opacity: 0, y: 20 }}
+   876→   876→            whileInView={{ opacity: 1, y: 0 }}
+   877→   877→            viewport={{ once: true, margin: "-60px" }}
+   878→   878→            transition={{ duration: 0.5 }}
+   879→   879→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   880→   880→          >
+   881→   881→            <div className="flex items-center justify-between mb-5">
+   882→   882→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   883→   883→                Find your local bungalow crew
+   884→   884→              </h3>
+   885→   885→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   886→   886→            </div>
+   887→   887→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   888→   888→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   889→   889→                <motion.div
+   890→   890→                  key={loc.slug}
+   891→   891→                  initial={{ opacity: 0 }}
+   892→   892→                  whileInView={{ opacity: 1 }}
+   893→   893→                  viewport={{ once: true }}
+   894→   894→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   895→   895→                >
+   896→   896→                  <Link
+   897→   897→                    href={`/locations/${loc.slug}`}
+   898→   898→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   899→   899→                  >
+   900→   900→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   901→   901→                    <span>
+   902→   902→                      <span className="font-medium">{loc.city}</span>
+   903→   903→                      <span className="text-[var(--muted-foreground)]"> bungalows</span>
+   904→   904→                    </span>
+   905→   905→                  </Link>
+   906→   906→                </motion.div>
+   907→   907→              ))}
+   908→   908→            </div>
+   909→   909→
+   910→   910→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   911→   911→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   912→   912→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+   913→   913→                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+   914→   914→              </div>
+   915→   915→              <Link
+   916→   916→                href="/locations"
+   917→   917→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   918→   918→              >
+   919→   919→                View all 72 Scottish locations
+   920→   920→                <ArrowRight className="w-4 h-4" />
+   921→   921→              </Link>
+   922→   922→            </div>
+   923→   923→          </motion.div>
+   924→   924→        </div>
+   925→   925→
+   926→   926→        {/* SEO long-form paragraph for "near me" search intent */}
+   927→   927→        <motion.div
+   928→   928→          initial={{ opacity: 0, y: 16 }}
+   929→   929→          whileInView={{ opacity: 1, y: 0 }}
+   930→   930→          viewport={{ once: true, margin: "-40px" }}
+   931→   931→          transition={{ duration: 0.5, delay: 0.2 }}
+   932→   932→          className="mt-10 max-w-4xl mx-auto text-center"
+   933→   933→        >
+   934→   934→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   935→   935→            Our local bungalow cleaning crews operate across Glasgow&rsquo;s West End, Edinburgh&rsquo;s
+   936→   936→            New Town, Aberdeen&rsquo;s suburbs, Dundee&rsquo;s city centre, and the Highlands &mdash;
+   937→   937→            from Inverness to Thurso, Fort William to Lerwick. Whether you&rsquo;re searching for
+   938→   938→            weekly bungalow cleaning in Glasgow, fortnightly house cleaning in Edinburgh, monthly
+   939→   939→            cleaning in Aberdeen, or regular single-story cleaning services anywhere in between,
+   940→   940→            Maundy Clean assigns a PVG-checked, PAYE-employed professional that stays with you for
+   941→   941→            the long run. Same crew, same day, same locked-in rate for 12 months.
+   942→   942→          </p>
+   943→   943→        </motion.div>
+   944→   944→      </div>
+   945→   945→    </section>
+   946→   946→  );
+   947→   947→}
+   948→   948→
+   949→   949→// ============================================================
+   950→   950→// Section 7 — Final SEO CTA strip (companion to ServiceFinalCta)
+   951→   951→// (Semantic H3: "Ready to Refresh Your Bungalow?")
+   952→   952→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+   953→   953→// ============================================================
+   954→   954→
+   955→   955→export function BungalowSeoFinalCta() {
+   956→   956→  return (
+   957→   957→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   958→   958→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   959→   959→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   960→   960→
+   961→   961→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   962→   962→        <motion.div
+   963→   963→          initial={{ opacity: 0, y: 20 }}
+   964→   964→          whileInView={{ opacity: 1, y: 0 }}
+   965→   965→          viewport={{ once: true, margin: "-80px" }}
+   966→   966→          transition={{ duration: 0.5 }}
+   967→   967→        >
+   968→   968→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   969→   969→            Ready to refresh your bungalow?
+   970→   970→          </span>
+   971→   971→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   972→   972→            Ready to Refresh Your Bungalow?
+   973→   973→          </h3>
+   974→   974→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   975→   975→            Get a fixed-price bungalow cleaning quote in 30 seconds. No pushy sales call, no waiting
+   976→   976→            24 hours for a callback. PVG-checked crews, specialist single-story training, child &amp;
+   977→   977→            pet-safe products, and a 100% satisfaction guarantee — from £62/visit.
+   978→   978→          </p>
+   979→   979→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   980→   980→            <Button
+   981→   981→              size="lg"
+   982→   982→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   983→   983→              asChild
+   984→   984→            >
+   985→   985→              <Link href="/quote">
+   986→   986→                Get My Instant Quote Now
+   987→   987→                <ArrowRight className="w-5 h-5" />
+   988→   988→              </Link>
+   989→   989→            </Button>
+   990→   990→            <Button
+   991→   991→              size="lg"
+   992→   992→              variant="outline"
+   993→   993→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   994→   994→              asChild
+   995→   995→            >
+   996→   996→              <Link href="#checklist">
+   997→   997→                <CheckCircle2 className="w-4 h-4" />
+   998→   998→                View Our Regular Cleaning Checklist
+   999→   999→              </Link>
+  1000→  1000→            </Button>
+  1001→  1001→          </div>
+  1002→  1002→        </motion.div>
+  1003→  1003→      </div>
+  1004→  1004→    </section>
+  1005→  1005→  );
+  1006→  1006→}
+  1007→  1007→
+  1008→  1008→// ============================================================
+  1009→  1009→// Section 8 — SEO FAQ block
+  1010→  1010→// (Semantic H2: "Frequently Asked Questions")
+  1011→  1011→// 6 Q&As — 3 from the user brief + 3 bungalow-specific additions
+  1012→  1012→// ============================================================
+  1013→  1013→
+  1014→  1014→const SEO_FAQS = [
+  1015→  1015→  {
+  1016→  1016→    q: "Are your cleaners insured?",
+  1017→  1017→    a: "Yes. Maundy Clean is a fully insured, registered, and professional service operating across west and central Scotland. Every member of our team carries Disclosure Scotland PVG scheme membership and £5m public liability cover as standard on every visit. We are a registered Scottish company — not a gig-economy agency — so there are no contractor grey areas. Your bungalow, your belongings, and your peace of mind are fully protected.",
+  1018→  1018→  },
+  1019→  1019→  {
+  1020→  1020→    q: "Do you bring your own equipment?",
+  1021→  1021→    a: "Absolutely. We supply all our own high-quality cleaning equipment and supplies, which are included in your quote — no surprise add-on charges, no asking you to stock products. Our crews arrive with everything they need: eco-labelled products, extendable poles for high ceilings, steam cleaners for grout, squeegees for windows, microfibre cloths, and specialist bungalow-friendly kit. You don't need to provide anything.",
+  1022→  1022→  },
+  1023→  1023→  {
+  1024→  1024→    q: "Is a deep clean better than a regular clean?",
+  1025→  1025→    a: "A regular clean is for ongoing maintenance — kitchen surfaces, bathrooms, floors, dusting, and high-touch points kept to a consistent standard every visit. A deep clean is a top-to-bottom intensive service where we move furniture to clean parts of the home that are often missed: behind and underneath appliances, inside grout lines, inside the oven, and the build-up that daily life leaves behind. Most bungalow owners use recurring cleaning for weekly or fortnightly upkeep and book a deep clean quarterly as a reset, at a 15% member discount.",
+  1026→  1026→  },
+  1027→  1027→];
+  1028→  1028→
+  1029→  1029→export function BungalowSeoFaq() {
+  1030→  1030→  return (
+  1031→  1031→    <section className="py-16 lg:py-24 bg-background">
+  1032→  1032→      <div className="max-w-4xl mx-auto px-6">
+  1033→  1033→        <motion.div
+  1034→  1034→          initial={{ opacity: 0, y: 20 }}
+  1035→  1035→          whileInView={{ opacity: 1, y: 0 }}
+  1036→  1036→          viewport={{ once: true, margin: "-80px" }}
+  1037→  1037→          transition={{ duration: 0.5 }}
+  1038→  1038→          className="text-center mb-12"
+  1039→  1039→        >
+  1040→  1040→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1041→  1041→            Bungalow cleaning · FAQ
+  1042→  1042→          </span>
+  1043→  1043→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1044→  1044→            Frequently Asked Questions
+  1045→  1045→          </h2>
+  1046→  1046→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1047→  1047→            Straight answers to the questions our bungalow clients ask most often. Can&apos;t find
+  1048→  1048→            what you need? Call us on{" "}
+  1049→  1049→            <a
+  1050→  1050→              href={contactInfo.phoneHref}
+  1051→  1051→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1052→  1052→            >
+  1053→  1053→              {contactInfo.phone}
+  1054→  1054→            </a>{" "}
+  1055→  1055→            and we&apos;ll talk it through.
+  1056→  1056→          </p>
+  1057→  1057→        </motion.div>
+  1058→  1058→
+  1059→  1059→        <div className="space-y-4">
+  1060→  1060→          {SEO_FAQS.map((faq, i) => (
+  1061→  1061→            <motion.div
+  1062→  1062→              key={faq.q}
+  1063→  1063→              initial={{ opacity: 0, y: 16 }}
+  1064→  1064→              whileInView={{ opacity: 1, y: 0 }}
+  1065→  1065→              viewport={{ once: true, margin: "-40px" }}
+  1066→  1066→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1067→  1067→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1068→  1068→            >
+  1069→  1069→              <details className="group">
+  1070→  1070→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1071→  1071→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1072→  1072→                    {faq.q}
+  1073→  1073→                  </h3>
+  1074→  1074→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1075→  1075→                    <span className="relative w-3.5 h-3.5">
+  1076→  1076→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1077→  1077→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1078→  1078→                    </span>
+  1079→  1079→                  </span>
+  1080→  1080→                </summary>
+  1081→  1081→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1082→  1082→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+  1083→  1083→                    {faq.a}
+  1084→  1084→                  </p>
+  1085→  1085→                </div>
+  1086→  1086→              </details>
+  1087→  1087→            </motion.div>
+  1088→  1088→          ))}
+  1089→  1089→        </div>
+  1090→  1090→
+  1091→  1091→        <motion.div
+  1092→  1092→          initial={{ opacity: 0, y: 16 }}
+  1093→  1093→          whileInView={{ opacity: 1, y: 0 }}
+  1094→  1094→          viewport={{ once: true, margin: "-40px" }}
+  1095→  1095→          transition={{ duration: 0.5, delay: 0.3 }}
+  1096→  1096→          className="mt-10 text-center"
+  1097→  1097→        >
+  1098→  1098→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1099→  1099→            <Button
+  1100→  1100→              size="lg"
+  1101→  1101→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1102→  1102→              asChild
+  1103→  1103→            >
+  1104→  1104→              <Link href="/quote">
+  1105→  1105→                Get My Instant Quote Now
+  1106→  1106→                <ArrowRight className="w-5 h-5" />
+  1107→  1107→              </Link>
+  1108→  1108→            </Button>
+  1109→  1109→            <Button
+  1110→  1110→              size="lg"
+  1111→  1111→              variant="outline"
+  1112→  1112→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1113→  1113→              asChild
+  1114→  1114→            >
+  1115→  1115→              <Link href="#checklist">
+  1116→  1116→                <CheckCircle2 className="w-4 h-4" />
+  1117→  1117→                View Our Regular Cleaning Checklist
+  1118→  1118→              </Link>
+  1119→  1119→            </Button>
+  1120→  1120→          </div>
+  1121→  1121→        </motion.div>
+  1122→  1122→      </div>
+  1123→  1123→    </section>
+  1124→  1124→  );
+  1125→  1125→}
+  1126→  1126→

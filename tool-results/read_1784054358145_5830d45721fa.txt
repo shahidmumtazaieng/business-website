@@ -1,0 +1,870 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Shield,
+     7→  Leaf,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  Gem,
+    16→  Users,
+    17→  Zap,
+    18→  UserCheck,
+    19→  CalendarCheck,
+    20→  Home,
+    21→  KeyRound,
+    22→  Award,
+    23→  Phone,
+    24→} from "lucide-react";
+    25→import { Button } from "@/components/ui/button";
+    26→import { contactInfo } from "@/lib/site-data";
+    27→
+    28→// ============================================================
+    29→// Images — hand-picked from in-house search service
+    30→// ============================================================
+    31→const IMG = {
+    32→  heroWide:
+    33→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    34→  scotlandMap:
+    35→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    36→  localCrew:
+    37→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    38→  homeClean:
+    39→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    40→};
+    41→
+    42→// ============================================================
+    43→// 36 Scottish locations covered by the near-me page
+    44→// ============================================================
+    45→const LOCATIONS: { city: string; slug: string; region: string }[] = [
+    46→  // Central Belt
+    47→  { city: "Glasgow", slug: "glasgow", region: "Central Belt" },
+    48→  { city: "Edinburgh", slug: "edinburgh", region: "Central Belt" },
+    49→  { city: "Stirling", slug: "stirling", region: "Central Belt" },
+    50→  { city: "Falkirk", slug: "falkirk", region: "Central Belt" },
+    51→  { city: "Livingston", slug: "livingston", region: "Central Belt" },
+    52→  { city: "East Kilbride", slug: "east-kilbride", region: "Central Belt" },
+    53→  { city: "Paisley", slug: "paisley", region: "Central Belt" },
+    54→  { city: "Hamilton", slug: "hamilton", region: "Central Belt" },
+    55→  { city: "Motherwell", slug: "motherwell", region: "Central Belt" },
+    56→  { city: "Cumbernauld", slug: "cumbernauld", region: "Central Belt" },
+    57→  { city: "Coatbridge", slug: "coatbridge", region: "Central Belt" },
+    58→  { city: "Ayr", slug: "ayr", region: "Central Belt" },
+    59→  { city: "Kilmarnock", slug: "kilmarnock", region: "Central Belt" },
+    60→  { city: "Dunfermline", slug: "dunfermline", region: "Central Belt" },
+    61→  { city: "Kirkcaldy", slug: "kirkcaldy", region: "Central Belt" },
+    62→  { city: "Musselburgh", slug: "musselburgh", region: "Central Belt" },
+    63→  { city: "Dalkeith", slug: "dalkeith", region: "Central Belt" },
+    64→  { city: "Bathgate", slug: "bathgate", region: "Central Belt" },
+    65→  // East
+    66→  { city: "Dundee", slug: "dundee", region: "East" },
+    67→  { city: "Perth", slug: "perth", region: "East" },
+    68→  { city: "St Andrews", slug: "st-andrews", region: "East" },
+    69→  // North East
+    70→  { city: "Aberdeen", slug: "aberdeen", region: "North East" },
+    71→  { city: "Elgin", slug: "elgin", region: "North East" },
+    72→  { city: "Peterhead", slug: "peterhead", region: "North East" },
+    73→  { city: "Stonehaven", slug: "stonehaven", region: "North East" },
+    74→  { city: "Inverurie", slug: "inverurie", region: "North East" },
+    75→  // Highlands & Islands
+    76→  { city: "Inverness", slug: "inverness", region: "Highlands & Islands" },
+    77→  { city: "Oban", slug: "oban", region: "Highlands & Islands" },
+    78→  { city: "Fort William", slug: "fort-william", region: "Highlands & Islands" },
+    79→  { city: "Aviemore", slug: "aviemore", region: "Highlands & Islands" },
+    80→  { city: "Wick", slug: "wick", region: "Highlands & Islands" },
+    81→  { city: "Thurso", slug: "thurso", region: "Highlands & Islands" },
+    82→  { city: "Lerwick", slug: "lerwick", region: "Highlands & Islands" },
+    83→  { city: "Kirkwall", slug: "kirkwall", region: "Highlands & Islands" },
+    84→  // South
+    85→  { city: "Dumfries", slug: "dumfries", region: "South" },
+    86→  { city: "Stranraer", slug: "stranraer", region: "South" },
+    87→];
+    88→
+    89→// Group by region for cleaner display
+    90→const REGION_ORDER = ["Central Belt", "East", "North East", "Highlands & Islands", "South"];
+    91→const locationsByRegion = REGION_ORDER.map((region) => ({
+    92→  region,
+    93→  cities: LOCATIONS.filter((l) => l.region === region),
+    94→}));
+    95→
+    96→// ============================================================
+    97→// Trust badges for the hero
+    98→// ============================================================
+    99→const HERO_BADGES = [
+   100→  { icon: Star, label: "4.9/5 · 6,200+ reviews" },
+   101→  { icon: Shield, label: "NCCA & WoolSafe Certified" },
+   102→  { icon: Leaf, label: "Child & Pet-Safe Products" },
+   103→  { icon: Clock, label: "100% Re-Clean Guarantee" },
+   104→];
+   105→
+   106→// ============================================================
+   107→// The 4 trust pillars
+   108→// ============================================================
+   109→const TRUST_PILLARS = [
+   110→  {
+   111→    icon: Gem,
+   112→    title: "Specialist Fabric Knowledge on Every Visit",
+   113→    description:
+   114→      "Our NCCA-certified technicians are trained on every variety of textile, from modern synthetic twist pile and berber to delicate hand-knotted Persian, Oriental, and silk-blend rugs. We identify the fibre before any chemistry touches it, so the right cleaning solution is matched to every weave &mdash; whether you have a contemporary rug or a 19th-century Tabriz.",
+   115→  },
+   116→  {
+   117→    icon: Users,
+   118→    title: "The Same Trusted Professionals Every Time",
+   119→    description:
+   120→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, and background-checked technicians who manage your regular house cleaning are the ones performing your intensive fabric care. Continuity matters when the stakes are a Persian heirloom or a wool staircase runner.",
+   121→  },
+   122→  {
+   123→    icon: Leaf,
+   124→    title: "Safe for Families, Pets, and Delicate Piles",
+   125→    description:
+   126→      "We use only certified child-safe and pet-safe products with EU Ecolabel or WoolSafe approval. Our cleaning methods remove germs, dust mites, and unwanted odours without leaving behind harsh chemical residues that re-soil the pile and trigger respiratory sensitivity &mdash; safer for your family and your fabrics.",
+   127→  },
+   128→  {
+   129→    icon: Award,
+   130→    title: "Fully Insured & 100% Re-Clean Guaranteed",
+   131→    description:
+   132→      "Every technician is Disclosure Scotland PVG-checked, we hold £5m public liability cover, and we offer a free re-clean within 24 to 48 hours if you are not 100% satisfied. We are a registered Scottish company &mdash; not a gig-economy agency &mdash; and the Maundy Clean standard applies on every visit.",
+   133→  },
+   134→];
+   135→
+   136→// ============================================================
+   137→// The 3-step booking process
+   138→// ============================================================
+   139→const BOOKING_STEPS = [
+   140→  {
+   141→    icon: Zap,
+   142→    step: "01",
+   143→    title: "30-Second Instant Quote",
+   144→    description:
+   145→      "Tell us about your carpets and rugs and receive a fixed-price quote in under a minute. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in, fully transparent, with no on-the-day upsells for spotters or air-movers.",
+   146→  },
+   147→  {
+   148→    icon: UserCheck,
+   149→    step: "02",
+   150→    title: "Local Technician Matching",
+   151→    description:
+   152→      "We match you with a vetted NCCA-certified technician in your postcode. They confirm fibre type, flag any permanent stains, and walk you through the cleaning plan before any chemistry touches the pile &mdash; so there are no surprises on the day.",
+   153→  },
+   154→  {
+   155→    icon: CalendarCheck,
+   156→    step: "03",
+   157→    title: "A Healthier, Fresher Home",
+   158→    description:
+   159→      "Walk onto floors that look, feel, and smell fresh, backed by our 100% satisfaction guarantee. Most carpets are touch-dry in 3 to 5 hours; we loan air-movers free for 24 hours on whole-home cleans. You receive a written care card and a 12-month re-clean reminder at the locked-in rate.",
+   160→  },
+   161→];
+   162→
+   163→// ============================================================
+   164→// FAQ for the near-me page
+   165→// ============================================================
+   166→const NEAR_ME_FAQS = [
+   167→  {
+   168→    q: "How do I know if you cover my area?",
+   169→    a: "We cover 72+ towns and cities across Scotland &mdash; from Glasgow and Edinburgh in the Central Belt to Lerwick in Shetland and everywhere in between. Use the location grid above to find your town. If you don&rsquo;t see your postcode listed, call us &mdash; we add new coverage areas every month and may already have a carpet cleaning technician near you.",
+   170→  },
+   171→  {
+   172→    q: "How quickly can a local carpet cleaning technician start?",
+   173→    a: "From quote to clean in under 48 hours for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 5-7 working days for technician routing and travel planning. Same-day starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee &mdash; call us to check availability.",
+   174→  },
+   175→  {
+   176→    q: "Will the technician travel to me, or do I need to bring my rugs to you?",
+   177→    a: "Both options are available. Synthetic and modern wool rugs are cleaned in place at your home with hot-water extraction. Hand-knotted Persian, Oriental, silk, and antique rugs are transported to our Glasgow workshop for full-immersion bathing &mdash; the only safe method for pieces that may bleed, shrink, or fringe-tangle. We collect and deliver within 25 miles at no charge.",
+   178→  },
+   179→  {
+   180→    q: "Do you have carpet cleaning technicians available in rural Scotland?",
+   181→    a: "Yes. We cover rural Scotland including Perthshire, Angus, Fife, the Borders, Argyll, Aberdeenshire, and parts of the Highlands. For very remote properties (Islands, far North), we may operate on a minimum-room basis or schedule combined visits with neighbouring properties to keep travel costs down. Call us to discuss your specific location.",
+   182→  },
+   183→  {
+   184→    q: "Can you clean the carpets in my holiday let or short-term rental?",
+   185→    a: "Absolutely. Many of our clients use us for holiday lets, short-term rentals, and second homes across Scotland. We provide emergency turnover cleans between guests, periodic deep cleans during void periods, and full rug rejuvenation for premium short-term lets. Visit our Holiday Let Turnover page for more detail on combined turnover + extraction packages.",
+   186→  },
+   187→  {
+   188→    q: "What&rsquo;s the difference between carpet cleaning and rug cleaning near me?",
+   189→    a: "Carpet cleaning covers wall-to-wall fitted carpets in your home &mdash; we clean these in place with hot-water extraction. Rug cleaning covers loose rugs that can be rolled or moved &mdash; synthetic and modern wool rugs are cleaned in place, but hand-knotted Persian, Oriental, silk, and antique rugs are taken to our Glasgow workshop for full-immersion bathing. If you have both, we typically do the fitted carpets on-site and collect any delicate rugs for workshop cleaning in the same visit.",
+   190→  },
+   191→];
+   192→
+   193→// ============================================================
+   194→// Main page component
+   195→// ============================================================
+   196→
+   197→export function CarpetRugNearMeHero() {
+   198→  return (
+   199→    <>
+   200→      {/* ============================================================ */}
+   201→      {/* SECTION 1 — Hero */}
+   202→      {/* H1: Carpet & Rug Cleaning Near Me in Scotland */}
+   203→      {/* ============================================================ */}
+   204→      <section className="relative overflow-hidden">
+   205→        <div className="absolute inset-0">
+   206→          <img
+   207→            src={IMG.heroWide}
+   208→            alt="Maundy Clean technician restoring a freshly cleaned wool carpet in a Scottish living room"
+   209→            className="w-full h-full object-cover"
+   210→            loading="eager"
+   211→            fetchPriority="high"
+   212→          />
+   213→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   214→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   215→        </div>
+   216→
+   217→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   218→          <motion.div
+   219→            initial="hidden"
+   220→            animate="visible"
+   221→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   222→            className="max-w-3xl"
+   223→          >
+   224→            <motion.div
+   225→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   226→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   227→            >
+   228→              <span className="relative flex w-2 h-2">
+   229→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   230→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   231→              </span>
+   232→              72+ Scottish towns · Local NCCA-certified technicians · Same crew every visit
+   233→            </motion.div>
+   234→
+   235→            <motion.h1
+   236→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   237→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   238→            >
+   239→              Carpet &amp; Rug Cleaning Near Me in Scotland
+   240→            </motion.h1>
+   241→
+   242→            <motion.p
+   243→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   244→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   245→            >
+   246→              Searching for &ldquo;carpet cleaning near me&rdquo; or &ldquo;rug cleaning near me&rdquo;
+   247→              in Scotland? Maundy Clean covers 72+ towns and cities across the Central Belt,
+   248→              Highlands, Borders, and Islands. Same NCCA-certified standard, same 100% re-clean
+   249→              guarantee, same dedicated technician &mdash; wherever your home happens to be. From
+   250→              £18/room.
+   251→            </motion.p>
+   252→
+   253→            <motion.div
+   254→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   255→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   256→            >
+   257→              <Button
+   258→                size="lg"
+   259→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   260→                asChild
+   261→              >
+   262→                <Link href="/quote">
+   263→                  Get My 30-Second Instant Quote
+   264→                  <ArrowRight className="w-5 h-5" />
+   265→                </Link>
+   266→              </Button>
+   267→              <Button
+   268→                size="lg"
+   269→                variant="outline"
+   270→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   271→                asChild
+   272→              >
+   273→                <Link href="#locations">
+   274→                  <MapPin className="w-4 h-4" />
+   275→                  Find Your Local Carpet Cleaner
+   276→                </Link>
+   277→              </Button>
+   278→            </motion.div>
+   279→
+   280→            <motion.div
+   281→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   282→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   283→            >
+   284→              {HERO_BADGES.map((badge) => {
+   285→                const Icon = badge.icon;
+   286→                return (
+   287→                  <div key={badge.label} className="flex items-center gap-1.5">
+   288→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   289→                  </div>
+   290→                );
+   291→              })}
+   292→            </motion.div>
+   293→          </motion.div>
+   294→        </div>
+   295→      </section>
+   296→
+   297→      {/* ============================================================ */}
+   298→      {/* SECTION 2 — Intro + stats */}
+   299→      {/* H2: Local Carpet & Rug Cleaning You Can Trust */}
+   300→      {/* ============================================================ */}
+   301→      <section className="py-16 lg:py-24 bg-background">
+   302→        <div className="max-w-[1100px] mx-auto px-6">
+   303→          <motion.div
+   304→            initial={{ opacity: 0, y: 20 }}
+   305→            whileInView={{ opacity: 1, y: 0 }}
+   306→            viewport={{ once: true, margin: "-80px" }}
+   307→            transition={{ duration: 0.5 }}
+   308→            className="max-w-3xl mx-auto text-center mb-10"
+   309→          >
+   310→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   311→              Local carpet &amp; rug cleaning · Scotland-wide
+   312→            </span>
+   313→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   314→              Local Carpet &amp; Rug Cleaning You Can Trust
+   315→            </h2>
+   316→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   317→              Maundy Clean is a Scottish carpet &amp; rug cleaning company built on the Maundy
+   318→              tradition of service and care. We don&rsquo;t operate as an impersonal national agency
+   319→              &mdash; we&rsquo;re a local specialist with NCCA-certified technicians living and
+   320→              working in your area. Whether you&rsquo;re searching for hot-water extraction in
+   321→              Glasgow&rsquo;s West End, Persian rug bathing in Edinburgh&rsquo;s New Town, wool
+   322→              carpet cleaning in Aberdeen&rsquo;s suburbs, or pet-stain removal anywhere in between,
+   323→              we assign a vetted, PAYE-employed professional that stays with you for the long run.
+   324→              Same technician, same standard, same locked-in rate for 12 months.
+   325→            </p>
+   326→          </motion.div>
+   327→
+   328→          <motion.div
+   329→            initial={{ opacity: 0, y: 16 }}
+   330→            whileInView={{ opacity: 1, y: 0 }}
+   331→            viewport={{ once: true, margin: "-60px" }}
+   332→            transition={{ duration: 0.5 }}
+   333→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   334→          >
+   335→            {[
+   336→              { label: "Scottish towns covered", value: "72+" },
+   337→              { label: "Touch-dry time", value: "3-5 hrs" },
+   338→              { label: "Extraction pressure", value: "200 PSI" },
+   339→              { label: "Star rating", value: "4.9/5" },
+   340→            ].map((stat) => (
+   341→              <div
+   342→                key={stat.label}
+   343→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   344→              >
+   345→                <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   346→                <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   347→              </div>
+   348→            ))}
+   349→          </motion.div>
+   350→        </div>
+   351→      </section>
+   352→
+   353→      {/* ============================================================ */}
+   354→      {/* SECTION 3 — Location grid (id="locations" anchor target) */}
+   355→      {/* H2: Find Your Local Carpet Cleaner */}
+   356→      {/* ============================================================ */}
+   357→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   358→        <div className="max-w-[1400px] mx-auto px-6">
+   359→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   360→            {/* Left: copy + map */}
+   361→            <motion.div
+   362→              initial={{ opacity: 0, y: 20 }}
+   363→              whileInView={{ opacity: 1, y: 0 }}
+   364→              viewport={{ once: true, margin: "-80px" }}
+   365→              transition={{ duration: 0.5 }}
+   366→            >
+   367→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   368→                Coverage across Scotland
+   369→              </span>
+   370→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   371→                Find Your Local Carpet Cleaner
+   372→              </h2>
+   373→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   374→                Our network of vetted, NCCA-certified carpet cleaning technicians spans the entire
+   375→                country. From the Central Belt to the Highlands and Islands, we have a local
+   376→                professional ready to restore the fabrics in your home. Browse by region below, or
+   377→                call us to confirm coverage for your specific postcode.
+   378→              </p>
+   379→
+   380→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   381→                <img
+   382→                  src={IMG.scotlandMap}
+   383→                  alt="Map of Scotland showing Maundy Clean carpet and rug cleaning coverage areas"
+   384→                  className="absolute inset-0 w-full h-full object-cover"
+   385→                  loading="lazy"
+   386→                />
+   387→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   388→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   389→                  <div className="flex items-center gap-2 mb-1">
+   390→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   391→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   392→                      72+ Scottish towns covered
+   393→                    </span>
+   394→                  </div>
+   395→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   396→                    Same NCCA-certified technicians, same 100% re-clean guarantee &mdash; from
+   397→                    Glasgow to Lerwick.
+   398→                  </p>
+   399→                </div>
+   400→              </div>
+   401→
+   402→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   403→                <Button
+   404→                  size="lg"
+   405→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   406→                  asChild
+   407→                >
+   408→                  <Link href="/quote">
+   409→                    <Zap className="w-4 h-4" />
+   410→                    Get My Instant Quote
+   411→                  </Link>
+   412→                </Button>
+   413→                <Button
+   414→                  size="lg"
+   415→                  variant="outline"
+   416→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   417→                  asChild
+   418→                >
+   419→                  <a href={contactInfo.phoneHref}>
+   420→                    <Phone className="w-4 h-4" />
+   421→                    {contactInfo.phone}
+   422→                  </a>
+   423→                </Button>
+   424→              </div>
+   425→            </motion.div>
+   426→
+   427→            {/* Right: regional location grid */}
+   428→            <motion.div
+   429→              initial={{ opacity: 0, y: 20 }}
+   430→              whileInView={{ opacity: 1, y: 0 }}
+   431→              viewport={{ once: true, margin: "-60px" }}
+   432→              transition={{ duration: 0.5 }}
+   433→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   434→            >
+   435→              <div className="flex items-center justify-between mb-5">
+   436→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   437→                  Browse by region
+   438→                </h3>
+   439→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   440→              </div>
+   441→
+   442→              <div className="space-y-6">
+   443→                {locationsByRegion.map((regionGroup) => (
+   444→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   445→                    <div className="flex items-center gap-2 mb-3">
+   446→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   447→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   448→                        {regionGroup.region}
+   449→                      </span>
+   450→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   451→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   452→                        {regionGroup.cities.length} towns
+   453→                      </span>
+   454→                    </div>
+   455→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   456→                      {regionGroup.cities.map((loc) => (
+   457→                        <Link
+   458→                          key={loc.slug}
+   459→                          id={loc.slug}
+   460→                          href={`/services/carpet-rug-cleaning-near-me#${loc.slug}`}
+   461→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   462→                        >
+   463→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   464→                          <span>
+   465→                            <span className="font-medium">{loc.city}</span>
+   466→                            <span className="text-[var(--muted-foreground)]"> carpet</span>
+   467→                          </span>
+   468→                        </Link>
+   469→                      ))}
+   470→                    </div>
+   471→                  </div>
+   472→                ))}
+   473→              </div>
+   474→
+   475→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   476→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   477→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   478→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   479→                </div>
+   480→                <Link
+   481→                  href="/locations"
+   482→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   483→                >
+   484→                  View all 72 Scottish locations
+   485→                  <ArrowRight className="w-4 h-4" />
+   486→                </Link>
+   487→              </div>
+   488→            </motion.div>
+   489→          </div>
+   490→        </div>
+   491→      </section>
+   492→
+   493→      {/* ============================================================ */}
+   494→      {/* SECTION 4 — Why Maundy Clean for your local carpet cleaning */}
+   495→      {/* H2: Why Scottish Households Choose Maundy Clean */}
+   496→      {/* ============================================================ */}
+   497→      <section className="py-16 lg:py-24 bg-background">
+   498→        <div className="max-w-[1400px] mx-auto px-6">
+   499→          <motion.div
+   500→            initial={{ opacity: 0, y: 20 }}
+   501→            whileInView={{ opacity: 1, y: 0 }}
+   502→            viewport={{ once: true, margin: "-80px" }}
+   503→            transition={{ duration: 0.5 }}
+   504→            className="max-w-3xl mx-auto text-center mb-14"
+   505→          >
+   506→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   507→              The Maundy Clean difference
+   508→            </span>
+   509→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   510→              Why Scottish Households Choose Maundy Clean
+   511→            </h2>
+   512→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   513→              We&rsquo;re a local specialist, not an impersonal national agency. Our NCCA-certified
+   514→              technicians live in your area, know your neighbourhood, and stay with you for the long
+   515→              run. Here&rsquo;s what sets us apart from the gig-economy apps and high-turnover
+   516→              agencies operating in Scotland.
+   517→            </p>
+   518→          </motion.div>
+   519→
+   520→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   521→            {TRUST_PILLARS.map((pillar, i) => {
+   522→              const Icon = pillar.icon;
+   523→              return (
+   524→                <motion.div
+   525→                  key={pillar.title}
+   526→                  initial={{ opacity: 0, y: 24 }}
+   527→                  whileInView={{ opacity: 1, y: 0 }}
+   528→                  viewport={{ once: true, margin: "-40px" }}
+   529→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   530→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   531→                >
+   532→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   533→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   534→                  </div>
+   535→                  <div>
+   536→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   537→                      {pillar.title}
+   538→                    </h3>
+   539→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   540→                      {pillar.description}
+   541→                    </p>
+   542→                  </div>
+   543→                </motion.div>
+   544→              );
+   545→            })}
+   546→          </div>
+   547→        </div>
+   548→      </section>
+   549→
+   550→      {/* ============================================================ */}
+   551→      {/* SECTION 5 — 3-step booking */}
+   552→      {/* H2: From Quote to Clean in 48 Hours */}
+   553→      {/* ============================================================ */}
+   554→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   555→        <div className="max-w-[1400px] mx-auto px-6">
+   556→          <motion.div
+   557→            initial={{ opacity: 0, y: 20 }}
+   558→            whileInView={{ opacity: 1, y: 0 }}
+   559→            viewport={{ once: true, margin: "-80px" }}
+   560→            transition={{ duration: 0.5 }}
+   561→            className="text-center mb-14"
+   562→          >
+   563→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   564→              Hassle-free booking
+   565→            </span>
+   566→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   567→              From Quote to Clean in 48 Hours
+   568→            </h2>
+   569→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   570→              We have optimized our booking experience to be uncomplicated and straightforward.
+   571→              Tell us about your carpets and rugs, get matched with a local NCCA-certified
+   572→              technician, and enjoy a healthier, fresher home &mdash; no friction, no waiting, no
+   573→              surprises.
+   574→            </p>
+   575→          </motion.div>
+   576→
+   577→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   578→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   579→
+   580→            {BOOKING_STEPS.map((step, i) => {
+   581→              const Icon = step.icon;
+   582→              return (
+   583→                <motion.div
+   584→                  key={step.step}
+   585→                  initial={{ opacity: 0, y: 24 }}
+   586→                  whileInView={{ opacity: 1, y: 0 }}
+   587→                  viewport={{ once: true, margin: "-40px" }}
+   588→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   589→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   590→                >
+   591→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   592→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   593→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   594→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   595→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   596→                      {step.step}
+   597→                    </span>
+   598→                  </div>
+   599→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   600→                    {step.title}
+   601→                  </h3>
+   602→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   603→                    {step.description}
+   604→                  </p>
+   605→                </motion.div>
+   606→              );
+   607→            })}
+   608→          </div>
+   609→
+   610→          <motion.div
+   611→            initial={{ opacity: 0, y: 16 }}
+   612→            whileInView={{ opacity: 1, y: 0 }}
+   613→            viewport={{ once: true }}
+   614→            transition={{ duration: 0.5, delay: 0.3 }}
+   615→            className="text-center mt-10"
+   616→          >
+   617→            <Button
+   618→              size="lg"
+   619→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   620→              asChild
+   621→            >
+   622→              <Link href="/quote">
+   623→                Get My 30-Second Instant Quote
+   624→                <ArrowRight className="w-5 h-5" />
+   625→              </Link>
+   626→            </Button>
+   627→          </motion.div>
+   628→        </div>
+   629→      </section>
+   630→
+   631→      {/* ============================================================ */}
+   632→      {/* SECTION 6 — Cross-links to specialist pages */}
+   633→      {/* H2: Specialist Services for Every Property Cycle */}
+   634→      {/* ============================================================ */}
+   635→      <section className="py-16 lg:py-24 bg-background">
+   636→        <div className="max-w-[1400px] mx-auto px-6">
+   637→          <motion.div
+   638→            initial={{ opacity: 0, y: 20 }}
+   639→            whileInView={{ opacity: 1, y: 0 }}
+   640→            viewport={{ once: true, margin: "-80px" }}
+   641→            transition={{ duration: 0.5 }}
+   642→            className="max-w-3xl mb-12"
+   643→          >
+   644→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   645→              Beyond the reset · property cycles
+   646→            </span>
+   647→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   648→              Specialist Services for Every Property Cycle
+   649→            </h2>
+   650→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   651→              Our carpet &amp; rug deep cleaning is the perfect reset to combine with our other
+   652→              specialist services. Restore the pile today, then keep it pristine with the right
+   653→              ongoing routine for your household, your tenancy cycle, or your sale timeline &mdash;
+   654→              the same trusted crew can step up whenever life changes.
+   655→            </p>
+   656→          </motion.div>
+   657→
+   658→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   659→            {[
+   660→              {
+   661→                icon: CalendarCheck,
+   662→                title: "Recurring Home Cleaning",
+   663→                href: "/services/recurring-home-cleaning",
+   664→                description:
+   665→                  "After your fabrics are restored, keep them pristine with a recurring home cleaning schedule &mdash; weekly or fortnightly. Edge-to-edge vacuuming and immediate spill response are the single biggest factors in how long a deep clean lasts.",
+   666→                cta: "Explore recurring cleaning",
+   667→              },
+   668→              {
+   669→                icon: KeyRound,
+   670→                title: "End of Tenancy Cleaning",
+   671→                href: "/services/move-in-out-cleaning",
+   672→                description:
+   673→                  "Moving homes? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee and professional carpet extraction as standard. We work to the letting agent&rsquo;s inventory and come back free of charge if anything is flagged.",
+   674→                cta: "Explore end of tenancy",
+   675→              },
+   676→              {
+   677→                icon: Home,
+   678→                title: "Deep House Cleaning",
+   679→                href: "/services/deep-house-cleaning",
+   680→                description:
+   681→                  "If you&rsquo;re putting a house up for sale, a Deep House Cleaning combined with rug rejuvenation creates the WOW factor that attracts buyers and lifts offers. Stale odours and tired carpets are the single biggest turn-off at viewings.",
+   682→                cta: "Explore deep house cleaning",
+   683→              },
+   684→              {
+   685→                icon: Sparkles,
+   686→                title: "Spring Cleaning",
+   687→                href: "/services/spring-cleaning",
+   688→                description:
+   689→                  "Book a One-Off Spring Clean for a comprehensive top-to-bottom refresh of your entire home &mdash; skirtings, light fittings, behind appliances, and the carpet extraction that pulls a winter&rsquo;s worth of grit from the pile.",
+   690→                cta: "Explore spring cleaning",
+   691→              },
+   692→            ].map((sol, i) => {
+   693→              const Icon = sol.icon;
+   694→              return (
+   695→                <motion.div
+   696→                  key={sol.title}
+   697→                  initial={{ opacity: 0, y: 24 }}
+   698→                  whileInView={{ opacity: 1, y: 0 }}
+   699→                  viewport={{ once: true, margin: "-40px" }}
+   700→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   701→                >
+   702→                  <Link
+   703→                    href={sol.href}
+   704→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   705→                  >
+   706→                    <div className="p-6">
+   707→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   708→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   709→                      </div>
+   710→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   711→                        {sol.title}
+   712→                      </h3>
+   713→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   714→                        {sol.description}
+   715→                      </p>
+   716→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   717→                        {sol.cta}
+   718→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   719→                      </span>
+   720→                    </div>
+   721→                  </Link>
+   722→                </motion.div>
+   723→              );
+   724→            })}
+   725→          </div>
+   726→        </div>
+   727→      </section>
+   728→
+   729→      {/* ============================================================ */}
+   730→      {/* SECTION 7 — Final CTA */}
+   731→      {/* H2: Ready for a Carpet Cleaner Near You? */}
+   732→      {/* ============================================================ */}
+   733→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   734→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   735→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   736→
+   737→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   738→          <motion.div
+   739→            initial={{ opacity: 0, y: 20 }}
+   740→            whileInView={{ opacity: 1, y: 0 }}
+   741→            viewport={{ once: true, margin: "-80px" }}
+   742→            transition={{ duration: 0.5 }}
+   743→          >
+   744→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   745→              Ready to book your local carpet cleaner?
+   746→            </span>
+   747→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   748→              Ready for a Carpet Cleaner Near You?
+   749→            </h2>
+   750→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   751→              Get a fixed-price carpet &amp; rug cleaning quote in 30 seconds. No pushy sales call,
+   752→              no waiting 24 hours for a callback. NCCA &amp; WoolSafe certified technicians, child
+   753→              &amp; pet-safe products, a 100% re-clean guarantee, and a written aftercare card with
+   754→              every visit &mdash; from £18/room. Coverage across 72+ Scottish towns.
+   755→            </p>
+   756→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   757→              <Button
+   758→                size="lg"
+   759→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   760→                asChild
+   761→              >
+   762→                <Link href="/quote">
+   763→                  Get My 30-Second Instant Quote
+   764→                  <ArrowRight className="w-5 h-5" />
+   765→                </Link>
+   766→              </Button>
+   767→              <Button
+   768→                size="lg"
+   769→                variant="outline"
+   770→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   771→                asChild
+   772→              >
+   773→                <a href={contactInfo.phoneHref}>
+   774→                  <Phone className="w-4 h-4" />
+   775→                  Call {contactInfo.phone}
+   776→                </a>
+   777→              </Button>
+   778→            </div>
+   779→          </motion.div>
+   780→        </div>
+   781→      </section>
+   782→
+   783→      {/* ============================================================ */}
+   784→      {/* SECTION 8 — Near-me FAQ */}
+   785→      {/* H2: Frequently Asked Questions */}
+   786→      {/* ============================================================ */}
+   787→      <section className="py-16 lg:py-24 bg-background">
+   788→        <div className="max-w-4xl mx-auto px-6">
+   789→          <motion.div
+   790→            initial={{ opacity: 0, y: 20 }}
+   791→            whileInView={{ opacity: 1, y: 0 }}
+   792→            viewport={{ once: true, margin: "-80px" }}
+   793→            transition={{ duration: 0.5 }}
+   794→            className="text-center mb-12"
+   795→          >
+   796→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   797→              Carpet &amp; rug cleaning near me · FAQ
+   798→            </span>
+   799→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   800→              Frequently Asked Questions
+   801→            </h2>
+   802→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   803→              Straight answers to the questions our local carpet &amp; rug cleaning clients ask most
+   804→              often. Can&rsquo;t find what you need? Call us on{" "}
+   805→              <a
+   806→                href={contactInfo.phoneHref}
+   807→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   808→              >
+   809→                {contactInfo.phone}
+   810→              </a>{" "}
+   811→              and we&rsquo;ll talk it through.
+   812→            </p>
+   813→          </motion.div>
+   814→
+   815→          <div className="space-y-4">
+   816→            {NEAR_ME_FAQS.map((faq, i) => (
+   817→              <motion.div
+   818→                key={faq.q}
+   819→                initial={{ opacity: 0, y: 16 }}
+   820→                whileInView={{ opacity: 1, y: 0 }}
+   821→                viewport={{ once: true, margin: "-40px" }}
+   822→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   823→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   824→              >
+   825→                <details className="group">
+   826→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   827→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   828→                      {faq.q}
+   829→                    </h3>
+   830→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   831→                      <span className="relative w-3.5 h-3.5">
+   832→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   833→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   834→                      </span>
+   835→                    </span>
+   836→                  </summary>
+   837→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   838→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   839→                      {faq.a}
+   840→                    </p>
+   841→                  </div>
+   842→                </details>
+   843→              </motion.div>
+   844→            ))}
+   845→          </div>
+   846→
+   847→          <motion.div
+   848→            initial={{ opacity: 0, y: 16 }}
+   849→            whileInView={{ opacity: 1, y: 0 }}
+   850→            viewport={{ once: true, margin: "-40px" }}
+   851→            transition={{ duration: 0.5, delay: 0.3 }}
+   852→            className="mt-10 text-center"
+   853→          >
+   854→            <Button
+   855→              size="lg"
+   856→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   857→              asChild
+   858→            >
+   859→              <Link href="/quote">
+   860→                Get My 30-Second Instant Quote
+   861→                <ArrowRight className="w-5 h-5" />
+   862→              </Link>
+   863→            </Button>
+   864→          </motion.div>
+   865→        </div>
+   866→      </section>
+   867→    </>
+   868→  );
+   869→}
+   870→

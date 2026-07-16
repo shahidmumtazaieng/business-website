@@ -1,0 +1,1488 @@
+     1→"use client";
+     2→
+     3→import type { ReactNode } from "react";
+     4→import Link from "next/link";
+     5→import { motion } from "framer-motion";
+     6→import {
+     7→  ShieldCheck,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  Hammer,
+    16→  UserCheck,
+    17→  ClipboardCheck,
+    18→  FileText,
+    19→  HeartPulse,
+    20→  Building2,
+    21→  Leaf,
+    22→  KeyRound,
+    23→  Layers,
+    24→  Brush,
+    25→  Home,
+    26→  Gem,
+    27→  Droplets,
+    28→  Wrench,
+    29→} from "lucide-react";
+    30→import { Button } from "@/components/ui/button";
+    31→import { contactInfo } from "@/lib/site-data";
+    32→
+    33→// ============================================================
+    34→// Images - hand-picked from in-house search service
+    35→// (Marble-specific imagery, drawn from the existing marble
+    36→// gallery plus the dedicated marble hero image)
+    37→// ============================================================
+    38→const IMG = {
+    39→  heroWide:
+    40→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    41→  introSplit:
+    42→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    43→  whyCrew:
+    44→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    45→  checklistStrip:
+    46→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    47→  checklistFinish:
+    48→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    49→  checklistDetail:
+    50→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    51→  leaseRecurring:
+    52→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    53→  leaseTenancy:
+    54→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    55→  leaseBuilders:
+    56→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    57→  leaseUpholstery:
+    58→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    59→  nearMeMap:
+    60→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    61→};
+    62→
+    63→// ============================================================
+    64→// 36 Scottish locations covered by the near-me grid
+    65→// (city-centre + neighbourhood coverage across Scotland)
+    66→// ============================================================
+    67→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    68→  { city: "Glasgow", slug: "glasgow" },
+    69→  { city: "Edinburgh", slug: "edinburgh" },
+    70→  { city: "Aberdeen", slug: "aberdeen" },
+    71→  { city: "Dundee", slug: "dundee" },
+    72→  { city: "Stirling", slug: "stirling" },
+    73→  { city: "Inverness", slug: "inverness" },
+    74→  { city: "Perth", slug: "perth" },
+    75→  { city: "Falkirk", slug: "falkirk" },
+    76→  { city: "Paisley", slug: "paisley" },
+    77→  { city: "East Kilbride", slug: "east-kilbride" },
+    78→  { city: "Livingston", slug: "livingston" },
+    79→  { city: "Hamilton", slug: "hamilton" },
+    80→  { city: "Ayr", slug: "ayr" },
+    81→  { city: "Kilmarnock", slug: "kilmarnock" },
+    82→  { city: "Greenock", slug: "greenock" },
+    83→  { city: "Coatbridge", slug: "coatbridge" },
+    84→  { city: "Airdrie", slug: "airdrie" },
+    85→  { city: "Motherwell", slug: "motherwell" },
+    86→  { city: "Wishaw", slug: "wishaw" },
+    87→  { city: "Dunfermline", slug: "dunfermline" },
+    88→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+    89→  { city: "Glenrothes", slug: "glenrothes" },
+    90→  { city: "Dundonald", slug: "dundonald" },
+    91→  { city: "Bearsden", slug: "bearsden" },
+    92→  { city: "Milngavie", slug: "milngavie" },
+    93→  { city: "Bishopbriggs", slug: "bishopbriggs" },
+    94→  { city: "Lenzie", slug: "lenzie" },
+    95→  { city: "Giffnock", slug: "giffnock" },
+    96→  { city: "Newton Mearns", slug: "newton-mearns" },
+    97→  { city: "Clarkston", slug: "clarkston" },
+    98→  { city: "Barrhead", slug: "barrhead" },
+    99→  { city: "Johnstone", slug: "johnstone" },
+   100→  { city: "Renfrew", slug: "renfrew" },
+   101→  { city: "Rutherglen", slug: "rutherglen" },
+   102→  { city: "Cambuslang", slug: "cambuslang" },
+   103→  { city: "Bellshill", slug: "bellshill" },
+   104→];
+   105→
+   106→// ============================================================
+   107→// Section 0 - Full-width hero banner
+   108→// Semantic H1: "Professional Marble Polishing & Stone Restoration Scotland"
+   109→// ============================================================
+   110→
+   111→export function MarblePolishingSeoHeroBanner() {
+   112→  return (
+   113→    <section className="relative overflow-hidden">
+   114→      {/* Full-width background image */}
+   115→      <div className="absolute inset-0">
+   116→        <img
+   117→          src={IMG.heroWide}
+   118→          alt="Maundy Clean marble polishing specialist diamond-grit honing, polishing and restoring a natural stone marble floor to a mirror finish in a Scottish property"
+   119→          className="w-full h-full object-cover"
+   120→          loading="eager"
+   121→          fetchPriority="high"
+   122→        />
+   123→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   124→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   125→      </div>
+   126→
+   127→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   128→        <motion.div
+   129→          initial="hidden"
+   130→          animate="visible"
+   131→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   132→          className="max-w-3xl"
+   133→        >
+   134→          <motion.div
+   135→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   136→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   137→          >
+   138→            <span className="relative flex w-2 h-2">
+   139→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   140→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   141→            </span>
+   142→            Marble Polishing &amp; Stone Restoration &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   143→          </motion.div>
+   144→
+   145→          <motion.h1
+   146→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   147→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   148→          >
+   149→            Professional Marble Polishing &amp; Stone Restoration Scotland
+   150→          </motion.h1>
+   151→
+   152→          <motion.p
+   153→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   154→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   155→          >
+   156→            Restore the Natural Luster, Technical Stone Preservation, and the
+   157→            Maundy Tradition of Excellence for Your Architectural Sanctuary.
+   158→            MaundyClean brings vetted stone specialists, diamond-grit honing,
+   159→            multi-stage mechanical polishing, premium breathable impregnating
+   160→            sealers, commercial crystallisation treatments, advanced poultice
+   161→            stain removal, etch-mark restoration, scratch &amp; chip repair,
+   162→            pH-neutral stone-safe chemistry, heritage-marble protocols, and a
+   163→            &ldquo;speechlessly spotless&rdquo; mirror finish to every natural
+   164→            stone floor we serve &mdash; from Glasgow hotel lobbies and
+   165→            Edinburgh retail flagships to Aberdeen office receptions and
+   166→            Dundee luxury residences.
+   167→          </motion.p>
+   168→
+   169→          <motion.div
+   170→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   171→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   172→          >
+   173→            <Button
+   174→              size="lg"
+   175→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   176→              asChild
+   177→            >
+   178→              <Link href="/quote">
+   179→                Request Your Free Stone Assessment Today
+   180→                <ArrowRight className="w-5 h-5" />
+   181→              </Link>
+   182→            </Button>
+   183→            <Button
+   184→              size="lg"
+   185→              variant="outline"
+   186→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   187→              asChild
+   188→            >
+   189→              <Link href="#checklist">
+   190→                <CheckCircle2 className="w-4 h-4" />
+   191→                View Our Hard Floor Care Checklist
+   192→              </Link>
+   193→            </Button>
+   194→          </motion.div>
+   195→
+   196→          <motion.div
+   197→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   198→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   199→          >
+   200→            <div className="flex items-center gap-1.5">
+   201→              <div className="flex">
+   202→                {[1, 2, 3, 4, 5].map((s) => (
+   203→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   204→                ))}
+   205→              </div>
+   206→              <span className="font-semibold text-white">4.9/5</span>
+   207→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   208→            </div>
+   209→            <div className="flex items-center gap-1.5">
+   210→              <ShieldCheck className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; PVG-Checked
+   211→            </div>
+   212→            <div className="flex items-center gap-1.5">
+   213→              <UserCheck className="w-4 h-4 text-[var(--gold)]" /> Same Trusted Stone Crew Every Visit
+   214→            </div>
+   215→            <div className="flex items-center gap-1.5">
+   216→              <Sparkles className="w-4 h-4 text-[var(--gold)]" /> Diamond-Grit Mirror Finish
+   217→            </div>
+   218→          </motion.div>
+   219→        </motion.div>
+   220→      </div>
+   221→    </section>
+   222→  );
+   223→}
+   224→
+   225→// ============================================================
+   226→// Section 1 - Long-form semantic SEO intro
+   227→// Sits right after the hero, before the existing ServiceOverview.
+   228→// Split-layout with aspect-[4/3] image on the left and the
+   229→// verbatim intro paragraphs on the right. Paragraph 2 contains
+   230→// ONE inline <Link>: /services/recurring-home-cleaning for
+   231→// "Recurring Home Cleaning". The brief gives two intro
+   232→// paragraphs (p1 + p2-with-link).
+   233→// ============================================================
+   234→
+   235→export function MarblePolishingSeoIntro() {
+   236→  return (
+   237→    <section className="py-16 lg:py-24 bg-background">
+   238→      <div className="max-w-[1400px] mx-auto px-6">
+   239→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   240→          {/* Image side */}
+   241→          <motion.div
+   242→            initial={{ opacity: 0, scale: 0.96 }}
+   243→            whileInView={{ opacity: 1, scale: 1 }}
+   244→            viewport={{ once: true, margin: "-80px" }}
+   245→            transition={{ duration: 0.6 }}
+   246→            className="relative order-2 lg:order-1"
+   247→          >
+   248→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   249→              <img
+   250→                src={IMG.introSplit}
+   251→                alt="Maundy Clean marble polishing specialist applying diamond-grit honing and polishing compound to restore a natural stone marble floor in a Scottish property"
+   252→                className="absolute inset-0 w-full h-full object-cover"
+   253→                loading="lazy"
+   254→              />
+   255→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   256→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   257→                <div className="flex items-center gap-2 mb-1">
+   258→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   259→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   260→                    A Motivated Partner, Not an Impersonal Agency
+   261→                  </span>
+   262→                </div>
+   263→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   264→                  The same level of technical intimacy, &ldquo;same-staff&rdquo; consistency, and
+   265→                  &ldquo;sanctuary&rdquo; care we bring to Scotland&rsquo;s finest properties
+   266→                  &mdash; applied to your marble entrances, hotel lobbies, retail flagships,
+   267→                  office receptions, fireplaces, and luxury residential stone.
+   268→                </p>
+   269→              </div>
+   270→            </div>
+   271→            <motion.div
+   272→              animate={{ y: [0, -8, 0] }}
+   273→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   274→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   275→            >
+   276→              <div className="flex items-center gap-2">
+   277→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   278→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   279→                </div>
+   280→                <div>
+   281→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   282→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   283→                </div>
+   284→              </div>
+   285→            </motion.div>
+   286→          </motion.div>
+   287→
+   288→          {/* Copy side */}
+   289→          <motion.div
+   290→            initial={{ opacity: 0, y: 20 }}
+   291→            whileInView={{ opacity: 1, y: 0 }}
+   292→            viewport={{ once: true, margin: "-80px" }}
+   293→            transition={{ duration: 0.5 }}
+   294→            className="order-1 lg:order-2"
+   295→          >
+   296→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   297→              Marble polishing &amp; stone restoration &middot; Scotland
+   298→            </span>
+   299→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   300→              The MaundyClean Standard for Scottish Marble Restoration
+   301→            </h2>
+   302→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   303→              With its striking veining and diverse range of colors, marble
+   304→              adds a touch of timeless elegance to any Scottish residence or
+   305→              commercial space. However, many beautiful marble floors in
+   306→              Glasgow and Edinburgh are over 100 years old and require
+   307→              specialist care to maintain their original splendour. Due to its
+   308→              relatively soft and porous nature, marble is susceptible to
+   309→              etching, staining, and the inevitable dulling caused by
+   310→              city-center foot traffic. At{" "}
+   311→              <strong className="font-semibold text-[var(--ink)]">MaundyClean</strong>,
+   312→              we provide a premium marble polishing service that breathes life
+   313→              and beauty back into your floors, ensuring they remain a
+   314→              centerpiece for generations to come.
+   315→            </p>
+   316→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   317→              While we are the recognized authority in{" "}
+   318→              <Link
+   319→                href="/services/recurring-home-cleaning"
+   320→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   321→              >
+   322→                Recurring Home Cleaning
+   323→              </Link>{" "}
+   324→              for Scotland&rsquo;s most prestigious homes, we bring that same
+   325→              level of technical intimacy and &ldquo;same-staff&rdquo;
+   326→              consistency to the specialized field of natural stone restoration.
+   327→              We act as your strategic partner, utilizing the latest technology
+   328→              and traditional methodologies to provide a &ldquo;speechlessly
+   329→              spotless&rdquo; finish that generic cleaning companies cannot
+   330→              achieve.
+   331→            </p>
+   332→
+   333→            {/* Compact trust strip */}
+   334→            <motion.div
+   335→              initial={{ opacity: 0, y: 16 }}
+   336→              whileInView={{ opacity: 1, y: 0 }}
+   337→              viewport={{ once: true, margin: "-40px" }}
+   338→              transition={{ duration: 0.5, delay: 0.2 }}
+   339→              className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-7"
+   340→            >
+   341→              {[
+   342→                { icon: UserCheck, label: "Same crew every visit" },
+   343→                { icon: Gem, label: "Diamond-grit honing" },
+   344→                { icon: Leaf, label: "pH-neutral stone-safe" },
+   345→                { icon: ShieldCheck, label: "Heritage protocols" },
+   346→              ].map((badge) => {
+   347→                const Icon = badge.icon;
+   348→                return (
+   349→                  <div
+   350→                    key={badge.label}
+   351→                    className="flex items-center gap-2 bg-white rounded-lg p-2.5 border border-[var(--border)]"
+   352→                  >
+   353→                    <Icon className="w-4 h-4 text-[var(--brand)] shrink-0" />
+   354→                    <span className="text-xs font-semibold text-[var(--ink)] leading-tight">
+   355→                      {badge.label}
+   356→                    </span>
+   357→                  </div>
+   358→                );
+   359→              })}
+   360→            </motion.div>
+   361→          </motion.div>
+   362→        </div>
+   363→      </div>
+   364→    </section>
+   365→  );
+   366→}
+   367→
+   368→// ============================================================
+   369→// Section 2 - Why MaundyClean is Scotland's Expert in Marble Maintenance
+   370→// (Semantic H2: "Why MaundyClean is Scotland's Expert in Marble Maintenance")
+   371→// Image+copy split layout with 4 trust pillars.
+   372→// Per the brief: pillars UserCheck / MapPin / FileText / Leaf
+   373→// (icons chosen to reflect the brief's pillar themes: same trusted
+   374→// team every visit / Central Scotland coverage / total regulatory
+   375→// compliance / sustainable & stone-safe products).
+   376→// ALL 4 pillar bodies start with the brief sentence verbatim and
+   377→// are extended with marble-specific prose (no inline Links),
+   378→// but typed as ReactNode for codebase consistency with
+   379→// vct-floor-care-seo.tsx and floor-care-stripping-seo.tsx
+   380→// (which use ReactNode so a pillar can support an inline Link
+   381→// when needed).
+   382→// ============================================================
+   383→
+   384→type TrustCard = {
+   385→  icon: typeof ShieldCheck;
+   386→  title: string;
+   387→  description: ReactNode;
+   388→};
+   389→
+   390→const TRUST_CARDS: TrustCard[] = [
+   391→  {
+   392→    icon: UserCheck,
+   393→    title: "The Same Trusted Team Every Visit",
+   394→    description:
+   395→      "Reliability is built on familiarity. We ensure the same vetted professionals manage your restoration project to build a deep understanding of your floor&rsquo;s history and your specific &ldquo;showcasing&rdquo; requirements. The same PVG-checked stone specialists return every visit &mdash; learning your marble type (Carrara, Calacatta, Statuary, Crema Marfil, Emperador, Nero Marquina, plus travertine, limestone and terrazzo where applicable), your etch-mark pattern (which zones suffer acid spills from perfume, wine, citrus, vinegar), your traffic-flow map (entrance grit zones, lift-lobby scuffing, reception desk foot-traffic), your polish spec (matte, satin, high-gloss mirror), and your inspection regime. When your regular crew is on annual leave, we send a trained backup who has been briefed on your floors &mdash; and we tell you in advance. Never a rotating cast of agency strangers walking a Scottish heritage marble floor.",
+   396→  },
+   397→  {
+   398→    icon: MapPin,
+   399→    title: "Central Scotland Coverage",
+   400→    description:
+   401→      "Our expert team covers all of Central Scotland, including Glasgow, Edinburgh, the Lothians, Lanark, and East Renfrewshire, providing rapid response for both residential and commercial stone needs. From a Glasgow West End Carrara bathroom to an Edinburgh New Town hotel-lobby Crema Marfil, from an Aberdeen granite-belt office reception to a Dundee Waterfront retail flagship, from a Stirling heritage townhouse to a Perth country estate &mdash; the same specialist stone crew, the same diamond-grit honing protocols, the same pH-neutral stone-safe chemistry, the same signed stone-care log after every visit. Same-day emergency callout for spill damage (acid etching, oil staining, chip repair) across the Central Belt &mdash; because a wine spill on a Carrara bathroom floor at 9pm Saturday needs specialist response by 9am Sunday, not a callback on Monday morning.",
+   402→  },
+   403→  {
+   404→    icon: FileText,
+   405→    title: "Total Regulatory Compliance",
+   406→    description:
+   407→      "We take the health of your home and staff seriously. Every restoration project includes a full RAMS package and COSHH sheets as standard, ensuring we meet exceptionally high cleaning criteria. Risk Assessment &amp; Method Statement tailored to your site (occupancy, access, heritage constraints, listed-building consents where required), COSHH datasheets for every chemistry we bring on site (diamond-slurry suppressants, polishing compounds, penetrating sealers, crystallisation agents, poultice carriers), full employer&rsquo;s liability and &pound;5m public liability insurance, PVG-checks on every operative (essential for heritage properties, hotels, retail, and any building where the public is present), and audit-ready documentation for your compliance file. We can name your business on our policy as additional insured &mdash; a common requirement for facilities management contracts, head-lease landlord approvals, and retail-chain compliance.",
+   408→  },
+   409→  {
+   410→    icon: Leaf,
+   411→    title: "Sustainable & Stone-Safe Products",
+   412→    description:
+   413→      "We utilize only certified non-toxic and pH-neutral products. This is CRUCIAL for marble, as acidic substances can cause permanent damage, ensuring a fresh, safe environment for your family and pets. The cardinal rule of marble care: nothing acidic touches the stone. No vinegar, no lemon, no limescale remover, no ammonia, no bleach &mdash; all of these dissolve calcium carbonate and etch the surface within seconds. We use pH-neutral maintenance chemistry (Lithofin Easy-Care, Aqua Mix Concentrated Tile Cleaner), biodegradable diamond-slurry suppressants, low-VOC penetrating sealers (food-safe, child-safe, pet-safe once cured in 24 hours), fragrance-free polish compounds, and water-based crystallisation agents for occupied buildings. The finishes you&rsquo;ve invested in are protected &mdash; and the staff and guests who walk on the floor the morning after are not walking into chemical fumes.",
+   414→  },
+   415→];
+   416→
+   417→export function MarblePolishingSeoWhy() {
+   418→  return (
+   419→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   420→      <div className="max-w-[1400px] mx-auto px-6">
+   421→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   422→          {/* Image side */}
+   423→          <motion.div
+   424→            initial={{ opacity: 0, scale: 0.96 }}
+   425→            whileInView={{ opacity: 1, scale: 1 }}
+   426→            viewport={{ once: true, margin: "-80px" }}
+   427→            transition={{ duration: 0.6 }}
+   428→            className="relative order-2 lg:order-1"
+   429→          >
+   430→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   431→              <img
+   432→                src={IMG.whyCrew}
+   433→                alt="Maundy Clean marble polishing crew &mdash; PVG-checked, uniformed, trained in diamond-grit honing, mechanical polishing, crystallisation, sealing, and stain removal for natural stone marble floors"
+   434→                className="absolute inset-0 w-full h-full object-cover"
+   435→                loading="lazy"
+   436→              />
+   437→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   438→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   439→                <div className="flex items-center gap-2 mb-1">
+   440→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   441→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   442→                    A Motivated Partner, Not an Impersonal Agency
+   443→                  </span>
+   444→                </div>
+   445→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   446→                  Employed, vetted, PVG-checked, uniformed, and trained in
+   447→                  marble-specific protocols &mdash; diamond-grit honing,
+   448→                  multi-stage mechanical polishing, crystallisation, premium
+   449→                  impregnating sealing, etch-mark restoration, scratch &amp;
+   450→                  chip repair, poultice stain removal, and heritage-marble
+   451→                  methodologies. Same crew every visit &mdash; never a
+   452→                  rotating cast of agency strangers walking a Scottish
+   453→                  heritage marble floor.
+   454→                </p>
+   455→              </div>
+   456→            </div>
+   457→            <motion.div
+   458→              animate={{ y: [0, -8, 0] }}
+   459→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   460→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   461→            >
+   462→              <div className="flex items-center gap-2">
+   463→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   464→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   465→                </div>
+   466→                <div>
+   467→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   468→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   469→                </div>
+   470→              </div>
+   471→            </motion.div>
+   472→          </motion.div>
+   473→
+   474→          {/* Copy side */}
+   475→          <motion.div
+   476→            initial={{ opacity: 0, y: 20 }}
+   477→            whileInView={{ opacity: 1, y: 0 }}
+   478→            viewport={{ once: true, margin: "-80px" }}
+   479→            transition={{ duration: 0.5 }}
+   480→            className="order-1 lg:order-2"
+   481→          >
+   482→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   483→              Why choose Maundy Clean for marble
+   484→            </span>
+   485→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   486→              Why MaundyClean is Scotland&rsquo;s Expert in Marble Maintenance
+   487→            </h2>
+   488→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   489→              Many contractors offer a basic &ldquo;wash and wax&rdquo; that can
+   490→              actually trap dirt and lead to yellowing. MaundyClean addresses
+   491→              these exploitable weaknesses through vocational training and
+   492→              specialized stone technicality. Our stone crews carry the
+   493→              diamond-grit honing kit, the pH-neutral chemistry, and the
+   494→              heritage-marble protocols standard mopping cannot match
+   495→              &mdash; and the same vetted team returns every visit to build the
+   496→              deep familiarity your stone deserves.
+   497→            </p>
+   498→
+   499→            <div className="space-y-3">
+   500→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   501→                const Icon = card.icon;
+   502→                return (
+   503→                  <div
+   504→                    key={card.title}
+   505→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   506→                  >
+   507→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   508→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   509→                    </div>
+   510→                    <div>
+   511→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   512→                        {card.title}
+   513→                      </h3>
+   514→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   515→                        {typeof card.description === "string" ? (
+   516→                          <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   517→                        ) : (
+   518→                          card.description
+   519→                        )}
+   520→                      </p>
+   521→                    </div>
+   522→                  </div>
+   523→                );
+   524→              })}
+   525→            </div>
+   526→          </motion.div>
+   527→        </div>
+   528→
+   529→        <div className="grid md:grid-cols-2 gap-6">
+   530→          {TRUST_CARDS.slice(2).map((card, i) => {
+   531→            const Icon = card.icon;
+   532→            return (
+   533→              <motion.div
+   534→                key={card.title}
+   535→                initial={{ opacity: 0, y: 24 }}
+   536→                whileInView={{ opacity: 1, y: 0 }}
+   537→                viewport={{ once: true, margin: "-40px" }}
+   538→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   539→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   540→              >
+   541→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   542→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   543→                </div>
+   544→                <div>
+   545→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   546→                    {card.title}
+   547→                  </h3>
+   548→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   549→                    {typeof card.description === "string" ? (
+   550→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   551→                    ) : (
+   552→                      card.description
+   553→                    )}
+   554→                  </p>
+   555→                </div>
+   556→              </motion.div>
+   557→            );
+   558→          })}
+   559→        </div>
+   560→      </div>
+   561→    </section>
+   562→  );
+   563→}
+   564→
+   565→// ============================================================
+   566→// Section 3 - Addressing the 4 Killers of Stone Brilliance
+   567→// (Semantic H2: "Addressing the 4 Killers of Stone Brilliance")
+   568→// Brief-specific section with 4 problem-solution cards:
+   569→//   1. Etching Restoration (diamond-pad honing)
+   570→//   2. Advanced Stain Removal (poultice)
+   571→//   3. Luster Restoration (multi-stage polishing)
+   572→//   4. Scratch & Chip Repair (marble fireplace repair, tile restoration)
+   573→// Icons: Droplets (etching), HeartPulse (stain), Sparkles (lustre),
+   574→// Wrench (scratch/chip repair).
+   575→// All 4 bodies start with the brief sentence verbatim and are
+   576→// extended with marble-specific prose. Plain strings typed as
+   577→// ReactNode via the KillerCard.body field for codebase consistency.
+   578→// ============================================================
+   579→
+   580→type KillerCard = {
+   581→  icon: typeof ShieldCheck;
+   582→  title: string;
+   583→  body: ReactNode;
+   584→};
+   585→
+   586→const KILLER_CARDS: KillerCard[] = [
+   587→  {
+   588→    icon: Droplets,
+   589→    title: "Etching Restoration",
+   590→    body:
+   591→      "We remove dull spots and rings caused by acidic substances like lemon juice or vinegar through professional diamond-pad honing. Etch marks are not stains &mdash; they are physical damage to the marble surface where the acid has dissolved the calcium carbonate, leaving a dull, lighter-coloured patch that no cleaner can lift. The only fix is mechanical: we diamond-hone the etched zone with a 200- or 400-grit pad to remove the damaged layer, then progressively re-polish through 800, 1500, 3000 and 5000 grit until the patch matches the surrounding floor. Done well, the repair is invisible. We have restored Glasgow West End Carrara bathroom floors where other firms said replacement was the only option &mdash; every etch mark, every perfume drip, every citrus splash, gone.",
+   592→  },
+   593→  {
+   594→    icon: HeartPulse,
+   595→    title: "Advanced Stain Removal",
+   596→    body:
+   597→      "Because marble is prone to absorbing liquids, we use specialized poultice to extract discolored areas caused by wine, coffee, and oil-based substances. A poultice is a paste of absorbent clay (typically kaolin or diatomaceous earth) mixed with the correct chemistry for the stain type &mdash; hydrogen peroxide for organic stains (wine, coffee, tea), solvent-based poultice for oil-based stains (cooking oil, hand cream, cosmetics), rust remover for iron-bearing stains (metal-flower-pot rings, hair-dye stains). The poultice is applied 6-12mm thick, covered with plastic film, left for 24-48 hours, then lifted. As it dries, it draws the stain out of the marble from below the surface. Multiple treatments may be required for deep stains &mdash; we tell you in advance if a stain is unlikely to fully lift before we start.",
+   598→  },
+   599→  {
+   600→    icon: Sparkles,
+   601→    title: "Luster Restoration",
+   602→    body:
+   603→      "Over time, improper cleaning and foot traffic cause stone to lose its shine. We use a multi-stage polishing process to restore its natural luster and original splendour. The process is mechanical &mdash; no chemical can restore a polish that has been walked off. We start with the coarsest diamond grit needed (typically 200-grit for moderate dullness, 400-grit for routine maintenance), then progress through 800, 1500, 3000 and 5000 grit &mdash; each pass finer than the last, removing the scratches from the previous grit. The final polish uses a 5000-grit buffing pad with a marble polishing compound (tin oxide or aluminium oxide) that melts into the surface at the molecular level, filling micro-scratches and producing the mirror finish. Light reflects cleanly off the surface &mdash; the showroom-quality finish that signals luxury in hotel lobbies, retail flagships, and luxury homes.",
+   604→  },
+   605→  {
+   606→    icon: Wrench,
+   607→    title: "Scratch & Chip Repair",
+   608→    body:
+   609→      "Everyday wear and tear lead to visible scratches. We provide comprehensive repair services for natural stone, including marble fireplace repair and tile restoration. Light scratches (caught with a fingernail but not deep) are removed by localised diamond honing and re-polishing of the affected tile or zone. Deeper scratches (felt easily with a fingernail) require a wider hone-out to feather the repair into the surrounding floor &mdash; we blend across 3-5 tiles rather than one to avoid a visible dip. Chip repair uses a colour-matched stone resin, hand-filled, cured, then diamond-honed flush with the surrounding surface. Fireplace repair (where heat-cracking has split a marble surround) uses the same resin-bonding technique plus a colour-matched filler. Tile restoration where a tile has cracked through &mdash; we can replace a single tile and re-polish to match the surrounding floor, avoiding a full floor replacement.",
+   610→  },
+   611→];
+   612→
+   613→export function MarblePolishingSeoKillers() {
+   614→  return (
+   615→    <section className="py-16 lg:py-24 bg-background">
+   616→      <div className="max-w-[1400px] mx-auto px-6">
+   617→        <motion.div
+   618→          initial={{ opacity: 0, y: 20 }}
+   619→          whileInView={{ opacity: 1, y: 0 }}
+   620→          viewport={{ once: true, margin: "-80px" }}
+   621→          transition={{ duration: 0.5 }}
+   622→          className="max-w-3xl mb-12"
+   623→        >
+   624→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   625→            Beyond the surface shine
+   626→          </span>
+   627→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   628→            Addressing the 4 Killers of Stone Brilliance
+   629→          </h2>
+   630→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   631→            Our marble polishing protocol is designed to address the specific
+   632→            challenges that cause stone surfaces to appear lackluster and worn.
+   633→            Each of the four killers below requires a different specialist
+   634→            response &mdash; there is no &ldquo;one polish fixes all&rdquo;
+   635→            approach to natural stone. MaundyClean carries the diamond-grit
+   636→            kit, the poultice chemistry, the resin-bonding compounds, and the
+   637→            trained eye to diagnose which killer has struck your floor and
+   638→            deploy the correct response.
+   639→          </p>
+   640→        </motion.div>
+   641→
+   642→        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   643→          {KILLER_CARDS.map((card, i) => {
+   644→            const Icon = card.icon;
+   645→            return (
+   646→              <motion.div
+   647→                key={card.title}
+   648→                initial={{ opacity: 0, y: 24 }}
+   649→                whileInView={{ opacity: 1, y: 0 }}
+   650→                viewport={{ once: true, margin: "-40px" }}
+   651→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   652→                className="bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm flex flex-col sm:flex-row items-start gap-5"
+   653→              >
+   654→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   655→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   656→                </div>
+   657→                <div>
+   658→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   659→                    {card.title}
+   660→                  </h3>
+   661→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   662→                    {typeof card.body === "string" ? (
+   663→                      <span dangerouslySetInnerHTML={{ __html: card.body }} />
+   664→                    ) : (
+   665→                      card.body
+   666→                    )}
+   667→                  </p>
+   668→                </div>
+   669→              </motion.div>
+   670→            );
+   671→          })}
+   672→        </div>
+   673→      </div>
+   674→    </section>
+   675→  );
+   676→}
+   677→
+   678→// ============================================================
+   679→// Section 4 - Our Total Marble Polishing & Preservation Checklist
+   680→// (Semantic H3: "Our Total Marble Polishing & Preservation Checklist")
+   681→// Brief-specific section with H3 main heading (per brief [H3] marker)
+   682→// and 5 flat checklist items (no grouped sub-cards).
+   683→// Carries the id="checklist" anchor that the CTA buttons link to.
+   684→// Per the brief: NO card-grouped layout &mdash; 5 items in a single
+   685→// 3-column grid with icon, title, and explanatory body. ALL item
+   686→// bodies are plain strings per the brief (no inline Links), but
+   687→// typed as ReactNode (via ChecklistPoint.text) for codebase
+   688→// consistency.
+   689→// ============================================================
+   690→
+   691→type ChecklistPoint = {
+   692→  icon: typeof Building2;
+   693→  title: string;
+   694→  text: ReactNode;
+   695→};
+   696→
+   697→const CHECKLIST_ITEMS: ChecklistPoint[] = [
+   698→  {
+   699→    icon: Gem,
+   700→    title: "Diamond Abrasive Honing",
+   701→    text:
+   702→      "Removing the top layer of damage to reach fresh, unblemished stone. Weighted rotary machine with progressive diamond-grit pads &mdash; we start at the coarsest grit needed (typically 50- or 100-grit for deep scratches and etch marks, 200-grit for moderate dullness, 400-grit for routine maintenance), then progress through 800, 1500, 3000 and 5000 grit. Each pass finer than the last, removing the scratches from the previous grit. Slurry (water + marble dust) extracted continuously with a wet-vac, floor rinsed between grits, area divided into 4-6m&sup2; sections for even coverage. Process takes 6-12 hours per 20m&sup2; depending on damage severity. The technical reset your marble needs &mdash; not a &ldquo;top-up polish&rdquo; that leaves the underlying damage intact.",
+   703→  },
+   704→  {
+   705→    icon: Sparkles,
+   706→    title: "High-Gloss Mechanical Polishing",
+   707→    text:
+   708→      "Utilizing industrial-grade machinery to achieve the desired level of shine, from matte to a high-mirror finish. The final polish uses a 5000-grit buffing pad with a marble polishing compound (tin oxide or aluminium oxide) that melts into the marble surface at the molecular level, filling micro-scratches and producing the mirror finish. For commercial floors (hotel lobbies, retail flagships, office receptions), we then apply a crystallisation treatment &mdash; a magnesium fluorosilicate compound that chemically hardens the surface and intensifies the polish, creating a micro-layer of calcium fluorosilicate that is harder and more wear-resistant than the underlying marble. The depth of shine is your choice: matte (low-maintenance, residential), satin (warm, hospitality), high-gloss mirror (luxury, showcase).",
+   709→  },
+   710→  {
+   711→    icon: ShieldCheck,
+   712→    title: "Technical Sealing",
+   713→    text:
+   714→      "Applying premium, breathable impregnating sealers to protect against future staining. The sealer is the foundation of long-term marble care &mdash; it penetrates below the surface, bonds with the calcium carbonate, and blocks moisture and stain pathways from inside the stone. Premium-grade impregnating sealer applied in 1-2 thin coats (not thick &mdash; thick sealer pools on the surface, cures cloudy, and has to be stripped), each coat dried 20-30 minutes before the next. Breathable formulation (essential &mdash; non-breathable sealers trap moisture vapour from the sub-floor and cause the marble to spall). Food-safe, child-safe, pet-safe once cured in 24 hours. The right sealer for the right environment: standard impregnating sealer for general residential, commercial-grade fluoropolymer sealer for high-traffic commercial, slip-resistant sealer additive for wet zones (bathrooms, entrance lobbies).",
+   715→  },
+   716→  {
+   717→    icon: Brush,
+   718→    title: "Often-Missed Details",
+   719→    text:
+   720→      "Our technicians meticulously wipe visible skirting boards and door frames to ensure no polishing residue remains. Diamond-slurry splashes 10-20cm up the skirting during the rotary machine work &mdash; if left, it dries to a chalky alkaline residue that discolours paint and damages varnish. We hand-wipe every linear metre of skirting with a pH-neutral-dampened microfibre cloth, then dry-buff to a clean finish. Door frames, architraves, radiator backs, and pipework collars get the same treatment. The perimeter work that separates a &ldquo;floor polish&rdquo; from a &ldquo;stone reset&rdquo; &mdash; and the work your facilities manager, interior designer, or heritage officer will inspect first on the snagging walk.",
+   721→  },
+   722→  {
+   723→    icon: FileText,
+   724→    title: "Inside Window Care",
+   725→    text:
+   726→      "Cleaning internal glass to maximize natural light and enhance the reflective beauty of your restored floors. The mirror finish of a freshly polished marble floor is wasted if the internal glass partitions, low-level internal glazing, and glass balustrades are smeared &mdash; the floor reflects the smears, not the light. We squeegee internal glass partitions, low-level internal glazing, and glass balustrades with a non-streak glass cleaner. Frame tracks vacuumed. Handles and push-plates sanitised. Window reveals (the plaster returns around the window) wiped down. The finishing touch that makes the floor look as good as it is &mdash; and the touch most contractors skip because it&rsquo;s &ldquo;not in the brief&rdquo;. At MaundyClean, it&rsquo;s in every brief.",
+   727→  },
+   728→];
+   729→
+   730→export function MarblePolishingSeoChecklist() {
+   731→  return (
+   732→    <section id="checklist" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   733→      <div className="max-w-[1400px] mx-auto px-6">
+   734→        <motion.div
+   735→          initial={{ opacity: 0, y: 20 }}
+   736→          whileInView={{ opacity: 1, y: 0 }}
+   737→          viewport={{ once: true, margin: "-80px" }}
+   738→          transition={{ duration: 0.5 }}
+   739→          className="max-w-3xl mb-12"
+   740→        >
+   741→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   742→            Beyond the standard mop
+   743→          </span>
+   744→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   745→            Our Total Marble Polishing &amp; Preservation Checklist
+   746→          </h3>
+   747→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   748→            Our deep cleaning services for stone follow a rigorous,
+   749→            agency-approved checklist designed to protect your architectural
+   750→            investment. From diamond abrasive honing through high-gloss
+   751→            mechanical polishing, premium impregnating sealing, perimeter
+   752→            detail work, and internal glass care &mdash; below is the scope we
+   753→            deliver as standard, regardless of marble type, footprint, or
+   754→            occupancy schedule.
+   755→          </p>
+   756→        </motion.div>
+   757→
+   758→        <div className="grid lg:grid-cols-3 gap-6">
+   759→          {CHECKLIST_ITEMS.map((item, i) => {
+   760→            const Icon = item.icon;
+   761→            return (
+   762→              <motion.div
+   763→                key={item.title}
+   764→                initial={{ opacity: 0, y: 24 }}
+   765→                whileInView={{ opacity: 1, y: 0 }}
+   766→                viewport={{ once: true, margin: "-40px" }}
+   767→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   768→                className="bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm flex flex-col"
+   769→              >
+   770→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0 mb-4">
+   771→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   772→                </div>
+   773→                <h4 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   774→                  {item.title}
+   775→                </h4>
+   776→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   777→                  {typeof item.text === "string" ? (
+   778→                    <span dangerouslySetInnerHTML={{ __html: item.text }} />
+   779→                  ) : (
+   780→                    item.text
+   781→                  )}
+   782→                </p>
+   783→              </motion.div>
+   784→            );
+   785→          })}
+   786→        </div>
+   787→      </div>
+   788→    </section>
+   789→  );
+   790→}
+   791→
+   792→// ============================================================
+   793→// Section 5 - 3-Step "Hassle-Free" Booking Process
+   794→// (Semantic H2: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   795→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   796→// (FileText imported for safety/template parity even if not used.)
+   797→// Brief HAS NO [H3] marker on this heading, so we use <h2>
+   798→// (matches the VCT pattern when no [H3] marker is present).
+   799→// ============================================================
+   800→
+   801→const BOOKING_STEPS = [
+   802→  {
+   803→    icon: ClipboardCheck,
+   804→    step: "01",
+   805→    title: "Site Survey & Stone Analysis",
+   806→    description:
+   807→      "Contact us for a free site survey. We will assess the condition of your marble and develop a bespoke restoration plan &mdash; the more detail we have, the better the result. On-site stone audit: every marble zone mapped (entrances, hotel lobbies, retail flagships, office receptions, bathrooms, fireplaces, feature walls, staircases), marble type identified (Carrara, Calacatta, Statuary, Crema Marfil, Emperador, Nero Marquina, travertine, limestone, terrazzo), existing damage assessed (etch marks, staining, scratching, chipping, dullness level, sealer integrity), gloss meter reading taken (60-degree GU). Honest advice on expected results &mdash; deep scratches may not fully remove without dipping the floor below level. Polish type and seal type recommended per zone per traffic pattern. Restoration schedule designed (annual polish for high-traffic, biennial for medium, 5-10 year re-seal, annual crystallisation for commercial). Priced per m&sup2; per protocol. Itemised proposal within 2 business days.",
+   808→  },
+   809→  {
+   810→    icon: UserCheck,
+   811→    step: "02",
+   812→    title: "Professional Matching",
+   813→    description:
+   814→      "We hand-pick a team of trained technicians with the necessary certifications to handle natural stone restoration. Your allocated marble crew is PVG-checked, uniformed, and trained in marble-specific protocols &mdash; diamond-grit honing, multi-stage mechanical polishing, crystallisation, premium impregnating sealing, etch-mark restoration, scratch &amp; chip repair, poultice stain removal, and heritage-marble methodologies. We brief the crew on your stone audit (marble type, damage map, polish spec, sealer spec), your access window (in-hours presence, after-hours unsupervised, key-safes and alarm codes), your occupancy constraints (occupied property section-by-section work, heritage property listed-building consents), your premium finishes (fireplace surrounds, feature walls, balustrades), and any operational constraints on chemistry or method. The same crew returns every visit, building real knowledge of your floors and your inspection regime.",
+   815→  },
+   816→  {
+   817→    icon: Sparkles,
+   818→    step: "03",
+   819→    title: "Enjoy a Pristine Foundation",
+   820→    description:
+   821→      "Experience a floor that feels fresh, safe, and professional, backed by our MaundyClean satisfaction guarantee. You receive a signed stone-care log after every visit (crew name, time in/out, areas treated, diamond grits used, polishing compound, sealer batch, gloss meter reading before/after, and any issues flagged), arrival and departure times, before-and-after photographs for major restoration work, and issue-flagging for low-gloss zones, scratch patterns, etch-mark recurrence, or stain build-up &mdash; before they undermine a client visit, an environmental health inspection, or a guest impression. From &pound;35 per m&sup2; for quarterly maintenance polish through to &pound;75 per m&sup2; for full restoration with 200-grit progressive hone, etch-mark treatment, and re-seal. POA for deep restoration with 50-grit hone and commercial crystallisation. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   822→  },
+   823→];
+   824→
+   825→export function MarblePolishingSeoBooking() {
+   826→  return (
+   827→    <section className="py-16 lg:py-24 bg-background">
+   828→      <div className="max-w-[1400px] mx-auto px-6">
+   829→        <motion.div
+   830→          initial={{ opacity: 0, y: 20 }}
+   831→          whileInView={{ opacity: 1, y: 0 }}
+   832→          viewport={{ once: true, margin: "-80px" }}
+   833→          transition={{ duration: 0.5 }}
+   834→          className="text-center mb-14"
+   835→        >
+   836→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   837→            Hassle-free booking
+   838→          </span>
+   839→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   840→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   841→          </h2>
+   842→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   843→            We have optimized our booking experience to be uncomplicated and
+   844→            straightforward, providing the responsive expertise Scottish
+   845→            property owners, facilities managers, and hotel operations teams
+   846→            demand. From free site survey and stone analysis through
+   847→            specialist crew matching to a pristine foundation &mdash; no
+   848→            friction, no waiting, no surprises. Just a restored marble floor,
+   849→            every entrance, every lobby, every fireplace, and a compliance
+   850→            file that&rsquo;s audit-ready the day a heritage officer, insurer,
+   851→            or operations director walks in.
+   852→          </p>
+   853→        </motion.div>
+   854→
+   855→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   856→          {/* Connector line */}
+   857→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   858→
+   859→          {BOOKING_STEPS.map((step, i) => {
+   860→            const Icon = step.icon;
+   861→            return (
+   862→              <motion.div
+   863→                key={step.step}
+   864→                initial={{ opacity: 0, y: 24 }}
+   865→                whileInView={{ opacity: 1, y: 0 }}
+   866→                viewport={{ once: true, margin: "-40px" }}
+   867→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   868→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   869→              >
+   870→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   871→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   872→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   873→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   874→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   875→                    {step.step}
+   876→                  </span>
+   877→                </div>
+   878→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   879→                  {step.title}
+   880→                </h3>
+   881→                <p
+   882→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   883→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   884→                />
+   885→              </motion.div>
+   886→            );
+   887→          })}
+   888→        </div>
+   889→
+   890→        <motion.div
+   891→          initial={{ opacity: 0, y: 16 }}
+   892→          whileInView={{ opacity: 1, y: 0 }}
+   893→          viewport={{ once: true }}
+   894→          transition={{ duration: 0.5, delay: 0.3 }}
+   895→          className="text-center mt-10"
+   896→        >
+   897→          <Button
+   898→            size="lg"
+   899→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   900→            asChild
+   901→          >
+   902→            <Link href="/quote">
+   903→              Request Your Free Stone Assessment Today
+   904→              <ArrowRight className="w-5 h-5" />
+   905→            </Link>
+   906→          </Button>
+   907→        </motion.div>
+   908→      </div>
+   909→    </section>
+   910→  );
+   911→}
+   912→
+   913→// ============================================================
+   914→// Section 6 - Solutions for Every Property Milestone
+   915→// (Semantic H2: "Solutions for Every Property Milestone")
+   916→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   917→// Image-topped cards with internal links to specialist services.
+   918→// All 4 card descriptions are ReactNode values (each contains an
+   919→// inline <Link> per the brief) - rendered via the
+   920→// typeof sol.description === "string" check.
+   921→// Card 4 (Total Surface Care) has TWO inline <Link>s per the brief
+   922→// ("Ask about our [Upholstery Cleaning] or [Terrazzo Restoration]").
+   923→// ============================================================
+   924→
+   925→type InterlinkSolution = {
+   926→  icon: typeof Sparkles;
+   927→  title: string;
+   928→  href: string;
+   929→  image: string;
+   930→  imageAlt: string;
+   931→  description: ReactNode;
+   932→  cta: string;
+   933→};
+   934→
+   935→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   936→  {
+   937→    icon: Home,
+   938→    title: "The Sanctuary Standard",
+   939→    href: "/services/recurring-home-cleaning",
+   940→    image: IMG.leaseRecurring,
+   941→    imageAlt:
+   942→      "Recurring home cleaning bringing marble-care standards of meticulous pH-neutral maintenance to a Scottish private residence on a weekly or fortnightly basis",
+   943→    description: (
+   944→      <>
+   945→        Maintain your newly polished marble with our{" "}
+   946→        <Link
+   947→          href="/services/recurring-home-cleaning"
+   948→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   949→        >
+   950→          Recurring Home Cleaning
+   951→        </Link>{" "}
+   952→        service, customized to ensure the correct non-acidic products are used
+   953→        weekly. The same vetted uniformed crew, the same pH-neutral stone-safe
+   954→        chemistry, the same signed cleaning log after every visit &mdash; so
+   955→        the mirror finish you saw on day one is still mirror-finish on day
+   956→        three-hundred-and-sixty-four.
+   957→      </>
+   958→    ),
+   959→    cta: "Explore recurring home cleaning",
+   960→  },
+   961→  {
+   962→    icon: KeyRound,
+   963→    title: "Property Transitions",
+   964→    href: "/services/move-in-out-cleaning",
+   965→    image: IMG.leaseTenancy,
+   966→    imageAlt:
+   967→      "End of tenancy handover clean including marble floor reset for a Scottish commercial or residential unit being vacated",
+   968→    description: (
+   969→      <>
+   970→        Moving into a home with tired stone? Our{" "}
+   971→        <Link
+   972→          href="/services/move-in-out-cleaning"
+   973→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   974→        >
+   975→          End of Tenancy Cleaning
+   976→        </Link>{" "}
+   977→        protocol includes hard floor resets to ensure properties are
+   978→        front-line ready. Every surface detailed top-to-bottom, deposit-back
+   979→        guarantees met, and the same trusted vetted crew your marble care
+   980→        team knows &mdash; so your unit handover starts from a
+   981→        &ldquo;speechlessly spotless&rdquo; baseline.
+   982→      </>
+   983→    ),
+   984→    cta: "Explore end of tenancy cleaning",
+   985→  },
+   986→  {
+   987→    icon: Hammer,
+   988→    title: "Post-Renovation",
+   989→    href: "/services/post-construction-cleaning",
+   990→    image: IMG.leaseBuilders,
+   991→    imageAlt:
+   992→      "After builders clean removing heavy layers of builders dust and plaster from newly laid or restored marble floors in a Scottish post-construction site",
+   993→    description: (
+   994→      <>
+   995→        If your home has undergone improvements, our{" "}
+   996→        <Link
+   997→          href="/services/post-construction-cleaning"
+   998→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   999→        >
+  1000→          After Builders Clean
+  1001→        </Link>{" "}
+  1002→        is designed to remove heavy layers of builders&rsquo; dust and plaster
+  1003→        from your delicate stone surfaces. Fine dust left on a freshly polished
+  1004→        marble floor acts like sandpaper under foot traffic &mdash; we vacuum,
+  1005→        damp-wipe, and protect the finish before the dust causes permanent
+  1006→        micro-scratches.
+  1007→      </>
+  1008→    ),
+  1009→    cta: "Explore after builders cleaning",
+  1010→  },
+  1011→  {
+  1012→    icon: HeartPulse,
+  1013→    title: "Total Surface Care",
+  1014→    href: "/services/upholstery-cleaning",
+  1015→    image: IMG.leaseUpholstery,
+  1016→    imageAlt:
+  1017→      "Upholstery cleaning and tile & grout restoration refreshing soft furnishings and adjacent hard surfaces alongside a newly restored marble floor in a Scottish commercial space",
+  1018→    description: (
+  1019→      <>
+  1020→        Ask about our{" "}
+  1021→        <Link
+  1022→          href="/services/upholstery-cleaning"
+  1023→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+  1024→        >
+  1025→          Upholstery Cleaning
+  1026→        </Link>{" "}
+  1027→        or{" "}
+  1028→        <Link
+  1029→          href="/services/tile-grout-cleaning"
+  1030→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+  1031→        >
+  1032→          Terrazzo Restoration
+  1033→        </Link>{" "}
+  1034→        to refresh your entire interior environment. Stain-specific chemistry
+  1035→        for fabric, leather, and microfibre suites, hot-water extraction for
+  1036→        deep soil, terrazzo and natural-stone tile restoration with the same
+  1037→        diamond-grit methodology &mdash; and the same &ldquo;Maundy&rdquo;
+  1038→        standard applied to every fibre, cushion, and adjacent hard surface.
+  1039→      </>
+  1040→    ),
+  1041→    cta: "Explore upholstery & terrazzo care",
+  1042→  },
+  1043→];
+  1044→
+  1045→export function MarblePolishingSeoInterlinking() {
+  1046→  return (
+  1047→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+  1048→      <div className="max-w-[1400px] mx-auto px-6">
+  1049→        <motion.div
+  1050→          initial={{ opacity: 0, y: 20 }}
+  1051→          whileInView={{ opacity: 1, y: 0 }}
+  1052→          viewport={{ once: true, margin: "-80px" }}
+  1053→          transition={{ duration: 0.5 }}
+  1054→          className="max-w-3xl mb-12"
+  1055→        >
+  1056→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1057→            Beyond the marble &middot; property lifecycle
+  1058→          </span>
+  1059→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1060→            Solutions for Every Property Milestone
+  1061→          </h2>
+  1062→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+  1063→            Our stone restoration provides the heartbeat of your property&rsquo;s
+  1064→            preservation, but we offer specialized resets for major milestones:
+  1065→            from recurring home cleaning that maintains your sanctuary standard
+  1066→            through end-of-tenancy handovers and post-renovation dust
+  1067→            clear-outs to upholstery and adjacent surface refreshes that
+  1068→            complete the picture. The same trusted, vetted crew can step up
+  1069→            whenever your property needs more than a standard marble care
+  1070→            visit.
+  1071→          </p>
+  1072→        </motion.div>
+  1073→
+  1074→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  1075→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+  1076→            const Icon = sol.icon;
+  1077→            return (
+  1078→              <motion.div
+  1079→                key={sol.title}
+  1080→                initial={{ opacity: 0, y: 24 }}
+  1081→                whileInView={{ opacity: 1, y: 0 }}
+  1082→                viewport={{ once: true, margin: "-40px" }}
+  1083→                transition={{ duration: 0.5, delay: i * 0.1 }}
+  1084→              >
+  1085→                <Link
+  1086→                  href={sol.href}
+  1087→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+  1088→                >
+  1089→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+  1090→                    <img
+  1091→                      src={sol.image}
+  1092→                      alt={sol.imageAlt}
+  1093→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+  1094→                      loading="lazy"
+  1095→                    />
+  1096→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+  1097→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+  1098→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+  1099→                    </div>
+  1100→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+  1101→                      {sol.title}
+  1102→                    </h3>
+  1103→                  </div>
+  1104→                  <div className="p-5">
+  1105→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+  1106→                      {typeof sol.description === "string" ? (
+  1107→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+  1108→                      ) : (
+  1109→                        sol.description
+  1110→                      )}
+  1111→                    </p>
+  1112→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+  1113→                      {sol.cta}
+  1114→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  1115→                    </span>
+  1116→                  </div>
+  1117→                </Link>
+  1118→              </motion.div>
+  1119→            );
+  1120→          })}
+  1121→        </div>
+  1122→      </div>
+  1123→    </section>
+  1124→  );
+  1125→}
+  1126→
+  1127→// ============================================================
+  1128→// Section 7 - "Near Me" Location Internal Links
+  1129→// (Semantic H2: "Marble Polishing Near Me in Scotland")
+  1130→// Split layout with map image + 36-location grid.
+  1131→// The "Browse the near-me directory" button links to
+  1132→// /services/marble-polishing-near-me#locations
+  1133→// (WITH the #locations anchor) per the brief bug-warning —
+  1134→// yields 37 anchored near-me links on the main page.
+  1135→// ============================================================
+  1136→
+  1137→export function MarblePolishingSeoNearMe() {
+  1138→  return (
+  1139→    <section className="py-16 lg:py-24 bg-background">
+  1140→      <div className="max-w-[1400px] mx-auto px-6">
+  1141→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+  1142→          {/* Left: copy + map image */}
+  1143→          <motion.div
+  1144→            initial={{ opacity: 0, y: 20 }}
+  1145→            whileInView={{ opacity: 1, y: 0 }}
+  1146→            viewport={{ once: true, margin: "-80px" }}
+  1147→            transition={{ duration: 0.5 }}
+  1148→          >
+  1149→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1150→              Local marble polishing &amp; stone restoration across Scotland
+  1151→            </span>
+  1152→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1153→              Marble Polishing Near Me in Scotland
+  1154→            </h2>
+  1155→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+  1156→              Searching for &ldquo;marble polishing near me&rdquo; or
+  1157→              &ldquo;marble restoration near me&rdquo; in Scotland? Maundy
+  1158→              Clean covers hotel general managers, facilities managers, retail
+  1159→              operations leads, heritage officers, interior designers, and
+  1160→              luxury-home owners across the Central Belt, Highlands, Borders,
+  1161→              and Islands &mdash; from Glasgow&rsquo;s IFSD corporate towers
+  1162→              and Edinburgh&rsquo;s New Town townhouses to Aberdeen&rsquo;s
+  1163→              granite-built West End and Dundee&rsquo;s Waterfront, plus
+  1164→              heritage estates in Stirling, Perth, Inverness, and Ayr. Same
+  1165→              PVG-checked, uniformed stone specialists, same dedicated crew
+  1166→              every visit, same rapid response to etch-mark emergencies and
+  1167→              spill damage &mdash; wherever your property happens to be. Find
+  1168→              your local marble polishing specialist below.
+  1169→            </p>
+  1170→
+  1171→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+  1172→              <img
+  1173→                src={IMG.nearMeMap}
+  1174→                alt="Map of Scotland showing Maundy Clean marble polishing &amp; stone restoration coverage areas"
+  1175→                className="absolute inset-0 w-full h-full object-cover"
+  1176→                loading="lazy"
+  1177→              />
+  1178→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+  1179→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+  1180→                <div className="flex items-center gap-2 mb-1">
+  1181→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+  1182→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+  1183→                    72+ Scottish towns covered
+  1184→                  </span>
+  1185→                </div>
+  1186→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1187→                  Same PVG-checked marble polishing crews, same 100% satisfaction guarantee &mdash; from
+  1188→                  Glasgow to Inverness.
+  1189→                </p>
+  1190→              </div>
+  1191→            </div>
+  1192→
+  1193→            <div className="mt-6">
+  1194→              <Button
+  1195→                size="lg"
+  1196→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+  1197→                asChild
+  1198→              >
+  1199→                <Link href="/services/marble-polishing-near-me#locations">
+  1200→                  <MapPin className="w-4 h-4" />
+  1201→                  Browse the near-me directory
+  1202→                  <ArrowRight className="w-4 h-4" />
+  1203→                </Link>
+  1204→              </Button>
+  1205→            </div>
+  1206→          </motion.div>
+  1207→
+  1208→          {/* Right: location grid */}
+  1209→          <motion.div
+  1210→            initial={{ opacity: 0, y: 20 }}
+  1211→            whileInView={{ opacity: 1, y: 0 }}
+  1212→            viewport={{ once: true, margin: "-60px" }}
+  1213→            transition={{ duration: 0.5 }}
+  1214→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1215→          >
+  1216→            <div className="flex items-center justify-between mb-5">
+  1217→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1218→                Find your local marble polishing crew
+  1219→              </h3>
+  1220→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1221→            </div>
+  1222→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1223→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1224→                <motion.div
+  1225→                  key={loc.slug}
+  1226→                  initial={{ opacity: 0 }}
+  1227→                  whileInView={{ opacity: 1 }}
+  1228→                  viewport={{ once: true }}
+  1229→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1230→                >
+  1231→                  <Link
+  1232→                    href={`/services/marble-polishing-near-me#${loc.slug}`}
+  1233→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1234→                  >
+  1235→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1236→                    <span>
+  1237→                      <span className="font-medium">{loc.city}</span>
+  1238→                      <span className="text-[var(--muted-foreground)]"> marble care</span>
+  1239→                    </span>
+  1240→                  </Link>
+  1241→                </motion.div>
+  1242→              ))}
+  1243→            </div>
+  1244→
+  1245→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1246→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1247→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1248→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1249→              </div>
+  1250→              <Link
+  1251→                href="/locations"
+  1252→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1253→              >
+  1254→                View all 72 Scottish locations
+  1255→                <ArrowRight className="w-4 h-4" />
+  1256→              </Link>
+  1257→            </div>
+  1258→          </motion.div>
+  1259→        </div>
+  1260→
+  1261→        {/* SEO long-form paragraph for "near me" search intent */}
+  1262→        <motion.div
+  1263→          initial={{ opacity: 0, y: 16 }}
+  1264→          whileInView={{ opacity: 1, y: 0 }}
+  1265→          viewport={{ once: true, margin: "-40px" }}
+  1266→          transition={{ duration: 0.5, delay: 0.2 }}
+  1267→          className="mt-10 max-w-4xl mx-auto text-center"
+  1268→        >
+  1269→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1270→            Our local marble polishing crews operate across Glasgow&rsquo;s
+  1271→            International Financial Services District, Merchant City and West
+  1272→            End (luxury homeowners, boutique hotels, and corporate reception
+  1273→            suites), Edinburgh&rsquo;s New Town, Exchange District and
+  1274→            Quartermile (5-star hotels, retail flagships, and heritage
+  1275→            townhouses), Aberdeen&rsquo;s energy-corridor West End and Tullos
+  1276→            industrial offices (energy operators and corporate headquarters),
+  1277→            Dundee&rsquo;s Waterfront and City Centre professional services
+  1278→            buildings (facilities teams and boutique retail), and Scottish
+  1279→            commercial and residential districts across the Central Belt
+  1280→            &mdash; from Inverness to Perth, Falkirk to Ayr. Whether
+  1281→            you&rsquo;re searching for a marble floor restoration in Glasgow,
+  1282→            a hotel-lobby crystallisation programme in Edinburgh, a
+  1283→            heritage-marble fireplace repair in Aberdeen, or a Carrara
+  1284→            bathroom etch-mark removal anywhere in between, Maundy Clean
+  1285→            assigns a vetted, PAYE-employed, PVG-checked stone care crew that
+  1286→            stays with you for the long run. Same crew, same standard, same
+  1287→            locked-in rate for 12 months.
+  1288→          </p>
+  1289→        </motion.div>
+  1290→      </div>
+  1291→    </section>
+  1292→  );
+  1293→}
+  1294→
+  1295→// ============================================================
+  1296→// Section 8 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1297→// (Semantic H2: "Request Your Free Stone Assessment Today")
+  1298→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1299→// ============================================================
+  1300→
+  1301→export function MarblePolishingSeoFinalCta() {
+  1302→  return (
+  1303→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1304→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1305→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1306→
+  1307→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1308→        <motion.div
+  1309→          initial={{ opacity: 0, y: 20 }}
+  1310→          whileInView={{ opacity: 1, y: 0 }}
+  1311→          viewport={{ once: true, margin: "-80px" }}
+  1312→          transition={{ duration: 0.5 }}
+  1313→        >
+  1314→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1315→            Ready to book your free stone assessment?
+  1316→          </span>
+  1317→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1318→            Request Your Free Stone Assessment Today
+  1319→          </h2>
+  1320→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1321→            Hotel general managers, facilities managers, retail operations
+  1322→            leads, heritage officers, interior designers, and luxury-home
+  1323→            owners &mdash; book a free, no-obligation stone assessment with
+  1324→            our management team and receive an itemised proposal within 2
+  1325→            business days. Diamond-grit honing, multi-stage mechanical
+  1326→            polishing, commercial crystallisation, premium impregnating
+  1327→            sealing, etch-mark restoration, scratch &amp; chip repair,
+  1328→            poultice stain removal, pH-neutral stone-safe chemistry,
+  1329→            heritage-marble protocols, a fixed per-m&sup2; rate that locks
+  1330→            for 12 months, PVG-checked uniformed professionals who become
+  1331→            part of your team, and the multi-property one-invoice convenience
+  1332→            that lets you consolidate every Scottish property on a single
+  1333→            audit-ready compliance file. From &pound;35 per m&sup2; for
+  1334→            quarterly maintenance polish through to &pound;75 per m&sup2;
+  1335→            for full restoration with etch-mark treatment and re-seal. POA
+  1336→            for deep commercial restoration with crystallisation. No pushy
+  1337→            sales call, no waiting 24 hours for a callback.
+  1338→          </p>
+  1339→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1340→            <Button
+  1341→              size="lg"
+  1342→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1343→              asChild
+  1344→            >
+  1345→              <Link href="/quote">
+  1346→                Request Your Free Stone Assessment Today
+  1347→                <ArrowRight className="w-5 h-5" />
+  1348→              </Link>
+  1349→            </Button>
+  1350→            <Button
+  1351→              size="lg"
+  1352→              variant="outline"
+  1353→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1354→              asChild
+  1355→            >
+  1356→              <Link href="#checklist">
+  1357→                <CheckCircle2 className="w-4 h-4" />
+  1358→                View Our Hard Floor Care Checklist
+  1359→              </Link>
+  1360→            </Button>
+  1361→          </div>
+  1362→        </motion.div>
+  1363→      </div>
+  1364→    </section>
+  1365→  );
+  1366→}
+  1367→
+  1368→// ============================================================
+  1369→// Section 9 - SEO FAQ block
+  1370→// (Semantic H2: "Frequently Asked Questions")
+  1371→// 3 Q&As from the brief (insured technicians, provide own equipment,
+  1372→// heritage marble floors)
+  1373→// ============================================================
+  1374→
+  1375→const SEO_FAQS = [
+  1376→  {
+  1377→    q: "Are your stone technicians insured?",
+  1378→    a: "Absolutely. MaundyClean is a fully insured, registered professional cleaning company with extensive experience in the high-value architectural sector. We carry &pound;5m public liability as standard &mdash; covering marble, travertine, limestone, terrazzo, and related natural-stone surfaces &mdash; and every stone specialist is PVG-checked (essential for hotels, retail flagships, heritage properties, listed buildings, and any building where the public, guests, or staff are present), uniformed, and trained in marble-specific protocols: diamond-grit honing, multi-stage mechanical polishing, crystallisation, premium impregnating sealing, etch-mark restoration, scratch &amp; chip repair, poultice stain removal, and heritage-marble methodologies. We hold full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, and we can name your business on our policy as additional insured &mdash; a common requirement for facilities management contracts, head-lease landlord approvals, retail-chain compliance, and corporate insurance files. Our documentation is audit-ready for environmental health inspection, heritage officer review, and operations director review; we provide signed stone-care logs, gloss meter readings, RAMS, COSHH datasheets, training records, and vetting records (PVG) for your compliance file.",
+  1379→  },
+  1380→  {
+  1381→    q: "Do you provide your own professional equipment?",
+  1382→    a: "Yes. We supply all our own latest-technology machinery and stone-safe materials, which are included in your competitive quote. From weighted rotary machines (175 RPM) for diamond-grit honing, progressive diamond-grit pads (50, 100, 200, 400, 800, 1500, 3000, 5000 grit), wet-vacuum slurry extractors, air movers for fast curing between seal coats, gloss meters for objective 60-degree GU measurement, hand-tools for chip repair and resin-bonding, to colour-coded pad systems to prevent cross-contamination between marble types and zones. Chemistry is matched to stone type and environment &mdash; pH-neutral maintenance cleaners (Lithofin Easy-Care, Aqua Mix Concentrated Tile Cleaner), tin-oxide and aluminium-oxide polishing compounds, magnesium fluorosilicate crystallisation agents for commercial floors, penetrating impregnating sealers (food-safe, child-safe, pet-safe), poultice carriers (kaolin, diatomaceous earth) and stain-specific chemistry (hydrogen peroxide for organic, solvent for oil-based, rust remover for iron-bearing). COSHH-documented chemistry on file. Non-toxic, biodegradable, surface-safe by default. You provide the floor and the access; we provide everything else &mdash; machinery, chemistry, pads, PPE, signage, and the crew trained to use all of it.",
+  1383→  },
+  1384→  {
+  1385→    q: "Can you restore heritage marble floors?",
+  1386→    a: "Yes. We specialize in the care and attention required for floors over 100 years old, ensuring traditional methodologies are respected during the restoration. Heritage marble &mdash; whether a Glasgow Victorian tenement hallway, an Edinburgh New Town drawing-room fireplace, an Aberdeen granite-belt hotel lobby, or a Scottish country-house estate entrance &mdash; requires a different approach from modern marble. Lower machine pressure (older substrates can be fragile), finer starting grit (200-grit rather than 50-grit &mdash; the heritage stone is often already thin from a century of polishing), pH-neutral chemistry throughout (no aggressive alkaline strippers), breathable impregnating sealers only (non-breathable sealers trap sub-floor moisture vapour and cause heritage stone to spall), and listed-building consent checks where required (Category A or B listed buildings in Scotland may require prior consent from the local planning authority for any work that affects the historic fabric). We document every heritage project with before-and-after photography, method statements, and a stone-care log that becomes part of the building&rsquo;s maintenance history &mdash; the audit trail a heritage officer, conservation architect, or insurance underwriter will ask to see.",
+  1387→  },
+  1388→];
+  1389→
+  1390→export function MarblePolishingSeoFaq() {
+  1391→  return (
+  1392→    <section className="py-16 lg:py-24 bg-background">
+  1393→      <div className="max-w-4xl mx-auto px-6">
+  1394→        <motion.div
+  1395→          initial={{ opacity: 0, y: 20 }}
+  1396→          whileInView={{ opacity: 1, y: 0 }}
+  1397→          viewport={{ once: true, margin: "-80px" }}
+  1398→          transition={{ duration: 0.5 }}
+  1399→          className="text-center mb-12"
+  1400→        >
+  1401→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1402→            Marble polishing &amp; stone restoration &middot; FAQ
+  1403→          </span>
+  1404→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1405→            Frequently Asked Questions
+  1406→          </h2>
+  1407→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1408→            Straight answers to the questions our marble polishing clients ask
+  1409→            most often. Can&rsquo;t find what you need? Call us on{" "}
+  1410→            <a
+  1411→              href={contactInfo.phoneHref}
+  1412→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1413→            >
+  1414→              {contactInfo.phone}
+  1415→            </a>{" "}
+  1416→            and we&rsquo;ll talk it through.
+  1417→          </p>
+  1418→        </motion.div>
+  1419→
+  1420→        <div className="space-y-4">
+  1421→          {SEO_FAQS.map((faq, i) => (
+  1422→            <motion.div
+  1423→              key={faq.q}
+  1424→              initial={{ opacity: 0, y: 16 }}
+  1425→              whileInView={{ opacity: 1, y: 0 }}
+  1426→              viewport={{ once: true, margin: "-40px" }}
+  1427→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1428→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1429→            >
+  1430→              <details className="group">
+  1431→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1432→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1433→                    {faq.q}
+  1434→                  </h3>
+  1435→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1436→                    <span className="relative w-3.5 h-3.5">
+  1437→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1438→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1439→                    </span>
+  1440→                  </span>
+  1441→                </summary>
+  1442→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1443→                  <p
+  1444→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1445→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1446→                  />
+  1447→                </div>
+  1448→              </details>
+  1449→            </motion.div>
+  1450→          ))}
+  1451→        </div>
+  1452→
+  1453→        <motion.div
+  1454→          initial={{ opacity: 0, y: 16 }}
+  1455→          whileInView={{ opacity: 1, y: 0 }}
+  1456→          viewport={{ once: true, margin: "-40px" }}
+  1457→          transition={{ duration: 0.5, delay: 0.3 }}
+  1458→          className="mt-10 text-center"
+  1459→        >
+  1460→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1461→            <Button
+  1462→              size="lg"
+  1463→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1464→              asChild
+  1465→            >
+  1466→              <Link href="/quote">
+  1467→                Request Your Free Stone Assessment Today
+  1468→                <ArrowRight className="w-5 h-5" />
+  1469→              </Link>
+  1470→            </Button>
+  1471→            <Button
+  1472→              size="lg"
+  1473→              variant="outline"
+  1474→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1475→              asChild
+  1476→            >
+  1477→              <Link href="#checklist">
+  1478→                <CheckCircle2 className="w-4 h-4" />
+  1479→                View Our Hard Floor Care Checklist
+  1480→              </Link>
+  1481→            </Button>
+  1482→          </div>
+  1483→        </motion.div>
+  1484→      </div>
+  1485→    </section>
+  1486→  );
+  1487→}
+  1488→

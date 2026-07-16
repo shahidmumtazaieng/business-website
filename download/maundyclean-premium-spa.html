@@ -1,0 +1,2977 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaundyClean — Premium Deep Cleaning Across Scotland | SPA Prototype</title>
+<meta name="description" content="Scotland's premium deep cleaning service. 117 services, 12 industries, 12 locations. Deposit-back guarantee, instant quotes, fully insured.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   MAUNDYCLEAN — PREMIUM SPA PROTOTYPE
+   Design System v2.0 — Senior Designer Build
+   =================================================================== */
+:root{
+  /* Core brand palette (competitor-analysed, trust-led) */
+  --navy:#12172B;
+  --navy-soft:#1B2138;
+  --ink:#1A1A2E;
+  --blue:#2E86AB;
+  --blue-deep:#1B5E76;
+  --blue-ink:#0E3D52;
+  --teal:#123B49;
+  --green:#06A77D;
+  --green-soft:#0FCB95;
+  --red:#E94F37;
+  --red-deep:#C73E29;
+  --canvas:#F5F5F2;
+  --canvas-warm:#FBFAF6;
+  --card:#FFFFFF;
+  --violet:#7B61FF;
+  --pink:#E94F8A;
+  --gold:#E8A13B;
+  --line: rgba(18,23,43,0.08);
+  --line-strong: rgba(18,23,43,0.16);
+  --shadow-sm: 0 4px 14px -6px rgba(18,23,43,0.18);
+  --shadow: 0 20px 50px -20px rgba(18,23,43,0.25);
+  --shadow-lg: 0 40px 80px -30px rgba(18,23,43,0.35);
+  --shadow-glow: 0 0 60px -10px rgba(46,134,171,0.35);
+  --droplet-gradient: linear-gradient(135deg, var(--blue) 0%, var(--violet) 55%, var(--pink) 100%);
+  --warm-gradient: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+  --sunset-gradient: linear-gradient(135deg, var(--red) 0%, var(--pink) 60%, var(--violet) 100%);
+  --maxw: 1280px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Inter', sans-serif;
+  color:var(--ink);
+  background:var(--canvas);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,h5{
+  font-family:'Poppins', sans-serif;
+  margin:0;
+  line-height:1.12;
+  letter-spacing:-0.015em;
+}
+p{margin:0; line-height:1.65;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+ul{margin:0; padding:0; list-style:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none;}
+input,select,textarea{font-family:inherit;}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+.eyebrow{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--blue);
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+}
+.eyebrow::before{
+  content:''; width:24px; height:2px; background:var(--blue); border-radius:2px;
+}
+.eyebrow.light{color:rgba(255,255,255,0.8);}
+.eyebrow.light::before{background:rgba(255,255,255,0.6);}
+.eyebrow.green{color:var(--green);}
+.eyebrow.green::before{background:var(--green);}
+.eyebrow.red{color:var(--red);}
+.eyebrow.red::before{background:var(--red);}
+
+section{position:relative;}
+.section-pad{padding:120px 0;}
+.section-pad-sm{padding:80px 0;}
+@media(max-width:768px){ .section-pad{padding:70px 0;} .wrap{padding:0 20px;} }
+
+/* ---------- Page transition system ---------- */
+.page-view{display:none; animation:pageIn .55s cubic-bezier(.2,.7,.2,1);}
+.page-view.active{display:block;}
+@keyframes pageIn{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal{opacity:0; transform:translateY(32px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.in-view{opacity:1; transform:translateY(0);}
+.reveal-stagger > *{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+.reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
+.reveal-stagger.in-view > *:nth-child(1){transition-delay:.04s;}
+.reveal-stagger.in-view > *:nth-child(2){transition-delay:.10s;}
+.reveal-stagger.in-view > *:nth-child(3){transition-delay:.16s;}
+.reveal-stagger.in-view > *:nth-child(4){transition-delay:.22s;}
+.reveal-stagger.in-view > *:nth-child(5){transition-delay:.28s;}
+.reveal-stagger.in-view > *:nth-child(6){transition-delay:.34s;}
+.reveal-stagger.in-view > *:nth-child(7){transition-delay:.40s;}
+.reveal-stagger.in-view > *:nth-child(8){transition-delay:.46s;}
+.reveal-stagger.in-view > *:nth-child(9){transition-delay:.52s;}
+.reveal-stagger.in-view > *:nth-child(10){transition-delay:.58s;}
+.reveal-stagger.in-view > *:nth-child(11){transition-delay:.64s;}
+.reveal-stagger.in-view > *:nth-child(12){transition-delay:.70s;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+  .reveal, .reveal-stagger > *{opacity:1; transform:none;}
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:15px 28px; border-radius:12px; font-weight:600; font-size:15px;
+  border:1.5px solid transparent; transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  white-space:nowrap; font-family:'Inter', sans-serif;
+  position:relative; overflow:hidden;
+}
+.btn:focus-visible{outline:3px solid var(--pink); outline-offset:3px;}
+.btn svg{width:17px; height:17px;}
+.btn-cta{
+  background:var(--red); color:#fff;
+  box-shadow:0 14px 28px -10px rgba(233,79,55,0.6);
+}
+.btn-cta:hover{transform:translateY(-2px); box-shadow:0 18px 34px -10px rgba(233,79,55,0.75); background:var(--red-deep);}
+.btn-cta::after{
+  content:''; position:absolute; inset:0; background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+  transform:translateX(-100%); transition:transform .6s ease;
+}
+.btn-cta:hover::after{transform:translateX(100%);}
+.btn-blue{
+  background:var(--blue); color:#fff;
+  box-shadow:0 14px 28px -10px rgba(46,134,171,0.6);
+}
+.btn-blue:hover{transform:translateY(-2px); background:var(--blue-deep);}
+.btn-green{
+  background:var(--green); color:#fff;
+  box-shadow:0 14px 28px -10px rgba(6,167,125,0.6);
+}
+.btn-green:hover{transform:translateY(-2px); background:#048a66;}
+.btn-outline{
+  background:transparent; border-color:rgba(255,255,255,0.45); color:inherit;
+}
+.btn-outline.on-light{border-color:rgba(18,23,43,0.2); color:var(--navy);}
+.btn-outline:hover{background:rgba(255,255,255,0.12);}
+.btn-outline.on-light:hover{background:rgba(18,23,43,0.04); border-color:var(--navy);}
+.btn-dark{background:var(--navy); color:#fff;}
+.btn-dark:hover{transform:translateY(-2px); background:var(--teal);}
+.btn-ghost{background:rgba(46,134,171,0.08); color:var(--blue-deep);}
+.btn-ghost:hover{background:rgba(46,134,171,0.16);}
+
+/* ---------- Ripple signature ---------- */
+.ripple-field{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+.ripple{
+  position:absolute; border-radius:50%;
+  border:1.5px solid transparent;
+  border-image: var(--droplet-gradient) 1;
+  opacity:0;
+  animation: rippleOut 6s ease-out infinite;
+}
+.ripple.r2{animation-delay:1.5s;}
+.ripple.r3{animation-delay:3s;}
+.ripple.r4{animation-delay:4.5s;}
+@keyframes rippleOut{
+  0%{width:20px; height:20px; opacity:0;}
+  8%{opacity:.55;}
+  100%{width:900px; height:900px; opacity:0;}
+}
+
+/* ---------- Floating shapes ---------- */
+.blob{position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; pointer-events:none; animation:blobFloat 14s ease-in-out infinite;}
+@keyframes blobFloat{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(20px,-30px) scale(1.08);}
+}
+
+/* ---------- Marquee ---------- */
+.marquee{display:flex; overflow:hidden; gap:60px; mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);}
+.marquee-track{display:flex; gap:60px; animation:marquee 38s linear infinite; flex-shrink:0; padding-right:60px;}
+@keyframes marquee{to{transform:translateX(-50%);}}
+
+/* =========================================================
+   TOPBAR + HEADER + NAV
+========================================================= */
+.topbar{
+  background:var(--navy); color:#fff;
+  padding:8px 0; font-size:13px;
+}
+.topbar .wrap{display:flex; justify-content:space-between; align-items:center; gap:12px;}
+.topbar-left, .topbar-right{display:flex; align-items:center; gap:20px;}
+.topbar a{opacity:.88; transition:opacity .2s; display:inline-flex; align-items:center; gap:6px;}
+.topbar a:hover{opacity:1;}
+.topbar .pip{width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 0 3px rgba(6,167,125,0.25); animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(6,167,125,0.15);}}
+.topbar .sep{width:1px; height:14px; background:rgba(255,255,255,0.2);}
+.topbar .guarantee-chip{
+  background:linear-gradient(90deg, rgba(6,167,125,0.25), rgba(46,134,171,0.2));
+  border:1px solid rgba(6,167,125,0.4);
+  padding:4px 12px; border-radius:20px; font-weight:600; font-size:12px;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.topbar .guarantee-chip svg{width:13px; height:13px; color:var(--green-soft);}
+@media(max-width:768px){ .topbar-left .hide-sm, .topbar-right .hide-sm{display:none;} }
+
+header{
+  position:fixed; top:33px; left:0; right:0; z-index:1000;
+  background:rgba(245,245,242,0.78);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom:1px solid transparent;
+  transition:all .35s ease;
+}
+header.scrolled{
+  top:0;
+  background:rgba(255,255,255,0.94);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 10px 30px -20px rgba(18,23,43,0.3);
+}
+nav.mainnav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0; transition:padding .3s ease; gap:20px;
+}
+header.scrolled nav.mainnav{padding:10px 0;}
+
+/* Brand */
+.brand{display:flex; align-items:center; gap:12px; cursor:pointer;}
+.brand-mark{
+  width:42px; height:42px; border-radius:12px;
+  background:var(--droplet-gradient);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+  box-shadow:0 8px 20px -8px rgba(46,134,171,0.55);
+}
+.brand-mark::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.5), transparent 55%);
+}
+.brand-mark svg{width:24px; height:24px; color:#fff; position:relative; z-index:1;}
+.brand-text{display:flex; flex-direction:column; line-height:1;}
+.brand-name{font-family:'Poppins',sans-serif; font-weight:800; font-size:18px; letter-spacing:-0.02em; color:var(--navy);}
+.brand-tag{font-size:9.5px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue); margin-top:3px;}
+
+/* Nav links */
+.navlinks{display:flex; align-items:center; gap:2px;}
+.navlinks > li{position:relative;}
+.navlinks > li > a, .navlinks > li > button{
+  display:flex; align-items:center; gap:6px;
+  padding:11px 15px; font-weight:600; font-size:14.5px; color:var(--navy);
+  background:none; border:none; border-radius:9px;
+  transition:background .2s ease, color .2s ease;
+  font-family:'Inter', sans-serif;
+}
+.navlinks > li > a:hover, .navlinks > li > button:hover, .navlinks > li.open > button{
+  background:rgba(46,134,171,0.09); color:var(--blue-deep);
+}
+.navlinks > li.active > a, .navlinks > li.active > button{color:var(--red);}
+.caret{width:8px; height:8px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform .25s ease;}
+.navlinks > li.open .caret{transform:rotate(225deg) translateY(2px);}
+
+/* Mega menu */
+.mega{
+  position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%) translateY(8px);
+  background:#fff; border-radius:20px; box-shadow:var(--shadow-lg); border:1px solid var(--line);
+  padding:28px; opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease;
+  z-index:50;
+}
+.navlinks > li.open .mega{opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0);}
+.mega.services{width:880px; left:auto; right:0; transform:translateY(8px);}
+.navlinks > li.open .mega.services{transform:translateY(0);}
+.mega-head{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--line);}
+.mega-head h5{font-family:'Poppins',sans-serif; font-size:15px; color:var(--navy); margin-bottom:4px;}
+.mega-head p{font-size:12.5px; color:#6a6f80; max-width:280px;}
+.mega-head .mega-cta{font-size:12.5px; font-weight:700; color:var(--red); display:inline-flex; align-items:center; gap:5px;}
+
+.mega-services-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:6px 22px;}
+.mega-hub-col{padding:4px 0;}
+.mega-hub-head{
+  display:flex; align-items:center; gap:9px; padding:8px 10px; margin-bottom:4px;
+  background:linear-gradient(135deg, rgba(46,134,171,0.06), rgba(123,97,255,0.04));
+  border-radius:10px; cursor:pointer; transition:background .2s;
+}
+.mega-hub-head:hover{background:linear-gradient(135deg, rgba(46,134,171,0.12), rgba(123,97,255,0.08));}
+.mega-hub-icon{width:28px; height:28px; border-radius:8px; background:#fff; box-shadow:var(--shadow-sm); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.mega-hub-icon svg{width:16px; height:16px; color:var(--blue-deep);}
+.mega-hub-name{font-family:'Poppins',sans-serif; font-weight:700; font-size:12.5px; color:var(--navy); line-height:1.1;}
+.mega-hub-count{font-size:10px; color:var(--blue); font-weight:600; margin-top:2px;}
+.mega-hub-items{padding:2px 0 8px 10px;}
+.mega-hub-items a{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:5px 8px; font-size:12.5px; color:#4a4f61; font-weight:500;
+  border-radius:6px; transition:all .18s ease;
+}
+.mega-hub-items a:hover{color:var(--red); background:rgba(233,79,55,0.06); transform:translateX(3px);}
+.mega-hub-items a .tag{
+  font-size:8.5px; font-weight:800; letter-spacing:.04em;
+  color:var(--green); border:1px solid var(--green); border-radius:20px; padding:1px 6px;
+}
+.mega-hub-items a .tag.hot{color:var(--red); border-color:var(--red);}
+.mega-hub-items a.more{color:var(--blue); font-weight:700; font-size:11.5px; padding-top:8px; border-top:1px dashed var(--line); margin-top:4px;}
+
+.mega.industries{width:720px; left:auto; right:0; transform:translateY(8px);}
+.navlinks > li.open .mega.industries{transform:translateY(0);}
+.mega-ind-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:6px 30px;}
+.mega-ind-col{}
+.mega-ind-head{font-family:'Poppins',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); margin:6px 0 8px; padding-bottom:6px; border-bottom:1px solid var(--line);}
+.mega-ind-items a{
+  display:flex; align-items:center; gap:9px; padding:6px 8px; font-size:13px; color:var(--ink); font-weight:500;
+  border-radius:6px; transition:all .18s;
+}
+.mega-ind-items a:hover{color:var(--red); background:rgba(233,79,55,0.06); transform:translateX(3px);}
+.mega-ind-items a .ind-dot{width:7px; height:7px; border-radius:50%; background:var(--green); flex-shrink:0;}
+
+.mega.locations{width:680px; left:auto; right:0; transform:translateY(8px);}
+.navlinks > li.open .mega.locations{transform:translateY(0);}
+.loc-tier-label{font-family:'Poppins',sans-serif; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+.loc-tier-label .dot{width:6px; height:6px; border-radius:50%;}
+.loc-tier-label .dot.t1{background:var(--red);}
+.loc-tier-label .dot.t2{background:var(--gold);}
+.loc-tier-label .dot.t3{background:var(--green);}
+.locgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+.locgrid a{
+  display:flex; flex-direction:column; padding:11px 12px; border-radius:11px; background:var(--canvas);
+  font-weight:600; font-size:13px; border:1px solid var(--line); transition:all .2s ease; gap:3px;
+}
+.locgrid a small{font-size:10px; color:#7a7f90; font-weight:500;}
+.locgrid a.tier1{background:linear-gradient(135deg, rgba(233,79,55,0.07), rgba(123,97,255,0.05)); border-color:rgba(233,79,55,0.2);}
+.locgrid a.tier2{background:linear-gradient(135deg, rgba(232,161,59,0.08), rgba(46,134,171,0.05)); border-color:rgba(232,161,59,0.2);}
+.locgrid a:hover{background:var(--navy); color:#fff; transform:translateY(-2px); border-color:var(--navy);}
+.locgrid a:hover small{color:rgba(255,255,255,0.7);}
+.mega-foot{grid-column:1 / -1; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:14px;}
+.mega-foot p{font-size:12.5px; color:#666;}
+
+/* Nav CTA */
+.navcta{display:flex; align-items:center; gap:14px;}
+.navcta .phone{display:flex; flex-direction:column; text-align:right; font-size:12px; line-height:1.2;}
+.navcta .phone strong{font-family:'Poppins',sans-serif; font-size:15.5px; color:var(--navy);}
+.navcta .phone span{color:var(--blue); font-weight:600; font-size:11.5px; display:inline-flex; align-items:center; gap:5px; justify-content:flex-end;}
+.navcta .phone span .pip{width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 0 3px rgba(6,167,125,0.25);}
+
+.hamburger{display:none; flex-direction:column; gap:5px; padding:8px;}
+.hamburger span{width:24px; height:2px; background:var(--navy); border-radius:2px; transition:all .25s ease;}
+
+/* Mobile nav */
+.mobile-panel{
+  position:fixed; inset:0; background:var(--navy); color:#fff; z-index:1200;
+  transform:translateX(100%); transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  overflow-y:auto; padding:24px 24px 60px;
+}
+.mobile-panel.open{transform:translateX(0);}
+.mobile-panel .mhead{display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;}
+.mobile-panel .mclose{border:1px solid rgba(255,255,255,.3); color:#fff; border-radius:10px; padding:8px 14px; font-weight:600;}
+.mobile-panel details{border-bottom:1px solid rgba(255,255,255,.1); padding:14px 0;}
+.mobile-panel summary{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+.mobile-panel summary::-webkit-details-marker{display:none;}
+.mobile-panel summary::after{content:'+'; font-size:22px; color:var(--green); transition:transform .2s;}
+.mobile-panel details[open] summary::after{content:'–';}
+.mobile-panel .msub{padding:12px 4px 4px; display:grid; gap:9px;}
+.mobile-panel .msub a{font-size:14px; opacity:.85; padding:4px 0;}
+.mobile-panel .msub a:hover{opacity:1; color:var(--green-soft);}
+.mobile-panel > a.mtop{display:block; font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.1);}
+.mobile-panel .mcta{margin-top:24px; display:grid; gap:12px;}
+
+@media(max-width:1100px){
+  .navlinks, .navcta .phone{display:none;}
+  .hamburger{display:flex;}
+  .navcta .btn-cta{padding:11px 16px; font-size:13.5px;}
+}
+
+/* =========================================================
+   HERO (Home)
+========================================================= */
+.hero{
+  padding:185px 0 110px;
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(46,134,171,0.14), transparent 60%),
+    radial-gradient(800px 500px at 0% 110%, rgba(6,167,125,0.10), transparent 60%),
+    radial-gradient(600px 400px at 50% 50%, rgba(123,97,255,0.05), transparent 70%),
+    var(--canvas);
+  position:relative; overflow:hidden;
+}
+.hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.08fr 0.92fr; gap:60px; align-items:center;}
+.hero-copy .eyebrow{margin-bottom:20px;}
+.hero-copy h1{font-size:clamp(34px,4.8vw,60px); color:var(--navy); font-weight:800;}
+.hero-copy h1 em{font-style:italic; font-family:'Playfair Display', serif; font-weight:600; background:var(--droplet-gradient); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.hero-copy p.lede{margin-top:24px; font-size:18px; color:#3a3f52; max-width:540px; line-height:1.6;}
+.hero-actions{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+.hero-trust{display:flex; gap:30px; margin-top:48px; flex-wrap:wrap; padding-top:32px; border-top:1px solid var(--line);}
+.hero-trust div{display:flex; align-items:center; gap:10px; font-size:13.5px; font-weight:600; color:var(--navy);}
+.hero-trust svg{width:20px; height:20px; color:var(--green); flex-shrink:0;}
+.hero-trust b{font-family:'Poppins',sans-serif; font-weight:800; color:var(--navy);}
+
+.hero-visual{position:relative; display:flex; align-items:center; justify-content:center; min-height:460px;}
+.quote-card{
+  position:relative; z-index:3; background:var(--card); border-radius:24px; box-shadow:var(--shadow-lg);
+  padding:32px; width:100%; max-width:420px; border:1px solid var(--line);
+}
+.quote-card h4{font-size:15px; font-weight:700; display:flex; align-items:center; justify-content:space-between; color:var(--navy);}
+.quote-card h4 span{font-size:10.5px; font-weight:800; color:#fff; background:var(--green); padding:4px 10px; border-radius:20px; letter-spacing:.04em; display:inline-flex; align-items:center; gap:5px;}
+.quote-card h4 span .dot{width:6px; height:6px; border-radius:50%; background:#fff; animation:pulse 1.6s ease-in-out infinite;}
+.qc-row{display:flex; gap:8px; margin-top:18px;}
+.qc-chip{flex:1; text-align:center; padding:11px 6px; border-radius:10px; border:1.5px solid var(--line); font-size:12.5px; font-weight:600; transition:all .2s ease; background:#fff; cursor:pointer; color:var(--ink);}
+.qc-chip.active, .qc-chip:hover{border-color:var(--blue); background:rgba(46,134,171,0.08); color:var(--blue-deep);}
+.qc-slider-label{display:flex; justify-content:space-between; font-size:12.5px; color:#666; margin-top:22px; font-weight:600;}
+.qc-slider-label b{color:var(--blue-deep); font-family:'Poppins',sans-serif;}
+input[type=range]{width:100%; margin-top:8px; accent-color:var(--blue); height:6px;}
+.qc-price{margin-top:20px; padding:18px; border-radius:14px; background:linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); color:#fff; text-align:center; position:relative; overflow:hidden;}
+.qc-price::before{content:''; position:absolute; top:-50%; right:-20%; width:200px; height:200px; background:radial-gradient(circle, rgba(46,134,171,0.3), transparent 70%);}
+.qc-price .amt{font-family:'Poppins',sans-serif; font-size:32px; font-weight:800; position:relative;}
+.qc-price .amt span{font-size:14px; font-weight:500; opacity:.7;}
+.qc-price .sub{font-size:11.5px; opacity:.78; margin-top:3px; position:relative;}
+.quote-card .btn{width:100%; margin-top:16px;}
+
+.float-badge{
+  position:absolute; background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:12px 16px;
+  display:flex; align-items:center; gap:10px; font-size:12.5px; font-weight:700; z-index:4; border:1px solid var(--line);
+  animation:floatBob 4s ease-in-out infinite;
+}
+.float-badge svg{width:20px; height:20px; color:var(--red);}
+.float-badge b{font-family:'Poppins',sans-serif; font-size:14px; color:var(--navy);}
+.float-badge small{font-size:10.5px; color:#7a7f90; font-weight:500; display:block;}
+.fb1{top:-6px; left:-22px; animation-delay:0s;}
+.fb2{bottom:30px; right:-26px; animation-delay:1.5s;}
+.fb3{top:48%; right:-32px; animation-delay:3s;}
+@keyframes floatBob{50%{transform:translateY(-10px);}}
+@media(max-width:1080px){ .float-badge{display:none;} }
+
+@media(max-width:960px){
+  .hero{padding:150px 0 70px;}
+  .hero .wrap{grid-template-columns:1fr; gap:46px;}
+  .hero-visual{min-height:auto; order:-1;}
+  .quote-card{max-width:100%;}
+}
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+.trust-strip{background:var(--navy); padding:24px 0; position:relative; overflow:hidden;}
+.trust-strip::before{content:''; position:absolute; inset:0; background:radial-gradient(600px 200px at 20% 50%, rgba(46,134,171,0.15), transparent 70%);}
+.trust-strip .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:22px; position:relative;}
+.trust-strip div{display:flex; align-items:center; gap:11px; color:#fff; font-size:13.5px; font-weight:600; opacity:.95;}
+.trust-strip svg{width:21px; height:21px; color:var(--green);}
+.trust-strip b{color:#fff; font-family:'Poppins',sans-serif; font-weight:800;}
+
+/* =========================================================
+   SECTION HEAD
+========================================================= */
+.section-head{max-width:680px;}
+.section-head h2{font-size:clamp(28px,3.6vw,44px); margin-top:14px; color:var(--navy); font-weight:800;}
+.section-head h2 em{font-style:italic; font-family:'Playfair Display', serif; font-weight:600; color:var(--blue);}
+.section-head p{margin-top:16px; font-size:16.5px; color:#4a4f61; line-height:1.6;}
+.section-head.center{max-width:720px; margin:0 auto; text-align:center;}
+.section-head.center .eyebrow::before{display:none;}
+.section-head.center .eyebrow{justify-content:center;}
+
+.section-head-row{display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap;}
+.section-head-row .section-head{max-width:600px;}
+
+/* =========================================================
+   COMPARISON
+========================================================= */
+.compare-grid{display:grid; grid-template-columns:1.1fr repeat(2,0.95fr); gap:0; margin-top:50px; border-radius:22px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line);}
+.compare-grid > div{background:#fff; padding:24px 22px;}
+.compare-grid .col-head{font-family:'Poppins',sans-serif; font-weight:700; font-size:15px; padding:22px; text-align:center; position:relative;}
+.compare-grid .col-head.us{background:var(--navy); color:#fff;}
+.compare-grid .col-head.us small{display:block; font-weight:500; font-size:11px; opacity:.7; margin-top:3px; font-family:'Inter',sans-serif;}
+.compare-grid .col-head.us::after{content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--droplet-gradient);}
+.compare-grid .col-head.them{background:#EFEEE9; color:var(--navy);}
+.compare-row{display:contents;}
+.compare-row > div{border-top:1px solid var(--line); padding:16px 22px; font-size:14px; display:flex; align-items:center; gap:10px;}
+.compare-row .feature{font-weight:600; color:var(--navy);}
+.compare-row .yes{color:var(--green); font-weight:700;}
+.compare-row .no{color:#B9B6AC; font-weight:600;}
+.compare-row .mid{color:#a67c00; font-weight:600;}
+@media(max-width:768px){
+  .compare-grid{grid-template-columns:1fr;}
+  .compare-row{display:grid; grid-template-columns:1fr; border-top:1px solid var(--line);}
+  .compare-row .feature{border-top:none; padding-bottom:4px; background:var(--canvas);}
+  .col-head{display:none;}
+  .compare-row > div::before{content:attr(data-label); font-size:10px; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom:3px;}
+}
+
+/* =========================================================
+   SERVICES (Hub preview)
+========================================================= */
+.svc-hub-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; margin-top:50px;}
+.svc-hub-card{
+  position:relative; background:#fff; border-radius:20px; padding:28px 24px; border:1px solid var(--line);
+  overflow:hidden; transition:transform .35s ease, box-shadow .35s ease;
+  cursor:pointer;
+}
+.svc-hub-card::before{
+  content:''; position:absolute; top:-60%; left:-60%; width:60%; height:220%;
+  background:radial-gradient(circle, rgba(46,134,171,0.16), transparent 65%);
+  transform:rotate(20deg); transition:transform .5s ease, opacity .5s ease; opacity:0;
+}
+.svc-hub-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+.svc-hub-card:hover::before{opacity:1; transform:translate(140%,10%) rotate(20deg);}
+.svc-hub-num{font-family:'Poppins',sans-serif; font-weight:800; font-size:11.5px; color:var(--blue); letter-spacing:.08em;}
+.svc-hub-icon{width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg, rgba(46,134,171,0.12), rgba(123,97,255,0.08)); display:flex; align-items:center; justify-content:center; margin:14px 0 18px;}
+.svc-hub-icon svg{width:24px; height:24px; color:var(--blue-deep);}
+.svc-hub-card h4{font-size:17px; font-weight:700; color:var(--navy); position:relative; z-index:1;}
+.svc-hub-card p{font-size:13.5px; color:#5b5f70; margin-top:9px; position:relative; z-index:1; line-height:1.55;}
+.svc-hub-card .hub-meta{margin-top:16px; display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--line); position:relative; z-index:1;}
+.svc-hub-card .hub-count{font-size:11.5px; font-weight:700; color:var(--blue);}
+.svc-hub-card .hub-link{font-size:12.5px; font-weight:700; color:var(--red); display:inline-flex; align-items:center; gap:5px;}
+.svc-hub-card .breakout{position:absolute; top:18px; right:18px; font-size:9px; font-weight:800; letter-spacing:.05em; background:var(--green); color:#fff; padding:4px 9px; border-radius:20px; z-index:2;}
+@media(max-width:1080px){ .svc-hub-grid{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:560px){ .svc-hub-grid{grid-template-columns:1fr;} }
+
+/* =========================================================
+   GUARANTEE BANNER
+========================================================= */
+.guarantee{
+  background:linear-gradient(120deg, var(--blue) 0%, var(--blue-deep) 60%, var(--teal) 100%);
+  border-radius:32px; padding:64px; color:#fff; position:relative; overflow:hidden;
+  display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  box-shadow:var(--shadow-lg);
+}
+.guarantee .ripple-field .ripple{border-image:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0)) 1;}
+.guarantee .blob{background:rgba(255,255,255,0.15); width:300px; height:300px;}
+.guarantee .blob.b1{top:-100px; right:30%;}
+.guarantee .blob.b2{bottom:-150px; right:-50px;}
+.guarantee-badge{
+  width:82px; height:82px; border-radius:50%; background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center;
+  margin-bottom:24px; border:1px solid rgba(255,255,255,0.3); position:relative;
+}
+.guarantee-badge::before{content:''; position:absolute; inset:-6px; border-radius:50%; border:1.5px dashed rgba(255,255,255,0.35); animation:spin 20s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.guarantee-badge svg{width:40px; height:40px; color:#fff;}
+.guarantee h2{font-size:clamp(26px,3.4vw,38px); position:relative; z-index:2; color:#fff;}
+.guarantee h2 em{font-style:italic; font-family:'Playfair Display', serif; font-weight:600; color:var(--green-soft);}
+.guarantee p.lede{margin-top:16px; font-size:16px; opacity:.94; max-width:500px; position:relative; z-index:2;}
+.guarantee-list{margin-top:28px; display:grid; gap:13px; position:relative; z-index:2;}
+.guarantee-list li{display:flex; align-items:center; gap:12px; font-size:14.5px; font-weight:500;}
+.guarantee-list svg{width:20px; height:20px; color:var(--green); background:#fff; border-radius:50%; padding:3px; flex-shrink:0;}
+.guarantee .btn{margin-top:30px; position:relative; z-index:2;}
+.guarantee-panel{
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); border-radius:22px; padding:32px;
+  position:relative; z-index:2; backdrop-filter:blur(8px);
+}
+.guarantee-panel .stat{display:flex; justify-content:space-between; align-items:baseline; padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.2);}
+.guarantee-panel .stat:last-child{border-bottom:none;}
+.guarantee-panel .stat b{font-family:'Poppins',sans-serif; font-size:28px; color:#fff;}
+.guarantee-panel .stat span{font-size:12.5px; opacity:.85; max-width:180px; text-align:right;}
+@media(max-width:900px){ .guarantee{grid-template-columns:1fr; padding:40px 28px;} }
+
+/* =========================================================
+   LOCATIONS
+========================================================= */
+.loc-tabs{display:flex; gap:10px; margin:40px 0 8px; flex-wrap:wrap;}
+.loc-tab{padding:10px 18px; border-radius:30px; border:1.5px solid var(--line); font-weight:600; font-size:13.5px; background:#fff; transition:all .2s ease; cursor:pointer; color:var(--navy);}
+.loc-tab.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+.loc-panels{position:relative; margin-top:26px;}
+.loc-panel{display:none;}
+.loc-panel.active{display:grid;}
+.loc-panel{grid-template-columns:repeat(4,1fr); gap:18px;}
+.loc-card{background:#fff; border:1px solid var(--line); border-radius:18px; padding:24px; transition:all .25s ease; cursor:pointer;}
+.loc-card:hover{box-shadow:var(--shadow); transform:translateY(-4px); border-color:var(--blue);}
+.loc-card h4{font-size:17px; font-weight:700; color:var(--navy); display:flex; justify-content:space-between; align-items:center;}
+.loc-card .dial{font-size:10.5px; font-weight:800; color:var(--blue); background:rgba(46,134,171,0.1); padding:3px 8px; border-radius:20px;}
+.loc-card p{font-size:13px; color:#5b5f70; margin-top:10px;}
+.loc-card .kw{margin-top:12px; font-size:11.5px; color:var(--green); font-weight:700;}
+.loc-card .loc-tier-mark{position:absolute; top:14px; right:14px; font-size:9px; font-weight:800; padding:3px 7px; border-radius:20px; letter-spacing:.04em;}
+.loc-card{position:relative;}
+.loc-card .loc-tier-mark.t1{background:rgba(233,79,55,0.12); color:var(--red);}
+.loc-card .loc-tier-mark.t2{background:rgba(232,161,59,0.14); color:#a67c00;}
+.loc-card .loc-tier-mark.t3{background:rgba(6,167,125,0.12); color:var(--green);}
+@media(max-width:1080px){ .loc-panel{grid-template-columns:repeat(2,1fr);} }
+@media(max-width:560px){ .loc-panel{grid-template-columns:1fr;} }
+
+/* =========================================================
+   INDUSTRIES
+========================================================= */
+.ind-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:50px;}
+.ind-card{
+  background:var(--navy); color:#fff; border-radius:18px; padding:24px 20px; min-height:240px;
+  display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden;
+  transition:transform .3s ease, box-shadow .3s ease; cursor:pointer;
+}
+.ind-card:hover{transform:translateY(-6px); box-shadow:var(--shadow-lg);}
+.ind-card::before{content:''; position:absolute; inset:0; background:linear-gradient(200deg, rgba(46,134,171,0.55), rgba(18,23,43,0.2)); opacity:0; transition:opacity .3s ease;}
+.ind-card:hover::before{opacity:1;}
+.ind-card::after{content:''; position:absolute; bottom:-40px; right:-40px; width:140px; height:140px; border-radius:50%; background:radial-gradient(circle, rgba(6,167,125,0.3), transparent 70%); opacity:0; transition:opacity .4s;}
+.ind-card:hover::after{opacity:1;}
+.ind-card .ind-icon{width:40px; height:40px; margin-bottom:auto; position:relative; z-index:1;}
+.ind-card .ind-icon svg{width:100%; height:100%; color:var(--green-soft);}
+.ind-card h4{font-size:15.5px; font-weight:700; position:relative; z-index:1;}
+.ind-card p{font-size:12px; opacity:.78; margin-top:7px; position:relative; z-index:1;}
+.ind-card .ind-meta{margin-top:12px; font-size:10.5px; font-weight:700; color:var(--green-soft); position:relative; z-index:1; letter-spacing:.05em;}
+@media(max-width:1080px){ .ind-grid{grid-template-columns:repeat(2,1fr);} .ind-card{min-height:200px;} }
+@media(max-width:560px){ .ind-grid{grid-template-columns:1fr;} }
+
+/* =========================================================
+   PRICING
+========================================================= */
+.price-table{width:100%; border-collapse:separate; border-spacing:0; margin-top:44px; background:#fff; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line);}
+.price-table th, .price-table td{padding:18px 22px; text-align:left; font-size:14.5px;}
+.price-table th{background:var(--navy); color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:13px; letter-spacing:.04em;}
+.price-table th small{display:block; font-weight:400; font-size:11px; opacity:.7; margin-top:2px;}
+.price-table td{border-top:1px solid var(--line);}
+.price-table tr:hover td{background:rgba(46,134,171,0.03);}
+.price-table .svc-name{font-weight:700; color:var(--navy);}
+.price-table .price{font-family:'Poppins',sans-serif; font-weight:800; color:var(--blue-deep);}
+.price-table .price small{font-size:11px; color:#7a7f90; font-weight:500; display:block;}
+.price-table .tag-hot{display:inline-block; background:var(--red); color:#fff; font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:20px; margin-left:8px; vertical-align:middle;}
+.price-calc-card{
+  background:linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); border-radius:24px; padding:36px; color:#fff;
+  position:relative; overflow:hidden;
+}
+.price-calc-card .blob{background:rgba(46,134,171,0.4); width:260px; height:260px; top:-100px; right:-50px;}
+.price-calc-card h3{font-size:22px; color:#fff; position:relative; z-index:1;}
+.price-calc-card p{font-size:14px; opacity:.85; margin-top:8px; position:relative; z-index:1;}
+
+/* =========================================================
+   REVIEWS
+========================================================= */
+.rev-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:50px;}
+.rev-card{background:#fff; border-radius:18px; padding:28px; border:1px solid var(--line); position:relative; transition:transform .3s ease, box-shadow .3s ease;}
+.rev-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.rev-card .stars{display:flex; gap:3px; margin-bottom:14px;}
+.rev-card .stars svg{width:17px; height:17px; color:var(--gold);}
+.rev-card .quote{font-size:14.5px; color:#3a3f52; line-height:1.6; font-style:italic; font-family:'Playfair Display', serif; font-weight:500;}
+.rev-card .who{margin-top:20px; display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid var(--line);}
+.rev-card .avatar{width:42px; height:42px; border-radius:50%; background:var(--droplet-gradient); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-family:'Poppins',sans-serif; font-size:15px;}
+.rev-card .who-info b{font-family:'Poppins',sans-serif; font-size:14px; color:var(--navy); display:block;}
+.rev-card .who-info small{font-size:11.5px; color:#7a7f90;}
+.rev-card .who-tag{margin-left:auto; font-size:10px; font-weight:800; padding:4px 9px; border-radius:20px; background:rgba(6,167,125,0.1); color:var(--green);}
+@media(max-width:1080px){ .rev-grid{grid-template-columns:1fr;} }
+
+/* =========================================================
+   BLOG
+========================================================= */
+.blog-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:24px; margin-top:50px;}
+.blog-card{background:#fff; border-radius:20px; overflow:hidden; border:1px solid var(--line); transition:transform .3s ease, box-shadow .3s ease; cursor:pointer; display:flex; flex-direction:column;}
+.blog-card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
+.blog-thumb{height:180px; position:relative; overflow:hidden;}
+.blog-card.featured .blog-thumb{height:240px;}
+.blog-thumb::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(18,23,43,0.55));}
+.blog-thumb .blog-cat{position:absolute; top:14px; left:14px; z-index:2; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:rgba(233,79,55,0.92); padding:5px 10px; border-radius:20px; backdrop-filter:blur(4px);}
+.blog-body{padding:22px; flex:1; display:flex; flex-direction:column;}
+.blog-body h4{font-size:16px; font-weight:700; color:var(--navy); line-height:1.25;}
+.blog-card.featured .blog-body h4{font-size:21px;}
+.blog-body p{font-size:13.5px; color:#5b5f70; margin-top:10px; line-height:1.55;}
+.blog-meta{margin-top:auto; padding-top:16px; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:#7a7f90; font-weight:600;}
+.blog-meta .kw{color:var(--green); font-weight:700;}
+@media(max-width:1080px){ .blog-grid{grid-template-columns:1fr;} }
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+.final-cta{
+  background:var(--navy); color:#fff; border-radius:32px; padding:80px 60px;
+  position:relative; overflow:hidden; text-align:center;
+}
+.final-cta .blob{background:rgba(46,134,171,0.4);}
+.final-cta .blob.b1{top:-100px; left:10%;}
+.final-cta .blob.b2{bottom:-150px; right:10%; background:rgba(123,97,255,0.3);}
+.final-cta .ripple-field .ripple{border-image:linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0)) 1;}
+.final-cta h2{font-size:clamp(28px,3.8vw,46px); color:#fff; position:relative; z-index:2; max-width:760px; margin:0 auto;}
+.final-cta h2 em{font-style:italic; font-family:'Playfair Display', serif; font-weight:600; background:var(--droplet-gradient); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.final-cta p{font-size:17px; opacity:.88; margin:18px auto 0; max-width:560px; position:relative; z-index:2;}
+.final-cta .hero-actions{justify-content:center; margin-top:34px; position:relative; z-index:2;}
+.final-cta .hero-trust{justify-content:center; border-top-color:rgba(255,255,255,0.15); position:relative; z-index:2;}
+.final-cta .hero-trust div{color:rgba(255,255,255,0.9);}
+.final-cta .hero-trust b{color:#fff;}
+@media(max-width:768px){ .final-cta{padding:50px 28px; border-radius:24px;} }
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer{background:#0B0F1E; color:rgba(255,255,255,0.7); padding:80px 0 30px; position:relative; overflow:hidden;}
+footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, var(--blue), var(--violet), transparent);}
+.footer-grid{display:grid; grid-template-columns:1.4fr repeat(4, 1fr); gap:50px; margin-bottom:60px;}
+.footer-brand .brand{margin-bottom:20px;}
+.footer-brand p{font-size:13.5px; line-height:1.6; margin-bottom:20px; color:rgba(255,255,255,0.6);}
+.footer-brand .footer-contact{display:grid; gap:10px;}
+.footer-brand .footer-contact a{font-size:13px; display:inline-flex; align-items:center; gap:9px; color:rgba(255,255,255,0.8);}
+.footer-brand .footer-contact a:hover{color:#fff;}
+.footer-brand .footer-contact svg{width:15px; height:15px; color:var(--green);}
+.footer-col h5{font-family:'Poppins',sans-serif; font-size:12.5px; letter-spacing:.1em; text-transform:uppercase; color:#fff; margin-bottom:18px; font-weight:700;}
+.footer-col ul{display:grid; gap:9px;}
+.footer-col ul li a{font-size:13px; color:rgba(255,255,255,0.6); transition:color .2s; display:inline-flex; align-items:center; gap:7px;}
+.footer-col ul li a:hover{color:var(--green-soft);}
+.footer-col ul li a .tag{font-size:8px; font-weight:800; padding:1px 5px; border-radius:10px; background:rgba(6,167,125,0.2); color:var(--green-soft);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08); padding-top:26px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:12.5px;}
+.footer-bottom .legal-links{display:flex; gap:18px;}
+.footer-bottom .legal-links a:hover{color:#fff;}
+.footer-social{display:flex; gap:10px;}
+.footer-social a{width:34px; height:34px; border-radius:9px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; transition:background .2s, transform .2s;}
+.footer-social a:hover{background:var(--blue); transform:translateY(-2px);}
+.footer-social svg{width:15px; height:15px; color:#fff;}
+.footer-badge-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+.footer-badge{padding:8px 14px; border-radius:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); font-size:11.5px; font-weight:600; display:inline-flex; align-items:center; gap:7px;}
+.footer-badge svg{width:14px; height:14px; color:var(--green-soft);}
+@media(max-width:1080px){ .footer-grid{grid-template-columns:1fr 1fr; gap:36px;} }
+@media(max-width:560px){ .footer-grid{grid-template-columns:1fr;} }
+
+/* =========================================================
+   PAGE HEADER (inner pages)
+========================================================= */
+.page-hero{
+  padding:155px 0 70px;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(46,134,171,0.12), transparent 60%),
+    radial-gradient(700px 400px at 0% 110%, rgba(6,167,125,0.08), transparent 60%),
+    var(--canvas);
+  position:relative; overflow:hidden;
+}
+.page-hero .wrap{position:relative; z-index:2;}
+.page-hero .eyebrow{margin-bottom:18px;}
+.page-hero h1{font-size:clamp(32px,4.2vw,50px); color:var(--navy); font-weight:800; max-width:780px;}
+.page-hero h1 em{font-style:italic; font-family:'Playfair Display', serif; font-weight:600; color:var(--blue);}
+.page-hero p.lede{margin-top:20px; font-size:17px; color:#3a3f52; max-width:640px; line-height:1.6;}
+.breadcrumb{font-size:12.5px; color:#7a7f90; margin-bottom:18px; display:flex; align-items:center; gap:8px; font-weight:600;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--blue);}
+.breadcrumb svg{width:12px; height:12px;}
+
+/* =========================================================
+   HUB / ARCHITECTURE VIEW
+========================================================= */
+.arch-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:50px;}
+.arch-hub{
+  background:#fff; border:1px solid var(--line); border-radius:22px; padding:30px; transition:transform .3s, box-shadow .3s;
+}
+.arch-hub:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.arch-hub-head{display:flex; align-items:center; gap:14px; padding-bottom:18px; border-bottom:1px solid var(--line); margin-bottom:18px;}
+.arch-hub-icon{width:50px; height:50px; border-radius:14px; background:linear-gradient(135deg, rgba(46,134,171,0.12), rgba(123,97,255,0.08)); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+.arch-hub-icon svg{width:26px; height:26px; color:var(--blue-deep);}
+.arch-hub-head h3{font-size:18px; color:var(--navy);}
+.arch-hub-head .arch-count{font-size:11px; color:var(--blue); font-weight:700; margin-top:3px;}
+.arch-hub-items{display:grid; grid-template-columns:1fr 1fr; gap:6px 14px;}
+.arch-hub-items a{font-size:12.5px; color:#4a4f61; padding:4px 0; display:inline-flex; align-items:center; gap:6px; transition:color .2s;}
+.arch-hub-items a:hover{color:var(--red);}
+.arch-hub-items a::before{content:''; width:5px; height:5px; border-radius:50%; background:var(--green); flex-shrink:0;}
+.arch-hub-items a .tag{font-size:8px; font-weight:800; padding:1px 5px; border-radius:10px; background:rgba(233,79,55,0.1); color:var(--red); margin-left:4px;}
+@media(max-width:768px){ .arch-grid{grid-template-columns:1fr;} .arch-hub-items{grid-template-columns:1fr;} }
+
+/* Stats strip */
+.stats-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:36px; background:linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); border-radius:24px; color:#fff; position:relative; overflow:hidden;}
+.stats-strip .blob{background:rgba(46,134,171,0.3); width:240px; height:240px; top:-80px; right:-30px;}
+.stats-strip .stat{position:relative; z-index:1; text-align:center;}
+.stats-strip .stat b{font-family:'Poppins',sans-serif; font-size:36px; font-weight:800; color:#fff; display:block;}
+.stats-strip .stat b span{font-size:18px; opacity:.7;}
+.stats-strip .stat small{font-size:12.5px; opacity:.78; margin-top:5px; display:block;}
+@media(max-width:768px){ .stats-strip{grid-template-columns:1fr 1fr; padding:26px;} }
+
+/* CTA inline banner */
+.inline-cta{
+  background:linear-gradient(120deg, rgba(46,134,171,0.08), rgba(123,97,255,0.06));
+  border:1px solid rgba(46,134,171,0.2);
+  border-radius:22px; padding:36px; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:50px;
+}
+.inline-cta h3{font-size:22px; color:var(--navy);}
+.inline-cta p{font-size:14px; color:#4a4f61; margin-top:6px;}
+.inline-cta .cta-actions{display:flex; gap:12px; flex-wrap:wrap;}
+
+/* Quote banner (inline on detail pages) */
+.quote-banner{
+  background:var(--navy); color:#fff; border-radius:22px; padding:36px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:30px; align-items:center; position:relative; overflow:hidden; margin-top:50px;
+}
+.quote-banner .blob{background:rgba(46,134,171,0.4); width:240px; height:240px; top:-80px; right:40px;}
+.quote-banner h3{font-size:22px; color:#fff; position:relative; z-index:1;}
+.quote-banner p{font-size:14px; opacity:.85; margin-top:8px; position:relative; z-index:1;}
+.quote-banner .btn{position:relative; z-index:1;}
+@media(max-width:768px){ .quote-banner{grid-template-columns:1fr; padding:28px;} }
+
+/* Detail page layout */
+.detail-grid{display:grid; grid-template-columns:1fr 340px; gap:50px; margin-top:50px;}
+.detail-main h2{font-size:26px; color:var(--navy); margin:36px 0 14px;}
+.detail-main h2:first-child{margin-top:0;}
+.detail-main p{font-size:15.5px; color:#3a3f52; margin-bottom:14px; line-height:1.7;}
+.detail-main ul.checklist{display:grid; gap:10px; margin:18px 0;}
+.detail-main ul.checklist li{display:flex; align-items:flex-start; gap:11px; font-size:14.5px; color:#3a3f52;}
+.detail-main ul.checklist svg{width:19px; height:19px; color:var(--green); flex-shrink:0; margin-top:2px;}
+.detail-sidebar{position:sticky; top:100px; align-self:start;}
+.sidebar-card{background:#fff; border:1px solid var(--line); border-radius:18px; padding:24px; margin-bottom:18px; box-shadow:var(--shadow-sm);}
+.sidebar-card h4{font-size:14px; color:var(--navy); margin-bottom:14px; display:flex; align-items:center; gap:8px;}
+.sidebar-card h4 svg{width:16px; height:16px; color:var(--blue);}
+.sidebar-card .price-big{font-family:'Poppins',sans-serif; font-size:30px; font-weight:800; color:var(--blue-deep); margin:8px 0;}
+.sidebar-card .price-big small{font-size:13px; color:#7a7f90; font-weight:500;}
+.sidebar-card .btn{width:100%; margin-top:10px;}
+.sidebar-card ul{display:grid; gap:9px; margin-top:14px;}
+.sidebar-card ul li{font-size:12.5px; color:#4a4f61; display:flex; align-items:flex-start; gap:8px;}
+.sidebar-card ul li::before{content:''; width:5px; height:5px; border-radius:50%; background:var(--green); flex-shrink:0; margin-top:6px;}
+@media(max-width:960px){ .detail-grid{grid-template-columns:1fr;} .detail-sidebar{position:static;} }
+
+/* Pillar cards (for hub pages) */
+.pillar-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:50px;}
+.pillar-card{
+  background:#fff; border:1px solid var(--line); border-radius:20px; padding:28px; transition:all .3s; cursor:pointer;
+  position:relative; overflow:hidden;
+}
+.pillar-card:hover{transform:translateY(-5px); box-shadow:var(--shadow); border-color:var(--blue);}
+.pillar-card .num{font-family:'Poppins',sans-serif; font-size:32px; font-weight:800; color:rgba(46,134,171,0.18); line-height:1;}
+.pillar-card h4{font-size:17px; color:var(--navy); margin:10px 0 8px;}
+.pillar-card p{font-size:13.5px; color:#5b5f70; line-height:1.55;}
+.pillar-card .pillar-link{margin-top:16px; font-size:12.5px; font-weight:700; color:var(--red); display:inline-flex; align-items:center; gap:6px;}
+@media(max-width:960px){ .pillar-grid{grid-template-columns:1fr;} }
+
+/* Back-to-top */
+.back-top{position:fixed; right:24px; bottom:24px; width:48px; height:48px; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; z-index:900;}
+.back-top.show{opacity:1; pointer-events:auto;}
+.back-top:hover{transform:translateY(-3px); background:var(--blue);}
+.back-top svg{width:20px; height:20px;}
+
+/* Mobile spacing fixes */
+@media(max-width:768px){
+  .hero-trust{gap:18px;}
+  .guarantee-panel{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     TOPBAR
+========================================================== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-left">
+      <span class="hide-sm" style="display:inline-flex;align-items:center;gap:8px;">
+        <span class="pip"></span> Open now · Mon–Sun 7am–9pm
+      </span>
+      <span class="sep hide-sm"></span>
+      <a href="tel:01413304050" style="font-weight:600;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0141 330 4050
+      </a>
+      <span class="sep hide-sm"></span>
+      <a href="#/locations/glasgow" data-link style="font-weight:600;" class="hide-sm">Glasgow · Edinburgh · Aberdeen</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#/deposit-back-guarantee" data-link class="guarantee-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Deposit-Back Guarantee
+      </a>
+      <span class="sep hide-sm"></span>
+      <a href="#/reviews" data-link class="hide-sm" style="font-weight:600;">★ 4.9 / 5 · 1,240 reviews</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     HEADER + NAV
+========================================================== -->
+<header id="siteHeader">
+  <div class="wrap">
+    <nav class="mainnav">
+      <a class="brand" href="#/" data-link>
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2.5c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">MaundyClean</span>
+          <span class="brand-tag">Scotland's Premium Deep Clean</span>
+        </div>
+      </a>
+
+      <ul class="navlinks" id="navlinks">
+        <li class="has-mega" data-mega="services">
+          <button>Services <span class="caret"></span></button>
+          <div class="mega services">
+            <div class="mega-head">
+              <div>
+                <h5>117 Services · 8 Semantic Hubs</h5>
+                <p>Every cleaning service in Scotland, organised by topic authority — not a flat list.</p>
+              </div>
+              <a href="#/services" data-link class="mega-cta">View all services →</a>
+            </div>
+            <div class="mega-services-grid" id="megaServicesGrid"><!-- JS injected --></div>
+            <div class="mega-foot">
+              <p><strong style="color:var(--navy);">Not sure what you need?</strong> Try our 30-second quote tool.</p>
+              <a href="#/pricing" data-link class="btn btn-ghost" style="padding:9px 16px;font-size:13px;">Get instant quote</a>
+            </div>
+          </div>
+        </li>
+        <li class="has-mega" data-mega="industries">
+          <button>Industries <span class="caret"></span></button>
+          <div class="mega industries">
+            <div class="mega-head">
+              <div>
+                <h5>12 Industry Pages · 5 Silos</h5>
+                <p>Specialised B2B cleaning for high-value sectors across Scotland.</p>
+              </div>
+              <a href="#/industries" data-link class="mega-cta">All industries →</a>
+            </div>
+            <div class="mega-ind-grid" id="megaIndGrid"><!-- JS injected --></div>
+          </div>
+        </li>
+        <li class="has-mega" data-mega="locations">
+          <button>Locations <span class="caret"></span></button>
+          <div class="mega locations">
+            <div class="mega-head">
+              <div>
+                <h5>12 Location Hubs · 3 Tiers</h5>
+                <p>Local Scottish presence — not an impersonal national franchise.</p>
+              </div>
+              <a href="#/locations" data-link class="mega-cta">All locations →</a>
+            </div>
+            <div id="megaLocGrid"><!-- JS injected --></div>
+          </div>
+        </li>
+        <li><a href="#/pricing" data-link>Pricing</a></li>
+        <li><a href="#/blog" data-link>Blog</a></li>
+        <li><a href="#/about" data-link>About</a></li>
+        <li><a href="#/contact" data-link>Contact</a></li>
+      </ul>
+
+      <div class="navcta">
+        <div class="phone">
+          <strong>0141 330 4050</strong>
+          <span><span class="pip"></span> 7am – 9pm, 7 days</span>
+        </div>
+        <a href="#/book" data-link class="btn btn-cta">Get Instant Quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile panel -->
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mhead">
+    <a class="brand" href="#/" data-link>
+      <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2.5c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z"/></svg></div>
+      <div class="brand-text"><span class="brand-name" style="color:#fff;">MaundyClean</span></div>
+    </a>
+    <button class="mclose" id="mclose">Close ✕</button>
+  </div>
+  <details>
+    <summary>Services (117)</summary>
+    <div class="msub" id="mobileServices"></div>
+  </details>
+  <details>
+    <summary>Industries (12)</summary>
+    <div class="msub" id="mobileIndustries"></div>
+  </details>
+  <details>
+    <summary>Locations (12)</summary>
+    <div class="msub" id="mobileLocations"></div>
+  </details>
+  <a href="#/pricing" data-link class="mtop">Pricing</a>
+  <a href="#/blog" data-link class="mtop">Blog</a>
+  <a href="#/about" data-link class="mtop">About</a>
+  <a href="#/contact" data-link class="mtop">Contact</a>
+  <div class="mcta">
+    <a href="#/book" data-link class="btn btn-cta">Get Instant Quote</a>
+    <a href="tel:01413304050" class="btn btn-outline" style="color:#fff;">Call 0141 330 4050</a>
+  </div>
+</div>
+
+<!-- =========================================================
+     MAIN — Page views injected here
+========================================================== -->
+<main id="main"></main>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#/" data-link>
+          <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2.5c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z"/></svg></div>
+          <div class="brand-text"><span class="brand-name" style="color:#fff;">MaundyClean</span><span class="brand-tag">Scotland's Premium Deep Clean</span></div>
+        </a>
+        <p>Professional deep cleaning across Scotland. From end-of-tenancy to biohazard remediation — we handle the stress so you don't have to. Local teams in Glasgow, Edinburgh, Aberdeen & beyond.</p>
+        <div class="footer-contact">
+          <a href="tel:01413304050"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 0141 330 4050</a>
+          <a href="mailto:hello@maundyclean.co.uk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> hello@maundyclean.co.uk</a>
+          <a href="#/locations/glasgow" data-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 12 location hubs across Scotland</a>
+        </div>
+        <div class="footer-badge-row">
+          <span class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+          <span class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Eco-Friendly</span>
+          <span class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg> Certified Technicians</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul id="footerServices"></ul>
+      </div>
+      <div class="footer-col">
+        <h5>Industries</h5>
+        <ul id="footerIndustries"></ul>
+      </div>
+      <div class="footer-col">
+        <h5>Locations</h5>
+        <ul id="footerLocations"></ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#/about" data-link>About Us</a></li>
+          <li><a href="#/deposit-back-guarantee" data-link>Deposit-Back Guarantee</a></li>
+          <li><a href="#/pricing" data-link>Pricing & Quotes</a></li>
+          <li><a href="#/reviews" data-link>Reviews & Case Studies</a></li>
+          <li><a href="#/blog" data-link>Blog & Guides</a></li>
+          <li><a href="#/how-it-works" data-link>How It Works</a></li>
+          <li><a href="#/contact" data-link>Contact Us</a></li>
+          <li><a href="#/book" data-link>Book Online</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 MaundyClean Ltd · Registered in Scotland SC712345 · VAT GB 384 921 504</div>
+      <div class="legal-links">
+        <a href="#/privacy" data-link>Privacy Policy</a>
+        <a href="#/cookies" data-link>Cookie Policy</a>
+        <a href="#/terms" data-link>Terms of Service</a>
+        <a href="#/find-us-online" data-link>Find Us Online</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z" fill-opacity=".7"/><path d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z" fill-opacity=".85"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===================================================================
+   MAUNDYCLEAN SPA — Data + Router + Templates + Interactions
+=================================================================== */
+
+/* ---------- ICON LIBRARY (inline SVG strings) ---------- */
+const I = {
+  droplet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.5c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z"/></svg>',
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+  kitchen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2"/><path d="M6 2h12M6 22V12M18 22V12"/></svg>',
+  bath:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1 0M3 12h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M5 19l-1 2M19 19l1 2"/></svg>',
+  carpet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 6v12M11 6v12M15 6v12M19 6v12"/></svg>',
+  oven:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M7 14h2M11 14h2M15 14h2"/></svg>',
+  floor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>',
+  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01"/></svg>',
+  warehouse:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M7 21v-7h10v7M9 13h6"/></svg>',
+  school:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 22v-4a2 2 0 0 0-4 0v4"/><path d="M18 10V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v5"/><path d="M2 10l10-5 10 5"/></svg>',
+  hospital:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>',
+  restaurant:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7a3 3 0 0 0 3 3v10M6 2v7M9 2v7a3 3 0 0 1-3 3"/><path d="M18 2v20M18 2a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3"/></svg>',
+  biohazard:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2a5 5 0 0 0-5 5c0 1.5.5 3 1.5 4M12 2a5 5 0 0 1 5 5c0 1.5-.5 3-1.5 4M5 17a5 5 0 0 0 4-2M19 17a5 5 0 0 1-4-2M2 12a5 5 0 0 0 4 2M22 12a5 5 0 0 1-4 2"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  roof:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>',
+  gutter:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 6v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6M5 12v8M19 12v8"/></svg>',
+  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 17h4V5H2v12h3"/><path d="M14 9h4l3 3v5h-3M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0"/></svg>',
+  spray:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v4H9zM9 7h6v14H9zM3 5h6M3 9h6M3 13h6"/></svg>',
+  leaf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>',
+  bug:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="6" width="8" height="14" rx="4"/><path d="M3 12h5M16 12h5M3 8l3 2M21 8l-3 2M3 16l3-2M21 16l-3-2M9 6V3M15 6V3"/></svg>',
+  paint:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 13v8h4v-8"/></svg>',
+  wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2 2.5-2.5z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>',
+  checkCircle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+  mapPin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
+  arrowUp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
+  sparkle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5z"/><path d="M5 19l.7 2L8 22l-2.3.7L5 25l-.7-2.3L2 22l2.3-.7z"/></svg>',
+  calendar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+  bed:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8V5h6v3"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+  flame:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>',
+  water:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.5c-3 4-6 7.5-6 11a6 6 0 0 0 12 0c0-3.5-3-7-6-11z"/></svg>',
+  wind:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2M12.59 19.41A2 2 0 1 0 14 16H2M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  award:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',
+  users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  briefcase:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+  graduation:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2 2 6 2s6-1 6-2v-5"/></svg>',
+  shopping:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+  hotel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>',
+  church:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 14V11l-6-5-6 5v3M12 2v3M11 5h2M9 22v-6h6v6M4 22V14M20 22V14"/></svg>',
+  utensils:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7a3 3 0 0 0 3 3v10M6 2v7M9 2v7a3 3 0 0 1-3 3M18 2v20"/></svg>',
+  ruler:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.3 8.7l-8.6 8.6a1 1 0 0 1-1.4 0L3.3 9.3a1 1 0 0 1 0-1.4l8.6-8.6a1 1 0 0 1 1.4 0l8 8a1 1 0 0 1 0 1.4z"/><path d="M7.5 8.5l2 2M11 5l2 2M14.5 1.5l2 2"/></svg>',
+  trees:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L8 6h2L6 10h2L4 14h2L2 19h8M12 2l4 4h-2l4 4h-2l4 4h-2l4 5h-8"/></svg>',
+};
+
+/* ---------- SERVICE HUBS DATA (8 hubs, 117 services) ---------- */
+const HUBS = [
+  { id:'residential', name:'Residential Deep Clean', count:9, icon:'home', desc:'Houses, flats, bungalows — every Scottish home type.', tag:'Core Hub',
+    services:[
+      {n:'Deep Cleaning Services', slug:'deep-cleaning-services', tag:'Parent'},
+      {n:'End of Tenancy Cleaning', slug:'end-of-tenancy-cleaning', tag:'Hot'},
+      {n:'Deep House Cleaning', slug:'deep-house-cleaning'},
+      {n:'Flat Cleaning Services', slug:'flat-cleaning-services'},
+      {n:'Bungalow Cleaning', slug:'bungalow-cleaning'},
+      {n:'Home Cleaning Maintenance', slug:'home-cleaning-maintenance'},
+      {n:'One-Off Cleaning', slug:'one-off-cleaning', tag:'480/mo'},
+      {n:'Property Inspection Cleaning', slug:'property-inspection-cleaning'},
+      {n:'Top-to-Bottom Deep Clean', slug:'top-to-bottom-deep-clean'},
+    ]},
+  { id:'interior', name:'Specialised Interior', count:11, icon:'kitchen', desc:'Kitchens, bathrooms, carpets, ovens — room-by-room specialists.', tag:'Breakout',
+    services:[
+      {n:'Kitchen Deep Cleaning', slug:'kitchen-deep-cleaning', tag:'Breakout'},
+      {n:'Bathroom Deep Cleaning', slug:'bathroom-deep-cleaning', tag:'KD 6'},
+      {n:'Carpet & Upholstery Cleaning', slug:'carpet-upholstery-cleaning'},
+      {n:'Oven Cleaning', slug:'oven-cleaning'},
+      {n:'Floor Cleaning & Polishing', slug:'floor-cleaning-polishing'},
+      {n:'Ceiling & Wall Cleaning', slug:'ceiling-wall-cleaning'},
+      {n:'Loft Cleaning', slug:'loft-cleaning'},
+      {n:'Basement Cleaning', slug:'basement-cleaning'},
+      {n:'Garage Cleaning', slug:'garage-cleaning'},
+      {n:'Shed Cleaning', slug:'shed-cleaning'},
+      {n:'Appliance Deep Cleaning', slug:'appliance-deep-cleaning'},
+    ]},
+  { id:'commercial', name:'Commercial & Institutional', count:12, icon:'building', desc:'Offices, schools, warehouses — high-value B2B contracts.', tag:'B2B',
+    services:[
+      {n:'Commercial Cleaning Services', slug:'commercial-cleaning-services', tag:'Parent'},
+      {n:'Office Deep Cleaning', slug:'office-deep-cleaning'},
+      {n:'Industrial Cleaning Services', slug:'industrial-cleaning-services'},
+      {n:'Warehouse Cleaning', slug:'warehouse-cleaning'},
+      {n:'Factory Cleaning', slug:'factory-cleaning'},
+      {n:'School & College Cleaning', slug:'school-college-cleaning'},
+      {n:'University Cleaning', slug:'university-cleaning'},
+      {n:'Student Accommodation Cleaning', slug:'student-accommodation-cleaning'},
+      {n:'Church & Mosque Cleaning', slug:'church-mosque-cleaning'},
+      {n:'Hospital & Medical Cleaning', slug:'hospital-medical-cleaning'},
+      {n:'Restaurant Kitchen Cleaning', slug:'restaurant-kitchen-cleaning'},
+      {n:'Overnight Cleaning Services', slug:'overnight-cleaning-services'},
+    ]},
+  { id:'biohazard', name:'Extreme & Biohazard', count:11, icon:'biohazard', desc:'Trauma, hoarding, hazmat — sensitive emergency response.', tag:'24/7',
+    services:[
+      {n:'Extreme Cleaning Services', slug:'extreme-cleaning-services', tag:'Parent'},
+      {n:'Biohazard Remediation', slug:'biohazard-remediation'},
+      {n:'Crime Scene Forensic Cleanup', slug:'crime-scene-forensic-cleanup'},
+      {n:'Trauma Cleaning Services', slug:'trauma-cleaning-services'},
+      {n:'After Death Cleanup', slug:'after-death-unattended-death-cleanup'},
+      {n:'Suicide Cleanup Services', slug:'suicide-cleanup-services'},
+      {n:'Blood & Bodily Fluid Removal', slug:'blood-bodily-fluid-removal'},
+      {n:'Hoarders Cleaning & Clearance', slug:'hoarders-cleaning-clearance'},
+      {n:'Sharps & Needle Removal', slug:'sharps-needle-removal'},
+      {n:'Hazmat Decontamination', slug:'hazmat-decontamination'},
+      {n:'Urine Decontamination', slug:'urine-decontamination'},
+    ]},
+  { id:'exterior', name:'Exterior & High-Reach', count:11, icon:'roof', desc:'Roofs, gutters, driveways, windows — curb-appeal specialists.', tag:'Outdoor',
+    services:[
+      {n:'Exterior Cleaning Services', slug:'exterior-cleaning-services', tag:'Parent'},
+      {n:'Roof Cleaning & Moss Removal', slug:'roof-cleaning-moss-removal'},
+      {n:'Gutter Cleaning & Repairs', slug:'gutter-cleaning-repairs'},
+      {n:'Driveway & Patio Cleaning', slug:'driveway-patio-cleaning'},
+      {n:'Kerb Cleaning & Maintenance', slug:'kerb-cleaning-maintenance'},
+      {n:'Graffiti Removal Services', slug:'graffiti-removal-services'},
+      {n:'Power Wash Cleaning', slug:'power-wash-cleaning'},
+      {n:'High-Reach Window Cleaning', slug:'high-reach-window-cleaning'},
+      {n:'Beam Cleaning (High Level)', slug:'beam-cleaning-high-level'},
+      {n:'High-Reach Surface Sanitization', slug:'high-reach-surface-sanitization'},
+      {n:'Artificial Grass Deep Clean', slug:'artificial-grass-deep-clean', tag:'KD 0.6'},
+    ]},
+  { id:'clearance', name:'Clearance & Logistics', count:9, icon:'truck', desc:'House clearance, waste removal, man-with-a-van logistics.', tag:'Logistics',
+    services:[
+      {n:'Clearance Services Hub', slug:'clearance-services-hub', tag:'Parent'},
+      {n:'House & Flat Clearance', slug:'house-flat-clearance'},
+      {n:'Office & Commercial Clearance', slug:'office-commercial-clearance'},
+      {n:'Warehouse & Factory Clearance', slug:'warehouse-factory-clearance'},
+      {n:'Furniture & Appliance Removal', slug:'furniture-appliance-removal'},
+      {n:'Waste & Rubbish Clearance', slug:'waste-rubbish-clearance'},
+      {n:'Man & Van Removals', slug:'man-and-van-removals'},
+      {n:'Delivery & Courier Services', slug:'delivery-courier-services'},
+      {n:'Emergency Clearance Services', slug:'emergency-clearance-services'},
+    ]},
+  { id:'hygiene', name:'Specialist Hygiene & Odour', count:9, icon:'spray', desc:'Mould, smoke, pet odour, disinfection — air quality restoration.', tag:'Specialist',
+    services:[
+      {n:'Sanitising & Disinfecting Services', slug:'sanitising-disinfecting-services', tag:'Parent'},
+      {n:'Allergy Cleaning Services', slug:'allergy-cleaning-services'},
+      {n:'Deodorising & Odour Removal', slug:'deodorising-odour-removal'},
+      {n:'Mould & Odour Removal', slug:'mould-odour-removal'},
+      {n:'Cigarette Smoke Odour Removal', slug:'cigarette-smoke-odour-removal'},
+      {n:'Pet Odour Removal & Fumigation', slug:'pet-odour-removal-fumigation'},
+      {n:'Bacteria Cleaning & Hygiene', slug:'bacteria-cleaning-hygiene'},
+      {n:'Discreet Cleaning Services', slug:'discreet-cleaning-services'},
+      {n:'Coronavirus Deep Cleaning', slug:'coronavirus-deep-cleaning'},
+    ]},
+  { id:'maintenance', name:'Property Maintenance & Pest', count:8, icon:'wrench', desc:'Roof repairs, painting, pest control — beyond just cleaning.', tag:'Trade',
+    services:[
+      {n:'Building Maintenance & Repairs', slug:'building-maintenance-repairs', tag:'Parent'},
+      {n:'Roof & Gutter Repairs', slug:'roof-gutter-repairs'},
+      {n:'Paint Repairs & Decorating', slug:'paint-repairs-decorating'},
+      {n:'Exterior & Fence Painting', slug:'exterior-painting-fence-painting'},
+      {n:'Sealing Services & Maintenance', slug:'sealing-services-maintenance'},
+      {n:'Loft Boarding & Insulation', slug:'loft-boarding-insulation'},
+      {n:'Gardening & Clearance Services', slug:'gardening-clearance-services'},
+      {n:'Pest Control Hub', slug:'pest-control-hub'},
+    ]},
+];
+
+/* ---------- INDUSTRIES DATA (5 silos, 12 industries) ---------- */
+const INDUSTRIES = [
+  { silo:'Education', items:[
+    {n:'Primary & Secondary Schools', slug:'primary-secondary-school-cleaning', vol:'1,300/mo', icon:'school'},
+    {n:'University & College Campus', slug:'university-college-campus-cleaning', icon:'graduation'},
+    {n:'Student Accommodation Scotland', slug:'student-accommodation-cleaning-scotland', icon:'users'},
+  ]},
+  { silo:'Healthcare & Clinical', items:[
+    {n:'Dental Practice Deep Cleaning', slug:'dental-practice-deep-cleaning', icon:'hospital'},
+    {n:'Medical & GP Surgery Cleaning', slug:'medical-gp-surgery-cleaning', icon:'shield'},
+    {n:'Care Home & Nursing Facility', slug:'care-home-nursing-facility-cleaning', icon:'heart'},
+  ]},
+  { silo:'Hospitality & Food', items:[
+    {n:'Restaurant & Commercial Kitchen', slug:'restaurant-commercial-kitchen-cleaning', vol:'Breakout', icon:'restaurant'},
+    {n:'Hotel & Leisure Facility', slug:'hotel-leisure-facility-cleaning', icon:'hotel'},
+    {n:'Pub, Bar & Nightclub', slug:'pub-bar-nightclub-cleaning', icon:'utensils'},
+  ]},
+  { silo:'Commercial & Corporate', items:[
+    {n:'Office & Corporate Deep Cleaning', slug:'office-corporate-deep-cleaning', vol:'590/mo', icon:'briefcase'},
+    {n:'Retail & Shopping Centre', slug:'retail-shopping-centre-cleaning', icon:'shopping'},
+    {n:'Warehouse & Industrial Facility', slug:'warehouse-industrial-facility-cleaning', icon:'warehouse'},
+  ]},
+  { silo:'Property & Real Estate', items:[
+    {n:'Letting Agent & Property Manager', slug:'letting-agent-property-manager-cleaning', icon:'building'},
+    {n:'Airbnb & Short-Term Let', slug:'airbnb-short-term-let-cleaning', icon:'bed'},
+    {n:'Construction & After-Builders', slug:'construction-after-builders-cleaning', icon:'wrench'},
+  ]},
+];
+
+/* ---------- LOCATIONS DATA (3 tiers, 12 locations) ---------- */
+const LOCATIONS = [
+  { tier:1, name:'Glasgow', slug:'glasgow', dial:'0141', vol:'320/mo', kw:'deep cleaning glasgow · oven cleaning glasgow' },
+  { tier:1, name:'Edinburgh', slug:'edinburgh', dial:'0131', vol:'260/mo', kw:'move out cleaning edinburgh · bathroom deep cleaning' },
+  { tier:1, name:'Aberdeen', slug:'aberdeen', dial:'01224', vol:'180/mo', kw:'student flat cleaning aberdeen' },
+  { tier:1, name:'Dundee', slug:'dundee', dial:'01382', vol:'140/mo', kw:'airbnb cleaning dundee' },
+  { tier:2, name:'Inverness', slug:'inverness', dial:'01463', vol:'110/mo', kw:'deep cleaning services inverness' },
+  { tier:2, name:'Stirling', slug:'stirling', dial:'01786', vol:'90/mo', kw:'residential deep cleaning stirling' },
+  { tier:2, name:'Paisley', slug:'paisley', dial:'0141', vol:'80/mo', kw:'near me · residential cleaning' },
+  { tier:2, name:'Livingston', slug:'livingston', dial:'01506', vol:'70/mo', kw:'central belt · glasgow-edinburgh bridge' },
+  { tier:3, name:'Fife', slug:'fife', dial:'01592', vol:'60/mo', kw:'carpet cleaning kirkcaldy · dunfermline' },
+  { tier:3, name:'Perth', slug:'perth', dial:'01738', vol:'50/mo', kw:'central scotland residential + commercial' },
+  { tier:3, name:'Ayrshire', slug:'ayrshire', dial:'01292', vol:'45/mo', kw:'best deep clean ayrshire' },
+  { tier:3, name:'E. Kilbride & Hamilton', slug:'east-kilbride-hamilton', dial:'01355', vol:'40/mo', kw:'greater glasgow · suburban' },
+];
+
+/* ---------- BLOG POSTS ---------- */
+const BLOG = [
+  { cat:'Quick Win', title:'Deep Cleaning vs Regular Cleaning: The Real Difference', slug:'deep-cleaning-vs-regular-cleaning', vol:'210/mo', kd:'KD 8', thumb:'linear-gradient(135deg,#2E86AB,#7B61FF)', featured:true, excerpt:'Most Scottish homeowners confuse the two — and end up paying for the wrong service. Here is the technical breakdown of what a true deep clean actually involves, room by room.' },
+  { cat:'Authority', title:'How to Deep Clean a Bathroom: Pro Tips', slug:'how-to-deep-clean-bathroom-guide', vol:'9,900/mo', kd:'KD 6', thumb:'linear-gradient(135deg,#06A77D,#2E86AB)', excerpt:'The massive-traffic guide. Tile grout, limescale, showerheads — everything a Scottish bathroom throws at you.' },
+  { cat:'Authority', title:'How to Deep Clean Wooden Floors', slug:'how-to-deep-clean-wooden-floors', vol:'260/mo', kd:'KD 8', thumb:'linear-gradient(135deg,#E8A13B,#E94F37)', excerpt:'Low-competition + high-intent. Cross-sells carpet and upholstery services.' },
+  { cat:'Revenue Driver', title:'End of Tenancy Cleaning Checklist Scotland 2026', slug:'end-of-tenancy-cleaning-checklist-scotland-2026', vol:'390/mo', kd:'KD 10', thumb:'linear-gradient(135deg,#7B61FF,#E94F8A)', excerpt:'The lead magnet for your EOT funnel. Downloadable PDF + deposit-back guarantee CTA.' },
+  { cat:'Revenue Driver', title:'How to Get Your Deposit Back: Cleaning Secrets', slug:'how-to-get-your-deposit-back-cleaning-secrets', vol:'390/mo', kd:'KD 10', thumb:'linear-gradient(135deg,#E94F37,#E94F8A)', excerpt:'Targets tenant anxiety head-on. Promotes the deposit-back guarantee banner.' },
+  { cat:'B2B / Seasonal', title:'Airbnb Cleaning Checklist for Scottish Hosts', slug:'airbnb-cleaning-checklist-for-scottish-hosts', vol:'180/mo', kd:'KD 12', thumb:'linear-gradient(135deg,#06A77D,#123B49)', excerpt:'Tourism boom in Highlands + cities. Recurring B2B revenue play.' },
+];
+
+/* ---------- REVIEWS ---------- */
+const REVIEWS = [
+  { name:'Sarah Mclean', loc:'Glasgow · West End', avatar:'SM', tag:'End of Tenancy', stars:5, text:'Got my full deposit back thanks to the MaundyClean team. The re-clean guarantee made me book in the first place — and I did not even need to use it. Spotless.' },
+  { name:'James Patterson', loc:'Edinburgh · Marchmont', avatar:'JP', tag:'Deep House Clean', stars:5, text:'Booked 8am Saturday, team arrived 7:55. Branded van, uniformed staff, eco products. Kitchen looked brand new. Beats the national franchises on price AND personality.' },
+  { name:'Dr. Aisha Khan', loc:'Aberdeen · Dental Practice', avatar:'AK', tag:'B2B Clinical', stars:5, text:'We switched from a generic national cleaner 6 months ago. The clinical-grade attention to detail is night and day. They actually understand what a surgery requires.' },
+];
+
+/* ===================================================================
+   ROUTER
+=================================================================== */
+const routes = {};
+function route(path, handler){ routes[path] = handler; }
+function getRoute(){
+  let h = location.hash.replace(/^#/, '') || '/';
+  return h;
+}
+function navigate(path){
+  if(location.hash !== '#'+path){
+    location.hash = path;
+  } else {
+    render();
+  }
+}
+window.addEventListener('hashchange', render);
+
+function render(){
+  const path = getRoute();
+  const main = document.getElementById('main');
+  let handler = null;
+  let params = {};
+
+  // Match dynamic routes
+  for(const pattern in routes){
+    const re = new RegExp('^' + pattern.replace(/:slug/g, '([^/]+)') + '$');
+    const m = path.match(re);
+    if(m){
+      handler = routes[pattern];
+      const names = (pattern.match(/:slug/g) || []);
+      names.forEach((n,i)=> params[n.slice(1)] = m[i+1]);
+      break;
+    }
+  }
+  if(!handler) handler = routes['/'] || (()=>'<p>Not found</p>');
+
+  main.innerHTML = '<div class="page-view active">' + handler(params) + '</div>';
+  window.scrollTo({top:0, behavior:'instant'});
+  // Re-run page hooks
+  if(typeof afterRender === 'function') afterRender(path, params);
+  // Update active nav
+  document.querySelectorAll('.navlinks > li').forEach(li=>{
+    li.classList.remove('active');
+  });
+  // Trigger reveals
+  setTimeout(initReveals, 50);
+  // Close mobile panel
+  document.getElementById('mobilePanel').classList.remove('open');
+}
+
+/* ---------- Reveal observer ---------- */
+let revealObserver;
+function initReveals(){
+  if(revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=> revealObserver.observe(el));
+}
+
+/* ---------- After render hooks ---------- */
+function afterRender(path, params){
+  // Run any page-specific init
+  if(path === '/' && typeof initHome === 'function') initHome();
+  if(path.startsWith('/pricing') && typeof initPricing === 'function') initPricing();
+  if(path.startsWith('/services/') && typeof initServiceDetail === 'function') initServiceDetail(params);
+  if(path.startsWith('/locations/') && typeof initLocationDetail === 'function') initLocationDetail(params);
+  if(path.startsWith('/industries/') && typeof initIndustryDetail === 'function') initIndustryDetail(params);
+  bindLinks();
+}
+
+/* ---------- Bind all data-link anchors ---------- */
+function bindLinks(){
+  document.querySelectorAll('[data-link]').forEach(a=>{
+    if(a.__bound) return; a.__bound = true;
+    a.addEventListener('click', e=>{
+      const href = a.getAttribute('href') || '';
+      if(href.startsWith('#/')){
+        e.preventDefault();
+        navigate(href.slice(1));
+        // Close any open mega menu
+        document.querySelectorAll('.navlinks > li.open').forEach(li=> li.classList.remove('open'));
+      }
+    });
+  });
+}
+
+/* ---------- Header scroll + mega menu + mobile panel ---------- */
+function initShell(){
+  const header = document.getElementById('siteHeader');
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 30) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+    if(window.scrollY > 600) backTop.classList.add('show');
+    else backTop.classList.remove('show');
+  });
+  backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+  // Mega menus
+  document.querySelectorAll('.navlinks > li.has-mega').forEach(li=>{
+    const btn = li.querySelector('button');
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const wasOpen = li.classList.contains('open');
+      document.querySelectorAll('.navlinks > li.open').forEach(x=> x.classList.remove('open'));
+      if(!wasOpen) li.classList.add('open');
+    });
+    li.addEventListener('mouseleave', ()=>{
+      // small delay handled by CSS transition
+    });
+  });
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('.has-mega')){
+      document.querySelectorAll('.navlinks > li.open').forEach(li=> li.classList.remove('open'));
+    }
+  });
+
+  // Mobile panel
+  document.getElementById('hamburger').addEventListener('click', ()=>{
+    document.getElementById('mobilePanel').classList.add('open');
+  });
+  document.getElementById('mclose').addEventListener('click', ()=>{
+    document.getElementById('mobilePanel').classList.remove('open');
+  });
+
+  bindLinks();
+  buildMegaMenus();
+  buildFooterLists();
+}
+
+/* ---------- Build mega menus ---------- */
+function buildMegaMenus(){
+  // Services mega
+  const megaSvc = document.getElementById('megaServicesGrid');
+  megaSvc.innerHTML = HUBS.map(h=>`
+    <div class="mega-hub-col">
+      <div class="mega-hub-head" data-link-href="#/services/${h.id}">
+        <div class="mega-hub-icon">${I[h.icon]}</div>
+        <div>
+          <div class="mega-hub-name">${h.name}</div>
+          <div class="mega-hub-count">${h.count} services</div>
+        </div>
+      </div>
+      <div class="mega-hub-items">
+        ${h.services.slice(0,4).map(s=>`
+          <a href="#/services/${h.id}/${s.slug}" data-link>
+            <span>${s.n}</span>
+            ${s.tag ? `<span class="tag ${s.tag==='Hot'||s.tag==='Breakout'?'hot':''}">${s.tag}</span>` : ''}
+          </a>
+        `).join('')}
+        <a href="#/services/${h.id}" data-link class="more">+ ${h.count-4} more in ${h.name.split(' ')[0]} →</a>
+      </div>
+    </div>
+  `).join('');
+  // Make hub heads clickable
+  megaSvc.querySelectorAll('[data-link-href]').forEach(el=>{
+    el.addEventListener('click', ()=> navigate(el.getAttribute('data-link-href').slice(1)));
+  });
+
+  // Industries mega
+  const megaInd = document.getElementById('megaIndGrid');
+  megaInd.innerHTML = INDUSTRIES.map(silo=>`
+    <div class="mega-ind-col">
+      <div class="mega-ind-head">${silo.silo}</div>
+      <div class="mega-ind-items">
+        ${silo.items.map(it=>`
+          <a href="#/industries/${it.slug}" data-link>
+            <span class="ind-dot"></span>${it.n}
+            ${it.vol?`<span style="margin-left:auto;font-size:9px;font-weight:800;color:var(--green);">${it.vol}</span>`:''}
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  // Locations mega
+  const megaLoc = document.getElementById('megaLocGrid');
+  let locHtml = '';
+  [1,2,3].forEach(t=>{
+    const items = LOCATIONS.filter(l=> l.tier===t);
+    locHtml += `<div class="loc-tier-label"><span class="dot t${t}"></span>Tier ${t} · ${t===1?'Primary cities':t===2?'Regional hubs':'Strategic expansion'}</div>`;
+    locHtml += `<div class="locgrid">${items.map(l=>`
+      <a href="#/locations/${l.slug}" data-link class="tier${t}">${l.name}<small>${l.dial} · ${l.vol}</small></a>
+    `).join('')}</div>`;
+  });
+  locHtml += `<div class="mega-foot"><p><strong style="color:var(--navy);">Local teams, local numbers.</strong> Not a national call centre.</p><a href="#/locations" data-link class="btn btn-ghost" style="padding:9px 16px;font-size:13px;">View all 12 locations</a></div>`;
+  megaLoc.innerHTML = locHtml;
+
+  // Mobile panel
+  document.getElementById('mobileServices').innerHTML = HUBS.map(h=>`
+    <a href="#/services/${h.id}" data-link>${h.name} <small style="opacity:.6;">(${h.count})</small></a>
+  `).join('');
+  document.getElementById('mobileIndustries').innerHTML = INDUSTRIES.map(silo=>
+    silo.items.map(it=>`<a href="#/industries/${it.slug}" data-link>${it.n}</a>`).join('')
+  ).join('');
+  document.getElementById('mobileLocations').innerHTML = LOCATIONS.map(l=>`
+    <a href="#/locations/${l.slug}" data-link>${l.name} <small style="opacity:.6;">(0${l.dial})</small></a>
+  `).join('');
+
+  bindLinks();
+}
+
+/* ---------- Build footer lists ---------- */
+function buildFooterLists(){
+  document.getElementById('footerServices').innerHTML = HUBS.map(h=>
+    `<li><a href="#/services/${h.id}" data-link>${h.name}</a></li>`
+  ).join('') + `<li><a href="#/services" data-link>View all 117 services →</a></li>`;
+
+  document.getElementById('footerIndustries').innerHTML = INDUSTRIES.map(silo=>
+    silo.items.map(it=>`<li><a href="#/industries/${it.slug}" data-link>${it.n}</a></li>`).join('')
+  ).join('');
+
+  document.getElementById('footerLocations').innerHTML = LOCATIONS.map(l=>
+    `<li><a href="#/locations/${l.slug}" data-link>${l.name}</a></li>`
+  ).join('');
+}
+
+/* ===================================================================
+   PAGE TEMPLATES
+=================================================================== */
+
+/* ---------- HOME ---------- */
+function homePage(){
+  return `
+  <section class="hero">
+    <div class="ripple-field">
+      <div class="ripple" style="top:20%;left:75%;"></div>
+      <div class="ripple r2" style="top:20%;left:75%;"></div>
+      <div class="ripple r3" style="top:20%;left:75%;"></div>
+    </div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Scotland's Premium Deep Cleaning Service</div>
+        <h1>The deep clean that <em>protects your deposit</em>, your tenants, and your reputation.</h1>
+        <p class="lede">From end-of-tenancy to biohazard remediation — MaundyClean delivers clinical-grade deep cleaning across 12 Scottish locations. Local teams, branded vans, eco products, and a 100% deposit-back guarantee.</p>
+        <div class="hero-actions">
+          <a href="#/pricing" data-link class="btn btn-cta">Get Instant Quote ${I.arrow}</a>
+          <a href="#/services" data-link class="btn btn-outline on-light">Explore 117 services</a>
+        </div>
+        <div class="hero-trust">
+          <div>${I.check} <b>4.9★</b> from 1,240+ reviews</div>
+          <div>${I.shield} Fully insured & certified</div>
+          <div>${I.clock} Same-day emergency response</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="quote-card" id="heroQuoteCard">
+          <h4>30-Second Quote <span><span class="dot"></span> LIVE</span></h4>
+          <div class="qc-row">
+            <div class="qc-chip active" data-type="end-of-tenancy">End of Tenancy</div>
+            <div class="qc-chip" data-type="deep-house">Deep House</div>
+            <div class="qc-chip" data-type="one-off">One-Off</div>
+          </div>
+          <div class="qc-slider-label">
+            <span>Bedrooms</span><b id="qcBeds">2</b>
+          </div>
+          <input type="range" id="qcRange" min="1" max="5" value="2">
+          <div class="qc-price">
+            <div class="amt">£<span id="qcAmount">135</span> <span>fixed</span></div>
+            <div class="sub">Includes deposit-back guarantee · No hidden fees</div>
+          </div>
+          <a href="#/book" data-link class="btn btn-cta">Book this clean ${I.arrow}</a>
+        </div>
+        <div class="float-badge fb1">${I.shield}<div><b>100%</b><small>Deposit-back</small></div></div>
+        <div class="float-badge fb2">${I.clock}<div><b>24-48h</b><small>Re-clean SLA</small></div></div>
+        <div class="float-badge fb3">${I.users}<div><b>12</b><small>Scottish cities</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="wrap">
+      <div>${I.checkCircle} <b>4.9/5</b> · 1,240+ verified reviews</div>
+      <div>${I.shield} £2M public liability insurance</div>
+      <div>${I.award} ISO 9001 certified cleaning protocols</div>
+      <div>${I.leaf} Eco-friendly, pet-safe products</div>
+      <div>${I.clock} Same-day emergency response</div>
+      <div>${I.users} 1,200+ Scottish landlords served</div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="why" style="background:var(--canvas-warm);">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow center" style="justify-content:center;">Why MaundyClean wins</div>
+        <h2>A premium service at <em>fair, transparent</em> Scottish prices.</h2>
+        <p>We sit in the gap between overpriced national franchises (Housekeep, Molly Maid) and unreliable one-man bands. Local teams, branded vans, deposit-back guarantee, instant quotes — the things competitors in Scotland consistently fail to deliver.</p>
+      </div>
+
+      <div class="compare-grid reveal-stagger">
+        <div class="col-head">What you get</div>
+        <div class="col-head us">MaundyClean<small>Local · Premium · Fair</small></div>
+        <div class="col-head them">National Franchises<small>Housekeep, Molly Maid</small></div>
+
+        <div class="compare-row">
+          <div class="feature" data-label="Feature">100% deposit-back guarantee</div>
+          <div class="yes" data-label="MaundyClean">${I.check} Yes — free re-clean in 24-48h</div>
+          <div class="no" data-label="Competitors">${I.x} Not offered</div>
+        </div>
+        <div class="compare-row">
+          <div class="feature" data-label="Feature">Instant 30-second quote</div>
+          <div class="yes" data-label="MaundyClean">${I.check} Live on every page</div>
+          <div class="mid" data-label="Competitors">Email back next day</div>
+        </div>
+        <div class="compare-row">
+          <div class="feature" data-label="Feature">Local Scottish phone number</div>
+          <div class="yes" data-label="MaundyClean">${I.check} 0141 / 0131 / 01224</div>
+          <div class="no" data-label="Competitors">0845 national rate</div>
+        </div>
+        <div class="compare-row">
+          <div class="feature" data-label="Feature">Branded van + uniformed team</div>
+          <div class="yes" data-label="MaundyClean">${I.check} Always</div>
+          <div class="mid" data-label="Competitors">Sometimes</div>
+        </div>
+        <div class="compare-row">
+          <div class="feature" data-label="Feature">Price (3-bed EOT clean)</div>
+          <div class="yes" data-label="MaundyClean">£180–£215</div>
+          <div class="no" data-label="Competitors">£240–£310</div>
+        </div>
+        <div class="compare-row">
+          <div class="feature" data-label="Feature">Eco-friendly products</div>
+          <div class="yes" data-label="MaundyClean">${I.check} Always, no surcharge</div>
+          <div class="mid" data-label="Competitors">Optional +£15</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="services" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="section-head">
+          <div class="eyebrow">8 Semantic Hubs · 117 Services</div>
+          <h2>Every cleaning service in Scotland, <em>organised by topic authority</em>.</h2>
+          <p>Not a flat list. Our services are grouped into 8 semantic hubs — the same structure Google uses to rank topical expertise. Hover any hub to preview its services.</p>
+        </div>
+        <a href="#/services" data-link class="btn btn-ghost">View full architecture ${I.arrow}</a>
+      </div>
+
+      <div class="svc-hub-grid reveal-stagger">
+        ${HUBS.map((h,i)=>`
+          <div class="svc-hub-card" onclick="navigate('/services/${h.id}')">
+            ${h.tag==='Breakout'?'<span class="breakout">Breakout Niche</span>':''}
+            <div class="svc-hub-num">HUB 0${i+1} / 08</div>
+            <div class="svc-hub-icon">${I[h.icon]}</div>
+            <h4>${h.name}</h4>
+            <p>${h.desc}</p>
+            <div class="hub-meta">
+              <span class="hub-count">${h.count} services</span>
+              <span class="hub-link">Explore hub ${I.arrow}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="guarantee" style="background:var(--canvas);">
+    <div class="wrap">
+      <div class="guarantee reveal">
+        <div class="ripple-field">
+          <div class="ripple" style="top:30%;left:10%;"></div>
+          <div class="ripple r2" style="top:30%;left:10%;"></div>
+          <div class="ripple r3" style="top:30%;left:10%;"></div>
+        </div>
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div>
+          <div class="guarantee-badge">${I.shield}</div>
+          <h2>100% <em>Deposit-Back</em> Guarantee.</h2>
+          <p class="lede">If your landlord or letting agent is not 100% satisfied with our end-of-tenancy clean, we will return within 24–48 hours and re-clean for free. We handle the stress so you don't have to.</p>
+          <ul class="guarantee-list">
+            <li>${I.check} Free re-clean within 24–48 hours of any landlord rejection</li>
+            <li>${I.check} Photographic before/after report on every clean</li>
+            <li>${I.check} Direct letting-agent liaison — we deal with them, not you</li>
+            <li>${I.check} Backed by £2M public liability insurance</li>
+          </ul>
+          <a href="#/deposit-back-guarantee" data-link class="btn btn-cta">Read the full guarantee ${I.arrow}</a>
+        </div>
+        <div class="guarantee-panel">
+          <div class="stat"><b>98.7%</b><span>deposits returned first time</span></div>
+          <div class="stat"><b>1.3%</b><span>re-cleans requested (free)</span></div>
+          <div class="stat"><b>24h</b><span>average re-clean response</span></div>
+          <div class="stat"><b>£0</b><span>cost to you, ever</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="locations" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="section-head">
+          <div class="eyebrow">12 Location Hubs · 3 Tiers</div>
+          <h2>Local teams in <em>every Scottish city</em> that matters.</h2>
+          <p>Not an impersonal national franchise. We hold local numbers (0141 Glasgow, 0131 Edinburgh, 01224 Aberdeen) and cite local landmarks on every hub page — the trust signals that beat Housekeep on "near me" searches.</p>
+        </div>
+        <a href="#/locations" data-link class="btn btn-ghost">All 12 locations ${I.arrow}</a>
+      </div>
+      <div class="loc-tabs reveal">
+        <div class="loc-tab active" data-tier="1">Tier 1 · Primary cities (4)</div>
+        <div class="loc-tab" data-tier="2">Tier 2 · Regional hubs (4)</div>
+        <div class="loc-tab" data-tier="3">Tier 3 · Strategic expansion (4)</div>
+      </div>
+      <div class="loc-panels">
+        ${[1,2,3].map(t=>`
+          <div class="loc-panel ${t===1?'active':''}" data-tier="${t}">
+            ${LOCATIONS.filter(l=>l.tier===t).map(l=>`
+              <div class="loc-card" onclick="navigate('/locations/${l.slug}')">
+                <span class="loc-tier-mark t${t}">T${t}</span>
+                <h4>${l.name} <span class="dial">0${l.dial}</span></h4>
+                <p>${l.kw}</p>
+                <div class="kw">${I.arrow} ${l.vol} search volume</div>
+              </div>
+            `).join('')}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="industries" style="background:var(--navy); color:#fff;">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="section-head">
+          <div class="eyebrow light">12 Industries · 5 Silos</div>
+          <h2 style="color:#fff;">Specialised B2B cleaning for <em style="color:var(--green-soft);">high-value sectors</em>.</h2>
+          <p style="color:rgba(255,255,255,0.75);">From dental surgeries to university campuses — we deliver clinical-grade, compliance-ready deep cleaning that wins recurring B2B contracts competitors like Cleanifiq are too narrow to service.</p>
+        </div>
+        <a href="#/industries" data-link class="btn btn-outline">All 12 industries ${I.arrow}</a>
+      </div>
+      <div class="ind-grid reveal-stagger">
+        ${INDUSTRIES.flatMap(s=>s.items).map(it=>`
+          <div class="ind-card" onclick="navigate('/industries/${it.slug}')">
+            <div class="ind-icon">${I[it.icon] || I.briefcase}</div>
+            <h4>${it.n}</h4>
+            <p>${siloFor(it.slug)}</p>
+            <div class="ind-meta">${it.vol || 'B2B CONTRACT'} · VIEW →</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="reviews" style="background:var(--canvas-warm);">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow center" style="justify-content:center;">Social proof</div>
+        <h2>Rated <em>4.9/5</em> by 1,240 Scottish customers.</h2>
+        <p>From Glasgow West End tenants to Aberdeen dental practices — real reviews from real Scottish clients.</p>
+      </div>
+      <div class="rev-grid reveal-stagger">
+        ${REVIEWS.map(r=>`
+          <div class="rev-card">
+            <div class="stars">${I.star}${I.star}${I.star}${I.star}${I.star}</div>
+            <p class="quote">"${r.text}"</p>
+            <div class="who">
+              <div class="avatar">${r.avatar}</div>
+              <div class="who-info"><b>${r.name}</b><small>${r.loc}</small></div>
+              <div class="who-tag">${r.tag}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="blog" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head-row reveal">
+        <div class="section-head">
+          <div class="eyebrow">Content Hub · Topic Authority</div>
+          <h2>The Scottish cleaning blog that <em>out-ranks</em> the nationals.</h2>
+          <p>Quick-win guides, massive-traffic how-tos, and revenue-driver content — every post interlinks to a service page and a deposit-back CTA.</p>
+        </div>
+        <a href="#/blog" data-link class="btn btn-ghost">All articles ${I.arrow}</a>
+      </div>
+      <div class="blog-grid reveal-stagger">
+        ${BLOG.map((b,i)=>`
+          <div class="blog-card ${i===0?'featured':''}" onclick="navigate('/blog/${b.slug}')">
+            <div class="blog-thumb" style="background:${b.thumb};">
+              <span class="blog-cat">${b.cat}</span>
+            </div>
+            <div class="blog-body">
+              <h4>${b.title}</h4>
+              <p>${b.excerpt}</p>
+              <div class="blog-meta"><span>${I.clock} 5 min read</span><span class="kw">${b.vol} · ${b.kd}</span></div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:var(--canvas);">
+    <div class="wrap">
+      <div class="final-cta reveal">
+        <div class="ripple-field">
+          <div class="ripple" style="top:30%;left:40%;"></div>
+          <div class="ripple r2" style="top:30%;left:40%;"></div>
+          <div class="ripple r3" style="top:30%;left:40%;"></div>
+        </div>
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="eyebrow light" style="justify-content:center;margin-bottom:18px;">Ready when you are</div>
+        <h2>Book your <em>deposit-back guaranteed</em> deep clean in 30 seconds.</h2>
+        <p>Local team. Branded van. Eco products. Photographic report. Free re-clean if your landlord disagrees. Scotland-wide.</p>
+        <div class="hero-actions">
+          <a href="#/book" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+          <a href="tel:01413304050" class="btn btn-outline">Call 0141 330 4050</a>
+        </div>
+        <div class="hero-trust">
+          <div style="color:rgba(255,255,255,0.9);">${I.check} <b style="color:#fff;">No deposit</b> to book</div>
+          <div style="color:rgba(255,255,255,0.9);">${I.shield} <b style="color:#fff;">£2M insured</b></div>
+          <div style="color:rgba(255,255,255,0.9);">${I.clock} <b style="color:#fff;">Same-day</b> available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function siloFor(slug){
+  for(const s of INDUSTRIES){ if(s.items.find(i=>i.slug===slug)) return s.silo + ' silo · compliance-ready'; }
+  return 'Specialised B2B cleaning';
+}
+
+/* ---------- Home init: quote calculator + location tabs ---------- */
+function initHome(){
+  // Quote calculator
+  const card = document.getElementById('heroQuoteCard');
+  if(!card) return;
+  const chips = card.querySelectorAll('.qc-chip');
+  const range = document.getElementById('qcRange');
+  const bedsLabel = document.getElementById('qcBeds');
+  const amount = document.getElementById('qcAmount');
+  const prices = { 'end-of-tenancy':[60,105,135,180,225], 'deep-house':[80,130,170,220,280], 'one-off':[50,90,130,180,240] };
+  let curType = 'end-of-tenancy';
+  function update(){
+    const beds = parseInt(range.value);
+    bedsLabel.textContent = beds;
+    amount.textContent = prices[curType][beds-1];
+  }
+  chips.forEach(c=> c.addEventListener('click', ()=>{
+    chips.forEach(x=> x.classList.remove('active'));
+    c.classList.add('active');
+    curType = c.dataset.type;
+    update();
+  }));
+  range.addEventListener('input', update);
+
+  // Location tabs
+  document.querySelectorAll('.loc-tab').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.querySelectorAll('.loc-tab').forEach(x=> x.classList.remove('active'));
+      document.querySelectorAll('.loc-panel').forEach(x=> x.classList.remove('active'));
+      t.classList.add('active');
+      const tier = t.dataset.tier;
+      document.querySelector(`.loc-panel[data-tier="${tier}"]`).classList.add('active');
+    });
+  });
+}
+
+/* ---------- SERVICES HUB (all 8) ---------- */
+function servicesHubPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Services</span></div>
+      <div class="eyebrow">8 Semantic Hubs · 117 Services</div>
+      <h1>Every cleaning service in Scotland, <em>organised by topic authority</em>.</h1>
+      <p class="lede">Google ranks topic expertise, not flat lists. Our 117 services are grouped into 8 semantic hubs so we prove definitive authority in each category — and so you can find exactly what you need in two clicks, not twenty.</p>
+    </div>
+  </section>
+
+  <section class="section-pad-sm" style="background:var(--canvas-warm);">
+    <div class="wrap">
+      <div class="stats-strip reveal">
+        <div class="blob"></div>
+        <div class="stat"><b>117</b><small>Service pages</small></div>
+        <div class="stat"><b>8</b><small>Semantic hubs</small></div>
+        <div class="stat"><b>12</b><small>Location interlinks each</small></div>
+        <div class="stat"><b>100<span>%</span></b><small>Deposit-back on EOT</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">The Hub Architecture</div>
+        <h2>Eight hubs. One definitive Scottish cleaning authority.</h2>
+        <p>Each hub is a parent page that passes topical authority to its child services. Click any hub to see its full service breakdown.</p>
+      </div>
+
+      <div class="arch-grid reveal-stagger">
+        ${HUBS.map((h,i)=>`
+          <div class="arch-hub">
+            <div class="arch-hub-head" onclick="navigate('/services/${h.id}')" style="cursor:pointer;">
+              <div class="arch-hub-icon">${I[h.icon]}</div>
+              <div>
+                <h3>${h.name}</h3>
+                <div class="arch-count">HUB 0${i+1} · ${h.count} services · ${h.tag}</div>
+              </div>
+            </div>
+            <div class="arch-hub-items">
+              ${h.services.map(s=>`
+                <a href="#/services/${h.id}/${s.slug}" data-link>${s.n}${s.tag==='Hot'||s.tag==='Breakout'?'<span class="tag">HOT</span>':''}</a>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="inline-cta reveal">
+        <div>
+          <h3>Not sure which service you need?</h3>
+          <p>Try our 30-second quote calculator — we'll route you to the right service automatically.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#/pricing" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+          <a href="tel:01413304050" class="btn btn-ghost">Call us instead</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- SERVICE HUB DETAIL ---------- */
+function serviceHubPage(params){
+  const hub = HUBS.find(h=> h.id===params.slug);
+  if(!hub) return notFoundPage();
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <a href="#/services" data-link>Services</a> ${I.arrow} <span>${hub.name}</span></div>
+      <div class="eyebrow">${hub.tag} Hub · ${hub.count} Services</div>
+      <h1>${hub.name}.</h1>
+      <p class="lede">${hub.desc} This hub contains ${hub.count} specialised services, each targeting specific Scottish search intent — from "deep cleaning services Glasgow" to "oven cleaning Aberdeen".</p>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="#/pricing" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+        <a href="#/services" data-link class="btn btn-ghost">All 8 hubs</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Services in this hub</div>
+        <h2>${hub.count} specialised services under <em>${hub.name}</em>.</h2>
+        <p>Click any service to see pricing, process, checklist, and the local interlinks to all 12 location hubs.</p>
+      </div>
+
+      <div class="pillar-grid reveal-stagger">
+        ${hub.services.map((s,i)=>`
+          <div class="pillar-card" onclick="navigate('/services/${hub.id}/${s.slug}')">
+            <div class="num">${String(i+1).padStart(2,'0')}</div>
+            <h4>${s.n}</h4>
+            <p>${serviceBlurb(s.n, hub.name)}</p>
+            <div class="pillar-link">View service ${I.arrow}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="quote-banner reveal">
+        <div class="blob"></div>
+        <div>
+          <h3>Book any ${hub.name.split(' ')[0]} service today.</h3>
+          <p>30-second quote. Same-day availability. Deposit-back guarantee on end-of-tenancy cleans.</p>
+        </div>
+        <a href="#/book" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+      </div>
+
+      <div style="margin-top:50px;">
+        <div class="section-head reveal" style="margin-bottom:30px;">
+          <div class="eyebrow">Other hubs</div>
+          <h2 style="font-size:24px;">Explore the other 7 service hubs.</h2>
+        </div>
+        <div class="svc-hub-grid reveal-stagger">
+          ${HUBS.filter(h=>h.id!==hub.id).slice(0,4).map((h,i)=>`
+            <div class="svc-hub-card" onclick="navigate('/services/${h.id}')">
+              <div class="svc-hub-num">HUB 0${HUBS.indexOf(h)+1} / 08</div>
+              <div class="svc-hub-icon">${I[h.icon]}</div>
+              <h4>${h.name}</h4>
+              <p>${h.desc}</p>
+              <div class="hub-meta">
+                <span class="hub-count">${h.count} services</span>
+                <span class="hub-link">Explore ${I.arrow}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- SERVICE DETAIL ---------- */
+function serviceDetailPage(params){
+  const hub = HUBS.find(h=> h.id===params.slug);
+  if(!hub) return notFoundPage();
+  const svc = hub.services.find(s=> s.slug===params.slug2);
+  if(!svc) return notFoundPage();
+
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <a href="#/services" data-link>Services</a> ${I.arrow} <a href="#/services/${hub.id}" data-link>${hub.name}</a> ${I.arrow} <span>${svc.n}</span></div>
+      <div class="eyebrow">${hub.name} · ${svc.tag || 'Service'}</div>
+      <h1>${svc.n} <em>across Scotland</em>.</h1>
+      <p class="lede">${serviceBlurb(svc.n, hub.name)} Available in all 12 Scottish locations — from Glasgow to Inverness. Book online in 30 seconds with our deposit-back guarantee.</p>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="#/book" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+        <a href="tel:01413304050" class="btn btn-ghost">Call 0141 330 4050</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-main reveal">
+          <h2>What's included</h2>
+          <p>Our ${svc.n.toLowerCase()} service is a clinical-grade, room-by-room deep clean performed by uniformed, certified technicians using eco-friendly products. Every clean is backed by our photographic before/after report and — for end-of-tenancy work — the 100% deposit-back guarantee.</p>
+          <ul class="checklist">
+            <li>${I.check} Free on-site assessment and written scope of work</li>
+            <li>${I.check} Trained, uniformed, DBS-checked technicians</li>
+            <li>${I.check} Eco-friendly, pet-safe, EN 14476-certified products</li>
+            <li>${I.check} Branded van and professional equipment</li>
+            <li>${I.check} Photographic before/after report</li>
+            <li>${I.check} 100% deposit-back guarantee (EOT services)</li>
+            <li>${I.check} Free re-clean within 24-48h if landlord rejects</li>
+          </ul>
+
+          <h2>Our 4-step process</h2>
+          <p>From booking to completion, we keep you informed at every step. No surprises, no hidden fees, no chasing.</p>
+          <ul class="checklist">
+            <li>${I.check} <strong>1. Book online</strong> — 30-second quote, pick a slot, pay after clean</li>
+            <li>${I.check} <strong>2. Pre-clean brief</strong> — technician walks the property with you</li>
+            <li>${I.check} <strong>3. The deep clean</strong> — room-by-room, photographic report throughout</li>
+            <li>${I.check} <strong>4. Handover & guarantee</strong> — sign-off + deposit-back guarantee activated</li>
+          </ul>
+
+          <h2>Pricing for ${svc.n}</h2>
+          <p>Transparent, fair, and 10–15% cheaper than national franchises. Final price depends on property size and condition — get an exact quote in 30 seconds.</p>
+          <table class="price-table" style="margin-top:20px;">
+            <thead><tr><th>Property Size</th><th>Standard Price</th><th>Same-Day</th></tr></thead>
+            <tbody>
+              <tr><td class="svc-name">1 bedroom</td><td class="price">£105<small>fixed</small></td><td class="price">£130</td></tr>
+              <tr><td class="svc-name">2 bedroom <span class="tag-hot">Popular</span></td><td class="price">£135<small>fixed</small></td><td class="price">£165</td></tr>
+              <tr><td class="svc-name">3 bedroom</td><td class="price">£180<small>fixed</small></td><td class="price">£220</td></tr>
+              <tr><td class="svc-name">4+ bedroom</td><td class="price">£225<small>from</small></td><td class="price">£275</td></tr>
+            </tbody>
+          </table>
+
+          <h2>Frequently asked</h2>
+          <p>Real questions from Scottish customers booking ${svc.n.toLowerCase()}.</p>
+          <ul class="checklist" style="margin-top:18px;">
+            <li>${I.check} <strong>Do you bring your own products and equipment?</strong> Yes — everything. Eco-friendly, pet-safe, professional-grade.</li>
+            <li>${I.check} <strong>When do I pay?</strong> After the clean is complete and you've signed off. No deposit to book.</li>
+            <li>${I.check} <strong>What if my landlord isn't satisfied?</strong> We return within 24-48h and re-clean for free. That's the deposit-back guarantee.</li>
+            <li>${I.check} <strong>Are you insured?</strong> Yes — £2M public liability, ISO 9001 certified protocols.</li>
+          </ul>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>${I.tag} Instant Quote</h4>
+            <div class="price-big">£135<small> / from</small></div>
+            <p style="font-size:12.5px;color:#5b5f70;margin-bottom:10px;">2-bed ${svc.n.split(' ')[0].toLowerCase()} clean · deposit-back guarantee included.</p>
+            <a href="#/book" data-link class="btn btn-cta">Book this clean ${I.arrow}</a>
+            <a href="tel:01413304050" class="btn btn-ghost" style="margin-top:8px;width:100%;">Call 0141 330 4050</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.shield} Trust signals</h4>
+            <ul>
+              <li>£2M public liability insurance</li>
+              <li>ISO 9001 certified cleaning protocols</li>
+              <li>DBS-checked, uniformed technicians</li>
+              <li>Eco-friendly EN 14476 products</li>
+              <li>4.9★ from 1,240+ reviews</li>
+              <li>100% deposit-back guarantee</li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.mapPin} Service available in</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;">
+              ${LOCATIONS.slice(0,8).map(l=>`<a href="#/locations/${l.slug}" data-link style="font-size:12px;padding:6px 8px;background:var(--canvas);border-radius:8px;text-align:center;font-weight:600;color:var(--navy);">${l.name}</a>`).join('')}
+            </div>
+            <a href="#/locations" data-link class="btn btn-ghost" style="width:100%;margin-top:10px;font-size:12px;padding:10px;">All 12 locations</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="quote-banner reveal">
+        <div class="blob"></div>
+        <div>
+          <h3>Ready to book your ${svc.n.toLowerCase()}?</h3>
+          <p>30-second quote · Same-day availability · Deposit-back guarantee · Scotland-wide</p>
+        </div>
+        <a href="#/book" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function serviceBlurb(name, hubName){
+  const map = {
+    'End of Tenancy Cleaning':'The #1 revenue driver. Targets "deep cleaning services Glasgow" and includes the deposit-back guarantee. Beats Cleanifiq and Housekeep on tenant trust.',
+    'Deep House Cleaning':'Targets "house deep cleaning services" (1,000/mo volume). Whole-home top-to-bottom deep clean.',
+    'Kitchen Deep Cleaning':'Your breakout niche — +100% growth in Scotland. Targets "kitchen deep cleaning services near me".',
+    'Bathroom Deep Cleaning':'Fastest-ranking service. Low competition (KD 6) + strong volume. Cross-sells carpet cleaning.',
+    'Oven Cleaning':'High-intent transactional sub-service. Popular add-on for end-of-tenancy cleans.',
+    'Commercial Cleaning Services':'Primary B2B landing page. Targets "commercial deep cleaning" (590/mo).',
+    'Biohazard Remediation':'Specialised decontamination parent page. Low-volume, high-value emergency work.',
+  };
+  return map[name] || `Specialised ${name.toLowerCase()} service within the ${hubName} hub. Targets specific Scottish search intent with local interlinks.`;
+}
+
+/* ---------- INDUSTRIES HUB ---------- */
+function industriesHubPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Industries</span></div>
+      <div class="eyebrow">12 Industries · 5 Silos</div>
+      <h1>Specialised B2B cleaning for <em>high-value Scottish sectors</em>.</h1>
+      <p class="lede">From dental surgeries to university campuses, restaurants to retail parks — we deliver clinical-grade, compliance-ready deep cleaning that wins recurring B2B contracts. Cleanifiq is too narrow. Housekeep is too generic. MaundyClean is the specialist.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      ${INDUSTRIES.map((silo,si)=>`
+        <div class="reveal" style="margin-bottom:60px;">
+          <div class="section-head">
+            <div class="eyebrow green">Silo 0${si+1} · ${silo.silo}</div>
+            <h2 style="font-size:30px;">${silo.silo} cleaning.</h2>
+            <p>${siloDesc(silo.silo)}</p>
+          </div>
+          <div class="ind-grid" style="grid-template-columns:repeat(3,1fr);margin-top:36px;">
+            ${silo.items.map(it=>`
+              <div class="ind-card" onclick="navigate('/industries/${it.slug}')" style="min-height:200px;">
+                <div class="ind-icon">${I[it.icon] || I.briefcase}</div>
+                <h4>${it.n}</h4>
+                <p>${it.vol || 'B2B CONTRACT'} · Compliance-ready · Recurring</p>
+                <div class="ind-meta">VIEW INDUSTRY →</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+
+      <div class="inline-cta reveal">
+        <div>
+          <h3>Need a B2B cleaning partner across multiple sites?</h3>
+          <p>We service letting agent portfolios, multi-site retail, and campus-wide institutions. Volume pricing and dedicated account management.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#/contact" data-link class="btn btn-cta">Request site audit ${I.arrow}</a>
+          <a href="tel:01413304050" class="btn btn-ghost">Call B2B team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+function siloDesc(name){
+  const map = {
+    'Education':'Targets massive search spikes like "school closed for deep clean" (1,300/mo). Large-scale facility management and rapid-response sanitization.',
+    'Healthcare & Clinical':'Clinical-grade hygiene for surgeries, dental practices, and care homes. Beats Sparkle Sparkle by being more specialised.',
+    'Hospitality & Food':'The breakout niche — kitchen deep cleaning services +100% growth in Scotland. Tourism boom drives recurring revenue.',
+    'Commercial & Corporate':'High-value category with significant CPC. Office, retail, and warehouse contracts that recur monthly.',
+    'Property & Real Estate':'Strategic partnerships with letting agents in Edinburgh and Glasgow. Bulk EOT contracts + Airbnb turnover cleans.',
+  };
+  return map[name] || 'Specialised B2B cleaning services for this sector.';
+}
+
+/* ---------- INDUSTRY DETAIL ---------- */
+function industryDetailPage(params){
+  let found = null, siloName = '';
+  for(const s of INDUSTRIES){
+    const m = s.items.find(i=> i.slug===params.slug);
+    if(m){ found = m; siloName = s.silo; break; }
+  }
+  if(!found) return notFoundPage();
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <a href="#/industries" data-link>Industries</a> ${I.arrow} <span>${found.n}</span></div>
+      <div class="eyebrow">${siloName} · B2B Specialised</div>
+      <h1>${found.n} <em>across Scotland</em>.</h1>
+      <p class="lede">Compliance-ready deep cleaning for ${found.n.toLowerCase()}. ${found.vol ? `Targeting ${found.vol} search volume.` : ''} We service single sites and multi-location portfolios with dedicated account management and SLA-backed response times.</p>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="#/contact" data-link class="btn btn-cta">Request site audit ${I.arrow}</a>
+        <a href="tel:01413304050" class="btn btn-ghost">Call B2B team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-main reveal">
+          <h2>Why ${found.n.toLowerCase()} need a specialist</h2>
+          <p>Generic commercial cleaners miss the compliance, infection-control, and presentation standards required in ${found.n.toLowerCase()}. Our specialised teams are trained on the specific protocols for this sector — from CQC-equivalent standards in healthcare to HACCP in commercial kitchens.</p>
+          <ul class="checklist">
+            <li>${I.check} Sector-specific compliance (HACCP, CQC-equivalent, COSHH)</li>
+            <li>${I.check} Discreet, out-of-hours service to protect your operations</li>
+            <li>${I.check} Dedicated account manager and SLA-backed response</li>
+            <li>${I.check} Volume pricing for multi-site portfolios</li>
+            <li>${I.check} Photographic audit trail for compliance records</li>
+            <li>${I.check} Eco-friendly, sector-appropriate products</li>
+          </ul>
+
+          <h2>Our sector process</h2>
+          <p>A proven 5-stage process built around minimising disruption and maximising compliance.</p>
+          <ul class="checklist">
+            <li>${I.check} <strong>1. Site audit</strong> — free on-site assessment and compliance gap analysis</li>
+            <li>${I.check} <strong>2. Scope & SLA</strong> — written scope, frequency, response-time SLA</li>
+            <li>${I.check} <strong>3. Dedicated team</strong> — same uniformed team every visit</li>
+            <li>${I.check} <strong>4. Photographic audit</strong> — every visit documented for compliance</li>
+            <li>${I.check} <strong>5. Quarterly review</strong> — continuous improvement + price-lock</li>
+          </ul>
+
+          <h2>Sectors we already service</h2>
+          <p>We hold active B2B contracts across these Scottish ${found.n.toLowerCase()} segments:</p>
+          <ul class="checklist">
+            <li>${I.check} Single-site and multi-site operations</li>
+            <li>${I.check} Independent and chain operators</li>
+            <li>${I.check} Urban and rural locations</li>
+            <li>${I.check} Compliance-critical environments</li>
+          </ul>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>${I.briefcase} B2B enquiry</h4>
+            <p style="font-size:12.5px;color:#5b5f70;margin-bottom:14px;">Free site audit · Volume pricing · Dedicated account manager</p>
+            <a href="#/contact" data-link class="btn btn-cta">Request site audit ${I.arrow}</a>
+            <a href="tel:01413304050" class="btn btn-ghost" style="margin-top:8px;width:100%;">Call B2B team</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.shield} B2B trust</h4>
+            <ul>
+              <li>£2M public liability + £5M option</li>
+              <li>ISO 9001 certified protocols</li>
+              <li>Sector-specific compliance training</li>
+              <li>DBS-checked, uniformed teams</li>
+              <li>SLA-backed response times</li>
+              <li>Photographic compliance audit</li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.book} Related services</h4>
+            <div style="display:grid;gap:8px;margin-top:8px;">
+              <a href="#/services/commercial/commercial-cleaning-services" data-link style="font-size:12.5px;font-weight:600;color:var(--navy);padding:8px;background:var(--canvas);border-radius:8px;">Commercial Cleaning →</a>
+              <a href="#/services/interior/kitchen-deep-cleaning" data-link style="font-size:12.5px;font-weight:600;color:var(--navy);padding:8px;background:var(--canvas);border-radius:8px;">Kitchen Deep Cleaning →</a>
+              <a href="#/services/hygiene/sanitising-disinfecting-services" data-link style="font-size:12.5px;font-weight:600;color:var(--navy);padding:8px;background:var(--canvas);border-radius:8px;">Sanitising & Disinfecting →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- LOCATIONS HUB ---------- */
+function locationsHubPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Locations</span></div>
+      <div class="eyebrow">12 Location Hubs · 3 Strategic Tiers</div>
+      <h1>Local teams in <em>every Scottish city</em> that matters.</h1>
+      <p class="lede">Not an impersonal national franchise. We hold local phone numbers, cite local landmarks, and feature local testimonials — the trust signals that beat Housekeep on "near me" searches across Scotland.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      ${[1,2,3].map((t,i)=>`
+        <div class="reveal" style="margin-bottom:60px;">
+          <div class="section-head">
+            <div class="eyebrow ${t===1?'red':t===2?'':t===3?'green':''}">Tier ${t} · ${['Primary cities','Regional hubs','Strategic expansion'][i]}</div>
+            <h2 style="font-size:30px;">${['The 4 big Scottish cities','Central belt + Highlands','Niche regional dominance'][i]}.</h2>
+            <p>${['Highest-volume keywords. Immediate cash flow. Glasgow, Edinburgh, Aberdeen, Dundee.','Lower competition, fast-ranking "near me" wins. Inverness, Stirling, Paisley, Livingston.'][i] || 'Semantic domination of niche regional searches. Fife, Perth, Ayrshire, E. Kilbride.'}</p>
+          </div>
+          <div class="loc-panel active" style="display:grid;">
+            ${LOCATIONS.filter(l=>l.tier===t).map(l=>`
+              <div class="loc-card" onclick="navigate('/locations/${l.slug}')">
+                <span class="loc-tier-mark t${t}">T${t}</span>
+                <h4>${l.name} <span class="dial">0${l.dial}</span></h4>
+                <p>${l.kw}</p>
+                <div class="kw">${I.arrow} ${l.vol} search volume · KD ${Math.round(Math.random()*15)+5}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+
+      <div class="inline-cta reveal">
+        <div>
+          <h3>Don't see your town listed?</h3>
+          <p>We service every corner of Scotland. If you're within 50 miles of any hub, we'll come to you.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#/contact" data-link class="btn btn-cta">Check availability ${I.arrow}</a>
+          <a href="tel:01413304050" class="btn btn-ghost">Call us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- LOCATION DETAIL ---------- */
+function locationDetailPage(params){
+  const loc = LOCATIONS.find(l=> l.slug===params.slug);
+  if(!loc) return notFoundPage();
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <a href="#/locations" data-link>Locations</a> ${I.arrow} <span>${loc.name}</span></div>
+      <div class="eyebrow">Tier ${loc.tier} Hub · Local ${loc.name} Team</div>
+      <h1>Deep cleaning services in <em>${loc.name}</em>.</h1>
+      <p class="lede">Local MaundyClean team serving ${loc.name} and surrounding areas. Local phone (0${loc.dial}), local landmarks, local testimonials — not a national call centre. ${loc.vol} monthly searches for deep cleaning in ${loc.name}.</p>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="#/book" data-link class="btn btn-cta">Get instant quote ${I.arrow}</a>
+        <a href="tel:01${loc.dial}" class="btn btn-ghost">Call 0${loc.dial}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-main reveal">
+          <h2>Your local ${loc.name} cleaning team</h2>
+          <p>We're not a national franchise routing your job to whoever is closest. MaundyClean has a dedicated ${loc.name} team — same faces, same branded van, same local phone number every time. That's how we beat Housekeep and Molly Maid on "deep cleaning ${loc.name}" searches.</p>
+          <ul class="checklist">
+            <li>${I.check} Local ${loc.name} phone number (0${loc.dial})</li>
+            <li>${I.check} Same uniformed team every visit</li>
+            <li>${I.check} Familiar with ${loc.name} property types and letting agents</li>
+            <li>${I.check} 30-minute response window for emergency cleans</li>
+            <li>${I.check} Local testimonials from ${loc.name} customers</li>
+          </ul>
+
+          <h2>Services available in ${loc.name}</h2>
+          <p>All 117 services are available in ${loc.name}. The most popular locally:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;">
+            ${HUBS.slice(0,4).map(h=>`
+              <a href="#/services/${h.id}" data-link style="padding:14px;background:var(--canvas);border-radius:12px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:13.5px;color:var(--navy);">
+                <span style="width:32px;height:32px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--blue-deep);">${I[h.icon]}</span>
+                ${h.name}
+              </a>
+            `).join('')}
+          </div>
+
+          <h2>${loc.name} landmarks we service</h2>
+          <p>Our ${loc.name} team is familiar with the specific property types and challenges of the area — from tenement flats to new-build estates.</p>
+          <ul class="checklist">
+            <li>${I.check} City centre flats and apartments</li>
+            <li>${I.check} Suburban family homes</li>
+            <li>${I.check} Student accommodation (where applicable)</li>
+            <li>${I.check} Commercial premises and offices</li>
+            <li>${I.check} Airbnbs and short-term lets</li>
+          </ul>
+
+          <h2>What ${loc.name} customers say</h2>
+          <div class="rev-grid" style="grid-template-columns:1fr;">
+            ${REVIEWS.map(r=>`
+              <div class="rev-card">
+                <div class="stars">${I.star}${I.star}${I.star}${I.star}${I.star}</div>
+                <p class="quote">"${r.text}"</p>
+                <div class="who">
+                  <div class="avatar">${r.avatar}</div>
+                  <div class="who-info"><b>${r.name}</b><small>${loc.name} area</small></div>
+                  <div class="who-tag">${r.tag}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>${I.mapPin} ${loc.name} team</h4>
+            <div class="price-big" style="font-size:22px;">0${loc.dial}</div>
+            <p style="font-size:12.5px;color:#5b5f70;margin-bottom:10px;">Local ${loc.name} number · Mon-Sun 7am-9pm</p>
+            <a href="#/book" data-link class="btn btn-cta">Book in ${loc.name} ${I.arrow}</a>
+            <a href="tel:0${loc.dial}" class="btn btn-ghost" style="margin-top:8px;width:100%;">Call ${loc.name} team</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.clock} ${loc.name} service hours</h4>
+            <ul>
+              <li>Mon-Fri: 7am – 9pm</li>
+              <li>Saturday: 8am – 7pm</li>
+              <li>Sunday: 9am – 5pm</li>
+              <li>Emergency: 24/7 (20% surcharge)</li>
+              <li>Same-day: subject to availability</li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.shield} ${loc.name} trust</h4>
+            <ul>
+              <li>Local ${loc.name} team — not a call centre</li>
+              <li>£2M public liability insurance</li>
+              <li>4.9★ from local ${loc.name} customers</li>
+              <li>100% deposit-back guarantee</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- PRICING ---------- */
+function pricingPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Pricing</span></div>
+      <div class="eyebrow">Transparent · Fair · 10-15% Cheaper</div>
+      <h1>The cleaning price list <em>competitors hide</em>.</h1>
+      <p class="lede">Bonnie Brooms won't quote online. Housekeep emails you tomorrow. We give you a fixed price in 30 seconds — and it's 10-15% cheaper than the national franchises. No hidden fees, no surprises, no deposit to book.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow center" style="justify-content:center;">30-Second Quote Calculator</div>
+        <h2>Get your exact price right now.</h2>
+        <p>Move the sliders. Pick your service. See your fixed price instantly — no email, no phone call, no waiting.</p>
+      </div>
+
+      <div style="max-width:560px;margin:50px auto 0;background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:24px;padding:36px;color:#fff;position:relative;overflow:hidden;" class="reveal">
+        <div class="blob" style="background:rgba(46,134,171,0.4);width:240px;height:240px;top:-80px;right:-30px;"></div>
+        <h3 style="color:#fff;position:relative;z-index:1;">Instant Quote</h3>
+        <p style="font-size:14px;opacity:.85;margin-top:6px;position:relative;z-index:1;">Drag the slider and pick a service type.</p>
+        <div style="margin-top:24px;position:relative;z-index:1;">
+          <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
+            <div class="qc-chip-pricing active" data-type="end-of-tenancy" style="flex:1;text-align:center;padding:10px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);font-size:12.5px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.1);">End of Tenancy</div>
+            <div class="qc-chip-pricing" data-type="deep-house" style="flex:1;text-align:center;padding:10px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);font-size:12.5px;font-weight:600;cursor:pointer;">Deep House</div>
+            <div class="qc-chip-pricing" data-type="one-off" style="flex:1;text-align:center;padding:10px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);font-size:12.5px;font-weight:600;cursor:pointer;">One-Off</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;">
+            <span>Bedrooms</span><b id="pcBeds" style="font-family:Poppins;">2</b>
+          </div>
+          <input type="range" id="pcRange" min="1" max="5" value="2" style="width:100%;accent-color:var(--green);">
+          <div style="margin-top:24px;padding:20px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:16px;text-align:center;">
+            <div style="font-family:Poppins;font-size:38px;font-weight:800;">£<span id="pcAmount">135</span></div>
+            <div style="font-size:12px;opacity:.8;margin-top:4px;">Fixed price · Deposit-back guarantee · No hidden fees</div>
+          </div>
+          <a href="#/book" data-link class="btn btn-cta" style="width:100%;margin-top:18px;">Book this clean ${I.arrow}</a>
+        </div>
+      </div>
+
+      <div class="section-head reveal" style="margin-top:80px;">
+        <div class="eyebrow">Full price list</div>
+        <h2>Or browse our published price list.</h2>
+        <p>The prices competitors refuse to publish. All fixed, all inclusive, all backed by the deposit-back guarantee.</p>
+      </div>
+
+      <table class="price-table reveal">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>1-bed</th>
+            <th>2-bed <span class="tag-hot" style="margin-left:6px;">Popular</span></th>
+            <th>3-bed</th>
+            <th>4+ bed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="svc-name">End of Tenancy Clean <small style="display:block;font-size:11px;color:var(--green);font-weight:700;">Deposit-back guarantee</small></td><td class="price">£105</td><td class="price">£135</td><td class="price">£180</td><td class="price">£225</td></tr>
+          <tr><td class="svc-name">Deep House Clean</td><td class="price">£130</td><td class="price">£170</td><td class="price">£220</td><td class="price">£280</td></tr>
+          <tr><td class="svc-name">One-Off Deep Clean</td><td class="price">£90</td><td class="price">£130</td><td class="price">£180</td><td class="price">£240</td></tr>
+          <tr><td class="svc-name">Student Flat Special <span class="tag-hot">£99 deal</span></td><td class="price">£99</td><td class="price">£140</td><td class="price">—</td><td class="price">—</td></tr>
+          <tr><td class="svc-name">Kitchen Deep Clean</td><td class="price" colspan="4" style="text-align:center;">from £85 · standalone kitchen deep clean</td></tr>
+          <tr><td class="svc-name">Bathroom Deep Clean</td><td class="price" colspan="4" style="text-align:center;">from £65 · per bathroom</td></tr>
+          <tr><td class="svc-name">Oven Clean (add-on)</td><td class="price" colspan="4" style="text-align:center;">£35 · single oven · £55 double</td></tr>
+          <tr><td class="svc-name">Carpet & Upholstery</td><td class="price" colspan="4" style="text-align:center;">from £12 / room · £45 / 3-seater sofa</td></tr>
+          <tr><td class="svc-name">Same-Day Emergency <small style="display:block;font-size:11px;color:var(--red);font-weight:700;">+20% surcharge</small></td><td class="price">£126</td><td class="price">£162</td><td class="price">£216</td><td class="price">£270</td></tr>
+          <tr><td class="svc-name">Commercial / B2B</td><td class="price" colspan="4" style="text-align:center;">Custom quote · Free site audit · Volume pricing</td></tr>
+        </tbody>
+      </table>
+
+      <div class="inline-cta reveal">
+        <div>
+          <h3>Still cheaper than the nationals.</h3>
+          <p>Housekeep 3-bed EOT: £240-£310. Our 3-bed EOT: £180. Same eco products, same guarantee, local team.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#/book" data-link class="btn btn-cta">Book now ${I.arrow}</a>
+          <a href="tel:01413304050" class="btn btn-ghost">Call to compare</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function initPricing(){
+  const chips = document.querySelectorAll('.qc-chip-pricing');
+  const range = document.getElementById('pcRange');
+  const bedsLabel = document.getElementById('pcBeds');
+  const amount = document.getElementById('pcAmount');
+  if(!range) return;
+  const prices = { 'end-of-tenancy':[60,105,135,180,225], 'deep-house':[80,130,170,220,280], 'one-off':[50,90,130,180,240] };
+  let curType = 'end-of-tenancy';
+  function update(){
+    const beds = parseInt(range.value);
+    bedsLabel.textContent = beds;
+    amount.textContent = prices[curType][beds-1];
+  }
+  chips.forEach(c=> c.addEventListener('click', ()=>{
+    chips.forEach(x=> { x.classList.remove('active'); x.style.background=''; });
+    c.classList.add('active');
+    c.style.background='rgba(255,255,255,0.1)';
+    curType = c.dataset.type;
+    update();
+  }));
+  range.addEventListener('input', update);
+}
+
+/* ---------- BLOG HUB ---------- */
+function blogPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Blog</span></div>
+      <div class="eyebrow">Topic Authority Hub</div>
+      <h1>The Scottish cleaning blog that <em>out-ranks the nationals</em>.</h1>
+      <p class="lede">Quick-win guides, massive-traffic how-tos, and revenue-driver content. Every post interlinks to a service page and a deposit-back CTA — the semantic structure Google rewards with topic authority.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head reveal" style="margin-bottom:40px;">
+        <div class="eyebrow">Content clusters</div>
+        <h2 style="font-size:30px;">4 strategic blog clusters.</h2>
+        <p>Each cluster targets a different stage of the customer journey — from low-difficulty "what is" queries to high-intent "how to get deposit back" searches.</p>
+      </div>
+
+      ${['Quick Win Informational','Massive Traffic Authority','Revenue Driver (EOT)','B2B & Seasonal'].map((cat,i)=>`
+        <div class="reveal" style="margin-bottom:50px;">
+          <h3 style="font-size:22px;color:var(--navy);margin-bottom:8px;">${i+1}. ${cat}</h3>
+          <p style="font-size:14.5px;color:#5b5f70;margin-bottom:24px;max-width:680px;">${['Low-difficulty keywords (KD 8-10) for Page 1 rankings in 2-6 weeks.','High-volume "how-to" guides (9,900/mo) for long-term organic authority.','Tenant-focused content promoting the deposit-back guarantee.','B2B and tourism-focused content for recurring revenue.'][i]}</p>
+          <div class="blog-grid" style="grid-template-columns:repeat(3,1fr);">
+            ${BLOG.filter(b=>b.cat.startsWith(cat.split(' ')[0])).map(b=>`
+              <div class="blog-card" onclick="navigate('/blog/${b.slug}')">
+                <div class="blog-thumb" style="background:${b.thumb};">
+                  <span class="blog-cat">${b.cat}</span>
+                </div>
+                <div class="blog-body">
+                  <h4>${b.title}</h4>
+                  <p>${b.excerpt}</p>
+                  <div class="blog-meta"><span>${I.clock} 5 min</span><span class="kw">${b.vol} · ${b.kd}</span></div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- ABOUT ---------- */
+function aboutPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>About</span></div>
+      <div class="eyebrow">Our Story</div>
+      <h1>The <em>"Maundy"</em> in MaundyClean.</h1>
+      <p class="lede">"Maundy" evokes tradition, care, and service — the ancient practice of washing feet as an act of humility. That's the brand promise: a cleaning service that genuinely serves Scottish homes and businesses, not an impersonal national franchise optimised for shareholder returns.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="stats-strip reveal" style="margin-bottom:60px;">
+        <div class="blob"></div>
+        <div class="stat"><b>1,240<span>+</span></b><small>5-star reviews</small></div>
+        <div class="stat"><b>12</b><small>Scottish locations</small></div>
+        <div class="stat"><b>117</b><small>Service pages</small></div>
+        <div class="stat"><b>98.7<span>%</span></b><small>Deposit success rate</small></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-main reveal">
+          <h2>Why we built MaundyClean</h2>
+          <p>Scotland's cleaning market is broken. National franchises like Housekeep and Molly Maid charge premium prices but route jobs to whichever contractor is closest — no relationship, no local knowledge, no accountability. One-man bands are cheaper but unreliable, uninsured, and inconsistent. We saw a gap for a premium, local, accountable service at fair prices.</p>
+          <p>MaundyClean was founded to sit in that gap. Local teams in 12 Scottish cities. Branded vans and uniformed technicians. Eco-friendly products as standard. Photographic before/after reports. And the deposit-back guarantee — the trust signal that converts hesitant tenants better than any discount.</p>
+
+          <h2>What "premium service at fair prices" means</h2>
+          <p>We're not the cheapest in Scotland — and we don't try to be. We're 10-15% cheaper than the national franchises, but we deliver more: local teams, branded vans, eco products, and the guarantee. The price gap vs. one-man bands pays for accountability, insurance, and consistency. Most Scottish customers are happy to pay £20-30 more for a service that actually shows up on time, every time.</p>
+
+          <h2>Our promise to Scotland</h2>
+          <ul class="checklist">
+            <li>${I.check} Local teams, local phone numbers, local knowledge — in 12 cities</li>
+            <li>${I.check} 100% deposit-back guarantee on every end-of-tenancy clean</li>
+            <li>${I.check} Eco-friendly, pet-safe products as standard, no surcharge</li>
+            <li>${I.check} Transparent pricing published online — no "call for a quote"</li>
+            <li>${I.check} £2M public liability insurance on every job</li>
+            <li>${I.check} DBS-checked, uniformed, certified technicians</li>
+            <li>${I.check} Photographic before/after report on every clean</li>
+            <li>${I.check} Same-day emergency response across Scotland</li>
+          </ul>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>${I.award} Certifications</h4>
+            <ul>
+              <li>ISO 9001 Quality Management</li>
+              <li>£2M Public Liability Insurance</li>
+              <li>EN 14476 virucidal products</li>
+              <li>COSHH-compliant protocols</li>
+              <li>DBS-checked technicians</li>
+              <li>Waste Carrier License</li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.heart} What we stand for</h4>
+            <ul>
+              <li>Local over national</li>
+              <li>Transparent over opaque</li>
+              <li>Guaranteed over promised</li>
+              <li>Eco over cheap</li>
+              <li>Relationships over transactions</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- DEPOSIT-BACK GUARANTEE ---------- */
+function guaranteePage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Deposit-Back Guarantee</span></div>
+      <div class="eyebrow red">The #1 Conversion Tool</div>
+      <h1>100% <em>Deposit-Back</em> Guarantee.</h1>
+      <p class="lede">If your landlord or letting agent isn't 100% satisfied with our end-of-tenancy clean, we will return within 24-48 hours and re-clean for free. We handle the stress so you don't have to. No competitor in Scotland offers this.</p>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="#/book" data-link class="btn btn-cta">Book guaranteed clean ${I.arrow}</a>
+        <a href="#/services/residential/end-of-tenancy-cleaning" data-link class="btn btn-ghost">View EOT service</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="guarantee reveal" style="margin-bottom:60px;">
+        <div class="ripple-field">
+          <div class="ripple" style="top:30%;left:10%;"></div>
+          <div class="ripple r2" style="top:30%;left:10%;"></div>
+        </div>
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div>
+          <div class="guarantee-badge">${I.shield}</div>
+          <h2>How the <em>guarantee</em> works.</h2>
+          <p class="lede">It's simple. We clean. Your landlord inspects. If they're not 100% satisfied, we come back — free, fast, no questions.</p>
+          <ul class="guarantee-list">
+            <li>${I.check} Book your end-of-tenancy clean online in 30 seconds</li>
+            <li>${I.check} We complete the clean + deliver photographic report</li>
+            <li>${I.check} Your landlord inspects — if not 100% satisfied, tell us</li>
+            <li>${I.check} We return within 24-48 hours and re-clean for free</li>
+            <li>${I.check} We deal direct with the letting agent so you don't have to</li>
+          </ul>
+          <a href="#/book" data-link class="btn btn-cta">Book your guaranteed clean ${I.arrow}</a>
+        </div>
+        <div class="guarantee-panel">
+          <div class="stat"><b>98.7%</b><span>deposits returned first time</span></div>
+          <div class="stat"><b>1.3%</b><span>re-cleans requested (free)</span></div>
+          <div class="stat"><b>24h</b><span>average re-clean response</span></div>
+          <div class="stat"><b>£0</b><span>cost to you, ever</span></div>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-main reveal">
+          <h2>Why we offer this</h2>
+          <p>Tenants in Scotland lose deposits over cleaning issues that aren't their fault — or that a proper deep clean would have resolved. The anxiety of "will I get my deposit back?" is the single biggest barrier to booking any cleaning service. We remove that anxiety completely by taking the risk on ourselves.</p>
+          <p>No competitor in Scotland offers a deposit-back guarantee. Cleanifiq focuses on B2B. Bonnie Brooms and Pure Cleaning Scotland don't publish any guarantee. Housekeep offers a generic "satisfaction guarantee" but not a deposit-back one. This is our strategic edge — and our #1 conversion tool.</p>
+
+          <h2>What's covered</h2>
+          <ul class="checklist">
+            <li>${I.check} Any end-of-tenancy clean booked through MaundyClean</li>
+            <li>${I.check} Any landlord or letting agent rejection within 7 days of clean</li>
+            <li>${I.check} Free re-clean within 24-48 hours of rejection notice</li>
+            <li>${I.check} Direct liaison with your letting agent</li>
+            <li>${I.check} Photographic evidence of the re-clean</li>
+          </ul>
+
+          <h2>What's not covered</h2>
+          <ul class="checklist">
+            <li>${I.x} Damage to the property (that's between you and the landlord)</li>
+            <li>${I.x} Issues unrelated to cleaning (damp, structural, etc.)</li>
+            <li>${I.x} Rejection raised more than 7 days after the clean</li>
+            <li>${I.x} Areas specifically excluded from the original clean scope</li>
+          </ul>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>${I.shield} Activate guarantee</h4>
+            <p style="font-size:12.5px;color:#5b5f70;margin-bottom:14px;">Automatically applied to every EOT booking. No opt-in needed.</p>
+            <a href="#/book" data-link class="btn btn-cta">Book EOT clean ${I.arrow}</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.phone} Need to claim?</h4>
+            <p style="font-size:12.5px;color:#5b5f70;margin-bottom:10px;">Landlord rejected? Call us within 7 days.</p>
+            <a href="tel:01413304050" class="btn btn-ghost" style="width:100%;">0141 330 4050</a>
+            <p style="font-size:11px;color:#7a7f90;margin-top:10px;">Mon-Sun 7am-9pm · 24h response</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- CONTACT ---------- */
+function contactPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Contact</span></div>
+      <div class="eyebrow">Get in touch</div>
+      <h1>Talk to a <em>local Scottish team</em>, not a call centre.</h1>
+      <p class="lede">Local numbers in 12 Scottish cities. Real humans. 30-minute response window for emergencies. No phone trees, no "press 1 for..." — just the help you need, fast.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-main reveal">
+          <h2>12 local numbers, one promise</h2>
+          <p>Every location has its own local phone number — so you know we're actually based there, not routing through a national call centre. Pick your nearest team.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;">
+            ${LOCATIONS.map(l=>`
+              <a href="tel:0${l.dial}" style="padding:14px;background:var(--canvas);border-radius:12px;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:13.5px;color:var(--navy);border:1px solid var(--line);">
+                <span>${l.name}</span>
+                <span style="color:var(--blue);font-family:Poppins;">0${l.dial}</span>
+              </a>
+            `).join('')}
+          </div>
+
+          <h2>Send us a message</h2>
+          <p>For B2B enquiries, site audits, or anything else — drop us a line. We respond within 1 working hour.</p>
+          <form style="margin-top:20px;display:grid;gap:14px;" onsubmit="event.preventDefault();alert('Message sent (prototype). In the live site this would route to your CRM.');">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <input type="text" placeholder="Your name" required style="padding:14px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;">
+              <input type="email" placeholder="Email address" required style="padding:14px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;">
+            </div>
+            <input type="tel" placeholder="Phone (optional)" style="padding:14px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;">
+            <select style="padding:14px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;background:#fff;">
+              <option>What do you need? (select)</option>
+              <option>End of tenancy clean</option>
+              <option>Deep house clean</option>
+              <option>Commercial / B2B quote</option>
+              <option>Site audit</option>
+              <option>Emergency same-day</option>
+              <option>Something else</option>
+            </select>
+            <textarea placeholder="Tell us about the job..." rows="4" style="padding:14px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;resize:vertical;"></textarea>
+            <button type="submit" class="btn btn-cta">Send message ${I.arrow}</button>
+          </form>
+        </div>
+
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <h4>${I.clock} Response times</h4>
+            <ul>
+              <li>Phone: answered in 3 rings</li>
+              <li>Email: within 1 working hour</li>
+              <li>Emergency: 30-minute window</li>
+              <li>B2B enquiries: same-day callback</li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.mail} Email us</h4>
+            <a href="mailto:hello@maundyclean.co.uk" style="font-size:13px;font-weight:600;color:var(--blue);">hello@maundyclean.co.uk</a>
+            <a href="mailto:b2b@maundyclean.co.uk" style="font-size:13px;font-weight:600;color:var(--blue);display:block;margin-top:8px;">b2b@maundyclean.co.uk</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>${I.clock} Opening hours</h4>
+            <ul>
+              <li>Mon-Fri: 7am – 9pm</li>
+              <li>Saturday: 8am – 7pm</li>
+              <li>Sunday: 9am – 5pm</li>
+              <li>Emergency: 24/7</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- BOOK ---------- */
+function bookPage(){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>Book Online</span></div>
+      <div class="eyebrow">30-Second Booking</div>
+      <h1>Book your <em>deposit-back guaranteed</em> clean.</h1>
+      <p class="lede">No deposit to book. No call-back waiting. Pick your service, pick your slot, get your fixed price — done in 30 seconds.</p>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap">
+      <div style="max-width:680px;margin:0 auto;" class="reveal">
+        <div style="background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:24px;padding:40px;color:#fff;position:relative;overflow:hidden;">
+          <div class="blob" style="background:rgba(46,134,171,0.4);width:300px;height:300px;top:-100px;right:-50px;"></div>
+          <h3 style="color:#fff;position:relative;z-index:1;">Booking form (prototype)</h3>
+          <p style="font-size:14px;opacity:.85;margin-top:6px;position:relative;z-index:1;">In the live site this integrates with Calendly for live calendar slots and Stripe for payment.</p>
+          <form style="margin-top:28px;display:grid;gap:16px;position:relative;z-index:1;" onsubmit="event.preventDefault();alert('Booking confirmed (prototype). Live site would integrate Calendly + Stripe.');">
+            <div>
+              <label style="font-size:12px;opacity:.85;display:block;margin-bottom:6px;">Service type</label>
+              <select style="width:100%;padding:14px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:14px;">
+                <option style="color:#000;">End of Tenancy Clean</option>
+                <option style="color:#000;">Deep House Clean</option>
+                <option style="color:#000;">One-Off Deep Clean</option>
+                <option style="color:#000;">Student Flat Special (£99)</option>
+                <option style="color:#000;">Commercial / B2B</option>
+                <option style="color:#000;">Emergency Same-Day</option>
+              </select>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label style="font-size:12px;opacity:.85;display:block;margin-bottom:6px;">Bedrooms</label>
+                <select style="width:100%;padding:14px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:14px;">
+                  <option style="color:#000;">1 bed</option>
+                  <option style="color:#000;" selected>2 bed</option>
+                  <option style="color:#000;">3 bed</option>
+                  <option style="color:#000;">4+ bed</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:12px;opacity:.85;display:block;margin-bottom:6px;">Location</label>
+                <select style="width:100%;padding:14px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:14px;">
+                  ${LOCATIONS.map(l=>`<option style="color:#000;">${l.name}</option>`).join('')}
+                </select>
+              </div>
+            </div>
+            <div>
+              <label style="font-size:12px;opacity:.85;display:block;margin-bottom:6px;">Preferred date</label>
+              <input type="date" style="width:100%;padding:14px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:14px;color-scheme:dark;">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <input type="text" placeholder="Your name" required style="padding:14px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:14px;">
+              <input type="tel" placeholder="Phone" required style="padding:14px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;font-size:14px;">
+            </div>
+            <div style="padding:18px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:14px;text-align:center;">
+              <div style="font-size:12px;opacity:.85;">Your fixed price</div>
+              <div style="font-family:Poppins;font-size:36px;font-weight:800;">£135</div>
+              <div style="font-size:11px;opacity:.7;">2-bed end of tenancy · deposit-back guarantee included</div>
+            </div>
+            <button type="submit" class="btn btn-cta" style="width:100%;">Confirm booking ${I.arrow}</button>
+            <p style="font-size:11px;opacity:.7;text-align:center;">No deposit to book · Free cancellation 24h before · Pay after clean</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- GENERIC PAGE (how it works, reviews, legal, etc.) ---------- */
+function genericPage(title, eyebrow, lede, bodyHtml){
+  return `
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="#/" data-link>Home</a> ${I.arrow} <span>${title}</span></div>
+      <div class="eyebrow">${eyebrow}</div>
+      <h1>${title}.</h1>
+      <p class="lede">${lede}</p>
+    </div>
+  </section>
+  <section class="section-pad" style="background:#fff;">
+    <div class="wrap" style="max-width:880px;">
+      ${bodyHtml}
+    </div>
+  </section>
+  `;
+}
+
+/* ---------- NOT FOUND ---------- */
+function notFoundPage(){
+  return `
+  <section class="page-hero" style="padding:220px 0 100px;text-align:center;">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;">404</div>
+      <h1>This page wandered off.</h1>
+      <p class="lede" style="margin:18px auto 0;max-width:520px;">The page you're looking for isn't here — but our 117 services, 12 locations, and 12 industries all are.</p>
+      <div class="hero-actions" style="justify-content:center;margin-top:30px;">
+        <a href="#/" data-link class="btn btn-cta">Back to home ${I.arrow}</a>
+        <a href="#/services" data-link class="btn btn-ghost">Browse services</a>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+/* ===================================================================
+   ROUTE REGISTRATION + BOOT
+=================================================================== */
+route('/', homePage);
+route('/services', servicesHubPage);
+route('/services/:slug', serviceHubPage);
+route('/services/:slug/:slug2', serviceDetailPage);
+route('/industries', industriesHubPage);
+route('/industries/:slug', industryDetailPage);
+route('/locations', locationsHubPage);
+route('/locations/:slug', locationDetailPage);
+route('/pricing', pricingPage);
+route('/blog', blogPage);
+route('/blog/:slug', ()=> genericPage('Article', 'Blog', 'Article body would render here in the live site.', '<p>Full article content would appear here. This is a prototype — the live blog post would include 1,500-2,500 words of SEO-optimised content, before/after images, internal links to service pages, and a deposit-back CTA banner.</p>'));
+route('/about', aboutPage);
+route('/contact', contactPage);
+route('/book', bookPage);
+route('/reviews', ()=> genericPage('Reviews & Case Studies', 'Social Proof', 'Real reviews from 1,240+ Scottish customers across all 12 locations.', `
+  <div class="rev-grid" style="grid-template-columns:1fr;">
+    ${REVIEWS.concat(REVIEWS).map(r=>`
+      <div class="rev-card">
+        <div class="stars">${I.star}${I.star}${I.star}${I.star}${I.star}</div>
+        <p class="quote">"${r.text}"</p>
+        <div class="who">
+          <div class="avatar">${r.avatar}</div>
+          <div class="who-info"><b>${r.name}</b><small>${r.loc}</small></div>
+          <div class="who-tag">${r.tag}</div>
+        </div>
+      </div>
+    `).join('')}
+  </div>
+`));
+route('/deposit-back-guarantee', guaranteePage);
+route('/how-it-works', ()=> genericPage('How It Works', '4-Step Process', 'Book → Brief → Clean → Handover. A simple, transparent process from quote to sign-off.', `
+  <div class="pillar-grid">
+    <div class="pillar-card"><div class="num">01</div><h4>Book online</h4><p>30-second quote, pick a slot, no deposit to book. Pay after the clean.</p><div class="pillar-link">Book now ${I.arrow}</div></div>
+    <div class="pillar-card"><div class="num">02</div><h4>Pre-clean brief</h4><p>Technician walks the property with you. Scope confirmed, expectations set.</p></div>
+    <div class="pillar-card"><div class="num">03</div><h4>The deep clean</h4><p>Room-by-room, photographic report throughout. Branded van, eco products.</p></div>
+    <div class="pillar-card"><div class="num">04</div><h4>Handover & guarantee</h4><p>You sign off. Deposit-back guarantee activated for EOT cleans.</p></div>
+  </div>
+`));
+route('/privacy', ()=> genericPage('Privacy Policy', 'Legal', 'How we handle your data.', '<p>Standard UK privacy policy. MaundyClean Ltd is registered with the ICO. We never sell your data. Full policy would appear here in the live site.</p>'));
+route('/cookies', ()=> genericPage('Cookie Policy', 'Legal', 'How we use cookies.', '<p>Standard UK cookie policy. We use only essential + analytics cookies. Full policy would appear here in the live site.</p>'));
+route('/terms', ()=> genericPage('Terms of Service', 'Legal', 'Our terms.', '<p>Standard UK terms of service. Full terms would appear here in the live site.</p>'));
+route('/find-us-online', ()=> genericPage('Find Us Online', 'Citations', 'Our local directory listings.', '<p>Links to Yell, Yelp, Bark, Trustpilot, Google Business Profile, and other local citations. Strengthens local SEO signals.</p>'));
+
+/* ---------- BOOT ---------- */
+document.addEventListener('DOMContentLoaded', ()=>{
+  initShell();
+  render();
+});
+
+</script>
+</body>
+</html>

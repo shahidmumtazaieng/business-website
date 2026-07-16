@@ -1,0 +1,1092 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Users,
+     7→  Shield,
+     8→  Leaf,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Home,
+    15→  KeyRound,
+    16→  Hammer,
+    17→  Star,
+    18→  Zap,
+    19→  UserCheck,
+    20→  CalendarCheck,
+    21→  SprayCan,
+    22→  Wind,
+    23→  Brush,
+    24→  FileCheck,
+    25→} from "lucide-react";
+    26→import { Button } from "@/components/ui/button";
+    27→import { contactInfo } from "@/lib/site-data";
+    28→
+    29→// ============================================================
+    30→// Images — hand-picked from in-house search service
+    31→// ============================================================
+    32→const IMG = {
+    33→  heroWide:
+    34→    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", // post-construction HEPA vacuum (matches ServiceDetail heroImage)
+    35→  whyCrew:
+    36→    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    37→  checklistLiving:
+    38→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // handed-over new build interior
+    39→  checklistKitchen:
+    40→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg", // tack-cloth wipe of new kitchen cabinets
+    41→  checklistBathroom:
+    42→    "https://sfile.chatglm.cn/images-ppt/b9a3fe6960e9.webp", // sparkling bathroom chrome
+    43→  checklistWindows:
+    44→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // paint removal from new window glass
+    45→  stageDeep:
+    46→    "https://sfile.chatglm.cn/images-ppt/a68134acc7e3.jpeg", // crew cleaning home (deep clean)
+    47→  stageMoveInOut:
+    48→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty flat move-in (tenancy)
+    49→  stageSpring:
+    50→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg", // bright spring-cleaned living room
+    51→  nearMeMap:
+    52→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    53→};
+    54→
+    55→// ============================================================
+    56→// Section 0 — Full-width hero banner
+    57→// Semantic H1: "Professional Post-Construction Cleaning Services in Glasgow & Edinburgh"
+    58→// ============================================================
+    59→
+    60→export function PostConstructionSeoHeroBanner() {
+    61→  return (
+    62→    <section className="relative overflow-hidden">
+    63→      {/* Full-width background image */}
+    64→      <div className="absolute inset-0">
+    65→        <img
+    66→          src={IMG.heroWide}
+    67→          alt="Post-construction HEPA vacuum cleaning in a Scottish property after building work"
+    68→          className="w-full h-full object-cover"
+    69→          loading="eager"
+    70→          fetchPriority="high"
+    71→        />
+    72→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+    73→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+    74→      </div>
+    75→
+    76→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+    77→        <motion.div
+    78→          initial="hidden"
+    79→          animate="visible"
+    80→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+    81→          className="max-w-3xl"
+    82→        >
+    83→          <motion.div
+    84→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+    85→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+    86→          >
+    87→            <span className="relative flex w-2 h-2">
+    88→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+    89→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+    90→            </span>
+    91→            Post-Construction Cleaning · Glasgow · Edinburgh · 30 Scottish towns
+    92→          </motion.div>
+    93→
+    94→          <motion.h1
+    95→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+    96→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+    97→          >
+    98→            Professional Post-Construction Cleaning Services in Glasgow &amp; Edinburgh
+    99→          </motion.h1>
+   100→
+   101→          <motion.p
+   102→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   103→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   104→          >
+   105→            Consistent, trusted, and meticulous builder-dust removal tailored to your Scottish
+   106→            property. Our post-construction protocol uses commercial HEPA H-class vacuums
+   107→            (99.995% efficient at 0.3 microns), tack-cloth wiping, and a top-down, room-by-room
+   108→            methodology. New builds, extensions, renovations &amp; refits — handed over ready to
+   109→            furnish. From £295 with a 7-day re-clean guarantee.
+   110→          </motion.p>
+   111→
+   112→          <motion.div
+   113→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   114→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   115→          >
+   116→            <Button
+   117→              size="lg"
+   118→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   119→              asChild
+   120→            >
+   121→              <Link href="/quote">
+   122→                Get My 30-Second Instant Quote
+   123→                <ArrowRight className="w-5 h-5" />
+   124→              </Link>
+   125→            </Button>
+   126→            <Button
+   127→              size="lg"
+   128→              variant="outline"
+   129→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   130→              asChild
+   131→            >
+   132→              <a href={contactInfo.phoneHref}>
+   133→                <Zap className="w-4 h-4" />
+   134→                Same-day quote
+   135→              </a>
+   136→            </Button>
+   137→          </motion.div>
+   138→
+   139→          <motion.div
+   140→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   141→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   142→          >
+   143→            <div className="flex items-center gap-1.5">
+   144→              <div className="flex">
+   145→                {[1, 2, 3, 4, 5].map((s) => (
+   146→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   147→                ))}
+   148→              </div>
+   149→              <span className="font-semibold text-white">4.9/5</span>
+   150→              <span className="text-white/70">· 6,200+ reviews</span>
+   151→            </div>
+   152→            <div className="flex items-center gap-1.5">
+   153→              <Shield className="w-4 h-4 text-[var(--gold)]" /> PVG-Checked &amp; £5m Insured
+   154→            </div>
+   155→            <div className="flex items-center gap-1.5">
+   156→              <Wind className="w-4 h-4 text-[var(--gold)]" /> HEPA H-class vacuums
+   157→            </div>
+   158→            <div className="flex items-center gap-1.5">
+   159→              <Clock className="w-4 h-4 text-[var(--gold)]" /> 7-day re-clean guarantee
+   160→            </div>
+   161→          </motion.div>
+   162→        </motion.div>
+   163→      </div>
+   164→    </section>
+   165→  );
+   166→}
+   167→
+   168→// ============================================================
+   169→// Section 1 — Long-form semantic SEO intro
+   170→// Sits right after the hero, before the existing ServiceOverview.
+   171→// ============================================================
+   172→
+   173→export function PostConstructionSeoIntro() {
+   174→  return (
+   175→    <section className="py-16 lg:py-24 bg-background">
+   176→      <div className="max-w-[1100px] mx-auto px-6">
+   177→        <motion.div
+   178→          initial={{ opacity: 0, y: 20 }}
+   179→          whileInView={{ opacity: 1, y: 0 }}
+   180→          viewport={{ once: true, margin: "-80px" }}
+   181→          transition={{ duration: 0.5 }}
+   182→          className="max-w-3xl mx-auto text-center mb-10"
+   183→        >
+   184→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   185→            Professional post-construction cleaning · Scotland
+   186→          </span>
+   187→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   188→            The Maundy Clean Standard for Post-Construction Cleaning
+   189→          </h2>
+   190→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   191→            To outperform competitors like generic builder-clean subcontractors and high-volume
+   192→            cleaning agencies, our post-construction page moves beyond a quick &ldquo;hoover and
+   193→            mop&rdquo; and establishes{" "}
+   194→            <strong className="font-semibold text-[var(--ink)]">Topical Authority</strong> by
+   195→            emphasising technical methodology — HEPA H-class filtration, tack-cloth particulate
+   196→            capture, and a top-down, room-sealed protocol. In a world where everyone is living busy
+   197→            lives, the thought of removing fine plaster and silica dust from every drawer, duct, and
+   198→            light fitting in your limited spare time can be overwhelming. At Maundy Clean, we
+   199→            transform the necessity of post-build cleanup into a seamless, premium experience —
+   200→            built on the Maundy tradition of care, meticulous service, and a higher standard of
+   201→            hygiene for the Scottish home.
+   202→          </p>
+   203→        </motion.div>
+   204→
+   205→        {/* Trust strip */}
+   206→        <motion.div
+   207→          initial={{ opacity: 0, y: 16 }}
+   208→          whileInView={{ opacity: 1, y: 0 }}
+   209→          viewport={{ once: true, margin: "-60px" }}
+   210→          transition={{ duration: 0.5 }}
+   211→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   212→        >
+   213→          {[
+   214→            { label: "HEPA filtration", value: "99.995% @ 0.3µm" },
+   215→            { label: "Typical duration", value: "1–2 days" },
+   216→            { label: "Re-clean rate", value: "2.1% of jobs" },
+   217→            { label: "Handover guarantee", value: "7-day re-clean" },
+   218→          ].map((stat) => (
+   219→            <div
+   220→              key={stat.label}
+   221→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   222→            >
+   223→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   224→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   225→            </div>
+   226→          ))}
+   227→        </motion.div>
+   228→      </div>
+   229→    </section>
+   230→  );
+   231→}
+   232→
+   233→// ============================================================
+   234→// Section 2 — Why Maundy Clean is Scotland's Trusted Choice
+   235→// (Semantic H2: "Why MaundyClean is the Authority in Post-Construction Cleaning")
+   236→// Image+copy split layout
+   237→// ============================================================
+   238→
+   239→const TRUST_CARDS = [
+   240→  {
+   241→    icon: Users,
+   242→    title: "Fully Vetted & Uniformed Technicians",
+   243→    description:
+   244→      "We are a professional company that employs our own staff; we are not an agency. Every post-construction cleaner is fully trained in our HEPA H-class protocol, Disclosure Scotland PVG-checked, £5m public-liability insured, and carries official Maundy Clean identification for your total peace of mind. They arrive in uniform, on time, with a team leader who runs the handover inspection with you.",
+   245→  },
+   246→  {
+   247→    icon: Wind,
+   248→    title: "HEPA H-Class Vacuums — The Asbestos Standard",
+   249→    description:
+   250→      "Unlike standard vacuums that blow fine construction dust back through the exhaust, our commercial HEPA H-class vacuums capture 99.995% of particles down to 0.3 microns — the same standard used for asbestos removal. Plaster dust, cement dust, timber dust, and silica dust are all captured, not redistributed. The difference is immediately visible when sunlight hits the room.",
+   251→  },
+   252→  {
+   253→    icon: Leaf,
+   254→    title: "Eco-Friendly & Family Safe",
+   255→    description:
+   256→      "Your family's health is paramount. We supply all our own professional-grade equipment and use only certified child-safe and pet-safe products where wet-cleaning is required — plant-based degreasers, food-safe sanitisers, and pH-neutral stone cleaners. Tack-cloth particulate capture replaces wet-wiping wherever possible, preventing the dust-to-paste conversion that smears construction dust across surfaces.",
+   257→  },
+   258→];
+   259→
+   260→export function PostConstructionSeoWhy() {
+   261→  return (
+   262→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   263→      <div className="max-w-[1400px] mx-auto px-6">
+   264→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   265→          {/* Image side */}
+   266→          <motion.div
+   267→            initial={{ opacity: 0, scale: 0.96 }}
+   268→            whileInView={{ opacity: 1, scale: 1 }}
+   269→            viewport={{ once: true, margin: "-80px" }}
+   270→            transition={{ duration: 0.6 }}
+   271→            className="relative order-2 lg:order-1"
+   272→          >
+   273→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   274→              <img
+   275→                src={IMG.whyCrew}
+   276→                alt="Maundy Clean post-construction cleaning crew in uniform arriving at a Scottish building site"
+   277→                className="absolute inset-0 w-full h-full object-cover"
+   278→                loading="lazy"
+   279→              />
+   280→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   281→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   282→                <div className="flex items-center gap-2 mb-1">
+   283→                  <Shield className="w-4 h-4 text-[var(--brand)]" />
+   284→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   285→                    HEPA H-Class · Top-Down · Room-Sealed
+   286→                  </span>
+   287→                </div>
+   288→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   289→                  PVG-checked team, £5m public liability, and a 7-day re-clean guarantee on every
+   290→                  post-construction clean we complete.
+   291→                </p>
+   292→              </div>
+   293→            </div>
+   294→            <motion.div
+   295→              animate={{ y: [0, -8, 0] }}
+   296→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   297→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   298→            >
+   299→              <div className="flex items-center gap-2">
+   300→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   301→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   302→                </div>
+   303→                <div>
+   304→                  <div className="text-[10px] text-[var(--muted-foreground)]">Developer repeat</div>
+   305→                  <div className="text-xs font-bold text-[var(--ink)]">14+ projects</div>
+   306→                </div>
+   307→              </div>
+   308→            </motion.div>
+   309→          </motion.div>
+   310→
+   311→          {/* Copy side */}
+   312→          <motion.div
+   313→            initial={{ opacity: 0, y: 20 }}
+   314→            whileInView={{ opacity: 1, y: 0 }}
+   315→            viewport={{ once: true, margin: "-80px" }}
+   316→            transition={{ duration: 0.5 }}
+   317→            className="order-1 lg:order-2"
+   318→          >
+   319→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   320→              Why choose Maundy Clean
+   321→            </span>
+   322→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   323→              Why MaundyClean is the Authority in Post-Construction Cleaning
+   324→            </h2>
+   325→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   326→              While national booking platforms often provide impersonal, inconsistent service,
+   327→              MaundyClean is a local specialist focused on building high-trust relationships with
+   328→              our clients. We address the common weaknesses of national franchises by focusing on{" "}
+   329→              <em className="text-[var(--ink)] not-italic font-semibold">&ldquo;local, personal,
+   330→              and affordable&rdquo;</em> care — and on a technical protocol that genuinely captures
+   331→              construction dust rather than redistributing it.
+   332→            </p>
+   333→
+   334→            <div className="space-y-3">
+   335→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   336→                const Icon = card.icon;
+   337→                return (
+   338→                  <div
+   339→                    key={card.title}
+   340→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   341→                  >
+   342→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   343→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   344→                    </div>
+   345→                    <div>
+   346→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   347→                        {card.title}
+   348→                      </h3>
+   349→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   350→                        {card.description}
+   351→                      </p>
+   352→                    </div>
+   353→                  </div>
+   354→                );
+   355→              })}
+   356→            </div>
+   357→          </motion.div>
+   358→        </div>
+   359→
+   360→        {/* Third card as full-width strip */}
+   361→        <motion.div
+   362→          initial={{ opacity: 0, y: 20 }}
+   363→          whileInView={{ opacity: 1, y: 0 }}
+   364→          viewport={{ once: true, margin: "-40px" }}
+   365→          transition={{ duration: 0.5 }}
+   366→          className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   367→        >
+   368→          <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   369→            <Leaf className="w-7 h-7 text-[var(--brand)]" />
+   370→          </div>
+   371→          <div>
+   372→            <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   373→              {TRUST_CARDS[2].title}
+   374→            </h3>
+   375→            <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   376→              {TRUST_CARDS[2].description}
+   377→            </p>
+   378→          </div>
+   379→        </motion.div>
+   380→      </div>
+   381→    </section>
+   382→  );
+   383→}
+   384→
+   385→// ============================================================
+   386→// Section 3 — 3-Step "Hassle-Free" Booking Process
+   387→// (Semantic H2: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   388→// ============================================================
+   389→
+   390→const BOOKING_STEPS = [
+   391→  {
+   392→    icon: Zap,
+   393→    step: "01",
+   394→    title: "Instant 30-Second Quote",
+   395→    description:
+   396→      "Use our online price calculator to receive a simple, fixed-price quote based on your property size and construction type — new build, extension, renovation, or refit. From £295 for a single room, £595 for a typical 3-bed property. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay.",
+   397→  },
+   398→  {
+   399→    icon: UserCheck,
+   400→    step: "02",
+   401→    title: "Professional Site Preparation",
+   402→    description:
+   403→      "We match you with a local 2-person HEPA-trained team who fits your schedule. On arrival, each room is sealed with polythene sheeting over the doorway (taped top and sides, weighted bottom) to prevent dust migrating to cleaned rooms. Furniture and fittings in adjacent rooms covered with dust sheets. We operate a secure key-safe system if you can't be on site.",
+   404→  },
+   405→  {
+   406→    icon: CalendarCheck,
+   407→    step: "03",
+   408→    title: "Enjoy a Spotless Sanctuary",
+   409→    description:
+   410→      "Walk into a space that looks, smells, and feels genuinely clean — not just &lsquo;builder-cleaned&rsquo;. We hand over with a room-by-room inspection walk-through together: any missed areas re-cleaned on the spot. Backed by our 7-day re-clean guarantee — if you find anything within 7 days, we return free of charge.",
+   411→  },
+   412→];
+   413→
+   414→export function PostConstructionSeoBooking() {
+   415→  return (
+   416→    <section className="py-16 lg:py-24 bg-background">
+   417→      <div className="max-w-[1400px] mx-auto px-6">
+   418→        <motion.div
+   419→          initial={{ opacity: 0, y: 20 }}
+   420→          whileInView={{ opacity: 1, y: 0 }}
+   421→          viewport={{ once: true, margin: "-80px" }}
+   422→          transition={{ duration: 0.5 }}
+   423→          className="text-center mb-14"
+   424→        >
+   425→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   426→            Hassle-free booking
+   427→          </span>
+   428→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   429→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   430→          </h2>
+   431→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   432→            We have optimized our booking experience to be straightforward and helpful, addressing
+   433→            the slow response times common among local competitors. From quote to handover in under
+   434→            a week.
+   435→          </p>
+   436→        </motion.div>
+   437→
+   438→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   439→          {/* Connector line */}
+   440→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   441→
+   442→          {BOOKING_STEPS.map((step, i) => {
+   443→            const Icon = step.icon;
+   444→            return (
+   445→              <motion.div
+   446→                key={step.step}
+   447→                initial={{ opacity: 0, y: 24 }}
+   448→                whileInView={{ opacity: 1, y: 0 }}
+   449→                viewport={{ once: true, margin: "-40px" }}
+   450→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   451→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   452→              >
+   453→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   454→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   455→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   456→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   457→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   458→                    {step.step}
+   459→                  </span>
+   460→                </div>
+   461→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   462→                  {step.title}
+   463→                </h3>
+   464→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   465→                  {step.description}
+   466→                </p>
+   467→              </motion.div>
+   468→            );
+   469→          })}
+   470→        </div>
+   471→
+   472→        <motion.div
+   473→          initial={{ opacity: 0, y: 16 }}
+   474→          whileInView={{ opacity: 1, y: 0 }}
+   475→          viewport={{ once: true }}
+   476→          transition={{ duration: 0.5, delay: 0.3 }}
+   477→          className="text-center mt-10"
+   478→        >
+   479→          <Button
+   480→            size="lg"
+   481→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   482→            asChild
+   483→          >
+   484→            <Link href="/quote">
+   485→              Get an Instant Quote Now
+   486→              <ArrowRight className="w-5 h-5" />
+   487→            </Link>
+   488→          </Button>
+   489→        </motion.div>
+   490→      </div>
+   491→    </section>
+   492→  );
+   493→}
+   494→
+   495→// ============================================================
+   496→// Section 4 — Detailed What's Included (4 categories)
+   497→// (Semantic H2: "Our Comprehensive Post-Construction Cleaning Checklist")
+   498→// Image-per-card layout
+   499→// ============================================================
+   500→
+   501→const INCLUDED_DETAIL = [
+   502→  {
+   503→    icon: Home,
+   504→    title: "Living Areas & Bedrooms",
+   505→    image: IMG.checklistLiving,
+   506→    imageAlt: "Handed-over new-build living room in Scotland after Maundy Clean post-construction protocol",
+   507→    description:
+   508→      "Top-down HEPA vacuum of ceilings, light fittings, walls, windows, frames, sills, doors, and skirtings. Cobweb removal from ceiling edges and light fixtures. Tack-cloth wipe-down of all non-porous surfaces to capture fine particulate without water. Intensive vacuuming of all carpets and final dry-buff of hard floors to reveal the finish.",
+   509→    points: [
+   510→      "Top-down HEPA H-class vacuum",
+   511→      "Tack-cloth wipe of all surfaces",
+   512→      "Cobweb removal from ceiling edges",
+   513→      "Door frames, handles, light fixtures detailed",
+   514→      "Visible skirting boards wiped down",
+   515→    ],
+   516→  },
+   517→  {
+   518→    icon: SprayCan,
+   519→    title: "Kitchen Deep-Maintenance",
+   520→    image: IMG.checklistKitchen,
+   521→    imageAlt: "Tack-cloth wipe-down of brand-new kitchen cabinets during a post-construction clean",
+   522→    description:
+   523→      "Inside every cabinet and drawer vacuumed and tack-wiped — where ordinary wet-wiping turns dust to paste. Deep cleaning and disinfecting of all ceramic items, worktops, sinks, and splashbacks. Cleaning the exterior of your oven, hob, extractor fan, fridge, and freezer. Wiping down the exterior of all cupboard doors and handles. Adhesive residue removed with the correct solvent for each surface.",
+   524→    points: [
+   525→      "Inside every cabinet vacuumed & tack-wiped",
+   526→      "Worktops, sinks, splashbacks sanitised",
+   527→      "Appliance exteriors cleaned (oven, hob, fridge)",
+   528→      "Cupboard doors & handles wiped",
+   529→      "Adhesive residue removed with correct solvent",
+   530→    ],
+   531→  },
+   532→  {
+   533→    icon: Sparkles,
+   534→    title: "Bathroom Hygiene",
+   535→    image: IMG.checklistBathroom,
+   536→    imageAlt: "Sparkling bathroom chrome and tiles after Maundy Clean post-construction cleaning",
+   537→    description:
+   538→      "Disinfecting and cleaning all ceramic items, including toilets and sinks, and buffing chrome fixtures to a high shine. Intensive scrubbing of shower doors and tiles to remove limescale, grout haze, and silicone overspray — maintaining a &lsquo;Sparkle Sparkle&rsquo; finish. Sink, taps, and waste detail-cleaned. Mirror edges detailed — adhesive and silicone residue common here.",
+   539→    points: [
+   540→      "Ceramic items disinfected & chrome buffed",
+   541→      "Shower doors scrubbed streak-free",
+   542→      "Silicone overspray removed from glass",
+   543→      "Grout haze removed from new tile",
+   544→      "Mirror edges detailed for adhesive residue",
+   545→    ],
+   546→  },
+   547→  {
+   548→    icon: CheckCircle2,
+   549→    title: "Window, Frame & Floor Restoration",
+   550→    image: IMG.checklistWindows,
+   551→    imageAlt: "Paint removal from new window glass with a razor scraper during post-construction cleaning",
+   552→    description:
+   553→      "Windows cleaned inside and out with a squeegee and pure-water system (no chemical haze). Frames detailed — paint spots, plaster, and adhesive removed from every corner. Sills vacuumed and wet-wiped. Paint removed from glass with a razor scraper at 30° angle (won't scratch). Floors: hardwood tack-wiped and dry-buffed; tile & stone wet-mopped with pH-neutral cleaner; new carpets HEPA-vacuumed in two directions.",
+   554→    points: [
+   555→      "Paint removed from glass at 30° angle",
+   556→      "Frames detailed — plaster & adhesive removed",
+   557→      "Sills vacuumed and wet-wiped",
+   558→      "Hardwood tack-wiped and dry-buffed",
+   559→      "New carpets HEPA-vacuumed in two directions",
+   560→    ],
+   561→  },
+   562→];
+   563→
+   564→export function PostConstructionSeoIncludedDetail() {
+   565→  return (
+   566→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   567→      <div className="max-w-[1400px] mx-auto px-6">
+   568→        <motion.div
+   569→          initial={{ opacity: 0, y: 20 }}
+   570→          whileInView={{ opacity: 1, y: 0 }}
+   571→          viewport={{ once: true, margin: "-80px" }}
+   572→          transition={{ duration: 0.5 }}
+   573→          className="max-w-3xl mb-12"
+   574→        >
+   575→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   576→            What&apos;s included · the detail
+   577→          </span>
+   578→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   579→            Our Comprehensive Post-Construction Cleaning Checklist
+   580→          </h2>
+   581→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   582→            Our post-construction cleaning ensures your property is handed over genuinely clean, not
+   583→            just &ldquo;builder-cleaned.&rdquo; We follow a rigorous, agency-approved checklist to
+   584→            ensure no detail is overlooked — including the technical extras that regular cleaners
+   585→            often ignore. Every item below is included as standard.
+   586→          </p>
+   587→        </motion.div>
+   588→
+   589→        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   590→          {INCLUDED_DETAIL.map((item, i) => {
+   591→            const Icon = item.icon;
+   592→            return (
+   593→              <motion.div
+   594→                key={item.title}
+   595→                initial={{ opacity: 0, y: 24 }}
+   596→                whileInView={{ opacity: 1, y: 0 }}
+   597→                viewport={{ once: true, margin: "-40px" }}
+   598→                transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
+   599→                className="bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/30 transition-all flex flex-col"
+   600→              >
+   601→                {/* Image header */}
+   602→                <div className="relative aspect-[16/10] bg-[var(--brand-dark)] overflow-hidden">
+   603→                  <img
+   604→                    src={item.image}
+   605→                    alt={item.imageAlt}
+   606→                    className="absolute inset-0 w-full h-full object-cover"
+   607→                    loading="lazy"
+   608→                  />
+   609→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   610→                  <div className="absolute top-4 left-4 w-11 h-11 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   611→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   612→                  </div>
+   613→                  <div className="absolute bottom-4 left-4 right-4">
+   614→                    <h3 className="font-display font-bold text-lg text-white leading-tight">
+   615→                      {item.title}
+   616→                    </h3>
+   617→                  </div>
+   618→                </div>
+   619→
+   620→                {/* Body */}
+   621→                <div className="p-6 flex-1 flex flex-col">
+   622→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   623→                    {item.description}
+   624→                  </p>
+   625→                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mt-auto">
+   626→                    {item.points.map((point) => (
+   627→                      <li
+   628→                        key={point}
+   629→                        className="flex items-start gap-2 text-sm text-[var(--ink)]/85"
+   630→                      >
+   631→                        <CheckCircle2 className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   632→                        <span>{point}</span>
+   633→                      </li>
+   634→                    ))}
+   635→                  </ul>
+   636→                </div>
+   637→              </motion.div>
+   638→            );
+   639→          })}
+   640→        </div>
+   641→      </div>
+   642→    </section>
+   643→  );
+   644→}
+   645→
+   646→// ============================================================
+   647→// Section 5 — Semantic Interlinking: Specialist Solutions for Every Stage
+   648→// (Semantic H2: "Semantic Interlinking: Specialist Solutions for Every Stage")
+   649→// Image-topped cards with internal links
+   650→// ============================================================
+   651→
+   652→const STAGE_SOLUTIONS = [
+   653→  {
+   654→    icon: Sparkles,
+   655→    title: "Deep Cleaning Service",
+   656→    href: "/services/deep-house-cleaning",
+   657→    image: IMG.stageDeep,
+   658→    imageAlt: "Maundy Clean crew performing a comprehensive deep clean of a Scottish home",
+   659→    description:
+   660→      "Starting your cycle? If your property hasn't had a professional clean in 6 months, we recommend an initial Deep Cleaning Service to clean &lsquo;behind and underneath&rsquo; furniture before your regular schedule begins. The perfect partner after a post-construction clean to ensure the property is genuinely move-in ready — not just dust-free but deep-cleaned top to bottom.",
+   661→    cta: "Explore deep house cleaning",
+   662→  },
+   663→  {
+   664→    icon: KeyRound,
+   665→    title: "End of Tenancy · Deposit-Back Guarantee",
+   666→    href: "/services/move-in-out-cleaning",
+   667→    image: IMG.stageMoveInOut,
+   668→    imageAlt: "Bright Scottish tenement flat prepared for tenant handover by Maundy Clean",
+   669→    description:
+   670→      "Moving homes? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee, ensuring you pass your final inspection with flying colours. We work to the letting agent's inventory, not ours — and we'll come back free of charge if the agent flags anything. Book alongside post-construction cleaning for new-build move-ins: dust removed, then full tenancy-standard reset.",
+   671→    cta: "Book deposit-back end of tenancy clean",
+   672→  },
+   673→  {
+   674→    icon: Hammer,
+   675→    title: "One-Off Spring Clean",
+   676→    href: "/services/spring-cleaning",
+   677→    image: IMG.stageSpring,
+   678→    imageAlt: "Bright, freshly spring-cleaned Scottish living room after a seasonal reset",
+   679→    description:
+   680→      "Book a One-Off Spring Clean for a comprehensive top-to-bottom refresh without moving heavy furniture. Many clients schedule a spring clean 6–12 months after their post-construction clean to reset the property once the last of the construction dust has fully settled. Uses our 64-point checklist per room and includes a photo report of any issues found.",
+   681→    cta: "Book a one-off spring clean",
+   682→  },
+   683→];
+   684→
+   685→export function PostConstructionSeoLeaseStages() {
+   686→  return (
+   687→    <section className="py-16 lg:py-24 bg-background">
+   688→      <div className="max-w-[1400px] mx-auto px-6">
+   689→        <motion.div
+   690→          initial={{ opacity: 0, y: 20 }}
+   691→          whileInView={{ opacity: 1, y: 0 }}
+   692→          viewport={{ once: true, margin: "-80px" }}
+   693→          transition={{ duration: 0.5 }}
+   694→          className="max-w-3xl mb-12"
+   695→        >
+   696→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   697→            Beyond post-construction · specialist support
+   698→          </span>
+   699→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   700→            Semantic Interlinking: Specialist Solutions for Every Stage
+   701→          </h2>
+   702→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   703→            While our post-construction cleaning hands your property over genuinely clean, Maundy
+   704→            Clean offers specialized &ldquo;reset&rdquo; services for major property milestones. The
+   705→            same trusted, PVG-checked team can step up when life changes — from a deep clean before
+   706→            moving in to a seasonal refresh months later.
+   707→          </p>
+   708→        </motion.div>
+   709→
+   710→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+   711→          {STAGE_SOLUTIONS.map((sol, i) => {
+   712→            const Icon = sol.icon;
+   713→            return (
+   714→              <motion.div
+   715→                key={sol.title}
+   716→                initial={{ opacity: 0, y: 24 }}
+   717→                whileInView={{ opacity: 1, y: 0 }}
+   718→                viewport={{ once: true, margin: "-40px" }}
+   719→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   720→              >
+   721→                <Link
+   722→                  href={sol.href}
+   723→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   724→                >
+   725→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   726→                    <img
+   727→                      src={sol.image}
+   728→                      alt={sol.imageAlt}
+   729→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   730→                      loading="lazy"
+   731→                    />
+   732→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   733→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   734→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   735→                    </div>
+   736→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   737→                      {sol.title}
+   738→                    </h3>
+   739→                  </div>
+   740→                  <div className="p-6">
+   741→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-5">
+   742→                      {sol.description}
+   743→                    </p>
+   744→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   745→                      {sol.cta}
+   746→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   747→                    </span>
+   748→                  </div>
+   749→                </Link>
+   750→              </motion.div>
+   751→            );
+   752→          })}
+   753→        </div>
+   754→      </div>
+   755→    </section>
+   756→  );
+   757→}
+   758→
+   759→// ============================================================
+   760→// Section 6 — "Near Me" Location Internal Links
+   761→// (Semantic H2: "Post-Construction Cleaning Near Me in Scotland")
+   762→// Split layout with map image + location grid
+   763→// ============================================================
+   764→
+   765→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   766→  { city: "Glasgow", slug: "glasgow" },
+   767→  { city: "Edinburgh", slug: "edinburgh" },
+   768→  { city: "Aberdeen", slug: "aberdeen" },
+   769→  { city: "Dundee", slug: "dundee" },
+   770→  { city: "Stirling", slug: "stirling" },
+   771→  { city: "Perth", slug: "perth" },
+   772→  { city: "Falkirk", slug: "falkirk" },
+   773→  { city: "Inverness", slug: "inverness" },
+   774→  { city: "Ayr", slug: "ayr" },
+   775→  { city: "Kilmarnock", slug: "kilmarnock" },
+   776→  { city: "Livingston", slug: "livingston" },
+   777→  { city: "East Kilbride", slug: "east-kilbride" },
+   778→  { city: "Paisley", slug: "paisley" },
+   779→  { city: "Hamilton", slug: "hamilton" },
+   780→  { city: "Motherwell", slug: "motherwell" },
+   781→  { city: "Dunfermline", slug: "dunfermline" },
+   782→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   783→  { city: "Musselburgh", slug: "musselburgh" },
+   784→  { city: "Dalkeith", slug: "dalkeith" },
+   785→  { city: "Bathgate", slug: "bathgate" },
+   786→  { city: "Cumbernauld", slug: "cumbernauld" },
+   787→  { city: "Coatbridge", slug: "coatbridge" },
+   788→  { city: "St Andrews", slug: "st-andrews" },
+   789→  { city: "Elgin", slug: "elgin" },
+   790→  { city: "Peterhead", slug: "peterhead" },
+   791→  { city: "Stonehaven", slug: "stonehaven" },
+   792→  { city: "Inverurie", slug: "inverurie" },
+   793→  { city: "Oban", slug: "oban" },
+   794→  { city: "Fort William", slug: "fort-william" },
+   795→  { city: "Aviemore", slug: "aviemore" },
+   796→  { city: "Dumfries", slug: "dumfries" },
+   797→  { city: "Stranraer", slug: "stranraer" },
+   798→  { city: "Wick", slug: "wick" },
+   799→  { city: "Thurso", slug: "thurso" },
+   800→  { city: "Lerwick", slug: "lerwick" },
+   801→  { city: "Kirkwall", slug: "kirkwall" },
+   802→];
+   803→
+   804→export function PostConstructionSeoNearMe() {
+   805→  return (
+   806→    <section className="py-16 lg:py-24 bg-background">
+   807→      <div className="max-w-[1400px] mx-auto px-6">
+   808→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   809→          {/* Left: copy + map image */}
+   810→          <motion.div
+   811→            initial={{ opacity: 0, y: 20 }}
+   812→            whileInView={{ opacity: 1, y: 0 }}
+   813→            viewport={{ once: true, margin: "-80px" }}
+   814→            transition={{ duration: 0.5 }}
+   815→          >
+   816→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   817→              Local crews across Scotland
+   818→            </span>
+   819→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   820→              Post-Construction Cleaning Near Me in Scotland
+   821→            </h2>
+   822→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   823→              Searching for &ldquo;post-construction cleaning near me&rdquo; in Scotland? Maundy
+   824→              Clean covers 72+ towns and cities across the Central Belt, Highlands, Borders, and
+   825→              Islands. Same HEPA H-class protocol, same top-down room-sealed methodology, same
+   826→              7-day re-clean guarantee — wherever your build is. Find your local crew below.
+   827→            </p>
+   828→
+   829→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   830→              <img
+   831→                src={IMG.nearMeMap}
+   832→                alt="Map of Scotland showing Maundy Clean post-construction cleaning coverage areas"
+   833→                className="absolute inset-0 w-full h-full object-cover"
+   834→                loading="lazy"
+   835→              />
+   836→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   837→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   838→                <div className="flex items-center gap-2 mb-1">
+   839→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   840→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   841→                    72+ Scottish towns covered
+   842→                  </span>
+   843→                </div>
+   844→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   845→                  Same HEPA H-class protocol, same PVG-checked crews, same 7-day re-clean guarantee
+   846→                  — from Glasgow to Lerwick.
+   847→                </p>
+   848→              </div>
+   849→            </div>
+   850→          </motion.div>
+   851→
+   852→          {/* Right: location grid */}
+   853→          <motion.div
+   854→            initial={{ opacity: 0, y: 20 }}
+   855→            whileInView={{ opacity: 1, y: 0 }}
+   856→            viewport={{ once: true, margin: "-60px" }}
+   857→            transition={{ duration: 0.5 }}
+   858→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   859→          >
+   860→            <div className="flex items-center justify-between mb-5">
+   861→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   862→                Find your local post-build crew
+   863→              </h3>
+   864→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   865→            </div>
+   866→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   867→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   868→                <motion.div
+   869→                  key={loc.slug}
+   870→                  initial={{ opacity: 0 }}
+   871→                  whileInView={{ opacity: 1 }}
+   872→                  viewport={{ once: true }}
+   873→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   874→                >
+   875→                  <Link
+   876→                    href={`/locations/${loc.slug}`}
+   877→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   878→                  >
+   879→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   880→                    <span>
+   881→                      <span className="font-medium">{loc.city}</span>
+   882→                      <span className="text-[var(--muted-foreground)]"> post-build</span>
+   883→                    </span>
+   884→                  </Link>
+   885→                </motion.div>
+   886→              ))}
+   887→            </div>
+   888→
+   889→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   890→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   891→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+   892→                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+   893→              </div>
+   894→              <Link
+   895→                href="/locations"
+   896→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   897→              >
+   898→                View all 72 Scottish locations
+   899→                <ArrowRight className="w-4 h-4" />
+   900→              </Link>
+   901→            </div>
+   902→          </motion.div>
+   903→        </div>
+   904→
+   905→        {/* SEO long-form paragraph for "near me" search intent */}
+   906→        <motion.div
+   907→          initial={{ opacity: 0, y: 16 }}
+   908→          whileInView={{ opacity: 1, y: 0 }}
+   909→          viewport={{ once: true, margin: "-40px" }}
+   910→          transition={{ duration: 0.5, delay: 0.2 }}
+   911→          className="mt-10 max-w-4xl mx-auto text-center"
+   912→        >
+   913→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   914→            Our local post-construction crews operate across Glasgow&rsquo;s West End,
+   915→            Edinburgh&rsquo;s New Town, Aberdeen&rsquo;s granite suburbs, Dundee&rsquo;s waterfront
+   916→            developments, and the Highlands &mdash; from Inverness to Thurso, Fort William to
+   917→            Lerwick. Whether you&rsquo;re searching for post-construction cleaning in Glasgow,
+   918→            builder dust removal in Edinburgh, new-build handover cleaning in Aberdeen, renovation
+   919→            cleaning anywhere in between, or developer cleaning across a multi-unit site, Maundy
+   920→            Clean assigns a PVG-checked, PAYE-employed team equipped with commercial HEPA H-class
+   921→            vacuums and the same top-down, room-sealed protocol — wherever in Scotland your build is.
+   922→          </p>
+   923→        </motion.div>
+   924→      </div>
+   925→    </section>
+   926→  );
+   927→}
+   928→
+   929→// ============================================================
+   930→// Section 7 — Final CTA strip (companion to ServiceFinalCta)
+   931→// (Semantic H3: "Ready to Hand Over a Genuinely Clean Property?")
+   932→// ============================================================
+   933→
+   934→export function PostConstructionSeoFinalCta() {
+   935→  return (
+   936→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   937→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   938→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   939→
+   940→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   941→        <motion.div
+   942→          initial={{ opacity: 0, y: 20 }}
+   943→          whileInView={{ opacity: 1, y: 0 }}
+   944→          viewport={{ once: true, margin: "-80px" }}
+   945→          transition={{ duration: 0.5 }}
+   946→        >
+   947→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   948→            Ready to hand over?
+   949→          </span>
+   950→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   951→            Ready to Hand Over a Genuinely Clean Property?
+   952→          </h3>
+   953→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   954→            Get a fixed-price post-construction quote in 30 seconds. No pushy sales call, no waiting
+   955→            24 hours for a callback. PVG-checked crews of 2, commercial HEPA H-class vacuums,
+   956→            tack-cloth particulate capture, top-down room-sealed protocol, and a 7-day re-clean
+   957→            guarantee — from £295.
+   958→          </p>
+   959→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   960→            <Button
+   961→              size="lg"
+   962→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   963→              asChild
+   964→            >
+   965→              <Link href="/quote">
+   966→                Get My 30-Second Instant Quote
+   967→                <ArrowRight className="w-5 h-5" />
+   968→              </Link>
+   969→            </Button>
+   970→            <Button
+   971→              size="lg"
+   972→              variant="outline"
+   973→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   974→              asChild
+   975→            >
+   976→              <a href={contactInfo.phoneHref}>
+   977→                <Zap className="w-4 h-4" />
+   978→                {contactInfo.phone}
+   979→              </a>
+   980→            </Button>
+   981→          </div>
+   982→        </motion.div>
+   983→      </div>
+   984→    </section>
+   985→  );
+   986→}
+   987→
+   988→// ============================================================
+   989→// Section 8 — SEO FAQ (Schema-ready Q&A)
+   990→// (Semantic H2: "Frequently Asked Questions")
+   991→// ============================================================
+   992→
+   993→const SEO_FAQS = [
+   994→  {
+   995→    q: "Are windows included in a post-construction clean?",
+   996→    a: "Yes — and they need specialist attention after building work. We clean the inside and outside of every window with a squeegee and pure-water system (no chemical haze), detail every frame to remove paint spots and plaster, vacuum and wet-wipe every sill, and vacuum window tracks (the channel the window slides in) with a crevice tool — a magnet for construction dust. Paint spots on glass are removed with a razor scraper at 30° angle, which won't scratch the glass.",
+   997→  },
+   998→  {
+   999→    q: "Do I need to provide cleaning supplies or equipment?",
+  1000→    a: "No. MaundyClean supplies all of our own professional-grade equipment — including commercial HEPA H-class vacuums (99.995% efficient at 0.3 microns), tack-cloths, razor scrapers, pure-water window system, and eco-friendly solvents. These are already included in your fixed-price quote. You don't need to supply anything; we bring everything required to capture construction dust properly.",
+  1001→  },
+  1002→  {
+  1003→    q: "What happens if I'm not satisfied with the post-construction clean?",
+  1004→    a: "We take pride in our standards. Before we leave site, we walk through every room with you in a handover inspection — any missed areas are re-cleaned on the spot, no return visit, no argument. If you are dissatisfied with any area of your clean, contact us within 7 days and we will provide a free re-clean to make it right. We also provide a written handover checklist signed by both parties confirming each room has been inspected.",
+  1005→  },
+  1006→  {
+  1007→    q: "When should post-construction cleaning be scheduled?",
+  1008→    a: "5–7 days after the final fixings (sockets, light switches, taps). This allows the construction dust to settle completely — scheduling earlier means more dust will appear after we clean. For new builds, we come in just before furniture arrives. For extensions and refits, we clean the affected rooms plus a 5-metre buffer zone to capture dust tracked into adjacent areas. We coordinate with your builder — they'll know when the site is ready.",
+  1009→  },
+  1010→  {
+  1011→    q: "Do you handle hazardous construction waste?",
+  1012→    a: "No. Hazardous waste — asbestos, lead paint, treated timber offcuts, chemical solvent containers — requires a licensed hazardous waste contractor. We handle the cleaning of non-hazardous construction dust, plaster, cement, paint, and adhesive residue. If hazardous materials are present, we will flag them on the site survey and recommend a specialist contractor before scheduling our clean. Safety first, always.",
+  1013→  },
+  1014→];
+  1015→
+  1016→export function PostConstructionSeoFaq() {
+  1017→  return (
+  1018→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+  1019→      <div className="max-w-[1000px] mx-auto px-6">
+  1020→        <motion.div
+  1021→          initial={{ opacity: 0, y: 20 }}
+  1022→          whileInView={{ opacity: 1, y: 0 }}
+  1023→          viewport={{ once: true, margin: "-80px" }}
+  1024→          transition={{ duration: 0.5 }}
+  1025→          className="text-center mb-12"
+  1026→        >
+  1027→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1028→            Post-construction · frequently asked
+  1029→          </span>
+  1030→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1031→            Frequently Asked Questions
+  1032→          </h2>
+  1033→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1034→            Everything you need to know before booking a Maundy Clean post-construction clean in
+  1035→            Scotland. Still unsure? Call us on {contactInfo.phone} — we answer every enquiry
+  1036→            personally.
+  1037→          </p>
+  1038→        </motion.div>
+  1039→
+  1040→        <div className="space-y-4">
+  1041→          {SEO_FAQS.map((faq, i) => (
+  1042→            <motion.div
+  1043→              key={faq.q}
+  1044→              initial={{ opacity: 0, y: 16 }}
+  1045→              whileInView={{ opacity: 1, y: 0 }}
+  1046→              viewport={{ once: true, margin: "-40px" }}
+  1047→              transition={{ duration: 0.4, delay: i * 0.08 }}
+  1048→              className="bg-white rounded-2xl p-6 lg:p-7 border border-[var(--border)] shadow-sm hover:shadow-brand hover:border-[var(--brand)]/20 transition-all"
+  1049→            >
+  1050→              <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+  1051→                {faq.q}
+  1052→              </h3>
+  1053→              <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+  1054→                {faq.a}
+  1055→              </p>
+  1056→            </motion.div>
+  1057→          ))}
+  1058→        </div>
+  1059→
+  1060→        <motion.div
+  1061→          initial={{ opacity: 0, y: 16 }}
+  1062→          whileInView={{ opacity: 1, y: 0 }}
+  1063→          viewport={{ once: true }}
+  1064→          transition={{ duration: 0.5, delay: 0.3 }}
+  1065→          className="mt-10 text-center"
+  1066→        >
+  1067→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1068→            <Button
+  1069→              size="lg"
+  1070→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+  1071→              asChild
+  1072→            >
+  1073→              <Link href="/quote">
+  1074→                Get My 30-Second Instant Quote
+  1075→                <ArrowRight className="w-5 h-5" />
+  1076→              </Link>
+  1077→            </Button>
+  1078→            <Button
+  1079→              size="lg"
+  1080→              variant="outline"
+  1081→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1082→              asChild
+  1083→            >
+  1084→              <Link href="#whats-included">View Our Post-Construction Checklist</Link>
+  1085→            </Button>
+  1086→          </div>
+  1087→        </motion.div>
+  1088→      </div>
+  1089→    </section>
+  1090→  );
+  1091→}
+  1092→

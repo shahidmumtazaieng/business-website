@@ -1,0 +1,908 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  ShieldCheck,
+     7→  Leaf,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  Gem,
+    16→  Users,
+    17→  UserCheck,
+    18→  CalendarCheck,
+    19→  KeyRound,
+    20→  Hammer,
+    21→  Award,
+    22→  Phone,
+    23→  HeartPulse,
+    24→  ClipboardCheck,
+    25→} from "lucide-react";
+    26→import { Button } from "@/components/ui/button";
+    27→import { contactInfo } from "@/lib/site-data";
+    28→
+    29→// ============================================================
+    30→// Images - hand-picked from in-house search service
+    31→// ============================================================
+    32→const IMG = {
+    33→  heroWide:
+    34→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    35→  scotlandMap:
+    36→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    37→  localCrew:
+    38→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    39→  showroomClean:
+    40→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    41→};
+    42→
+    43→// ============================================================
+    44→// 36 Scottish locations covered by the near-me page
+    45→// (city-centre + neighbourhood coverage)
+    46→// ============================================================
+    47→const LOCATIONS: { city: string; slug: string; region: string }[] = [
+    48→  // Central Belt
+    49→  { city: "Glasgow", slug: "glasgow", region: "Central Belt" },
+    50→  { city: "Edinburgh", slug: "edinburgh", region: "Central Belt" },
+    51→  { city: "Stirling", slug: "stirling", region: "Central Belt" },
+    52→  { city: "Falkirk", slug: "falkirk", region: "Central Belt" },
+    53→  { city: "Livingston", slug: "livingston", region: "Central Belt" },
+    54→  { city: "East Kilbride", slug: "east-kilbride", region: "Central Belt" },
+    55→  { city: "Paisley", slug: "paisley", region: "Central Belt" },
+    56→  { city: "Hamilton", slug: "hamilton", region: "Central Belt" },
+    57→  { city: "Motherwell", slug: "motherwell", region: "Central Belt" },
+    58→  { city: "Wishaw", slug: "wishaw", region: "Central Belt" },
+    59→  { city: "Coatbridge", slug: "coatbridge", region: "Central Belt" },
+    60→  { city: "Airdrie", slug: "airdrie", region: "Central Belt" },
+    61→  { city: "Dunfermline", slug: "dunfermline", region: "Central Belt" },
+    62→  { city: "Kirkcaldy", slug: "kirkcaldy", region: "Central Belt" },
+    63→  { city: "Glenrothes", slug: "glenrothes", region: "Central Belt" },
+    64→  { city: "Dundonald", slug: "dundonald", region: "Central Belt" },
+    65→  { city: "Bearsden", slug: "bearsden", region: "Central Belt" },
+    66→  { city: "Milngavie", slug: "milngavie", region: "Central Belt" },
+    67→  { city: "Bishopbriggs", slug: "bishopbriggs", region: "Central Belt" },
+    68→  { city: "Lenzie", slug: "lenzie", region: "Central Belt" },
+    69→  { city: "Giffnock", slug: "giffnock", region: "Central Belt" },
+    70→  { city: "Newton Mearns", slug: "newton-mearns", region: "Central Belt" },
+    71→  { city: "Clarkston", slug: "clarkston", region: "Central Belt" },
+    72→  { city: "Barrhead", slug: "barrhead", region: "Central Belt" },
+    73→  { city: "Johnstone", slug: "johnstone", region: "Central Belt" },
+    74→  { city: "Renfrew", slug: "renfrew", region: "Central Belt" },
+    75→  { city: "Rutherglen", slug: "rutherglen", region: "Central Belt" },
+    76→  { city: "Cambuslang", slug: "cambuslang", region: "Central Belt" },
+    77→  { city: "Bellshill", slug: "bellshill", region: "Central Belt" },
+    78→  { city: "Ayr", slug: "ayr", region: "Central Belt" },
+    79→  { city: "Kilmarnock", slug: "kilmarnock", region: "Central Belt" },
+    80→  { city: "Greenock", slug: "greenock", region: "Central Belt" },
+    81→  // East
+    82→  { city: "Dundee", slug: "dundee", region: "East" },
+    83→  { city: "Perth", slug: "perth", region: "East" },
+    84→  // North East
+    85→  { city: "Aberdeen", slug: "aberdeen", region: "North East" },
+    86→  // Highlands & Islands
+    87→  { city: "Inverness", slug: "inverness", region: "Highlands & Islands" },
+    88→];
+    89→
+    90→// Group by region for cleaner display
+    91→const REGION_ORDER = ["Central Belt", "East", "North East", "Highlands & Islands"];
+    92→const locationsByRegion = REGION_ORDER.map((region) => ({
+    93→  region,
+    94→  cities: LOCATIONS.filter((l) => l.region === region),
+    95→}));
+    96→
+    97→// ============================================================
+    98→// Trust badges for the hero
+    99→// ============================================================
+   100→const HERO_BADGES = [
+   101→  { icon: Star, label: "4.9/5 \u00b7 6,200+ reviews" },
+   102→  { icon: UserCheck, label: "Same Trusted Team Every Visit" },
+   103→  { icon: Sparkles, label: "Specialist Surface & Brass Restoration" },
+   104→  { icon: Clock, label: "Out-of-Hours, 5 to 7 Days a Week" },
+   105→];
+   106→
+   107→// ============================================================
+   108→// The 4 trust pillars
+   109→// ============================================================
+   110→const TRUST_PILLARS = [
+   111→  {
+   112→    icon: Gem,
+   113→    title: "Local Showroom Specialists, Not an Impersonal Agency",
+   114→    description:
+   115→      "Maundy Clean is a Scottish showroom cleaning company built on the Maundy tradition of service and care. We don&rsquo;t operate as an impersonal national franchise &mdash; we&rsquo;re a local specialist with vetted, uniformed crews living and working in your area. Whether you&rsquo;re searching for daily display-product detailing on Glasgow&rsquo;s Style Mile (Buchanan Street, Merchant City, Ingram Street), after-hours deep cleans on Edinburgh&rsquo;s George Street and New Town, car showroom floor polishing on Aberdeen&rsquo;s Union Street, or neighbourhood kitchen showroom cleaning anywhere in between, we assign a vetted, PAYE-employed crew that stays with you for the long run. Same team, same standard, same locked-in rate for 12 months.",
+   116→  },
+   117→  {
+   118→    icon: Users,
+   119→    title: "The Same Trusted Crew Every Visit",
+   120→    description:
+   121→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, PVG-checked crew that manages your first clean is the crew that returns for every scheduled session. Continuity matters when the stakes are &pound;60,000 display cars, &pound;15,000 designer kitchens, polished concrete floors, mirror walls, and brass-trimmed display cabinetry &mdash; we don&rsquo;t send rotating crews of strangers to your showroom. When your regular crew lead is on annual leave, we send a trained backup who has been briefed on your display layouts, your lighting fixtures, your high-value materials, and your access preferences &mdash; and we tell you in advance.",
+   122→  },
+   123→  {
+   124→    icon: ShieldCheck,
+   125→    title: "PVG-Checked, Specialist-Trained & £5m Public Liability",
+   126→    description:
+   127→      "Every technician carries Disclosure Scotland PVG scheme membership, is re-vetted annually, and is trained on showroom-specific protocols before stepping foot on site: specialist surface care, brass restoration, glass-and-mirror squeegee technique, hard-floor chemistry (polished concrete, marble, tile, hardwood, vinyl), upholstery hot-water extraction, and the &ldquo;Maundy Standard&rdquo; flashlight-test sign-off on every high-gloss surface. We use non-toxic, child-safe, pet-safe products by default in customer-facing and staff areas, with eco-labelled alternatives for customer seating and fabric suites. All HSE-compliant chemicals come with COSHH datasheets on file, including EN 14476 virucidal disinfectant with a verified 60-second contact time for high-touch points like door handles, payment terminals, and reception desks. We hold &pound;5m public liability as standard (with higher limits available for premium showroom contracts and multi-site dealership networks), full employer&rsquo;s liability, professional indemnity, and can name your business on our policy as additional insured.",
+   128→  },
+   129→  {
+   130→    icon: Award,
+   131→    title: "Signed Cleaning Logs & 100% Satisfaction Guarantee",
+   132→    description:
+   133→      "Every showroom client gets a dedicated account manager who knows your facility, your team, your display rotation schedule, and your access protocols &mdash; direct mobile number, 24-hour response, quarterly on-site walk-throughs alongside your showroom manager. After every visit you receive a signed cleaning log (operative signature, showroom-manager counter-signature on request), arrival and departure times, tasks completed, and any issues flagged &mdash; like a smudge on a shower screen, a fingerprint on a door handle, a dust bloom on a display pedestal, or a streak on a floor-to-ceiling window &mdash; before they undermine a customer&rsquo;s first impression. We offer a free re-clean within 24 to 48 hours if you are not 100% satisfied, and our visit-completion rate in 2025 was 99.6%. From &pound;15 per hour for a small single-showroom site through to a fully bespoke retainer for a multi-site dealership network.",
+   134→  },
+   135→];
+   136→
+   137→// ============================================================
+   138→// The 3-step booking process
+   139→// ============================================================
+   140→const BOOKING_STEPS = [
+   141→  {
+   142→    icon: ClipboardCheck,
+   143→    step: "01",
+   144→    title: "Site Survey & Bespoke Plan",
+   145→    description:
+   146→      "Contact us for a free, no-obligation site survey with our management team. We walk your showroom with your showroom manager and your facilities team, identify your display layouts, your lighting fixtures, your high-value materials (polished concrete, marble, lacquered paint, leather upholstery, chrome tapware, mirror walls), your access windows (early morning, evening, or split shift), and your quality-control checkpoints. We develop a bespoke schedule and standards of excellence tailored to your showroom&rsquo;s unique operational needs. We send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months.",
+   147→  },
+   148→  {
+   149→    icon: UserCheck,
+   150→    step: "02",
+   151→    title: "Local Crew Matching & Onboarding",
+   152→    description:
+   153→      "We hand-pick a team or individual with in-depth knowledge of &ldquo;showcasing&rdquo; requirements, specialist surface care, and brass-restoration training. Your allocated crew lead is briefed on your facility layout, your display rotation schedule, your lighting fixtures, your high-gloss and chrome surfaces, and your high-traffic &ldquo;risky&rdquo; areas (customer washroom, customer seating, reception desk, floor-to-ceiling glazing) &mdash; so cleaning happens around your trading hours, not through them. The same crew returns for every scheduled session, building real knowledge of your showroom&rsquo;s routines, your signage protocol, your screen-sensitive surfaces, and your access preferences. We arrive in liveried vehicles, in uniform with photo I.D., with commercial-grade HEPA-filtered vacuums, microfibre flat-mop systems, specialist glass cleaners, brass polish, and COSHH-compliant, child-safe, pet-safe cleaning chemistry. Operatives are PVG-checked, uniformed, and trained in showroom-specific protocols before stepping foot on site.",
+   154→  },
+   155→  {
+   156→    icon: CalendarCheck,
+   157→    step: "03",
+   158→    title: "A Pristine Showroom, Every Visit",
+   159→    description:
+   160→      "Experience a workspace that looks, smells, and feels premium every single day, backed by our 100% satisfaction guarantee. You receive a signed cleaning log after every visit, arrival and departure times, tasks completed, and any issues flagged. Your dedicated account manager visits quarterly for a walk-through with your showroom manager, and proactively raises concerns before they undermine a customer&rsquo;s first impression. From &pound;15 per hour for a small single-showroom site through to a fully bespoke multi-site dealership-network retainer. We hold &pound;5m public liability as standard (with higher limits available for premium contracts) and can name your business on our policy as additional insured.",
+   161→  },
+   162→];
+   163→
+   164→// ============================================================
+   165→// FAQ for the near-me page
+   166→// ============================================================
+   167→const NEAR_ME_FAQS = [
+   168→  {
+   169→    q: "How do I know if you cover my area?",
+   170→    a: "We cover 72+ towns and cities across Scotland &mdash; from Glasgow and Edinburgh in the Central Belt to Inverness in the Highlands and everywhere in between. Use the location grid above to find your town. If you don&rsquo;t see your postcode listed, call us &mdash; we add new showroom coverage areas every month and may already have a vetted uniformed crew near you.",
+   171→  },
+   172→  {
+   173→    q: "How quickly can a local showroom cleaning crew start?",
+   174→    a: "From site survey and bespoke plan to first clean in 5-7 working days for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 7-10 working days for crew routing and travel planning. Same-week starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee &mdash; call us to check availability. Large multi-site dealership and showroom-group contracts typically schedule 3-4 weeks out to allow for full site survey, proposal, mobilisation, and crew onboarding across every site.",
+   175→  },
+   176→  {
+   177→    q: "Will the crew travel to my showroom, or do I need to bring anything to you?",
+   178→    a: "All showroom cleaning is performed on-site at your premises &mdash; we never transport anything off-site. Our crews arrive in liveried vans with commercial-grade HEPA-filtered vacuums (Sebo BS36/BS46, Henry HVR200), microfibre flat-mop systems with separate dirty-water extraction, colour-coded cloths (red for high-contamination touchpoints like door handles and washroom fittings, green for customer-facing surfaces like display pedestals and reception desks, yellow for washroom and kitchenette, blue for back-of-house and staff areas), HSE-compliant chemicals with COSHH datasheets, PPE, squeegees for windows and mirrors (never spray-and-wipe, which leaves streaks), specialist glass cleaner, microfibre detailing cloths for high-gloss units (never paper towels &mdash; they scratch), pH-neutral stone cleaner for marble and granite (never vinegar &mdash; it etches), brass polish for display cabinetry hardware and door furniture, 180&deg;C dry-steam sanitizers for tile, grout, and chrome, and detailing products on cars (Autoglym, Meguiar&rsquo;s). You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser wipes) or we can manage consumable restocking for an additional monthly fee.",
+   179→  },
+   180→  {
+   181→    q: "Do you have showroom cleaning crews experienced with high-value display products and specialist surface care?",
+   182→    a: "Yes. Our crews are trained specifically on showroom protocols &mdash; specialist surface care (the right chemistry for every material: polished concrete, marble, tile, hardwood, vinyl, lacquered paint, leather upholstery, chrome tapware, mirror walls), brass restoration on display cabinetry hardware and door furniture, glass-and-mirror squeegee technique (never spray-and-wipe, which leaves streaks), hard-floor chemistry (pH-neutral stone cleaner for marble and granite &mdash; never vinegar, which etches), upholstery hot-water extraction, and the &ldquo;Maundy Standard&rdquo; flashlight-test sign-off on every high-gloss surface. We provide audit-ready signed cleaning logs, COSHH datasheets, training records, vetting records (DBS/PVG), and &pound;5m public liability certificates for your compliance file. We currently service car dealerships, kitchen showrooms, bathroom showrooms, furniture showrooms, and luxury retail floors across Scotland, including several multi-site dealership groups and two premium designer-kitchen showroom networks.",
+   183→  },
+   184→  {
+   185→    q: "Can you handle secure access, alarm systems, and out-of-hours cleaning at my showroom?",
+   186→    a: "Absolutely. We&rsquo;re trained on all major alarm systems (Texecom, Honeywell, Pyronix, Risco) and follow strict key-handling protocols: keys stored in a coded safe between visits, alarm codes encrypted and only released to your assigned crew lead, never labelled with your address. We hold &pound;5m public liability cover as standard (with higher limits available for premium showroom contracts), full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability &mdash; suitable for car dealerships, kitchen showrooms, bathroom showrooms, furniture showrooms, and luxury retail floors. The most common windows are early-morning pre-open (6am-8am) for a front-line ready reset before customer trading begins, evening post-close (6pm-8pm) for a full deep turnover after the day&rsquo;s footfall, or full out-of-hours (9pm-midnight) service for deep floor care, hot-water extraction of carpets and upholstery, and detail work that&rsquo;s difficult to deliver around live customers. We can also support day-porter service for high-traffic customer areas, customer washrooms, and reception desks during peak trading.",
+   187→  },
+   188→  {
+   189→    q: "What&rsquo;s the difference between daily open & close, weekly, and after-hours showroom cleaning near me?",
+   190→    a: "Daily open and close cleaning (typically 60-120 minutes per visit, Monday-Sunday) is the right choice for high-footfall city-centre car showrooms, designer kitchen and bathroom showrooms, and luxury retail floors where customers and sales staff are in constant contact with display surfaces and the customer washroom is in daily use &mdash; the cumulative customer-footfall, dust, and high-touch contamination load is too high for less frequent visits. Weekly cleaning suits smaller neighbourhood kitchen and bathroom showrooms, low-traffic furniture showrooms, or boutique luxury retail with limited opening days. After-hours cleaning means your crew works when your customers and staff aren&rsquo;t there &mdash; typically 6pm-8pm or 9pm-midnight &mdash; giving them the empty space they need to do a proper job without vacuuming around customers mid-sale or detailing a display car mid-presentation. We can also split: light touch during the day (washroom checks and touchpoint wipes every couple of hours), deep clean after hours. Your account manager will advise on the best schedule for your specific footprint, density, and opening hours.",
+   191→  },
+   192→];
+   193→
+   194→// ============================================================
+   195→// Main page component
+   196→// ============================================================
+   197→
+   198→export function ShowroomCleaningNearMeHero() {
+   199→  return (
+   200→    <>
+   201→      {/* ============================================================ */}
+   202→      {/* SECTION 1 - Hero */}
+   203→      {/* H1: Showroom Cleaning Near Me in Scotland */}
+   204→      {/* ============================================================ */}
+   205→      <section className="relative overflow-hidden">
+   206→        <div className="absolute inset-0">
+   207→          <img
+   208→            src={IMG.heroWide}
+   209→            alt="Maundy Clean uniformed, vetted cleaning crew resetting a Scottish showroom before opening"
+   210→            className="w-full h-full object-cover"
+   211→            loading="eager"
+   212→            fetchPriority="high"
+   213→          />
+   214→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   215→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   216→        </div>
+   217→
+   218→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   219→          <motion.div
+   220→            initial="hidden"
+   221→            animate="visible"
+   222→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   223→            className="max-w-3xl"
+   224→          >
+   225→            <motion.div
+   226→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   227→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   228→            >
+   229→              <span className="relative flex w-2 h-2">
+   230→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   231→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   232→              </span>
+   233→              72+ Scottish towns &middot; vetted showroom crews &middot; Same team every visit
+   234→            </motion.div>
+   235→
+   236→            <motion.h1
+   237→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   238→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   239→            >
+   240→              Showroom Cleaning Near Me in Scotland
+   241→            </motion.h1>
+   242→
+   243→            <motion.p
+   244→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   245→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   246→            >
+   247→              Searching for &ldquo;showroom cleaning near me&rdquo; or &ldquo;car showroom cleaning
+   248→              company near me&rdquo; in Scotland? Maundy Clean covers car dealerships, kitchen
+   249→              showrooms, bathroom showrooms, furniture showrooms, and luxury retail floors across
+   250→              the Central Belt, Highlands, Borders, and Islands. Same vetted uniformed crews, same
+   251→              specialist surface-care and brass-restoration training, same dedicated crew every
+   252→              visit &mdash; wherever your showroom happens to be. From &pound;15 per hour for a
+   253→              small single-showroom site through to a fully bespoke retainer for a multi-site
+   254→              dealership network.
+   255→            </motion.p>
+   256→
+   257→            <motion.div
+   258→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   259→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   260→            >
+   261→              <Button
+   262→                size="lg"
+   263→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   264→                asChild
+   265→              >
+   266→                <Link href="/quote">
+   267→                  Request Your Bespoke Quote Today
+   268→                  <ArrowRight className="w-5 h-5" />
+   269→                </Link>
+   270→              </Button>
+   271→              <Button
+   272→                size="lg"
+   273→                variant="outline"
+   274→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   275→                asChild
+   276→              >
+   277→                <Link href="#locations">
+   278→                  <MapPin className="w-4 h-4" />
+   279→                  Find Your Local Showroom Crew
+   280→                </Link>
+   281→              </Button>
+   282→            </motion.div>
+   283→
+   284→            <motion.div
+   285→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   286→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   287→            >
+   288→              {HERO_BADGES.map((badge) => {
+   289→                const Icon = badge.icon;
+   290→                return (
+   291→                  <div key={badge.label} className="flex items-center gap-1.5">
+   292→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   293→                  </div>
+   294→                );
+   295→              })}
+   296→            </motion.div>
+   297→          </motion.div>
+   298→        </div>
+   299→      </section>
+   300→
+   301→      {/* ============================================================ */}
+   302→      {/* SECTION 2 - Intro + stats */}
+   303→      {/* H2: Local Showroom Cleaning You Can Trust */}
+   304→      {/* ============================================================ */}
+   305→      <section className="py-16 lg:py-24 bg-background">
+   306→        <div className="max-w-[1100px] mx-auto px-6">
+   307→          <motion.div
+   308→            initial={{ opacity: 0, y: 20 }}
+   309→            whileInView={{ opacity: 1, y: 0 }}
+   310→            viewport={{ once: true, margin: "-80px" }}
+   311→            transition={{ duration: 0.5 }}
+   312→            className="max-w-3xl mx-auto text-center mb-10"
+   313→          >
+   314→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   315→              Local showroom cleaning &middot; Scotland-wide
+   316→            </span>
+   317→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   318→              Local Showroom Cleaning You Can Trust
+   319→            </h2>
+   320→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   321→              Maundy Clean is a Scottish showroom cleaning company built on the Maundy tradition of
+   322→              service and care. We don&rsquo;t operate as an impersonal national franchise &mdash;
+   323→              we&rsquo;re a local specialist with vetted, uniformed crews living and working in your
+   324→              area. Whether you&rsquo;re searching for daily display-product detailing on
+   325→              Glasgow&rsquo;s Style Mile (Buchanan Street, Merchant City, Ingram Street),
+   326→              after-hours deep cleans on Edinburgh&rsquo;s George Street and New Town, car showroom
+   327→              floor polishing on Aberdeen&rsquo;s Union Street, or neighbourhood kitchen showroom
+   328→              cleaning anywhere in between, we assign a vetted, PAYE-employed crew that stays with
+   329→              you for the long run. Same crew, same standard, same locked-in rate for 12 months.
+   330→            </p>
+   331→          </motion.div>
+   332→
+   333→          <motion.div
+   334→            initial={{ opacity: 0, y: 16 }}
+   335→            whileInView={{ opacity: 1, y: 0 }}
+   336→            viewport={{ once: true, margin: "-60px" }}
+   337→            transition={{ duration: 0.5 }}
+   338→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   339→          >
+   340→            {[
+   341→              { label: "Visits completed in 2025", value: "99.6%" },
+   342→              { label: "Vetted uniformed crews", value: "100%" },
+   343→              { label: "From per hour", value: "&pound;15" },
+   344→              { label: "Star rating", value: "4.9/5" },
+   345→            ].map((stat) => (
+   346→              <div
+   347→                key={stat.label}
+   348→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   349→              >
+   350→                <div
+   351→                  className="font-display font-extrabold text-2xl text-gradient-brand"
+   352→                  dangerouslySetInnerHTML={{ __html: stat.value }}
+   353→                />
+   354→                <div
+   355→                  className="text-xs text-[var(--muted-foreground)] mt-1"
+   356→                  dangerouslySetInnerHTML={{ __html: stat.label }}
+   357→                />
+   358→              </div>
+   359→            ))}
+   360→          </motion.div>
+   361→        </div>
+   362→      </section>
+   363→
+   364→      {/* ============================================================ */}
+   365→      {/* SECTION 3 - Location grid (id="locations" anchor target) */}
+   366→      {/* H2: Find Your Local Showroom Cleaning Crew */}
+   367→      {/* ============================================================ */}
+   368→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   369→        <div className="max-w-[1400px] mx-auto px-6">
+   370→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   371→            {/* Left: copy + map */}
+   372→            <motion.div
+   373→              initial={{ opacity: 0, y: 20 }}
+   374→              whileInView={{ opacity: 1, y: 0 }}
+   375→              viewport={{ once: true, margin: "-80px" }}
+   376→              transition={{ duration: 0.5 }}
+   377→            >
+   378→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   379→                Coverage across Scotland
+   380→              </span>
+   381→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   382→                Find Your Local Showroom Cleaning Crew
+   383→              </h2>
+   384→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   385→                Our network of vetted, PVG-checked showroom cleaning crews spans the entire
+   386→                country. From the car dealerships and luxury retail floors of the Central Belt to
+   387→                the kitchen and bathroom showrooms of the Highlands, we have a local team ready to
+   388→                care for your showroom. Browse by region below, or call us to confirm coverage for
+   389→                your specific postcode.
+   390→              </p>
+   391→
+   392→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   393→                <img
+   394→                  src={IMG.scotlandMap}
+   395→                  alt="Map of Scotland showing Maundy Clean showroom cleaning coverage areas"
+   396→                  className="absolute inset-0 w-full h-full object-cover"
+   397→                  loading="lazy"
+   398→                />
+   399→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   400→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   401→                  <div className="flex items-center gap-2 mb-1">
+   402→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   403→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   404→                      72+ Scottish towns covered
+   405→                    </span>
+   406→                  </div>
+   407→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   408→                    Same vetted uniformed crews, same 100% satisfaction guarantee &mdash; from
+   409→                    Glasgow to Inverness.
+   410→                  </p>
+   411→                </div>
+   412→              </div>
+   413→
+   414→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   415→                <Button
+   416→                  size="lg"
+   417→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   418→                  asChild
+   419→                >
+   420→                  <Link href="/quote">
+   421→                    <ClipboardCheck className="w-4 h-4" />
+   422→                    Request Your Bespoke Quote Today
+   423→                  </Link>
+   424→                </Button>
+   425→                <Button
+   426→                  size="lg"
+   427→                  variant="outline"
+   428→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   429→                  asChild
+   430→                >
+   431→                  <a href={contactInfo.phoneHref}>
+   432→                    <Phone className="w-4 h-4" />
+   433→                    {contactInfo.phone}
+   434→                  </a>
+   435→                </Button>
+   436→              </div>
+   437→            </motion.div>
+   438→
+   439→            {/* Right: regional location grid */}
+   440→            <motion.div
+   441→              initial={{ opacity: 0, y: 20 }}
+   442→              whileInView={{ opacity: 1, y: 0 }}
+   443→              viewport={{ once: true, margin: "-60px" }}
+   444→              transition={{ duration: 0.5 }}
+   445→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   446→            >
+   447→              <div className="flex items-center justify-between mb-5">
+   448→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   449→                  Browse by region
+   450→                </h3>
+   451→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   452→              </div>
+   453→
+   454→              <div className="space-y-6">
+   455→                {locationsByRegion.map((regionGroup) => (
+   456→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   457→                    <div className="flex items-center gap-2 mb-3">
+   458→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   459→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   460→                        {regionGroup.region}
+   461→                      </span>
+   462→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   463→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   464→                        {regionGroup.cities.length} towns
+   465→                      </span>
+   466→                    </div>
+   467→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   468→                      {regionGroup.cities.map((loc) => (
+   469→                        <Link
+   470→                          key={loc.slug}
+   471→                          id={loc.slug}
+   472→                          href={`/services/showroom-cleaning-near-me#${loc.slug}`}
+   473→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   474→                        >
+   475→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   476→                          <span>
+   477→                            <span className="font-medium">{loc.city}</span>
+   478→                            <span className="text-[var(--muted-foreground)]"> showroom</span>
+   479→                          </span>
+   480→                        </Link>
+   481→                      ))}
+   482→                    </div>
+   483→                  </div>
+   484→                ))}
+   485→              </div>
+   486→
+   487→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   488→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   489→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   490→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   491→                </div>
+   492→                <Link
+   493→                  href="/locations"
+   494→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   495→                >
+   496→                  View all 72 Scottish locations
+   497→                  <ArrowRight className="w-4 h-4" />
+   498→                </Link>
+   499→              </div>
+   500→            </motion.div>
+   501→          </div>
+   502→        </div>
+   503→      </section>
+   504→
+   505→      {/* ============================================================ */}
+   506→      {/* SECTION 4 - Why Maundy Clean for your local showroom cleaning */}
+   507→      {/* H2: Why Scottish Showrooms Choose Maundy Clean */}
+   508→      {/* ============================================================ */}
+   509→      <section className="py-16 lg:py-24 bg-background">
+   510→        <div className="max-w-[1400px] mx-auto px-6">
+   511→          <motion.div
+   512→            initial={{ opacity: 0, y: 20 }}
+   513→            whileInView={{ opacity: 1, y: 0 }}
+   514→            viewport={{ once: true, margin: "-80px" }}
+   515→            transition={{ duration: 0.5 }}
+   516→            className="max-w-3xl mx-auto text-center mb-14"
+   517→          >
+   518→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   519→              The Maundy Clean difference
+   520→            </span>
+   521→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   522→              Why Scottish Showrooms Choose Maundy Clean
+   523→            </h2>
+   524→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   525→              We&rsquo;re a local specialist, not an impersonal national franchise. Our vetted,
+   526→              uniformed showroom crews live in your area, know your city-centre retail scene, and
+   527→              stay with you for the long run. Here&rsquo;s what sets us apart from the gig-economy
+   528→              apps and high-turnover agencies operating in Scotland.
+   529→            </p>
+   530→          </motion.div>
+   531→
+   532→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   533→            {TRUST_PILLARS.map((pillar, i) => {
+   534→              const Icon = pillar.icon;
+   535→              return (
+   536→                <motion.div
+   537→                  key={pillar.title}
+   538→                  initial={{ opacity: 0, y: 24 }}
+   539→                  whileInView={{ opacity: 1, y: 0 }}
+   540→                  viewport={{ once: true, margin: "-40px" }}
+   541→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   542→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   543→                >
+   544→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   545→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   546→                  </div>
+   547→                  <div>
+   548→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   549→                      {pillar.title}
+   550→                    </h3>
+   551→                    <p
+   552→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   553→                      dangerouslySetInnerHTML={{ __html: pillar.description }}
+   554→                    />
+   555→                  </div>
+   556→                </motion.div>
+   557→              );
+   558→            })}
+   559→          </div>
+   560→        </div>
+   561→      </section>
+   562→
+   563→      {/* ============================================================ */}
+   564→      {/* SECTION 5 - 3-step booking */}
+   565→      {/* H2: From Site Survey to First Clean in Under a Week */}
+   566→      {/* ============================================================ */}
+   567→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   568→        <div className="max-w-[1400px] mx-auto px-6">
+   569→          <motion.div
+   570→            initial={{ opacity: 0, y: 20 }}
+   571→            whileInView={{ opacity: 1, y: 0 }}
+   572→            viewport={{ once: true, margin: "-80px" }}
+   573→            transition={{ duration: 0.5 }}
+   574→            className="text-center mb-14"
+   575→          >
+   576→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   577→              Hassle-free booking
+   578→            </span>
+   579→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   580→              From Site Survey to First Clean in Under a Week
+   581→            </h2>
+   582→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   583→              We have optimized our booking experience to be uncomplicated and straightforward,
+   584→              providing the responsive support Scottish businesses demand. Book a free site survey,
+   585→              get matched with a local vetted uniformed crew, and enjoy a pristine showroom &mdash;
+   586→              no friction, no waiting, no surprises.
+   587→            </p>
+   588→          </motion.div>
+   589→
+   590→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   591→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   592→
+   593→            {BOOKING_STEPS.map((step, i) => {
+   594→              const Icon = step.icon;
+   595→              return (
+   596→                <motion.div
+   597→                  key={step.step}
+   598→                  initial={{ opacity: 0, y: 24 }}
+   599→                  whileInView={{ opacity: 1, y: 0 }}
+   600→                  viewport={{ once: true, margin: "-40px" }}
+   601→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   602→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   603→                >
+   604→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   605→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   606→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   607→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   608→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   609→                      {step.step}
+   610→                    </span>
+   611→                  </div>
+   612→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   613→                    {step.title}
+   614→                  </h3>
+   615→                  <p
+   616→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   617→                    dangerouslySetInnerHTML={{ __html: step.description }}
+   618→                  />
+   619→                </motion.div>
+   620→              );
+   621→            })}
+   622→          </div>
+   623→
+   624→          <motion.div
+   625→            initial={{ opacity: 0, y: 16 }}
+   626→            whileInView={{ opacity: 1, y: 0 }}
+   627→            viewport={{ once: true }}
+   628→            transition={{ duration: 0.5, delay: 0.3 }}
+   629→            className="text-center mt-10"
+   630→          >
+   631→            <Button
+   632→              size="lg"
+   633→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   634→              asChild
+   635→            >
+   636→              <Link href="/quote">
+   637→                Request Your Bespoke Quote Today
+   638→                <ArrowRight className="w-5 h-5" />
+   639→              </Link>
+   640→            </Button>
+   641→          </motion.div>
+   642→        </div>
+   643→      </section>
+   644→
+   645→      {/* ============================================================ */}
+   646→      {/* SECTION 6 - Cross-links to specialist pages */}
+   647→      {/* H2: Specialist Services for Every Showroom Milestone */}
+   648→      {/* ============================================================ */}
+   649→      <section className="py-16 lg:py-24 bg-background">
+   650→        <div className="max-w-[1400px] mx-auto px-6">
+   651→          <motion.div
+   652→            initial={{ opacity: 0, y: 20 }}
+   653→            whileInView={{ opacity: 1, y: 0 }}
+   654→            viewport={{ once: true, margin: "-80px" }}
+   655→            transition={{ duration: 0.5 }}
+   656→            className="max-w-3xl mb-12"
+   657→          >
+   658→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   659→              Beyond the daily clean &middot; showroom milestones
+   660→            </span>
+   661→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   662→              Specialist Services for Every Showroom Milestone
+   663→            </h2>
+   664→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   665→              Our daily showroom cleaning is the heartbeat of your facility&rsquo;s presentation,
+   666→              but we provide specialized support for major milestones &mdash; from new location
+   667→              launches and post-refurbishment dust clear-outs to seasonal spring resets and
+   668→              antiviral hygiene resets. The same trusted, vetted crew can step up whenever your
+   669→              showroom needs more than a standard visit.
+   670→            </p>
+   671→          </motion.div>
+   672→
+   673→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   674→            {[
+   675→              {
+   676→                icon: KeyRound,
+   677→                title: "End of Tenancy Cleaning",
+   678→                href: "/services/move-in-out-cleaning",
+   679→                description:
+   680→                  "Opening a new showroom? Our End of Tenancy Cleaning ensures properties are front-line ready for your grand opening. We work to the letting agent&rsquo;s inventory and come back free of charge if anything is flagged on the inspection.",
+   681→                cta: "Explore end of tenancy",
+   682→              },
+   683→              {
+   684→                icon: Hammer,
+   685→                title: "After Builders Clean",
+   686→                href: "/services/post-construction-cleaning",
+   687→                description:
+   688→                  "If your showroom has undergone refitting or home improvements, our After Builders Clean is designed to remove heavy layers of builders&rsquo; dust and grime before reopening day. Fine dust acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect every surface.",
+   689→                cta: "Explore after builders cleaning",
+   690→              },
+   691→              {
+   692→                icon: Sparkles,
+   693→                title: "One-Off Spring Clean",
+   694→                href: "/services/spring-cleaning",
+   695→                description:
+   696→                  "Prepare for peak sales periods with a One-Off Spring Clean for a comprehensive top-to-bottom refresh. We strip back the showroom to its bare display surfaces and deep-clean every zone before a new collection launch, a January sale, or a customer open weekend.",
+   697→                cta: "Explore one-off spring clean",
+   698→              },
+   699→              {
+   700→                icon: HeartPulse,
+   701→                title: "Antiviral Sanitisation",
+   702→                href: "/services/disinfection-services",
+   703→                description:
+   704→                  "Ask about our specialist Antiviral Sanitisation and deep-disinfection services for high-touch showroom surfaces. EN 14476 virucidal chemistry is fogged and wiped across every high-touch surface &mdash; reducing seasonal colds, flu, and norovirus among your staff and customers.",
+   705→                cta: "Explore antiviral sanitisation",
+   706→              },
+   707→            ].map((sol, i) => {
+   708→              const Icon = sol.icon;
+   709→              return (
+   710→                <motion.div
+   711→                  key={sol.title}
+   712→                  initial={{ opacity: 0, y: 24 }}
+   713→                  whileInView={{ opacity: 1, y: 0 }}
+   714→                  viewport={{ once: true, margin: "-40px" }}
+   715→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   716→                >
+   717→                  <Link
+   718→                    href={sol.href}
+   719→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   720→                  >
+   721→                    <div className="p-6">
+   722→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   723→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   724→                      </div>
+   725→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   726→                        {sol.title}
+   727→                      </h3>
+   728→                      <p
+   729→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   730→                        dangerouslySetInnerHTML={{ __html: sol.description }}
+   731→                      />
+   732→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   733→                        {sol.cta}
+   734→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   735→                      </span>
+   736→                    </div>
+   737→                  </Link>
+   738→                </motion.div>
+   739→              );
+   740→            })}
+   741→          </div>
+   742→
+   743→          <motion.div
+   744→            initial={{ opacity: 0, y: 16 }}
+   745→            whileInView={{ opacity: 1, y: 0 }}
+   746→            viewport={{ once: true }}
+   747→            transition={{ duration: 0.5, delay: 0.2 }}
+   748→            className="mt-10 text-center"
+   749→          >
+   750→            <Link
+   751→              href="/services/showroom-cleaning"
+   752→              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] bg-[var(--brand-light)]/40 hover:bg-[var(--brand-light)]/70 transition-colors px-5 py-3 rounded-full"
+   753→            >
+   754→              <Gem className="w-4 h-4" />
+   755→              Explore the full showroom deep cleaning service
+   756→              <ArrowRight className="w-4 h-4" />
+   757→            </Link>
+   758→          </motion.div>
+   759→        </div>
+   760→      </section>
+   761→
+   762→      {/* ============================================================ */}
+   763→      {/* SECTION 7 - Final CTA */}
+   764→      {/* H2: Ready for a Showroom Cleaning Crew Near You? */}
+   765→      {/* ============================================================ */}
+   766→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   767→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   768→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   769→
+   770→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   771→          <motion.div
+   772→            initial={{ opacity: 0, y: 20 }}
+   773→            whileInView={{ opacity: 1, y: 0 }}
+   774→            viewport={{ once: true, margin: "-80px" }}
+   775→            transition={{ duration: 0.5 }}
+   776→          >
+   777→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   778→              Ready to book your local showroom crew?
+   779→            </span>
+   780→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   781→              Ready for a Showroom Cleaning Crew Near You?
+   782→            </h2>
+   783→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   784→              Book a free, no-obligation site survey with our management team and receive an
+   785→              itemised proposal within 2 business days. Vetted uniformed crews, the same dedicated
+   786→              team every visit, specialist surface-care and brass-restoration training, child-safe
+   787→              and pet-safe chemistry, signed cleaning logs, &pound;5m public liability as standard
+   788→              (with higher limits available for premium contracts), and a 100% satisfaction
+   789→              guarantee &mdash; from &pound;15 per hour for a small single-showroom site through to
+   790→              a fully bespoke multi-site dealership-network retainer. Coverage across 72+ Scottish
+   791→              towns.
+   792→            </p>
+   793→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   794→              <Button
+   795→                size="lg"
+   796→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   797→                asChild
+   798→              >
+   799→                <Link href="/quote">
+   800→                  Request Your Bespoke Quote Today
+   801→                  <ArrowRight className="w-5 h-5" />
+   802→                </Link>
+   803→              </Button>
+   804→              <Button
+   805→                size="lg"
+   806→                variant="outline"
+   807→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   808→                asChild
+   809→              >
+   810→                <a href={contactInfo.phoneHref}>
+   811→                  <Phone className="w-4 h-4" />
+   812→                  Call {contactInfo.phone}
+   813→                </a>
+   814→              </Button>
+   815→            </div>
+   816→          </motion.div>
+   817→        </div>
+   818→      </section>
+   819→
+   820→      {/* ============================================================ */}
+   821→      {/* SECTION 8 - Near-me FAQ */}
+   822→      {/* H2: Frequently Asked Questions */}
+   823→      {/* ============================================================ */}
+   824→      <section className="py-16 lg:py-24 bg-background">
+   825→        <div className="max-w-4xl mx-auto px-6">
+   826→          <motion.div
+   827→            initial={{ opacity: 0, y: 20 }}
+   828→            whileInView={{ opacity: 1, y: 0 }}
+   829→            viewport={{ once: true, margin: "-80px" }}
+   830→            transition={{ duration: 0.5 }}
+   831→            className="text-center mb-12"
+   832→          >
+   833→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   834→              Showroom cleaning near me &middot; FAQ
+   835→            </span>
+   836→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   837→              Frequently Asked Questions
+   838→            </h2>
+   839→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   840→              Straight answers to the questions our local showroom cleaning clients ask most often.
+   841→              Can&rsquo;t find what you need? Call us on{" "}
+   842→              <a
+   843→                href={contactInfo.phoneHref}
+   844→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   845→              >
+   846→                {contactInfo.phone}
+   847→              </a>{" "}
+   848→              and we&rsquo;ll talk it through.
+   849→            </p>
+   850→          </motion.div>
+   851→
+   852→          <div className="space-y-4">
+   853→            {NEAR_ME_FAQS.map((faq, i) => (
+   854→              <motion.div
+   855→                key={faq.q}
+   856→                initial={{ opacity: 0, y: 16 }}
+   857→                whileInView={{ opacity: 1, y: 0 }}
+   858→                viewport={{ once: true, margin: "-40px" }}
+   859→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   860→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   861→              >
+   862→                <details className="group">
+   863→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   864→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   865→                      {faq.q}
+   866→                    </h3>
+   867→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   868→                      <span className="relative w-3.5 h-3.5">
+   869→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   870→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   871→                      </span>
+   872→                    </span>
+   873→                  </summary>
+   874→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   875→                    <p
+   876→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   877→                      dangerouslySetInnerHTML={{ __html: faq.a }}
+   878→                    />
+   879→                  </div>
+   880→                </details>
+   881→              </motion.div>
+   882→            ))}
+   883→          </div>
+   884→
+   885→          <motion.div
+   886→            initial={{ opacity: 0, y: 16 }}
+   887→            whileInView={{ opacity: 1, y: 0 }}
+   888→            viewport={{ once: true, margin: "-40px" }}
+   889→            transition={{ duration: 0.5, delay: 0.3 }}
+   890→            className="mt-10 text-center"
+   891→          >
+   892→            <Button
+   893→              size="lg"
+   894→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   895→              asChild
+   896→            >
+   897→              <Link href="/quote">
+   898→                Request Your Bespoke Quote Today
+   899→                <ArrowRight className="w-5 h-5" />
+   900→              </Link>
+   901→            </Button>
+   902→          </motion.div>
+   903→        </div>
+   904→      </section>
+   905→    </>
+   906→  );
+   907→}
+   908→

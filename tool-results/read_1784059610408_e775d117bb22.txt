@@ -1,0 +1,1240 @@
+     1→#!/usr/bin/env python3
+     2→"""
+     3→Generator for /src/components/service-detail/hardwood-floor-care-seo.tsx
+     4→
+     5→Produces 9 client-side React components that interleave with the standard
+     6→ServiceDetail components to form a 20-section page on
+     7→/services/hardwood-floor-care.
+     8→
+     9→Design pattern matches housekeeping-services-seo.tsx exactly (after the
+    10→carpet-rug alignment fix):
+    11→  Section background alternation:
+    12→    bg-background (Intro)
+    13→    bg-[var(--cream)] (Why)
+    14→    bg-background (Checklist)  -- NOT cream, preserves alternation
+    15→    bg-background (Booking)
+    16→    bg-[var(--cream)] (Interlinking)  -- NOT background, preserves alternation
+    17→    bg-background (Near Me)
+    18→    bg-[var(--brand-dark)] (Final CTA)
+    19→    bg-background (FAQ)
+    20→  Image aspect ratios: 4/3 for split-layout hero images, 16/9 for card images
+    21→  Interlinking uses <h2> for section title (not <h3>)
+    22→  4-card interlinking grid with image headers
+    23→  Near-me section with [1fr_1.3fr] split + 36-location grid
+    24→
+    25→The user brief (Hardwood Floor Care semantic SEO) was processed to:
+    26→  - Strip SEO-strategy language: "Topical Authority",
+    27→    "MaundyClean Semantic SEO Strategy", "Semantic Interlinking:",
+    28→    "[H1]/[H2]/[H3]", "[Button: ...]"
+    29→  - Strip source citations: [Competitor Source]
+    30→  - Strip competitor names: none present
+    31→  - Convert bracketed link placeholders to real Next.js <Link> components:
+    32→      [Recurring Home Cleaning]    -> /services/recurring-home-cleaning
+    33→      [End of Tenancy Cleaning]    -> /services/move-in-out-cleaning
+    34→      [Deep House Cleaning]        -> /services/deep-house-cleaning
+    35→      [After Builders Clean]       -> /services/post-construction-cleaning
+    36→      [30-Second Quote Tool]       -> /quote
+    37→      [Online Price Calculator]    -> /quote
+    38→"""
+    39→
+    40→import os
+    41→from pathlib import Path
+    42→
+    43→OUT = Path("/home/z/my-project/src/components/service-detail/hardwood-floor-care-seo.tsx")
+    44→OUT.parent.mkdir(parents=True, exist_ok=True)
+    45→
+    46→CONTENT = r""""use client";
+    47→
+    48→import Link from "next/link";
+    49→import { motion } from "framer-motion";
+    50→import {
+    51→  Shield,
+    52→  Leaf,
+    53→  Star,
+    54→  Clock,
+    55→  Sparkles,
+    56→  MapPin,
+    57→  ArrowRight,
+    58→  CheckCircle2,
+    59→  Droplets,
+    60→  Wind,
+    61→  SprayCan,
+    62→  Crown,
+    63→  Users,
+    64→  Home,
+    65→  KeyRound,
+    66→  Hammer,
+    67→  Zap,
+    68→  UserCheck,
+    69→  CalendarCheck,
+    70→  Award,
+    71→  Gem,
+    72→  Building2,
+    73→  Brush,
+    74→  Layers,
+    75→  Palette,
+    76→  Wrench,
+    77→  Trees,
+    78→  Footprints,
+    79→  Flame,
+    80→} from "lucide-react";
+    81→import { Button } from "@/components/ui/button";
+    82→import { contactInfo } from "@/lib/site-data";
+    83→
+    84→// ============================================================
+    85→// Images - hand-picked from in-house search service
+    86→// ============================================================
+    87→const IMG = {
+    88→  heroWide:
+    89→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    90→  whyCrew:
+    91→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    92→  checklistEngineered:
+    93→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    94→  checklistLaminate:
+    95→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    96→  checklistSafety:
+    97→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    98→  leaseRecurring:
+    99→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+   100→  leaseDeep:
+   101→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+   102→  leaseTenancy:
+   103→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+   104→  leaseBuilders:
+   105→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+   106→  nearMeMap:
+   107→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+   108→};
+   109→
+   110→// ============================================================
+   111→// 36 Scottish locations covered by the near-me grid
+   112→// ============================================================
+   113→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   114→  { city: "Glasgow", slug: "glasgow" },
+   115→  { city: "Edinburgh", slug: "edinburgh" },
+   116→  { city: "Aberdeen", slug: "aberdeen" },
+   117→  { city: "Dundee", slug: "dundee" },
+   118→  { city: "Stirling", slug: "stirling" },
+   119→  { city: "Perth", slug: "perth" },
+   120→  { city: "Falkirk", slug: "falkirk" },
+   121→  { city: "Inverness", slug: "inverness" },
+   122→  { city: "Ayr", slug: "ayr" },
+   123→  { city: "Kilmarnock", slug: "kilmarnock" },
+   124→  { city: "Livingston", slug: "livingston" },
+   125→  { city: "East Kilbride", slug: "east-kilbride" },
+   126→  { city: "Paisley", slug: "paisley" },
+   127→  { city: "Hamilton", slug: "hamilton" },
+   128→  { city: "Motherwell", slug: "motherwell" },
+   129→  { city: "Dunfermline", slug: "dunfermline" },
+   130→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   131→  { city: "Musselburgh", slug: "musselburgh" },
+   132→  { city: "Dalkeith", slug: "dalkeith" },
+   133→  { city: "Bathgate", slug: "bathgate" },
+   134→  { city: "Cumbernauld", slug: "cumbernauld" },
+   135→  { city: "Coatbridge", slug: "coatbridge" },
+   136→  { city: "St Andrews", slug: "st-andrews" },
+   137→  { city: "Elgin", slug: "elgin" },
+   138→  { city: "Peterhead", slug: "peterhead" },
+   139→  { city: "Stonehaven", slug: "stonehaven" },
+   140→  { city: "Inverurie", slug: "inverurie" },
+   141→  { city: "Oban", slug: "oban" },
+   142→  { city: "Fort William", slug: "fort-william" },
+   143→  { city: "Aviemore", slug: "aviemore" },
+   144→  { city: "Dumfries", slug: "dumfries" },
+   145→  { city: "Stranraer", slug: "stranraer" },
+   146→  { city: "Wick", slug: "wick" },
+   147→  { city: "Thurso", slug: "thurso" },
+   148→  { city: "Lerwick", slug: "lerwick" },
+   149→  { city: "Kirkwall", slug: "kirkwall" },
+   150→];
+   151→
+   152→// ============================================================
+   153→// Section 0 - Full-width hero banner
+   154→// Semantic H1: "Professional Hardwood Floor Care & Recurring Home Cleaning Scotland"
+   155→// ============================================================
+   156→
+   157→export function HardwoodFloorSeoHeroBanner() {
+   158→  return (
+   159→    <section className="relative overflow-hidden">
+   160→      {/* Full-width background image */}
+   161→      <div className="absolute inset-0">
+   162→        <img
+   163→          src={IMG.heroWide}
+   164→          alt="Maundy Clean hardwood floor technician restoring an oak floor with a low-moisture rotary machine in a Scottish tenement"
+   165→          className="w-full h-full object-cover"
+   166→          loading="eager"
+   167→          fetchPriority="high"
+   168→        />
+   169→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   170→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   171→      </div>
+   172→
+   173→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   174→        <motion.div
+   175→          initial="hidden"
+   176→          animate="visible"
+   177→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   178→          className="max-w-3xl"
+   179→        >
+   180→          <motion.div
+   181→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   182→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   183→          >
+   184→            <span className="relative flex w-2 h-2">
+   185→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   186→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   187→            </span>
+   188→            Hardwood &amp; Laminate Floor Care · Glasgow · Edinburgh · Central Belt
+   189→          </motion.div>
+   190→
+   191→          <motion.h1
+   192→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   193→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   194→          >
+   195→            Professional Hardwood Floor Care &amp; Recurring Home Cleaning Scotland
+   196→          </motion.h1>
+   197→
+   198→          <motion.p
+   199→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   200→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   201→          >
+   202→            Meticulous Maintenance, Technical Surface Restoration, and the Maundy Tradition of
+   203→            Excellence. Your hardwood floors are the soul of your home, defining its character and
+   204→            value. In the variable Scottish climate, premium surfaces like Engineered Wood, Solid
+   205→            Timber, and Laminate require more than a standard mop to maintain their luster and
+   206→            structural integrity. At Maundy Clean, we provide a specialist hardwood floor care
+   207→            service that integrates seamlessly into your{" "}
+   208→            <Link
+   209→              href="/services/recurring-home-cleaning"
+   210→              className="font-semibold text-[var(--gold)] hover:text-white underline underline-offset-4"
+   211→            >
+   212→              recurring home cleaning schedule
+   213→            </Link>
+   214→            , ensuring your floors remain &ldquo;showcase&rdquo; ready while preventing the need for
+   215→            costly resurfacing or replacements.
+   216→          </motion.p>
+   217→
+   218→          <motion.div
+   219→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   220→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   221→          >
+   222→            <Button
+   223→              size="lg"
+   224→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   225→              asChild
+   226→            >
+   227→              <Link href="/quote">
+   228→                Get My 30-Second Instant Quote
+   229→                <ArrowRight className="w-5 h-5" />
+   230→              </Link>
+   231→            </Button>
+   232→            <Button
+   233→              size="lg"
+   234→              variant="outline"
+   235→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   236→              asChild
+   237→            >
+   238→              <Link href="#checklist">
+   239→                <CheckCircle2 className="w-4 h-4" />
+   240→                View Our Regular Cleaning Checklist
+   241→              </Link>
+   242→            </Button>
+   243→          </motion.div>
+   244→
+   245→          <motion.div
+   246→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   247→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   248→          >
+   249→            <div className="flex items-center gap-1.5">
+   250→              <div className="flex">
+   251→                {[1, 2, 3, 4, 5].map((s) => (
+   252→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   253→                ))}
+   254→              </div>
+   255→              <span className="font-semibold text-white">4.9/5</span>
+   256→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   257→            </div>
+   258→            <div className="flex items-center gap-1.5">
+   259→              <Shield className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; Vetted
+   260→            </div>
+   261→            <div className="flex items-center gap-1.5">
+   262→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe Products
+   263→            </div>
+   264→            <div className="flex items-center gap-1.5">
+   265→              <Clock className="w-4 h-4 text-[var(--gold)]" /> Same Crew Every Visit
+   266→            </div>
+   267→          </motion.div>
+   268→        </motion.div>
+   269→      </div>
+   270→    </section>
+   271→  );
+   272→}
+   273→
+   274→// ============================================================
+   275→// Section 1 - Long-form semantic SEO intro
+   276→// Sits right after the hero, before the existing ServiceOverview.
+   277→// ============================================================
+   278→
+   279→export function HardwoodFloorSeoIntro() {
+   280→  return (
+   281→    <section className="py-16 lg:py-24 bg-background">
+   282→      <div className="max-w-[1100px] mx-auto px-6">
+   283→        <motion.div
+   284→          initial={{ opacity: 0, y: 20 }}
+   285→          whileInView={{ opacity: 1, y: 0 }}
+   286→          viewport={{ once: true, margin: "-80px" }}
+   287→          transition={{ duration: 0.5 }}
+   288→          className="max-w-3xl mx-auto text-center mb-10"
+   289→        >
+   290→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   291→            Specialist hardwood &amp; laminate care &middot; Scotland
+   292→          </span>
+   293→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   294→            The Maundy Clean Standard for Timber Surface Care
+   295→          </h2>
+   296→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   297→            Built on the <strong className="font-semibold text-[var(--ink)]">Maundy tradition of
+   298→            service and care</strong>, we provide a premium alternative to impersonal national
+   299→            agencies. Whether you reside in a traditional Edinburgh townhouse with original pine
+   300→            boards or a modern Glasgow apartment with engineered oak, our service is built on trust,
+   301→            consistency, and a deep understanding of floor technology. Every visit blends ultra-low
+   302→            moisture cleaning, specialist material knowledge, and a 100% satisfaction guarantee
+   303→            &mdash; treating your floors with the meticulous care they deserve.
+   304→          </p>
+   305→        </motion.div>
+   306→
+   307→        {/* Trust strip */}
+   308→        <motion.div
+   309→          initial={{ opacity: 0, y: 16 }}
+   310→          whileInView={{ opacity: 1, y: 0 }}
+   311→          viewport={{ once: true, margin: "-60px" }}
+   312→          transition={{ duration: 0.5 }}
+   313→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   314→        >
+   315→          {[
+   316→            { label: "Floor types covered", value: "3+" },
+   317→            { label: "Ultra-low moisture", value: "ULM Tech" },
+   318→            { label: "Refinish guarantee", value: "5-10 yrs" },
+   319→            { label: "Star rating", value: "4.9/5" },
+   320→          ].map((stat) => (
+   321→            <div
+   322→              key={stat.label}
+   323→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   324→            >
+   325→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   326→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   327→            </div>
+   328→          ))}
+   329→        </motion.div>
+   330→      </div>
+   331→    </section>
+   332→  );
+   333→}
+   334→
+   335→// ============================================================
+   336→// Section 2 - Why MaundyClean is the Authority in Scottish Floor Maintenance
+   337→// (Semantic H2: "Why Maundy Clean is the Authority in Scottish Floor Maintenance")
+   338→// Image+copy split layout with 4 trust cards
+   339→// ============================================================
+   340→
+   341→const TRUST_CARDS = [
+   342→  {
+   343→    icon: Users,
+   344→    title: "The Same Trusted Professional Every Visit",
+   345→    description:
+   346→      "Reliability is our anchor. Unlike gig-economy apps, we ensure the same vetted professional visits your home for every scheduled session. This allows your cleaner to build a deep understanding of your floor&rsquo;s specific finishes and high-traffic &ldquo;risky&rdquo; areas &mdash; the spots where grit collects, where UV fades the finish, where the dog runs in from the garden. Continuity is what turns routine maintenance into a real protection plan.",
+   347→  },
+   348→  {
+   349→    icon: Trees,
+   350→    title: "Specialist Material Knowledge",
+   351→    description:
+   352→      "We understand that Engineered Wood (made of multiple layers with a hardwood veneer) and Laminate (pressed wood board with a resin wear layer) have vastly different requirements. Our technicians are trained to identify these surfaces and apply the correct technical protocol &mdash; pH-neutral cleaners for lacquer, oil-replenishing products for oiled finishes, dry-only methods for laminate joins. Wrong chemistry on wrong material equals permanent damage.",
+   353→  },
+   354→  {
+   355→    icon: Droplets,
+   356→    title: "Ultra-Low Moisture (ULM) Technology",
+   357→    description:
+   358→      "Hardwood and laminate are susceptible to damage through over-wetting. We utilize low-moisture and low-abrasion equipment specifically designed for timber, removing dirt and grime without the risk of warping, swelling, or cupping. Steam mops and wet mops force water into the joints &mdash; our ULM approach uses a barely-damp microfibre system that lifts soil while protecting the structural integrity of the floor.",
+   359→  },
+   360→  {
+   361→    icon: Leaf,
+   362→    title: "Eco-Friendly & Family Safe",
+   363→    description:
+   364→      "Your health is paramount. We supply all our own professional-grade, non-toxic cleaning solutions that are 100% safe for children and pets while protecting the natural aesthetics of your timber. No harsh solvents, no optical brighteners, no perfume. The floor is safe for crawling babies and pets once dry &mdash; just a clean, natural wood scent and a finish that&rsquo;s been cared for, not stripped.",
+   365→  },
+   366→];
+   367→
+   368→export function HardwoodFloorSeoWhy() {
+   369→  return (
+   370→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   371→      <div className="max-w-[1400px] mx-auto px-6">
+   372→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   373→          {/* Image side */}
+   374→          <motion.div
+   375→            initial={{ opacity: 0, scale: 0.96 }}
+   376→            whileInView={{ opacity: 1, scale: 1 }}
+   377→            viewport={{ once: true, margin: "-80px" }}
+   378→            transition={{ duration: 0.6 }}
+   379→            className="relative order-2 lg:order-1"
+   380→          >
+   381→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   382→              <img
+   383→                src={IMG.whyCrew}
+   384→                alt="Maundy Clean hardwood floor technician &mdash; uniformed, vetted, and material-trained"
+   385→                className="absolute inset-0 w-full h-full object-cover"
+   386→                loading="lazy"
+   387→              />
+   388→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   389→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   390→                <div className="flex items-center gap-2 mb-1">
+   391→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   392→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   393→                    A Trusted Presence in Your Home
+   394→                  </span>
+   395→                </div>
+   396→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   397→                  Employed, vetted, uniformed, and trained in timber-specific chemistry.
+   398→                  Same crew every visit &mdash; never a rotating cast of strangers.
+   399→                </p>
+   400→              </div>
+   401→            </div>
+   402→            <motion.div
+   403→              animate={{ y: [0, -8, 0] }}
+   404→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   405→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   406→            >
+   407→              <div className="flex items-center gap-2">
+   408→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   409→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   410→                </div>
+   411→                <div>
+   412→                  <div className="text-[10px] text-[var(--muted-foreground)]">Refinish guarantee</div>
+   413→                  <div className="text-xs font-bold text-[var(--ink)]">5-10 yrs</div>
+   414→                </div>
+   415→              </div>
+   416→            </motion.div>
+   417→          </motion.div>
+   418→
+   419→          {/* Copy side */}
+   420→          <motion.div
+   421→            initial={{ opacity: 0, y: 20 }}
+   422→            whileInView={{ opacity: 1, y: 0 }}
+   423→            viewport={{ once: true, margin: "-80px" }}
+   424→            transition={{ duration: 0.5 }}
+   425→            className="order-1 lg:order-2"
+   426→          >
+   427→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   428→              Why choose Maundy Clean
+   429→            </span>
+   430→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   431→              Why Maundy Clean is the Authority in Scottish Floor Maintenance
+   432→            </h2>
+   433→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   434→              While most domestic cleaners use generic chemicals that can damage wood fibers or leave
+   435→              dark, dull buildups, Maundy Clean focuses on the topic of total surface health. We
+   436→              address the technical requirements of high-value flooring to extend its durability and
+   437→              enhance its appearance &mdash; combining specialist material knowledge, ultra-low
+   438→              moisture technology, eco-friendly products, and the same trusted professional every
+   439→              visit.
+   440→            </p>
+   441→
+   442→            <div className="space-y-3">
+   443→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   444→                const Icon = card.icon;
+   445→                return (
+   446→                  <div
+   447→                    key={card.title}
+   448→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   449→                  >
+   450→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   451→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   452→                    </div>
+   453→                    <div>
+   454→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   455→                        {card.title}
+   456→                      </h3>
+   457→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   458→                        {card.description}
+   459→                      </p>
+   460→                    </div>
+   461→                  </div>
+   462→                );
+   463→              })}
+   464→            </div>
+   465→          </motion.div>
+   466→        </div>
+   467→
+   468→        {/* Third + fourth cards as a 2-column strip */}
+   469→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   470→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   471→            const Icon = card.icon;
+   472→            return (
+   473→              <motion.div
+   474→                key={card.title}
+   475→                initial={{ opacity: 0, y: 20 }}
+   476→                whileInView={{ opacity: 1, y: 0 }}
+   477→                viewport={{ once: true, margin: "-40px" }}
+   478→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   479→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   480→              >
+   481→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   482→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   483→                </div>
+   484→                <div>
+   485→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   486→                    {card.title}
+   487→                  </h3>
+   488→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   489→                    {card.description}
+   490→                  </p>
+   491→                </div>
+   492→              </motion.div>
+   493→            );
+   494→          })}
+   495→        </div>
+   496→      </div>
+   497→    </section>
+   498→  );
+   499→}
+   500→
+   501→// ============================================================
+   502→// Section 3 - Our Comprehensive Hard Floor Technical Checklist
+   503→// (Semantic H2: "Our Comprehensive Hard Floor Technical Checklist")
+   504→// Brief-specific section with 3 H3 sub-sections:
+   505→//   1. Engineered Wood & Solid Timber Care
+   506→//   2. Laminate Floor Preservation
+   507→//   3. Safety & Hygiene Standards
+   508→// Carries the id="checklist" anchor that the CTA buttons link to.
+   509→// ============================================================
+   510→
+   511→const CHECKLIST_ITEMS = [
+   512→  {
+   513→    icon: Trees,
+   514→    image: IMG.checklistEngineered,
+   515→    imageAlt: "Engineered oak floor being deep cleaned with a low-moisture rotary machine in a Scottish living room",
+   516→    title: "Engineered Wood & Solid Timber Care",
+   517→    description:
+   518→      "The technical core of every visit. Solid timber and engineered wood are natural materials that respond to chemistry, moisture, and mechanical action differently than synthetic surfaces. We use a low-moisture, low-abrasion protocol that lifts embedded city-centre dust without swelling the joints, dulling the lacquer, or stripping the oil.",
+   519→    points: [
+   520→      {
+   521→        icon: Droplets,
+   522→        title: "Low Moisture Extraction",
+   523→        text: "Deep cleaning of the grain using specialized extraction equipment to remove embedded city-centre dust. A barely-damp rotary head lifts soil from the micro-pores of the finish while a HEPA vacuum captures the suspended particulate &mdash; no pooling water, no swelling, no cupping.",
+   524→      },
+   525→      {
+   526→        icon: Sparkles,
+   527→        title: "Polishing & Buffing",
+   528→        text: "Use of professional machinery to maintain your choice of finish &mdash; from natural oils and UV waxes to water-based acrylic resins. A periodic buff reactivates the existing topcoat, removes micro-scratches from traffic areas, and restores the depth of colour without the cost of a full recoat.",
+   529→      },
+   530→      {
+   531→        icon: Brush,
+   532→        title: "Surface Restoration",
+   533→        text: "Meticulous wiping of visible skirting boards, door frames, and surrounding fixtures as part of the standard service. The most common complaint with cheaper floor cleaners is that they leave dirty edges &mdash; we hand-detail every perimeter surface so the room feels genuinely reset, not just the centre of the floor.",
+   534→      },
+   535→    ],
+   536→  },
+   537→  {
+   538→    icon: Layers,
+   539→    image: IMG.checklistLaminate,
+   540→    imageAlt: "Laminate floor being detail-cleaned along edges and corners in a Scottish tenement flat",
+   541→    title: "Laminate Floor Preservation",
+   542→    description:
+   543→      "Laminate is a pressed-wood board with a photographic wear layer and a resin topcoat &mdash; it cannot be sanded, it cannot be refinished, and it is uniquely vulnerable to moisture at the joins. Our laminate protocol is dry-first, low-moisture second, and never wet. The goal is to extend the life of the wear layer and protect the click-lock joins.",
+   544→    points: [
+   545→      {
+   546→        icon: Shield,
+   547→        title: "Wear-Layer Protection",
+   548→        text: "Gentle cleaning that preserves the protective resin layer without leaving sticky spots or tripping hazards. We use a pH-neutral laminate-safe cleaner applied with a barely-damp microfibre pad &mdash; never a spray mop, never a steam mop, never a soaking wet string mop. The resin layer is thin and irreplaceable.",
+   549→      },
+   550→      {
+   551→        icon: CheckCircle2,
+   552→        title: "Detail Cleaning",
+   553→        text: "Reaching into corners and edges where dirt typically accumulates in tenement or bungalow layouts. The click-lock joins are the weakest point in any laminate floor &mdash; grit in the join causes edge swelling, which causes irreversible lifting. We vacuum the joins first, then detail-clean with a soft brush attachment.",
+   554→      },
+   555→    ],
+   556→  },
+   557→  {
+   558→    icon: Shield,
+   559→    image: IMG.checklistSafety,
+   560→    imageAlt: "Antiviral sanitation being applied to high-traffic hardwood floor area in a Scottish family home",
+   561→    title: "Safety & Hygiene Standards",
+   562→    description:
+   563→      "Floor safety is not just about appearance &mdash; it is about preventing accidents and protecting the health of the household. Sticky residues, food spills, and pet accidents create both slip hazards and bacterial growth sites. Our safety pass treats high-traffic areas with certified antiviral sanitation as standard, not as an add-on.",
+   564→    points: [
+   565→      {
+   566→        icon: Footprints,
+   567→        title: "Hazard Removal",
+   568→        text: "Eliminating sticky spots and spills that can cause accidents, ensuring a safer environment for your family. We treat kitchen transitions, hallway traffic paths, and the area around high chairs &mdash; the three spots where food and drink spills are most likely to create a slip risk for children, pets, and older residents.",
+   569→      },
+   570→      {
+   571→        icon: Flame,
+   572→        title: "Antiviral Sanitation",
+   573→        text: "Treating high-traffic floor areas with certified cleaners to maintain a healthy living environment. Our food-safe, child-safe, pet-safe sanitiser is applied as a fine mist and buffed off &mdash; it kills 99.9% of common household viruses and bacteria without leaving residue, perfume, or sticky film on the timber.",
+   574→      },
+   575→    ],
+   576→  },
+   577→];
+   578→
+   579→export function HardwoodFloorSeoChecklist() {
+   580→  return (
+   581→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   582→      <div className="max-w-[1400px] mx-auto px-6">
+   583→        <motion.div
+   584→          initial={{ opacity: 0, y: 20 }}
+   585→          whileInView={{ opacity: 1, y: 0 }}
+   586→          viewport={{ once: true, margin: "-80px" }}
+   587→          transition={{ duration: 0.5 }}
+   588→          className="max-w-3xl mb-12"
+   589→        >
+   590→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   591→            Beyond the basic mop
+   592→          </span>
+   593→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   594→            Our Comprehensive Hard Floor Technical Checklist
+   595→          </h2>
+   596→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   597→            Our recurring home cleaning for hardwood floors follows a rigorous, agency-approved
+   598→            checklist designed to maintain a &ldquo;speechlessly spotless&rdquo; finish every time.
+   599→            Below is the scope we deliver as standard on every visit &mdash; from the technical core
+   600→            of low-moisture extraction, through to wear-layer preservation for laminate, to the
+   601→            antiviral safety pass that protects your household.
+   602→          </p>
+   603→        </motion.div>
+   604→
+   605→        <div className="grid lg:grid-cols-3 gap-6">
+   606→          {CHECKLIST_ITEMS.map((item, i) => {
+   607→            const Icon = item.icon;
+   608→            return (
+   609→              <motion.div
+   610→                key={item.title}
+   611→                initial={{ opacity: 0, y: 24 }}
+   612→                whileInView={{ opacity: 1, y: 0 }}
+   613→                viewport={{ once: true, margin: "-40px" }}
+   614→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   615→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   616→              >
+   617→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   618→                  <img
+   619→                    src={item.image}
+   620→                    alt={item.imageAlt}
+   621→                    className="absolute inset-0 w-full h-full object-cover"
+   622→                    loading="lazy"
+   623→                  />
+   624→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   625→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   626→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   627→                  </div>
+   628→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   629→                    {item.title}
+   630→                  </h3>
+   631→                </div>
+   632→                <div className="p-6 flex-1 flex flex-col">
+   633→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   634→                    {item.description}
+   635→                  </p>
+   636→                  <ul className="space-y-3 mt-auto">
+   637→                    {item.points.map((point) => {
+   638→                      const PointIcon = point.icon;
+   639→                      return (
+   640→                        <li
+   641→                          key={point.title}
+   642→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   643→                        >
+   644→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   645→                          <span>
+   646→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   647→                            &mdash; {point.text}
+   648→                          </span>
+   649→                        </li>
+   650→                      );
+   651→                    })}
+   652→                  </ul>
+   653→                </div>
+   654→              </motion.div>
+   655→            );
+   656→          })}
+   657→        </div>
+   658→      </div>
+   659→    </section>
+   660→  );
+   661→}
+   662→
+   663→// ============================================================
+   664→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   665→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   666→// ============================================================
+   667→
+   668→const BOOKING_STEPS = [
+   669→  {
+   670→    icon: Zap,
+   671→    step: "01",
+   672→    title: "Instant 30-Second Quote",
+   673→    description:
+   674→      "Use our online price calculator to receive a simple, fixed-price quote based on your room dimensions and floor type &mdash; solid timber, engineered wood, or laminate. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months, with no contracts tying you in and no on-the-day upsells for sealer or polish.",
+   675→  },
+   676→  {
+   677→    icon: UserCheck,
+   678→    step: "02",
+   679→    title: "Professional Matching",
+   680→    description:
+   681→      "We match you with a local specialist who fits your schedule, offering flexible appointments across five days a week. Your allocated technician arrives with all professional-grade ULM equipment and eco-friendly timber solutions included &mdash; and the same technician returns for every scheduled session, building real knowledge of your floor&rsquo;s finishes and traffic patterns.",
+   682→  },
+   683→  {
+   684→    icon: CalendarCheck,
+   685→    step: "03",
+   686→    title: "A Consistent 5-Star Result",
+   687→    description:
+   688→      "Enjoy floors that look, feel, and smell fresh, backed by our Maundy Clean 100% satisfaction guarantee. We finish every visit with a wear-pattern inspection, a care card update, and a re-clean reminder for the next quarter. From &pound;18/hr for maintenance cleaning, &pound;12/sqm for deep clean or screen-and-recoat, &pound;35/sqm for full sand and refinish.",
+   689→  },
+   690→];
+   691→
+   692→export function HardwoodFloorSeoBooking() {
+   693→  return (
+   694→    <section className="py-16 lg:py-24 bg-background">
+   695→      <div className="max-w-[1400px] mx-auto px-6">
+   696→        <motion.div
+   697→          initial={{ opacity: 0, y: 20 }}
+   698→          whileInView={{ opacity: 1, y: 0 }}
+   699→          viewport={{ once: true, margin: "-80px" }}
+   700→          transition={{ duration: 0.5 }}
+   701→          className="text-center mb-14"
+   702→        >
+   703→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   704→            Hassle-free booking
+   705→          </span>
+   706→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   707→            The 3-Step &ldquo;Hassle-Free&rdquo; Process
+   708→          </h3>
+   709→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   710→            We have optimized our booking experience to be straightforward and helpful, beating the
+   711→            slow response times common in the Scottish market. From quote to first clean in under 48
+   712→            hours &mdash; no friction, no waiting, no surprises.
+   713→          </p>
+   714→        </motion.div>
+   715→
+   716→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   717→          {/* Connector line */}
+   718→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   719→
+   720→          {BOOKING_STEPS.map((step, i) => {
+   721→            const Icon = step.icon;
+   722→            return (
+   723→              <motion.div
+   724→                key={step.step}
+   725→                initial={{ opacity: 0, y: 24 }}
+   726→                whileInView={{ opacity: 1, y: 0 }}
+   727→                viewport={{ once: true, margin: "-40px" }}
+   728→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   729→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   730→              >
+   731→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   732→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   733→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   734→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   735→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   736→                    {step.step}
+   737→                  </span>
+   738→                </div>
+   739→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   740→                  {step.title}
+   741→                </h3>
+   742→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   743→                  {step.description}
+   744→                </p>
+   745→              </motion.div>
+   746→            );
+   747→          })}
+   748→        </div>
+   749→
+   750→        <motion.div
+   751→          initial={{ opacity: 0, y: 16 }}
+   752→          whileInView={{ opacity: 1, y: 0 }}
+   753→          viewport={{ once: true }}
+   754→          transition={{ duration: 0.5, delay: 0.3 }}
+   755→          className="text-center mt-10"
+   756→        >
+   757→          <Button
+   758→            size="lg"
+   759→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   760→            asChild
+   761→          >
+   762→            <Link href="/quote">
+   763→              Get My 30-Second Instant Quote
+   764→              <ArrowRight className="w-5 h-5" />
+   765→            </Link>
+   766→          </Button>
+   767→        </motion.div>
+   768→      </div>
+   769→    </section>
+   770→  );
+   771→}
+   772→
+   773→// ============================================================
+   774→// Section 5 - A Solution for Every Stage
+   775→// (Semantic H2: "A Solution for Every Stage")
+   776→// Image-topped cards with internal links to specialist services
+   777→// ============================================================
+   778→
+   779→const INTERLINK_SOLUTIONS = [
+   780→  {
+   781→    icon: CalendarCheck,
+   782→    title: "Maintaining the Standard &middot; Recurring Home Cleaning",
+   783→    href: "/services/recurring-home-cleaning",
+   784→    image: IMG.leaseRecurring,
+   785→    imageAlt: "Scottish home receiving recurring interior cleaning alongside hardwood floor maintenance",
+   786→    description:
+   787→      "After your hardwood floors are professionally restored, keep them pristine with a Recurring Home Cleaning plan &mdash; weekly or fortnightly. Our same trusted technician maintains your timber with pH-neutral, wood-safe products as part of every visit, catching wear patterns early and extending the life of the finish between deep cleans.",
+   788→    cta: "Explore recurring cleaning",
+   789→  },
+   790→  {
+   791→    icon: Home,
+   792→    title: "The Move-In Reset &middot; Deep House Cleaning",
+   793→    href: "/services/deep-house-cleaning",
+   794→    image: IMG.leaseDeep,
+   795→    imageAlt: "Scottish home receiving an intensive deep clean alongside hardwood floor restoration for sale prep",
+   796→    description:
+   797→      "Preparing a home for sale? Professional floor care creates the &ldquo;aspirational dream&rdquo; for buyers. Combine your hardwood restoration with our Deep House Cleaning for the ultimate WOW factor &mdash; clean floors, spotless surfaces, fresh scent, and a viewing-ready property from the moment the agent opens the door.",
+   798→    cta: "Explore deep house cleaning",
+   799→  },
+   800→  {
+   801→    icon: KeyRound,
+   802→    title: "Property Transitions &middot; End of Tenancy Cleaning",
+   803→    href: "/services/move-in-out-cleaning",
+   804→    image: IMG.leaseTenancy,
+   805→    imageAlt: "Empty Scottish flat being deep cleaned with hardwood floor care included for tenancy handover",
+   806→    description:
+   807→      "Our End of Tenancy Cleaning includes technical floor care to ensure you fulfill your lease requirements and get your deposit back in full. We work to the letting agent&rsquo;s inventory, restore the hardwood to its original appearance, and come back free of charge if anything is flagged on the inspection.",
+   808→    cta: "Explore end of tenancy",
+   809→  },
+   810→  {
+   811→    icon: Hammer,
+   812→    title: "Post-Renovation &middot; After Builders Clean",
+   813→    href: "/services/post-construction-cleaning",
+   814→    image: IMG.leaseBuilders,
+   815→    imageAlt: "Post-builders cleanup removing fine construction dust from a freshly laid hardwood floor in Scotland",
+   816→    description:
+   817→      "If you have recently had construction work, our After Builders Clean is essential to remove abrasive builders&rsquo; dust from your hardwood surfaces. Fine dust left on a timber floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect the finish before the dust has a chance to cause permanent scratches.",
+   818→    cta: "Explore after builders cleaning",
+   819→  },
+   820→];
+   821→
+   822→export function HardwoodFloorSeoInterlinking() {
+   823→  return (
+   824→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   825→      <div className="max-w-[1400px] mx-auto px-6">
+   826→        <motion.div
+   827→          initial={{ opacity: 0, y: 20 }}
+   828→          whileInView={{ opacity: 1, y: 0 }}
+   829→          viewport={{ once: true, margin: "-80px" }}
+   830→          transition={{ duration: 0.5 }}
+   831→          className="max-w-3xl mb-12"
+   832→        >
+   833→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   834→            Beyond the reset &middot; property milestones
+   835→          </span>
+   836→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   837→            A Solution for Every Stage
+   838→          </h2>
+   839→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   840→            While our recurring home cleaning provides daily maintenance, we offer specialized
+   841→            &ldquo;reset&rdquo; services for major property milestones &mdash; from intensive
+   842→            restoration for floors beyond the cleaning stage, through to the move-in reset, end of
+   843→            tenancy handover, and the post-builders dust clear-out. The same trusted crew can step up
+   844→            whenever life changes.
+   845→          </p>
+   846→        </motion.div>
+   847→
+   848→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   849→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   850→            const Icon = sol.icon;
+   851→            return (
+   852→              <motion.div
+   853→                key={sol.title}
+   854→                initial={{ opacity: 0, y: 24 }}
+   855→                whileInView={{ opacity: 1, y: 0 }}
+   856→                viewport={{ once: true, margin: "-40px" }}
+   857→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   858→              >
+   859→                <Link
+   860→                  href={sol.href}
+   861→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   862→                >
+   863→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   864→                    <img
+   865→                      src={sol.image}
+   866→                      alt={sol.imageAlt}
+   867→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   868→                      loading="lazy"
+   869→                    />
+   870→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   871→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   872→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   873→                    </div>
+   874→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   875→                      {sol.title}
+   876→                    </h3>
+   877→                  </div>
+   878→                  <div className="p-5">
+   879→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   880→                      {sol.description}
+   881→                    </p>
+   882→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   883→                      {sol.cta}
+   884→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   885→                    </span>
+   886→                  </div>
+   887→                </Link>
+   888→              </motion.div>
+   889→            );
+   890→          })}
+   891→        </div>
+   892→      </div>
+   893→    </section>
+   894→  );
+   895→}
+   896→
+   897→// ============================================================
+   898→// Section 6 - "Near Me" Location Internal Links
+   899→// (Semantic H2: "Hardwood Floor Care Services Near Me in Scotland")
+   900→// Split layout with map image + 36-location grid
+   901→// ============================================================
+   902→
+   903→export function HardwoodFloorSeoNearMe() {
+   904→  return (
+   905→    <section className="py-16 lg:py-24 bg-background">
+   906→      <div className="max-w-[1400px] mx-auto px-6">
+   907→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   908→          {/* Left: copy + map image */}
+   909→          <motion.div
+   910→            initial={{ opacity: 0, y: 20 }}
+   911→            whileInView={{ opacity: 1, y: 0 }}
+   912→            viewport={{ once: true, margin: "-80px" }}
+   913→            transition={{ duration: 0.5 }}
+   914→          >
+   915→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   916→              Local hardwood &amp; laminate care across Scotland
+   917→            </span>
+   918→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   919→              Hardwood Floor Care Services Near Me in Scotland
+   920→            </h2>
+   921→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   922→              Searching for &ldquo;hardwood floor cleaning near me&rdquo; or &ldquo;wood floor
+   923→              restoration near me&rdquo; in Scotland? Maundy Clean covers 72+ towns and cities
+   924→              across the Central Belt, Highlands, Borders, and Islands. Same material-trained
+   925→              standard, same ultra-low moisture technology, same dedicated technician &mdash;
+   926→              wherever your property happens to be. Find your local hardwood floor care specialist
+   927→              below.
+   928→            </p>
+   929→
+   930→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   931→              <img
+   932→                src={IMG.nearMeMap}
+   933→                alt="Map of Scotland showing Maundy Clean hardwood floor care service coverage areas"
+   934→                className="absolute inset-0 w-full h-full object-cover"
+   935→                loading="lazy"
+   936→              />
+   937→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   938→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   939→                <div className="flex items-center gap-2 mb-1">
+   940→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   941→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   942→                    72+ Scottish towns covered
+   943→                  </span>
+   944→                </div>
+   945→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   946→                  Same material-trained technicians, same 100% satisfaction guarantee &mdash; from
+   947→                  Glasgow to Lerwick.
+   948→                </p>
+   949→              </div>
+   950→            </div>
+   951→          </motion.div>
+   952→
+   953→          {/* Right: location grid */}
+   954→          <motion.div
+   955→            initial={{ opacity: 0, y: 20 }}
+   956→            whileInView={{ opacity: 1, y: 0 }}
+   957→            viewport={{ once: true, margin: "-60px" }}
+   958→            transition={{ duration: 0.5 }}
+   959→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   960→          >
+   961→            <div className="flex items-center justify-between mb-5">
+   962→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   963→                Find your local hardwood crew
+   964→              </h3>
+   965→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   966→            </div>
+   967→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   968→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   969→                <motion.div
+   970→                  key={loc.slug}
+   971→                  initial={{ opacity: 0 }}
+   972→                  whileInView={{ opacity: 1 }}
+   973→                  viewport={{ once: true }}
+   974→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   975→                >
+   976→                  <Link
+   977→                    href={`/services/hardwood-floor-care-near-me#${loc.slug}`}
+   978→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   979→                  >
+   980→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   981→                    <span>
+   982→                      <span className="font-medium">{loc.city}</span>
+   983→                      <span className="text-[var(--muted-foreground)]"> floor care</span>
+   984→                    </span>
+   985→                  </Link>
+   986→                </motion.div>
+   987→              ))}
+   988→            </div>
+   989→
+   990→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   991→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   992→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+   993→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   994→              </div>
+   995→              <div className="flex flex-col sm:flex-row gap-3 items-center">
+   996→                <Link
+   997→                  href="/services/hardwood-floor-care-near-me"
+   998→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   999→                >
+  1000→                  <MapPin className="w-4 h-4" />
+  1001→                  Browse the near-me directory
+  1002→                  <ArrowRight className="w-4 h-4" />
+  1003→                </Link>
+  1004→                <Link
+  1005→                  href="/locations"
+  1006→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1007→                >
+  1008→                  View all 72 Scottish locations
+  1009→                  <ArrowRight className="w-4 h-4" />
+  1010→                </Link>
+  1011→              </div>
+  1012→            </div>
+  1013→          </motion.div>
+  1014→        </div>
+  1015→
+  1016→        {/* SEO long-form paragraph for "near me" search intent */}
+  1017→        <motion.div
+  1018→          initial={{ opacity: 0, y: 16 }}
+  1019→          whileInView={{ opacity: 1, y: 0 }}
+  1020→          viewport={{ once: true, margin: "-40px" }}
+  1021→          transition={{ duration: 0.5, delay: 0.2 }}
+  1022→          className="mt-10 max-w-4xl mx-auto text-center"
+  1023→        >
+  1024→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1025→            Our local hardwood and laminate care crews operate across Glasgow&rsquo;s West End,
+  1026→            Edinburgh&rsquo;s New Town, Aberdeen&rsquo;s granite-built suburbs, Dundee&rsquo;s city
+  1027→            centre, and the Highlands &mdash; from Inverness to Thurso, Fort William to Lerwick.
+  1028→            Whether you&rsquo;re searching for engineered oak cleaning in Glasgow, original pine
+  1029→            board restoration in Edinburgh, herringbone parquet sanding in Aberdeen, or laminate
+  1030→            preservation anywhere in between, Maundy Clean assigns a vetted, PAYE-employed
+  1031→            technician that stays with you for the long run. Same crew, same standard, same locked-in
+  1032→            rate for 12 months.
+  1033→          </p>
+  1034→        </motion.div>
+  1035→      </div>
+  1036→    </section>
+  1037→  );
+  1038→}
+  1039→
+  1040→// ============================================================
+  1041→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1042→// (Semantic H3: "Ready to Book Your Hardwood Floor Care?")
+  1043→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1044→// ============================================================
+  1045→
+  1046→export function HardwoodFloorSeoFinalCta() {
+  1047→  return (
+  1048→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1049→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1050→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1051→
+  1052→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1053→        <motion.div
+  1054→          initial={{ opacity: 0, y: 20 }}
+  1055→          whileInView={{ opacity: 1, y: 0 }}
+  1056→          viewport={{ once: true, margin: "-80px" }}
+  1057→          transition={{ duration: 0.5 }}
+  1058→        >
+  1059→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1060→            Ready to book your hardwood floor care?
+  1061→          </span>
+  1062→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1063→            Ready to Book Your Hardwood Floor Care?
+  1064→          </h3>
+  1065→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1066→            Get a fixed-price hardwood floor care quote in 30 seconds. No pushy sales call, no
+  1067→            waiting 24 hours for a callback. Material-trained technicians, ultra-low moisture
+  1068→            technology, child &amp; pet-safe products, and a 100% satisfaction guarantee &mdash; from
+  1069→            &pound;18/hr for maintenance, &pound;35/sqm for a full sand and refinish with a 5-10 year
+  1070→            guarantee.
+  1071→          </p>
+  1072→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1073→            <Button
+  1074→              size="lg"
+  1075→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1076→              asChild
+  1077→            >
+  1078→              <Link href="/quote">
+  1079→                Get My 30-Second Instant Quote
+  1080→                <ArrowRight className="w-5 h-5" />
+  1081→              </Link>
+  1082→            </Button>
+  1083→            <Button
+  1084→              size="lg"
+  1085→              variant="outline"
+  1086→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1087→              asChild
+  1088→            >
+  1089→              <Link href="#checklist">
+  1090→                <CheckCircle2 className="w-4 h-4" />
+  1091→                View Our Regular Cleaning Checklist
+  1092→              </Link>
+  1093→            </Button>
+  1094→          </div>
+  1095→        </motion.div>
+  1096→      </div>
+  1097→    </section>
+  1098→  );
+  1099→}
+  1100→
+  1101→// ============================================================
+  1102→// Section 8 - SEO FAQ block
+  1103→// (Semantic H2: "Frequently Asked Questions")
+  1104→// 6 Q&As - 3 from the user brief (own equipment, how often, insured)
+  1105→// + 3 hardwood-specific additions (sanding engineered wood, dust-free, finish choice)
+  1106→// ============================================================
+  1107→
+  1108→const SEO_FAQS = [
+  1109→  {
+  1110→    q: "Do you provide your own equipment?",
+  1111→    a: "Yes. Maundy Clean supplies all professional-grade ULM equipment and eco-friendly timber solutions, which are included in your competitive quote. Every technician arrives with a soft-brush HEPA vacuum, a low-moisture rotary head, microfibre mop system, pH-neutral wood-safe cleaner, and &mdash; for refinishing work &mdash; L&auml;gler drum sanders, Bona edge sanders, and Festool dust extractors. You don&rsquo;t need to provide anything except access to the property and a tap for clean water.",
+  1112→  },
+  1113→  {
+  1114→    q: "How often should hardwood floors be professionally cleaned?",
+  1115→    a: "For residential properties, we recommend a regular cleaning schedule (weekly or fortnightly) to prevent abrasive dust from scratching the surface finish. The fine grit that lands on a timber floor every day acts like sandpaper under foot traffic &mdash; left for a month, it dulls the finish in traffic lanes and creates visible wear paths. A professional maintenance clean every quarter, plus a screen-and-recoat every 3-5 years, extends the life of the floor by a decade or more versus mop-only maintenance.",
+  1116→  },
+  1117→  {
+  1118→    q: "Are your cleaners insured?",
+  1119→    a: "Absolutely. Maundy Clean is a fully insured professional cleaning company with years of experience serving Glasgow, Edinburgh, Aberdeen, and the Central Belt. We hold &pound;5m public liability cover, every technician is Disclosure Scotland PVG-checked, and all staff are PAYE-employed &mdash; we never use subcontractors or gig-economy labour. The same standard applies whether you&rsquo;re a one-off client or a recurring customer: vetted, uniformed, and accountable to the Maundy Clean name.",
+  1120→  },
+  1121→  {
+  1122→    q: "Can you sand engineered wood floors?",
+  1123→    a: "It depends on the veneer thickness. Engineered wood is a real wood veneer (typically 4-6mm) over a plywood base, and it can be sanded 2-3 times in its life &mdash; removing 1-1.5mm each time. We assess the veneer thickness before recommending any sanding; if it has already been sanded twice or is less than 2mm thick, we recommend screening and recoating instead (which removes only the finish, not the wood). If you have the original installation documentation, please share it when booking &mdash; the veneer thickness will be specified there.",
+  1124→  },
+  1125→  {
+  1126→    q: "How dusty will the sanding be?",
+  1127→    a: "With our equipment (L&auml;gler Hummel drum sander, Bona edge sander, Festool CT 36/48 dust extractors with HEPA filtration), sanding is virtually dust-free. You can be in the next room without noticing. We still seal adjacent rooms with dust sheeting as a belt-and-braces measure and clean up thoroughly at the end of each day, but the dust extraction means your soft furnishings, curtains, and electronics are protected. Cheap sanding companies without proper dust extraction are very dusty &mdash; we are not those companies.",
+  1128→  },
+  1129→  {
+  1130→    q: "What finish should I choose &mdash; lacquer, oil, or wax?",
+  1131→    a: "It depends on your priorities. Lacquer (Bona Traffic HD, Junckers) is the most durable &mdash; 7-10 years of wear, low maintenance, but harder to spot-repair. Oil (Osmo Polyx-Oil, WOCA) is more natural-feeling, easier to spot-repair, but needs reapplication every 2-3 years. Wax is the most traditional &mdash; beautiful patina but high maintenance (annual rewaxing). For family homes with dogs and children, we usually recommend lacquer. For aesthetic clients who want the natural wood feel, oil. We&rsquo;ll discuss the trade-offs at the free assessment.",
+  1132→  },
+  1133→];
+  1134→
+  1135→export function HardwoodFloorSeoFaq() {
+  1136→  return (
+  1137→    <section className="py-16 lg:py-24 bg-background">
+  1138→      <div className="max-w-4xl mx-auto px-6">
+  1139→        <motion.div
+  1140→          initial={{ opacity: 0, y: 20 }}
+  1141→          whileInView={{ opacity: 1, y: 0 }}
+  1142→          viewport={{ once: true, margin: "-80px" }}
+  1143→          transition={{ duration: 0.5 }}
+  1144→          className="text-center mb-12"
+  1145→        >
+  1146→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1147→            Hardwood floor care &middot; FAQ
+  1148→          </span>
+  1149→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1150→            Frequently Asked Questions
+  1151→          </h2>
+  1152→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1153→            Straight answers to the questions our hardwood floor care clients ask most often.
+  1154→            Can&rsquo;t find what you need? Call us on{" "}
+  1155→            <a
+  1156→              href={contactInfo.phoneHref}
+  1157→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1158→            >
+  1159→              {contactInfo.phone}
+  1160→            </a>{" "}
+  1161→            and we&rsquo;ll talk it through.
+  1162→          </p>
+  1163→        </motion.div>
+  1164→
+  1165→        <div className="space-y-4">
+  1166→          {SEO_FAQS.map((faq, i) => (
+  1167→            <motion.div
+  1168→              key={faq.q}
+  1169→              initial={{ opacity: 0, y: 16 }}
+  1170→              whileInView={{ opacity: 1, y: 0 }}
+  1171→              viewport={{ once: true, margin: "-40px" }}
+  1172→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1173→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1174→            >
+  1175→              <details className="group">
+  1176→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1177→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1178→                    {faq.q}
+  1179→                  </h3>
+  1180→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1181→                    <span className="relative w-3.5 h-3.5">
+  1182→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1183→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1184→                    </span>
+  1185→                  </span>
+  1186→                </summary>
+  1187→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1188→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+  1189→                    {faq.a}
+  1190→                  </p>
+  1191→                </div>
+  1192→              </details>
+  1193→            </motion.div>
+  1194→          ))}
+  1195→        </div>
+  1196→
+  1197→        <motion.div
+  1198→          initial={{ opacity: 0, y: 16 }}
+  1199→          whileInView={{ opacity: 1, y: 0 }}
+  1200→          viewport={{ once: true, margin: "-40px" }}
+  1201→          transition={{ duration: 0.5, delay: 0.3 }}
+  1202→          className="mt-10 text-center"
+  1203→        >
+  1204→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1205→            <Button
+  1206→              size="lg"
+  1207→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1208→              asChild
+  1209→            >
+  1210→              <Link href="/quote">
+  1211→                Get My 30-Second Instant Quote
+  1212→                <ArrowRight className="w-5 h-5" />
+  1213→              </Link>
+  1214→            </Button>
+  1215→            <Button
+  1216→              size="lg"
+  1217→              variant="outline"
+  1218→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1219→              asChild
+  1220→            >
+  1221→              <Link href="#checklist">
+  1222→                <CheckCircle2 className="w-4 h-4" />
+  1223→                View Our Regular Cleaning Checklist
+  1224→              </Link>
+  1225→            </Button>
+  1226→          </div>
+  1227→        </motion.div>
+  1228→      </div>
+  1229→    </section>
+  1230→  );
+  1231→}
+  1232→"""
+  1233→
+  1234→def main() -> None:
+  1235→    OUT.write_text(CONTENT, encoding="utf-8")
+  1236→    print(f"Wrote {OUT} ({len(CONTENT):,} bytes)")
+  1237→
+  1238→if __name__ == "__main__":
+  1239→    main()
+  1240→

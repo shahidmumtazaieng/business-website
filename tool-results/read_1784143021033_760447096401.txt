@@ -1,0 +1,1423 @@
+     1→"use client";
+     2→
+     3→import type { ReactNode } from "react";
+     4→import Link from "next/link";
+     5→import { motion } from "framer-motion";
+     6→import {
+     7→  ShieldCheck,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  Hammer,
+    16→  UserCheck,
+    17→  ClipboardCheck,
+    18→  FileText,
+    19→  HeartPulse,
+    20→  Building2,
+    21→  Leaf,
+    22→  KeyRound,
+    23→  Droplets,
+    24→  ShowerHead,
+    25→} from "lucide-react";
+    26→import { Button } from "@/components/ui/button";
+    27→import { contactInfo } from "@/lib/site-data";
+    28→
+    29→// ============================================================
+    30→// Images - hand-picked from in-house search service
+    31→// (matches property-management + auto-dealership + salon-spa + day-porter + nightly-janitorial pool)
+    32→// ============================================================
+    33→const IMG = {
+    34→  heroWide:
+    35→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    36→  introSplit:
+    37→    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    38→  whyCrew:
+    39→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    40→  checklistFront:
+    41→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    42→  checklistCounter:
+    43→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    44→  checklistKitchen:
+    45→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    46→  leaseSpring:
+    47→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    48→  leaseTenancy:
+    49→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    50→  leaseBuilders:
+    51→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    52→  leaseAntiviral:
+    53→    "https://sfile.chatglm.cn/images-ppt/8a7c4d6e0b51.jpg",
+    54→  nearMeMap:
+    55→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    56→};
+    57→
+    58→// ============================================================
+    59→// 36 Scottish locations covered by the near-me grid
+    60→// (city-centre + neighbourhood coverage across Scotland)
+    61→// ============================================================
+    62→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    63→  { city: "Glasgow", slug: "glasgow" },
+    64→  { city: "Edinburgh", slug: "edinburgh" },
+    65→  { city: "Aberdeen", slug: "aberdeen" },
+    66→  { city: "Dundee", slug: "dundee" },
+    67→  { city: "Stirling", slug: "stirling" },
+    68→  { city: "Inverness", slug: "inverness" },
+    69→  { city: "Perth", slug: "perth" },
+    70→  { city: "Falkirk", slug: "falkirk" },
+    71→  { city: "Paisley", slug: "paisley" },
+    72→  { city: "East Kilbride", slug: "east-kilbride" },
+    73→  { city: "Livingston", slug: "livingston" },
+    74→  { city: "Hamilton", slug: "hamilton" },
+    75→  { city: "Ayr", slug: "ayr" },
+    76→  { city: "Kilmarnock", slug: "kilmarnock" },
+    77→  { city: "Greenock", slug: "greenock" },
+    78→  { city: "Coatbridge", slug: "coatbridge" },
+    79→  { city: "Airdrie", slug: "airdrie" },
+    80→  { city: "Motherwell", slug: "motherwell" },
+    81→  { city: "Wishaw", slug: "wishaw" },
+    82→  { city: "Dunfermline", slug: "dunfermline" },
+    83→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+    84→  { city: "Glenrothes", slug: "glenrothes" },
+    85→  { city: "Dundonald", slug: "dundonald" },
+    86→  { city: "Bearsden", slug: "bearsden" },
+    87→  { city: "Milngavie", slug: "milngavie" },
+    88→  { city: "Bishopbriggs", slug: "bishopbriggs" },
+    89→  { city: "Lenzie", slug: "lenzie" },
+    90→  { city: "Giffnock", slug: "giffnock" },
+    91→  { city: "Newton Mearns", slug: "newton-mearns" },
+    92→  { city: "Clarkston", slug: "clarkston" },
+    93→  { city: "Barrhead", slug: "barrhead" },
+    94→  { city: "Johnstone", slug: "johnstone" },
+    95→  { city: "Renfrew", slug: "renfrew" },
+    96→  { city: "Rutherglen", slug: "rutherglen" },
+    97→  { city: "Cambuslang", slug: "cambuslang" },
+    98→  { city: "Bellshill", slug: "bellshill" },
+    99→];
+   100→
+   101→// ============================================================
+   102→// Section 0 - Full-width hero banner
+   103→// Semantic H1: "Professional Restroom Sanitation & Washroom Cleaning Services Scotland"
+   104→// ============================================================
+   105→
+   106→export function RestroomSanitationSeoHeroBanner() {
+   107→  return (
+   108→    <section className="relative overflow-hidden">
+   109→      {/* Full-width background image */}
+   110→      <div className="absolute inset-0">
+   111→        <img
+   112→          src={IMG.heroWide}
+   113→          alt="Maundy Clean PVG-checked, vetted washroom crew restoring toilets, urinals, dispensers and chrome fixtures to a showcase shine in a Scottish commercial restroom"
+   114→          className="w-full h-full object-cover"
+   115→          loading="eager"
+   116→          fetchPriority="high"
+   117→        />
+   118→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   119→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   120→      </div>
+   121→
+   122→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   123→        <motion.div
+   124→          initial="hidden"
+   125→          animate="visible"
+   126→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   127→          className="max-w-3xl"
+   128→        >
+   129→          <motion.div
+   130→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   131→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   132→          >
+   133→            <span className="relative flex w-2 h-2">
+   134→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   135→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   136→            </span>
+   137→            Restroom Sanitation &amp; Washroom Cleaning &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   138→          </motion.div>
+   139→
+   140→          <motion.h1
+   141→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   142→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   143→          >
+   144→            Professional Restroom Sanitation &amp; Washroom Cleaning Services Scotland
+   145→          </motion.h1>
+   146→
+   147→          <motion.p
+   148→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   149→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   150→          >
+   151→            Exquisite Hygiene Standards, Technical Deep Cleaning, and the Maundy
+   152→            Tradition of Care for Scottish Businesses. Facilities managers,
+   153→            office managers and building operations leads across Scotland&rsquo;s
+   154→            corporate, retail, hospitality and public-sector estates operate in
+   155→            a uniquely demanding washroom environment &mdash; every toilet
+   156→            reflects your brand promise, every urinal visit tells staff how much
+   157→            you care, and every chrome fixture makes or breaks the customer
+   158→            impression. MaundyClean brings vetted PVG-checked washroom crews,
+   159→            toilet &amp; urinal restoration, deep grout cleaning, chrome
+   160→            buffing, sanitary disposal, consumables restocking, infection
+   161→            control, superheated steam technology, eco-friendly non-toxic
+   162→            products, fixed monthly retainer, and a &ldquo;showcase&rdquo;
+   163→            shine to every washroom we serve.
+   164→          </motion.p>
+   165→
+   166→          <motion.div
+   167→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   168→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   169→          >
+   170→            <Button
+   171→              size="lg"
+   172→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   173→              asChild
+   174→            >
+   175→              <Link href="/quote">
+   176→                Request Your Bespoke Hygiene Quote Today
+   177→                <ArrowRight className="w-5 h-5" />
+   178→              </Link>
+   179→            </Button>
+   180→            <Button
+   181→              size="lg"
+   182→              variant="outline"
+   183→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   184→              asChild
+   185→            >
+   186→              <Link href="#checklist">
+   187→                <CheckCircle2 className="w-4 h-4" />
+   188→                View Our Bathroom Deep Cleaning Checklist
+   189→              </Link>
+   190→            </Button>
+   191→          </motion.div>
+   192→
+   193→          <motion.div
+   194→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   195→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   196→          >
+   197→            <div className="flex items-center gap-1.5">
+   198→              <div className="flex">
+   199→                {[1, 2, 3, 4, 5].map((s) => (
+   200→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   201→                ))}
+   202→              </div>
+   203→              <span className="font-semibold text-white">4.9/5</span>
+   204→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   205→            </div>
+   206→            <div className="flex items-center gap-1.5">
+   207→              <ShieldCheck className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; PVG-Checked
+   208→            </div>
+   209→            <div className="flex items-center gap-1.5">
+   210→              <Droplets className="w-4 h-4 text-[var(--gold)]" /> Same Trusted Washroom Crew Every Visit
+   211→            </div>
+   212→            <div className="flex items-center gap-1.5">
+   213→              <Sparkles className="w-4 h-4 text-[var(--gold)]" /> Superheated Steam Sanitation
+   214→            </div>
+   215→          </motion.div>
+   216→        </motion.div>
+   217→      </div>
+   218→    </section>
+   219→  );
+   220→}
+   221→
+   222→// ============================================================
+   223→// Section 1 - Long-form semantic SEO intro
+   224→// Sits right after the hero, before the existing ServiceOverview.
+   225→// Split-layout with aspect-[4/3] image on the left and the two
+   226→// verbatim intro paragraphs on the right (paragraph 2 contains
+   227→// ONE inline <Link>: /services/recurring-home-cleaning for
+   228→// "Recurring Home Cleaning").
+   229→// ============================================================
+   230→
+   231→export function RestroomSanitationSeoIntro() {
+   232→  return (
+   233→    <section className="py-16 lg:py-24 bg-background">
+   234→      <div className="max-w-[1400px] mx-auto px-6">
+   235→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   236→          {/* Image side */}
+   237→          <motion.div
+   238→            initial={{ opacity: 0, scale: 0.96 }}
+   239→            whileInView={{ opacity: 1, scale: 1 }}
+   240→            viewport={{ once: true, margin: "-80px" }}
+   241→            transition={{ duration: 0.6 }}
+   242→            className="relative order-2 lg:order-1"
+   243→          >
+   244→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   245→              <img
+   246→                src={IMG.introSplit}
+   247→                alt="Maundy Clean washroom crew restoring toilets, urinals, dispensers and chrome fixtures in a Scottish commercial restroom"
+   248→                className="absolute inset-0 w-full h-full object-cover"
+   249→                loading="lazy"
+   250→              />
+   251→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   252→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   253→                <div className="flex items-center gap-2 mb-1">
+   254→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   255→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   256→                    A Motivated Partner, Not an Impersonal Agency
+   257→                  </span>
+   258→                </div>
+   259→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   260→                  The same level of technical intimacy, &ldquo;same-staff&rdquo; consistency, and
+   261→                  &ldquo;sanctuary&rdquo; care we bring to Scotland&rsquo;s finest properties
+   262→                  &mdash; applied to your toilets, urinals, basins, mirrors, partitions,
+   263→                  floors, dispensers, and the total hygiene of your commercial washroom.
+   264→                </p>
+   265→              </div>
+   266→            </div>
+   267→            <motion.div
+   268→              animate={{ y: [0, -8, 0] }}
+   269→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   270→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   271→            >
+   272→              <div className="flex items-center gap-2">
+   273→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   274→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   275→                </div>
+   276→                <div>
+   277→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   278→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   279→                </div>
+   280→              </div>
+   281→            </motion.div>
+   282→          </motion.div>
+   283→
+   284→          {/* Copy side */}
+   285→          <motion.div
+   286→            initial={{ opacity: 0, y: 20 }}
+   287→            whileInView={{ opacity: 1, y: 0 }}
+   288→            viewport={{ once: true, margin: "-80px" }}
+   289→            transition={{ duration: 0.5 }}
+   290→            className="order-1 lg:order-2"
+   291→          >
+   292→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   293→              Restroom sanitation &amp; washroom cleaning &middot; Scotland
+   294→            </span>
+   295→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   296→              The MaundyClean Standard for Scottish Restroom Sanitation
+   297→            </h2>
+   298→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   299→              A washroom that is sparkling clean and a joy to use is an excellent
+   300→              representation of a business&rsquo;s commitment to excellence. Beyond
+   301→              aesthetics, maintaining high standards of hygiene is vital for the
+   302→              wellbeing of your staff and customers, directly impacting happiness
+   303→              and satisfaction at work. At <strong className="font-semibold text-[var(--ink)]">MaundyClean</strong>,
+   304→              we provide a premium restroom sanitation service that ensures your
+   305→              facilities are fresh, healthy, and always in order, utilizing the
+   306→              same meticulous care that has made us a leader in property
+   307→              maintenance across Glasgow, Edinburgh, and the Central Belt.
+   308→            </p>
+   309→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   310→              While we are the recognized authority in{" "}
+   311→              <Link
+   312→                href="/services/recurring-home-cleaning"
+   313→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   314→              >
+   315→                Recurring Home Cleaning
+   316→              </Link>{" "}
+   317→              for Scotland&rsquo;s most prestigious residences, we bring that same
+   318→              level of technical intimacy and &ldquo;same-staff&rdquo; consistency to
+   319→              specialized commercial hygiene. We provide a professional, flexible,
+   320→              and budget-conscious alternative to impersonal national agencies,
+   321→              ensuring your facilities remain free of harmful bacteria and germs.
+   322→            </p>
+   323→
+   324→            {/* Compact trust strip */}
+   325→            <motion.div
+   326→              initial={{ opacity: 0, y: 16 }}
+   327→              whileInView={{ opacity: 1, y: 0 }}
+   328→              viewport={{ once: true, margin: "-40px" }}
+   329→              transition={{ duration: 0.5, delay: 0.15 }}
+   330→              className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3"
+   331→            >
+   332→              {[
+   333→                { label: "Visits completed in 2025", value: "99.6%" },
+   334→                { label: "PVG-checked operatives", value: "100%" },
+   335→                { label: "From per hour", value: "&pound;14" },
+   336→                { label: "Star rating", value: "4.9/5" },
+   337→              ].map((stat) => (
+   338→                <div
+   339→                  key={stat.label}
+   340→                  className="bg-[var(--cream)] rounded-xl p-3 border border-[var(--brand)]/10 text-center"
+   341→                >
+   342→                  <div
+   343→                    className="font-display font-extrabold text-xl text-gradient-brand"
+   344→                    dangerouslySetInnerHTML={{ __html: stat.value }}
+   345→                  />
+   346→                  <div
+   347→                    className="text-[11px] text-[var(--muted-foreground)] mt-0.5"
+   348→                    dangerouslySetInnerHTML={{ __html: stat.label }}
+   349→                  />
+   350→                </div>
+   351→              ))}
+   352→            </motion.div>
+   353→          </motion.div>
+   354→        </div>
+   355→      </div>
+   356→    </section>
+   357→  );
+   358→}
+   359→
+   360→// ============================================================
+   361→// Section 2 - Why MaundyClean is Scotland's Choice for Technical Washroom Hygiene
+   362→// (Semantic H2: "Why MaundyClean is Scotland's Choice for Technical Washroom Hygiene")
+   363→// Image+copy split layout with 4 trust pillars.
+   364→// Per the brief: pillars UserCheck / ShieldCheck / Droplets / Leaf
+   365→// (icons chosen to reflect the brief's pillar themes: same trusted
+   366→// professional / specialized technical equipment / total regulatory
+   367→// & infection control / eco-friendly & safe).
+   368→// ALL 4 pillar bodies start with the brief sentence verbatim and
+   369→// are extended with restroom-sanitation-specific prose (no inline
+   370→// Links), but typed as ReactNode for codebase consistency with
+   371→// nightly-janitorial-seo.tsx (which uses ReactNode so a pillar
+   372→// can support an inline Link when needed).
+   373→// ============================================================
+   374→
+   375→type TrustCard = {
+   376→  icon: typeof ShieldCheck;
+   377→  title: string;
+   378→  description: ReactNode;
+   379→};
+   380→
+   381→const TRUST_CARDS: TrustCard[] = [
+   382→  {
+   383→    icon: UserCheck,
+   384→    title: "The Same Trusted Professional",
+   385→    description:
+   386→      "Reliability is built on familiarity. We ensure the same vetted, uniformed team manages your washrooms to build a deep understanding of your facility&rsquo;s specific needs and traffic patterns. The same PVG-checked crew returns every visit &mdash; learning your washroom count, your occupancy peaks, your dispenser types, your sanitary bin contractor, your finishes (chrome, stainless steel, ceramic, grout), and your inspection regime. When your regular crew is on annual leave, we send a trained backup who has been briefed on your facility &mdash; and we tell you in advance. Never a rotating cast of agency strangers walking a Scottish commercial washroom.",
+   387→  },
+   388→  {
+   389→    icon: Droplets,
+   390→    title: "Specialized Technical Equipment",
+   391→    description:
+   392→      "Our teams are equipped with the latest technology, including superheated steam cleaners and sterilizing detergents, to provide a level of sanitation that standard wiping cannot achieve. Superheated dry-steam vapor (175&deg;C) on toilet seats, urinal surrounds, and tile grout &mdash; the only way to lift embedded biological load a spray-and-wipe leaves behind. Professional descaling agents for Scottish hard-water limescale on chrome taps, basins, and urinal slabs. EN 1276 bactericide and EN 14476 virucide with correct contact time on every high-touch touchpoint. Microfibre glass-cleaning systems for streak-free mirrors and partitions. We carry the kit standard wiping cannot match.",
+   393→  },
+   394→  {
+   395→    icon: ShieldCheck,
+   396→    title: "Total Regulatory & Infection Control",
+   397→    description:
+   398→      "We provide comprehensive robust hygienic cleaning, including fungus/mould/mildew removal and professional infection advice and control. HSE compliance, RAMS as standard, Safe Systems of Work, COSHH-documented chemistry on file, audit-ready signed washroom logs after every visit, and we can name your business on our policy as additional insured. Anti-fungal grout treatment on tile joints (the main odour reservoir in any washroom), enzymatic drain sanitisers (break down organic matter at the source of drain odour), full bodily-fluid cleanup protocols, and professional infection-control advice for facilities managers during flu season or outbreak response. &pound;5m public liability as standard.",
+   399→  },
+   400→  {
+   401→    icon: Leaf,
+   402→    title: "Eco-Friendly & Safe",
+   403→    description:
+   404→      "We utilize only certified non-toxic, child-safe, and pet-safe products. This includes anti-bacterial eco-friendly air fresheners and air quality management to keep your space fresh without harsh chemical odors. Fragrance-free sanitiser on high-touch touchpoints, pH-neutral glass and partition cleaner for streak-free shine without harsh solvent fumes, enzymatic drain treatment (biological, not caustic), non-toxic surface-safe chemistry by default &mdash; safe for staff with sensitivities, safe for the morning shift, safe for the premium finishes you&rsquo;ve invested in. COSHH-documented, biodegradable, and gentle on chrome, ceramic, and grout.",
+   405→  },
+   406→];
+   407→
+   408→export function RestroomSanitationSeoWhy() {
+   409→  return (
+   410→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   411→      <div className="max-w-[1400px] mx-auto px-6">
+   412→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   413→          {/* Image side */}
+   414→          <motion.div
+   415→            initial={{ opacity: 0, scale: 0.96 }}
+   416→            whileInView={{ opacity: 1, scale: 1 }}
+   417→            viewport={{ once: true, margin: "-80px" }}
+   418→            transition={{ duration: 0.6 }}
+   419→            className="relative order-2 lg:order-1"
+   420→          >
+   421→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   422→              <img
+   423→                src={IMG.whyCrew}
+   424→                alt="Maundy Clean washroom crew &mdash; PVG-checked, uniformed, trained in superheated steam sanitation, descaling, chrome buffing, grout treatment, sanitary disposal, and consumables restocking"
+   425→                className="absolute inset-0 w-full h-full object-cover"
+   426→                loading="lazy"
+   427→              />
+   428→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   429→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   430→                <div className="flex items-center gap-2 mb-1">
+   431→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   432→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   433→                    A Motivated Partner, Not an Impersonal Agency
+   434→                  </span>
+   435→                </div>
+   436→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   437→                  Employed, vetted, PVG-checked, uniformed, and trained in
+   438→                  restroom-sanitation-specific protocols &mdash; superheated steam
+   439→                  sanitation, descaling, chrome buffing, grout treatment, sanitary
+   440→                  disposal, consumables restocking, infection control, bodily fluid
+   441→                  cleanup, and issue flagging. Same crew every visit &mdash; never
+   442→                  a rotating cast of agency strangers walking a Scottish commercial
+   443→                  washroom.
+   444→                </p>
+   445→              </div>
+   446→            </div>
+   447→            <motion.div
+   448→              animate={{ y: [0, -8, 0] }}
+   449→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   450→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   451→            >
+   452→              <div className="flex items-center gap-2">
+   453→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   454→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   455→                </div>
+   456→                <div>
+   457→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   458→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   459→                </div>
+   460→              </div>
+   461→            </motion.div>
+   462→          </motion.div>
+   463→
+   464→          {/* Copy side */}
+   465→          <motion.div
+   466→            initial={{ opacity: 0, y: 20 }}
+   467→            whileInView={{ opacity: 1, y: 0 }}
+   468→            viewport={{ once: true, margin: "-80px" }}
+   469→            transition={{ duration: 0.5 }}
+   470→            className="order-1 lg:order-2"
+   471→          >
+   472→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   473→              Why choose Maundy Clean
+   474→            </span>
+   475→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   476→              Why MaundyClean is Scotland&rsquo;s Choice for Technical Washroom Hygiene
+   477→            </h2>
+   478→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   479→              Restroom environments require a higher frequency of care and
+   480→              specialized equipment to maintain total sanitation. MaundyClean
+   481→              focuses on building high-trust partnerships through local, reliable
+   482→              service. Our washroom crews carry the technical kit, the chemistry,
+   483→              and the protocols standard janitorial wiping cannot match &mdash; and
+   484→              the same vetted team returns every visit to build the deep
+   485→              familiarity your facility deserves.
+   486→            </p>
+   487→
+   488→            <div className="space-y-3">
+   489→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   490→                const Icon = card.icon;
+   491→                return (
+   492→                  <div
+   493→                    key={card.title}
+   494→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   495→                  >
+   496→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   497→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   498→                    </div>
+   499→                    <div>
+   500→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   501→                        {card.title}
+   502→                      </h3>
+   503→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   504→                        {typeof card.description === "string" ? (
+   505→                          <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   506→                        ) : (
+   507→                          card.description
+   508→                        )}
+   509→                      </p>
+   510→                    </div>
+   511→                  </div>
+   512→                );
+   513→              })}
+   514→            </div>
+   515→          </motion.div>
+   516→        </div>
+   517→
+   518→        <div className="grid md:grid-cols-2 gap-6">
+   519→          {TRUST_CARDS.slice(2).map((card, i) => {
+   520→            const Icon = card.icon;
+   521→            return (
+   522→              <motion.div
+   523→                key={card.title}
+   524→                initial={{ opacity: 0, y: 24 }}
+   525→                whileInView={{ opacity: 1, y: 0 }}
+   526→                viewport={{ once: true, margin: "-40px" }}
+   527→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   528→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   529→              >
+   530→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   531→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   532→                </div>
+   533→                <div>
+   534→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   535→                    {card.title}
+   536→                  </h3>
+   537→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   538→                    {typeof card.description === "string" ? (
+   539→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   540→                    ) : (
+   541→                      card.description
+   542→                    )}
+   543→                  </p>
+   544→                </div>
+   545→              </motion.div>
+   546→            );
+   547→          })}
+   548→        </div>
+   549→      </div>
+   550→    </section>
+   551→  );
+   552→}
+   553→
+   554→// ============================================================
+   555→// Section 3 - Our Total Restroom Maintenance & Deep Cleaning Checklist
+   556→// (Semantic H2: "Our Total Restroom Maintenance & Deep Cleaning Checklist")
+   557→// Brief-specific section with 3 H3 sub-sections:
+   558→//   1. Advanced Sanitary Deep Cleaning
+   559→//   2. Technical Floor & Wall Care
+   560→//   3. Consumables & Facility Management
+   561→// Carries the id="checklist" anchor that the CTA buttons link to.
+   562→// Per the brief: NO intro paragraphs on the 3 checklist cards
+   563→// (just H3 title + sub-points). ALL sub-point bodies in ALL 3
+   564→// cards are plain strings per the brief (no inline Links), but
+   565→// typed as ReactNode (via ChecklistPoint.text) for codebase
+   566→// consistency with nightly-janitorial-seo.tsx.
+   567→// ============================================================
+   568→
+   569→type ChecklistPoint = {
+   570→  title: string;
+   571→  text: ReactNode;
+   572→};
+   573→
+   574→const CHECKLIST_ITEMS: {
+   575→  icon: typeof Building2;
+   576→  image: string;
+   577→  imageAlt: string;
+   578→  title: string;
+   579→  description: string;
+   580→  points: ChecklistPoint[];
+   581→}[] = [
+   582→  {
+   583→    icon: HeartPulse,
+   584→    image: IMG.checklistFront,
+   585→    imageAlt:
+   586→      "Maundy Clean crew restoring toilets, urinals, dispensers and chrome fixtures to a showcase shine in a Scottish commercial washroom",
+   587→    title: "1. Advanced Sanitary Deep Cleaning",
+   588→    description: "",
+   589→    points: [
+   590→      {
+   591→        title: "Toilet & Urinal Restoration",
+   592→        text: "Intensive deep cleaning of all ceramic items using technical descaling agents. Acidic descaler for hard-water limescale under the rim and inside the bowl (where bacteria collect &mdash; often missed), enzymatic drain sanitiser to break down organic matter at the source of drain odour, urinal slab or trough cleaned, surround degreased, screen (if present) sanitised, flush handle and high-touch touchpoints treated with EN 1276 bactericide at the correct contact time. We use specialist commercial products &mdash; not bleach, which discolours grout and damages chrome.",
+   593→      },
+   594→      {
+   595→        title: "High-Traffic Sanitization",
+   596→        text: "Meticulous disinfecting of all touchpoints, including handles, dispensers, and entry phone systems. Door handles on every stall and entrance, locks and latches, cubicle door edges, tap levers, soap dispenser buttons, paper towel dispenser cranks, hand-dryer buttons, sanitary bin foot-pedals, light switches, baby-change table surfaces, and disabled-access grab rails &mdash; all wiped with EN 1276 bactericide (and EN 14476 virucide where appropriate) at the correct contact time, every visit. Disabled access toilets given particular attention.",
+   597→      },
+   598→      {
+   599→        title: "Surface Restoration",
+   600→        text: "Dusting and wiping down all surfaces, polishing mirrors and chrome fixtures to a streak-free &lsquo;showcase&rsquo; shine. Mirrors squeegeed with professional technique (not spray-and-wipe, which streaks), chrome taps polished to a uniform sheen, stainless steel partitions and grab rails buffed, splashbacks wiped, vanity shelving dusted, pipe-work under basins wiped, and air vents dusted &mdash; the &lsquo;showcase&rsquo; finish that signals a confident, well-run facility the moment a customer or staff member walks in.",
+   601→      },
+   602→    ],
+   603→  },
+   604→  {
+   605→    icon: Droplets,
+   606→    image: IMG.checklistCounter,
+   607→    imageAlt:
+   608→      "Maundy Clean crew performing floor and grout restoration, mat management and mould removal in a Scottish commercial restroom",
+   609→    title: "2. Technical Floor & Wall Care",
+   610→    description: "",
+   611→    points: [
+   612→      {
+   613→        title: "Vacuuming & Mopping",
+   614→        text: "Professional treatment of all flooring, including specialized grout cleaning to remove deep-seated grime. Hard floors mopped edge-to-edge &mdash; including under stalls (where urine drips collect and cause persistent odour if not cleaned), behind doors, in corners, and under basins where pipework sits. Specialist grout cleaning with anti-fungal treatment on tile joints (the main odour reservoir in any commercial washroom), rotary-machine deep scrub (quarterly) for ingrained dirt, and floors dried after mopping for slip-hazard management. The floor that looks as fresh at 8:00 AM as it did the night before.",
+   615→      },
+   616→      {
+   617→        title: "Floor Mat Management",
+   618→        text: "Supply and replacement of floor mats to maintain safety and cleanliness. Entrance matting to capture foot-borne contamination at the door, anti-slip mats in wet zones around basins and urinals (HSE slip-risk mitigation), and periodic mat exchange, laundering, and replacement as part of your fixed monthly retainer. Mats properly positioned, edges secured, and stock rotation managed so a soiled mat never sits in place for longer than your agreed cycle.",
+   619→      },
+   620→      {
+   621→        title: "Stain & Mould Removal",
+   622→        text: "Targeted spot removal and fungus control to keep walls and tiles looking brand new. Anti-fungal treatment on tile grout and sealant lines (the main odour reservoir), mould and mildew removal from damp zones around showers or wet floors, stain removal from partition surfaces (ink, dye, biological), paint touch-up coordination where the underlying issue is finish damage not soiling, and periodic deep restoration of stainless steel, chrome, and ceramic finishes to lift the cumulative contamination load a standard wipe cannot reach.",
+   623→      },
+   624→    ],
+   625→  },
+   626→  {
+   627→    icon: ClipboardCheck,
+   628→    image: IMG.checklistKitchen,
+   629→    imageAlt:
+   630→      "Maundy Clean crew restocking consumables, managing sanitary disposal and responding rapidly to spills in a Scottish managed washroom facility",
+   631→    title: "3. Consumables & Facility Management",
+   632→    description: "",
+   633→    points: [
+   634→      {
+   635→        title: "Supply Management",
+   636→        text: "Management of consumables including soaps, tissues, and hand-drying products. Toilet paper, paper towels, hand soap, sanitiser, and air-freshener stock levels checked and replenished every visit; dispensers refilled and inspected for damage; stock-rotation managed so a dispenser never runs empty between visits; and a consumables inventory log included in your monthly compliance file. We can supply consumables directly (single-invoice convenience) or top up stock you supply &mdash; whichever your procurement team prefers.",
+   637→      },
+   638→      {
+   639→        title: "Sanitary Disposal",
+   640→        text: "Feminine sanitary product disposal and maintenance of hygiene units. Sanitary bins checked, replaced if full, and coordinated with your licensed sanitary waste contractor (we don&rsquo;t transport sanitary waste off-site &mdash; we manage the on-site side of the contractor relationship). Bin exteriors wiped and sanitised, foot-pedals treated with EN 1276 bactericide, bin placement confirmed for accessibility and discretion, and full audit-trail documentation included in your monthly compliance file for environmental health inspection.",
+   641→      },
+   642→      {
+   643→        title: "Rapid Response",
+   644→        text: "We offer emergency cover and rapid response for unforeseen situations or messes. Spills, overflows, bodily-fluid incidents, vandalism, or a sudden client visit &mdash; call your dedicated account manager and we despatch a vetted uniformed washroom crew to your facility within the agreed response window (typically 2&ndash;4 hours for Central Belt postcodes). Full bodily-fluid cleanup protocols, PPE, biohazard bags, and COSHH-compliant chemistry on hand &mdash; so an 11am washroom incident doesn&rsquo;t become a 2pm customer impression.",
+   645→      },
+   646→    ],
+   647→  },
+   648→];
+   649→
+   650→export function RestroomSanitationSeoChecklist() {
+   651→  return (
+   652→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   653→      <div className="max-w-[1400px] mx-auto px-6">
+   654→        <motion.div
+   655→          initial={{ opacity: 0, y: 20 }}
+   656→          whileInView={{ opacity: 1, y: 0 }}
+   657→          viewport={{ once: true, margin: "-80px" }}
+   658→          transition={{ duration: 0.5 }}
+   659→          className="max-w-3xl mb-12"
+   660→        >
+   661→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   662→            Beyond the standard surface wipe
+   663→          </span>
+   664→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   665→            Our Total Restroom Maintenance &amp; Deep Cleaning Checklist
+   666→          </h2>
+   667→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   668→            Our bathroom deep cleaning follows a rigorous, agency-approved
+   669→            checklist designed to address the &ldquo;risky&rdquo; high-traffic areas
+   670→            where bacteria thrive. From toilet and urinal restoration through
+   671→            technical grout treatment to consumables restocking and sanitary
+   672→            disposal, every zone of your commercial washroom is treated with
+   673→            superheated steam, professional descaling agents, EN 1276 bactericide,
+   674→            and the &ldquo;showcase&rdquo; finish that signals a confident, well-run
+   675→            facility. Below is the scope we deliver as standard, regardless of
+   676→            building type, footprint, or occupancy schedule.
+   677→          </p>
+   678→        </motion.div>
+   679→
+   680→        <div className="grid lg:grid-cols-3 gap-6">
+   681→          {CHECKLIST_ITEMS.map((item, i) => {
+   682→            const Icon = item.icon;
+   683→            return (
+   684→              <motion.div
+   685→                key={item.title}
+   686→                initial={{ opacity: 0, y: 24 }}
+   687→                whileInView={{ opacity: 1, y: 0 }}
+   688→                viewport={{ once: true, margin: "-40px" }}
+   689→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   690→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   691→              >
+   692→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   693→                  <img
+   694→                    src={item.image}
+   695→                    alt={item.imageAlt}
+   696→                    className="absolute inset-0 w-full h-full object-cover"
+   697→                    loading="lazy"
+   698→                  />
+   699→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   700→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   701→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   702→                  </div>
+   703→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   704→                    {item.title}
+   705→                  </h3>
+   706→                </div>
+   707→                <div className="p-6 flex-1 flex flex-col">
+   708→                  {item.description ? (
+   709→                    <p
+   710→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   711→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   712→                    />
+   713→                  ) : null}
+   714→                  <ul className="space-y-3 mt-auto">
+   715→                    {item.points.map((point) => {
+   716→                      const PointIcon = CheckCircle2;
+   717→                      return (
+   718→                        <li
+   719→                          key={point.title}
+   720→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   721→                        >
+   722→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   723→                          <span>
+   724→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   725→                            &mdash;{" "}
+   726→                            {typeof point.text === "string" ? (
+   727→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   728→                            ) : (
+   729→                              point.text
+   730→                            )}
+   731→                          </span>
+   732→                        </li>
+   733→                      );
+   734→                    })}
+   735→                  </ul>
+   736→                </div>
+   737→              </motion.div>
+   738→            );
+   739→          })}
+   740→        </div>
+   741→      </div>
+   742→    </section>
+   743→  );
+   744→}
+   745→
+   746→// ============================================================
+   747→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   748→// (Semantic H2: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   749→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   750→// (FileText imported for safety/template parity even if not used.)
+   751→// Brief has NO [H3] marker on this heading, so we use <h2>
+   752→// (DIFFERENT from day-porter which used <h3> because day-porter's
+   753→// brief had an explicit [H3] marker; restroom-sanitation brief
+   754→// has no [H3] marker, so use <h2> to match the standard
+   755→// section-title pattern).
+   756→// ============================================================
+   757→
+   758→const BOOKING_STEPS = [
+   759→  {
+   760→    icon: ClipboardCheck,
+   761→    step: "01",
+   762→    title: "Site Survey & Bespoke Plan",
+   763→    description:
+   764→      "Contact us for a free site survey. We will assess your occupancy levels to determine if you need daily, weekly, or fortnightly cleaning during or after hours. We walk your washrooms with your facilities or office manager, count your toilets, urinals, basins, mirrors, partitions, dispensers, and sanitary bins, identify your traffic patterns (corporate 9&ndash;5, retail peak, hospitality evening, venue event-led), your access window (in-hours presence, after-hours unsupervised, key-safes and alarm codes), and any specific challenges (limescale build-up, persistent grout odour, listed-building constraints on finishes, bodily-fluid cleanup protocols). We send an itemised proposal within 2 business days: shift pattern, scope of work, fixed monthly retainer, RAMS, COSHH datasheets, and a draft washroom task schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   765→  },
+   766→  {
+   767→    icon: UserCheck,
+   768→    step: "02",
+   769→    title: "Professional Matching",
+   770→    description:
+   771→      "We hand-pick a team of motivated, fully trained staff with in-depth knowledge of commercial hygiene standards. Your allocated washroom crew is PVG-checked, uniformed, and trained in restroom-sanitation-specific protocols &mdash; superheated steam sanitation, descaling, chrome buffing, grout treatment, sanitary disposal, consumables restocking, infection control, bodily-fluid cleanup, and issue flagging. We brief the crew on your washroom count, your dispenser types, your sanitary bin contractor, your access protocols (key safes, alarm codes, entry phone), your staff communications protocol, and your premium finishes &mdash; so cleaning happens during or after hours, not around your working day. The same crew returns every visit, building real knowledge of your facility&rsquo;s traffic patterns and your inspection regime.",
+   772→  },
+   773→  {
+   774→    icon: Sparkles,
+   775→    step: "03",
+   776→    title: "Enjoy a Pristine Facility",
+   777→    description:
+   778→      "Experience washrooms that are a joy to use, backed by our MaundyClean satisfaction guarantee. You receive a signed washroom log after every visit (cleaner name, time in/out, areas cleaned, tasks actioned, consumables restocked, and any issues flagged), arrival and departure times, and issue-flagging for low-stock paper towel, damaged fixtures, leaking taps, light failures, security concerns, or pest sightings &mdash; before they undermine a client visit, an environmental health inspection, or a staff complaint. From &pound;14 per hour for a single-site restroom sanitation through to a fully bespoke multi-site retainer with one invoice. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   779→  },
+   780→];
+   781→
+   782→export function RestroomSanitationSeoBooking() {
+   783→  return (
+   784→    <section className="py-16 lg:py-24 bg-background">
+   785→      <div className="max-w-[1400px] mx-auto px-6">
+   786→        <motion.div
+   787→          initial={{ opacity: 0, y: 20 }}
+   788→          whileInView={{ opacity: 1, y: 0 }}
+   789→          viewport={{ once: true, margin: "-80px" }}
+   790→          transition={{ duration: 0.5 }}
+   791→          className="text-center mb-14"
+   792→        >
+   793→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   794→            Hassle-free booking
+   795→          </span>
+   796→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   797→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   798→          </h2>
+   799→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   800→            We have optimized our booking experience to be uncomplicated and
+   801→            straightforward, providing the responsive management support Scottish
+   802→            business owners demand. From free site survey and itemised proposal to
+   803→            first washroom crew on-site in under a week &mdash; no friction, no
+   804→            waiting, no surprises. Just a pristine washroom every visit, every
+   805→            toilet, every chrome fixture, every dispenser, and a compliance file
+   806→            that&rsquo;s audit-ready the day an environmental health officer or
+   807→            building inspector walks in.
+   808→          </p>
+   809→        </motion.div>
+   810→
+   811→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   812→          {/* Connector line */}
+   813→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   814→
+   815→          {BOOKING_STEPS.map((step, i) => {
+   816→            const Icon = step.icon;
+   817→            return (
+   818→              <motion.div
+   819→                key={step.step}
+   820→                initial={{ opacity: 0, y: 24 }}
+   821→                whileInView={{ opacity: 1, y: 0 }}
+   822→                viewport={{ once: true, margin: "-40px" }}
+   823→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   824→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   825→              >
+   826→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   827→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   828→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   829→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   830→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   831→                    {step.step}
+   832→                  </span>
+   833→                </div>
+   834→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   835→                  {step.title}
+   836→                </h3>
+   837→                <p
+   838→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   839→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   840→                />
+   841→              </motion.div>
+   842→            );
+   843→          })}
+   844→        </div>
+   845→
+   846→        <motion.div
+   847→          initial={{ opacity: 0, y: 16 }}
+   848→          whileInView={{ opacity: 1, y: 0 }}
+   849→          viewport={{ once: true }}
+   850→          transition={{ duration: 0.5, delay: 0.3 }}
+   851→          className="text-center mt-10"
+   852→        >
+   853→          <Button
+   854→            size="lg"
+   855→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   856→            asChild
+   857→          >
+   858→            <Link href="/quote">
+   859→              Request Your Bespoke Hygiene Quote Today
+   860→              <ArrowRight className="w-5 h-5" />
+   861→            </Link>
+   862→          </Button>
+   863→        </motion.div>
+   864→      </div>
+   865→    </section>
+   866→  );
+   867→}
+   868→
+   869→// ============================================================
+   870→// Section 5 - Hygiene Solutions for Every Stage
+   871→// (Semantic H2: "Hygiene Solutions for Every Stage")
+   872→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   873→// Image-topped cards with internal links to specialist services.
+   874→// All 4 card descriptions are ReactNode values (each contains an
+   875→// inline <Link> per the brief) - rendered via the
+   876→// typeof sol.description === "string" check.
+   877→// ============================================================
+   878→
+   879→type InterlinkSolution = {
+   880→  icon: typeof Sparkles;
+   881→  title: string;
+   882→  href: string;
+   883→  image: string;
+   884→  imageAlt: string;
+   885→  description: ReactNode;
+   886→  cta: string;
+   887→};
+   888→
+   889→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   890→  {
+   891→    icon: KeyRound,
+   892→    title: "Maintaining the Standard",
+   893→    href: "/services/recurring-home-cleaning",
+   894→    image: IMG.leaseSpring,
+   895→    imageAlt:
+   896→      "Recurring home cleaning bringing restroom-sanitation standards of meticulous washroom hygiene to a Scottish private residence on a weekly or fortnightly basis",
+   897→    description: (
+   898→      <>
+   899→        After your commercial facilities are restored, keep your personal
+   900→        sanctuary in top condition with our{" "}
+   901→        <Link
+   902→          href="/services/recurring-home-cleaning"
+   903→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   904→        >
+   905→          Recurring Home Cleaning
+   906→        </Link>{" "}
+   907→        plans. The same vetted uniformed crew, the same child-safe eco
+   908→        chemistry, the same signed cleaning log after every visit &mdash; so the
+   909→        standard you see at work follows you home.
+   910→      </>
+   911→    ),
+   912→    cta: "Explore recurring home cleaning",
+   913→  },
+   914→  {
+   915→    icon: Hammer,
+   916→    title: "Property Transitions",
+   917→    href: "/services/move-in-out-cleaning",
+   918→    image: IMG.leaseTenancy,
+   919→    imageAlt:
+   920→      "End of tenancy handover clean for a Scottish commercial unit being vacated, ensuring washrooms are front-line ready for the next occupant",
+   921→    description: (
+   922→      <>
+   923→        Moving offices or units? Our{" "}
+   924→        <Link
+   925→          href="/services/move-in-out-cleaning"
+   926→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   927→        >
+   928→          End of Tenancy Cleaning
+   929→        </Link>{" "}
+   930→        ensures washrooms are front-line ready for the next occupant and pass
+   931→        all inspections. Every surface detailed top-to-bottom, deposit-back
+   932→        guarantees met, and the same trusted vetted crew your washroom team
+   933→        knows &mdash; so your unit handover starts from a
+   934→        &ldquo;speechlessly spotless&rdquo; baseline.
+   935→      </>
+   936→    ),
+   937→    cta: "Explore end of tenancy cleaning",
+   938→  },
+   939→  {
+   940→    icon: Sparkles,
+   941→    title: "Post-Renovation",
+   942→    href: "/services/post-construction-cleaning",
+   943→    image: IMG.leaseBuilders,
+   944→    imageAlt:
+   945→      "Post-refurbishment cleanup removing fine construction dust from a refitted Scottish commercial washroom before staff return to work",
+   946→    description: (
+   947→      <>
+   948→        If your facility has had home improvements or plumbing work, our{" "}
+   949→        <Link
+   950→          href="/services/post-construction-cleaning"
+   951→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   952→        >
+   953→          After Builders Clean
+   954→        </Link>{" "}
+   955→        is designed to remove heavy construction dust. Fine plaster and MDF
+   956→        dust on every horizontal surface, paint overspray on chrome fixtures,
+   957→        adhesive residue on new flooring &mdash; lifted in full before your
+   958→        washroom crew picks up the ongoing maintenance brief on the
+   959→        newly-refitted space.
+   960→      </>
+   961→    ),
+   962→    cta: "Explore after builders cleaning",
+   963→  },
+   964→  {
+   965→    icon: HeartPulse,
+   966→    title: "Intensive Hygiene Resets",
+   967→    href: "/services/disinfection-services",
+   968→    image: IMG.leaseAntiviral,
+   969→    imageAlt:
+   970→      "Antiviral sanitisation ULV fogging treatment giving a Scottish commercial facility a total biological reset between restroom-sanitation visits",
+   971→    description: (
+   972→      <>
+   973→        Book an{" "}
+   974→        <Link
+   975→          href="/services/disinfection-services"
+   976→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   977→        >
+   978→          Antiviral Sanitisation
+   979→        </Link>{" "}
+   980→        session for a total biological &ldquo;reset&rdquo; of all communal areas.
+   981→        EN 14476 virucidal ULV fogging of every surface, every washroom, every
+   982→        communal zone &mdash; the periodic deep biological reset that lifts the
+   983→        cumulative contamination load a standard restroom clean can&rsquo;t reach,
+   984→        and gives your washroom crew a clean baseline to maintain.
+   985→      </>
+   986→    ),
+   987→    cta: "Explore antiviral sanitisation",
+   988→  },
+   989→];
+   990→
+   991→export function RestroomSanitationSeoInterlinking() {
+   992→  return (
+   993→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   994→      <div className="max-w-[1400px] mx-auto px-6">
+   995→        <motion.div
+   996→          initial={{ opacity: 0, y: 20 }}
+   997→          whileInView={{ opacity: 1, y: 0 }}
+   998→          viewport={{ once: true, margin: "-80px" }}
+   999→          transition={{ duration: 0.5 }}
+  1000→          className="max-w-3xl mb-12"
+  1001→        >
+  1002→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1003→            Beyond the washroom deep clean &middot; property milestones
+  1004→          </span>
+  1005→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1006→            Hygiene Solutions for Every Stage
+  1007→          </h2>
+  1008→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+  1009→            Our restroom sanitation is a critical component of your
+  1010→            property&rsquo;s overall health, interlinking with our wider technical
+  1011→            resets: from recurring home cleaning that brings washroom-crew
+  1012→            standards into your residence, through end-of-tenancy resets for unit
+  1013→            handovers, post-renovation dust clear-outs, and periodic antiviral
+  1014→            sanitisation biological resets. The same trusted, vetted crew can
+  1015→            step up whenever your facility needs more than a standard
+  1016→            restroom-sanitation visit.
+  1017→          </p>
+  1018→        </motion.div>
+  1019→
+  1020→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  1021→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+  1022→            const Icon = sol.icon;
+  1023→            return (
+  1024→              <motion.div
+  1025→                key={sol.title}
+  1026→                initial={{ opacity: 0, y: 24 }}
+  1027→                whileInView={{ opacity: 1, y: 0 }}
+  1028→                viewport={{ once: true, margin: "-40px" }}
+  1029→                transition={{ duration: 0.5, delay: i * 0.1 }}
+  1030→              >
+  1031→                <Link
+  1032→                  href={sol.href}
+  1033→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+  1034→                >
+  1035→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+  1036→                    <img
+  1037→                      src={sol.image}
+  1038→                      alt={sol.imageAlt}
+  1039→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+  1040→                      loading="lazy"
+  1041→                    />
+  1042→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+  1043→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+  1044→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+  1045→                    </div>
+  1046→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+  1047→                      {sol.title}
+  1048→                    </h3>
+  1049→                  </div>
+  1050→                  <div className="p-5">
+  1051→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+  1052→                      {typeof sol.description === "string" ? (
+  1053→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+  1054→                      ) : (
+  1055→                        sol.description
+  1056→                      )}
+  1057→                    </p>
+  1058→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+  1059→                      Learn more
+  1060→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  1061→                    </span>
+  1062→                  </div>
+  1063→                </Link>
+  1064→              </motion.div>
+  1065→            );
+  1066→          })}
+  1067→        </div>
+  1068→      </div>
+  1069→    </section>
+  1070→  );
+  1071→}
+  1072→
+  1073→// ============================================================
+  1074→// Section 6 - "Near Me" Location Internal Links
+  1075→// (Semantic H2: "Restroom Sanitation & Washroom Cleaning Near Me in Scotland")
+  1076→// Split layout with map image + 36-location grid.
+  1077→// The "Browse the near-me directory" button links to
+  1078→// /services/restroom-sanitation-near-me#locations
+  1079→// (WITH the #locations anchor) per the brief bug-warning —
+  1080→// yields 37 anchored near-me links on the main page.
+  1081→// ============================================================
+  1082→
+  1083→export function RestroomSanitationSeoNearMe() {
+  1084→  return (
+  1085→    <section className="py-16 lg:py-24 bg-background">
+  1086→      <div className="max-w-[1400px] mx-auto px-6">
+  1087→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+  1088→          {/* Left: copy + map image */}
+  1089→          <motion.div
+  1090→            initial={{ opacity: 0, y: 20 }}
+  1091→            whileInView={{ opacity: 1, y: 0 }}
+  1092→            viewport={{ once: true, margin: "-80px" }}
+  1093→            transition={{ duration: 0.5 }}
+  1094→          >
+  1095→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1096→              Local restroom sanitation &amp; washroom cleaning across Scotland
+  1097→            </span>
+  1098→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1099→              Restroom Sanitation &amp; Washroom Cleaning Near Me in Scotland
+  1100→            </h2>
+  1101→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+  1102→              Searching for &ldquo;restroom sanitation near me&rdquo; or
+  1103→              &ldquo;washroom cleaning near me&rdquo; in Scotland? Maundy Clean
+  1104→              covers facilities managers, office managers, building operations
+  1105→              leads, and commercial estates across the Central Belt, Highlands,
+  1106→              Borders, and Islands &mdash; from Glasgow&rsquo;s IFSD and
+  1107→              Edinburgh&rsquo;s Exchange District to Aberdeen&rsquo;s energy
+  1108→              corridor and Dundee&rsquo;s Waterfront, plus commercial estates in
+  1109→              Stirling, Perth, Inverness, and Ayr. Same PVG-checked, uniformed
+  1110→              washroom crews, same dedicated crew every visit, same
+  1111→              &ldquo;showcase&rdquo; shine &mdash; wherever your facility happens
+  1112→              to be. Find your local restroom sanitation specialist below.
+  1113→            </p>
+  1114→
+  1115→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+  1116→              <img
+  1117→                src={IMG.nearMeMap}
+  1118→                alt="Map of Scotland showing Maundy Clean restroom sanitation &amp; washroom cleaning coverage areas"
+  1119→                className="absolute inset-0 w-full h-full object-cover"
+  1120→                loading="lazy"
+  1121→              />
+  1122→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+  1123→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+  1124→                <div className="flex items-center gap-2 mb-1">
+  1125→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+  1126→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+  1127→                    72+ Scottish towns covered
+  1128→                  </span>
+  1129→                </div>
+  1130→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1131→                  Same PVG-checked washroom crews, same 100% satisfaction guarantee &mdash; from
+  1132→                  Glasgow to Inverness.
+  1133→                </p>
+  1134→              </div>
+  1135→            </div>
+  1136→
+  1137→            <div className="mt-6">
+  1138→              <Button
+  1139→                size="lg"
+  1140→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+  1141→                asChild
+  1142→              >
+  1143→                <Link href="/services/restroom-sanitation-near-me#locations">
+  1144→                  <MapPin className="w-4 h-4" />
+  1145→                  Browse the near-me directory
+  1146→                  <ArrowRight className="w-4 h-4" />
+  1147→                </Link>
+  1148→              </Button>
+  1149→            </div>
+  1150→          </motion.div>
+  1151→
+  1152→          {/* Right: location grid */}
+  1153→          <motion.div
+  1154→            initial={{ opacity: 0, y: 20 }}
+  1155→            whileInView={{ opacity: 1, y: 0 }}
+  1156→            viewport={{ once: true, margin: "-60px" }}
+  1157→            transition={{ duration: 0.5 }}
+  1158→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1159→          >
+  1160→            <div className="flex items-center justify-between mb-5">
+  1161→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1162→                Find your local washroom crew
+  1163→              </h3>
+  1164→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1165→            </div>
+  1166→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1167→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1168→                <motion.div
+  1169→                  key={loc.slug}
+  1170→                  initial={{ opacity: 0 }}
+  1171→                  whileInView={{ opacity: 1 }}
+  1172→                  viewport={{ once: true }}
+  1173→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1174→                >
+  1175→                  <Link
+  1176→                    href={`/services/restroom-sanitation-near-me#${loc.slug}`}
+  1177→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1178→                  >
+  1179→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1180→                    <span>
+  1181→                      <span className="font-medium">{loc.city}</span>
+  1182→                      <span className="text-[var(--muted-foreground)]"> washroom cleaning</span>
+  1183→                    </span>
+  1184→                  </Link>
+  1185→                </motion.div>
+  1186→              ))}
+  1187→            </div>
+  1188→
+  1189→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1190→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1191→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1192→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1193→              </div>
+  1194→              <Link
+  1195→                href="/locations"
+  1196→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1197→              >
+  1198→                View all 72 Scottish locations
+  1199→                <ArrowRight className="w-4 h-4" />
+  1200→              </Link>
+  1201→            </div>
+  1202→          </motion.div>
+  1203→        </div>
+  1204→
+  1205→        {/* SEO long-form paragraph for "near me" search intent */}
+  1206→        <motion.div
+  1207→          initial={{ opacity: 0, y: 16 }}
+  1208→          whileInView={{ opacity: 1, y: 0 }}
+  1209→          viewport={{ once: true, margin: "-40px" }}
+  1210→          transition={{ duration: 0.5, delay: 0.2 }}
+  1211→          className="mt-10 max-w-4xl mx-auto text-center"
+  1212→        >
+  1213→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1214→            Our local restroom sanitation crews operate across Glasgow&rsquo;s
+  1215→            International Financial Services District, Merchant City and West End
+  1216→            commercial towers (facilities managers, office managers and building
+  1217→            operations leads), Edinburgh&rsquo;s Exchange District, New Town and
+  1218→            Quartermile business quarters (corporate estates and property management
+  1219→            companies), Aberdeen&rsquo;s energy-corridor West End and Tullos
+  1220→            industrial offices (energy operators and service companies),
+  1221→            Dundee&rsquo;s Waterfront and City Centre professional services
+  1222→            buildings (facilities teams and office managers), and Scottish commercial
+  1223→            districts across the Central Belt &mdash; from Inverness to Perth, Falkirk
+  1224→            to Ayr. Whether you&rsquo;re searching for a washroom deep clean in
+  1225→            Glasgow, a restroom sanitation service in Edinburgh, a chrome buffing
+  1226→            reset in Aberdeen, or a public restroom cleaning anywhere in between,
+  1227→            Maundy Clean assigns a vetted, PAYE-employed, PVG-checked washroom crew
+  1228→            that stays with you for the long run. Same crew, same standard, same
+  1229→            locked-in rate for 12 months, &ldquo;showcase&rdquo; shine every visit.
+  1230→          </p>
+  1231→        </motion.div>
+  1232→      </div>
+  1233→    </section>
+  1234→  );
+  1235→}
+  1236→
+  1237→// ============================================================
+  1238→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1239→// (Semantic H2: "Request Your Bespoke Hygiene Quote Today")
+  1240→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1241→// ============================================================
+  1242→
+  1243→export function RestroomSanitationSeoFinalCta() {
+  1244→  return (
+  1245→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1246→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1247→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1248→
+  1249→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1250→        <motion.div
+  1251→          initial={{ opacity: 0, y: 20 }}
+  1252→          whileInView={{ opacity: 1, y: 0 }}
+  1253→          viewport={{ once: true, margin: "-80px" }}
+  1254→          transition={{ duration: 0.5 }}
+  1255→        >
+  1256→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1257→            Ready to book your free site survey?
+  1258→          </span>
+  1259→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1260→            Request Your Bespoke Hygiene Quote Today
+  1261→          </h2>
+  1262→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1263→            Facilities managers, office managers and business owners &mdash; book a
+  1264→            free, no-obligation site survey with our management team and receive an
+  1265→            itemised proposal within 2 business days. Technical steam-cleaning
+  1266→            equipment, full infection control protocols, consumables restocking,
+  1267→            sanitary disposal, and a fixed monthly retainer that locks your rate for
+  1268→            12 months. From &pound;14 per hour for a single-site restroom sanitation
+  1269→            through to a fully bespoke multi-site retainer with one invoice. No
+  1270→            pushy sales call, no waiting 24 hours for a callback.
+  1271→          </p>
+  1272→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1273→            <Button
+  1274→              size="lg"
+  1275→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1276→              asChild
+  1277→            >
+  1278→              <Link href="/quote">
+  1279→                Request Your Bespoke Hygiene Quote Today
+  1280→                <ArrowRight className="w-5 h-5" />
+  1281→              </Link>
+  1282→            </Button>
+  1283→            <Button
+  1284→              size="lg"
+  1285→              variant="outline"
+  1286→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1287→              asChild
+  1288→            >
+  1289→              <Link href="#checklist">
+  1290→                <CheckCircle2 className="w-4 h-4" />
+  1291→                View Our Bathroom Deep Cleaning Checklist
+  1292→              </Link>
+  1293→            </Button>
+  1294→          </div>
+  1295→        </motion.div>
+  1296→      </div>
+  1297→    </section>
+  1298→  );
+  1299→}
+  1300→
+  1301→// ============================================================
+  1302→// Section 8 - SEO FAQ block
+  1303→// (Semantic H2: "Frequently Asked Questions")
+  1304→// 3 Q&As from the brief (provide own materials, insured for
+  1305→// commercial sites, manage restocking of supplies)
+  1306→// NOTE: This brief has the FAQ Q&A order DIFFERENT from previous
+  1307→// briefs - materials FIRST, then insured, then restocking.
+  1308→// ============================================================
+  1309→
+  1310→const SEO_FAQS = [
+  1311→  {
+  1312→    q: "Do you provide your own cleaning materials?",
+  1313→    a: "Yes. We supply all our own professional-grade equipment, including steam cleaners and non-toxic detergents, which are included in your quote. Superheated dry-steam vapor (175&deg;C) on toilet seats, urinal surrounds, and tile grout; professional descaling agents for Scottish hard-water limescale on chrome taps, basins, and urinal slabs; EN 1276 bactericide and EN 14476 virucide with correct contact time on every high-touch touchpoint; microfibre glass-cleaning systems for streak-free mirrors and partitions; enzymatic drain sanitisers; anti-fungal grout treatment; professional carpet spot-and-extract for spill &amp; mess response; pH-neutral sanitiser for surrounding fixtures; PPE; and non-toxic, surface-safe, child-safe chemistry by default &mdash; every tool is maintained to manufacturer spec. You provide consumables (paper towel, toilet paper, hand soap, sanitiser wipes, bin liners) or we can manage consumables restocking for an additional monthly fee. COSHH datasheets, RAMS, training records, vetting records (PVG), and &pound;5m public liability certificates for your compliance file &mdash; audit-ready the day an environmental health officer walks in.",
+  1314→  },
+  1315→  {
+  1316→    q: "Are your cleaners insured for commercial sites?",
+  1317→    a: "Absolutely. MaundyClean is a fully insured, registered professional cleaning company with extensive experience serving both the residential and commercial sectors. We carry &pound;5m public liability as standard &mdash; covering reception areas, washrooms, kitchenettes, meeting rooms, and back-of-house &mdash; and every washroom crew member is PVG-checked (essential for buildings that may have staff, customers, or vulnerable users present), uniformed, and trained in restroom-sanitation-specific protocols: superheated steam sanitation, descaling, chrome buffing, grout treatment, sanitary disposal, consumables restocking, infection control, bodily-fluid cleanup, and issue flagging. We hold full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, and we can name your business on our policy as additional insured &mdash; a common requirement for facilities management contracts, head-lease landlord approvals, and corporate insurance compliance files. Our documentation is audit-ready for environmental health inspection and HSE review; we provide signed washroom logs, RAMS, COSHH datasheets, training records, and vetting records (PVG) for your compliance file. We will not begin work until your facilities or office manager has the documentation they need.",
+  1318→  },
+  1319→  {
+  1320→    q: "Can you manage the restocking of supplies?",
+  1321→    a: "Yes. We handle the management of consumables and general fitting or maintenance as part of our comprehensive washroom services. Toilet paper, paper towels, hand soap, sanitiser, and air-freshener stock levels checked and replenished every visit; dispensers refilled and inspected for damage; stock-rotation managed so a dispenser never runs empty between visits; consumables inventory log included in your monthly compliance file. We can supply consumables directly (single-invoice convenience) or top up stock you supply &mdash; whichever your procurement team prefers. Sanitary bins checked, replaced if full, and coordinated with your licensed sanitary waste contractor. General fitting and minor maintenance (dispenser repair, mirror re-fixing, partition hinge tightening, light-bulb replacement where accessible) coordinated through your dedicated account manager. From &pound;14 per hour for a single-site restroom sanitation through to a fully bespoke retainer for a multi-site Scottish or UK-wide commercial estate. Same trusted crew at each site, same standard, same locked-in rate, &ldquo;showcase&rdquo; shine every visit &mdash; the operational simplicity that lets your facilities team manage one supplier instead of a dozen.",
+  1322→  },
+  1323→];
+  1324→
+  1325→export function RestroomSanitationSeoFaq() {
+  1326→  return (
+  1327→    <section className="py-16 lg:py-24 bg-background">
+  1328→      <div className="max-w-4xl mx-auto px-6">
+  1329→        <motion.div
+  1330→          initial={{ opacity: 0, y: 20 }}
+  1331→          whileInView={{ opacity: 1, y: 0 }}
+  1332→          viewport={{ once: true, margin: "-80px" }}
+  1333→          transition={{ duration: 0.5 }}
+  1334→          className="text-center mb-12"
+  1335→        >
+  1336→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1337→            Restroom sanitation &amp; washroom cleaning &middot; FAQ
+  1338→          </span>
+  1339→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1340→            Frequently Asked Questions
+  1341→          </h2>
+  1342→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1343→            Straight answers to the questions our restroom sanitation clients ask
+  1344→            most often. Can&rsquo;t find what you need? Call us on{" "}
+  1345→            <a
+  1346→              href={contactInfo.phoneHref}
+  1347→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1348→            >
+  1349→              {contactInfo.phone}
+  1350→            </a>{" "}
+  1351→            and we&rsquo;ll talk it through.
+  1352→          </p>
+  1353→        </motion.div>
+  1354→
+  1355→        <div className="space-y-4">
+  1356→          {SEO_FAQS.map((faq, i) => (
+  1357→            <motion.div
+  1358→              key={faq.q}
+  1359→              initial={{ opacity: 0, y: 16 }}
+  1360→              whileInView={{ opacity: 1, y: 0 }}
+  1361→              viewport={{ once: true, margin: "-40px" }}
+  1362→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1363→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1364→            >
+  1365→              <details className="group">
+  1366→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1367→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1368→                    {faq.q}
+  1369→                  </h3>
+  1370→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1371→                    <span className="relative w-3.5 h-3.5">
+  1372→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1373→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1374→                    </span>
+  1375→                  </span>
+  1376→                </summary>
+  1377→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1378→                  <p
+  1379→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1380→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1381→                  />
+  1382→                </div>
+  1383→              </details>
+  1384→            </motion.div>
+  1385→          ))}
+  1386→        </div>
+  1387→
+  1388→        <motion.div
+  1389→          initial={{ opacity: 0, y: 16 }}
+  1390→          whileInView={{ opacity: 1, y: 0 }}
+  1391→          viewport={{ once: true, margin: "-40px" }}
+  1392→          transition={{ duration: 0.5, delay: 0.3 }}
+  1393→          className="mt-10 text-center"
+  1394→        >
+  1395→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1396→            <Button
+  1397→              size="lg"
+  1398→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1399→              asChild
+  1400→            >
+  1401→              <Link href="/quote">
+  1402→                Request Your Bespoke Hygiene Quote Today
+  1403→                <ArrowRight className="w-5 h-5" />
+  1404→              </Link>
+  1405→            </Button>
+  1406→            <Button
+  1407→              size="lg"
+  1408→              variant="outline"
+  1409→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1410→              asChild
+  1411→            >
+  1412→              <Link href="#checklist">
+  1413→                <CheckCircle2 className="w-4 h-4" />
+  1414→                View Our Bathroom Deep Cleaning Checklist
+  1415→              </Link>
+  1416→            </Button>
+  1417→          </div>
+  1418→        </motion.div>
+  1419→      </div>
+  1420→    </section>
+  1421→  );
+  1422→}
+  1423→

@@ -1,0 +1,702 @@
+   200→
+   201→export function VctFloorCareNearMeHero() {
+   202→  return (
+   203→    <>
+   204→      {/* ============================================================ */}
+   205→      {/* SECTION 1 - Hero */}
+   206→      {/* H1: VCT Floor Care Services Near Me in Scotland */}
+   207→      {/* ============================================================ */}
+   208→      <section className="relative overflow-hidden">
+   209→        <div className="absolute inset-0">
+   210→          <img
+   211→            src={IMG.heroWide}
+   212→            alt="Maundy Clean VCT floor care specialist stripping, refinishing and burnishing a commercial vinyl composition tile floor to a wet-look gloss in a Scottish property"
+   213→            className="w-full h-full object-cover"
+   214→            loading="eager"
+   215→            fetchPriority="high"
+   216→          />
+   217→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   218→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   219→        </div>
+   220→
+   221→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   222→          <motion.div
+   223→            initial="hidden"
+   224→            animate="visible"
+   225→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   226→            className="max-w-3xl"
+   227→          >
+   228→            <motion.div
+   229→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   230→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   231→            >
+   232→              <span className="relative flex w-2 h-2">
+   233→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   234→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   235→              </span>
+   236→              72+ Scottish towns &middot; Local VCT-trained specialists &middot; Same crew every visit
+   237→            </motion.div>
+   238→
+   239→            <motion.h1
+   240→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   241→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   242→            >
+   243→              VCT Floor Care Services Near Me in Scotland
+   244→            </motion.h1>
+   245→
+   246→            <motion.p
+   247→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   248→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   249→            >
+   250→              Searching for &ldquo;VCT floor care near me&rdquo; or &ldquo;VCT stripping
+   251→              and refinishing near me&rdquo; in Scotland? Maundy Clean covers 72+ towns
+   252→              and cities across the Central Belt, Highlands, Borders, and Islands. Same
+   253→              VCT-trained standard, same high-speed burnish technology, same dedicated
+   254→              VCT specialist &mdash; wherever your property happens to be. From
+   255→              &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;18/m&sup2;
+   256→              for full strip and refinish with premium 30% solids polish.
+   257→            </motion.p>
+   258→
+   259→            <motion.div
+   260→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   261→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   262→            >
+   263→              <Button
+   264→                size="lg"
+   265→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   266→                asChild
+   267→              >
+   268→                <Link href="/quote">
+   269→                  Request Your Free Floor Survey Today
+   270→                  <ArrowRight className="w-5 h-5" />
+   271→                </Link>
+   272→              </Button>
+   273→              <Button
+   274→                size="lg"
+   275→                variant="outline"
+   276→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   277→                asChild
+   278→              >
+   279→                <Link href="#locations">
+   280→                  <MapPin className="w-4 h-4" />
+   281→                  Find Your Local VCT Crew
+   282→                </Link>
+   283→              </Button>
+   284→            </motion.div>
+   285→
+   286→            <motion.div
+   287→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   288→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   289→            >
+   290→              {HERO_BADGES.map((badge) => {
+   291→                const Icon = badge.icon;
+   292→                return (
+   293→                  <div key={badge.label} className="flex items-center gap-1.5">
+   294→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   295→                  </div>
+   296→                );
+   297→              })}
+   298→            </motion.div>
+   299→          </motion.div>
+   300→        </div>
+   301→      </section>
+   302→
+   303→      {/* ============================================================ */}
+   304→      {/* SECTION 2 - Intro + stats */}
+   305→      {/* H2: Local VCT Floor Care You Can Trust */}
+   306→      {/* ============================================================ */}
+   307→      <section className="py-16 lg:py-24 bg-background">
+   308→        <div className="max-w-[1100px] mx-auto px-6">
+   309→          <motion.div
+   310→            initial={{ opacity: 0, y: 20 }}
+   311→            whileInView={{ opacity: 1, y: 0 }}
+   312→            viewport={{ once: true, margin: "-80px" }}
+   313→            transition={{ duration: 0.5 }}
+   314→            className="max-w-3xl mx-auto text-center mb-10"
+   315→          >
+   316→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   317→              Local VCT floor care, stripping &amp; refinishing &middot; Scotland-wide
+   318→            </span>
+   319→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   320→              Local VCT Floor Care You Can Trust
+   321→            </h2>
+   322→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   323→              Maundy Clean is a Scottish VCT floor care company built on the Maundy tradition
+   324→              of service and care. We don&rsquo;t operate as an impersonal national
+   325→              agency &mdash; we&rsquo;re a local specialist with VCT-trained floor care
+   326→              crews living and working in your area. Whether you&rsquo;re searching
+   327→              for a VCT strip-and-refinish in Glasgow&rsquo;s IFSD, a retail-entrance
+   328→              polish restoration in Edinburgh&rsquo;s New Town, a school-holiday VCT
+   329→              strip in Aberdeen, or a hospital-corridor burnish programme anywhere in
+   330→              between, we assign a vetted, PAYE-employed professional that stays with
+   331→              you for the long run. Same crew, same standard, same locked-in rate for
+   332→              12 months.
+   333→            </p>
+   334→          </motion.div>
+   335→
+   336→          <motion.div
+   337→            initial={{ opacity: 0, y: 16 }}
+   338→            whileInView={{ opacity: 1, y: 0 }}
+   339→            viewport={{ once: true, margin: "-60px" }}
+   340→            transition={{ duration: 0.5 }}
+   341→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   342→          >
+   343→            {[
+   344→              { label: "VCT zones covered", value: "All types" },
+   345→              { label: "Polish solids", value: "25&ndash;30%" },
+   346→              { label: "Refinish guarantee", value: "5-10 yrs" },
+   347→              { label: "Star rating", value: "4.9/5" },
+   348→            ].map((stat) => (
+   349→              <div
+   350→                key={stat.label}
+   351→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   352→              >
+   353→                <div
+   354→                  className="font-display font-extrabold text-2xl text-gradient-brand"
+   355→                  dangerouslySetInnerHTML={{ __html: stat.value }}
+   356→                />
+   357→                <div
+   358→                  className="text-xs text-[var(--muted-foreground)] mt-1"
+   359→                  dangerouslySetInnerHTML={{ __html: stat.label }}
+   360→                />
+   361→              </div>
+   362→            ))}
+   363→          </motion.div>
+   364→        </div>
+   365→      </section>
+   366→
+   367→      {/* ============================================================ */}
+   368→      {/* SECTION 3 - Location grid (id="locations" anchor target) */}
+   369→      {/* H2: Find Your Local VCT Crew */}
+   370→      {/* ============================================================ */}
+   371→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   372→        <div className="max-w-[1400px] mx-auto px-6">
+   373→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   374→            {/* Left: copy + map */}
+   375→            <motion.div
+   376→              initial={{ opacity: 0, y: 20 }}
+   377→              whileInView={{ opacity: 1, y: 0 }}
+   378→              viewport={{ once: true, margin: "-80px" }}
+   379→              transition={{ duration: 0.5 }}
+   380→            >
+   381→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   382→                Coverage across Scotland
+   383→              </span>
+   384→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   385→                Find Your Local VCT Crew
+   386→              </h2>
+   387→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   388→                Our network of vetted, VCT-trained floor care specialists spans
+   389→                the entire country. From the Central Belt to the Highlands and Islands,
+   390→                we have a local professional ready to care for your commercial VCT
+   391→                floors. Browse by region below, or call us to confirm coverage for
+   392→                your specific postcode.
+   393→              </p>
+   394→
+   395→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   396→                <img
+   397→                  src={IMG.scotlandMap}
+   398→                  alt="Map of Scotland showing Maundy Clean VCT floor care &amp; stripping coverage areas"
+   399→                  className="absolute inset-0 w-full h-full object-cover"
+   400→                  loading="lazy"
+   401→                />
+   402→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   403→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   404→                  <div className="flex items-center gap-2 mb-1">
+   405→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   406→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   407→                      72+ Scottish towns covered
+   408→                    </span>
+   409→                  </div>
+   410→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   411→                    Same VCT-trained floor care specialists, same 100% satisfaction
+   412→                    guarantee &mdash; from Glasgow to Lerwick.
+   413→                  </p>
+   414→                </div>
+   415→              </div>
+   416→
+   417→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   418→                <Button
+   419→                  size="lg"
+   420→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   421→                  asChild
+   422→                >
+   423→                  <Link href="/quote">
+   424→                    <Zap className="w-4 h-4" />
+   425→                    Request Your Free Floor Survey
+   426→                  </Link>
+   427→                </Button>
+   428→                <Button
+   429→                  size="lg"
+   430→                  variant="outline"
+   431→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   432→                  asChild
+   433→                >
+   434→                  <a href={contactInfo.phoneHref}>
+   435→                    <Phone className="w-4 h-4" />
+   436→                    {contactInfo.phone}
+   437→                  </a>
+   438→                </Button>
+   439→              </div>
+   440→            </motion.div>
+   441→
+   442→            {/* Right: regional location grid */}
+   443→            <motion.div
+   444→              initial={{ opacity: 0, y: 20 }}
+   445→              whileInView={{ opacity: 1, y: 0 }}
+   446→              viewport={{ once: true, margin: "-60px" }}
+   447→              transition={{ duration: 0.5 }}
+   448→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   449→            >
+   450→              <div className="flex items-center justify-between mb-5">
+   451→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   452→                  Browse by region
+   453→                </h3>
+   454→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   455→              </div>
+   456→
+   457→              <div className="space-y-6">
+   458→                {locationsByRegion.map((regionGroup) => (
+   459→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   460→                    <div className="flex items-center gap-2 mb-3">
+   461→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   462→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   463→                        {regionGroup.region}
+   464→                      </span>
+   465→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   466→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   467→                        {regionGroup.cities.length} towns
+   468→                      </span>
+   469→                    </div>
+   470→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   471→                      {regionGroup.cities.map((loc) => (
+   472→                        <Link
+   473→                          key={loc.slug}
+   474→                          id={loc.slug}
+   475→                          href={`/services/vct-floor-care-near-me#${loc.slug}`}
+   476→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   477→                        >
+   478→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   479→                          <span>
+   480→                            <span className="font-medium">{loc.city}</span>
+   481→                            <span className="text-[var(--muted-foreground)]"> VCT</span>
+   482→                          </span>
+   483→                        </Link>
+   484→                      ))}
+   485→                    </div>
+   486→                  </div>
+   487→                ))}
+   488→              </div>
+   489→
+   490→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   491→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   492→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   493→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   494→                </div>
+   495→                <Link
+   496→                  href="/locations"
+   497→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   498→                >
+   499→                  View all 72 Scottish locations
+   500→                  <ArrowRight className="w-4 h-4" />
+   501→                </Link>
+   502→              </div>
+   503→            </motion.div>
+   504→          </div>
+   505→        </div>
+   506→      </section>
+   507→
+   508→      {/* ============================================================ */}
+   509→      {/* SECTION 4 - Why Maundy Clean for your local VCT care */}
+   510→      {/* H2: Why Scottish Property Owners Choose Maundy Clean */}
+   511→      {/* ============================================================ */}
+   512→      <section className="py-16 lg:py-24 bg-background">
+   513→        <div className="max-w-[1400px] mx-auto px-6">
+   514→          <motion.div
+   515→            initial={{ opacity: 0, y: 20 }}
+   516→            whileInView={{ opacity: 1, y: 0 }}
+   517→            viewport={{ once: true, margin: "-80px" }}
+   518→            transition={{ duration: 0.5 }}
+   519→            className="max-w-3xl mx-auto text-center mb-14"
+   520→          >
+   521→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   522→              The Maundy Clean difference
+   523→            </span>
+   524→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   525→              Why Scottish Property Owners Choose Maundy Clean
+   526→            </h2>
+   527→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   528→              We&rsquo;re a local specialist, not an impersonal national agency. Our
+   529→              VCT-trained floor care specialists live in your area, know your
+   530→              neighbourhood, and stay with you for the long run. Here&rsquo;s what sets
+   531→              us apart from the gig-economy apps and high-turnover agencies operating
+   532→              in Scotland.
+   533→            </p>
+   534→          </motion.div>
+   535→
+   536→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   537→            {TRUST_PILLARS.map((pillar, i) => {
+   538→              const Icon = pillar.icon;
+   539→              return (
+   540→                <motion.div
+   541→                  key={pillar.title}
+   542→                  initial={{ opacity: 0, y: 24 }}
+   543→                  whileInView={{ opacity: 1, y: 0 }}
+   544→                  viewport={{ once: true, margin: "-40px" }}
+   545→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   546→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   547→                >
+   548→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   549→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   550→                  </div>
+   551→                  <div>
+   552→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   553→                      {pillar.title}
+   554→                    </h3>
+   555→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   556→                      {pillar.description}
+   557→                    </p>
+   558→                  </div>
+   559→                </motion.div>
+   560→              );
+   561→            })}
+   562→          </div>
+   563→        </div>
+   564→      </section>
+   565→
+   566→      {/* ============================================================ */}
+   567→      {/* SECTION 5 - 3-step booking */}
+   568→      {/* H2: From Quote to Clean in 48 Hours */}
+   569→      {/* ============================================================ */}
+   570→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   571→        <div className="max-w-[1400px] mx-auto px-6">
+   572→          <motion.div
+   573→            initial={{ opacity: 0, y: 20 }}
+   574→            whileInView={{ opacity: 1, y: 0 }}
+   575→            viewport={{ once: true, margin: "-80px" }}
+   576→            transition={{ duration: 0.5 }}
+   577→            className="text-center mb-14"
+   578→          >
+   579→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   580→              Hassle-free booking
+   581→            </span>
+   582→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   583→              From Quote to Clean in 48 Hours
+   584→            </h2>
+   585→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   586→              We have optimized our booking experience to be uncomplicated and
+   587→              straightforward. Tell us about your VCT zones, footprint, and traffic
+   588→              pattern, get matched with a local VCT-trained floor care
+   589→              specialist, and enjoy a pristine foundation &mdash; no friction, no
+   590→              waiting, no surprises.
+   591→            </p>
+   592→          </motion.div>
+   593→
+   594→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   595→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   596→
+   597→            {BOOKING_STEPS.map((step, i) => {
+   598→              const Icon = step.icon;
+   599→              return (
+   600→                <motion.div
+   601→                  key={step.step}
+   602→                  initial={{ opacity: 0, y: 24 }}
+   603→                  whileInView={{ opacity: 1, y: 0 }}
+   604→                  viewport={{ once: true, margin: "-40px" }}
+   605→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   606→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   607→                >
+   608→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   609→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   610→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   611→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   612→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   613→                      {step.step}
+   614→                    </span>
+   615→                  </div>
+   616→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   617→                    {step.title}
+   618→                  </h3>
+   619→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   620→                    {step.description}
+   621→                  </p>
+   622→                </motion.div>
+   623→              );
+   624→            })}
+   625→          </div>
+   626→
+   627→          <motion.div
+   628→            initial={{ opacity: 0, y: 16 }}
+   629→            whileInView={{ opacity: 1, y: 0 }}
+   630→            viewport={{ once: true }}
+   631→            transition={{ duration: 0.5, delay: 0.3 }}
+   632→            className="text-center mt-10"
+   633→          >
+   634→            <Button
+   635→              size="lg"
+   636→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   637→              asChild
+   638→            >
+   639→              <Link href="/quote">
+   640→                Request Your Free Floor Survey Today
+   641→                <ArrowRight className="w-5 h-5" />
+   642→              </Link>
+   643→            </Button>
+   644→          </motion.div>
+   645→        </div>
+   646→      </section>
+   647→
+   648→      {/* ============================================================ */}
+   649→      {/* SECTION 6 - Cross-links to specialist pages */}
+   650→      {/* H2: Specialist Services for Every Property Cycle */}
+   651→      {/* ============================================================ */}
+   652→      <section className="py-16 lg:py-24 bg-background">
+   653→        <div className="max-w-[1400px] mx-auto px-6">
+   654→          <motion.div
+   655→            initial={{ opacity: 0, y: 20 }}
+   656→            whileInView={{ opacity: 1, y: 0 }}
+   657→            viewport={{ once: true, margin: "-80px" }}
+   658→            transition={{ duration: 0.5 }}
+   659→            className="max-w-3xl mb-12"
+   660→          >
+   661→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   662→              Beyond the VCT &middot; property cycles
+   663→            </span>
+   664→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   665→              Specialist Services for Every Property Cycle
+   666→            </h2>
+   667→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   668→              Our VCT floor care is the perfect reset to combine with our other
+   669→              specialist services. Restore the VCT today, then keep the interior
+   670→              pristine with the right ongoing routine for your household, your
+   671→              tenancy cycle, your sale timeline, or your upholstery &mdash; the
+   672→              same trusted crew can step up whenever life changes.
+   673→            </p>
+   674→          </motion.div>
+   675→
+   676→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   677→            {[
+   678→              {
+   679→                icon: CalendarCheck,
+   680→                title: "Recurring Home Cleaning",
+   681→                href: "/services/recurring-home-cleaning",
+   682→                description:
+   683→                  "After your VCT is restored, keep it pristine with a recurring home cleaning schedule &mdash; weekly or fortnightly. Our same trusted crew maintains your floors with pH-neutral, surface-safe products as part of every visit, catching wear patterns early and extending the life of the finish.",
+   684→                cta: "Explore recurring cleaning",
+   685→              },
+   686→              {
+   687→                icon: KeyRound,
+   688→                title: "End of Tenancy Cleaning",
+   689→                href: "/services/move-in-out-cleaning",
+   690→                description:
+   691→                  "Moving commercial or residential units? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee and professional hard floor care to ensure you PASS your inspection. We work to the letting agent&rsquo;s inventory, restore the VCT to its original appearance, and come back free of charge if anything is flagged.",
+   692→                cta: "Explore end of tenancy",
+   693→              },
+   694→              {
+   695→                icon: Hammer,
+   696→                title: "After Builders Clean",
+   697→                href: "/services/post-construction-cleaning",
+   698→                description:
+   699→                  "If you&rsquo;ve recently had construction work, our After Builders Clean removes the fine abrasive dust that settles on hard floors. Fine dust left on a freshly stripped VCT floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect the finish before the dust causes permanent scratches.",
+   700→                cta: "Explore after builders cleaning",
+   701→              },
+   702→              {
+   703→                icon: HeartPulse,
+   704→                title: "Upholstery Cleaning",
+   705→                href: "/services/upholstery-cleaning",
+   706→                description:
+   707→                  "Refresh your furniture alongside your VCT for a comprehensive property refresh. Stain-specific chemistry for fabric, leather, and microfibre suites, hot-water extraction for deep soil, and the same &ldquo;Maundy&rdquo; standard applied to every cushion, arm, and back.",
+   708→                cta: "Explore upholstery cleaning",
+   709→              },
+   710→            ].map((sol, i) => {
+   711→              const Icon = sol.icon;
+   712→              return (
+   713→                <motion.div
+   714→                  key={sol.title}
+   715→                  initial={{ opacity: 0, y: 24 }}
+   716→                  whileInView={{ opacity: 1, y: 0 }}
+   717→                  viewport={{ once: true, margin: "-40px" }}
+   718→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   719→                >
+   720→                  <Link
+   721→                    href={sol.href}
+   722→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   723→                  >
+   724→                    <div className="p-6">
+   725→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   726→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   727→                      </div>
+   728→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   729→                        {sol.title}
+   730→                      </h3>
+   731→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   732→                        {sol.description}
+   733→                      </p>
+   734→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   735→                        {sol.cta}
+   736→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   737→                      </span>
+   738→                    </div>
+   739→                  </Link>
+   740→                </motion.div>
+   741→              );
+   742→            })}
+   743→          </div>
+   744→
+   745→          <motion.div
+   746→            initial={{ opacity: 0, y: 16 }}
+   747→            whileInView={{ opacity: 1, y: 0 }}
+   748→            viewport={{ once: true }}
+   749→            transition={{ duration: 0.5, delay: 0.2 }}
+   750→            className="mt-10 text-center"
+   751→          >
+   752→            <Link
+   753→              href="/services/vct-floor-care"
+   754→              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] bg-[var(--brand-light)]/40 hover:bg-[var(--brand-light)]/70 transition-colors px-5 py-3 rounded-full"
+   755→            >
+   756→              <Layers className="w-4 h-4" />
+   757→              Explore the full VCT floor care &amp; stripping service
+   758→              <ArrowRight className="w-4 h-4" />
+   759→            </Link>
+   760→          </motion.div>
+   761→        </div>
+   762→      </section>
+   763→
+   764→      {/* ============================================================ */}
+   765→      {/* SECTION 7 - Final CTA */}
+   766→      {/* H2: Ready for a VCT Floor Care Crew Near You? */}
+   767→      {/* ============================================================ */}
+   768→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   769→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   770→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   771→
+   772→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   773→          <motion.div
+   774→            initial={{ opacity: 0, y: 20 }}
+   775→            whileInView={{ opacity: 1, y: 0 }}
+   776→            viewport={{ once: true, margin: "-80px" }}
+   777→            transition={{ duration: 0.5 }}
+   778→          >
+   779→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   780→              Ready to book your local VCT crew?
+   781→            </span>
+   782→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   783→              Ready for a VCT Floor Care Crew Near You?
+   784→            </h2>
+   785→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   786→              Get a fixed-price VCT floor care and stripping quote in 30 seconds. No pushy
+   787→              sales call, no waiting 24 hours for a callback. VCT-trained floor care
+   788→              specialists, high-speed burnish technology, eco-friendly non-toxic
+   789→              products, a 100% satisfaction guarantee, and a 5-10 year guarantee on
+   790→              every full refinish &mdash; from &pound;4/m&sup2; for quarterly
+   791→              scrub-and-recoat through to &pound;18/m&sup2; for full strip and refinish
+   792→              with premium 30% solids polish. Coverage across 72+ Scottish towns.
+   793→            </p>
+   794→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   795→              <Button
+   796→                size="lg"
+   797→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   798→                asChild
+   799→              >
+   800→                <Link href="/quote">
+   801→                  Request Your Free Floor Survey Today
+   802→                  <ArrowRight className="w-5 h-5" />
+   803→                </Link>
+   804→              </Button>
+   805→              <Button
+   806→                size="lg"
+   807→                variant="outline"
+   808→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   809→                asChild
+   810→              >
+   811→                <a href={contactInfo.phoneHref}>
+   812→                  <Phone className="w-4 h-4" />
+   813→                  Call {contactInfo.phone}
+   814→                </a>
+   815→              </Button>
+   816→            </div>
+   817→          </motion.div>
+   818→        </div>
+   819→      </section>
+   820→
+   821→      {/* ============================================================ */}
+   822→      {/* SECTION 8 - Near-me FAQ */}
+   823→      {/* H2: Frequently Asked Questions */}
+   824→      {/* ============================================================ */}
+   825→      <section className="py-16 lg:py-24 bg-background">
+   826→        <div className="max-w-4xl mx-auto px-6">
+   827→          <motion.div
+   828→            initial={{ opacity: 0, y: 20 }}
+   829→            whileInView={{ opacity: 1, y: 0 }}
+   830→            viewport={{ once: true, margin: "-80px" }}
+   831→            transition={{ duration: 0.5 }}
+   832→            className="text-center mb-12"
+   833→          >
+   834→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   835→              VCT floor care near me &middot; FAQ
+   836→            </span>
+   837→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   838→              Frequently Asked Questions
+   839→            </h2>
+   840→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   841→              Straight answers to the questions our local VCT floor care clients ask most
+   842→              often. Can&rsquo;t find what you need? Call us on{" "}
+   843→              <a
+   844→                href={contactInfo.phoneHref}
+   845→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   846→              >
+   847→                {contactInfo.phone}
+   848→              </a>{" "}
+   849→              and we&rsquo;ll talk it through.
+   850→            </p>
+   851→          </motion.div>
+   852→
+   853→          <div className="space-y-4">
+   854→            {NEAR_ME_FAQS.map((faq, i) => (
+   855→              <motion.div
+   856→                key={faq.q}
+   857→                initial={{ opacity: 0, y: 16 }}
+   858→                whileInView={{ opacity: 1, y: 0 }}
+   859→                viewport={{ once: true, margin: "-40px" }}
+   860→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   861→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   862→              >
+   863→                <details className="group">
+   864→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   865→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   866→                      {faq.q}
+   867→                    </h3>
+   868→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   869→                      <span className="relative w-3.5 h-3.5">
+   870→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   871→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   872→                      </span>
+   873→                    </span>
+   874→                  </summary>
+   875→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   876→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   877→                      {faq.a}
+   878→                    </p>
+   879→                  </div>
+   880→                </details>
+   881→              </motion.div>
+   882→            ))}
+   883→          </div>
+   884→
+   885→          <motion.div
+   886→            initial={{ opacity: 0, y: 16 }}
+   887→            whileInView={{ opacity: 1, y: 0 }}
+   888→            viewport={{ once: true, margin: "-40px" }}
+   889→            transition={{ duration: 0.5, delay: 0.3 }}
+   890→            className="mt-10 text-center"
+   891→          >
+   892→            <Button
+   893→              size="lg"
+   894→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   895→              asChild
+   896→            >
+   897→              <Link href="/quote">
+   898→                Request Your Free Floor Survey Today
+   899→                <ArrowRight className="w-5 h-5" />
+
+[showing lines 200-899 of 908; use offset=900 with limit to continue reading]

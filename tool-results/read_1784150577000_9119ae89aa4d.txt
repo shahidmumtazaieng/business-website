@@ -1,0 +1,1396 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import type { ReactNode } from "react";
+     6→import {
+     7→  Shield,
+     8→  ShieldCheck,
+     9→  Leaf,
+    10→  Star,
+    11→  Clock,
+    12→  Sparkles,
+    13→  MapPin,
+    14→  ArrowRight,
+    15→  CheckCircle2,
+    16→  Droplets,
+    17→  Wind,
+    18→  SprayCan,
+    19→  Crown,
+    20→  Users,
+    21→  Home,
+    22→  KeyRound,
+    23→  Hammer,
+    24→  UserCheck,
+    25→  CalendarCheck,
+    26→  Award,
+    27→  Gem,
+    28→  ShoppingBag,
+    29→  Store,
+    30→  Tag,
+    31→  Phone,
+    32→  ClipboardCheck,
+    33→  FileText,
+    34→  HeartPulse,
+    35→  Microscope,
+    36→  FlaskConical,
+    37→  Biohazard,
+    38→  AirVent,
+    39→  Lightbulb,
+    40→  Boxes,
+    41→  DoorOpen,
+    42→  Wrench,
+    43→} from "lucide-react";
+    44→import { Button } from "@/components/ui/button";
+    45→import { contactInfo } from "@/lib/site-data";
+    46→
+    47→// ============================================================
+    48→// Images - hand-picked from in-house search service
+    49→// ============================================================
+    50→const IMG = {
+    51→  heroWide:
+    52→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    53→  introSplit:
+    54→    "https://sfile.chatglm.cn/images-ppt/8a7c4d6e0b51.jpg",
+    55→  whyCrew:
+    56→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    57→  checklistHighTouch:
+    58→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    59→  checklistFogging:
+    60→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    61→  checklistDetails:
+    62→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    63→  leaseRecurring:
+    64→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    65→  leaseTenancy:
+    66→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    67→  leaseBuilders:
+    68→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    69→  leaseTrauma:
+    70→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    71→  nearMeMap:
+    72→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    73→};
+    74→
+    75→// ============================================================
+    76→// 36 Scottish locations covered by the near-me grid
+    77→// ============================================================
+    78→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    79→  { city: "Glasgow", slug: "glasgow" },
+    80→  { city: "Edinburgh", slug: "edinburgh" },
+    81→  { city: "Aberdeen", slug: "aberdeen" },
+    82→  { city: "Dundee", slug: "dundee" },
+    83→  { city: "Stirling", slug: "stirling" },
+    84→  { city: "Inverness", slug: "inverness" },
+    85→  { city: "Perth", slug: "perth" },
+    86→  { city: "Falkirk", slug: "falkirk" },
+    87→  { city: "Paisley", slug: "paisley" },
+    88→  { city: "East Kilbride", slug: "east-kilbride" },
+    89→  { city: "Livingston", slug: "livingston" },
+    90→  { city: "Hamilton", slug: "hamilton" },
+    91→  { city: "Ayr", slug: "ayr" },
+    92→  { city: "Kilmarnock", slug: "kilmarnock" },
+    93→  { city: "Greenock", slug: "greenock" },
+    94→  { city: "Coatbridge", slug: "coatbridge" },
+    95→  { city: "Airdrie", slug: "airdrie" },
+    96→  { city: "Motherwell", slug: "motherwell" },
+    97→  { city: "Wishaw", slug: "wishaw" },
+    98→  { city: "Dunfermline", slug: "dunfermline" },
+    99→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   100→  { city: "Glenrothes", slug: "glenrothes" },
+   101→  { city: "Dundonald", slug: "dundonald" },
+   102→  { city: "Bearsden", slug: "bearsden" },
+   103→  { city: "Milngavie", slug: "milngavie" },
+   104→  { city: "Bishopbriggs", slug: "bishopbriggs" },
+   105→  { city: "Lenzie", slug: "lenzie" },
+   106→  { city: "Giffnock", slug: "giffnock" },
+   107→  { city: "Newton Mearns", slug: "newton-mearns" },
+   108→  { city: "Clarkston", slug: "clarkston" },
+   109→  { city: "Barrhead", slug: "barrhead" },
+   110→  { city: "Johnstone", slug: "johnstone" },
+   111→  { city: "Renfrew", slug: "renfrew" },
+   112→  { city: "Rutherglen", slug: "rutherglen" },
+   113→  { city: "Cambuslang", slug: "cambuslang" },
+   114→  { city: "Bellshill", slug: "bellshill" },
+   115→];
+   116→
+   117→// ============================================================
+   118→// Section 0 - Full-width hero banner
+   119→// Semantic H1: "Professional Disinfection & Antiviral Sanitisation Services Scotland"
+   120→// ============================================================
+   121→
+   122→export function DisinfectionSeoHeroBanner() {
+   123→  return (
+   124→    <section className="relative overflow-hidden">
+   125→      {/* Full-width background image */}
+   126→      <div className="absolute inset-0">
+   127→        <img
+   128→          src={IMG.heroWide}
+   129→          alt="Maundy Clean disinfection technician in full PPE operating an electrostatic fogging machine in a Scottish commercial facility"
+   130→          className="w-full h-full object-cover"
+   131→          loading="eager"
+   132→          fetchPriority="high"
+   133→        />
+   134→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   135→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   136→      </div>
+   137→
+   138→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   139→        <motion.div
+   140→          initial="hidden"
+   141→          animate="visible"
+   142→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   143→          className="max-w-3xl"
+   144→        >
+   145→          <motion.div
+   146→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   147→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   148→          >
+   149→            <span className="relative flex w-2 h-2">
+   150→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   151→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   152→            </span>
+   153→            Disinfection &amp; Antiviral Sanitisation &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   154→          </motion.div>
+   155→
+   156→          <motion.h1
+   157→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   158→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   159→          >
+   160→            Professional Disinfection &amp; Antiviral Sanitisation Services Scotland
+   161→          </motion.h1>
+   162→
+   163→          <motion.p
+   164→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   165→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   166→          >
+   167→            Technical Pathogen Control, Ongoing Microbiological Protection, and the Maundy Tradition of
+   168→            Care. In high-traffic environments across Glasgow, Edinburgh, and the Central Belt, standard
+   169→            surface cleaning is often the first line of defense, but it is rarely enough to ensure total
+   170→            safety. Germs and bacteria linger on doorknobs, light switches, keyboards, and shared
+   171→            equipment, creating hidden risks for cross-contamination. At MaundyClean, we provide a
+   172→            premium disinfection service that goes &ldquo;beyond clean&rdquo; to ensure your workplace or
+   173→            facility is fully sanitised and safe for your staff and visitors.
+   174→          </motion.p>
+   175→
+   176→          <motion.div
+   177→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   178→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   179→          >
+   180→            <Button
+   181→              size="lg"
+   182→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   183→              asChild
+   184→            >
+   185→              <Link href="/quote">
+   186→                Request Your Free Site Survey Today
+   187→                <ArrowRight className="w-5 h-5" />
+   188→              </Link>
+   189→            </Button>
+   190→            <Button
+   191→              size="lg"
+   192→              variant="outline"
+   193→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   194→              asChild
+   195→            >
+   196→              <Link href="#checklist">
+   197→                <CheckCircle2 className="w-4 h-4" />
+   198→                View Our Commercial Cleaning Checklist
+   199→              </Link>
+   200→            </Button>
+   201→          </motion.div>
+   202→
+   203→          <motion.div
+   204→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   205→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   206→          >
+   207→            <div className="flex items-center gap-1.5">
+   208→              <div className="flex">
+   209→                {[1, 2, 3, 4, 5].map((s) => (
+   210→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   211→                ))}
+   212→              </div>
+   213→              <span className="font-semibold text-white">4.9/5</span>
+   214→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   215→            </div>
+   216→            <div className="flex items-center gap-1.5">
+   217→              <ShieldCheck className="w-4 h-4 text-[var(--gold)]" /> EN 14476 Virucidal
+   218→            </div>
+   219→            <div className="flex items-center gap-1.5">
+   220→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe Supplies
+   221→            </div>
+   222→            <div className="flex items-center gap-1.5">
+   223→              <Clock className="w-4 h-4 text-[var(--gold)]" /> 4-Hour Outbreak Callout
+   224→            </div>
+   225→          </motion.div>
+   226→        </motion.div>
+   227→      </div>
+   228→    </section>
+   229→  );
+   230→}
+   231→
+   232→// ============================================================
+   233→// Section 1 - Long-form semantic SEO intro
+   234→// Sits right after the hero, before the existing ServiceOverview.
+   235→// Split-layout with aspect-[4/3] image on the left and the
+   236→// verbatim intro paragraphs on the right. Paragraph 2 contains
+   237→// TWO inline <Link>s: /services/recurring-home-cleaning for
+   238→// "Recurring Home Cleaning" and /services/deep-house-cleaning
+   239→// for "Deep House Cleaning". The brief gives three intro
+   240→// paragraphs (p1 + p2-with-two-links + p3).
+   241→// ============================================================
+   242→
+   243→export function DisinfectionSeoIntro() {
+   244→  return (
+   245→    <section className="py-16 lg:py-24 bg-background">
+   246→      <div className="max-w-[1400px] mx-auto px-6">
+   247→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   248→          {/* Image side */}
+   249→          <motion.div
+   250→            initial={{ opacity: 0, scale: 0.96 }}
+   251→            whileInView={{ opacity: 1, scale: 1 }}
+   252→            viewport={{ once: true, margin: "-80px" }}
+   253→            transition={{ duration: 0.6 }}
+   254→            className="relative order-2 lg:order-1"
+   255→          >
+   256→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   257→              <img
+   258→                src={IMG.introSplit}
+   259→                alt="Maundy Clean disinfection specialist using electrostatic fogging equipment to sanitise a Scottish commercial office"
+   260→                className="absolute inset-0 w-full h-full object-cover"
+   261→                loading="lazy"
+   262→              />
+   263→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   264→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   265→                <div className="flex items-center gap-2 mb-1">
+   266→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   267→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   268→                    Beyond Clean &mdash; Biologically Safe
+   269→                  </span>
+   270→                </div>
+   271→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   272→                  The same level of technical intimacy and &ldquo;same-staff&rdquo; consistency we bring
+   273→                  to Scotland&rsquo;s finest residences &mdash; applied to your commercial facility&rsquo;s
+   274→                  pathogen-control regime.
+   275→                </p>
+   276→              </div>
+   277→            </div>
+   278→            <motion.div
+   279→              animate={{ y: [0, -8, 0] }}
+   280→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   281→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   282→            >
+   283→              <div className="flex items-center gap-2">
+   284→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   285→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   286→                </div>
+   287→                <div>
+   288→                  <div className="text-[10px] text-[var(--muted-foreground)]">Efficacy</div>
+   289→                  <div className="text-xs font-bold text-[var(--ink)]">99.99%</div>
+   290→                </div>
+   291→              </div>
+   292→            </motion.div>
+   293→          </motion.div>
+   294→
+   295→          {/* Copy side */}
+   296→          <motion.div
+   297→            initial={{ opacity: 0, y: 20 }}
+   298→            whileInView={{ opacity: 1, y: 0 }}
+   299→            viewport={{ once: true, margin: "-80px" }}
+   300→            transition={{ duration: 0.5 }}
+   301→            className="order-1 lg:order-2"
+   302→          >
+   303→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   304→              Disinfection &amp; antiviral sanitisation &middot; Scotland
+   305→            </span>
+   306→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   307→              The MaundyClean Standard for Pathogen Control
+   308→            </h2>
+   309→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   310→              While we are the recognised authority in{" "}
+   311→              <Link
+   312→                href="/services/recurring-home-cleaning"
+   313→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   314→              >
+   315→                Recurring Home Cleaning
+   316→              </Link>{" "}
+   317→              and{" "}
+   318→              <Link
+   319→                href="/services/deep-house-cleaning"
+   320→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   321→              >
+   322→                Deep House Cleaning
+   323→              </Link>{" "}
+   324→              for Scotland&rsquo;s most prestigious residences, we bring that same level of technical
+   325→              intimacy and &ldquo;same-staff&rdquo; consistency to specialised hygiene services. We act
+   326→              as your strategic partner, helping Scottish businesses meet required health and safety
+   327→              standards with a multi-step disinfection process that provides true peace of mind.
+   328→            </p>
+   329→
+   330→            {/* Compact trust strip */}
+   331→            <motion.div
+   332→              initial={{ opacity: 0, y: 16 }}
+   333→              whileInView={{ opacity: 1, y: 0 }}
+   334→              viewport={{ once: true, margin: "-40px" }}
+   335→              transition={{ duration: 0.5, delay: 0.2 }}
+   336→              className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-7"
+   337→            >
+   338→              {[
+   339→                { icon: UserCheck, label: "Same crew every visit" },
+   340→                { icon: ShieldCheck, label: "EN 14476 virucidal" },
+   341→                { icon: Leaf, label: "Non-toxic & safe" },
+   342→                { icon: Clock, label: "30-day protection" },
+   343→              ].map((badge) => {
+   344→                const Icon = badge.icon;
+   345→                return (
+   346→                  <div
+   347→                    key={badge.label}
+   348→                    className="flex items-center gap-2 bg-white rounded-lg p-2.5 border border-[var(--border)]"
+   349→                  >
+   350→                    <Icon className="w-4 h-4 text-[var(--brand)] shrink-0" />
+   351→                    <span className="text-xs font-semibold text-[var(--ink)] leading-tight">
+   352→                      {badge.label}
+   353→                    </span>
+   354→                  </div>
+   355→                );
+   356→              })}
+   357→            </motion.div>
+   358→          </motion.div>
+   359→        </div>
+   360→      </div>
+   361→    </section>
+   362→  );
+   363→}
+   364→
+   365→// ============================================================
+   366→// Section 2 - Why MaundyClean is Scotland's Authority in Pathogen Control
+   367→// (Semantic H2: "Why MaundyClean is Scotland's Authority in Pathogen Control")
+   368→// Image+copy split layout with 4 trust pillars.
+   369→// Per the brief: pillars UserCheck (same trusted team) /
+   370→// ShieldCheck (99.99% efficacy & 30-day protection) /
+   371→// FileText (total regulatory compliance) /
+   372→// Leaf (eco-friendly & safe for occupants).
+   373→// ALL 4 pillar bodies typed as ReactNode for codebase consistency.
+   374→// ============================================================
+   375→
+   376→type TrustCard = {
+   377→  icon: typeof ShieldCheck;
+   378→  title: string;
+   379→  description: ReactNode;
+   380→};
+   381→
+   382→const TRUST_CARDS: TrustCard[] = [
+   383→  {
+   384→    icon: UserCheck,
+   385→    title: "The Same Trusted Team Every Visit",
+   386→    description:
+   387→      "Reliability is built on familiarity. We ensure the same vetted professionals manage your facility, allowing our staff to build a deep understanding of your specific high-traffic &ldquo;hotspots&rdquo; and sensitive equipment. The same PAYE-employed, PVG-checked, uniformed disinfection technicians return every visit &mdash; learning your floor plan&rsquo;s touchpoint map (which door handles get touched most, which lift buttons see the heaviest traffic at which hours, which shared keyboards and meeting-room controls are the cross-contamination vectors), your equipment register (electrostatic sprayer vs ULV fogger vs UV-C cabinet by zone), your occupancy constraints (in-hours presence, after-hours unsupervised, key-safes and alarm codes), and your inspection regime (EHO environmental health, insurer audit, HSE biological agents review, Care Inspectorate). When your regular crew is on annual leave, we send a trained backup who has been briefed on your facility &mdash; and we tell you in advance. Never a rotating cast of agency strangers walking a Scottish commercial facility with fogging equipment they do not understand.",
+   388→  },
+   389→  {
+   390→    icon: ShieldCheck,
+   391→    title: "99.99% Efficacy & 30-Day Protection",
+   392→    description:
+   393→      "Our effective service ensures your workplace and equipment remain 99.99% virus and bacteria-free. We utilize advanced treatments that can offer ongoing protection from the transmission of bacteria for up to 30 days following the initial application. The chemistry is certified to EN 14476 (virucidal &mdash; proven effective against enveloped viruses including influenza, rhinovirus, SARS-CoV-2, and norovirus), EN 1276 (bactericidal &mdash; including MRSA, E. coli, Salmonella, and Listeria), and EN 1650 (fungicidal). The 30-day residual protection comes from a antimicrobial surface coating that bonds to treated surfaces and continues to kill pathogens on contact between disinfection visits &mdash; ideal for high-risk settings like schools, nurseries, gyms, dental practices, and food-prep areas where the gap between visits is the vulnerability window. ATP swab verification available on request &mdash; we prove the result, we don&rsquo;t just claim it.",
+   394→  },
+   395→  {
+   396→    icon: FileText,
+   397→    title: "Total Regulatory Compliance",
+   398→    description:
+   399→      "We support businesses throughout Scotland to uphold their environmental and health and safety commitments. Our teams are trained in robust decontamination protocols, providing full RAMS (Risk Assessments and Method Statements) for every site survey. The RAMS covers: occupancy type (office, school, nursery, gym, dental practice, food-processing facility, care home), zone classification (general, high-touch, food-prep, clinical, childcare), chemistry register (EN 14476 virucidal, EN 1276 bactericidal, EN 1650 fungicidal, HSE-approved, food-safe, REACH-compliant), application method (electrostatic spray, ULV fogging, UV-C cabinet, touchpoint wipe-down), contact time and re-entry clearance, PPE protocol (Tyvek suit, FFP3 respirator, nitrile gloves, eye protection), and waste-water disposal. We are SafeContractor-approved, hold full employer&rsquo;s liability and &pound;5m public liability, can name your business on our policy as additional insured, and provide audit-ready documentation &mdash; COSHH datasheets, training records, Treatment Certificates, and HSE Biological Agents Code of Practice alignment &mdash; for your compliance file.",
+   400→  },
+   401→  {
+   402→    icon: Leaf,
+   403→    title: "Eco-Friendly & Safe for Occupants",
+   404→    description:
+   405→      "Your well-being is our priority. We utilize only certified child-safe and pet-safe products. This ensures a fresh, non-toxic environment that is safe for immediate use in childcare, healthcare, and office settings without the harsh chemical odors common with industrial agencies. The cardinal rule of our disinfection service: nothing that off-gasses into an occupied space. No chlorine-based bleach (off-gasses for hours, triggers asthma, unacceptable in childcare and healthcare). No quaternary-ammonium compounds at high concentration (residue risk on food-contact surfaces). No VOC-heavy aerosols. We use a hydrogen-peroxide-based virucide (decomposes to water and oxygen, no residue), a plant-derived biocidal surfactant for pre-cleaning, and an antimicrobial surface coating that is EPA-approved for use in occupied buildings. Every chemistry is biodegradable, food-safe (no rinse required on food-contact surfaces), child-safe, pet-safe, and safe for occupants to re-enter after the 8-minute dry time. The finishes you&rsquo;ve invested in are protected &mdash; and the staff who return the morning after are not walking into chemical fumes.",
+   406→  },
+   407→];
+   408→
+   409→export function DisinfectionSeoWhy() {
+   410→  return (
+   411→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   412→      <div className="max-w-[1400px] mx-auto px-6">
+   413→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   414→          {/* Image side */}
+   415→          <motion.div
+   416→            initial={{ opacity: 0, scale: 0.96 }}
+   417→            whileInView={{ opacity: 1, scale: 1 }}
+   418→            viewport={{ once: true, margin: "-80px" }}
+   419→            transition={{ duration: 0.6 }}
+   420→            className="relative order-2 lg:order-1"
+   421→          >
+   422→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   423→              <img
+   424→                src={IMG.whyCrew}
+   425→                alt="Maundy Clean disinfection crew &mdash; uniformed, PPE-trained, and certified for EN 14476 virucidal fogging in Scottish commercial facilities"
+   426→                className="absolute inset-0 w-full h-full object-cover"
+   427→                loading="lazy"
+   428→              />
+   429→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   430→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   431→                <div className="flex items-center gap-2 mb-1">
+   432→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   433→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   434→                    Reactive vs Preventive &mdash; We Do Both
+   435→                  </span>
+   436→                </div>
+   437→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   438→                  Many commercial contractors rely on reactive, one-off treatments. MaundyClean focuses
+   439→                  on building high-trust, ongoing relationships through vocational excellence and
+   440→                  technical depth.
+   441→                </p>
+   442→              </div>
+   443→            </div>
+   444→            <motion.div
+   445→              animate={{ y: [0, -8, 0] }}
+   446→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   447→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   448→            >
+   449→              <div className="flex items-center gap-2">
+   450→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   451→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   452→                </div>
+   453→                <div>
+   454→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   455→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m cover</div>
+   456→                </div>
+   457→              </div>
+   458→            </motion.div>
+   459→          </motion.div>
+   460→
+   461→          {/* Copy side */}
+   462→          <motion.div
+   463→            initial={{ opacity: 0, y: 20 }}
+   464→            whileInView={{ opacity: 1, y: 0 }}
+   465→            viewport={{ once: true, margin: "-80px" }}
+   466→            transition={{ duration: 0.5 }}
+   467→            className="order-1 lg:order-2"
+   468→          >
+   469→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   470→              Why choose Maundy Clean
+   471→            </span>
+   472→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   473→              Why MaundyClean is Scotland&rsquo;s Authority in Pathogen Control
+   474→            </h2>
+   475→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   476→              Many commercial contractors rely on reactive, one-off treatments. MaundyClean focuses on
+   477→              building high-trust, ongoing relationships through vocational excellence and technical
+   478→              depth &mdash; combining vetted uniformed teams, the same dedicated crew every visit,
+   479→              99.99% virucidal efficacy with 30-day residual protection, full RAMS compliance, and
+   480→              child-safe eco-friendly chemistry as standard.
+   481→            </p>
+   482→
+   483→            <div className="space-y-3">
+   484→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   485→                const Icon = card.icon;
+   486→                return (
+   487→                  <div
+   488→                    key={card.title}
+   489→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   490→                  >
+   491→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   492→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   493→                    </div>
+   494→                    <div>
+   495→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   496→                        {card.title}
+   497→                      </h3>
+   498→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   499→                        {typeof card.description === "string" ? (
+   500→                          <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   501→                        ) : (
+   502→                          card.description
+   503→                        )}
+   504→                      </p>
+   505→                    </div>
+   506→                  </div>
+   507→                );
+   508→              })}
+   509→            </div>
+   510→          </motion.div>
+   511→        </div>
+   512→
+   513→        {/* Third + fourth cards as a 2-column strip */}
+   514→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   515→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   516→            const Icon = card.icon;
+   517→            return (
+   518→              <motion.div
+   519→                key={card.title}
+   520→                initial={{ opacity: 0, y: 20 }}
+   521→                whileInView={{ opacity: 1, y: 0 }}
+   522→                viewport={{ once: true, margin: "-40px" }}
+   523→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   524→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   525→              >
+   526→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   527→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   528→                </div>
+   529→                <div>
+   530→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   531→                    {card.title}
+   532→                  </h3>
+   533→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   534→                    {typeof card.description === "string" ? (
+   535→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   536→                    ) : (
+   537→                      card.description
+   538→                    )}
+   539→                  </p>
+   540→                </div>
+   541→              </motion.div>
+   542→            );
+   543→          })}
+   544→        </div>
+   545→      </div>
+   546→    </section>
+   547→  );
+   548→}
+   549→
+   550→// ============================================================
+   551→// Section 3 - Our Total Disinfection & Sanitisation Checklist
+   552→// (Semantic H2: "Our Total Disinfection & Sanitisation Checklist")
+   553→// Brief-specific section with 3 H3 sub-sections:
+   554→//   1. Targeted High-Touch Disinfection (3 items)
+   555→//   2. Advanced Environmental Sanitisation (3 items)
+   556→//   3. Often-Missed Technical Details (2 items)
+   557→// Carries the id="checklist" anchor that the CTA buttons link to.
+   558→// Per the brief: NO intro paragraphs on the 3 checklist cards
+   559→// (just H3 title + sub-points).
+   560→// ============================================================
+   561→
+   562→type ChecklistPoint = {
+   563→  icon: typeof Sparkles;
+   564→  title: string;
+   565→  text: string;
+   566→};
+   567→
+   568→const CHECKLIST_ITEMS: {
+   569→  icon: typeof ShieldCheck;
+   570→  image: string;
+   571→  imageAlt: string;
+   572→  title: string;
+   573→  description: string;
+   574→  points: ChecklistPoint[];
+   575→}[] = [
+   576→  {
+   577→    icon: HeartPulse,
+   578→    image: IMG.checklistHighTouch,
+   579→    imageAlt:
+   580→      "Maundy Clean disinfection specialist hand-wiping high-touch doorknobs, lift buttons, and light switches with EN 14476 virucidal wipes in a Scottish commercial office",
+   581→    title: "1. Targeted High-Touch Disinfection",
+   582→    description:
+   583→      "The technical core of every disinfection visit. High-touch surfaces are the primary cross-contamination vectors in any commercial facility &mdash; doorknobs, handrails, lift buttons, light switches, shared keyboards, and payment terminals see hundreds of touches per day and accumulate dangerous pathogen loads within hours. We follow a targeted protocol: identify the touchpoint map, pre-clean visible soil, then apply EN 14476 virucidal chemistry with the verified 60-second contact time.",
+   584→    points: [
+   585→      {
+   586→        icon: CheckCircle2,
+   587→        title: "Thorough Wipe Downs",
+   588→        text: "Meticulous cleaning of all doorknobs, handrails, lift buttons, and light switches. Every high-touch surface is pre-wiped with a general cleaner to remove organic soil (which deactivates most disinfectants on contact), then treated with EN 14476 virucidal wipes with a verified 60-second contact time. Door handles and push plates on both sides of every door. Lift call buttons and in-car floor buttons. Stair handrails the full length. Light switches and socket switches. Reception desk counters and pen holders. The touchpoint map is documented and replicated every visit.",
+   589→      },
+   590→      {
+   591→        icon: Microscope,
+   592→        title: "Workstation Sanitisation",
+   593→        text: "Deep cleaning of desks, phones, and peripherals to reduce the risk of cross-contamination in shared offices. Desk surfaces wiped with EN 1276 bactericidal chemistry. Phone handsets and headsets disinfected (the highest pathogen load on any desk &mdash; typically 25,000 CFU per square inch). Keyboards and mice damp-wiped with alint-free cloth and alcohol-free virucide (alcohol damages keyboard coatings). Monitor frames and stands wiped. Chair armrests disinfected. Hot-desk stations get a full turnover disinfection between users. Shared meeting-room controllers, presentation clickers, and video-conference touch panels disinfected after every booking.",
+   594→      },
+   595→      {
+   596→        icon: Wrench,
+   597→        title: "Equipment Decontamination",
+   598→        text: "Specialized cleaning for factory production lines, supermarket trolleys, and shared electronic terminals. Factory production-line touchpoints (control panels, conveyor handrails, tool handles) disinfected with food-safe EN 1276 chemistry. Supermarket trolley handles and basket grips disinfected (the single highest-cross-contamination surface in retail &mdash; we offer a trolley-park fogging station). Shared electronic terminals (self-checkout touchscreens, card readers, PIN pads) wiped with a non-alcohol virucide that does not damage the anti-glare coating. Gym equipment grips and weight-machine adjustment pins disinfected. The equipment-specific touchpoints that generic cleaners miss.",
+   599→      },
+   600→    ],
+   601→  },
+   602→  {
+   603→    icon: SprayCan,
+   604→    image: IMG.checklistFogging,
+   605→    imageAlt:
+   606→      "Maundy Clean disinfection technician operating an electrostatic fogging machine to achieve full-room virucidal coverage in a Scottish commercial reception area",
+   607→    title: "2. Advanced Environmental Sanitisation",
+   608→    description:
+   609→      "Beyond the touchpoints you can see, pathogens accumulate on surfaces you can&rsquo;t reach with a cloth &mdash; ceiling voids, under-desk cable runs, behind equipment, inside air-conditioning grilles. Our environmental sanitisation protocol uses electrostatic and fogging technology to achieve full-room coverage, then addresses the floor and washroom zones that standard cleaning leaves behind.",
+   610→    points: [
+   611→      {
+   612→        icon: Wind,
+   613→        title: "Disinfectant Spraying & Fogging",
+   614→        text: "Utilizing electrostatic fogging technology to reach the &ldquo;unreachable&rdquo; areas and provide full-room coverage. Electrostatic spraying charges the disinfectant droplets so they wrap around surfaces &mdash; front, back, underside, and crevices &mdash; treating a 200m² office in 25 minutes. ULV (ultra-low-volume) fogging produces a fine mist that penetrates every surface in a sealed room &mdash; the method of choice for outbreak response, since it treats areas spraying can&rsquo;t reach (under desks, behind equipment, into ceiling voids). Room sealed for 60-minute contact time, then aired for 30 minutes before re-entry. Chemistry is HSE-approved, food-safe, and dries residue-free in 8 minutes.",
+   615→      },
+   616→      {
+   617→        icon: Droplets,
+   618→        title: "Floor & Carpet Restoration",
+   619→        text: "Using industrial-grade equipment to remove pathogens from high-traffic floor surfaces that standard recurring home cleaning might miss. Hard floors machine-scrubbed with EN 1276 bactericidal solution (the floor is the largest surface in any room and accumulates pathogens from every shoe). Carpeted zones hot-water-extracted with a sanitising pre-spray (carpet traps pathogens in the fibre matrix &mdash; vacuuming alone does not remove them). Entrance matting deep-cleaned (the first 3 metres of matting captures 80% of foot-borne contamination). Floor drains treated with enzymatic biocide. The floor work that separates a &ldquo;spray-and-go&rdquo; from a genuine environmental reset.",
+   620→      },
+   621→      {
+   622→        icon: HeartPulse,
+   623→        title: "Washroom Deep Sanitation",
+   624→        text: "Intensive sanitation of all facilities, including buffing chrome and disinfecting all ceramic items to a high shine. Toilets descaled with a non-abrasive acid, disinfected with EN 1276-certified bacteriacide. Chrome fittings (taps, flush handles, door furniture) polished to a streak-free shine. Mirrors squeegeed. Sanitary bins checked, emptied, and replaced. Floors mopped with a slip-resistant sanitiser. Washroom ventilation grilles vacuumed and damp-wiped (a neglected pathogen reservoir). The washroom is the highest-risk zone in any commercial facility &mdash; we treat it that way.",
+   625→      },
+   626→    ],
+   627→  },
+   628→  {
+   629→    icon: FileText,
+   630→    image: IMG.checklistDetails,
+   631→    imageAlt:
+   632→      "Maundy Clean disinfection specialist detailing often-missed technical surfaces &mdash; skirting boards, ventilation grilles, and internal glazing &mdash; in a Scottish commercial facility",
+   633→    title: "3. Often-Missed Technical Details",
+   634→    description:
+   635→      "The perimeter work that separates a &ldquo;disinfection spray&rdquo; from a genuine biological reset. Skirting boards, door frames, ventilation grilles, and internal glazing are the surfaces that generic contractors skip &mdash; and the surfaces that harbour the dust and biofilm that pathogens colonise between visits. We detail them as standard.",
+   636→    points: [
+   637→      {
+   638→        icon: AirVent,
+   639→        title: "Visible Skirting Boards & Vents",
+   640→        text: "Our cleaners meticulously wipe all skirting boards, door frames, and ventilation grilles to ensure no dust traps remain. Skirting boards hand-wiped the full perimeter (the dust that accumulates here is a biofilm reservoir that recontaminates freshly-disinfected surfaces within hours). Door frames detailed top-to-bottom. Ventilation grilles vacuumed with a HEPA crevice tool then damp-wiped with EN 1276 bactericidal solution (airborne pathogens recirculate through dust-loaded grilles). Light-switch backplates detailed. Ceiling light diffusers dusted with an anti-static cloth. The perimeter work your facilities manager notices first on the snagging walk &mdash; included as standard, never as an upsell.",
+   641→      },
+   642→      {
+   643→        icon: Sparkles,
+   644→        title: "Inside Window Care",
+   645→        text: "Meticulous cleaning of internal glazing and partitions to maintain a bright, healthy atmosphere. Internal glass partitions squeegeed with pure de-ionised water (no chemical haze, no streaks). Internal windows cleaned the same way. Glass door panels and vision panels polished. The psychological impact of bright, clean glass in a disinfected space is significant &mdash; staff and visitors perceive the space as genuinely safe, not just chemically treated. UV-C cabinet treatment available for items that can&rsquo;t be liquid-treated (laptops, tablets, books, soft toys, headphones, remote controls) &mdash; particularly useful in schools, nurseries, and dental practices.",
+   646→      },
+   647→    ],
+   648→  },
+   649→];
+   650→
+   651→export function DisinfectionSeoChecklist() {
+   652→  return (
+   653→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   654→      <div className="max-w-[1400px] mx-auto px-6">
+   655→        <motion.div
+   656→          initial={{ opacity: 0, y: 20 }}
+   657→          whileInView={{ opacity: 1, y: 0 }}
+   658→          viewport={{ once: true, margin: "-80px" }}
+   659→          transition={{ duration: 0.5 }}
+   660→          className="max-w-3xl mb-12"
+   661→        >
+   662→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   663→            Beyond the standard surface wipe
+   664→          </span>
+   665→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   666→            Our Total Disinfection &amp; Sanitisation Checklist
+   667→          </h2>
+   668→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   669→            Our antiviral sanitisation protocol follows a rigorous, agency-approved checklist designed to
+   670→            address the specific logistical challenges of varied commercial sectors. From targeted
+   671→            high-touch disinfection through advanced environmental fogging to the often-missed technical
+   672→            details &mdash; below is the scope we deliver as standard, regardless of facility type.
+   673→          </p>
+   674→        </motion.div>
+   675→
+   676→        <div className="grid lg:grid-cols-3 gap-6">
+   677→          {CHECKLIST_ITEMS.map((item, i) => {
+   678→            const Icon = item.icon;
+   679→            return (
+   680→              <motion.div
+   681→                key={item.title}
+   682→                initial={{ opacity: 0, y: 24 }}
+   683→                whileInView={{ opacity: 1, y: 0 }}
+   684→                viewport={{ once: true, margin: "-40px" }}
+   685→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   686→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   687→              >
+   688→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   689→                  <img
+   690→                    src={item.image}
+   691→                    alt={item.imageAlt}
+   692→                    className="absolute inset-0 w-full h-full object-cover"
+   693→                    loading="lazy"
+   694→                  />
+   695→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   696→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   697→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   698→                  </div>
+   699→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   700→                    {item.title}
+   701→                  </h3>
+   702→                </div>
+   703→                <div className="p-6 flex-1 flex flex-col">
+   704→                  <p
+   705→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   706→                    dangerouslySetInnerHTML={{ __html: item.description }}
+   707→                  />
+   708→                  <ul className="space-y-3 mt-auto">
+   709→                    {item.points.map((point) => {
+   710→                      const PointIcon = point.icon;
+   711→                      return (
+   712→                        <li
+   713→                          key={point.title}
+   714→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   715→                        >
+   716→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   717→                          <span>
+   718→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   719→                            &mdash; <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   720→                          </span>
+   721→                        </li>
+   722→                      );
+   723→                    })}
+   724→                  </ul>
+   725→                </div>
+   726→              </motion.div>
+   727→            );
+   728→          })}
+   729→        </div>
+   730→      </div>
+   731→    </section>
+   732→  );
+   733→}
+   734→
+   735→// ============================================================
+   736→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   737→// (Semantic H2: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   738→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   739→// Brief HAS NO [H3] marker on this heading, so we use <h2>
+   740→// (matches the VCT/Glass-Partition/Escalator pattern when no
+   741→// [H3] marker is present).
+   742→// ============================================================
+   743→
+   744→const BOOKING_STEPS = [
+   745→  {
+   746→    icon: ClipboardCheck,
+   747→    step: "01",
+   748→    title: "Site Survey & Risk Assessment",
+   749→    description:
+   750→      "Contact us to organise a free site survey. We will assess your facility to determine the most effective, tailored disinfection strategy for your specific sector. On-site pathogen-risk audit: floor plan mapped, high-touch surface register built (door handles, lift buttons, light switches, shared keyboards, payment terminals, reception counters), zone classification assigned (general, high-touch, food-prep, clinical, childcare), occupancy constraints reviewed (in-hours presence, after-hours unsupervised, key-safes and alarm codes), operational window confirmed (overnight, weekend, holiday closure, 4-hour outbreak callout), and chemistry register aligned to your sector (EN 14476 virucidal, EN 1276 bactericidal, EN 1650 fungicidal, HSE-approved, food-safe). Risk Assessment &amp; Method Statement prepared &mdash; covering application method (electrostatic spray, ULV fogging, UV-C cabinet, touchpoint wipe-down), contact time, re-entry clearance, PPE protocol, and waste-water disposal. SafeContractor-aligned documentation. Fixed-price quote within 2 business days &mdash; no on-the-day upsells.",
+   751→  },
+   752→  {
+   753→    icon: UserCheck,
+   754→    step: "02",
+   755→    title: "Professional Matching",
+   756→    description:
+   757→      "We hand-pick a team of trained technicians with in-depth knowledge of &ldquo;beyond clean&rdquo; hygiene protocols. Your allocated disinfection crew is PAYE-employed, PVG-checked, uniformed, and trained in pathogen-control-specific protocols &mdash; electrostatic sprayer operation, ULV fogging (outbreak response), UV-C cabinet treatment, EN 14476 virucidal application, EN 1276 bactericidal wipe-down, ATP swab verification, HSE Biological Agents Code of Practice, and SafeContractor methodology. We brief the crew on your touchpoint map, your zone classification, your access window (overnight, weekend, holiday closure, 4-hour outbreak callout), your occupancy constraints (occupied office, school with children present, dental practice between patients, food-processing facility during shutdown), and any operational constraints on chemistry or method. The same crew returns every visit, building real knowledge of your facility and your inspection regime.",
+   758→  },
+   759→  {
+   760→    icon: Sparkles,
+   761→    step: "03",
+   762→    title: "Enjoy a Safe Environment",
+   763→    description:
+   764→      "Experience a workspace that looks, smells, and feels biologically safe every day, backed by our MaundyClean satisfaction guarantee. You receive a signed Treatment Certificate after every visit (technician name, time in/out, zones treated, chemistry used with batch numbers, contact time, re-entry clearance), arrival and departure times, before-and-after ATP swab readings (on request), and issue-flagging for touchpoint wear, ventilation-grille contamination, washroom pathogen load, or outbreak-risk zones &mdash; before they undermine a facilities inspection, an insurer audit, or a Public Health Scotland review. From &pound;180 per visit for a single-zone preventive treatment through to &pound;POA for multi-site outbreak-response contracts with 4-hour SLA. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   765→  },
+   766→];
+   767→
+   768→export function DisinfectionSeoBooking() {
+   769→  return (
+   770→    <section className="py-16 lg:py-24 bg-background">
+   771→      <div className="max-w-[1400px] mx-auto px-6">
+   772→        <motion.div
+   773→          initial={{ opacity: 0, y: 20 }}
+   774→          whileInView={{ opacity: 1, y: 0 }}
+   775→          viewport={{ once: true, margin: "-80px" }}
+   776→          transition={{ duration: 0.5 }}
+   777→          className="text-center mb-14"
+   778→        >
+   779→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   780→            Hassle-free booking
+   781→          </span>
+   782→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   783→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   784→          </h2>
+   785→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   786→            We have optimised our booking experience to be uncomplicated and straightforward, providing
+   787→            the responsive support Scottish business owners demand. From free site survey and risk
+   788→            assessment through professional matching to a biologically safe environment &mdash; no
+   789→            friction, no waiting, no surprises. Just a &ldquo;beyond clean&rdquo; facility, every visit,
+   790→            and a compliance file that&rsquo;s audit-ready the day a facilities director, insurer, EHO,
+   791→            or operations manager walks in.
+   792→          </p>
+   793→        </motion.div>
+   794→
+   795→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   796→          {/* Connector line */}
+   797→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   798→
+   799→          {BOOKING_STEPS.map((step, i) => {
+   800→            const Icon = step.icon;
+   801→            return (
+   802→              <motion.div
+   803→                key={step.step}
+   804→                initial={{ opacity: 0, y: 24 }}
+   805→                whileInView={{ opacity: 1, y: 0 }}
+   806→                viewport={{ once: true, margin: "-40px" }}
+   807→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   808→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   809→              >
+   810→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   811→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   812→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   813→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   814→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   815→                    {step.step}
+   816→                  </span>
+   817→                </div>
+   818→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   819→                  {step.title}
+   820→                </h3>
+   821→                <p
+   822→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   823→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   824→                />
+   825→              </motion.div>
+   826→            );
+   827→          })}
+   828→        </div>
+   829→
+   830→        <motion.div
+   831→          initial={{ opacity: 0, y: 16 }}
+   832→          whileInView={{ opacity: 1, y: 0 }}
+   833→          viewport={{ once: true }}
+   834→          transition={{ duration: 0.5, delay: 0.3 }}
+   835→          className="text-center mt-10"
+   836→        >
+   837→          <Button
+   838→            size="lg"
+   839→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   840→            asChild
+   841→          >
+   842→            <Link href="/quote">
+   843→              Request Your Free Site Survey Today
+   844→              <ArrowRight className="w-5 h-5" />
+   845→            </Link>
+   846→          </Button>
+   847→        </motion.div>
+   848→      </div>
+   849→    </section>
+   850→  );
+   851→}
+   852→
+   853→// ============================================================
+   854→// Section 5 - Solutions for Every Property Milestone
+   855→// (Semantic H2: "Solutions for Every Property Milestone")
+   856→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   857→// Image-topped cards with internal links to specialist services.
+   858→// All 4 card descriptions are ReactNode values (each contains an
+   859→// inline <Link> per the brief) - rendered via the
+   860→// typeof sol.description === "string" check.
+   861→// Card 4 (Specialised Hygiene) has TWO inline links: Trauma Cleaning
+   862→// AND Mould Cleaning.
+   863→// ============================================================
+   864→
+   865→type InterlinkSolution = {
+   866→  icon: typeof Sparkles;
+   867→  title: string;
+   868→  href: string;
+   869→  image: string;
+   870→  imageAlt: string;
+   871→  description: ReactNode;
+   872→  cta: string;
+   873→};
+   874→
+   875→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   876→  {
+   877→    icon: Home,
+   878→    title: "Maintaining the Sanctuary",
+   879→    href: "/services/recurring-home-cleaning",
+   880→    image: IMG.leaseRecurring,
+   881→    imageAlt:
+   882→      "Recurring home cleaning service paired with commercial disinfection to bring the same pathogen-control standard to a Scottish residential property",
+   883→    description: (
+   884→      <>
+   885→        After your workplace is secured, bring the same standard to your personal home with our{" "}
+   886→        <Link
+   887→          href="/services/recurring-home-cleaning"
+   888→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   889→        >
+   890→          Recurring Home Cleaning
+   891→        </Link>{" "}
+   892→        service, customized for weekly or fortnightly maintenance. The same EN 14476 virucidal
+   893→        discipline, the same &ldquo;same-staff&rdquo; consistency, and the same child-safe eco-friendly
+   894→        chemistry we apply to your commercial facility &mdash; brought home. The residential service
+   895→        covers high-touch home touchpoints (door handles, light switches, remote controls, kitchen
+   896→        counters, bathroom fixtures), with the option to add a quarterly disinfection fogging reset for
+   897→        households with young children, elderly residents, or immunocompromised family members.
+   898→      </>
+   899→    ),
+   900→    cta: "Explore recurring home cleaning",
+   901→  },
+   902→  {
+   903→    icon: KeyRound,
+   904→    title: "Property Transitions",
+   905→    href: "/services/move-in-out-cleaning",
+   906→    image: IMG.leaseTenancy,
+   907→    imageAlt:
+   908→      "End of tenancy cleaning combined with disinfection services to ensure a Scottish commercial unit is fully sanitised for lease handover",
+   909→    description: (
+   910→      <>
+   911→        Moving offices? Our{" "}
+   912→        <Link
+   913→          href="/services/move-in-out-cleaning"
+   914→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   915→        >
+   916→          End of Tenancy Cleaning
+   917→        </Link>{" "}
+   918→        ensures units are front-line ready and fully sanitised for handover. We work to the letting
+   919→        agent&rsquo;s inventory, restore the unit to its original condition, deep-clean every surface
+   920→        from ceiling vents to floor edges, then apply a full EN 14476 virucidal fogging treatment
+   921→        before key handover &mdash; the new tenant walks into a space that is not just visually clean
+   922→        but biologically safe. Deposit-back guarantees met, lease handover starts from a
+   923→        &ldquo;speechlessly spotless&rdquo; baseline, and we come back free of charge if anything is
+   924→        flagged on the inspection.
+   925→      </>
+   926→    ),
+   927→    cta: "Explore end of tenancy cleaning",
+   928→  },
+   929→  {
+   930→    icon: Hammer,
+   931→    title: "Post-Renovation",
+   932→    href: "/services/post-construction-cleaning",
+   933→    image: IMG.leaseBuilders,
+   934→    imageAlt:
+   935→      "After builders clean removing heavy layers of construction dust from a Scottish commercial facility before disinfection fogging",
+   936→    description: (
+   937→      <>
+   938→        If your facility has had home improvements or shopfitting, our{" "}
+   939→        <Link
+   940→          href="/services/post-construction-cleaning"
+   941→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   942→        >
+   943→          After Builders Clean
+   944→        </Link>{" "}
+   945→        is essential for removing heavy layers of builders&rsquo; dust before disinfection.
+   946→        Construction dust on surfaces deactivates disinfectant chemistry on contact &mdash; you cannot
+   947→        disinfect a dusty surface. We HEPA-vacuum every surface, damp-wipe with a general cleaner, then
+   948→        apply the EN 14476 virucidal treatment to a genuinely clean substrate. The two-stage protocol
+   949→        (builders clean &rarr; disinfection fog) is the only way to achieve genuine biological safety
+   950→        in a post-renovation commercial space &mdash; and the protocol your insurer and Public Health
+   951→        Scotland expect.
+   952→      </>
+   953→    ),
+   954→    cta: "Explore after builders cleaning",
+   955→  },
+   956→  {
+   957→    icon: Biohazard,
+   958→    title: "Specialised Hygiene",
+   959→    href: "/services/trauma-cleanup",
+   960→    image: IMG.leaseTrauma,
+   961→    imageAlt:
+   962→      "Trauma cleaning and mould remediation services for Scottish commercial facilities requiring deeper structural disinfection beyond standard virucidal fogging",
+   963→    description: (
+   964→      <>
+   965→        Ask about our{" "}
+   966→        <Link
+   967→          href="/services/trauma-cleanup"
+   968→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   969→        >
+   970→          Trauma Cleaning
+   971→        </Link>{" "}
+   972→        or{" "}
+   973→        <Link
+   974→          href="/services/mould-remediation-cleaning"
+   975→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   976→        >
+   977→          Mould Cleaning
+   978→        </Link>{" "}
+   979→        services for environments requiring deeper structural remediation. Trauma scenes (blood-borne
+   980→        pathogen contamination, biohazard incidents, unattended deaths) require HSE Biological Agents
+   981→        Code of Practice compliance, specialist PPE, and regulated biohazard waste disposal. Mould
+   982→        remediation requires source identification, moisture mapping, HEPA-negative-air containment,
+   983→        and antimicrobial surface treatment. Both are beyond the scope of standard virucidal fogging
+   984→        &mdash; and both are delivered by the same Maundy Clean team, with the same documentation
+   985→        discipline, to the same audit-ready standard.
+   986→      </>
+   987→    ),
+   988→    cta: "Explore specialised hygiene services",
+   989→  },
+   990→];
+   991→
+   992→export function DisinfectionSeoInterlinking() {
+   993→  return (
+   994→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   995→      <div className="max-w-[1400px] mx-auto px-6">
+   996→        <motion.div
+   997→          initial={{ opacity: 0, y: 20 }}
+   998→          whileInView={{ opacity: 1, y: 0 }}
+   999→          viewport={{ once: true, margin: "-80px" }}
+  1000→          transition={{ duration: 0.5 }}
+  1001→          className="max-w-3xl mb-12"
+  1002→        >
+  1003→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1004→            Beyond the daily disinfect &middot; property lifecycle
+  1005→          </span>
+  1006→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1007→            Solutions for Every Property Milestone
+  1008→          </h2>
+  1009→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+  1010→            Our disinfection services provide the safety foundation for your premises, but we offer
+  1011→            specialised &ldquo;resets&rdquo; for major property needs &mdash; from bringing the same
+  1012→            pathogen-control standard home, through lease handovers and post-renovation dust clear-outs,
+  1013→            to trauma and mould remediation for environments requiring deeper structural intervention.
+  1014→            The same trusted, vetted crew can step up whenever your property needs more than a standard
+  1015→            disinfection visit.
+  1016→          </p>
+  1017→        </motion.div>
+  1018→
+  1019→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  1020→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+  1021→            const Icon = sol.icon;
+  1022→            return (
+  1023→              <motion.div
+  1024→                key={sol.title}
+  1025→                initial={{ opacity: 0, y: 24 }}
+  1026→                whileInView={{ opacity: 1, y: 0 }}
+  1027→                viewport={{ once: true, margin: "-40px" }}
+  1028→                transition={{ duration: 0.5, delay: i * 0.1 }}
+  1029→              >
+  1030→                <Link
+  1031→                  href={sol.href}
+  1032→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+  1033→                >
+  1034→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+  1035→                    <img
+  1036→                      src={sol.image}
+  1037→                      alt={sol.imageAlt}
+  1038→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+  1039→                      loading="lazy"
+  1040→                    />
+  1041→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+  1042→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+  1043→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+  1044→                    </div>
+  1045→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+  1046→                      {sol.title}
+  1047→                    </h3>
+  1048→                  </div>
+  1049→                  <div className="p-5">
+  1050→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+  1051→                      {typeof sol.description === "string" ? (
+  1052→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+  1053→                      ) : (
+  1054→                        sol.description
+  1055→                      )}
+  1056→                    </p>
+  1057→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+  1058→                      {sol.cta}
+  1059→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  1060→                    </span>
+  1061→                  </div>
+  1062→                </Link>
+  1063→              </motion.div>
+  1064→            );
+  1065→          })}
+  1066→        </div>
+  1067→      </div>
+  1068→    </section>
+  1069→  );
+  1070→}
+  1071→
+  1072→// ============================================================
+  1073→// Section 6 - "Near Me" Location Internal Links
+  1074→// (Semantic H2: "Disinfection & Antiviral Sanitisation Near Me in Scotland")
+  1075→// Split layout with map image + 36-location grid
+  1076→// ============================================================
+  1077→
+  1078→export function DisinfectionSeoNearMe() {
+  1079→  return (
+  1080→    <section className="py-16 lg:py-24 bg-background">
+  1081→      <div className="max-w-[1400px] mx-auto px-6">
+  1082→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+  1083→          {/* Left: copy + map image */}
+  1084→          <motion.div
+  1085→            initial={{ opacity: 0, y: 20 }}
+  1086→            whileInView={{ opacity: 1, y: 0 }}
+  1087→            viewport={{ once: true, margin: "-80px" }}
+  1088→            transition={{ duration: 0.5 }}
+  1089→          >
+  1090→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1091→              Local disinfection &amp; sanitisation across Scotland
+  1092→            </span>
+  1093→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1094→              Disinfection &amp; Antiviral Sanitisation Near Me, Across Scotland
+  1095→            </h2>
+  1096→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+  1097→              Searching for &ldquo;disinfection services near me&rdquo; or &ldquo;antiviral sanitisation
+  1098→              near me&rdquo; in Scotland? Maundy Clean covers offices, schools, nurseries, gyms, dental
+  1099→              practices, restaurants, and commercial facilities across the Central Belt, Highlands,
+  1100→              Borders, and Islands. Same vetted uniformed crews, same EN 14476 virucidal chemistry,
+  1101→              same 4-hour outbreak callout &mdash; wherever your facility happens to be. Find your local
+  1102→              disinfection specialist below.
+  1103→            </p>
+  1104→
+  1105→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+  1106→              <img
+  1107→                src={IMG.nearMeMap}
+  1108→                alt="Map of Scotland showing Maundy Clean disinfection and antiviral sanitisation service coverage areas"
+  1109→                className="absolute inset-0 w-full h-full object-cover"
+  1110→                loading="lazy"
+  1111→              />
+  1112→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+  1113→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+  1114→                <div className="flex items-center gap-2 mb-1">
+  1115→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+  1116→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+  1117→                    72+ Scottish towns covered
+  1118→                  </span>
+  1119→                </div>
+  1120→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1121→                  Same vetted uniformed crews, same 4-hour outbreak callout &mdash; from Glasgow to
+  1122→                  Inverness.
+  1123→                </p>
+  1124→              </div>
+  1125→            </div>
+  1126→          </motion.div>
+  1127→
+  1128→          {/* Right: location grid */}
+  1129→          <motion.div
+  1130→            initial={{ opacity: 0, y: 20 }}
+  1131→            whileInView={{ opacity: 1, y: 0 }}
+  1132→            viewport={{ once: true, margin: "-60px" }}
+  1133→            transition={{ duration: 0.5 }}
+  1134→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1135→          >
+  1136→            <div className="flex items-center justify-between mb-5">
+  1137→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1138→                Find your local disinfection crew
+  1139→              </h3>
+  1140→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1141→            </div>
+  1142→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1143→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1144→                <motion.div
+  1145→                  key={loc.slug}
+  1146→                  initial={{ opacity: 0 }}
+  1147→                  whileInView={{ opacity: 1 }}
+  1148→                  viewport={{ once: true }}
+  1149→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1150→                >
+  1151→                  <Link
+  1152→                    href={`/services/disinfection-services-near-me#${loc.slug}`}
+  1153→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1154→                  >
+  1155→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1156→                    <span>
+  1157→                      <span className="font-medium">{loc.city}</span>
+  1158→                      <span className="text-[var(--muted-foreground)]"> disinfection</span>
+  1159→                    </span>
+  1160→                  </Link>
+  1161→                </motion.div>
+  1162→              ))}
+  1163→            </div>
+  1164→
+  1165→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1166→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1167→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1168→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1169→              </div>
+  1170→              <div className="flex flex-col sm:flex-row gap-3 items-center">
+  1171→                <Link
+  1172→                  href="/services/disinfection-services-near-me#locations"
+  1173→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1174→                >
+  1175→                  <MapPin className="w-4 h-4" />
+  1176→                  Browse the near-me directory
+  1177→                  <ArrowRight className="w-4 h-4" />
+  1178→                </Link>
+  1179→                <Link
+  1180→                  href="/locations"
+  1181→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1182→                >
+  1183→                  View all 72 Scottish locations
+  1184→                  <ArrowRight className="w-4 h-4" />
+  1185→                </Link>
+  1186→              </div>
+  1187→            </div>
+  1188→          </motion.div>
+  1189→        </div>
+  1190→
+  1191→        {/* SEO long-form paragraph for "near me" search intent */}
+  1192→        <motion.div
+  1193→          initial={{ opacity: 0, y: 16 }}
+  1194→          whileInView={{ opacity: 1, y: 0 }}
+  1195→          viewport={{ once: true, margin: "-40px" }}
+  1196→          transition={{ duration: 0.5, delay: 0.2 }}
+  1197→          className="mt-10 max-w-4xl mx-auto text-center"
+  1198→        >
+  1199→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1200→            Our local disinfection crews operate across Glasgow&rsquo;s commercial district,
+  1201→            Edinburgh&rsquo;s New Town offices, Aberdeen&rsquo;s energy-sector HQs, Dundee&rsquo;s
+  1202→            life-sciences campus, and the Highlands &mdash; from Inverness to Perth, Falkirk to Ayr.
+  1203→            Whether you&rsquo;re searching for outbreak-response fogging in Glasgow, preventive
+  1204→            electrostatic disinfection in Edinburgh, nursery sanitisation in Aberdeen, or gym
+  1205→            touchpoint disinfection anywhere in between, Maundy Clean assigns a vetted, PAYE-employed
+  1206→            crew that stays with you for the long run. Same crew, same standard, same 4-hour SLA for
+  1207→            confirmed outbreaks.
+  1208→          </p>
+  1209→        </motion.div>
+  1210→      </div>
+  1211→    </section>
+  1212→  );
+  1213→}
+  1214→
+  1215→// ============================================================
+  1216→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1217→// (Semantic H2: "Request Your Free Site Survey Today")
+  1218→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1219→// ============================================================
+  1220→
+  1221→export function DisinfectionSeoFinalCta() {
+  1222→  return (
+  1223→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1224→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1225→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1226→
+  1227→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1228→        <motion.div
+  1229→          initial={{ opacity: 0, y: 20 }}
+  1230→          whileInView={{ opacity: 1, y: 0 }}
+  1231→          viewport={{ once: true, margin: "-80px" }}
+  1232→          transition={{ duration: 0.5 }}
+  1233→        >
+  1234→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1235→            Ready to book your site survey?
+  1236→          </span>
+  1237→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1238→            Request Your Free Site Survey Today
+  1239→          </h2>
+  1240→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1241→            Book a free, no-obligation site survey with our management team and receive an itemised
+  1242→            proposal within 2 business days. Vetted uniformed crews, EN 14476 virucidal chemistry, 99.99%
+  1243→            efficacy with 30-day residual protection, full RAMS compliance, signed Treatment Certificates,
+  1244→            and a 100% satisfaction guarantee &mdash; from &pound;180 per visit for a single-zone
+  1245→            preventive treatment through to a fully bespoke multi-site outbreak-response retainer with
+  1246→            4-hour SLA. No pushy sales call, no waiting 24 hours for a callback.
+  1247→          </p>
+  1248→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1249→            <Button
+  1250→              size="lg"
+  1251→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1252→              asChild
+  1253→            >
+  1254→              <Link href="/quote">
+  1255→                Request Your Free Site Survey Today
+  1256→                <ArrowRight className="w-5 h-5" />
+  1257→              </Link>
+  1258→            </Button>
+  1259→            <Button
+  1260→              size="lg"
+  1261→              variant="outline"
+  1262→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1263→              asChild
+  1264→            >
+  1265→              <Link href="#checklist">
+  1266→                <CheckCircle2 className="w-4 h-4" />
+  1267→                View Our Commercial Cleaning Checklist
+  1268→              </Link>
+  1269→            </Button>
+  1270→          </div>
+  1271→        </motion.div>
+  1272→      </div>
+  1273→    </section>
+  1274→  );
+  1275→}
+  1276→
+  1277→// ============================================================
+  1278→// Section 8 - SEO FAQ block
+  1279→// (Semantic H2: "Frequently Asked Questions")
+  1280→// 3 Q&As from the brief (childcare safe, own equipment, out-of-hours)
+  1281→// ============================================================
+  1282→
+  1283→const SEO_FAQS = [
+  1284→  {
+  1285→    q: "Are your disinfection services safe for childcare environments?",
+  1286→    a: "Absolutely. We work with clients across various sectors including childcare and supermarkets, using only non-toxic, certified products that are safe for use in every area of the workplace. Our childcare-specific protocol uses a hydrogen-peroxide-based virucide (decomposes to water and oxygen, no residue), a plant-derived biocidal surfactant for pre-cleaning, and an antimicrobial surface coating that is EPA-approved for use in occupied buildings. No chlorine-based bleach (off-gasses for hours, triggers asthma), no quaternary-ammonium compounds at high concentration (residue risk), no VOC-heavy aerosols. Every chemistry is biodegradable, food-safe, child-safe, pet-safe, and safe for occupants to re-enter after the 8-minute dry time. We are experienced with Care Inspectorate compliance, nursery sleep-room protocols, and the specific touchpoint map of a childcare setting (nappy-change mats, door handles, shared toys, snack tables, hand-wash stations). Certificates of chemistry and COSHH datasheets are available on request.",
+  1287→  },
+  1288→  {
+  1289→    q: "Do you provide your own specialised equipment?",
+  1290→    a: "Yes. We supply all our own professional-grade equipment, including fogging machines and high-level disinfectant spraying tools, which are included in your no-obligation quote. Every crew arrives in a liveried van with electrostatic sprayers (charged-droplet wrap-around coverage, treats a 200m² office in 25 minutes), ULV fogging machines (ultra-low-volume mist for outbreak response, penetrates every surface in a sealed room), UV-C cabinets (360-degree UV-C light for items that can&rsquo;t be liquid-treated &mdash; laptops, tablets, books, soft toys), ATP swab readers (real-time pathogen-load verification), EN 14476 virucidal chemistry with batch tracking, EN 1276 bactericidal wipes for touchpoint wipe-downs, full PPE (Tyvek suit, FFP3 respirator, nitrile gloves, eye protection), and colour-coded microfibre cloths to prevent cross-contamination between zones. You provide access and a point of contact &mdash; we bring everything else. Equipment is PAT-tested, calibrated quarterly, and serviced by the manufacturer.",
+  1291→  },
+  1292→  {
+  1293→    q: "Can you work out-of-hours to minimize disruption?",
+  1294→    a: "Yes. We offer flexible appointments across 7 days a week, including early mornings or late evenings, to ensure your facility meets health and safety standards without interrupting your operations. The most common windows are pre-open (5am-7am) for a front-line ready reset before staff arrive, post-close (7pm-10pm) for a full disinfection turnover after the building empties, overnight (10pm-6am) for full-room ULV fogging with 60-minute contact time and 30-minute air-out, or weekend for a full-building deep disinfection with zero occupancy constraints. For confirmed outbreaks, we operate a 24/7 hotline with a 4-hour SLA across Scotland&rsquo;s central belt &mdash; phone us at 4pm with a confirmed norovirus case and our technician is on-site by 8pm with fogging equipment, full PPE, and HSE-approved chemistry. We are trained on all major alarm systems (Texecom, Honeywell, Pyronix, Risco) and follow strict key-handling protocols &mdash; keys stored in a coded safe, alarm codes encrypted, never labelled with your address.",
+  1295→  },
+  1296→];
+  1297→
+  1298→export function DisinfectionSeoFaq() {
+  1299→  return (
+  1300→    <section className="py-16 lg:py-24 bg-background">
+  1301→      <div className="max-w-4xl mx-auto px-6">
+  1302→        <motion.div
+  1303→          initial={{ opacity: 0, y: 20 }}
+  1304→          whileInView={{ opacity: 1, y: 0 }}
+  1305→          viewport={{ once: true, margin: "-80px" }}
+  1306→          transition={{ duration: 0.5 }}
+  1307→          className="text-center mb-12"
+  1308→        >
+  1309→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1310→            Disinfection &amp; sanitisation &middot; FAQ
+  1311→          </span>
+  1312→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1313→            Frequently Asked Questions
+  1314→          </h2>
+  1315→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1316→            Straight answers to the questions our disinfection services clients ask most often.
+  1317→            Can&rsquo;t find what you need? Call us on{" "}
+  1318→            <a
+  1319→              href={contactInfo.phoneHref}
+  1320→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1321→            >
+  1322→              {contactInfo.phone}
+  1323→            </a>{" "}
+  1324→            and we&rsquo;ll talk it through.
+  1325→          </p>
+  1326→        </motion.div>
+  1327→
+  1328→        <div className="space-y-4">
+  1329→          {SEO_FAQS.map((faq, i) => (
+  1330→            <motion.div
+  1331→              key={faq.q}
+  1332→              initial={{ opacity: 0, y: 16 }}
+  1333→              whileInView={{ opacity: 1, y: 0 }}
+  1334→              viewport={{ once: true, margin: "-40px" }}
+  1335→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1336→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1337→            >
+  1338→              <details className="group">
+  1339→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1340→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1341→                    {faq.q}
+  1342→                  </h3>
+  1343→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1344→                    <span className="relative w-3.5 h-3.5">
+  1345→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1346→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1347→                    </span>
+  1348→                  </span>
+  1349→                </summary>
+  1350→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1351→                  <p
+  1352→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1353→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1354→                  />
+  1355→                </div>
+  1356→              </details>
+  1357→            </motion.div>
+  1358→          ))}
+  1359→        </div>
+  1360→
+  1361→        <motion.div
+  1362→          initial={{ opacity: 0, y: 16 }}
+  1363→          whileInView={{ opacity: 1, y: 0 }}
+  1364→          viewport={{ once: true, margin: "-40px" }}
+  1365→          transition={{ duration: 0.5, delay: 0.3 }}
+  1366→          className="mt-10 text-center"
+  1367→        >
+  1368→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1369→            <Button
+  1370→              size="lg"
+  1371→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1372→              asChild
+  1373→            >
+  1374→              <Link href="/quote">
+  1375→                Request Your Free Site Survey Today
+  1376→                <ArrowRight className="w-5 h-5" />
+  1377→              </Link>
+  1378→            </Button>
+  1379→            <Button
+  1380→              size="lg"
+  1381→              variant="outline"
+  1382→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1383→              asChild
+  1384→            >
+  1385→              <Link href="#checklist">
+  1386→                <CheckCircle2 className="w-4 h-4" />
+  1387→                View Our Commercial Cleaning Checklist
+  1388→              </Link>
+  1389→            </Button>
+  1390→          </div>
+  1391→        </motion.div>
+  1392→      </div>
+  1393→    </section>
+  1394→  );
+  1395→}
+  1396→

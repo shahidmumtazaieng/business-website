@@ -1,0 +1,1108 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Users,
+     7→  Shield,
+     8→  Leaf,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Home,
+    15→  KeyRound,
+    16→  Hammer,
+    17→  Star,
+    18→  Zap,
+    19→  UserCheck,
+    20→  CalendarCheck,
+    21→  SprayCan,
+    22→  Wind,
+    23→  Building2,
+    24→  Brush,
+    25→  FileCheck,
+    26→} from "lucide-react";
+    27→import { Button } from "@/components/ui/button";
+    28→import { contactInfo } from "@/lib/site-data";
+    29→
+    30→// ============================================================
+    31→// Images — hand-picked from in-house search service
+    32→// ============================================================
+    33→const IMG = {
+    34→  heroWide:
+    35→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg", // bright tenement hallway encaustic tiles (matches ServiceDetail heroImage)
+    36→  whyCrew:
+    37→    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    38→  checklistClose:
+    39→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // restored tenement close / hallway
+    40→  checklistInterior:
+    41→    "https://sfile.chatglm.cn/images-ppt/8c109fd7dbba.jpg", // spotless living room sunlight
+    42→  checklistKitchen:
+    43→    "https://sfile.chatglm.cn/images-ppt/8fce1b536378.jpg", // eco-spray kitchen
+    44→  checklistWindows:
+    45→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // sash window detail / paint removal
+    46→  stageMoveInOut:
+    47→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty tenement flat move-in
+    48→  stageBuilders:
+    49→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg", // post-builders cleanup
+    50→  stageSpring:
+    51→    "https://sfile.chatglm.cn/images-ppt/2353ab471a3d.jpg", // bright spring-cleaned tenement room
+    52→  nearMeMap:
+    53→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    54→};
+    55→
+    56→// ============================================================
+    57→// Section 0 — Full-width hero banner
+    58→// H1: "Professional Tenement Cleaning Glasgow & Paisley"
+    59→// ============================================================
+    60→
+    61→export function TenementSeoHeroBanner() {
+    62→  return (
+    63→    <section className="relative overflow-hidden">
+    64→      {/* Full-width background image */}
+    65→      <div className="absolute inset-0">
+    66→        <img
+    67→          src={IMG.heroWide}
+    68→          alt="Restored tenement close and hallway with original encaustic tiles maintained by Maundy Clean"
+    69→          className="w-full h-full object-cover"
+    70→          loading="eager"
+    71→          fetchPriority="high"
+    72→        />
+    73→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+    74→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+    75→      </div>
+    76→
+    77→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+    78→        <motion.div
+    79→          initial="hidden"
+    80→          animate="visible"
+    81→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+    82→          className="max-w-3xl"
+    83→        >
+    84→          <motion.div
+    85→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+    86→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+    87→          >
+    88→            <span className="relative flex w-2 h-2">
+    89→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+    90→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+    91→            </span>
+    92→            Tenement Cleaning · Glasgow · Edinburgh · Paisley · Central Belt
+    93→          </motion.div>
+    94→
+    95→          <motion.h1
+    96→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+    97→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+    98→          >
+    99→            Professional Tenement Cleaning Glasgow &amp; Paisley
+   100→          </motion.h1>
+   101→
+   102→          <motion.p
+   103→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   104→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   105→          >
+   106→            Expert close cleaning, stair maintenance, and recurring home cleaning for traditional
+   107→            Scottish properties. The same PVG-checked specialist every visit, original-feature
+   108→            care (cornicing, sash windows, encaustic tiles, pitch-pine floors), and a 100%
+   109→            re-clean guarantee. One-off specialist cleans from £145; recurring close &amp; flat
+   110→            plans from £18/hr.
+   111→          </motion.p>
+   112→
+   113→          <motion.div
+   114→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   115→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   116→          >
+   117→            <Button
+   118→              size="lg"
+   119→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   120→              asChild
+   121→            >
+   122→              <Link href="/quote">
+   123→                Get My 30-Second Instant Quote
+   124→                <ArrowRight className="w-5 h-5" />
+   125→              </Link>
+   126→            </Button>
+   127→            <Button
+   128→              size="lg"
+   129→              variant="outline"
+   130→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   131→              asChild
+   132→            >
+   133→              <a href={contactInfo.phoneHref}>
+   134→                <Zap className="w-4 h-4" />
+   135→                Same-day quote
+   136→              </a>
+   137→            </Button>
+   138→          </motion.div>
+   139→
+   140→          <motion.div
+   141→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   142→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   143→          >
+   144→            <div className="flex items-center gap-1.5">
+   145→              <div className="flex">
+   146→                {[1, 2, 3, 4, 5].map((s) => (
+   147→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   148→                ))}
+   149→              </div>
+   150→              <span className="font-semibold text-white">4.9/5</span>
+   151→              <span className="text-white/70">· 6,200+ reviews</span>
+   152→            </div>
+   153→            <div className="flex items-center gap-1.5">
+   154→              <Shield className="w-4 h-4 text-[var(--gold)]" /> PVG-Checked &amp; £5m Insured
+   155→            </div>
+   156→            <div className="flex items-center gap-1.5">
+   157→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Eco-labelled supplies
+   158→            </div>
+   159→            <div className="flex items-center gap-1.5">
+   160→              <Clock className="w-4 h-4 text-[var(--gold)]" /> Same specialist every visit
+   161→            </div>
+   162→          </motion.div>
+   163→        </motion.div>
+   164→      </div>
+   165→    </section>
+   166→  );
+   167→}
+   168→
+   169→// ============================================================
+   170→// Section 1 — Long-form SEO intro
+   171→// Sits right after the hero, before the existing ServiceOverview.
+   172→// ============================================================
+   173→
+   174→export function TenementSeoIntro() {
+   175→  return (
+   176→    <section className="py-16 lg:py-24 bg-background">
+   177→      <div className="max-w-[1100px] mx-auto px-6">
+   178→        <motion.div
+   179→          initial={{ opacity: 0, y: 20 }}
+   180→          whileInView={{ opacity: 1, y: 0 }}
+   181→          viewport={{ once: true, margin: "-80px" }}
+   182→          transition={{ duration: 0.5 }}
+   183→          className="max-w-3xl mx-auto text-center mb-10"
+   184→        >
+   185→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   186→            Professional tenement cleaning · Scotland
+   187→          </span>
+   188→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   189→            The Maundy Clean Standard for Tenement Care
+   190→          </h2>
+   191→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   192→            Maintaining a tenement building requires more than just a quick sweep — it demands a
+   193→            specialist partner who understands the unique architectural heritage of Glasgow,
+   194→            Edinburgh, and Paisley. At Maundy Clean, we provide a comprehensive tenement
+   195→            cleaning service that covers every inch of your property, from the communal entrance
+   196→            and close stairs to the interior of your individual sanctuary. Original cornicing is
+   197→            dry-brushed, never wet-wiped. Sash cords are dry-brushed, never wet. Encaustic
+   198→            hallway tiles use pH-neutral cleaner, never acid. Pitch-pine floors get tack-cloth
+   199→            and oil, never water. Whether you are a resident association, a property factor, or a
+   200→            busy professional looking for recurring home cleaning, our service is built on trust,
+   201→            consistency, and a{" "}
+   202→            <strong className="font-semibold text-[var(--ink)]">Maundy level of care</strong> for
+   203→            the Scottish period-property home.
+   204→          </p>
+   205→        </motion.div>
+   206→
+   207→        {/* Trust strip */}
+   208→        <motion.div
+   209→          initial={{ opacity: 0, y: 16 }}
+   210→          whileInView={{ opacity: 1, y: 0 }}
+   211→          viewport={{ once: true, margin: "-60px" }}
+   212→          transition={{ duration: 0.5 }}
+   213→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   214→        >
+   215→          {[
+   216→            { label: "Period-property experience", value: "Hundreds of tenements" },
+   217→            { label: "Typical 2-bed specialist clean", value: "1 day · £245" },
+   218→            { label: "Re-clean rate", value: "1.4% of jobs" },
+   219→            { label: "Specialist retention", value: "4.2 years avg" },
+   220→          ].map((stat) => (
+   221→            <div
+   222→              key={stat.label}
+   223→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   224→            >
+   225→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   226→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   227→            </div>
+   228→          ))}
+   229→        </motion.div>
+   230→      </div>
+   231→    </section>
+   232→  );
+   233→}
+   234→
+   235→// ============================================================
+   236→// Section 2 — Why Maundy Clean is Scotland's Trusted Choice
+   237→// (H2: "Why Maundy Clean is Scotland's Trusted Choice for Tenement Cleaning")
+   238→// Image+copy split layout
+   239→// ============================================================
+   240→
+   241→const TRUST_CARDS = [
+   242→  {
+   243→    icon: Users,
+   244→    title: "The Same Trusted Specialist Every Visit",
+   245→    description:
+   246→      "Trust is paramount in communal spaces. That is why we ensure the same vetted specialist visits your building every time — building a deep understanding of your close, your stair, your sash windows, and your priority zones. Our specialists stay with us an average of 4.2 years, so they know your building&apos;s quirks as well as you do.",
+   247→  },
+   248→  {
+   249→    icon: Building2,
+   250→    title: "Specialist Period-Flooring Care",
+   251→    description:
+   252→      "We are fully equipped to handle Linotol cleaning, stone stair restoration, encaustic tile revival, and modern tile maintenance — using the right chemistry for each surface. Acid never touches encaustic (it dissolves the lime bed); water never touches pitch-pine (it raises the grain). Your communal areas and interior floors are not just clean, they are preserved for years to come.",
+   253→  },
+   254→  {
+   255→    icon: Leaf,
+   256→    title: "Eco-Friendly & Family Safe",
+   257→    description:
+   258→      "We use only certified child-safe and pet-safe products as standard — EU Ecolabel and DEFRA-approved low-VOC formulations. Our non-toxic solutions are safe for the family living in the flat, the neighbours sharing the close, and the Scottish landscape we all share.",
+   259→  },
+   260→  {
+   261→    icon: Shield,
+   262→    title: "SafeContractor Standards & £5m Liability",
+   263→    description:
+   264→      "Every Maundy Clean technician is fully trained, Disclosure Scotland PVG-checked, insured with £5m public liability cover, and carries official Maundy Clean identification for your total peace of mind — whether they are cleaning your private flat or moving through a shared close.",
+   265→  },
+   266→];
+   267→
+   268→export function TenementSeoWhy() {
+   269→  return (
+   270→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   271→      <div className="max-w-[1400px] mx-auto px-6">
+   272→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   273→          {/* Image side */}
+   274→          <motion.div
+   275→            initial={{ opacity: 0, scale: 0.96 }}
+   276→            whileInView={{ opacity: 1, scale: 1 }}
+   277→            viewport={{ once: true, margin: "-80px" }}
+   278→            transition={{ duration: 0.6 }}
+   279→            className="relative order-2 lg:order-1"
+   280→          >
+   281→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   282→              <img
+   283→                src={IMG.whyCrew}
+   284→                alt="Maundy Clean tenement cleaning specialist in uniform arriving at a Glasgow close"
+   285→                className="absolute inset-0 w-full h-full object-cover"
+   286→                loading="lazy"
+   287→              />
+   288→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   289→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   290→                <div className="flex items-center gap-2 mb-1">
+   291→                  <Shield className="w-4 h-4 text-[var(--brand)]" />
+   292→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   293→                    Same Specialist · Every Visit
+   294→                  </span>
+   295→                </div>
+   296→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   297→                  PVG-checked, PAYE-employed, uniformed, and trained on cornicing, sash windows,
+   298→                  encaustic tiles, and pitch-pine floors. Specialists stay 4.2 years on average.
+   299→                </p>
+   300→              </div>
+   301→            </div>
+   302→            <motion.div
+   303→              animate={{ y: [0, -8, 0] }}
+   304→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   305→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   306→            >
+   307→              <div className="flex items-center gap-2">
+   308→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   309→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   310→                </div>
+   311→                <div>
+   312→                  <div className="text-[10px] text-[var(--muted-foreground)]">Client retention</div>
+   313→                  <div className="text-xs font-bold text-[var(--ink)]">98%</div>
+   314→                </div>
+   315→              </div>
+   316→            </motion.div>
+   317→          </motion.div>
+   318→
+   319→          {/* Copy side */}
+   320→          <motion.div
+   321→            initial={{ opacity: 0, y: 20 }}
+   322→            whileInView={{ opacity: 1, y: 0 }}
+   323→            viewport={{ once: true, margin: "-80px" }}
+   324→            transition={{ duration: 0.5 }}
+   325→            className="order-1 lg:order-2"
+   326→          >
+   327→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   328→              Why choose Maundy Clean
+   329→            </span>
+   330→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   331→              Why Maundy Clean is Scotland&apos;s Trusted Choice for Tenement Cleaning
+   332→            </h2>
+   333→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   334→              Maundy Clean is a local, premium cleaning specialist focused on building
+   335→              high-trust relationships with tenement residents, factors, and resident
+   336→              associations across the Central Belt. Every tenement clean is delivered by a
+   337→              vetted, uniformed, PAYE-employed specialist — trained in the technical needs of
+   338→              traditional Scottish flats while ensuring the highest standards of safety and
+   339→              hygiene for communal and private spaces alike.
+   340→            </p>
+   341→
+   342→            <div className="space-y-3">
+   343→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   344→                const Icon = card.icon;
+   345→                return (
+   346→                  <div
+   347→                    key={card.title}
+   348→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   349→                  >
+   350→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   351→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   352→                    </div>
+   353→                    <div>
+   354→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   355→                        {card.title}
+   356→                      </h3>
+   357→                      <p
+   358→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   359→                        dangerouslySetInnerHTML={{ __html: card.description }}
+   360→                      />
+   361→                    </div>
+   362→                  </div>
+   363→                );
+   364→              })}
+   365→            </div>
+   366→          </motion.div>
+   367→        </div>
+   368→
+   369→        {/* Remaining cards as 2-up grid */}
+   370→        <div className="grid md:grid-cols-2 gap-5">
+   371→          {TRUST_CARDS.slice(2).map((card, i) => {
+   372→            const Icon = card.icon;
+   373→            return (
+   374→              <motion.div
+   375→                key={card.title}
+   376→                initial={{ opacity: 0, y: 20 }}
+   377→                whileInView={{ opacity: 1, y: 0 }}
+   378→                viewport={{ once: true, margin: "-40px" }}
+   379→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   380→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   381→              >
+   382→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   383→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   384→                </div>
+   385→                <div>
+   386→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   387→                    {card.title}
+   388→                  </h3>
+   389→                  <p
+   390→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   391→                    dangerouslySetInnerHTML={{ __html: card.description }}
+   392→                  />
+   393→                </div>
+   394→              </motion.div>
+   395→            );
+   396→          })}
+   397→        </div>
+   398→      </div>
+   399→    </section>
+   400→  );
+   401→}
+   402→
+   403→// ============================================================
+   404→// Section 3 — 3-Step "Hassle-Free" Booking Process
+   405→// (H2: "The Maundy Clean 3-Step 'Hassle-Free' Process")
+   406→// ============================================================
+   407→
+   408→const BOOKING_STEPS = [
+   409→  {
+   410→    icon: Zap,
+   411→    step: "01",
+   412→    title: "Instant Online Quote",
+   413→    description:
+   414→      "Use our 30-second quote tool to tell us about your tenement — close and stair only, recurring interior flat cleaning, or a one-off specialist period-property clean — and receive a fixed-price estimate instantly. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay.",
+   415→  },
+   416→  {
+   417→    icon: UserCheck,
+   418→    step: "02",
+   419→    title: "Professional Matching",
+   420→    description:
+   421→      "We match your building or flat with a local tenement specialist who fits your schedule, offering appointments five days a week. For communal close cleans we coordinate with your factor or resident association; for private flats we operate a secure key-safe protocol if you can&apos;t be home. Your specialist is briefed on your building&apos;s original features before the first visit.",
+   422→  },
+   423→  {
+   424→    icon: CalendarCheck,
+   425→    step: "03",
+   426→    title: "Enjoy a Pristine Property",
+   427→    description:
+   428→      "Experience a finish that leaves your entire tenement feeling fresh, clean, and welcoming — from the close entrance to the cornicing. Every clean is reviewed against our tenement-specific checklist, with a 100% re-clean guarantee if anything is missed. You also receive a photo-flagged defect report on every specialist clean, so you spot rising damp or sash-cord wear before it becomes a bigger problem.",
+   429→  },
+   430→];
+   431→
+   432→export function TenementSeoBooking() {
+   433→  return (
+   434→    <section className="py-16 lg:py-24 bg-background">
+   435→      <div className="max-w-[1400px] mx-auto px-6">
+   436→        <motion.div
+   437→          initial={{ opacity: 0, y: 20 }}
+   438→          whileInView={{ opacity: 1, y: 0 }}
+   439→          viewport={{ once: true, margin: "-80px" }}
+   440→          transition={{ duration: 0.5 }}
+   441→          className="text-center mb-14"
+   442→        >
+   443→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   444→            Hassle-free booking
+   445→          </span>
+   446→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   447→            The Maundy Clean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   448→          </h2>
+   449→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   450→            We have made our booking system straightforward and helpful, with a 30-second
+   451→            instant quote tool and a same-day callback promise. From quote to first clean in
+   452→            under 48 hours.
+   453→          </p>
+   454→        </motion.div>
+   455→
+   456→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   457→          {/* Connector line */}
+   458→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   459→
+   460→          {BOOKING_STEPS.map((step, i) => {
+   461→            const Icon = step.icon;
+   462→            return (
+   463→              <motion.div
+   464→                key={step.step}
+   465→                initial={{ opacity: 0, y: 24 }}
+   466→                whileInView={{ opacity: 1, y: 0 }}
+   467→                viewport={{ once: true, margin: "-40px" }}
+   468→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   469→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   470→              >
+   471→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   472→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   473→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   474→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   475→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   476→                    {step.step}
+   477→                  </span>
+   478→                </div>
+   479→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   480→                  {step.title}
+   481→                </h3>
+   482→                <p
+   483→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   484→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   485→                />
+   486→              </motion.div>
+   487→            );
+   488→          })}
+   489→        </div>
+   490→
+   491→        <motion.div
+   492→          initial={{ opacity: 0, y: 16 }}
+   493→          whileInView={{ opacity: 1, y: 0 }}
+   494→          viewport={{ once: true }}
+   495→          transition={{ duration: 0.5, delay: 0.3 }}
+   496→          className="text-center mt-10"
+   497→        >
+   498→          <Button
+   499→            size="lg"
+   500→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   501→            asChild
+   502→          >
+   503→            <Link href="/quote">
+   504→              Get an Instant Quote Now
+   505→              <ArrowRight className="w-5 h-5" />
+   506→            </Link>
+   507→          </Button>
+   508→        </motion.div>
+   509→      </div>
+   510→    </section>
+   511→  );
+   512→}
+   513→
+   514→// ============================================================
+   515→// Section 4 — Detailed What's Included (4 image-topped cards)
+   516→// (H2: "Our Total Tenement Maintenance Checklist")
+   517→// ============================================================
+   518→
+   519→const INCLUDED_DETAIL = [
+   520→  {
+   521→    icon: Building2,
+   522→    title: "The Close & Communal Areas",
+   523→    image: IMG.checklistClose,
+   524→    imageAlt: "Restored tenement close and hallway with original encaustic tiles",
+   525→    description:
+   526→      "Intensive sweeping and mopping of all stair levels, focusing on the removal of city-centre dust and debris. Professional cleaning of traditional flooring systems — Linotol, stone, encaustic tile — to maintain their like-new appearance. Disinfecting of high-touch points including communal door handles, entry-phone systems, and bannisters, plus meticulous cleaning of close windows to improve natural light and curb appeal.",
+   527→    points: [
+   528→      "Sweep & mop all stair levels, edge-to-edge",
+   529→      "Linotol, stone & encaustic tile restoration",
+   530→      "Disinfect door handles, entry-phone, bannisters",
+   531→      "Clean close windows for natural light",
+   532→      "Cobweb removal from stairwell corners",
+   533→    ],
+   534→  },
+   535→  {
+   536→    icon: Home,
+   537→    title: "Recurring Interior Flat Cleaning",
+   538→    image: IMG.checklistInterior,
+   539→    imageAlt: "Spotless tenement living room with original cornicing maintained by Maundy Clean",
+   540→    description:
+   541→      "Meticulous dusting of fixtures, ornaments, and skirting boards within your individual flat — including high cornicing reached with extension poles and a soft horsehair brush (never wet-wiping unpainted plaster). Living rooms, bedrooms, and hallways cleaned top-to-bottom on every recurring visit, with original features respected throughout.",
+   542→    points: [
+   543→      "Dust all surfaces, ornaments, light fittings",
+   544→      "Cornicing & ceiling roses — horsehair brush only",
+   545→      "Wipe skirting boards, door frames, sills",
+   546→      "Polish wood, glass, and mirrors streak-free",
+   547→      "Vacuum under beds and sofa cushions",
+   548→    ],
+   549→  },
+   550→  {
+   551→    icon: SprayCan,
+   552→    title: "Kitchen & Bathroom Hygiene",
+   553→    image: IMG.checklistKitchen,
+   554→    imageAlt: "Maundy Clean technician wiping down a tenement flat kitchen with eco-friendly spray",
+   555→    description:
+   556→      "Deep sanitation of worktops, splashbacks, and ceramic items. Professional buffing of taps and chrome fixtures to remove water spots and limescale. We wipe down the exterior of your oven, hob, fridge, and microwave as part of every visit, and use anti-fungal products on bathroom grout and silicone where tenement ventilation is limited.",
+   557→    points: [
+   558→      "Sanitise worktops, splashbacks, ceramics",
+   559→      "Buff and polish chrome taps & shower fittings",
+   560→      "Wipe oven, hob, fridge & microwave exteriors",
+   561→      "Descale toilets and shower heads",
+   562→      "Anti-fungal treatment on grout & silicone",
+   563→    ],
+   564→  },
+   565→  {
+   566→    icon: Wind,
+   567→    title: "Sash Windows, Floors & Fabric Care",
+   568→    image: IMG.checklistWindows,
+   569→    imageAlt: "Specialist cleaning of sash window track and pitch-pine floor in a Scottish tenement",
+   570→    description:
+   571→      "Specialist sash-and-case window care — vacuum the track with a crevice tool, dry-brush sash cords (never wet — swells and snaps them), and detail glazing bars and putty. Pitch-pine and Douglas-fir floors cleaned with a tack-cloth and replenished with Danish or linseed oil. Intensive HEPA-filtered vacuuming of carpets and period rugs, plus deep mopping of hard floors to kill germs and maintain freshness.",
+   572→    points: [
+   573→      "Sash track vacuumed with crevice tool",
+   574→      "Sash cords dry-brushed only (never wet)",
+   575→      "Pitch-pine floor tack-cloth + oil replenishment",
+   576→      "HEPA vacuum carpets & period rugs",
+   577→      "Hard floors mopped with pH-neutral cleaner",
+   578→    ],
+   579→  },
+   580→];
+   581→
+   582→export function TenementSeoIncludedDetail() {
+   583→  return (
+   584→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   585→      <div className="max-w-[1400px] mx-auto px-6">
+   586→        <motion.div
+   587→          initial={{ opacity: 0, y: 20 }}
+   588→          whileInView={{ opacity: 1, y: 0 }}
+   589→          viewport={{ once: true, margin: "-80px" }}
+   590→          transition={{ duration: 0.5 }}
+   591→          className="max-w-3xl mb-12"
+   592→        >
+   593→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   594→            What&apos;s included · the detail
+   595→          </span>
+   596→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   597→            Our Total Tenement Maintenance Checklist
+   598→          </h2>
+   599→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   600→            Our recurring tenement cleaning service is designed to be technical and thorough,
+   601→            covering the areas that standard contractors often overlook — from the close
+   602→            entrance to the cornicing. Every item below is included as standard, with no
+   603→            add-on fees or surprise charges.
+   604→          </p>
+   605→        </motion.div>
+   606→
+   607→        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   608→          {INCLUDED_DETAIL.map((item, i) => {
+   609→            const Icon = item.icon;
+   610→            return (
+   611→              <motion.div
+   612→                key={item.title}
+   613→                initial={{ opacity: 0, y: 24 }}
+   614→                whileInView={{ opacity: 1, y: 0 }}
+   615→                viewport={{ once: true, margin: "-40px" }}
+   616→                transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
+   617→                className="bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/30 transition-all flex flex-col"
+   618→              >
+   619→                {/* Image header */}
+   620→                <div className="relative aspect-[16/10] bg-[var(--brand-dark)] overflow-hidden">
+   621→                  <img
+   622→                    src={item.image}
+   623→                    alt={item.imageAlt}
+   624→                    className="absolute inset-0 w-full h-full object-cover"
+   625→                    loading="lazy"
+   626→                  />
+   627→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   628→                  <div className="absolute top-4 left-4 w-11 h-11 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   629→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   630→                  </div>
+   631→                  <div className="absolute bottom-4 left-4 right-4">
+   632→                    <h3 className="font-display font-bold text-lg text-white leading-tight">
+   633→                      {item.title}
+   634→                    </h3>
+   635→                  </div>
+   636→                </div>
+   637→
+   638→                {/* Body */}
+   639→                <div className="p-6 flex-1 flex flex-col">
+   640→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   641→                    {item.description}
+   642→                  </p>
+   643→                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mt-auto">
+   644→                    {item.points.map((point) => (
+   645→                      <li
+   646→                        key={point}
+   647→                        className="flex items-start gap-2 text-sm text-[var(--ink)]/85"
+   648→                      >
+   649→                        <CheckCircle2 className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   650→                        <span>{point}</span>
+   651→                      </li>
+   652→                    ))}
+   653→                  </ul>
+   654→                </div>
+   655→              </motion.div>
+   656→            );
+   657→          })}
+   658→        </div>
+   659→      </div>
+   660→    </section>
+   661→  );
+   662→}
+   663→
+   664→// ============================================================
+   665→// Section 5 — Semantic Interlinking: Solutions for Every Transition
+   666→// (H2: "Solutions for Every Transition")
+   667→// Image-topped cards with internal links
+   668→// ============================================================
+   669→
+   670→const STAGE_SOLUTIONS = [
+   671→  {
+   672→    icon: KeyRound,
+   673→    title: "End of Tenancy · Deposit-Back Guarantee",
+   674→    href: "/services/move-in-out-cleaning",
+   675→    image: IMG.stageMoveInOut,
+   676→    imageAlt: "Empty Scottish tenement flat being deep cleaned for new tenant move-in",
+   677→    description:
+   678→      "Moving in or out of a tenement flat? Our End of Tenancy Cleaning includes a 100% Deposit-Back Guarantee to ensure you fulfil your lease — full inventory documentation, appliance interiors, inside cabinets, and the skirting board detail that letting agents in Glasgow and Edinburgh actually inspect.",
+   679→    cta: "Explore end of tenancy cleaning",
+   680→  },
+   681→  {
+   682→    icon: Hammer,
+   683→    title: "After Builders Clean",
+   684→    href: "/services/post-construction-cleaning",
+   685→    image: IMG.stageBuilders,
+   686→    imageAlt: "Post-builders cleanup removing fine construction dust from a tenement flat",
+   687→    description:
+   688→      "If your tenement flat or close has recently had work done — re-plastering, re-wiring, a new bathroom suite — our After Builders Clean is designed to remove heavy layers of construction dust. HEPA H-class filtration, tack-cloth particulate capture, and a top-down room-sealed protocol that genuinely captures dust rather than redistributing it.",
+   689→    cta: "Get post-builders cleanup quote",
+   690→  },
+   691→  {
+   692→    icon: Sparkles,
+   693→    title: "One-Off Spring Clean",
+   694→    href: "/services/spring-cleaning",
+   695→    image: IMG.stageSpring,
+   696→    imageAlt: "Bright spring-cleaned tenement living room with original features",
+   697→    description:
+   698→      "Book a one-off Spring Clean for a top-to-bottom refresh of your tenement home and communal areas — a 64-point checklist, paint-spot removal from sash window glass, deep-clean of the kitchen and bathroom, and a fresh coat of oil on the pitch-pine floors. The perfect seasonal reset for a period property.",
+   699→    cta: "Book a spring clean",
+   700→  },
+   701→];
+   702→
+   703→export function TenementSeoLeaseStages() {
+   704→  return (
+   705→    <section className="py-16 lg:py-24 bg-background">
+   706→      <div className="max-w-[1400px] mx-auto px-6">
+   707→        <motion.div
+   708→          initial={{ opacity: 0, y: 20 }}
+   709→          whileInView={{ opacity: 1, y: 0 }}
+   710→          viewport={{ once: true, margin: "-80px" }}
+   711→          transition={{ duration: 0.5 }}
+   712→          className="max-w-3xl mb-12"
+   713→        >
+   714→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   715→            Beyond recurring · transitions
+   716→          </span>
+   717→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   718→            Solutions for Every Transition
+   719→          </h2>
+   720→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   721→            A truly clean tenement is about more than just the visible surfaces — it is about
+   722→            understanding the full life cycle of a period property. While our recurring tenement
+   723→            cleaning maintains your daily environment, we also offer specialised support for
+   724→            major property milestones — so the same trusted specialist can step up when life
+   725→            changes.
+   726→          </p>
+   727→        </motion.div>
+   728→
+   729→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+   730→          {STAGE_SOLUTIONS.map((sol, i) => {
+   731→            const Icon = sol.icon;
+   732→            return (
+   733→              <motion.div
+   734→                key={sol.title}
+   735→                initial={{ opacity: 0, y: 24 }}
+   736→                whileInView={{ opacity: 1, y: 0 }}
+   737→                viewport={{ once: true, margin: "-40px" }}
+   738→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   739→              >
+   740→                <Link
+   741→                  href={sol.href}
+   742→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   743→                >
+   744→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   745→                    <img
+   746→                      src={sol.image}
+   747→                      alt={sol.imageAlt}
+   748→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   749→                      loading="lazy"
+   750→                    />
+   751→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   752→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   753→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   754→                    </div>
+   755→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   756→                      {sol.title}
+   757→                    </h3>
+   758→                  </div>
+   759→                  <div className="p-6">
+   760→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-5">
+   761→                      {sol.description}
+   762→                    </p>
+   763→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   764→                      {sol.cta}
+   765→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   766→                    </span>
+   767→                  </div>
+   768→                </Link>
+   769→              </motion.div>
+   770→            );
+   771→          })}
+   772→        </div>
+   773→      </div>
+   774→    </section>
+   775→  );
+   776→}
+   777→
+   778→// ============================================================
+   779→// Section 6 — SEO FAQ (Schema-ready Q&A)
+   780→// (H2: "Frequently Asked Questions")
+   781→// ============================================================
+   782→
+   783→const SEO_FAQS = [
+   784→  {
+   785→    q: "Do you work with property factors and housing associations?",
+   786→    a: "Yes. We provide contracted support for factors, landlords, and resident associations across the Greater Glasgow area, including South and North Lanarkshire, Edinburgh, and Paisley. Single point of contact, consolidated invoicing per building, and consistent quality across your portfolio — whether you manage a single close or 200 tenement flats.",
+   787→  },
+   788→  {
+   789→    q: "Are your cleaners insured?",
+   790→    a: "Absolutely. Maundy Clean is a fully insured professional cleaning company with years of experience serving the Central Belt. Every visit is covered by £5m public liability insurance — protecting your flat, your contents, the communal close, and your neighbours' property. We also carry employer's liability and professional indemnity cover as standard.",
+   791→  },
+   792→  {
+   793→    q: "Do I need to provide cleaning equipment?",
+   794→    a: "No. We supply all of our own professional-grade equipment and supplies, which are included in your competitive quote — HEPA-filtered vacuums, specialist sash-window track kits, horsehair brushes for cornicing, pH-neutral cleaners for encaustic tiles, tack-cloths and oils for pitch-pine floors, and EU Ecolabel low-VOC products throughout. You don't need to buy or store anything.",
+   795→  },
+   796→  {
+   797→    q: "Can you clean the original cornicing and ceiling roses?",
+   798→    a: "Yes — this is one of our specialities. Unpainted cornicing is dry-brushed with a soft horsehair brush and HEPA vacuum attachment — never wet-wiped, which causes water staining on the bare plaster. Painted cornicing (where previous owners have emulsioned over the original) is hand-wiped with a damp microfibre, taking care not to disturb the underlying detail. Ceiling roses are cleaned the same careful way.",
+   799→  },
+   800→  {
+   801→    q: "Will the cleaning damage my pitch-pine floors?",
+   802→    a: "No. Pitch-pine and Douglas-fir floors are cleaned with a tack-cloth to lift dry dust, then replenished with a thin coat of Danish oil or linseed oil (depending on the existing finish). Water-based products raise the grain and dull the colour, so we never wet-mop — at most a barely-damp microfibre pad. The floor looks deeper and richer after our clean, not stripped or dull.",
+   803→  },
+   804→  {
+   805→    q: "How do you clean the communal close and stair?",
+   806→    a: "Inside the close, we sweep and mop all stair levels edge-to-edge, disinfect high-touch points (door handles, entry-phone, bannisters), clean the close windows for natural light, and remove cobwebs from stairwell corners. For traditional flooring — Linotol, stone, encaustic tile — we use the correct chemistry for each surface (pH-neutral for encaustic, never acid or alkaline). Close cleans can be billed per flat or to the factor directly, whichever your building prefers.",
+   807→  },
+   808→];
+   809→
+   810→export function TenementSeoFaq() {
+   811→  return (
+   812→    <section className="py-16 lg:py-24 bg-background">
+   813→      <div className="max-w-4xl mx-auto px-6">
+   814→        <motion.div
+   815→          initial={{ opacity: 0, y: 20 }}
+   816→          whileInView={{ opacity: 1, y: 0 }}
+   817→          viewport={{ once: true, margin: "-80px" }}
+   818→          transition={{ duration: 0.5 }}
+   819→          className="text-center mb-12"
+   820→        >
+   821→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   822→            Tenement cleaning · FAQ
+   823→          </span>
+   824→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   825→            Frequently Asked Questions
+   826→          </h2>
+   827→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   828→            Straight answers to the questions our tenement clients ask most often. Can&apos;t
+   829→            find what you need? Call us on{" "}
+   830→            <a
+   831→              href={contactInfo.phoneHref}
+   832→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   833→            >
+   834→              {contactInfo.phone}
+   835→            </a>{" "}
+   836→            and we&apos;ll talk it through.
+   837→          </p>
+   838→        </motion.div>
+   839→
+   840→        <div className="space-y-4">
+   841→          {SEO_FAQS.map((faq, i) => (
+   842→            <motion.div
+   843→              key={faq.q}
+   844→              initial={{ opacity: 0, y: 16 }}
+   845→              whileInView={{ opacity: 1, y: 0 }}
+   846→              viewport={{ once: true, margin: "-40px" }}
+   847→              transition={{ duration: 0.4, delay: i * 0.06 }}
+   848→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   849→            >
+   850→              <details className="group">
+   851→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   852→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   853→                    {faq.q}
+   854→                  </h3>
+   855→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   856→                    <span className="relative w-3.5 h-3.5">
+   857→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   858→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   859→                    </span>
+   860→                  </span>
+   861→                </summary>
+   862→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   863→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   864→                    {faq.a}
+   865→                  </p>
+   866→                </div>
+   867→              </details>
+   868→            </motion.div>
+   869→          ))}
+   870→        </div>
+   871→      </div>
+   872→    </section>
+   873→  );
+   874→}
+   875→
+   876→// ============================================================
+   877→// Section 7 — "Near Me" Location Internal Links
+   878→// (H2: "Tenement Cleaning Near Me in Scotland")
+   879→// Split layout with map image + 36-location grid
+   880→// ============================================================
+   881→
+   882→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   883→  { city: "Glasgow", slug: "glasgow" },
+   884→  { city: "Edinburgh", slug: "edinburgh" },
+   885→  { city: "Paisley", slug: "paisley" },
+   886→  { city: "Aberdeen", slug: "aberdeen" },
+   887→  { city: "Dundee", slug: "dundee" },
+   888→  { city: "Stirling", slug: "stirling" },
+   889→  { city: "Perth", slug: "perth" },
+   890→  { city: "Falkirk", slug: "falkirk" },
+   891→  { city: "Inverness", slug: "inverness" },
+   892→  { city: "Ayr", slug: "ayr" },
+   893→  { city: "Kilmarnock", slug: "kilmarnock" },
+   894→  { city: "Livingston", slug: "livingston" },
+   895→  { city: "East Kilbride", slug: "east-kilbride" },
+   896→  { city: "Hamilton", slug: "hamilton" },
+   897→  { city: "Motherwell", slug: "motherwell" },
+   898→  { city: "Dunfermline", slug: "dunfermline" },
+   899→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   900→  { city: "Musselburgh", slug: "musselburgh" },
+   901→  { city: "Dalkeith", slug: "dalkeith" },
+   902→  { city: "Bathgate", slug: "bathgate" },
+   903→  { city: "Cumbernauld", slug: "cumbernauld" },
+   904→  { city: "Coatbridge", slug: "coatbridge" },
+   905→  { city: "St Andrews", slug: "st-andrews" },
+   906→  { city: "Elgin", slug: "elgin" },
+   907→  { city: "Peterhead", slug: "peterhead" },
+   908→  { city: "Stonehaven", slug: "stonehaven" },
+   909→  { city: "Inverurie", slug: "inverurie" },
+   910→  { city: "Oban", slug: "oban" },
+   911→  { city: "Fort William", slug: "fort-william" },
+   912→  { city: "Aviemore", slug: "aviemore" },
+   913→  { city: "Dumfries", slug: "dumfries" },
+   914→  { city: "Stranraer", slug: "stranraer" },
+   915→  { city: "Wick", slug: "wick" },
+   916→  { city: "Thurso", slug: "thurso" },
+   917→  { city: "Lerwick", slug: "lerwick" },
+   918→  { city: "Kirkwall", slug: "kirkwall" },
+   919→];
+   920→
+   921→export function TenementSeoNearMe() {
+   922→  return (
+   923→    <section className="py-16 lg:py-24 bg-background">
+   924→      <div className="max-w-[1400px] mx-auto px-6">
+   925→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   926→          {/* Left: copy + map image */}
+   927→          <motion.div
+   928→            initial={{ opacity: 0, y: 20 }}
+   929→            whileInView={{ opacity: 1, y: 0 }}
+   930→            viewport={{ once: true, margin: "-80px" }}
+   931→            transition={{ duration: 0.5 }}
+   932→          >
+   933→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   934→              Local specialists across Scotland
+   935→            </span>
+   936→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   937→              Tenement Cleaning Near Me in Scotland
+   938→            </h2>
+   939→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   940→              Searching for &ldquo;tenement cleaning near me&rdquo; in Scotland? Maundy Clean
+   941→              covers 72+ towns and cities across the Central Belt, Highlands, Borders, and
+   942→              Islands — from Glasgow sandstone tenements to Edinburgh New Town flats, Paisley
+   943→              four-in-a-blocks to Aberdeen granite crescents. Same PVG-checked standard, same
+   944→              100% re-clean guarantee, same dedicated specialist every visit — wherever your
+   945→              tenement is. Find your local crew below.
+   946→            </p>
+   947→
+   948→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   949→              <img
+   950→                src={IMG.nearMeMap}
+   951→                alt="Map of Scotland showing Maundy Clean tenement cleaning coverage areas"
+   952→                className="absolute inset-0 w-full h-full object-cover"
+   953→                loading="lazy"
+   954→              />
+   955→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   956→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   957→                <div className="flex items-center gap-2 mb-1">
+   958→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   959→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   960→                    72+ Scottish towns covered
+   961→                  </span>
+   962→                </div>
+   963→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   964→                  Same PVG-checked specialists, same dedicated crew every visit, same 100%
+   965→                  re-clean guarantee — from Glasgow to Lerwick.
+   966→                </p>
+   967→              </div>
+   968→            </div>
+   969→          </motion.div>
+   970→
+   971→          {/* Right: location grid */}
+   972→          <motion.div
+   973→            initial={{ opacity: 0, y: 20 }}
+   974→            whileInView={{ opacity: 1, y: 0 }}
+   975→            viewport={{ once: true, margin: "-60px" }}
+   976→            transition={{ duration: 0.5 }}
+   977→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   978→          >
+   979→            <div className="flex items-center justify-between mb-5">
+   980→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   981→                Find your local tenement specialist
+   982→              </h3>
+   983→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   984→            </div>
+   985→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   986→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   987→                <motion.div
+   988→                  key={loc.slug}
+   989→                  initial={{ opacity: 0 }}
+   990→                  whileInView={{ opacity: 1 }}
+   991→                  viewport={{ once: true }}
+   992→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   993→                >
+   994→                  <Link
+   995→                    href={`/locations/${loc.slug}`}
+   996→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   997→                  >
+   998→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   999→                    <span>
+  1000→                      <span className="font-medium">{loc.city}</span>
+  1001→                      <span className="text-[var(--muted-foreground)]"> tenement</span>
+  1002→                    </span>
+  1003→                  </Link>
+  1004→                </motion.div>
+  1005→              ))}
+  1006→            </div>
+  1007→
+  1008→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1009→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1010→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1011→                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+  1012→              </div>
+  1013→              <Link
+  1014→                href="/locations"
+  1015→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1016→              >
+  1017→                View all 72 Scottish locations
+  1018→                <ArrowRight className="w-4 h-4" />
+  1019→              </Link>
+  1020→            </div>
+  1021→          </motion.div>
+  1022→        </div>
+  1023→
+  1024→        {/* Long-form paragraph for "near me" search intent */}
+  1025→        <motion.div
+  1026→          initial={{ opacity: 0, y: 16 }}
+  1027→          whileInView={{ opacity: 1, y: 0 }}
+  1028→          viewport={{ once: true, margin: "-40px" }}
+  1029→          transition={{ duration: 0.5, delay: 0.2 }}
+  1030→          className="mt-10 max-w-4xl mx-auto text-center"
+  1031→        >
+  1032→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1033→            Our local tenement specialists operate across Glasgow&apos;s West End, Hyndland,
+  1034→            Dowanhill, Partick, and Dennistoun; Edinburgh&apos;s New Town, Marchmont,
+  1035→            Bruntsfield, Morningside, and Leith; Paisley&apos;s historic centre; Aberdeen&apos;s
+  1036→            granite tenements; and Dundee&apos;s West End &mdash; from Inverness to Thurso, Fort
+  1037→            William to Lerwick. Whether you&apos;re searching for recurring tenement cleaning in
+  1038→            Glasgow, close and stair cleaning in Edinburgh, period-property specialist cleaning
+  1039→            in Aberdeen, or one-off tenement deep cleaning anywhere in between, Maundy Clean
+  1040→            assigns a PVG-checked, PAYE-employed specialist who stays with you for the long run.
+  1041→            Same specialist, same day, same locked-in rate for 12 months.
+  1042→          </p>
+  1043→        </motion.div>
+  1044→      </div>
+  1045→    </section>
+  1046→  );
+  1047→}
+  1048→
+  1049→// ============================================================
+  1050→// Section 8 — Final CTA strip (companion to ServiceFinalCta)
+  1051→// (H3: "Ready to Refresh Your Tenement?")
+  1052→// ============================================================
+  1053→
+  1054→export function TenementSeoFinalCta() {
+  1055→  return (
+  1056→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1057→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1058→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1059→
+  1060→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1061→        <motion.div
+  1062→          initial={{ opacity: 0, y: 20 }}
+  1063→          whileInView={{ opacity: 1, y: 0 }}
+  1064→          viewport={{ once: true, margin: "-80px" }}
+  1065→          transition={{ duration: 0.5 }}
+  1066→        >
+  1067→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1068→            Ready to refresh your tenement?
+  1069→          </span>
+  1070→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1071→            Ready to Refresh Your Tenement?
+  1072→          </h3>
+  1073→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1074→            Get a fixed-price tenement cleaning quote in 30 seconds. No pushy sales call, no
+  1075→            waiting 24 hours for a callback. PVG-checked specialists, original-feature care
+  1076→            (cornicing, sash windows, encaustic tiles, pitch-pine floors), a 100% re-clean
+  1077→            guarantee, and a photo-flagged defect report on every specialist clean — one-off
+  1078→            from £145, recurring from £18/hr.
+  1079→          </p>
+  1080→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1081→            <Button
+  1082→              size="lg"
+  1083→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1084→              asChild
+  1085→            >
+  1086→              <Link href="/quote">
+  1087→                Get My 30-Second Instant Quote
+  1088→                <ArrowRight className="w-5 h-5" />
+  1089→              </Link>
+  1090→            </Button>
+  1091→            <Button
+  1092→              size="lg"
+  1093→              variant="outline"
+  1094→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1095→              asChild
+  1096→            >
+  1097→              <a href={contactInfo.phoneHref}>
+  1098→                <Zap className="w-4 h-4" />
+  1099→                {contactInfo.phone}
+  1100→              </a>
+  1101→            </Button>
+  1102→          </div>
+  1103→        </motion.div>
+  1104→      </div>
+  1105→    </section>
+  1106→  );
+  1107→}
+  1108→

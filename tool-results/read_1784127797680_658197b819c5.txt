@@ -1,0 +1,1288 @@
+     1→"use client";
+     2→
+     3→import type { ReactNode } from "react";
+     4→import Link from "next/link";
+     5→import { motion } from "framer-motion";
+     6→import {
+     7→  ShieldCheck,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  KeyRound,
+    16→  Hammer,
+    17→  UserCheck,
+    18→  ClipboardCheck,
+    19→  FileText,
+    20→  HeartPulse,
+    21→  Warehouse,
+    22→  Building2,
+    23→  Leaf,
+    24→} from "lucide-react";
+    25→import { Button } from "@/components/ui/button";
+    26→import { contactInfo } from "@/lib/site-data";
+    27→
+    28→// ============================================================
+    29→// Images - hand-picked from in-house search service
+    30→// (matches distribution-centre + warehouse + showroom pool)
+    31→// ============================================================
+    32→const IMG = {
+    33→  heroWide:
+    34→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    35→  introSplit:
+    36→    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    37→  whyCrew:
+    38→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    39→  checklistFront:
+    40→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    41→  checklistCounter:
+    42→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    43→  checklistKitchen:
+    44→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    45→  leaseSpring:
+    46→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    47→  leaseTenancy:
+    48→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    49→  leaseBuilders:
+    50→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    51→  leaseAntiviral:
+    52→    "https://sfile.chatglm.cn/images-ppt/8a7c4d6e0b51.jpg",
+    53→  nearMeMap:
+    54→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    55→};
+    56→
+    57→// ============================================================
+    58→// 36 Scottish locations covered by the near-me grid
+    59→// (city-centre + neighbourhood coverage across Scotland)
+    60→// ============================================================
+    61→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    62→  { city: "Glasgow", slug: "glasgow" },
+    63→  { city: "Edinburgh", slug: "edinburgh" },
+    64→  { city: "Aberdeen", slug: "aberdeen" },
+    65→  { city: "Dundee", slug: "dundee" },
+    66→  { city: "Stirling", slug: "stirling" },
+    67→  { city: "Inverness", slug: "inverness" },
+    68→  { city: "Perth", slug: "perth" },
+    69→  { city: "Falkirk", slug: "falkirk" },
+    70→  { city: "Paisley", slug: "paisley" },
+    71→  { city: "East Kilbride", slug: "east-kilbride" },
+    72→  { city: "Livingston", slug: "livingston" },
+    73→  { city: "Hamilton", slug: "hamilton" },
+    74→  { city: "Ayr", slug: "ayr" },
+    75→  { city: "Kilmarnock", slug: "kilmarnock" },
+    76→  { city: "Greenock", slug: "greenock" },
+    77→  { city: "Coatbridge", slug: "coatbridge" },
+    78→  { city: "Airdrie", slug: "airdrie" },
+    79→  { city: "Motherwell", slug: "motherwell" },
+    80→  { city: "Wishaw", slug: "wishaw" },
+    81→  { city: "Dunfermline", slug: "dunfermline" },
+    82→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+    83→  { city: "Glenrothes", slug: "glenrothes" },
+    84→  { city: "Dundonald", slug: "dundonald" },
+    85→  { city: "Bearsden", slug: "bearsden" },
+    86→  { city: "Milngavie", slug: "milngavie" },
+    87→  { city: "Bishopbriggs", slug: "bishopbriggs" },
+    88→  { city: "Lenzie", slug: "lenzie" },
+    89→  { city: "Giffnock", slug: "giffnock" },
+    90→  { city: "Newton Mearns", slug: "newton-mearns" },
+    91→  { city: "Clarkston", slug: "clarkston" },
+    92→  { city: "Barrhead", slug: "barrhead" },
+    93→  { city: "Johnstone", slug: "johnstone" },
+    94→  { city: "Renfrew", slug: "renfrew" },
+    95→  { city: "Rutherglen", slug: "rutherglen" },
+    96→  { city: "Cambuslang", slug: "cambuslang" },
+    97→  { city: "Bellshill", slug: "bellshill" },
+    98→];
+    99→
+   100→// ============================================================
+   101→// Section 0 - Full-width hero banner
+   102→// Semantic H1: "Professional Car Park Cleaning Services Scotland"
+   103→// ============================================================
+   104→
+   105→export function CarParkSeoHeroBanner() {
+   106→  return (
+   107→    <section className="relative overflow-hidden">
+   108→      {/* Full-width background image */}
+   109→      <div className="absolute inset-0">
+   110→        <img
+   111→          src={IMG.heroWide}
+   112→          alt="Maundy Clean DBS-checked, vetted car park cleaning crew resetting a Scottish multi-storey car park before opening"
+   113→          className="w-full h-full object-cover"
+   114→          loading="eager"
+   115→          fetchPriority="high"
+   116→        />
+   117→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   118→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   119→      </div>
+   120→
+   121→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   122→        <motion.div
+   123→          initial="hidden"
+   124→          animate="visible"
+   125→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   126→          className="max-w-3xl"
+   127→        >
+   128→          <motion.div
+   129→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   130→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   131→          >
+   132→            <span className="relative flex w-2 h-2">
+   133→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   134→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   135→            </span>
+   136→            Car Park Cleaning &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   137→          </motion.div>
+   138→
+   139→          <motion.h1
+   140→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   141→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   142→          >
+   143→            Professional Car Park Cleaning Services Scotland
+   144→          </motion.h1>
+   145→
+   146→          <motion.p
+   147→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   148→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   149→          >
+   150→            Technical Surface Restoration, Safety Compliance, and the Maundy Tradition of
+   151→            Excellence. A clean car park is the literal &ldquo;front door&rdquo; to your
+   152→            business or residential complex &mdash; oil spills, traffic film, and moss buildup
+   153→            in cities like Glasgow and Edinburgh can lead to hazardous slip risks and obscure
+   154→            vital road markings. MaundyClean brings technical depth, DBS-checked crews, and
+   155→            child-safe chemistry to every multi-storey, underground, and surface car park we
+   156→            maintain.
+   157→          </motion.p>
+   158→
+   159→          <motion.div
+   160→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   161→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   162→          >
+   163→            <Button
+   164→              size="lg"
+   165→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   166→              asChild
+   167→            >
+   168→              <Link href="/quote">
+   169→                Get My 30-Second Instant Quote
+   170→                <ArrowRight className="w-5 h-5" />
+   171→              </Link>
+   172→            </Button>
+   173→            <Button
+   174→              size="lg"
+   175→              variant="outline"
+   176→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   177→              asChild
+   178→            >
+   179→              <Link href="#checklist">
+   180→                <CheckCircle2 className="w-4 h-4" />
+   181→                View Our Commercial Cleaning Checklist
+   182→              </Link>
+   183→            </Button>
+   184→          </motion.div>
+   185→
+   186→          <motion.div
+   187→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   188→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   189→          >
+   190→            <div className="flex items-center gap-1.5">
+   191→              <div className="flex">
+   192→                {[1, 2, 3, 4, 5].map((s) => (
+   193→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   194→                ))}
+   195→              </div>
+   196→              <span className="font-semibold text-white">4.9/5</span>
+   197→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   198→            </div>
+   199→            <div className="flex items-center gap-1.5">
+   200→              <UserCheck className="w-4 h-4 text-[var(--gold)]" /> Same Trusted Team Every Visit
+   201→            </div>
+   202→            <div className="flex items-center gap-1.5">
+   203→              <ShieldCheck className="w-4 h-4 text-[var(--gold)]" /> DBS-Checked &amp; Vetted Crews
+   204→            </div>
+   205→            <div className="flex items-center gap-1.5">
+   206→              <Sparkles className="w-4 h-4 text-[var(--gold)]" /> Rotary Pressure &amp; Wet-Vac Equipment
+   207→            </div>
+   208→          </motion.div>
+   209→        </motion.div>
+   210→      </div>
+   211→    </section>
+   212→  );
+   213→}
+   214→
+   215→// ============================================================
+   216→// Section 1 - Long-form semantic SEO intro
+   217→// Sits right after the hero, before the existing ServiceOverview.
+   218→// Split-layout with aspect-[4/3] image on the left and the two
+   219→// verbatim intro paragraphs on the right (paragraph 2 contains
+   220→// the two inline <Link>s to /services/move-in-out-cleaning for
+   221→// "End of Tenancy Cleaning" and /services/deep-house-cleaning
+   222→// for "Deep House Cleaning").
+   223→// ============================================================
+   224→
+   225→export function CarParkSeoIntro() {
+   226→  return (
+   227→    <section className="py-16 lg:py-24 bg-background">
+   228→      <div className="max-w-[1400px] mx-auto px-6">
+   229→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   230→          {/* Image side */}
+   231→          <motion.div
+   232→            initial={{ opacity: 0, scale: 0.96 }}
+   233→            whileInView={{ opacity: 1, scale: 1 }}
+   234→            viewport={{ once: true, margin: "-80px" }}
+   235→            transition={{ duration: 0.6 }}
+   236→            className="relative order-2 lg:order-1"
+   237→          >
+   238→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   239→              <img
+   240→                src={IMG.introSplit}
+   241→                alt="Maundy Clean car park cleaning crew treating oil stains and refreshing line markings in a Scottish multi-storey car park overnight"
+   242→                className="absolute inset-0 w-full h-full object-cover"
+   243→                loading="lazy"
+   244→              />
+   245→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   246→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   247→                <div className="flex items-center gap-2 mb-1">
+   248→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   249→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   250→                    A Motivated Partner, Not an Impersonal Agency
+   251→                  </span>
+   252→                </div>
+   253→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   254→                  The same level of technical intimacy, &ldquo;same-staff&rdquo; consistency, and
+   255→                  &ldquo;Maundy Standard&rdquo; care we bring to Scotland&rsquo;s most prestigious
+   256→                  property transitions &mdash; applied to your multi-storey, underground, or
+   257→                  surface car park.
+   258→                </p>
+   259→              </div>
+   260→            </div>
+   261→            <motion.div
+   262→              animate={{ y: [0, -8, 0] }}
+   263→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   264→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   265→            >
+   266→              <div className="flex items-center gap-2">
+   267→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   268→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   269→                </div>
+   270→                <div>
+   271→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   272→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   273→                </div>
+   274→              </div>
+   275→            </motion.div>
+   276→          </motion.div>
+   277→
+   278→          {/* Copy side */}
+   279→          <motion.div
+   280→            initial={{ opacity: 0, y: 20 }}
+   281→            whileInView={{ opacity: 1, y: 0 }}
+   282→            viewport={{ once: true, margin: "-80px" }}
+   283→            transition={{ duration: 0.5 }}
+   284→            className="order-1 lg:order-2"
+   285→          >
+   286→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   287→              Car park cleaning &middot; Scotland
+   288→            </span>
+   289→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   290→              The MaundyClean Standard for Scottish Car Parks
+   291→            </h2>
+   292→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   293→              A clean car park is the literal &ldquo;front door&rdquo; to your business or
+   294→              residential complex. Beyond simple aesthetics, a well-maintained parking facility
+   295→              is a critical safety requirement. Oil spills, traffic film, and moss buildup in
+   296→              cities like Glasgow and Edinburgh can lead to hazardous slip risks and obscure
+   297→              vital road markings. At{" "}
+   298→              <strong className="font-semibold text-[var(--ink)]">MaundyClean</strong>, we
+   299→              provide a premium car park cleaning service that ensures your surfaces are
+   300→              brighter, safer, and &ldquo;showcase&rdquo; ready.
+   301→            </p>
+   302→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   303→              While we are the recognized authority in{" "}
+   304→              <Link
+   305→                href="/services/move-in-out-cleaning"
+   306→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   307→              >
+   308→                End of Tenancy Cleaning
+   309→              </Link>{" "}
+   310→              and{" "}
+   311→              <Link
+   312→                href="/services/deep-house-cleaning"
+   313→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   314→              >
+   315→                Deep House Cleaning
+   316→              </Link>{" "}
+   317→              for Scotland&rsquo;s most prestigious properties, we bring that same level of
+   318→              technical intimacy and meticulous care to external facility maintenance. Whether
+   319→              you manage a national multi-storey car park or a simple communal parking area, we
+   320→              act as a motivated partner to project the high standards your visitors expect.
+   321→            </p>
+   322→
+   323→            {/* Compact trust strip */}
+   324→            <motion.div
+   325→              initial={{ opacity: 0, y: 16 }}
+   326→              whileInView={{ opacity: 1, y: 0 }}
+   327→              viewport={{ once: true, margin: "-40px" }}
+   328→              transition={{ duration: 0.5, delay: 0.15 }}
+   329→              className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3"
+   330→            >
+   331→              {[
+   332→                { label: "Visits completed in 2025", value: "99.6%" },
+   333→                { label: "DBS-checked operatives", value: "100%" },
+   334→                { label: "From per hour", value: "&pound;14" },
+   335→                { label: "Star rating", value: "4.9/5" },
+   336→              ].map((stat) => (
+   337→                <div
+   338→                  key={stat.label}
+   339→                  className="bg-[var(--cream)] rounded-xl p-3 border border-[var(--brand)]/10 text-center"
+   340→                >
+   341→                  <div
+   342→                    className="font-display font-extrabold text-xl text-gradient-brand"
+   343→                    dangerouslySetInnerHTML={{ __html: stat.value }}
+   344→                  />
+   345→                  <div
+   346→                    className="text-[11px] text-[var(--muted-foreground)] mt-0.5"
+   347→                    dangerouslySetInnerHTML={{ __html: stat.label }}
+   348→                  />
+   349→                </div>
+   350→              ))}
+   351→            </motion.div>
+   352→          </motion.div>
+   353→        </div>
+   354→      </div>
+   355→    </section>
+   356→  );
+   357→}
+   358→
+   359→// ============================================================
+   360→// Section 2 - Why MaundyClean is Scotland's Authority in Parking Facility Care
+   361→// (Semantic H2: "Why MaundyClean is Scotland's Authority in Parking Facility Care")
+   362→// Image+copy split layout with 4 trust cards.
+   363→// Per the brief: icons UserCheck / ClipboardCheck / Sparkles / Leaf
+   364→// ============================================================
+   365→
+   366→const TRUST_CARDS = [
+   367→  {
+   368→    icon: UserCheck,
+   369→    title: "The Same Trusted Team Every Visit",
+   370→    description:
+   371→      "Reliability is built on familiarity. We ensure the same vetted professionals manage your facility to build a deep understanding of your site&rsquo;s specific drainage points, expansion joints, oil-prone bays, payment-kiosk traffic, and high-traffic &ldquo;risky&rdquo; zones. When your regular crew lead is on annual leave, we send a trained backup who has been briefed on your facility layout, your access windows (overnight for shopping centres, daytime for transport hubs, specific windows for hospitals), your line-marking inspection rota, and your drainage &mdash; and we tell you in advance. Never a rotating cast of agency strangers walking an active car park aisle, never a &ldquo;new face every week&rdquo; on your CCTV &mdash; the same DBS-checked, hi-vis-uniformed crew, every visit, on schedule.",
+   372→  },
+   373→  {
+   374→    icon: ClipboardCheck,
+   375→    title: "Total Regulatory Compliance",
+   376→    description:
+   377→      "We take health and safety seriously. Our teams are fully trained, insured, and background-checked, following the &ldquo;Maundy Standard&rdquo; of excellence that separates us from impersonal national franchises. Every contract includes a comprehensive RAMS package (Risk Assessments and Method Statements) and Safe Systems of Work as standard. We work to your site&rsquo;s H&amp;S protocols &mdash; permits to work, Method Statements, RAMS, PPE requirements &mdash; and our documentation is audit-ready for environmental health inspection. Oily water from car park cleaning cannot legally be discharged to surface water drains (it&rsquo;s a SEPA offence in Scotland) &mdash; we capture scrubber discharge, use oil separation tanks, and dispose of contaminated water via licensed waste contractors with full waste transfer notes. We&rsquo;ve had zero RIDDORs in 9 years of operation.",
+   378→  },
+   379→  {
+   380→    icon: Sparkles,
+   381→    title: "Top-of-the-Line Technical Equipment",
+   382→    description:
+   383→      "We utilize rotary pressure cleaning equipment and superheated water to remove the deepest oil, grease, and traffic film staining. Our access to wet vacuum systems minimizes water left on the floor, removing filthy water and reducing operational risk &mdash; the floor is left clean and dry, safe for vehicles and pedestrians immediately. Ride-on sweepers (Tennant, Karcher) for large open deck areas at 3,000&ndash;6,000m&sup2;/hour; walk-behind equipment for ramps, tight corners, and around ticket machines; scrubber-dryers that apply cleaning solution, agitate, and vacuum up the dirty water in one pass; specialist bioremediation products for oil stains (which break down oil at a molecular level rather than spreading it); HEPA-filtered vacuums for stairwell dusting; rotary pressure lances with superheated water for stubborn staining on monoblock, tarmac, and concrete. The right tool for the right surface &mdash; every time.",
+   384→  },
+   385→  {
+   386→    icon: Leaf,
+   387→    title: "Eco-Friendly & Surface Safe",
+   388→    description:
+   389→      "We supply all our own specialized machinery and chemicals. We utilize only certified child and pet-safe products, ensuring a non-toxic environment that is safe for the surrounding Scottish landscape. Our oil-stain bioremediation products break down oil at a molecular level &mdash; not solvent degreasers that spread it further across the floor and into the concrete. Alkaline degreasers for oily floors, neutral cleaners for general dirt, bioremediation products for deep oil penetration, anti-fungal treatments for damp and mould in underground car parks, and non-toxic surface-safe chemistry by default. Oily water captured, separated, and disposed of via licensed waste contractors with full waste transfer notes &mdash; never down surface water drains. Safe for visitors, safe for staff, safe for the surrounding Scottish landscape.",
+   390→  },
+   391→];
+   392→
+   393→export function CarParkSeoWhy() {
+   394→  return (
+   395→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   396→      <div className="max-w-[1400px] mx-auto px-6">
+   397→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   398→          {/* Image side */}
+   399→          <motion.div
+   400→            initial={{ opacity: 0, scale: 0.96 }}
+   401→            whileInView={{ opacity: 1, scale: 1 }}
+   402→            viewport={{ once: true, margin: "-80px" }}
+   403→            transition={{ duration: 0.6 }}
+   404→            className="relative order-2 lg:order-1"
+   405→          >
+   406→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   407→              <img
+   408→                src={IMG.whyCrew}
+   409→                alt="Maundy Clean car park cleaning crew &mdash; DBS-checked, hi-vis uniformed, trained in oil removal, pressure washing, line-marking refresh, and SEPA-compliant water disposal"
+   410→                className="absolute inset-0 w-full h-full object-cover"
+   411→                loading="lazy"
+   412→              />
+   413→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   414→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   415→                <div className="flex items-center gap-2 mb-1">
+   416→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   417→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   418→                    A Motivated Partner, Not an Impersonal Agency
+   419→                  </span>
+   420→                </div>
+   421→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   422→                  Employed, vetted, DBS-checked, hi-vis-uniformed, and trained in car
+   423→                  park-specific risks (vehicle interaction, working at height on multi-storey
+   424→                  decks, ventilation in underground car parks). Same crew every visit &mdash;
+   425→                  never a rotating cast of agency strangers walking an active car park.
+   426→                </p>
+   427→              </div>
+   428→            </div>
+   429→            <motion.div
+   430→              animate={{ y: [0, -8, 0] }}
+   431→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   432→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   433→            >
+   434→              <div className="flex items-center gap-2">
+   435→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   436→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   437→                </div>
+   438→                <div>
+   439→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   440→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   441→                </div>
+   442→              </div>
+   443→            </motion.div>
+   444→          </motion.div>
+   445→
+   446→          {/* Copy side */}
+   447→          <motion.div
+   448→            initial={{ opacity: 0, y: 20 }}
+   449→            whileInView={{ opacity: 1, y: 0 }}
+   450→            viewport={{ once: true, margin: "-80px" }}
+   451→            transition={{ duration: 0.5 }}
+   452→            className="order-1 lg:order-2"
+   453→          >
+   454→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   455→              Why choose Maundy Clean
+   456→            </span>
+   457→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   458→              Why MaundyClean is Scotland&rsquo;s Authority in Parking Facility Care
+   459→            </h2>
+   460→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   461→              Many local contractors provide a basic &ldquo;wash down&rdquo; that fails to remove
+   462→              deep-seated stains. MaundyClean focuses on building high-trust relationships through
+   463→              technical depth and professional reliability. We combine vetted DBS-checked uniformed
+   464→              teams, the same dedicated crew every visit, rotary pressure cleaning with superheated
+   465→              water, wet-vacuum surface-safe recovery, bioremediation oil-stain treatment,
+   466→              SEPA-compliant water disposal, child-safe eco chemistry, RAMS as standard, and signed
+   467→              cleaning logs &mdash; so the car park your visitors walk into looks, feels, and
+   468→              operates safely every single day.
+   469→            </p>
+   470→
+   471→            <div className="space-y-3">
+   472→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   473→                const Icon = card.icon;
+   474→                return (
+   475→                  <div
+   476→                    key={card.title}
+   477→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   478→                  >
+   479→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   480→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   481→                    </div>
+   482→                    <div>
+   483→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   484→                        {card.title}
+   485→                      </h3>
+   486→                      <p
+   487→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   488→                        dangerouslySetInnerHTML={{ __html: card.description }}
+   489→                      />
+   490→                    </div>
+   491→                  </div>
+   492→                );
+   493→              })}
+   494→            </div>
+   495→          </motion.div>
+   496→        </div>
+   497→
+   498→        <div className="grid md:grid-cols-2 gap-6">
+   499→          {TRUST_CARDS.slice(2).map((card, i) => {
+   500→            const Icon = card.icon;
+   501→            return (
+   502→              <motion.div
+   503→                key={card.title}
+   504→                initial={{ opacity: 0, y: 24 }}
+   505→                whileInView={{ opacity: 1, y: 0 }}
+   506→                viewport={{ once: true, margin: "-40px" }}
+   507→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   508→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   509→              >
+   510→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   511→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   512→                </div>
+   513→                <div>
+   514→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   515→                    {card.title}
+   516→                  </h3>
+   517→                  <p
+   518→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   519→                    dangerouslySetInnerHTML={{ __html: card.description }}
+   520→                  />
+   521→                </div>
+   522→              </motion.div>
+   523→            );
+   524→          })}
+   525→        </div>
+   526→      </div>
+   527→    </section>
+   528→  );
+   529→}
+   530→
+   531→// ============================================================
+   532→// Section 3 - Our Total Car Park Maintenance & Technical Checklist
+   533→// (Semantic H2: "Our Total Car Park Maintenance & Technical Checklist")
+   534→// Brief-specific section with 3 H3 sub-sections:
+   535→//   1. Comprehensive Surface Restoration
+   536→//   2. Structural & Facility Hygiene
+   537→//   3. Often-Missed Technical Details
+   538→// Carries the id="checklist" anchor that the CTA buttons link to.
+   539→// ============================================================
+   540→
+   541→const CHECKLIST_ITEMS = [
+   542→  {
+   543→    icon: Warehouse,
+   544→    image: IMG.checklistFront,
+   545→    imageAlt: "Maundy Clean ride-on sweeper and scrubber-dryer deep cleaning a Scottish multi-storey car park deck, degreasing oil spills and refreshing line markings",
+   546→    title: "1. Comprehensive Surface Restoration",
+   547→    description:
+   548→      "We clean all kinds of car-park surfaces, including monoblock, cement, concrete, paving slabs, tarmac, and painted surfaces. Each surface gets the right chemistry and the right equipment &mdash; rotary pressure cleaning for stubborn stains, superheated water for oil and traffic film, bioremediation products for deep oil penetration, and walk-behind scrubber-dryers for ramps and tight corners. The deck is left clean, dry, and safe for vehicles and pedestrians immediately &mdash; no slip hazards, no obscured line markings, no oily residue.",
+   549→    points: [
+   550→      {
+   551→        title: "Deep Stain Removal",
+   552→        text: "Targeting oil, grease, and heavy tire marks that degrade the surface and hide road markings. Bioremediation products break down oil at a molecular level (not solvent degreasers, which spread it further across the floor and into the concrete); specialist absorbent granules lift the residue; rotary pressure cleaning with superheated water lifts deep-set tyre marks from tarmac and monoblock. For heavy oil contamination, hot pressure washing with oil capture is available &mdash; the oily water is captured, separated, and disposed of via licensed waste contractors with full waste transfer notes (never down surface water drains &mdash; a SEPA offence in Scotland).",
+   553→      },
+   554→      {
+   555→        title: "Graffiti Removal",
+   556→        text: "Incorporation of specialized cleaning agents to remove unsightly tags from walls, pillars, and signage. Specialist graffiti-removal chemistry is selected by substrate &mdash; masonry-safe alkali strippers for concrete pillars and block walls, solvent-free systems for painted steel cladding, gentle citrus-based gels for powder-coated signage, and superheated-water rinses that lift paint without damaging the underlying surface. Tagged stairwells, lift-shaft doors, payment-terminal housings, and barrier equipment restored to a defacement-free, professional appearance.",
+   557→      },
+   558→      {
+   559→        title: "Safety Detailing",
+   560→        text: "Ensuring road markings and parking bays are bright and clearly visible to help drivers follow traffic flow. Line markings (parking bays, arrows, no-parking zones, pedestrian walkways, disabled-bay markings) deep-cleaned to remove dirt and traffic film that obscures them; reflective markers and bay numbers polished; speed-limit and pedestrian signage wiped clean; level identifiers in multi-storey car parks made readable. We flag when line markings need repainting (we don&rsquo;t paint lines ourselves, but we have relationships with line-marking specialists across Scotland and can recommend them) &mdash; clean lines make a fresh paint job last longer.",
+   561→      },
+   562→    ],
+   563→  },
+   564→  {
+   565→    icon: Building2,
+   566→    image: IMG.checklistCounter,
+   567→    imageAlt: "Maundy Clean crew pressure-washing walls, pillars and glazing in a Scottish multi-storey car park stairwell and lift lobby",
+   568→    title: "2. Structural &amp; Facility Hygiene",
+   569→    description:
+   570→      "A full car park deep clean ranges from the floors to the entire structural environment. Walls, pillars, drainage channels, expansion joints, glazing, signage, lift shafts, stairwells, and ventilation grilles all collect city-centre grime, traffic pollutants, and damp-weather mould. Our structural protocol uses HEPA-filtered vacuums for dusting, superheated-water lances for grime removal, anti-fungal treatments for damp and mould in poorly-ventilated areas, and drainage-channel clearance to prevent flooding during heavy Scottish rainfall.",
+   571→    points: [
+   572→      {
+   573→        title: "Walls &amp; Pillars",
+   574→        text: "Meticulous dusting and pressure washing to remove city-center grime and pollutants. Concrete pillars and block walls dusted with extension poles and HEPA-filtered vacuums (we don&rsquo;t just brush the dust back into the air), then damp-wiped with a pH-neutral sanitiser. Painted steel cladding wiped down, traffic-film removed with superheated-water lances, and signage cleaned. Lift-shaft doors, barrier housings, and roller-shutter mechanisms wiped and detailed. Stairwell glazing cleaned (interior and exterior where reachable), handrails sanitised (high-touch surface), and light switches wiped. Expansion joints in multi-storey decks vacuumed with specialist joint tools to maintain flexibility and prevent water ingress.",
+   575→      },
+   576→      {
+   577→        title: "Drainage Check",
+   578→        text: "Ensuring all runoff is clear of debris to prevent flooding during heavy Scottish rainfall. Drainage channels, gullies, and ACO drains cleared of leaves, litter, silt, and oily residue; drain covers lifted where accessible and the channel vacuumed; oil-separators inspected and flagged if they need servicing. Standing water is the leading cause of slip hazards and ice patches in winter &mdash; we don&rsquo;t do deep drain jetting (that&rsquo;s a specialist drainage contractor), but we&rsquo;ll flag if it&rsquo;s needed. Clean drainage channels extend the life of the car park deck, prevent flooding, and reduce ice-forming slip hazards in winter.",
+   579→      },
+   580→      {
+   581→        title: "Inside Window Care",
+   582→        text: "If your parking facility includes glass foyers, office pods, lift-lobby glazing, or ticket-counter windows, we clean the internal glass to maintain a bright, welcoming atmosphere. Glass wiped with an alcohol-free anti-static cleaner and buffed to a streak-free finish; frames and sills detailed; smudges and fingerprints removed from high-touch glass (especially lift-lobby doors and entry-phone glass). External high-reach glazing is coordinated with our Window Cleaning service &mdash; the detail that turns a &ldquo;cleaned&rdquo; car park into a &ldquo;speechlessly spotless&rdquo; one.",
+   583→      },
+   584→    ],
+   585→  },
+   586→  {
+   587→    icon: Sparkles,
+   588→    image: IMG.checklistKitchen,
+   589→    imageAlt: "Maundy Clean crew detailing car park entry-phone systems, payment terminals, signage, and staff washroom chrome to a high-shine, sanitised standard in Scotland",
+   590→    title: "3. Often-Missed Technical Details",
+   591→    description: "",
+   592→    points: [
+   593→      {
+   594→        title: "Signage &amp; Fixtures",
+   595→        text: "Wiping down entry phone systems, payment terminals, and visible skirting boards in stairwells as standard. Entry-phone handsets sanitised (high-touch surface), payment-terminal screens and keypads wiped with screen-safe sanitiser, barrier-equipment housings and ticket-machine buttons treated with EN 14476 virucidal disinfectant with a verified 60-second contact time. Skirting boards, door frames, architraves, switch plates, handrails, fire-extinguisher brackets, and notice-board trims in stairwells and lift lobbies damp-wiped with a pH-neutral sanitiser. These are the details visitors notice first &mdash; and the details most cleaners skip.",
+   596→      },
+   597→      {
+   598→        title: "Washroom Deep Cleaning",
+   599→        text: "If your facility includes staff or public restrooms, we provide intensive sanitation and buff chrome fixtures to a high shine. Toilets, urinals, basins, mirrors, floors, and partitions deep-cleaned with EN 1276-certified bactericides and EN 14476 virucidal disinfectants; chrome fixtures (taps, towel rails, toilet-roll holders, door handles) buffed to a high shine; sanitary bins checked and emptied; disabled-access toilets given particular attention. Floor edge-to-edge mopped, glass polished, and consumables restocked (we can manage consumable restocking for an additional monthly fee). A clean staff washroom transforms morale, recruitment, and retention.",
+   600→      },
+   601→    ],
+   602→  },
+   603→];
+   604→
+   605→export function CarParkSeoChecklist() {
+   606→  return (
+   607→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   608→      <div className="max-w-[1400px] mx-auto px-6">
+   609→        <motion.div
+   610→          initial={{ opacity: 0, y: 20 }}
+   611→          whileInView={{ opacity: 1, y: 0 }}
+   612→          viewport={{ once: true, margin: "-80px" }}
+   613→          transition={{ duration: 0.5 }}
+   614→          className="max-w-3xl mb-12"
+   615→        >
+   616→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   617→            Beyond the standard surface wipe
+   618→          </span>
+   619→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   620→            Our Total Car Park Maintenance &amp; Technical Checklist
+   621→          </h2>
+   622→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   623→            Our recurring cleaning for parking facilities follows a rigorous, agency approved
+   624→            checklist designed to address the specific hygiene and safety challenges of varied
+   625→            surfaces. We deliver technical depth in every zone of your facility &mdash; from the
+   626→            comprehensive surface restoration zone (oil, grease, tyre marks, graffiti, line
+   627→            markings) through the structural and facility hygiene zone (walls, pillars, drainage,
+   628→            glazing) to the often-missed technical details (entry-phone systems, payment
+   629→            terminals, skirting, washroom chrome). Below is the scope we deliver as standard,
+   630→            regardless of facility type, footprint, or operating hours.
+   631→          </p>
+   632→        </motion.div>
+   633→
+   634→        <div className="grid lg:grid-cols-3 gap-6">
+   635→          {CHECKLIST_ITEMS.map((item, i) => {
+   636→            const Icon = item.icon;
+   637→            return (
+   638→              <motion.div
+   639→                key={item.title}
+   640→                initial={{ opacity: 0, y: 24 }}
+   641→                whileInView={{ opacity: 1, y: 0 }}
+   642→                viewport={{ once: true, margin: "-40px" }}
+   643→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   644→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   645→              >
+   646→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   647→                  <img
+   648→                    src={item.image}
+   649→                    alt={item.imageAlt}
+   650→                    className="absolute inset-0 w-full h-full object-cover"
+   651→                    loading="lazy"
+   652→                  />
+   653→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   654→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   655→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   656→                  </div>
+   657→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   658→                    {item.title}
+   659→                  </h3>
+   660→                </div>
+   661→                <div className="p-6 flex-1 flex flex-col">
+   662→                  {item.description ? (
+   663→                    <p
+   664→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   665→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   666→                    />
+   667→                  ) : null}
+   668→                  <ul className="space-y-3 mt-auto">
+   669→                    {item.points.map((point) => {
+   670→                      const PointIcon = CheckCircle2;
+   671→                      return (
+   672→                        <li
+   673→                          key={point.title}
+   674→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   675→                        >
+   676→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   677→                          <span>
+   678→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   679→                            &mdash; <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   680→                          </span>
+   681→                        </li>
+   682→                      );
+   683→                    })}
+   684→                  </ul>
+   685→                </div>
+   686→              </motion.div>
+   687→            );
+   688→          })}
+   689→        </div>
+   690→      </div>
+   691→    </section>
+   692→  );
+   693→}
+   694→
+   695→// ============================================================
+   696→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   697→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   698→// Per the brief: icons ClipboardCheck / FileText / Sparkles
+   699→// ============================================================
+   700→
+   701→const BOOKING_STEPS = [
+   702→  {
+   703→    icon: ClipboardCheck,
+   704→    step: "01",
+   705→    title: "Instant Quote & Site Survey",
+   706→    description:
+   707→      "Contact us for a free quotation. We provide a 30-second instant quote for standard areas or a detailed site survey for complex multi-storey facilities. We walk your car park with your facilities manager, identify your car park type (surface, multi-storey, underground), size (sqm), usage (peak times, off-peak), operations (24/7 access, controlled hours, payment systems), access windows (overnight for shopping centres, daytime for transport hubs, specific windows for hospitals), drainage and water-disposal arrangements, and any specific cleaning challenges. We send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, RAMS, COSHH datasheets, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   708→  },
+   709→  {
+   710→    icon: FileText,
+   711→    step: "02",
+   712→    title: "Professional Matching",
+   713→    description:
+   714→      "We hand-pick a team with in-depth knowledge of industrial &ldquo;showcasing&rdquo; and heavy-duty equipment. Your allocated crew lead is DBS-checked, trained in car-park-specific risks (vehicle interaction, working at height on multi-storey decks, ventilation in underground car parks, confined space entry where applicable), and briefed on your facility layout, your drainage points, your oil-prone bays, your line-marking inspection rota, and your &ldquo;risky&rdquo; zones (ticket-machine queue, lift lobby, stairwell, disabled bays, EV charging) &mdash; so cleaning happens around your operations, not through them. The same crew returns for every scheduled session, building real knowledge of your shift patterns, your signage protocol, and your access preferences. We arrive in liveried vehicles, in hi-vis uniform with photo I.D. and PPE, with commercial-grade ride-on sweepers and scrubber-dryers, rotary pressure lances with superheated water, wet-vacuum recovery systems, HEPA-filtered stairwell vacuums, and COSHH-compliant, child-safe, surface-safe chemistry.",
+   715→  },
+   716→  {
+   717→    icon: Sparkles,
+   718→    step: "03",
+   719→    title: "Enjoy a Pristine Environment",
+   720→    description:
+   721→      "Experience a parking facility that feels safe, clean, and professional, backed by our MaundyClean satisfaction guarantee. You receive a signed cleaning log after every visit (operative signature, facilities-manager counter-signature on request), arrival and departure times, tasks completed, and any issues flagged &mdash; like a fresh oil spill in a disabled bay, a damaged line marking, a blocked drainage channel, or a low-stock consumable in the welfare block &mdash; before they undermine a shift handover, an environmental health inspection, or a customer visit. From &pound;14 per hour for a small surface car park through to a fully bespoke retainer for a multi-site national car park portfolio. We hold &pound;5m public liability as standard (increased for major commercial car parks) and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   722→  },
+   723→];
+   724→
+   725→export function CarParkSeoBooking() {
+   726→  return (
+   727→    <section className="py-16 lg:py-24 bg-background">
+   728→      <div className="max-w-[1400px] mx-auto px-6">
+   729→        <motion.div
+   730→          initial={{ opacity: 0, y: 20 }}
+   731→          whileInView={{ opacity: 1, y: 0 }}
+   732→          viewport={{ once: true, margin: "-80px" }}
+   733→          transition={{ duration: 0.5 }}
+   734→          className="text-center mb-14"
+   735→        >
+   736→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   737→            Hassle-free booking
+   738→          </span>
+   739→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   740→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   741→          </h3>
+   742→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   743→            We have optimized our booking experience to be uncomplicated and straightforward,
+   744→            providing the responsive management support Scottish business leaders demand. From
+   745→            30-second instant quote and site survey to first clean in under a week &mdash; no
+   746→            friction, no waiting, no surprises. Just a pristine car park, every visit, on
+   747→            schedule, and a compliance file that&rsquo;s audit-ready the day your environmental
+   748→            health officer walks in.
+   749→          </p>
+   750→        </motion.div>
+   751→
+   752→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   753→          {/* Connector line */}
+   754→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   755→
+   756→          {BOOKING_STEPS.map((step, i) => {
+   757→            const Icon = step.icon;
+   758→            return (
+   759→              <motion.div
+   760→                key={step.step}
+   761→                initial={{ opacity: 0, y: 24 }}
+   762→                whileInView={{ opacity: 1, y: 0 }}
+   763→                viewport={{ once: true, margin: "-40px" }}
+   764→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   765→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   766→              >
+   767→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   768→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   769→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   770→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   771→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   772→                    {step.step}
+   773→                  </span>
+   774→                </div>
+   775→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   776→                  {step.title}
+   777→                </h3>
+   778→                <p
+   779→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   780→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   781→                />
+   782→              </motion.div>
+   783→            );
+   784→          })}
+   785→        </div>
+   786→
+   787→        <motion.div
+   788→          initial={{ opacity: 0, y: 16 }}
+   789→          whileInView={{ opacity: 1, y: 0 }}
+   790→          viewport={{ once: true }}
+   791→          transition={{ duration: 0.5, delay: 0.3 }}
+   792→          className="text-center mt-10"
+   793→        >
+   794→          <Button
+   795→            size="lg"
+   796→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   797→            asChild
+   798→          >
+   799→            <Link href="/quote">
+   800→              Get My 30-Second Instant Quote
+   801→              <ArrowRight className="w-5 h-5" />
+   802→            </Link>
+   803→          </Button>
+   804→        </motion.div>
+   805→      </div>
+   806→    </section>
+   807→  );
+   808→}
+   809→
+   810→// ============================================================
+   811→// Section 5 - Solutions for Every Property Need
+   812→// (Semantic H2: "Solutions for Every Property Need")
+   813→// Brief drops the interlinking prefix per the cleanup rules.
+   814→// Image-topped cards with internal links to specialist services
+   815→// ============================================================
+   816→
+   817→type InterlinkSolution = {
+   818→  icon: typeof KeyRound;
+   819→  title: string;
+   820→  href: string;
+   821→  image: string;
+   822→  imageAlt: string;
+   823→  description: ReactNode;
+   824→  cta: string;
+   825→};
+   826→
+   827→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   828→  {
+   829→    icon: KeyRound,
+   830→    title: "The Move-In Reset &middot; Recurring Home Cleaning",
+   831→    href: "/services/recurring-home-cleaning",
+   832→    image: IMG.leaseSpring,
+   833→    imageAlt: "Clean residential-complex car park combined with recurring home cleaning for common areas in Scotland",
+   834→    description:
+   835→      "Preparing a residential complex for new tenants? A clean car park combined with our Recurring Home Cleaning for common areas creates the &lsquo;aspirational dream&rsquo; for residents. The same trusted, vetted crew that maintains your car park can step up to clean communal hallways, stairwells, and reception areas &mdash; one contractor, one point of contact, one consistent standard across your whole residential facility.",
+   836→    cta: "Explore recurring home cleaning",
+   837→  },
+   838→  {
+   839→    icon: Hammer,
+   840→    title: "Post-Renovation &middot; After Builders Clean",
+   841→    href: "/services/post-construction-cleaning",
+   842→    image: IMG.leaseBuilders,
+   843→    imageAlt: "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish car park before reopening day",
+   844→    description:
+   845→      "If your facility has had construction work, our After Builders Clean protocol is designed to remove heavy layers of builders&rsquo; dust and construction debris from parking bays. Fine dust acts like sandpaper under vehicle tyres and damages freshly-painted line markings &mdash; we vacuum, damp-wipe, and protect every surface before the dust has a chance to damage your car park or your visitors&rsquo; vehicles.",
+   846→    cta: "Explore after builders cleaning",
+   847→  },
+   848→  {
+   849→    icon: Sparkles,
+   850→    title: "Property Transitions &middot; End of Tenancy Cleaning",
+   851→    href: "/services/move-in-out-cleaning",
+   852→    image: IMG.leaseTenancy,
+   853→    imageAlt: "Empty commercial unit car park being deep cleaned for lease handover by Maundy Clean in Scotland",
+   854→    description:
+   855→      "Our End of Tenancy Cleaning protocol can be applied to commercial leases, ensuring units and external areas are front-line ready for new occupants. We work to the letting agent&rsquo;s inventory, restore the car park to its original condition (oil-stain removal, line-marking inspection, deep clean of stairwells and lifts), and come back free of charge if anything is flagged on the inspection &mdash; the most stress-free way to hand back a leased commercial car park.",
+   856→    cta: "Explore end of tenancy cleaning",
+   857→  },
+   858→  {
+   859→    icon: HeartPulse,
+   860→    title: "Hygiene Resets &middot; Antiviral Sanitisation",
+   861→    href: "/services/disinfection-services",
+   862→    image: IMG.leaseAntiviral,
+   863→    imageAlt: "Antiviral sanitisation treatment being applied to car park high-touch surfaces, lift buttons and payment kiosks in Scotland",
+   864→    description:
+   865→      "Ask about our Antiviral Sanitisation for high-touch points like elevator buttons and payment kiosks. EN 14476 virucidal chemistry is fogged and wiped across every high-touch surface in your facility &mdash; from entry-phone handsets, ticket-machine keypads, and barrier buttons to stairwell handrails and lift buttons &mdash; reducing the spread of seasonal colds, flu, and norovirus among your visitors and staff during peak season and outbreak response.",
+   866→    cta: "Explore antiviral sanitisation",
+   867→  },
+   868→];
+   869→
+   870→export function CarParkSeoInterlinking() {
+   871→  return (
+   872→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   873→      <div className="max-w-[1400px] mx-auto px-6">
+   874→        <motion.div
+   875→          initial={{ opacity: 0, y: 20 }}
+   876→          whileInView={{ opacity: 1, y: 0 }}
+   877→          viewport={{ once: true, margin: "-80px" }}
+   878→          transition={{ duration: 0.5 }}
+   879→          className="max-w-3xl mb-12"
+   880→        >
+   881→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   882→            Beyond the daily clean &middot; property milestones
+   883→          </span>
+   884→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   885→            Solutions for Every Property Need
+   886→          </h2>
+   887→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   888→            Our car park maintenance is a critical part of your property&rsquo;s health, but we
+   889→            offer specialized &ldquo;resets&rdquo; for major milestones: from residential
+   890→            move-ins and post-renovation dust clear-outs to commercial lease handovers and
+   891→            antiviral hygiene resets. The same trusted, vetted crew can step up whenever your
+   892→            property needs more than a standard visit, with the same child-safe, surface-safe
+   893→            protocols in force.
+   894→          </p>
+   895→        </motion.div>
+   896→
+   897→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   898→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   899→            const Icon = sol.icon;
+   900→            return (
+   901→              <motion.div
+   902→                key={sol.title}
+   903→                initial={{ opacity: 0, y: 24 }}
+   904→                whileInView={{ opacity: 1, y: 0 }}
+   905→                viewport={{ once: true, margin: "-40px" }}
+   906→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   907→              >
+   908→                <Link
+   909→                  href={sol.href}
+   910→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   911→                >
+   912→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   913→                    <img
+   914→                      src={sol.image}
+   915→                      alt={sol.imageAlt}
+   916→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   917→                      loading="lazy"
+   918→                    />
+   919→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   920→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   921→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   922→                    </div>
+   923→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   924→                      {sol.title}
+   925→                    </h3>
+   926→                  </div>
+   927→                  <div className="p-5">
+   928→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   929→                      {typeof sol.description === "string" ? (
+   930→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+   931→                      ) : (
+   932→                        sol.description
+   933→                      )}
+   934→                    </p>
+   935→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   936→                      {sol.cta}
+   937→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   938→                    </span>
+   939→                  </div>
+   940→                </Link>
+   941→              </motion.div>
+   942→            );
+   943→          })}
+   944→        </div>
+   945→      </div>
+   946→    </section>
+   947→  );
+   948→}
+   949→
+   950→// ============================================================
+   951→// Section 6 - "Near Me" Location Internal Links
+   952→// (Semantic H2: "Car Park Cleaning Near Me in Scotland")
+   953→// Split layout with map image + 36-location grid
+   954→// ============================================================
+   955→
+   956→export function CarParkSeoNearMe() {
+   957→  return (
+   958→    <section className="py-16 lg:py-24 bg-background">
+   959→      <div className="max-w-[1400px] mx-auto px-6">
+   960→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   961→          {/* Left: copy + map image */}
+   962→          <motion.div
+   963→            initial={{ opacity: 0, y: 20 }}
+   964→            whileInView={{ opacity: 1, y: 0 }}
+   965→            viewport={{ once: true, margin: "-80px" }}
+   966→            transition={{ duration: 0.5 }}
+   967→          >
+   968→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   969→              Local car park cleaning across Scotland
+   970→            </span>
+   971→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   972→              Car Park Cleaning Near Me in Scotland
+   973→            </h2>
+   974→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   975→              Searching for &ldquo;car park cleaning near me&rdquo; or &ldquo;multi-storey car
+   976→              park cleaner near me&rdquo; in Scotland? Maundy Clean covers multi-storey,
+   977→              underground, and surface car parks across the Central Belt, Highlands, Borders,
+   978→              and Islands &mdash; from Glasgow&rsquo;s Buchanan Galleries and Cambridge Street
+   979→              multi-storeys to Edinburgh&rsquo;s St James Quarter, Aberdeen&rsquo;s Union Square,
+   980→              and Dundee&rsquo;s Gellatly Street. Same DBS-checked, hi-vis-uniformed crews, same
+   981→              SEPA-compliant water-disposal protocols, same dedicated crew every visit &mdash;
+   982→              wherever your car park happens to be. Find your local car park cleaning specialist
+   983→              below.
+   984→            </p>
+   985→
+   986→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   987→              <img
+   988→                src={IMG.nearMeMap}
+   989→                alt="Map of Scotland showing Maundy Clean car park cleaning service coverage areas"
+   990→                className="absolute inset-0 w-full h-full object-cover"
+   991→                loading="lazy"
+   992→              />
+   993→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   994→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   995→                <div className="flex items-center gap-2 mb-1">
+   996→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   997→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   998→                    72+ Scottish towns covered
+   999→                  </span>
+  1000→                </div>
+  1001→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1002→                  Same DBS-checked crews, same 100% satisfaction guarantee &mdash; from Glasgow
+  1003→                  to Inverness.
+  1004→                </p>
+  1005→              </div>
+  1006→            </div>
+  1007→
+  1008→            <div className="mt-6">
+  1009→              <Button
+  1010→                size="lg"
+  1011→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+  1012→                asChild
+  1013→              >
+  1014→                <Link href="/services/car-park-cleaning-near-me">
+  1015→                  <MapPin className="w-4 h-4" />
+  1016→                  Browse the near-me directory
+  1017→                  <ArrowRight className="w-4 h-4" />
+  1018→                </Link>
+  1019→              </Button>
+  1020→            </div>
+  1021→          </motion.div>
+  1022→
+  1023→          {/* Right: location grid */}
+  1024→          <motion.div
+  1025→            initial={{ opacity: 0, y: 20 }}
+  1026→            whileInView={{ opacity: 1, y: 0 }}
+  1027→            viewport={{ once: true, margin: "-60px" }}
+  1028→            transition={{ duration: 0.5 }}
+  1029→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1030→          >
+  1031→            <div className="flex items-center justify-between mb-5">
+  1032→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1033→                Find your local car park crew
+  1034→              </h3>
+  1035→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1036→            </div>
+  1037→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1038→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1039→                <motion.div
+  1040→                  key={loc.slug}
+  1041→                  initial={{ opacity: 0 }}
+  1042→                  whileInView={{ opacity: 1 }}
+  1043→                  viewport={{ once: true }}
+  1044→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1045→                >
+  1046→                  <Link
+  1047→                    href={`/services/car-park-cleaning-near-me#${loc.slug}`}
+  1048→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1049→                  >
+  1050→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1051→                    <span>
+  1052→                      <span className="font-medium">{loc.city}</span>
+  1053→                      <span className="text-[var(--muted-foreground)]"> car park</span>
+  1054→                    </span>
+  1055→                  </Link>
+  1056→                </motion.div>
+  1057→              ))}
+  1058→            </div>
+  1059→
+  1060→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1061→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1062→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1063→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1064→              </div>
+  1065→              <Link
+  1066→                href="/locations"
+  1067→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1068→              >
+  1069→                View all 72 Scottish locations
+  1070→                <ArrowRight className="w-4 h-4" />
+  1071→              </Link>
+  1072→            </div>
+  1073→          </motion.div>
+  1074→        </div>
+  1075→
+  1076→        {/* SEO long-form paragraph for "near me" search intent */}
+  1077→        <motion.div
+  1078→          initial={{ opacity: 0, y: 16 }}
+  1079→          whileInView={{ opacity: 1, y: 0 }}
+  1080→          viewport={{ once: true, margin: "-40px" }}
+  1081→          transition={{ duration: 0.5, delay: 0.2 }}
+  1082→          className="mt-10 max-w-4xl mx-auto text-center"
+  1083→        >
+  1084→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1085→            Our local car park cleaning crews operate across Glasgow&rsquo;s city-centre
+  1086→            multi-storeys (Buchanan Galleries, Cambridge Street, Concert Square),
+  1087→            Edinburgh&rsquo;s St James Quarter and Viewforth, Aberdeen&rsquo;s Union Square and
+  1088→            Bon Accord, Dundee&rsquo;s Gellatly Street and West Marketgait, the retail-park
+  1089→            surface car parks of Silverburn, Braehead, The Centre Livingston, and Straiton, and
+  1090→            the hospital and transport-hub car parks across the Central Belt &mdash; from
+  1091→            Inverness to Perth, Falkirk to Ayr. Whether you&rsquo;re searching for overnight
+  1092→            multi-storey deep cleaning in Glasgow, daytime surface-car park sweeping in
+  1093→            Edinburgh, oil-stain treatment in Aberdeen, or neighbourhood car park cleaning
+  1094→            anywhere in between, Maundy Clean assigns a vetted, PAYE-employed, DBS-checked crew
+  1095→            that stays with you for the long run. Same crew, same standard, same locked-in rate
+  1096→            for 12 months.
+  1097→          </p>
+  1098→        </motion.div>
+  1099→      </div>
+  1100→    </section>
+  1101→  );
+  1102→}
+  1103→
+  1104→// ============================================================
+  1105→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1106→// (Semantic H2: "Get My 30-Second Instant Quote")
+  1107→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1108→// ============================================================
+  1109→
+  1110→export function CarParkSeoFinalCta() {
+  1111→  return (
+  1112→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1113→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1114→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1115→
+  1116→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1117→        <motion.div
+  1118→          initial={{ opacity: 0, y: 20 }}
+  1119→          whileInView={{ opacity: 1, y: 0 }}
+  1120→          viewport={{ once: true, margin: "-80px" }}
+  1121→          transition={{ duration: 0.5 }}
+  1122→        >
+  1123→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1124→            Ready to get your instant quote?
+  1125→          </span>
+  1126→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1127→            Get My 30-Second Instant Quote
+  1128→          </h2>
+  1129→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1130→            Book a free, no-obligation site survey with our management team and receive an
+  1131→            itemised proposal within 2 business days. Vetted DBS-checked crews, the same
+  1132→            dedicated team every visit, rotary pressure cleaning with superheated water,
+  1133→            wet-vacuum surface-safe recovery, child-safe eco chemistry, signed cleaning logs,
+  1134→            &pound;5m public liability as standard, and a 100% satisfaction guarantee &mdash;
+  1135→            from &pound;14 per hour for a small surface car park through to a fully bespoke
+  1136→            multi-site national car park retainer. No pushy sales call, no waiting 24 hours for
+  1137→            a callback.
+  1138→          </p>
+  1139→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1140→            <Button
+  1141→              size="lg"
+  1142→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1143→              asChild
+  1144→            >
+  1145→              <Link href="/quote">
+  1146→                Get My 30-Second Instant Quote
+  1147→                <ArrowRight className="w-5 h-5" />
+  1148→              </Link>
+  1149→            </Button>
+  1150→            <Button
+  1151→              size="lg"
+  1152→              variant="outline"
+  1153→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1154→              asChild
+  1155→            >
+  1156→              <Link href="#checklist">
+  1157→                <CheckCircle2 className="w-4 h-4" />
+  1158→                View Our Commercial Cleaning Checklist
+  1159→              </Link>
+  1160→            </Button>
+  1161→          </div>
+  1162→        </motion.div>
+  1163→      </div>
+  1164→    </section>
+  1165→  );
+  1166→}
+  1167→
+  1168→// ============================================================
+  1169→// Section 8 - SEO FAQ block
+  1170→// (Semantic H2: "Frequently Asked Questions")
+  1171→// 3 Q&As from the brief (insured for car park sites,
+  1172→// provide own professional equipment, work with existing equipment)
+  1173→// ============================================================
+  1174→
+  1175→const SEO_FAQS = [
+  1176→  {
+  1177→    q: "Are your cleaners insured for car park sites?",
+  1178→    a: "Absolutely. MaundyClean is a fully insured, registered professional cleaning company with extensive experience serving Scotland&rsquo;s commercial and residential sectors. We carry &pound;5m public liability as standard, increased for major commercial car parks, and every operative is fully trained, background-checked, and inducted to your site&rsquo;s H&amp;S protocols (RAMS, permits to work, PPE). We hold full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, and we can name your business on our policy as additional insured &mdash; a common requirement for shopping-centre vendor agreements, transport-hub contracts, and landlord consent for leased car parks. Our documentation is audit-ready for environmental health inspection; oily water disposal is fully SEPA-compliant and waste transfer notes are provided for your compliance file. We will not begin work until your facilities team and your compliance team have the documentation they need.",
+  1179→  },
+  1180→  {
+  1181→    q: "Do you provide your own professional equipment?",
+  1182→    a: "Yes. We supply all our own professional-grade equipment, specialized machinery, and non-toxic chemicals, which are already included in your competitive quote. From rotary pressure cleaners and superheated-water lances to wet-vacuum recovery systems and HEPA-filtered stairwell vacuums &mdash; every tool is COSHH-documented and maintained to manufacturer spec. Ride-on sweepers (Tennant, Karcher) for large open deck areas at 3,000&ndash;6,000m&sup2;/hour; walk-behind scrubber-dryers for ramps, tight corners, and around ticket machines; rotary pressure lances with superheated water for stubborn oil and traffic-film staining on monoblock, tarmac, and concrete; specialist bioremediation products for oil stains (which break down oil at a molecular level rather than spreading it); wet-vacuum recovery systems that minimize water left on the floor; HEPA-filtered stairwell vacuums with extension tubes for high dusting; anti-fungal treatments for damp and mould in underground car parks; specialist graffiti-removal chemistry selected by substrate; colour-coded cloths (red for high-contamination, green for product-facing, yellow for washroom, blue for back-of-house); HSE-compliant chemicals with COSHH datasheets on file; PPE; and non-toxic, child-safe, surface-safe chemistry by default. You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser wipes) or we can manage consumable restocking for an additional monthly fee.",
+  1183→  },
+  1184→  {
+  1185→    q: "Can you work with our existing equipment?",
+  1186→    a: "While we prefer our own specialized systems, our professional teams can work either with your on-site equipment or our own machinery depending on your preference. We&rsquo;ll always carry backup equipment to ensure no visit is missed &mdash; ride-on sweepers, scrubber-dryers, rotary pressure lances, wet-vac systems, and HEPA vacuums are all duplicated in our fleet. If your site has a fixed scrubber-dryer or a particular chemical store you&rsquo;d like us to use, we&rsquo;ll assess compatibility at the site survey stage, log it in your cleaning schedule, and brief the crew. Where your on-site equipment is preferred for sustainability or cost reasons, we&rsquo;ll train our crew to operate it to manufacturer spec and include pre- and post-visit checks in the cleaning log. We&rsquo;ll also flag if your equipment is reaching end-of-life and recommend replacements from our supplier network &mdash; transparent, no mark-ups.",
+  1187→  },
+  1188→];
+  1189→
+  1190→export function CarParkSeoFaq() {
+  1191→  return (
+  1192→    <section className="py-16 lg:py-24 bg-background">
+  1193→      <div className="max-w-4xl mx-auto px-6">
+  1194→        <motion.div
+  1195→          initial={{ opacity: 0, y: 20 }}
+  1196→          whileInView={{ opacity: 1, y: 0 }}
+  1197→          viewport={{ once: true, margin: "-80px" }}
+  1198→          transition={{ duration: 0.5 }}
+  1199→          className="text-center mb-12"
+  1200→        >
+  1201→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1202→            Car park cleaning &middot; FAQ
+  1203→          </span>
+  1204→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1205→            Frequently Asked Questions
+  1206→          </h2>
+  1207→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1208→            Straight answers to the questions our car park cleaning clients ask most often.
+  1209→            Can&rsquo;t find what you need? Call us on{" "}
+  1210→            <a
+  1211→              href={contactInfo.phoneHref}
+  1212→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1213→            >
+  1214→              {contactInfo.phone}
+  1215→            </a>{" "}
+  1216→            and we&rsquo;ll talk it through.
+  1217→          </p>
+  1218→        </motion.div>
+  1219→
+  1220→        <div className="space-y-4">
+  1221→          {SEO_FAQS.map((faq, i) => (
+  1222→            <motion.div
+  1223→              key={faq.q}
+  1224→              initial={{ opacity: 0, y: 16 }}
+  1225→              whileInView={{ opacity: 1, y: 0 }}
+  1226→              viewport={{ once: true, margin: "-40px" }}
+  1227→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1228→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1229→            >
+  1230→              <details className="group">
+  1231→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1232→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1233→                    {faq.q}
+  1234→                  </h3>
+  1235→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1236→                    <span className="relative w-3.5 h-3.5">
+  1237→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1238→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1239→                    </span>
+  1240→                  </span>
+  1241→                </summary>
+  1242→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1243→                  <p
+  1244→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1245→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1246→                  />
+  1247→                </div>
+  1248→              </details>
+  1249→            </motion.div>
+  1250→          ))}
+  1251→        </div>
+  1252→
+  1253→        <motion.div
+  1254→          initial={{ opacity: 0, y: 16 }}
+  1255→          whileInView={{ opacity: 1, y: 0 }}
+  1256→          viewport={{ once: true, margin: "-40px" }}
+  1257→          transition={{ duration: 0.5, delay: 0.3 }}
+  1258→          className="mt-10 text-center"
+  1259→        >
+  1260→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1261→            <Button
+  1262→              size="lg"
+  1263→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1264→              asChild
+  1265→            >
+  1266→              <Link href="/quote">
+  1267→                Get My 30-Second Instant Quote
+  1268→                <ArrowRight className="w-5 h-5" />
+  1269→              </Link>
+  1270→            </Button>
+  1271→            <Button
+  1272→              size="lg"
+  1273→              variant="outline"
+  1274→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1275→              asChild
+  1276→            >
+  1277→              <Link href="#checklist">
+  1278→                <CheckCircle2 className="w-4 h-4" />
+  1279→                View Our Commercial Cleaning Checklist
+  1280→              </Link>
+  1281→            </Button>
+  1282→          </div>
+  1283→        </motion.div>
+  1284→      </div>
+  1285→    </section>
+  1286→  );
+  1287→}
+  1288→

@@ -1,0 +1,502 @@
+   456→              </div>
+   457→            </div>
+   458→            <motion.div
+   459→              animate={{ y: [0, -8, 0] }}
+   460→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   461→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   462→            >
+   463→              <div className="flex items-center gap-2">
+   464→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   465→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   466→                </div>
+   467→                <div>
+   468→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   469→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   470→                </div>
+   471→              </div>
+   472→            </motion.div>
+   473→          </motion.div>
+   474→
+   475→          {/* Copy side */}
+   476→          <motion.div
+   477→            initial={{ opacity: 0, y: 20 }}
+   478→            whileInView={{ opacity: 1, y: 0 }}
+   479→            viewport={{ once: true, margin: "-80px" }}
+   480→            transition={{ duration: 0.5 }}
+   481→            className="order-1 lg:order-2"
+   482→          >
+   483→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   484→              Why choose Maundy Clean
+   485→            </span>
+   486→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   487→              Why MaundyClean is Scotland&rsquo;s Authority in Property Maintenance
+   488→            </h2>
+   489→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   490→              Property management requires a careful balance of proactive recurring
+   491→              cleaning and reactive technical support. MaundyClean addresses the
+   492→              exploitable weaknesses of impersonal national agencies by providing a
+   493→              local, high-trust alternative.
+   494→            </p>
+   495→
+   496→            <div className="space-y-3">
+   497→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   498→                const Icon = card.icon;
+   499→                return (
+   500→                  <div
+   501→                    key={card.title}
+   502→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   503→                  >
+   504→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   505→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   506→                    </div>
+   507→                    <div>
+   508→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   509→                        {card.title}
+   510→                      </h3>
+   511→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   512→                        {typeof card.description === "string" ? (
+   513→                          <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   514→                        ) : (
+   515→                          card.description
+   516→                        )}
+   517→                      </p>
+   518→                    </div>
+   519→                  </div>
+   520→                );
+   521→              })}
+   522→            </div>
+   523→          </motion.div>
+   524→        </div>
+   525→
+   526→        <div className="grid md:grid-cols-2 gap-6">
+   527→          {TRUST_CARDS.slice(2).map((card, i) => {
+   528→            const Icon = card.icon;
+   529→            return (
+   530→              <motion.div
+   531→                key={card.title}
+   532→                initial={{ opacity: 0, y: 24 }}
+   533→                whileInView={{ opacity: 1, y: 0 }}
+   534→                viewport={{ once: true, margin: "-40px" }}
+   535→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   536→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   537→              >
+   538→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   539→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   540→                </div>
+   541→                <div>
+   542→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   543→                    {card.title}
+   544→                  </h3>
+   545→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   546→                    {typeof card.description === "string" ? (
+   547→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   548→                    ) : (
+   549→                      card.description
+   550→                    )}
+   551→                  </p>
+   552→                </div>
+   553→              </motion.div>
+   554→            );
+   555→          })}
+   556→        </div>
+   557→      </div>
+   558→    </section>
+   559→  );
+   560→}
+   561→
+   562→// ============================================================
+   563→// Section 3 - Our Total Property Management & Block Maintenance Checklist
+   564→// (Semantic H2: "Our Total Property Management & Block Maintenance Checklist")
+   565→// Brief-specific section with 3 H3 sub-sections:
+   566→//   1. Communal & Block Maintenance (Recurring)
+   567→//   2. Technical Unit Resets (Deep Cleans)
+   568→//   3. Often-Missed Technical Details
+   569→// Carries the id="checklist" anchor that the CTA buttons link to.
+   570→// Per the brief: NO intro paragraphs on the 3 checklist cards
+   571→// (just H3 title + sub-points). Card 2 sub-point 3 contains an
+   572→// inline <Link> to /services/car-park-cleaning ("Car Park Cleaning"),
+   573→// so all 3 sub-point bodies in Card 2 are typed as ReactNode
+   574→// (which the ChecklistPoint type already supports via ReactNode).
+   575→// ============================================================
+   576→
+   577→type ChecklistPoint = {
+   578→  title: string;
+   579→  text: ReactNode;
+   580→};
+   581→
+   582→const CHECKLIST_ITEMS: {
+   583→  icon: typeof Building2;
+   584→  image: string;
+   585→  imageAlt: string;
+   586→  title: string;
+   587→  description: string;
+   588→  points: ChecklistPoint[];
+   589→}[] = [
+   590→  {
+   591→    icon: Building2,
+   592→    image: IMG.checklistFront,
+   593→    imageAlt:
+   594→      "Maundy Clean crew maintaining entryways, hallways, stairwells and high-touch surfaces in a Scottish residential block to a showcase standard",
+   595→    title: "1. Communal & Block Maintenance (Recurring)",
+   596→    description: "",
+   597→    points: [
+   598→      {
+   599→        title: "Daily/Weekly Communal Cleaning",
+   600→        text: "Meticulous maintenance of entryways, hallways, and stairwells to keep the building looking its best. Stone stairs mopped with stone-safe pH-neutral cleaner (no acid, no bleach), banisters and handrails sanitised as a high-touch surface, close glazing cleaned where reachable, dusting of window sills and door surrounds, door furniture polished, close matting shaken or vacuumed, and cobwebs removed from ceiling corners &mdash; the close left fresh and clean for every resident coming home.",
+   601→      },
+   602→      {
+   603→        title: "High-Touch Sanitization",
+   604→        text: "Disinfecting entry phone systems, lift buttons, and handrails to keep germs and bugs at bay. Entry phone handsets, call buttons, keypad entry systems, lift call panels, lift car buttons, handrails on every flight, light switches in the close, door handles on the close door and bin store door, and letter box flaps &mdash; all wiped with a fragrance-free EN 1276 bactericide with the correct contact time, every visit.",
+   605→      },
+   606→      {
+   607→        title: "Window Cleaning",
+   608→        text: "Professional cleaning of the inside and outside of windows to maximize natural light and street-level curb appeal. Internal close glazing cleaned where reachable, entrance door side panels squeegeed, stairwell window internals wiped, and external street-facing windows scheduled on a rotating basis &mdash; the natural light and curb appeal that signals a well-managed block from the pavement.",
+   609→      },
+   610→    ],
+   611→  },
+   612→  {
+   613→    icon: Hammer,
+   614→    image: IMG.checklistCounter,
+   615→    imageAlt:
+   616→      "Maundy Clean crew performing end of tenancy deep cleans, floor restoration and external power-washing for a Scottish letting portfolio",
+   617→    title: "2. Technical Unit Resets (Deep Cleans)",
+   618→    description: "",
+   619→    points: [
+   620→      {
+   621→        title: "End of Tenancy Deep Clean",
+   622→        text: "Intensive sanitation of individual units, including ovens, hobs, and bathrooms, to ensure the next tenant&rsquo;s first impression is perfect. Oven degreased (racks soaked, door split, glass polished), hob descaled and polished, extractor hood degreased, kitchen units fronted and topped, bathroom descaled (tiles, screen, shower head, taps), sanitaryware polished, mirrors squeegeed, skirting boards and door frames damp-wiped, hard floors mopped, and carpets vacuumed edge-to-edge &mdash; the front-line-ready finish your incoming tenant expects on day one.",
+   623→      },
+   624→      {
+   625→        title: "Floor Restoration",
+   626→        text: "Specialist care for marble floors, hardwood, and deep carpet shampooing to remove city-center dust and traffic film. Periodic machine-scrub and neutral cleaner on stone stairs and communal tiling, hardwood floor clean-and-refresh for amenity blocks, hot-water extraction for communal carpet runners and unit carpets at tenancy change, and high-speed buff on polished concrete forecourts &mdash; the technical reset that protects the substrate and the building&rsquo;s value.",
+   627→      },
+   628→      {
+   629→        title: "External Care",
+   630→        text: (
+   631→          <>
+   632→            Power-washing of forecourts, walkways, and{" "}
+   633→            <Link
+   634→              href="/services/car-park-cleaning"
+   635→              className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   636→            >
+   637→              Car Park Cleaning
+   638→            </Link>{" "}
+   639→            to remove algae, oil stains, and graffiti. Pressure-washed forecourts
+   640→            and entrance walkways to lift winter algae and slip hazards, bin store
+   641→            surrounds degreased and deodorised, and resident car parks swept,
+   642→            degreased, and line-marked where required &mdash; the external finish
+   643→            that tells residents and visitors the block is professionally managed.
+   644→          </>
+   645→        ),
+   646→      },
+   647→    ],
+   648→  },
+   649→  {
+   650→    icon: Sparkles,
+   651→    image: IMG.checklistKitchen,
+   652→    imageAlt:
+   653→      "Maundy Clean crew detailing skirting boards, door frames, ceiling fixtures and janitorial restrooms across a Scottish managed property portfolio",
+   654→    title: "3. Often-Missed Technical Details",
+   655→    description: "",
+   656→    points: [
+   657→      {
+   658→        title: "Visible Skirting Boards & Sills",
+   659→        text: "Our cleaners meticulously wipe all skirting boards, door frames, and ceiling fixtures as part of our standard service. Skirting boards, door frames, architraves, switch plates, picture rails, window sills, fire-extinguisher brackets, signage housings, and ceiling light fixtures in communal closes, landings, lounges, and lift lobbies damp-wiped with a pH-neutral sanitiser. Ceiling light fixtures, air-conditioning vents, and extractor grilles dusted with extendable HEPA-filtered attachments. These are the details residents notice first &mdash; and the details most cleaners skip.",
+   660→      },
+   661→      {
+   662→        title: "Washroom & Janitorial Services",
+   663→        text: "Managing supplies and deep-sanitizing facility restrooms to the highest industry standards. Communal WC blocks in sheltered housing and amenity buildings descaled, disinfected, and polished; tiles and grout scrubbed; partition screens disinfected; mirrors squeegeed; floors mopped edge-to-edge with a slip-resistant sanitiser; chrome taps, soap dispensers, towel dispensers, and hand-dryer nozzles buffed; sanitary bins checked and emptied; consumables (paper towel, toilet paper, hand soap, sanitiser wipes) restocked every visit or managed by us on a monthly retainer.",
+   664→      },
+   665→    ],
+   666→  },
+   667→];
+   668→
+   669→export function PropertyManagementSeoChecklist() {
+   670→  return (
+   671→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   672→      <div className="max-w-[1400px] mx-auto px-6">
+   673→        <motion.div
+   674→          initial={{ opacity: 0, y: 20 }}
+   675→          whileInView={{ opacity: 1, y: 0 }}
+   676→          viewport={{ once: true, margin: "-80px" }}
+   677→          transition={{ duration: 0.5 }}
+   678→          className="max-w-3xl mb-12"
+   679→        >
+   680→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   681→            Beyond the standard surface wipe
+   682→          </span>
+   683→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   684→            Our Total Property Management &amp; Block Maintenance Checklist
+   685→          </h2>
+   686→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   687→            Our recurring cleaning for property managers follows a rigorous,
+   688→            agency-approved checklist designed to maintain a &ldquo;speechlessly
+   689→            spotless&rdquo; finish across communal and private spaces. We deliver
+   690→            technical depth in every zone of your portfolio &mdash; from the
+   691→            communal close and stairwell through the technical unit reset at tenancy
+   692→            change to the often-missed technical details that signal a
+   693→            well-managed block. Below is the scope we deliver as standard,
+   694→            regardless of building type, footprint, or tenancy schedule.
+   695→          </p>
+   696→        </motion.div>
+   697→
+   698→        <div className="grid lg:grid-cols-3 gap-6">
+   699→          {CHECKLIST_ITEMS.map((item, i) => {
+   700→            const Icon = item.icon;
+   701→            return (
+   702→              <motion.div
+   703→                key={item.title}
+   704→                initial={{ opacity: 0, y: 24 }}
+   705→                whileInView={{ opacity: 1, y: 0 }}
+   706→                viewport={{ once: true, margin: "-40px" }}
+   707→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   708→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   709→              >
+   710→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   711→                  <img
+   712→                    src={item.image}
+   713→                    alt={item.imageAlt}
+   714→                    className="absolute inset-0 w-full h-full object-cover"
+   715→                    loading="lazy"
+   716→                  />
+   717→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   718→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   719→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   720→                  </div>
+   721→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   722→                    {item.title}
+   723→                  </h3>
+   724→                </div>
+   725→                <div className="p-6 flex-1 flex flex-col">
+   726→                  {item.description ? (
+   727→                    <p
+   728→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   729→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   730→                    />
+   731→                  ) : null}
+   732→                  <ul className="space-y-3 mt-auto">
+   733→                    {item.points.map((point) => {
+   734→                      const PointIcon = CheckCircle2;
+   735→                      return (
+   736→                        <li
+   737→                          key={point.title}
+   738→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   739→                        >
+   740→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   741→                          <span>
+   742→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   743→                            &mdash;{" "}
+   744→                            {typeof point.text === "string" ? (
+   745→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   746→                            ) : (
+   747→                              point.text
+   748→                            )}
+   749→                          </span>
+   750→                        </li>
+   751→                      );
+   752→                    })}
+   753→                  </ul>
+   754→                </div>
+   755→              </motion.div>
+   756→            );
+   757→          })}
+   758→        </div>
+   759→      </div>
+   760→    </section>
+   761→  );
+   762→}
+   763→
+   764→// ============================================================
+   765→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   766→// (Semantic H2: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   767→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   768→// (FileText imported for safety/template parity even if not used.)
+   769→// Brief has NO [H3] marker on this heading, so we use <h2>
+   770→// (matches the standard section-title pattern used elsewhere).
+   771→// ============================================================
+   772→
+   773→const BOOKING_STEPS = [
+   774→  {
+   775→    icon: ClipboardCheck,
+   776→    step: "01",
+   777→    title: "Site Survey & Strategy",
+   778→    description:
+   779→      "Contact us for a free site survey. We will assess your portfolio and develop a bespoke maintenance plan that fits your budget and frequency requirements. We walk every block with your factor or property manager, identify your building types (tenement close, four-in-a-block, sheltered housing, mixed-use block), capacity (number of closes, stairwells, communal lounges, bin stores, shared gardens), tenancy profile (long-let, short-let, student, sheltered), turnaround windows (between-tenancy resets, factor inspection prep, end-of-day touch-ups), and any specific cleaning challenges (bin juice in bin stores, algae on forecourts, graffiti on stairwells, listed-building constraints on stone stairs). We send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, RAMS, COSHH datasheets, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   780→  },
+   781→  {
+   782→    icon: UserCheck,
+   783→    step: "02",
+   784→    title: "Professional Matching",
+   785→    description:
+   786→      "We hand-pick a team with experience in block management and unit &ldquo;showcasing&rdquo;. Your allocated crew lead is PVG-checked (essential for buildings where residents may be present), uniformed, and trained in property-management-specific protocols &mdash; communal area cleaning, end of tenancy resets, forecourt power-washing, tenement close cleaning, stairwell sanitisation, bin store hygiene, and reactive emergency response. We brief the crew on your close layout, your access protocols (key safes, alarm codes, entry phone), your bin collection schedule, your resident communications protocol, and your premium finishes &mdash; so cleaning happens around your residents&rsquo; lives, not through them. The same crew returns for every scheduled session, building real knowledge of your high-traffic zones, your tenancy calendar, and your quiet periods.",
+   787→  },
+   788→  {
+   789→    icon: Sparkles,
+   790→    step: "03",
+   791→    title: "Enjoy a Pristine Portfolio",
+   792→    description:
+   793→      "Experience buildings that look, smell, and feel fresh every single day, backed by our MaundyClean 100% satisfaction guarantee. You receive a signed cleaning log after every visit (operative signature, factor or property-manager counter-signature on request), arrival and departure times, tasks completed, and any issues flagged &mdash; like a fly-tipping incident, a damaged fixture, a failed close light, a leaking pipe, or a bin store pest sighting &mdash; before they undermine a resident complaint, a factor inspection, or a tribunal hearing. From &pound;15 per hour for a single block through to a fully bespoke retainer for a multi-site portfolio. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   794→  },
+   795→];
+   796→
+   797→export function PropertyManagementSeoBooking() {
+   798→  return (
+   799→    <section className="py-16 lg:py-24 bg-background">
+   800→      <div className="max-w-[1400px] mx-auto px-6">
+   801→        <motion.div
+   802→          initial={{ opacity: 0, y: 20 }}
+   803→          whileInView={{ opacity: 1, y: 0 }}
+   804→          viewport={{ once: true, margin: "-80px" }}
+   805→          transition={{ duration: 0.5 }}
+   806→          className="text-center mb-14"
+   807→        >
+   808→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   809→            Hassle-free booking
+   810→          </span>
+   811→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   812→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   813→          </h2>
+   814→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   815→            We have optimized our booking experience to be uncomplicated and
+   816→            straightforward, providing the responsive management support Scottish
+   817→            business owners demand. From free site survey and itemised proposal to
+   818→            first clean in under a week &mdash; no friction, no waiting, no
+   819→            surprises. Just a pristine portfolio, every close, every stairwell, and
+   820→            a compliance file that&rsquo;s dispute-proof the day a resident
+   821→            questions the service charge.
+   822→          </p>
+   823→        </motion.div>
+   824→
+   825→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   826→          {/* Connector line */}
+   827→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   828→
+   829→          {BOOKING_STEPS.map((step, i) => {
+   830→            const Icon = step.icon;
+   831→            return (
+   832→              <motion.div
+   833→                key={step.step}
+   834→                initial={{ opacity: 0, y: 24 }}
+   835→                whileInView={{ opacity: 1, y: 0 }}
+   836→                viewport={{ once: true, margin: "-40px" }}
+   837→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   838→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   839→              >
+   840→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   841→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   842→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   843→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   844→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   845→                    {step.step}
+   846→                  </span>
+   847→                </div>
+   848→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   849→                  {step.title}
+   850→                </h3>
+   851→                <p
+   852→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   853→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   854→                />
+   855→              </motion.div>
+   856→            );
+   857→          })}
+   858→        </div>
+   859→
+   860→        <motion.div
+   861→          initial={{ opacity: 0, y: 16 }}
+   862→          whileInView={{ opacity: 1, y: 0 }}
+   863→          viewport={{ once: true }}
+   864→          transition={{ duration: 0.5, delay: 0.3 }}
+   865→          className="text-center mt-10"
+   866→        >
+   867→          <Button
+   868→            size="lg"
+   869→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   870→            asChild
+   871→          >
+   872→            <Link href="/quote">
+   873→              Request Your Bespoke Portfolio Quote
+   874→              <ArrowRight className="w-5 h-5" />
+   875→            </Link>
+   876→          </Button>
+   877→        </motion.div>
+   878→      </div>
+   879→    </section>
+   880→  );
+   881→}
+   882→
+   883→// ============================================================
+   884→// Section 5 - Solutions for Every Property Need
+   885→// (Semantic H2: "Solutions for Every Property Need")
+   886→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   887→// Image-topped cards with internal links to specialist services.
+   888→// All 4 card descriptions are ReactNode values (each contains an
+   889→// inline <Link> per the brief) - rendered via the
+   890→// typeof sol.description === "string" check.
+   891→// ============================================================
+   892→
+   893→type InterlinkSolution = {
+   894→  icon: typeof Sparkles;
+   895→  title: string;
+   896→  href: string;
+   897→  image: string;
+   898→  imageAlt: string;
+   899→  description: ReactNode;
+   900→  cta: string;
+   901→};
+   902→
+   903→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   904→  {
+   905→    icon: KeyRound,
+   906→    title: "Property Transitions",
+   907→    href: "/services/move-in-out-cleaning",
+   908→    image: IMG.leaseSpring,
+   909→    imageAlt:
+   910→      "End of tenancy handover clean for a Scottish residential unit being vacated, ensuring the property is front-line ready for the next tenant to move in immediately",
+   911→    description: (
+   912→      <>
+   913→        Moving a tenant out? Our{" "}
+   914→        <Link
+   915→          href="/services/move-in-out-cleaning"
+   916→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   917→        >
+   918→          End of Tenancy Cleaning
+   919→        </Link>{" "}
+   920→        ensures properties are front-line ready and your deposit-back guarantees
+   921→        are met. Every surface detailed top-to-bottom &mdash; the same trusted,
+   922→        vetted crew, the same child-safe eco chemistry, the same signed cleaning
+   923→        log after every visit &mdash; so your handover inspection, your
+   924→        deposit-return negotiation, and your next tenant&rsquo;s first walk-through
+   925→        all start from a &ldquo;speechlessly spotless&rdquo; baseline.
+   926→      </>
+   927→    ),
+   928→    cta: "Explore end of tenancy cleaning",
+   929→  },
+   930→  {
+   931→    icon: Hammer,
+   932→    title: "Post-Renovation",
+   933→    href: "/services/post-construction-cleaning",
+   934→    image: IMG.leaseBuilders,
+   935→    imageAlt:
+   936→      "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish residential unit before the new tenant moves in",
+   937→    description: (
+   938→      <>
+   939→        If a unit has undergone improvements, our{" "}
+   940→        <Link
+   941→          href="/services/post-construction-cleaning"
+   942→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   943→        >
+   944→          After Builders Clean
+   945→        </Link>{" "}
+   946→        is designed to remove heavy construction dust and debris. Fine dust left
+   947→        on stairwells, communal floors, freshly-painted finishes, or newly-fitted
+   948→        kitchens undermines the resident-trust signal the moment the unit is
+   949→        handed back &mdash; we vacuum, damp-wipe, and protect every surface
+   950→        before the dust has a chance to damage your residents&rsquo; experience or
+   951→        your freshly-painted finishes.
+   952→      </>
+   953→    ),
+   954→    cta: "Explore after builders cleaning",
+   955→  },
+
+[showing lines 456-955 of 1443; use offset=956 with limit to continue reading]

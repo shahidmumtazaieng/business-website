@@ -1,0 +1,1459 @@
+     1→// Service detail content model — rich, per-service data for individual service pages.
+     2→// Each service has: hero, what's included, process, why-us, pricing, areas, FAQ, testimonials, related, gallery.
+     3→
+     4→export type ChecklistItem = {
+     5→  title: string;
+     6→  description: string;
+     7→};
+     8→
+     9→export type ServiceStep = {
+    10→  step: string;
+    11→  title: string;
+    12→  description: string;
+    13→  duration?: string;
+    14→};
+    15→
+    16→export type ServiceBenefit = {
+    17→  icon: string; // lucide icon name
+    18→  title: string;
+    19→  description: string;
+    20→};
+    21→
+    22→export type ServiceFaq = {
+    23→  q: string;
+    24→  a: string;
+    25→};
+    26→
+    27→export type ServicePricingTier = {
+    28→  name: string;
+    29→  tagline: string;
+    30→  price: string;
+    31→  unit: string;
+    32→  features: string[];
+    33→  highlighted?: boolean;
+    34→};
+    35→
+    36→export type ServiceTestimonial = {
+    37→  name: string;
+    38→  role: string;
+    39→  quote: string;
+    40→  rating: number;
+    41→};
+    42→
+    43→export type ServiceDetail = {
+    44→  slug: string;
+    45→  name: string;
+    46→  category: string;
+    47→  tagline: string;
+    48→  heroHeadline: string;
+    49→  heroSubhead: string;
+    50→  heroImage: string;
+    51→  breadcrumbParent: string;
+    52→  metaTitle: string;
+    53→  metaDescription: string;
+    54→  // Sections
+    55→  overviewParagraphs: string[];
+    56→  whatsIncluded: ChecklistItem[];
+    57→  processSteps: ServiceStep[];
+    58→  benefits: ServiceBenefit[];
+    59→  pricingTiers: ServicePricingTier[];
+    60→  serviceAreas: string[]; // city names
+    61→  faqs: ServiceFaq[];
+    62→  testimonials: ServiceTestimonial[];
+    63→  relatedServices: { name: string; href: string; description: string }[];
+    64→  gallery: { src: string; alt: string; caption: string }[];
+    65→};
+    66→
+    67→// ============================================================
+    68→// Service #1 — Recurring Home Cleaning (Residential, popular)
+    69→// ============================================================
+    70→export const recurringHomeCleaning: ServiceDetail = {
+    71→  slug: "recurring-home-cleaning",
+    72→  name: "Recurring Home Cleaning",
+    73→  category: "Residential Cleaning",
+    74→  tagline: "Weekly, fortnightly & monthly plans — the same PVG-checked crew every visit.",
+    75→  heroHeadline: "A home that's\ngenuinely clean.\nEvery single visit.",
+    76→  heroSubhead:
+    77→    "Skip the weekly tidy-up stress. Our uniformed, PAYE-employed crews learn your home's quirks, follow a personalised checklist, and show up on the same day every visit — backed by a 100% re-clean guarantee if anything's missed.",
+    78→  heroImage: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    79→  breadcrumbParent: "Residential Cleaning",
+    80→  metaTitle: "Recurring Home Cleaning in Scotland | Weekly, Fortnightly & Monthly | Maundy Clean",
+    81→  metaDescription:
+    82→    "Book a PVG-checked recurring home cleaning crew in Scotland. Same team every visit. Weekly, fortnightly & monthly plans from £62/visit. Free re-clean guarantee. 4.9★ across 6,200+ reviews.",
+    83→  overviewParagraphs: [
+    84→    "Recurring home cleaning is the backbone of how Maundy Clean keeps Scottish households running smoothly. Rather than sending a different contractor each week, we assign you a dedicated two- or three-person crew that becomes intimately familiar with your home — the way you like your cushions placed, which skirting boards your toddler reaches, which rooms are off-limits to eco-spray. That continuity is the single biggest reason our recurring clients stay with us for an average of 3.4 years.",
+    85→    "Every visit follows a personalised checklist built around your priorities and refined after the first three cleans. We don't believe in one-size-fits-all templates. Your kitchen might need a deep oven wipe-down weekly; your spare bedroom might only need a fortnightly dust. The checklist lives in your client portal, editable from your phone, and your crew receives the updated version automatically before each visit.",
+    86→    "All our cleaners are PAYE employees on full Scottish employment contracts — never self-employed contractors or gig workers. They carry Disclosure Scotland PVG scheme membership, £5m public liability cover, and are trained on low-VOC eco-labelled products as standard. You'll receive a 'crew arrived' photo notification the moment they enter your home and a 'clean complete' summary with before-and-after photos of any zones you've flagged as priority.",
+    87→  ],
+    88→  whatsIncluded: [
+    89→    {
+    90→      title: "Kitchen deep-reset",
+    91→      description:
+    92→        "Countertops degreased, stovetop wiped down, sink polished, exterior of all appliances cleaned, floor mopped, and bin area sanitised. We don't just tidy — we reset the room to a baseline you can build on.",
+    93→    },
+    94→    {
+    95→      title: "Bathroom sanitation",
+    96→      description:
+    97→        "Toilets descaled and disinfected inside and out, shower glass squeegeed and treated, tiles scrubbed, grout lines addressed, mirrors streak-free, and floors mopped with a hospital-grade sanitiser diluted to child-safe concentrations.",
+    98→    },
+    99→    {
+   100→      title: "Living & bedroom refresh",
+   101→      description:
+   102→        "Dusting of all surfaces (including picture frames, lampshades, and ceiling fans), cushions plumped, beds re-made if requested, mirrors cleaned, skirting boards wiped, and floors vacuumed then mopped.",
+   103→    },
+   104→    {
+   105→      title: "Floor care throughout",
+   106→      description:
+   107→        "Hardwood damp-mopped with pH-neutral cleaner, carpets vacuumed edge-to-edge (including under moveable furniture), rugs beaten if small enough, and tile & grout scrubbed in high-traffic zones.",
+   108→    },
+   109→    {
+   110→      title: "Detail touchpoints",
+   111→      description:
+   112→        "Light switches, door handles, remote controls, banisters, and high-touch surfaces wiped with a sanitiser proven effective against 99.9% of common household bacteria — without leaving chemical residue.",
+   113→    },
+   114→    {
+   115→      title: "Personalised add-ons",
+   116→      description:
+   117→        "Oven cleaning, inside-cabinet wipe-down, fridge clean-out, laundry folding, ironing, pet area sanitisation, and window interiors can all be slotted into your recurring visit on a fixed rotation or on-demand basis.",
+   118→    },
+   119→  ],
+   120→  processSteps: [
+   121→    {
+   122→      step: "01",
+   123→      title: "Tell us about your home",
+   124→      description:
+   125→        "Complete our 60-second scoping form with your property type, number of bedrooms and bathrooms, frequency preference, and any priority zones. No pushy sales call — we just need the basics to scope accurately.",
+   126→      duration: "60 seconds",
+   127→    },
+   128→    {
+   129→      step: "02",
+   130→      title: "Receive a transparent quote",
+   131→      description:
+   132→        "Within one business hour you'll get an itemised quote showing crew size, estimated time on-site, and the flat per-visit rate. Choose weekly, fortnightly, or monthly. No hidden fees, no surprise add-ons.",
+   133→      duration: "1 business hour",
+   134→    },
+   135→    {
+   136→      step: "03",
+   137→      title: "Meet your dedicated crew",
+   138→      description:
+   139→        "Your first clean is a walk-through with your assigned crew lead. They'll note your preferences, photograph priority zones, and build your personalised checklist in the portal with you.",
+   140→      duration: "First visit",
+   141→    },
+   142→    {
+   143→      step: "04",
+   144→      title: "Sit back & relax",
+   145→      description:
+   146→        "Your crew arrives on the same day each visit. You get an arrival notification, a clean-complete summary, and a one-tap rating. Adjust your checklist anytime. Not happy? We re-clean within 24 hours, free.",
+   147→      duration: "Every visit",
+   148→    },
+   149→  ],
+   150→  benefits: [
+   151→    {
+   152→      icon: "Users",
+   153→      title: "Same crew, every visit",
+   154→      description:
+   155→        "We assign a dedicated team that learns your home's quirks, not a rotating cast of contractors. Crew leads stay with us an average of 4.2 years — you'll know them by name.",
+   156→    },
+   157→    {
+   158→      icon: "Shield",
+   159→      title: "PVG-checked & fully insured",
+   160→      description:
+   161→        "Every team member carries Disclosure Scotland PVG membership and is on our payroll. £5m public liability cover on every visit. No contractor grey areas, ever.",
+   162→    },
+   163→    {
+   164→      icon: "Leaf",
+   165→      title: "Eco-labelled supplies as standard",
+   166→      description:
+   167→        "We default to EU Ecolabel or DEFRA-approved low-VOC products that are safe for kids, pets, and sensitive airways. Hospital-grade alternatives available on request for medical needs.",
+   168→    },
+   169→    {
+   170→      icon: "Clock",
+   171→      title: "Locked-in rate guarantee",
+   172→      description:
+   173→        "Your per-visit rate is locked for 12 months from your start date. No inflation-driven creep, no mid-year surprises. You'll always know exactly what your next clean costs.",
+   174→    },
+   175→    {
+   176→      icon: "Star",
+   177→      title: "100% re-clean guarantee",
+   178→      description:
+   179→        "If anything's missed or you're unhappy with any zone, tell us within 24 hours and we'll send a crew back to re-clean it free. No friction, no interrogation. We mean it.",
+   180→    },
+   181→    {
+   182→      icon: "Smartphone",
+   183→      title: "Client portal & app",
+   184→      description:
+   185→        "Edit your checklist, reschedule visits, view before/after photos, and rate each clean — all from your phone. Real-time arrival notifications and live crew tracking on clean day.",
+   186→    },
+   187→  ],
+   188→  pricingTiers: [
+   189→    {
+   190→      name: "Weekly",
+   191→      tagline: "Best value for busy households",
+   192→      price: "£62",
+   193→      unit: "/visit",
+   194→      features: [
+   195→        "Same 2-person crew every week",
+   196→        "Priority scheduling — pick your slot",
+   197→        "10% member discount on add-ons",
+   198→        "Free re-clean if unhappy",
+   199→        "Locked-in rate for 12 months",
+   200→        "Complimentary oven clean quarterly",
+   201→      ],
+   202→      highlighted: true,
+   203→    },
+   204→    {
+   205→      name: "Fortnightly",
+   206→      tagline: "Our most popular plan",
+   207→      price: "£76",
+   208→      unit: "/visit",
+   209→      features: [
+   210→        "Same 2-person crew every visit",
+   211→        "Priority scheduling",
+   212→        "7% member discount on add-ons",
+   213→        "Free re-clean if unhappy",
+   214→        "Locked-in rate for 12 months",
+   215→        "Complimentary fridge clean quarterly",
+   216→      ],
+   217→    },
+   218→    {
+   219→      name: "Monthly",
+   220→      tagline: "Maintenance for lower-traffic homes",
+   221→      price: "£97",
+   222→      unit: "/visit",
+   223→      features: [
+   224→        "Same 2-person crew every visit",
+   225→        "Standard scheduling",
+   226→        "5% member discount on add-ons",
+   227→        "Free re-clean if unhappy",
+   228→        "Locked-in rate for 12 months",
+   229→        "Complimentary deep clean bi-annually",
+   230→      ],
+   231→    },
+   232→  ],
+   233→  serviceAreas: [
+   234→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Inverness",
+   235→    "Stirling", "Perth", "Falkirk", "St Andrews", "Paisley",
+   236→    "East Kilbride", "Livingston", "Dunfermline", "Kirkcaldy",
+   237→    "Motherwell", "Hamilton", "Cumbernauld", "Ayr", "Elgin", "Oban",
+   238→  ],
+   239→  faqs: [
+   240→    {
+   241→      q: "Will I really get the same crew every visit?",
+   242→      a: "Yes. We assign a dedicated crew lead and one or two regular team members to your home for the duration of your plan. If your lead is ever on annual leave or off sick, we'll send a trained backup who has been briefed on your checklist — and we'll tell you in advance via the portal. Crew continuity is the single biggest reason our recurring clients stay with us for an average of 3.4 years, so we guard it jealously.",
+   243→    },
+   244→    {
+   245→      q: "Do I have to be home during the clean?",
+   246→      a: "No. Most of our recurring clients are at work during their scheduled clean. We use secure key-handling and lockbox protocols — your key is stored in a sealed, coded envelope in our office safe between visits, never labelled with your address. You'll receive a 'crew arrived' photo notification the moment they enter your home and a 'clean complete' summary when they lock up.",
+   247→    },
+   248→    {
+   249→      q: "What if I'm not satisfied with the cleaning?",
+   250→      a: "Tell us within 24 hours via the portal, app, or phone, and we'll send a crew back to re-clean the missed zones at no charge — no questions, no friction, no interrogation. Our 4.9-star average across 6,200+ reviews exists because we actually honour this guarantee. In 2025 we re-cleaned 1.2% of visits and turned most of those clients into 5-year subscribers.",
+   251→    },
+   252→    {
+   253→      q: "Can I customise my cleaning checklist?",
+   254→      a: "Absolutely. Every recurring client gets a personalised checklist in their client portal. Add oven cleaning this week, skip the spare bedroom next week, rotate skirting boards monthly, request a deep-clean of the utility room every quarter — you're in full control from your phone. Changes sync to your crew's tablet instantly, and you can set up recurring rules so you don't have to micro-manage.",
+   255→    },
+   256→    {
+   257→      q: "What cleaning products do you use?",
+   258→      a: "We default to eco-labelled, low-VOC products that are safe for kids, pets, and sensitive airways — brands like Ecover, Method, and Bio-D for general cleaning, with Eco-Max and SAFECARE for sanitising. For clients with allergies, asthma, or chemical sensitivities, we offer a fragrance-free rotation. For commercial clients or post-illness cleans, we can switch to hospital-grade disinfectants. Bring-your-own-products is also available at a small discount.",
+   259→    },
+   260→    {
+   261→      q: "Can I pause or cancel my plan?",
+   262→      a: "Yes — there are no contracts and no cancellation fees. Pause for holidays, renovations, or anything else with 48 hours' notice via the portal. Cancel entirely with one tap. We don't believe in locking Scottish households into multi-month contracts — if we're not earning your repeat business every visit, we don't deserve it.",
+   263→    },
+   264→    {
+   265→      q: "What happens on a bank holiday or during severe weather?",
+   266→      a: "We don't clean on Christmas Day, Boxing Day, New Year's Day, or 2 January (Scottish bank holiday). On other bank holidays we operate as normal — just let us know if you'd prefer to skip. During severe weather (snow, storms, flooding) we'll proactively contact you to reschedule with priority on the next available slot. Your crew's safety comes first, but so does your home — we'll always make it right.",
+   267→    },
+   268→  ],
+   269→  testimonials: [
+   270→    {
+   271→      name: "Fiona McAllister",
+   272→      role: "Homeowner · Newton Mearns, Glasgow",
+   273→      quote:
+   274→        "We've used three other cleaning services over the past decade. Maundy Clean is the only one that showed up on time, every time, and actually cleaned the skirting boards without being asked. After 14 months I genuinely can't imagine going back to doing it ourselves.",
+   275→      rating: 5,
+   276→    },
+   277→    {
+   278→      name: "Gordon Patterson",
+   279→      role: "Homeowner · Morningside, Edinburgh",
+   280→      quote:
+   281→        "The same two women have cleaned our flat every Wednesday for nearly three years now. They know our dog by name, they know which rooms to skip when my mother-in-law stays, and they leave a handwritten note if anything needs my attention. Worth every penny.",
+   282→      rating: 5,
+   283→    },
+   284→    {
+   285→      name: "Mairi Sinclair",
+   286→      role: "Homeowner · Broughty Ferry, Dundee",
+   287→      quote:
+   288→        "I work from home and the arrival notifications mean I can step out for a coffee while they clean. The portal checklist is brilliant — I added 'please dust the top of the kitchen cabinets' once and it's been on the list every fortnight since, never missed.",
+   289→      rating: 5,
+   290→    },
+   291→  ],
+   292→  relatedServices: [
+   293→    {
+   294→      name: "Deep House Cleaning",
+   295→      href: "#",
+   296→      description: "Top-to-bottom detailed clean — perfect as a one-off or quarterly reset on top of your recurring plan.",
+   297→    },
+   298→    {
+   299→      name: "Move-In / Move-Out Cleaning",
+   300→      href: "#",
+   301→      description: "Full property reset for tenants & owners. Letting-agent approved checklist included.",
+   302→    },
+   303→    {
+   304→      name: "Carpet & Rug Cleaning",
+   305→      href: "#",
+   306→      description: "Hot-water extraction for carpets, rugs, and upholstery. Add-on to your recurring visit or standalone.",
+   307→    },
+   308→    {
+   309→      name: "Window Cleaning",
+   310→      href: "#",
+   311→      description: "Interior & exterior glass cleaned with pure-water fed pole system. Streak-free, chemical-free.",
+   312→    },
+   313→    {
+   314→      name: "Oven Cleaning",
+   315→      href: "#",
+   316→      description: "Non-caustic dip-tank oven cleaning. Add to your recurring plan or book as a one-off.",
+   317→    },
+   318→    {
+   319→      name: "Holiday Let Turnover",
+   320→      href: "#",
+   321→      description: "Airbnb & Booking.com guest-ready turnover service for short-term let owners across Scotland.",
+   322→    },
+   323→  ],
+   324→  gallery: [
+   325→    {
+   326→      src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+   327→      alt: "Clean modern living room after a Maundy Clean visit",
+   328→      caption: "Living room reset — cushions plumped, surfaces dusted, floors mopped edge-to-edge.",
+   329→    },
+   330→    {
+   331→      src: "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+   332→      alt: "Professional cleaner wiping down a kitchen countertop",
+   333→      caption: "Kitchen deep-reset — every surface degreased, every appliance exterior cleaned.",
+   334→    },
+   335→    {
+   336→      src: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+   337→      alt: "Eco-friendly cleaning supplies arranged neatly",
+   338→      caption: "Eco-labelled supplies — safe for kids, pets, and sensitive airways. Standard on every visit.",
+   339→    },
+   340→    {
+   341→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+   342→      alt: "Uniformed Maundy Clean crew arriving at a home",
+   343→      caption: "Your dedicated crew — PVG-checked, uniformed, and on your doorstep same day, every visit.",
+   344→    },
+   345→  ],
+   346→};
+   347→
+   348→// ============================================================
+   349→// Service #2 — Deep House Cleaning (Residential, popular)
+   350→// ============================================================
+   351→export const deepHouseCleaning: ServiceDetail = {
+   352→  slug: "deep-house-cleaning",
+   353→  name: "Deep House Cleaning",
+   354→  category: "Residential Cleaning",
+   355→  tagline: "Top-to-bottom detailed clean — perfect as a one-off or quarterly reset.",
+   356→  heroHeadline: "When a regular\nclean won't cut it.\nWe go deep.",
+   357→  heroSubhead:
+   358→    "Our deep clean is a top-to-bottom reset of every room in your home. We move furniture, scrub grout lines, degrease appliances inside and out, and tackle the zones regular cleaners skip. Book as a one-off, or pair with your recurring plan as a quarterly refresh.",
+   359→  heroImage: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+   360→  breadcrumbParent: "Residential Cleaning",
+   361→  metaTitle: "Deep House Cleaning in Scotland | One-Off & Quarterly Deep Cleans | Maundy Clean",
+   362→  metaDescription:
+   363→    "Book a deep house cleaning crew in Scotland. Top-to-bottom reset of every room. From £179. PVG-checked, eco-labelled supplies. 100% re-clean guarantee. 30 Scottish locations.",
+   364→  overviewParagraphs: [
+   365→    "A deep clean isn't just a longer version of your regular clean — it's a fundamentally different service. Our crew arrives with specialist equipment: steam cleaners for grout and tile, extendable dusting poles for vaulted ceilings, extraction vacuums for upholstery, and non-caustic degreasers for ovens and range hoods. We move lighter furniture to clean beneath it, wipe down woodwork that hasn't been touched in years, and address the build-up that daily life leaves behind in the corners you can't quite see.",
+   366→    "Most Scottish homes benefit from a deep clean every 3 to 6 months, depending on household size, pets, and ventilation. Older tenement flats in Edinburgh and Glasgow often need more frequent attention due to original sash windows, high ceilings, and intricate cornicing that trap dust. New-build homes can usually stretch to 6 months between deep cleans, particularly if you have a recurring maintenance plan in place.",
+   367→    "Every deep clean starts with a walk-through where you flag priority zones — maybe the oven hasn't been touched since you moved in, or the utility room needs serious attention. Your crew lead photographs these zones, builds a checklist with you, and confirms timing. A typical 3-bedroom home takes 5 to 7 hours with a 3-person crew. You'll receive before-and-after photos of every priority zone in your client portal within 2 hours of completion.",
+   368→  ],
+   369→  whatsIncluded: [
+   370→    {
+   371→      title: "Kitchen deep clean",
+   372→      description:
+   373→        "Oven degreased inside and out (racks soaked in non-caustic tank), range hood filter stripped and soaked, fridge interiors sanitised, cabinet exteriors degreased, tile grout steamed, and floors hand-scrubbed on hands and knees — not just mopped.",
+   374→    },
+   375→    {
+   376→      title: "Bathroom restoration",
+   377→      description:
+   378→        "Limescale descaled from shower heads, taps, and glass. Grout lines steamed and re-sealed where needed. Toilet descaled internally, bath rings removed, extractor vents vacuumed, and silicone lines treated for mould.",
+   379→    },
+   380→    {
+   381→      title: "Living & bedrooms reset",
+   382→      description:
+   383→        "All furniture moved where safe to clean beneath and behind. Upholstery vacuumed with HEPA tool. Mattresses vacuumed and sanitised. Skirting boards, door frames, window sills, picture rails, and cornicing hand-wiped. Lampshades and ceiling fixtures dusted.",
+   384→    },
+   385→    {
+   386→      title: "Detail zones",
+   387→      description:
+   388→        "Light switches and sockets degreased. Door hinges and handles detailed. Internal windows cleaned (exteriors available as add-on). Radiators vacuumed between fins. Behind and beneath large appliances pulled out safely. Bins sanitised inside and out.",
+   389→    },
+   390→    {
+   391→      title: "Floor care upgrade",
+   392→      description:
+   393→        "Hardwood damp-mopped with pH-neutral cleaner and edge-detailing. Carpets vacuumed edge-to-edge including under beds and sofas. Tile & grout scrubbed with rotary brush. Rugs beaten where small enough. Stain treatment on visible marks.",
+   394→    },
+   395→    {
+   396→      title: "Air quality refresh",
+   397→      description:
+   398→        "We finish every deep clean with an optional ozone treatment (add-on) that neutralises airborne odours, kills surface bacteria, and leaves the property smelling genuinely fresh — not masked with fragrance.",
+   399→    },
+   400→  ],
+   401→  processSteps: [
+   402→    {
+   403→      step: "01",
+   404→      title: "Tell us your priorities",
+   405→      description:
+   406→        "Complete our deep-clean scoping form. Flag priority zones (oven, grout, upholstery, etc.) and any property quirks like listed-building restrictions or delicate surfaces.",
+   407→      duration: "2 minutes",
+   408→    },
+   409→    {
+   410→      step: "02",
+   411→      title: "Get an itemised quote",
+   412→      description:
+   413→        "Within 1 business hour you'll receive a flat-rate quote with crew size, estimated time on-site, and a checklist of every zone included. No hidden fees.",
+   414→      duration: "1 hour",
+   415→    },
+   416→    {
+   417→      step: "03",
+   418→      title: "Crew arrives & walks through",
+   419→      description:
+   420→        "Your 3-person crew arrives with specialist equipment. Walk-through with crew lead to confirm priorities, photograph before shots, and adjust checklist if needed.",
+   421→      duration: "Clean day",
+   422→    },
+   423→    {
+   424→      step: "04",
+   425→      title: "Before/after photos delivered",
+   426→      description:
+   427→        "Within 2 hours of completion you receive a summary with before-and-after photos of every priority zone, plus a one-tap rating and re-clean request if anything's missed.",
+   428→      duration: "Post-clean",
+   429→    },
+   430→  ],
+   431→  benefits: [
+   432→    {
+   433→      icon: "Shield",
+   434→      title: "PVG-checked & fully insured",
+   435→      description:
+   436→        "Every crew member carries Disclosure Scotland PVG membership. £5m public liability cover on every deep clean — including furniture moving and appliance pull-outs.",
+   437→    },
+   438→    {
+   439→      icon: "Leaf",
+   440→      title: "Non-caustic, eco-labelled",
+   441→      description:
+   442→        "We use non-caustic degreasers and EU Ecolabel products as standard. Safe for septic tanks, pets, kids, and sensitive airways. Stronger alternatives available on request.",
+   443→    },
+   444→    {
+   445→      icon: "Star",
+   446→      title: "Before & after photos",
+   447→      description:
+   448→        "Every priority zone is photographed before and after. You see exactly what was done — no more wondering if they actually got behind the fridge or just claimed to.",
+   449→    },
+   450→    {
+   451→      icon: "Clock",
+   452→      title: "Crew sized to property",
+   453→      description:
+   454→        "A studio flat gets a 2-person crew for 3 hours. A 5-bedroom house gets a 4-person crew for 8 hours. We size the team to the job so you're not paying for idle hands.",
+   455→    },
+   456→    {
+   457→      icon: "Users",
+   458→      title: "Specialist equipment",
+   459→      description:
+   460→        "Steam cleaners, rotary brushes, HEPA upholstery vacuums, extendable poles, and a non-caustic dip tank for oven racks. We bring the kit regular cleaners don't carry.",
+   461→    },
+   462→    {
+   463→      icon: "Smartphone",
+   464→      title: "100% re-clean guarantee",
+   465→      description:
+   466→        "If any zone doesn't meet your expectation, tell us within 24 hours and we'll send a crew back to re-clean it free. No interrogation, no friction — we just fix it.",
+   467→    },
+   468→  ],
+   469→  pricingTiers: [
+   470→    {
+   471→      name: "Studio — 1 Bed",
+   472→      tagline: "Compact homes & flats",
+   473→      price: "£179",
+   474→      unit: "from",
+   475→      features: [
+   476→        "2-person crew · 3-4 hours",
+   477→        "Kitchen & bathroom deep clean",
+   478→        "All living zones detailed",
+   479→        "Oven degrease included",
+   480→        "Before/after photos",
+   481→        "100% re-clean guarantee",
+   482→      ],
+   483→      highlighted: false,
+   484→    },
+   485→    {
+   486→      name: "2 — 3 Bed",
+   487→      tagline: "Most-booked tier for family homes",
+   488→      price: "£289",
+   489→      unit: "from",
+   490→      features: [
+   491→        "3-person crew · 5-6 hours",
+   492→        "Everything in Studio tier",
+   493→        "Oven + fridge interior deep clean",
+   494→        "Upholstery HEPA vacuum",
+   495→        "Furniture moved & cleaned under",
+   496→        "Before/after photos + summary",
+   497→      ],
+   498→      highlighted: true,
+   499→    },
+   500→    {
+   501→      name: "4+ Bed",
+   502→      tagline: "Larger homes & tenement flats",
+   503→      price: "£449",
+   504→      unit: "from",
+   505→      features: [
+   506→        "4-person crew · 7-8 hours",
+   507→        "Everything in 2-3 Bed tier",
+   508→        "Carpet stain treatment included",
+   509→        "Internal windows cleaned",
+   510→        "Cornicing & high dusting",
+   511→        "Priority zone photo report",
+   512→      ],
+   513→    },
+   514→  ],
+   515→  serviceAreas: [
+   516→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Inverness",
+   517→    "Stirling", "Perth", "Falkirk", "St Andrews", "Paisley",
+   518→    "East Kilbride", "Livingston", "Dunfermline", "Kirkcaldy",
+   519→    "Motherwell", "Hamilton", "Cumbernauld", "Ayr", "Elgin", "Oban",
+   520→  ],
+   521→  faqs: [
+   522→    {
+   523→      q: "How is a deep clean different from a regular clean?",
+   524→      a: "A regular clean maintains a baseline — surfaces wiped, floors vacuumed, bathrooms sanitised. A deep clean resets the rooms regular cleaning can't reach. We move furniture, pull out appliances, steam grout lines, soak oven racks in a non-caustic dip tank, hand-wipe cornicing and skirting boards, and detail zones like door hinges and light switches. A regular clean takes 2-3 hours; a deep clean takes 5-8 hours with a larger crew and specialist equipment.",
+   525→    },
+   526→    {
+   527→      q: "Do I need to be home during the deep clean?",
+   528→      a: "No, but we recommend being there for the first 15 minutes to walk through with the crew lead and confirm priorities. After that, you're free to leave. We use secure key-handling protocols and you'll receive 'crew arrived' and 'clean complete' notifications. Many clients book deep cleans for days they're at work or away for the weekend — the property is ready when they return.",
+   529→    },
+   530→    {
+   531→      q: "Will you move my furniture?",
+   532→      a: "Yes, within reason. We move lighter items — sofas on sliders, dining chairs, side tables, beds on castors — to clean beneath and behind. We don't move pianos, full bookcases, antique wardrobes, or anything we judge a risk to your property or our crew. If you have a specific piece you'd like moved, flag it in the walk-through and we'll tell you honestly whether it's safe.",
+   533→    },
+   534→    {
+   535→      q: "What if something gets damaged?",
+   536→      a: "It's rare, but if it happens we want to know immediately. Every crew carries £5m public liability cover and we have a dedicated claims process — no insurance-runaround. Take a photo, tell the crew lead, and we'll be in touch within 24 hours to arrange repair or replacement. Our claims rate is 0.04% of visits — and we publish that number annually.",
+   537→    },
+   538→    {
+   539→      q: "Can I book a deep clean as a one-off, or do I need a recurring plan?",
+   540→      a: "Deep cleans are available as standalone one-offs — no recurring commitment required. Many clients book a deep clean before moving in, after renovations, ahead of a family visit, or as a seasonal reset. If you do decide to add a recurring plan afterwards, we'll waive the first month's deep-clean surcharge on your weekly or fortnightly visits.",
+   541→    },
+   542→    {
+   543→      q: "Do you bring all the equipment and supplies?",
+   544→      a: "Yes — everything. Specialist equipment (steam cleaner, rotary brush, HEPA upholstery vacuum, extendable poles, dip tank), eco-labelled chemicals, microfibre cloths colour-coded by zone to prevent cross-contamination, and PPE for the crew. If you prefer us to use your products, we offer a small discount — just tell us at booking.",
+   545→    },
+   546→  ],
+   547→  testimonials: [
+   548→    {
+   549→      name: "Linda Davidson",
+   550→      role: "Homeowner · Clarkston, Glasgow",
+   551→      quote:
+   552→        "Booked a deep clean before my daughter's wedding reception at the house. Three women arrived at 8am, walked me through the plan, and left at 3pm. I've never seen my oven look like that — it looked brand new. Worth every penny of the £289.",
+   553→      rating: 5,
+   554→    },
+   555→    {
+   556→      name: "Alistair Reid",
+   557→      role: "Homeowner · Inverleith, Edinburgh",
+   558→      quote:
+   559→        "We bought a 1908 tenement flat that had been a rental for 15 years. Maundy Clean's deep clean team spent a full day and transformed it. The cornicing alone — I didn't know it was that colour. Genuinely impressed.",
+   560→      rating: 5,
+   561→    },
+   562→    {
+   563→      name: "Karen Whyte",
+   564→      role: "Homeowner · Broughty Ferry, Dundee",
+   565→      quote:
+   566→        "I'm disabled and can't do the deep clean myself anymore. They moved the sofa, cleaned under it, didn't make me feel awkward about the state of it. The before/after photos of the kitchen tiles are genuinely astonishing.",
+   567→      rating: 5,
+   568→    },
+   569→  ],
+   570→  relatedServices: [
+   571→    {
+   572→      name: "Recurring Home Cleaning",
+   573→      href: "/services/recurring-home-cleaning",
+   574→      description: "Weekly, fortnightly or monthly maintenance — same crew, every visit.",
+   575→    },
+   576→    {
+   577→      name: "Move-In / Move-Out Cleaning",
+   578→      href: "/services/move-in-out-cleaning",
+   579→      description: "Full property reset for tenants & owners. Letting-agent approved checklist.",
+   580→    },
+   581→    {
+   582→      name: "Carpet & Rug Cleaning",
+   583→      href: "#",
+   584→      description: "Hot-water extraction for carpets, rugs, and upholstery. Add-on to your deep clean.",
+   585→    },
+   586→    {
+   587→      name: "Oven Cleaning",
+   588→      href: "#",
+   589→      description: "Non-caustic dip-tank oven cleaning. Already included in our 2-bed+ deep cleans.",
+   590→    },
+   591→    {
+   592→      name: "Window Cleaning",
+   593→      href: "#",
+   594→      description: "Interior & exterior glass cleaned with pure-water fed pole system.",
+   595→    },
+   596→    {
+   597→      name: "Upholstery Cleaning",
+   598→      href: "#",
+   599→      description: "HEPA vacuum and stain treatment for sofas, armchairs, and mattresses.",
+   600→    },
+   601→  ],
+   602→  gallery: [
+   603→    {
+   604→      src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+   605→      alt: "Spotless living room after a Maundy Clean deep clean",
+   606→      caption: "Living room reset — furniture moved, cornicing hand-wiped, floors edge-cleaned.",
+   607→    },
+   608→    {
+   609→      src: "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+   610→      alt: "Deep cleaning of a kitchen surface",
+   611→      caption: "Kitchen deep clean — oven degreased, grout steamed, appliances pulled out.",
+   612→    },
+   613→    {
+   614→      src: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+   615→      alt: "Specialist eco-labelled cleaning supplies",
+   616→      caption: "Non-caustic, eco-labelled chemicals — safe for pets, kids, and septic tanks.",
+   617→    },
+   618→    {
+   619→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+   620→      alt: "Maundy Clean deep clean crew",
+   621→      caption: "3-person crew with specialist equipment — sized to your property.",
+   622→    },
+   623→  ],
+   624→};
+   625→
+   626→// ============================================================
+   627→// Service #3 — Move-In / Move-Out Cleaning
+   628→// ============================================================
+   629→export const moveInOutCleaning: ServiceDetail = {
+   630→  slug: "move-in-out-cleaning",
+   631→  name: "Move-In / Move-Out Cleaning",
+   632→  category: "Residential Cleaning",
+   633→  tagline: "Full property reset for tenants & owners. Letting-agent approved checklist.",
+   634→  heroHeadline: "Get your deposit\nback. Every time.\nGuaranteed.",
+   635→  heroSubhead:
+   636→    "Our move-in/out clean follows the exact 47-point checklist Scottish letting agents use to assess deposit returns. We've audited 1,200 move-out walk-throughs to build a service that doesn't just clean — it passes inspection. Bond-back guarantee included.",
+   637→  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+   638→  breadcrumbParent: "Residential Cleaning",
+   639→  metaTitle: "Move-In / Move-Out Cleaning Scotland | Deposit-Back Guarantee | Maundy Clean",
+   640→  metaDescription:
+   641→    "End-of-tenancy cleaning in Scotland. 47-point letting-agent checklist. Bond-back guarantee. From £179. PVG-checked crews. Covers Glasgow, Edinburgh, Aberdeen, Dundee & 26 more locations.",
+   642→  overviewParagraphs: [
+   643→    "Moving is stressful enough without worrying whether the property will pass the checkout inspection. Our move-in/out clean is built around the 47-point checklist that Scottish letting agents and landlords use to assess deposit returns. We've audited 1,200 checkout walk-throughs with agencies across Glasgow, Edinburgh, Dundee, and Aberdeen, and we've reverse-engineered exactly what they look for — and what they deduct for.",
+   644→    "The most common deduction triggers are: limescale on shower heads and taps (£40-80), grease build-up in oven and range hood (£60-120), marks on walls and skirting boards (£35-100), carpet stains (£50-150 per room), and unbinned rubbish or left-behind items (£25-60). Our service addresses every one of these proactively. If your letting agent still raises a deduction for cleaning within 7 days of our visit, we'll return to re-clean the flagged zone free of charge — that's our bond-back guarantee.",
+   645→    "Move-in cleans are equally important. The previous tenant's 'clean' is rarely up to the standard you'd want for your own family. We've found everything from pet hair in 'vacuumed' carpets to mould in 'cleaned' fridges to limescale build-up that was clearly there for years. A move-in clean lets you start fresh — and documents the property's condition with photos, so you have proof of the baseline when you eventually move out.",
+   646→  ],
+   647→  whatsIncluded: [
+   648→    {
+   649→      title: "Kitchen full strip-down",
+   650→      description:
+   651→        "Oven degreased inside and out, including racks and door glass. Range hood filter stripped and soaked. Fridge and freezer defrosted and sanitised inside. All cabinets wiped inside and out. Sink descaled. Tile grout steamed. Floors hand-scrubbed.",
+   652→    },
+   653→    {
+   654→      title: "Bathrooms descaled & sanitised",
+   655→      description:
+   656→        "Limescale removed from shower heads, taps, glass screens, and tiles. Toilet descaled internally and externally. Grout steamed. Silicone treated for mould. Extractor vents vacuumed. Mirrors streak-free. Floors mopped with sanitiser.",
+   657→    },
+   658→    {
+   659→      title: "Wall & woodwork wipe-down",
+   660→      description:
+   661→        "All skirting boards hand-wiped. Door frames, window sills, and architraves detailed. Light switches and sockets degreased. Scuff marks on walls assessed — most lift with magic eraser; deeper marks flagged in writing for landlord disclosure.",
+   662→    },
+   663→    {
+   664→      title: "Carpets & floors edge-to-edge",
+   665→      description:
+   666→        "All carpets vacuumed including edges and under radiators. Visible stain treatment included. Hard floors mopped with appropriate cleaner per surface. Laminate edges detailed. Tile grout scrubbed.",
+   667→    },
+   668→    {
+   669→      title: "Window interiors",
+   670→      description:
+   671→        "Internal glass cleaned streak-free. Window sills and tracks vacuumed and wiped. Window furniture (handles, stays) detailed. External window cleaning available as add-on for ground-floor units.",
+   672→    },
+   673→    {
+   674→      title: "Documented proof",
+   675→      description:
+   676→        "We photograph every room before and after. You receive a time-stamped PDF report you can forward to your letting agent or landlord as proof of professional clean — invaluable if there's a deposit dispute.",
+   677→    },
+   678→  ],
+   679→  processSteps: [
+   680→    {
+   681→      step: "01",
+   682→      title: "Share your move date",
+   683→      description:
+   684→        "Tell us your move-out and move-in dates, property size, and letting agent (if any). We'll suggest the right slot — usually the day after you've cleared the property.",
+   685→      duration: "2 minutes",
+   686→    },
+   687→    {
+   688→      step: "02",
+   689→      title: "Confirm scope & price",
+   690→      description:
+   691→        "You'll receive a flat-rate quote with the 47-point checklist attached. Add carpet shampoo, oven deep clean, or external windows if needed. Bond-back guarantee confirmed in writing.",
+   692→      duration: "1 hour",
+   693→    },
+   694→    {
+   695→      step: "03",
+   696→      title: "Crew cleans the empty property",
+   697→      description:
+   698→        "Our 2-3 person crew arrives with all equipment. We require the property to be empty of furniture and personal items for the full clean — this is the #1 factor in passing inspection.",
+   699→      duration: "4-7 hours",
+   700→    },
+   701→    {
+   702→      step: "04",
+   703→      title: "Receive report & keys handover",
+   704→      description:
+   705→        "Within 2 hours of completion you receive the before/after PDF report. Forward to your letting agent. If they flag any cleaning-related deduction within 7 days, we re-clean free.",
+   706→      duration: "Same day",
+   707→    },
+   708→  ],
+   709→  benefits: [
+   710→    {
+   711→      icon: "Shield",
+   712→      title: "Bond-back guarantee",
+   713→      description:
+   714→        "If your letting agent flags any cleaning-related deduction within 7 days of our clean, we return to re-clean the flagged zone free of charge. We've honoured this on 0.8% of jobs in 2025.",
+   715→    },
+   716→    {
+   717→      icon: "Star",
+   718→      title: "47-point letting-agent checklist",
+   719→      description:
+   720→        "Built from 1,200+ real checkout audits across Scottish agencies. We clean exactly what they inspect — no wasted effort on zones that don't matter, no missing the ones that do.",
+   721→    },
+   722→    {
+   723→      icon: "Users",
+   724→      title: "Crew sized to property",
+   725→      description:
+   726→        "Studio flats get a 2-person crew for 4 hours. 3-bed houses get a 3-person crew for 7 hours. We size the team so the job is done in one visit, not spread across multiple days.",
+   727→    },
+   728→    {
+   729→      icon: "Clock",
+   730→      title: "Same-day report",
+   731→      description:
+   732→        "Time-stamped before/after PDF report delivered within 2 hours of completion. Forward to your letting agent as proof of professional clean — invaluable for deposit disputes.",
+   733→    },
+   734→    {
+   735→      icon: "Leaf",
+   736→      title: "Non-caustic, eco-labelled",
+   737→      description:
+   738→        "Safe for septic tanks, pets, and sensitive airways. We don't leave chemical residue that could be flagged at the next tenant's move-in inspection.",
+   739→    },
+   740→    {
+   741→      icon: "Smartphone",
+   742→      title: "Flexible around move dates",
+   743→      description:
+   744→        "We clean the empty property the day after you've cleared it. If your move date shifts, just tell us 48 hours in advance — no reschedule fee, no awkward conversations.",
+   745→    },
+   746→  ],
+   747→  pricingTiers: [
+   748→    {
+   749→      name: "Studio — 1 Bed",
+   750→      tagline: "Compact flats & bedsits",
+   751→      price: "£179",
+   752→      unit: "from",
+   753→      features: [
+   754→        "2-person crew · 4 hours",
+   755→        "Full 47-point checklist",
+   756→        "Oven deep clean included",
+   757→        "Fridge interior sanitised",
+   758→        "Before/after PDF report",
+   759→        "Bond-back guarantee",
+   760→      ],
+   761→      highlighted: false,
+   762→    },
+   763→    {
+   764→      name: "2 — 3 Bed",
+   765→      tagline: "Most-booked for tenancy ends",
+   766→      price: "£289",
+   767→      unit: "from",
+   768→      features: [
+   769→        "3-person crew · 5-6 hours",
+   770→        "Full 47-point checklist",
+   771→        "Oven + fridge + washer deep clean",
+   772→        "Carpet stain treatment included",
+   773→        "Internal windows cleaned",
+   774→        "Bond-back guarantee + PDF report",
+   775→      ],
+   776→      highlighted: true,
+   777→    },
+   778→    {
+   779→      name: "4+ Bed",
+   780→      tagline: "Family homes & HMOs",
+   781→      price: "£449",
+   782→      unit: "from",
+   783→      features: [
+   784→        "4-person crew · 7-8 hours",
+   785→        "Full 47-point checklist",
+   786→        "Everything in 2-3 Bed tier",
+   787→        "Carpet shampoo add-on discounted",
+   788→        "External windows (ground floor)",
+   789→        "Priority PDF report within 1 hour",
+   790→      ],
+   791→    },
+   792→  ],
+   793→  serviceAreas: [
+   794→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Inverness",
+   795→    "Stirling", "Perth", "Falkirk", "St Andrews", "Paisley",
+   796→    "East Kilbride", "Livingston", "Dunfermline", "Kirkcaldy",
+   797→    "Motherwell", "Hamilton", "Cumbernauld", "Ayr", "Elgin", "Oban",
+   798→  ],
+   799→  faqs: [
+   800→    {
+   801→      q: "What's the bond-back guarantee, exactly?",
+   802→      a: "If your letting agent or landlord raises any cleaning-related deduction within 7 days of our clean, we'll return to re-clean the flagged zone free of charge. We need a copy of the agent's checkout report identifying the issue, and we'll send a crew within 48 hours. In 2025 this happened on 0.8% of jobs — usually small missed spots — and we resolved every one without the client losing deposit. Damage (carpet burns, wall holes, broken appliances) is not covered, only cleaning.",
+   803→    },
+   804→    {
+   805→      q: "Does the property need to be empty?",
+   806→      a: "Yes, for the best result. Furniture blocks access to skirting boards, under-bed zones, behind-fridge zones, and carpet edges — all of which letting agents inspect. If you can't fully empty the property, we can still clean but we'll flag in writing which zones we couldn't access, so you can disclose to your landlord. A small number of items (a sofa, a bed frame) is fine — a fully furnished property is not.",
+   807→    },
+   808→    {
+   809→      q: "Will you remove rubbish and left-behind items?",
+   810→      a: "Yes, up to 3 bin bags of household rubbish and small items (old cleaning products, leftover food, light bulbs). For larger clearances — furniture, mattresses, white goods — we'll quote separately or recommend a licensed waste removal partner. We don't charge extra for normal end-of-tenancy rubbish removal within that 3-bag limit.",
+   811→    },
+   812→    {
+   813→      q: "Can you clean on the day I move out?",
+   814→      a: "Usually not. The property needs to be fully empty before we arrive, and most tenants are still loading the van at 5pm on move-out day. We recommend booking the clean for the morning after you've cleared the property — it's calmer, the crew has the place to themselves, and the report is ready before handover. If you genuinely need same-day, we'll try to accommodate a late-afternoon slot.",
+   815→    },
+   816→    {
+   817→      q: "Do you do move-in cleans too?",
+   818→      a: "Absolutely — and we recommend them. The previous tenant's 'professional clean' is rarely up to the standard you'd want for your own family. A move-in clean means you start fresh, and our before-photos document the property's baseline condition — invaluable when you eventually move out and need to prove a pre-existing stain wasn't yours.",
+   819→    },
+   820→    {
+   821→      q: "What if I'm not happy with the clean?",
+   822→      a: "Tell us within 24 hours and we'll send a crew back to re-clean any missed zones free of charge. Our 100% satisfaction guarantee applies to move-in/out cleans too — but the bond-back guarantee is specifically about letting-agent deductions, which is a separate, longer 7-day window.",
+   823→    },
+   824→  ],
+   825→  testimonials: [
+   826→    {
+   827→      name: "Eilidh Drummond",
+   828→      role: "Letting Agency Director · Dundee",
+   829→      quote:
+   830→        "I manage 240 tenancies. Move-out turnover used to be my biggest headache. Maundy Clean turns flats in 24 hours now, and I haven't had a single deposit-dispute complaint about cleanliness in 18 months. Their PDF reports are gold dust.",
+   831→      rating: 5,
+   832→    },
+   833→    {
+   834→      name: "James Carmichael",
+   835→      role: "Tenant · Marchmont, Edinburgh",
+   836→      quote:
+   837→        "Booked the £289 move-out clean for my 2-bed flat. Got my full £1,250 deposit back within 10 days. The before/after PDF was so thorough my letting agent commented on it. Genuinely worth 10x the price.",
+   838→      rating: 5,
+   839→    },
+   840→    {
+   841→      name: "Sophie Anderson",
+   842→      role: "Homeowner · Newton Mearns",
+   843→      quote:
+   844→        "We had Maundy Clean do a move-in clean on the house we'd just bought. The previous owners had 'cleaned' before leaving. What Maundy found in the oven and behind the fridge was genuinely disturbing. Worth every penny.",
+   845→      rating: 5,
+   846→    },
+   847→  ],
+   848→  relatedServices: [
+   849→    {
+   850→      name: "Recurring Home Cleaning",
+   851→      href: "/services/recurring-home-cleaning",
+   852→      description: "Weekly, fortnightly or monthly maintenance — start as you mean to go on.",
+   853→    },
+   854→    {
+   855→      name: "Deep House Cleaning",
+   856→      href: "/services/deep-house-cleaning",
+   857→      description: "Top-to-bottom detailed clean — pair with move-in for the ultimate fresh start.",
+   858→    },
+   859→    {
+   860→      name: "Carpet & Rug Cleaning",
+   861→      href: "#",
+   862→      description: "Hot-water extraction for carpets and rugs. Add-on to your move-out clean.",
+   863→    },
+   864→    {
+   865→      name: "Oven Cleaning",
+   866→      href: "#",
+   867→      description: "Non-caustic dip-tank oven cleaning. Already included in our move-out service.",
+   868→    },
+   869→    {
+   870→      name: "Window Cleaning",
+   871→      href: "#",
+   872→      description: "Interior & exterior glass — streak-free for handover photos.",
+   873→    },
+   874→    {
+   875→      name: "Post-Construction Cleaning",
+   876→      href: "#",
+   877→      description: "Dust & debris removal after renovations — for new-build handovers.",
+   878→    },
+   879→  ],
+   880→  gallery: [
+   881→    {
+   882→      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+   883→      alt: "Empty flat being professionally cleaned at end of tenancy",
+   884→      caption: "Empty property — the only way to pass a checkout inspection properly.",
+   885→    },
+   886→    {
+   887→      src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+   888→      alt: "Spotless kitchen after move-out clean",
+   889→      caption: "Kitchen full strip-down — oven, fridge, cabinets, grout, floors.",
+   890→    },
+   891→    {
+   892→      src: "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+   893→      alt: "Cleaner detailing a kitchen surface",
+   894→      caption: "Detail work that letting agents specifically inspect — don't lose deposit for it.",
+   895→    },
+   896→    {
+   897→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+   898→      alt: "Maundy Clean move-out crew",
+   899→      caption: "2-3 person crew, all supplies included, before/after PDF report.",
+   900→    },
+   901→  ],
+   902→};
+   903→
+   904→// ============================================================
+   905→// Service #4 — Office Cleaning (Commercial, popular)
+   906→// ============================================================
+   907→export const officeCleaning: ServiceDetail = {
+   908→  slug: "office-cleaning",
+   909→  name: "Office Cleaning",
+   910→  category: "Commercial Cleaning",
+   911→  tagline: "Daily, weekly & after-hours service for Scottish businesses.",
+   912→  heroHeadline: "A clean office\nisn't a perk.\nIt's productivity.",
+   913→  heroSubhead:
+   914→    "Your team spends 40+ hours a week in your office. We make sure those hours are spent in a space that's genuinely clean — not just tidy. PVG-checked crews, HSE-compliant supplies, dedicated account manager, and a 100% re-clean guarantee that actually means something.",
+   915→  heroImage: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+   916→  breadcrumbParent: "Commercial Cleaning",
+   917→  metaTitle: "Office Cleaning Scotland | Daily, Weekly & After-Hours | Maundy Clean",
+   918→  metaDescription:
+   919→    "Professional office cleaning across Scotland. Daily, weekly & after-hours service. PVG-checked crews. HSE-compliant supplies. Dedicated account manager. From £89/visit. 30 Scottish locations.",
+   920→  overviewParagraphs: [
+   921→    "Office cleaning is fundamentally different from residential cleaning. The risk profile is higher (sensitive data, expensive equipment, multiple stakeholders), the cleaning windows are tighter (usually after 6pm or before 7am), and the consistency requirements are stricter (a missed visit means a dirty office for the entire next business day). We've spent 12 years building an operation that handles all three of those challenges — and the 500+ Scottish businesses we serve are the proof.",
+   922→    "Every office client gets a dedicated account manager who knows your building, your team, your access protocols, and your priorities. They're your single point of contact — no call-centre runaround, no re-explaining your requirements to a new person every month. Your account manager visits your site quarterly for a walk-through, reviews the cleaning logs, and proactively raises any issues before they become complaints.",
+   923→    "Our crews are all PAYE employees, not contractors. They carry Disclosure Scotland PVG membership, are trained on GDPR-compliant cleaning of areas where sensitive data may be present (don't touch documents on desks, don't plug in or unplug devices, don't photograph the space), and use colour-coded microfibre cloths to prevent cross-contamination between kitchens, bathrooms, and desk areas. We provide all equipment, supplies, and PPE — you don't manage a thing.",
+   924→  ],
+   925→  whatsIncluded: [
+   926→    {
+   927→      title: "Workstation reset",
+   928→      description:
+   929→        "Desk surfaces wiped with anti-static, screen-safe solution. Chairs wiped down. Phones sanitised. Keyboards and mice detailed with compressed air and isopropyl. Bins emptied and liners replaced. Floors vacuumed under desks where accessible.",
+   930→    },
+   931→    {
+   932→      title: "Kitchen & breakout",
+   933→      description:
+   934→        "Countertops degreased. Sinks descaled and sanitised. Microwaves wiped inside and out. Fridge exteriors cleaned (interiors on request). Dishwashers emptied if cycle complete. Floors mopped with food-safe sanitiser. Bins emptied.",
+   935→    },
+   936→    {
+   937→      title: "Meeting rooms",
+   938→      description:
+   939→        "Tables wiped and disinfected. Chairs arranged to room standard. Glass partitions cleaned streak-free. Whiteboards wiped (content preserved unless flagged for erase). AV equipment dusted. Bins emptied.",
+   940→    },
+   941→    {
+   942→      title: "Bathrooms & sanitisation",
+   943→      description:
+   944→        "Toilets descaled and disinfected. Sinks and taps polished. Mirrors streak-free. Floors mopped with sanitiser. Soap, paper towel, and toilet paper restocked from your supply. Sanitary bins checked. Extractor vents vacuumed.",
+   945→    },
+   946→    {
+   947→      title: "Reception & common areas",
+   948→      description:
+   949→        "Entrance glass cleaned. Reception desk detailed. Waiting area furniture wiped. Magazines tidied. Floor mats shaken or vacuumed. Lift interiors polished. Stairwells vacuumed. High-touch points sanitised.",
+   950→    },
+   951→    {
+   952→      title: "Periodic deep tasks",
+   953→      description:
+   954→        "On a rotating schedule (monthly/quarterly) we include: carpet extraction, hard floor strip & reseal, high dusting, internal window cleaning, upholstery vacuum, and air vent cleaning — built into your contract at no extra cost.",
+   955→    },
+   956→  ],
+   957→  processSteps: [
+   958→    {
+   959→      step: "01",
+   960→      title: "Site survey & scoping",
+   961→      description:
+   962→        "Your account manager visits your office, measures the space, identifies priority zones, reviews access protocols, and discusses timing windows. Free, no obligation, takes 30-45 minutes.",
+   963→      duration: "30 minutes",
+   964→    },
+   965→    {
+   966→      step: "02",
+   967→      title: "Tailored proposal",
+   968→      description:
+   969→        "Within 2 business days you receive an itemised proposal: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, and a draft cleaning schedule. No hidden fees.",
+   970→      duration: "2 business days",
+   971→    },
+   972→    {
+   973→      step: "03",
+   974→      title: "Crew onboarding & first clean",
+   975→      description:
+   976→        "We assign a regular crew, brief them on your site, and conduct the first clean alongside your account manager. Walk-through with you to confirm satisfaction. Adjust the schedule as needed.",
+   977→      duration: "Week 1",
+   978→    },
+   979→    {
+   980→      step: "04",
+   981→      title: "Ongoing management",
+   982→      description:
+   983→        "Your crew arrives on schedule. You receive monthly cleaning logs, quarterly walk-through reports, and a direct line to your account manager. Adjustments handled within 24 hours' notice.",
+   984→      duration: "Ongoing",
+   985→    },
+   986→  ],
+   987→  benefits: [
+   988→    {
+   989→      icon: "Users",
+   990→      title: "Dedicated account manager",
+   991→      description:
+   992→        "Single point of contact who knows your building and your team. No call-centre runaround. Direct mobile number, 24-hour response, quarterly on-site walk-throughs.",
+   993→    },
+   994→    {
+   995→      icon: "Shield",
+   996→      title: "PVG-checked & GDPR-aware",
+   997→      description:
+   998→        "Every crew member carries PVG membership. Trained not to touch desk documents, not to plug/unplug devices, not to photograph your space. Background-checked for sensitive environments.",
+   999→    },
+  1000→    {
+  1001→      icon: "Clock",
+  1002→      title: "After-hours & early-morning",
+  1003→      description:
+  1004→        "We work when your team isn't there — typically 6pm-10pm or 5am-7am. Secure key-handling protocols. Alarm system trained. Your office is clean and ready when your team arrives.",
+  1005→    },
+  1006→    {
+  1007→      icon: "Leaf",
+  1008→      title: "HSE-compliant supplies",
+  1009→      description:
+  1010→        "COSHH datasheets for every product we use, available on request. Eco-labelled defaults with hospital-grade alternatives for medical or food-prep areas. All PPE provided.",
+  1011→    },
+  1012→    {
+  1013→      icon: "Star",
+  1014→      title: "Monthly cleaning logs",
+  1015→      description:
+  1016→        "You receive a digital log every month showing every visit, arrival/departure times, tasks completed, and any issues flagged. Compliance-ready for ISO 14001 and similar audits.",
+  1017→    },
+  1018→    {
+  1019→      icon: "Smartphone",
+  1020→      title: "Issue reporting within 24h",
+  1021→      description:
+  1022→        "Flag an issue via portal, app, or account manager — we respond within 24 hours and resolve within 48. No chasing, no friction. Our 4.9★ commercial rating exists because we actually fix things.",
+  1023→    },
+  1024→  ],
+  1025→  pricingTiers: [
+  1026→    {
+  1027→      name: "Small Office",
+  1028→      tagline: "Up to 20 desks · 1-2 visits/week",
+  1029→      price: "£89",
+  1030→      unit: "/ visit",
+  1031→      features: [
+  1032→        "2-person crew · 2 hours",
+  1033→        "Workstation + kitchen + bathroom",
+  1034→        "All supplies & equipment included",
+  1035→        "Monthly cleaning logs",
+  1036→        "Dedicated account manager",
+  1037→        "100% re-clean guarantee",
+  1038→      ],
+  1039→      highlighted: false,
+  1040→    },
+  1041→    {
+  1042→      name: "Medium Office",
+  1043→      tagline: "20-75 desks · daily visits",
+  1044→      price: "£168",
+  1045→      unit: "/ visit",
+  1046→      features: [
+  1047→        "3-person crew · 3 hours",
+  1048→        "Everything in Small Office",
+  1049→        "Meeting rooms + reception",
+  1050→        "Quarterly carpet extraction",
+  1051→        "Monthly cleaning logs + walk-through",
+  1052→        "Priority issue response (24h)",
+  1053→      ],
+  1054→      highlighted: true,
+  1055→    },
+  1056→    {
+  1057→      name: "Large Office",
+  1058→      tagline: "75+ desks · daily + periodic deep",
+  1059→      price: "Custom",
+  1060→      unit: "",
+  1061→      features: [
+  1062→        "Crew sized to requirement",
+  1063→        "Everything in Medium Office",
+  1064→        "Day porter service available",
+  1065→        "Quarterly deep clean included",
+  1066→        "Annual ISO-ready audit report",
+  1067→        "24/7 emergency callout",
+  1068→      ],
+  1069→    },
+  1070→  ],
+  1071→  serviceAreas: [
+  1072→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Inverness",
+  1073→    "Stirling", "Perth", "Falkirk", "St Andrews", "Paisley",
+  1074→    "East Kilbride", "Livingston", "Dunfermline", "Kirkcaldy",
+  1075→    "Motherwell", "Hamilton", "Cumbernauld", "Ayr", "Elgin", "Oban",
+  1076→  ],
+  1077→  faqs: [
+  1078→    {
+  1079→      q: "Do you clean during business hours or after?",
+  1080→      a: "Both are available, but we recommend after-hours for most office clients. Cleaning during business hours means vacuuming around people on calls, mopping floors while people are walking on them, and crews feeling rushed. After-hours (typically 6pm-10pm) or early-morning (5am-7am) gives your crew the empty space they need to do a proper job. We can also split — light touch during the day, deep clean after hours. Your account manager will advise on the best schedule for your space.",
+  1081→    },
+  1082→    {
+  1083→      q: "Will the same crew come every visit?",
+  1084→      a: "Yes. We assign a regular crew to your office for the duration of your contract. If your regular crew lead is on annual leave or off sick, we send a trained backup who has been briefed on your site specifics — and we'll tell you in advance. Crew consistency matters: someone who cleans your office every Tuesday night knows the alarm code, knows which meeting room gets heavy use, knows your access preferences.",
+  1085→    },
+  1086→    {
+  1087→      q: "Are your cleaners PVG-checked?",
+  1088→      a: "Yes, every team member carries Disclosure Scotland PVG scheme membership. We also train them on GDPR-aware cleaning: don't touch documents on desks, don't plug or unplug devices, don't photograph the space, don't discuss what you've seen. If your office handles particularly sensitive data (legal, financial, medical), we can provide enhanced background checks and additional NDAs at no extra cost.",
+  1089→    },
+  1090→    {
+  1091→      q: "What happens if a clean is missed?",
+  1092→      a: "It's rare — our visit-completion rate in 2025 was 99.6% — but if it happens, we'll send a crew within 24 hours at no charge, and your account manager will personally follow up to prevent recurrence. Three missed visits in a 6-month period triggers an automatic service review and a discount on your next month. We don't hide from accountability.",
+  1093→    },
+  1094→    {
+  1095→      q: "Can you handle secure access and alarm systems?",
+  1096→      a: "Absolutely. We're trained on all major alarm systems (Texecom, Honeywell, Pyronix, Risco, etc.) and follow strict key-handling protocols. Keys are stored in a coded safe between visits, never labelled with your address. Your alarm code is stored encrypted and only released to your assigned crew lead. We carry £5m public liability and £5m employer's liability cover.",
+  1097→    },
+  1098→    {
+  1099→      q: "Do you provide cleaning supplies or do we?",
+  1100→      a: "We provide all cleaning chemicals, microfibre cloths, PPE, and specialist equipment (vacuums, mops, steam cleaners). You provide consumables: bin liners, paper towel, toilet paper, hand soap, dishwasher tablets. We can also manage consumable restocking for an additional monthly fee — many clients prefer this so they never run out.",
+  1101→    },
+  1102→  ],
+  1103→  testimonials: [
+  1104→    {
+  1105→      name: "Callum Ross",
+  1106→      role: "Office Manager · Edinburgh tech startup",
+  1107→      quote:
+  1108→        "Our team noticed the difference the morning after the first clean. The glass partitions looked invisible. The account manager actually remembers our preferences and emails back within an hour. After two previous contractors who treated us like a number, this is night and day.",
+  1109→      rating: 5,
+  1110→    },
+  1111→    {
+  1112→      name: "Helen Forbes",
+  1113→      role: "Facilities Director · Aberdeen law firm",
+  1114→      quote:
+  1115→        "We need absolute discretion — client files on every desk. Maundy Clean's crew are PVG-checked, NDAd, and trained not to touch documents. We've used them for 4 years without a single data-handling incident. That's worth more than the competitive pricing.",
+  1116→      rating: 5,
+  1117→    },
+  1118→    {
+  1119→      name: "Marcus Lindqvist",
+  1120→      role: "COO · Glasgow financial services",
+  1121→      quote:
+  1122→        "300 desks across 2 floors, cleaned every night without fail. The monthly cleaning logs make our ISO 14001 audit a breeze. When we had a flood on a Sunday, their emergency callout had a crew on-site within 90 minutes. Couldn't recommend more highly.",
+  1123→      rating: 5,
+  1124→    },
+  1125→  ],
+  1126→  relatedServices: [
+  1127→    {
+  1128→      name: "Day Porter Services",
+  1129→      href: "#",
+  1130→      description: "On-site attendant all day — restocking, spill response, reception touch-ups.",
+  1131→    },
+  1132→    {
+  1133→      name: "Nightly Janitorial",
+  1134→      href: "#",
+  1135→      description: "Full nightly service for high-traffic offices — bins, floors, bathrooms, kitchens.",
+  1136→    },
+  1137→    {
+  1138→      name: "Disinfection Services",
+  1139→      href: "#",
+  1140→      description: "Electrostatic disinfection — HSE-approved. Perfect for flu season or post-illness.",
+  1141→    },
+  1142→    {
+  1143→      name: "Carpet & Rug Cleaning",
+  1144→      href: "#",
+  1145→      description: "Hot-water extraction for office carpets — included quarterly on medium+ plans.",
+  1146→    },
+  1147→    {
+  1148→      name: "Window Cleaning",
+  1149→      href: "#",
+  1150→      description: "Interior & exterior glass — low-rise and high-rise via pure-water fed pole.",
+  1151→    },
+  1152→    {
+  1153→      name: "Recurring Home Cleaning",
+  1154→      href: "/services/recurring-home-cleaning",
+  1155→      description: "For team members who want the same quality clean at home — staff discount available.",
+  1156→    },
+  1157→  ],
+  1158→  gallery: [
+  1159→    {
+  1160→      src: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+  1161→      alt: "Modern clean office after Maundy Clean visit",
+  1162→      caption: "Workstations reset — anti-static screen-safe wipes, bins emptied, floors vacuumed.",
+  1163→    },
+  1164→    {
+  1165→      src: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+  1166→      alt: "Office kitchen and breakout area",
+  1167→      caption: "Kitchen & breakout — degreased, sanitised, restocked, mopped with food-safe cleaner.",
+  1168→    },
+  1169→    {
+  1170→      src: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+  1171→      alt: "HSE-compliant eco-labelled cleaning supplies",
+  1172→      caption: "HSE-compliant supplies — COSHH datasheets available, eco-labelled defaults.",
+  1173→    },
+  1174→    {
+  1175→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+  1176→      alt: "Uniformed Maundy Clean commercial crew",
+  1177→      caption: "PVG-checked, GDPR-trained, uniformed crew — your regular team every visit.",
+  1178→    },
+  1179→  ],
+  1180→};
+  1181→
+  1182→// ============================================================
+  1183→// Service #5 — Holiday Let Turnover (Residential, popular)
+  1184→// ============================================================
+  1185→export const holidayLetTurnover: ServiceDetail = {
+  1186→  slug: "holiday-let-turnover",
+  1187→  name: "Holiday Let Turnover",
+  1188→  category: "Residential Cleaning",
+  1189→  tagline: "Airbnb & Booking.com guest-ready turnover for Scottish short-term lets.",
+  1190→  heroHeadline: "Five-star reviews\nstart with a\nflawless turnover.",
+  1191→  heroSubhead:
+  1192→    "Scottish short-term let hosts lose £420/month on average to bad reviews caused by turnover slips. We stop that. Same crew every changeover, photographic proof, 90-minute response window, and a checklist tuned to Airbnb & Booking.com guest expectations.",
+  1193→  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  1194→  breadcrumbParent: "Residential Cleaning",
+  1195→  metaTitle: "Holiday Let Turnover Cleaning Scotland | Airbnb & Booking.com | Maundy Clean",
+  1196→  metaDescription:
+  1197→    "Professional holiday let turnover cleaning across Scotland. Same crew every changeover. 90-minute response. Photographic proof. From £65/turnover. Covers Edinburgh, Glasgow, Highlands & 28 more locations.",
+  1198→  overviewParagraphs: [
+  1199→    "Running a Scottish holiday let is a hospitality business, not a cleaning business — but a single missed turnover can cost you a five-star review that takes months to recover from. Our turnover service is built specifically for short-term let hosts: same crew every changeover, predictable scheduling, 90-minute response window for last-minute bookings, and a checklist that addresses the specific things Airbnb and Booking.com guests flag in reviews (hair on sheets, smudged glass, stale fridge, weak WiFi area dust, used toiletries left behind).",
+  1200→    "We support hosts across Edinburgh's festival flats, Glasgow's city-centre Airbnbs, Highland cottages in Aviemore and Fort William, coastal retreats in Oban and St Andrews, and remote getaways on Skye and Orkney. Whether you have a single studio or a portfolio of 20 properties, we treat every turnover as if your next booking depends on it — because it does. We can also handle key handovers, welcome-pack stocking, and guest-supply restocking at your request.",
+  1201→    "Every turnover includes a 32-point checklist built from real guest review data: beds stripped and remade with fresh linens (your supply or ours), towels replaced, bathroom sanitised top-to-bottom, kitchen degreased and restocked, floors vacuumed and mopped, glass polished, bins emptied, and a final walk-through photo set uploaded to your portal before the cleaner leaves. You see exactly what your next guest will see — before they see it.",
+  1202→  ],
+  1203→  whatsIncluded: [
+  1204→    {
+  1205→      title: "Bedroom & linen change",
+  1206→      description:
+  1207→        "Beds stripped, mattress protectors checked, fresh linens fitted (your supply or ours at trade pricing). Pillows plumped and aired. Duvets re-covered. Bedside tables wiped. Lamps dusted. Wardrobes emptied of previous guest items. Floors vacuumed edge-to-edge.",
+  1208→    },
+  1209→    {
+  1210→      title: "Bathroom deep-sanitise",
+  1211→      description:
+  1212→        "Toilet descaled and disinfected. Shower glass squeegeed and treated. Tiles scrubbed. Grout addressed. Sinks and taps polished. Mirrors streak-free. Fresh towels folded and placed. Toiletries restocked from your supply. Bins emptied.",
+  1213→    },
+  1214→    {
+  1215→      title: "Kitchen reset",
+  1216→      description:
+  1217→        "All surfaces degreased. Sink descaled and sanitised. Fridge emptied of previous guest items, wiped inside. Oven quick-wipe (deep clean available as add-on). Microwave inside and out. Dishwasher emptied and refilled if running. Floors mopped. Bins emptied.",
+  1218→    },
+  1219→    {
+  1220→      title: "Living areas & detail",
+  1221→      description:
+  1222→        "Cushions plumped and arranged. Throws folded. Sofas vacuumed (HEPA tool). Remote controls sanitised. Light switches and door handles wiped. Skirting boards quick-wipe. Floors vacuumed and mopped. Windowsills wiped. Bins emptied.",
+  1223→    },
+  1224→    {
+  1225→      title: "Guest supplies & restocking",
+  1226→      description:
+  1227→        "Toilet paper, hand soap, tea towels, dishwasher tablets, bin liners, tea/coffee/sugar, milk (if requested), welcome pack (if you provide one) — all restocked to your spec. We log every item replaced so you can reconcile monthly.",
+  1228→    },
+  1229→    {
+  1230→      title: "Photographic proof",
+  1231→      description:
+  1232→        "Before-and-after photos of every room uploaded to your portal before the cleaner leaves. You see exactly what your next guest will see. If anything's missed, we send a crew back within 90 minutes — no charge, no argument.",
+  1233→    },
+  1234→  ],
+  1235→  processSteps: [
+  1236→    {
+  1237→      step: "01",
+  1238→      title: "Share your booking calendar",
+  1239→      description:
+  1240→        "Send us your Airbnb/Booking.com iCal link or your turnover schedule. We sync bookings automatically and confirm each turnover 48 hours before check-out.",
+  1241→      duration: "10 minutes",
+  1242→    },
+  1243→    {
+  1244→      step: "02",
+  1245→      title: "Walk-through & checklist build",
+  1246→      description:
+  1247→        "Your account manager visits your property once, photographs your spec, and builds your custom turnover checklist. Linen supply, key handover, restocking items, guest preferences — all documented.",
+  1248→      duration: "1 visit",
+  1249→    },
+  1250→    {
+  1251→      step: "03",
+  1252→      title: "Crew assigned & first turnover",
+  1253→      description:
+  1254→        "We assign a regular crew to your property. First turnover includes a walk-through with your account manager. You receive photos before the cleaner leaves the property.",
+  1255→      duration: "First turnover",
+  1256→    },
+  1257→    {
+  1258→      step: "04",
+  1259→      title: "Hands-off ongoing management",
+  1260→      description:
+  1261→        "Bookings sync, crews arrive, photos upload, you get a notification. Issue? 90-minute response window. We handle it so you can focus on guest experience — not cleaning logistics.",
+  1262→      duration: "Every turnover",
+  1263→    },
+  1264→  ],
+  1265→  benefits: [
+  1266→    {
+  1267→      icon: "Clock",
+  1268→      title: "90-minute response window",
+  1269→      description:
+  1270→        "Last-minute booking? Guest complaint? Cleaner locked out? Our 90-minute response window means we can have a crew at your property fast — even on a Sunday evening in peak festival season.",
+  1271→    },
+  1272→    {
+  1273→      icon: "Users",
+  1274→      title: "Same crew every turnover",
+  1275→      description:
+  1276→        "We assign a dedicated crew to your property. They know your linen cupboard, your key safe code, your welcome pack spec, your quirky hot water timer. Continuity is what makes turnovers reliable.",
+  1277→    },
+  1278→    {
+  1279→      icon: "Star",
+  1280→      title: "Photographic proof",
+  1281→      description:
+  1282→        "Before-and-after photos of every room uploaded to your portal before the cleaner leaves. If anything's missed, we fix it before your next guest arrives — not after they've left a bad review.",
+  1283→    },
+  1284→    {
+  1285→      icon: "Smartphone",
+  1286→      title: "Calendar sync",
+  1287→      description:
+  1288→        "Send us your iCal link and we sync automatically. No more texting your cleaner every time a booking changes. We confirm each turnover 48 hours before check-out.",
+  1289→    },
+  1290→    {
+  1291→      icon: "Shield",
+  1292→      title: "PVG-checked & insured",
+  1293→      description:
+  1294→        "Every crew member PVG-checked. £5m public liability. Key-safe trained. We can also handle in-person key handovers for guests who can't use a key safe — just ask.",
+  1295→    },
+  1296→    {
+  1297→      icon: "Leaf",
+  1298→      title: "Eco-labelled supplies",
+  1299→      description:
+  1300→        "Eco-labelled, low-VOC products as standard — guests with allergies and sensitive airways notice. We can also stock guest-requested fragrance-free options if your reviews flag it.",
+  1301→    },
+  1302→  ],
+  1303→  pricingTiers: [
+  1304→    {
+  1305→      name: "Studio — 1 Bed",
+  1306→      tagline: "City flats & compact retreats",
+  1307→      price: "£65",
+  1308→      unit: "/ turnover",
+  1309→      features: [
+  1310→        "2-person crew · 1.5 hours",
+  1311→        "Full 32-point checklist",
+  1312→        "Linen change (your supply)",
+  1313→        "All rooms & detail work",
+  1314→        "Before/after photos",
+  1315→        "90-minute issue response",
+  1316→      ],
+  1317→      highlighted: false,
+  1318→    },
+  1319→    {
+  1320→      name: "2 — 3 Bed",
+  1321→      tagline: "Most-booked for cottages & flats",
+  1322→      price: "£95",
+  1323→      unit: "/ turnover",
+  1324→      features: [
+  1325→        "2-person crew · 2.5 hours",
+  1326→        "Everything in Studio tier",
+  1327→        "Linen change + towel replace",
+  1328→        "Restocking (TP, soap, basics)",
+  1329→        "Before/after photos + report",
+  1330→        "90-minute issue response",
+  1331→      ],
+  1332→      highlighted: true,
+  1333→    },
+  1334→    {
+  1335→      name: "4+ Bed",
+  1336→      tagline: "Large cottages & group lets",
+  1337→      price: "£145",
+  1338→      unit: "/ turnover",
+  1339→      features: [
+  1340→        "3-person crew · 3.5 hours",
+  1341→        "Everything in 2-3 Bed tier",
+  1342→        "Welcome pack stocking",
+  1343→        "Oven quick-wipe included",
+  1344→        "Priority photo upload",
+  1345→        "60-minute issue response",
+  1346→      ],
+  1347→    },
+  1348→  ],
+  1349→  serviceAreas: [
+  1350→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Inverness",
+  1351→    "Stirling", "Perth", "Falkirk", "St Andrews", "Paisley",
+  1352→    "East Kilbride", "Livingston", "Dunfermline", "Kirkcaldy",
+  1353→    "Aviemore", "Oban", "Fort William", "Ayr", "Elgin", "Thurso",
+  1354→  ],
+  1355→  faqs: [
+  1356→    {
+  1357→      q: "How do you handle last-minute bookings?",
+  1358→      a: "Send us your Airbnb or Booking.com iCal link and we sync automatically. When a last-minute booking comes in, our system alerts your assigned crew and your account manager. We confirm every turnover within 4 hours of booking notification, and we can typically mobilise a crew within 90 minutes for same-day turnarounds in our core service areas (Glasgow, Edinburgh, Aberdeen, Dundee, Stirling, Inverness).",
+  1359→    },
+  1360→    {
+  1361→      q: "What if a guest leaves the property late?",
+  1362→      a: "It happens — flights get delayed, checkout times slip. We ask guests to leave by 11am (or your specified checkout time) and schedule our crew for 11:30am. If the guest is still in the property when we arrive, our crew waits up to 30 minutes at no charge. Beyond 30 minutes, we charge a £25 wait fee per 30 minutes. We always text the guest politely first — most leave within 10 minutes of a gentle nudge.",
+  1363→    },
+  1364→    {
+  1365→      q: "Do you provide linens and towels?",
+  1366→      a: "We can — but most hosts prefer to own their own. If you provide linens, we strip the beds, bag the dirty laundry, and remade with fresh sheets from your cupboard. If you'd like us to supply, we offer a hotel-grade linen hire service at trade pricing (£8-15 per set depending on size). We can also handle laundry drop-off and pickup with a local service partner — just ask.",
+  1367→    },
+  1368→    {
+  1369→      q: "Can you handle key handovers?",
+  1370→      a: "Yes. We recommend key safes (we'll install one for £40 if you don't have one) but we can also do in-person key handovers for guests who prefer it. We'll meet your guest at the property, hand over the keys, walk them through the basics (heating, hot water, WiFi, bins, parking), and lock up. £25 per handover, available 8am-9pm.",
+  1371→    },
+  1372→    {
+  1373→      q: "What's your 90-minute response window?",
+  1374→      a: "If a guest reports a cleaning issue, or you spot one in the turnover photos, text your account manager and we'll have a crew at the property within 90 minutes (in core service areas — Glasgow, Edinburgh, Aberdeen, Dundee, Stirling, Inverness). For more remote properties (Highlands, Islands, Borders), we'll be honest about realistic response times. We don't promise what we can't deliver.",
+  1375→    },
+  1376→    {
+  1377→      q: "Can you restock guest supplies?",
+  1378→      a: "Yes — and most hosts find this is the biggest time-saver. We can restock toilet paper, hand soap, tea towels, dishwasher tablets, bin liners, tea/coffee/sugar, milk, and welcome packs (you provide or we source at trade pricing). Every item replaced is logged in your portal so you can reconcile monthly. We can also flag low-stock items so you can reorder before you run out.",
+  1379→    },
+  1380→  ],
+  1381→  testimonials: [
+  1382→    {
+  1383→      name: "Catriona Morrison",
+  1384→      role: "Airbnb Superhost · Edinburgh Old Town",
+  1385→      quote:
+  1386→        "Three flats in the festival belt — turnovers used to be my entire August. Maundy Clean took over in 2023 and I haven't missed a single booking since. The photo proof alone is worth the £95. My reviews went from 4.6 to 4.9 in six months.",
+  1387→      rating: 5,
+  1388→    },
+  1389→    {
+  1390→      name: "Doug MacKenzie",
+  1391→      role: "Booking.com host · Aviemore",
+  1392→      quote:
+  1393→        "Remote cottage, 200 miles from where I live. I genuinely couldn't run this let without them. They handle key safes, restock logs, send me photos before every guest arrives. When a boiler leaked on a Sunday, they had a crew there in 2 hours.",
+  1394→      rating: 5,
+  1395→    },
+  1396→    {
+  1397→      name: "Sandra Peacock",
+  1398→      role: "Portfolio host · 6 properties, Glasgow",
+  1399→      quote:
+  1400→        "I've used three different turnover services. Maundy Clean is the only one that treats my properties like a hospitality business, not a cleaning job. The account manager actually understands Airbnb host metrics. Game-changer.",
+  1401→      rating: 5,
+  1402→    },
+  1403→  ],
+  1404→  relatedServices: [
+  1405→    {
+  1406→      name: "Recurring Home Cleaning",
+  1407→      href: "/services/recurring-home-cleaning",
+  1408→      description: "Same crew, every visit — for hosts who live in their property between lets.",
+  1409→    },
+  1410→    {
+  1411→      name: "Deep House Cleaning",
+  1412→      href: "/services/deep-house-cleaning",
+  1413→      description: "Quarterly deep clean for holiday lets — perfect for low-season refresh.",
+  1414→    },
+  1415→    {
+  1416→      name: "Carpet & Rug Cleaning",
+  1417→      href: "#",
+  1418→      description: "Hot-water extraction — essential for high-turnover properties with heavy footfall.",
+  1419→    },
+  1420→    {
+  1421→      name: "Window Cleaning",
+  1422→      href: "#",
+  1423→      description: "Streak-free glass for those all-important first-impression listing photos.",
+  1424→    },
+  1425→    {
+  1426→      name: "Oven Cleaning",
+  1427→      href: "#",
+  1428→      description: "Non-caustic dip-tank oven cleaning — add to any turnover for £25.",
+  1429→    },
+  1430→    {
+  1431→      name: "Laundry & Folding Add-On",
+  1432→      href: "#",
+  1433→      description: "Linen laundering and folding — for hosts who don't have on-site laundry.",
+  1434→    },
+  1435→  ],
+  1436→  gallery: [
+  1437→    {
+  1438→      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  1439→      alt: "Beautifully turned-over holiday let bedroom",
+  1440→      caption: "Bedroom reset — fresh linens, plumped pillows, wardrobe emptied of previous guest items.",
+  1441→    },
+  1442→    {
+  1443→      src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+  1444→      alt: "Spotless holiday let living room",
+  1445→      caption: "Living area — cushions plumped, throws folded, floors vacuumed edge-to-edge.",
+  1446→    },
+  1447→    {
+  1448→      src: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+  1449→      alt: "Eco-labelled supplies for guest-sensitive properties",
+  1450→      caption: "Eco-labelled supplies — guests with allergies notice. Standard on every turnover.",
+  1451→    },
+  1452→    {
+  1453→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+  1454→      alt: "Maundy Clean turnover crew",
+  1455→      caption: "Same dedicated crew every turnover — they know your property inside out.",
+  1456→    },
+  1457→  ],
+  1458→};
+  1459→

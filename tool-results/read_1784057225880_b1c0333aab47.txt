@@ -1,0 +1,1238 @@
+     1→#!/usr/bin/env python3
+     2→"""
+     3→Generator for /src/components/service-detail/tile-grout-cleaning-seo.tsx
+     4→
+     5→Produces 9 client-side React components that interleave with the standard
+     6→ServiceDetail components to form a 20-section page on
+     7→/services/tile-grout-cleaning.
+     8→
+     9→Design pattern matches housekeeping-services-seo.tsx exactly (after the
+    10→carpet-rug alignment fix):
+    11→  Section background alternation:
+    12→    bg-background (Intro)
+    13→    bg-[var(--cream)] (Why)
+    14→    bg-background (Checklist)  -- NOT cream, preserves alternation
+    15→    bg-background (Booking)
+    16→    bg-[var(--cream)] (Interlinking)  -- NOT background, preserves alternation
+    17→    bg-background (Near Me)
+    18→    bg-[var(--brand-dark)] (Final CTA)
+    19→    bg-background (FAQ)
+    20→  Image aspect ratios: 4/3 for split-layout hero images, 16/9 for card images
+    21→  Interlinking uses <h2> for section title (not <h3>)
+    22→  4-card interlinking grid with image headers
+    23→  Near-me section with [1fr_1.3fr] split + 36-location grid
+    24→
+    25→The user brief (Tile & Grout Cleaning semantic SEO) was processed to:
+    26→  - Strip SEO-strategy language: "Topical Authority",
+    27→    "MaundyClean Semantic SEO Strategy", "Semantic Interlinking:",
+    28→    "[H1]/[H2]/[H3]", "[Button: ...]"
+    29→  - Strip source citations: none present in this brief
+    30→  - Strip competitor names: "Repair Restore Revive"
+    31→  - Convert bracketed link placeholders to real Next.js <Link> components:
+    32→      [Recurring Home Cleaning]    -> /services/recurring-home-cleaning
+    33→      [End of Tenancy Cleaning]    -> /services/move-in-out-cleaning
+    34→      [Deep House Cleaning]        -> /services/deep-house-cleaning
+    35→      [After Builders Clean]       -> /services/post-construction-cleaning
+    36→      [30-Second Quote Tool]       -> /quote
+    37→  - Add a near-me section + standalone near-me page (handled by the
+    38→    tile-grout-cleaning-near-me-page.tsx component, not this script)
+    39→
+    40→Output: /home/z/my-project/src/components/service-detail/tile-grout-cleaning-seo.tsx
+    41→"""
+    42→
+    43→from pathlib import Path
+    44→
+    45→OUT_PATH = Path("/home/z/my-project/src/components/service-detail/tile-grout-cleaning-seo.tsx")
+    46→
+    47→TSX = r""""use client";
+    48→
+    49→import Link from "next/link";
+    50→import { motion } from "framer-motion";
+    51→import {
+    52→  Shield,
+    53→  Leaf,
+    54→  Star,
+    55→  Clock,
+    56→  Sparkles,
+    57→  MapPin,
+    58→  ArrowRight,
+    59→  CheckCircle2,
+    60→  Droplets,
+    61→  Wind,
+    62→  SprayCan,
+    63→  Crown,
+    64→  Users,
+    65→  Home,
+    66→  KeyRound,
+    67→  Hammer,
+    68→  Zap,
+    69→  UserCheck,
+    70→  CalendarCheck,
+    71→  Award,
+    72→  Gem,
+    73→  Building2,
+    74→  Brush,
+    75→  Layers,
+    76→  Palette,
+    77→  Wrench,
+    78→  Bath,
+    79→} from "lucide-react";
+    80→import { Button } from "@/components/ui/button";
+    81→import { contactInfo } from "@/lib/site-data";
+    82→
+    83→// ============================================================
+    84→// Images - hand-picked from in-house search service
+    85→// ============================================================
+    86→const IMG = {
+    87→  heroWide:
+    88→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    89→  whyCrew:
+    90→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    91→  checklistDeep:
+    92→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    93→  checklistProtect:
+    94→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    95→  checklistRestore:
+    96→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    97→  leaseRecurring:
+    98→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    99→  leaseDeep:
+   100→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+   101→  leaseTenancy:
+   102→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+   103→  leaseBuilders:
+   104→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+   105→  nearMeMap:
+   106→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+   107→};
+   108→
+   109→// ============================================================
+   110→// 36 Scottish locations covered by the near-me grid
+   111→// ============================================================
+   112→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   113→  { city: "Glasgow", slug: "glasgow" },
+   114→  { city: "Edinburgh", slug: "edinburgh" },
+   115→  { city: "Aberdeen", slug: "aberdeen" },
+   116→  { city: "Dundee", slug: "dundee" },
+   117→  { city: "Stirling", slug: "stirling" },
+   118→  { city: "Perth", slug: "perth" },
+   119→  { city: "Falkirk", slug: "falkirk" },
+   120→  { city: "Inverness", slug: "inverness" },
+   121→  { city: "Ayr", slug: "ayr" },
+   122→  { city: "Kilmarnock", slug: "kilmarnock" },
+   123→  { city: "Livingston", slug: "livingston" },
+   124→  { city: "East Kilbride", slug: "east-kilbride" },
+   125→  { city: "Paisley", slug: "paisley" },
+   126→  { city: "Hamilton", slug: "hamilton" },
+   127→  { city: "Motherwell", slug: "motherwell" },
+   128→  { city: "Dunfermline", slug: "dunfermline" },
+   129→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   130→  { city: "Musselburgh", slug: "musselburgh" },
+   131→  { city: "Dalkeith", slug: "dalkeith" },
+   132→  { city: "Bathgate", slug: "bathgate" },
+   133→  { city: "Cumbernauld", slug: "cumbernauld" },
+   134→  { city: "Coatbridge", slug: "coatbridge" },
+   135→  { city: "St Andrews", slug: "st-andrews" },
+   136→  { city: "Elgin", slug: "elgin" },
+   137→  { city: "Peterhead", slug: "peterhead" },
+   138→  { city: "Stonehaven", slug: "stonehaven" },
+   139→  { city: "Inverurie", slug: "inverurie" },
+   140→  { city: "Oban", slug: "oban" },
+   141→  { city: "Fort William", slug: "fort-william" },
+   142→  { city: "Aviemore", slug: "aviemore" },
+   143→  { city: "Dumfries", slug: "dumfries" },
+   144→  { city: "Stranraer", slug: "stranraer" },
+   145→  { city: "Wick", slug: "wick" },
+   146→  { city: "Thurso", slug: "thurso" },
+   147→  { city: "Lerwick", slug: "lerwick" },
+   148→  { city: "Kirkwall", slug: "kirkwall" },
+   149→];
+   150→
+   151→// ============================================================
+   152→// Section 0 - Full-width hero banner
+   153→// Semantic H1: "Professional Tile & Grout Cleaning Services Scotland"
+   154→// ============================================================
+   155→
+   156→export function TileGroutSeoHeroBanner() {
+   157→  return (
+   158→    <section className="relative overflow-hidden">
+   159→      {/* Full-width background image */}
+   160→      <div className="absolute inset-0">
+   161→        <img
+   162→          src={IMG.heroWide}
+   163→          alt="Maundy Clean tile & grout technician restoring a Scottish bathroom floor with a high-pressure extraction tool"
+   164→          className="w-full h-full object-cover"
+   165→          loading="eager"
+   166→          fetchPriority="high"
+   167→        />
+   168→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   169→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   170→      </div>
+   171→
+   172→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   173→        <motion.div
+   174→          initial="hidden"
+   175→          animate="visible"
+   176→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   177→          className="max-w-3xl"
+   178→        >
+   179→          <motion.div
+   180→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   181→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   182→          >
+   183→            <span className="relative flex w-2 h-2">
+   184→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   185→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   186→            </span>
+   187→            Tile &amp; Grout Restoration · Glasgow · Edinburgh · Central Belt
+   188→          </motion.div>
+   189→
+   190→          <motion.h1
+   191→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   192→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   193→          >
+   194→            Professional Tile &amp; Grout Cleaning Services Scotland
+   195→          </motion.h1>
+   196→
+   197→          <motion.p
+   198→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   199→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   200→          >
+   201→            Restoring the Brilliance of Your Stone and Ceramic Surfaces with Meticulous Care. In
+   202→            the damp climate of the Scottish Central Belt, bathroom and kitchen surfaces face a
+   203→            constant battle against moisture, limescale, and environmental grime. At Maundy Clean,
+   204→            we understand that a standard surface wipe is rarely enough to maintain the long-term
+   205→            beauty of your home. Built on the{" "}
+   206→            <Link
+   207→              href="/services/recurring-home-cleaning"
+   208→              className="font-semibold text-[var(--gold)] hover:text-white underline underline-offset-4"
+   209→            >
+   210→              Maundy tradition of service and care
+   211→            </Link>
+   212→            , our tile and grout cleaning provides a technical &ldquo;reset&rdquo; for your
+   213→            property &mdash; ensuring your floors and walls remain as flawless and unified as the
+   214→            day they were installed.
+   215→          </motion.p>
+   216→
+   217→          <motion.div
+   218→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   219→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   220→          >
+   221→            <Button
+   222→              size="lg"
+   223→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   224→              asChild
+   225→            >
+   226→              <Link href="/quote">
+   227→                Get My 30-Second Instant Quote
+   228→                <ArrowRight className="w-5 h-5" />
+   229→              </Link>
+   230→            </Button>
+   231→            <Button
+   232→              size="lg"
+   233→              variant="outline"
+   234→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   235→              asChild
+   236→            >
+   237→              <Link href="#checklist">
+   238→                <CheckCircle2 className="w-4 h-4" />
+   239→                View Our Regular Cleaning Checklist
+   240→              </Link>
+   241→            </Button>
+   242→          </motion.div>
+   243→
+   244→          <motion.div
+   245→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   246→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   247→          >
+   248→            <div className="flex items-center gap-1.5">
+   249→              <div className="flex">
+   250→                {[1, 2, 3, 4, 5].map((s) => (
+   251→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   252→                ))}
+   253→              </div>
+   254→              <span className="font-semibold text-white">4.9/5</span>
+   255→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   256→            </div>
+   257→            <div className="flex items-center gap-1.5">
+   258→              <Shield className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; Vetted
+   259→            </div>
+   260→            <div className="flex items-center gap-1.5">
+   261→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe Products
+   262→            </div>
+   263→            <div className="flex items-center gap-1.5">
+   264→              <Clock className="w-4 h-4 text-[var(--gold)]" /> Same Crew Every Visit
+   265→            </div>
+   266→          </motion.div>
+   267→        </motion.div>
+   268→      </div>
+   269→    </section>
+   270→  );
+   271→}
+   272→
+   273→// ============================================================
+   274→// Section 1 - Long-form semantic SEO intro
+   275→// Sits right after the hero, before the existing ServiceOverview.
+   276→// ============================================================
+   277→
+   278→export function TileGroutSeoIntro() {
+   279→  return (
+   280→    <section className="py-16 lg:py-24 bg-background">
+   281→      <div className="max-w-[1100px] mx-auto px-6">
+   282→        <motion.div
+   283→          initial={{ opacity: 0, y: 20 }}
+   284→          whileInView={{ opacity: 1, y: 0 }}
+   285→          viewport={{ once: true, margin: "-80px" }}
+   286→          transition={{ duration: 0.5 }}
+   287→          className="max-w-3xl mx-auto text-center mb-10"
+   288→        >
+   289→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   290→            Specialist tile &amp; grout restoration &middot; Scotland
+   291→          </span>
+   292→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   293→            The Maundy Clean Standard for Surface Restoration
+   294→          </h2>
+   295→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   296→            Built on the <strong className="font-semibold text-[var(--ink)]">Maundy tradition of
+   297→            service and care</strong>, we provide a premium alternative to impersonal national
+   298→            agencies, ensuring your tile and grout restoration is handled with the same meticulous
+   299→            attention as your weekly housekeeping. Whether you are preparing a property for the
+   300→            market with our Sale Ready Service or looking to refresh your urban sanctuary in Glasgow
+   301→            or Edinburgh, our high-end technical restoration delivers a &ldquo;speechlessly
+   302→            spotless&rdquo; finish that standard cleaners simply cannot match &mdash; combining
+   303→            specialist material knowledge, certified child-safe products, and a 100% satisfaction
+   304→            guarantee on every visit.
+   305→          </p>
+   306→        </motion.div>
+   307→
+   308→        {/* Trust strip */}
+   309→        <motion.div
+   310→          initial={{ opacity: 0, y: 16 }}
+   311→          whileInView={{ opacity: 1, y: 0 }}
+   312→          viewport={{ once: true, margin: "-60px" }}
+   313→          transition={{ duration: 0.5 }}
+   314→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   315→        >
+   316→          {[
+   317→            { label: "Tile materials handled", value: "6+" },
+   318→            { label: "Extraction pressure", value: "800-1,200 PSI" },
+   319→            { label: "Sealed grout longevity", value: "3-5 yrs" },
+   320→            { label: "Star rating", value: "4.9/5" },
+   321→          ].map((stat) => (
+   322→            <div
+   323→              key={stat.label}
+   324→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   325→            >
+   326→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   327→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   328→            </div>
+   329→          ))}
+   330→        </motion.div>
+   331→      </div>
+   332→    </section>
+   333→  );
+   334→}
+   335→
+   336→// ============================================================
+   337→// Section 2 - Why MaundyClean is Scotland's Authority in Tile Restoration
+   338→// (Semantic H2: "Why Maundy Clean is Scotland's Authority in Tile Restoration")
+   339→// Image+copy split layout with 4 trust cards
+   340→// ============================================================
+   341→
+   342→const TRUST_CARDS = [
+   343→  {
+   344→    icon: Gem,
+   345→    title: "Specialist Material Knowledge",
+   346→    description:
+   347→      "Our technicians are vocationally trained to handle a wide variety of surfaces, including Travertine, Marble, Porcelain, Ceramic, Slate, and Natural Stone. We identify the tile material before quoting &mdash; acid on marble etches the surface, high pressure on Victorian tiles cracks the bed, alkaline on slate strips the colour. Wrong chemistry on wrong material equals permanent damage, so we refuse to clean what we cannot safely treat.",
+   348→  },
+   349→  {
+   350→    icon: Users,
+   351→    title: "The Same Trusted Professionals",
+   352→    description:
+   353→      "Reliability is built on trust. The same vetted, uniformed staff who manage your recurring home cleaning are trained in our meticulous restoration processes. Your crew is allocated to your property and your time slot &mdash; they don&rsquo;t get reassigned, shared, or pulled elsewhere. Continuity is what turns an annual restoration into a relationship with someone who knows your surfaces.",
+   354→  },
+   355→  {
+   356→    icon: Palette,
+   357→    title: "Precision Grout Recolouring",
+   358→    description:
+   359→      "Our flagship restoration service deep cleans and seals existing grout lines with durable, stain-resistant, and precision-applied colourants. Available in 12 standard shades, this enhances the aesthetic of your bathroom or kitchen while providing long-lasting protection against dirt, mould, and moisture. Re-coloured grout stays clean for 3-5 years versus 3-6 months for unsealed grout &mdash; a genuine transformation, not a temporary fix.",
+   360→  },
+   361→  {
+   362→    icon: Leaf,
+   363→    title: "Eco-Friendly & Family Safe",
+   364→    description:
+   365→      "Your health is paramount. We use only certified child-safe and pet-safe products that effectively remove bacteria and odours without leaving harsh chemical residues. All pre-sprays, rinse agents, and sealers are food-safe, low-VOC, and suitable for kitchens, bathrooms, hallways, and children&rsquo;s play areas. Floor is safe for crawling babies and pets once dry &mdash; no perfume, no optical brighteners, no compromise.",
+   366→  },
+   367→];
+   368→
+   369→export function TileGroutSeoWhy() {
+   370→  return (
+   371→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   372→      <div className="max-w-[1400px] mx-auto px-6">
+   373→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   374→          {/* Image side */}
+   375→          <motion.div
+   376→            initial={{ opacity: 0, scale: 0.96 }}
+   377→            whileInView={{ opacity: 1, scale: 1 }}
+   378→            viewport={{ once: true, margin: "-80px" }}
+   379→            transition={{ duration: 0.6 }}
+   380→            className="relative order-2 lg:order-1"
+   381→          >
+   382→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   383→              <img
+   384→                src={IMG.whyCrew}
+   385→                alt="Maundy Clean tile & grout technician &mdash; uniformed, vetted, and material-trained"
+   386→                className="absolute inset-0 w-full h-full object-cover"
+   387→                loading="lazy"
+   388→              />
+   389→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   390→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   391→                <div className="flex items-center gap-2 mb-1">
+   392→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   393→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   394→                    A Trusted Presence in Your Home
+   395→                  </span>
+   396→                </div>
+   397→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   398→                  Employed, vetted, uniformed, and trained in material-specific chemistry.
+   399→                  Same crew every visit &mdash; never a rotating cast of strangers.
+   400→                </p>
+   401→              </div>
+   402→            </div>
+   403→            <motion.div
+   404→              animate={{ y: [0, -8, 0] }}
+   405→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   406→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   407→            >
+   408→              <div className="flex items-center gap-2">
+   409→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   410→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   411→                </div>
+   412→                <div>
+   413→                  <div className="text-[10px] text-[var(--muted-foreground)]">Grout recolour lasts</div>
+   414→                  <div className="text-xs font-bold text-[var(--ink)]">3-5 yrs</div>
+   415→                </div>
+   416→              </div>
+   417→            </motion.div>
+   418→          </motion.div>
+   419→
+   420→          {/* Copy side */}
+   421→          <motion.div
+   422→            initial={{ opacity: 0, y: 20 }}
+   423→            whileInView={{ opacity: 1, y: 0 }}
+   424→            viewport={{ once: true, margin: "-80px" }}
+   425→            transition={{ duration: 0.5 }}
+   426→            className="order-1 lg:order-2"
+   427→          >
+   428→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   429→              Why choose Maundy Clean
+   430→            </span>
+   431→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   432→              Why Maundy Clean is Scotland&rsquo;s Authority in Tile Restoration
+   433→            </h2>
+   434→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   435→              While most companies offer generic domestic help, Maundy Clean focuses on the topic of
+   436→              total surface hygiene. We move beyond the &ldquo;surface clean&rdquo; to address the
+   437→              porous nature of grout and the unique requirements of various materials &mdash;
+   438→              combining specialist material knowledge, precision grout recolouring, certified
+   439→              eco-friendly products, and the same trusted professionals every visit.
+   440→            </p>
+   441→
+   442→            <div className="space-y-3">
+   443→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   444→                const Icon = card.icon;
+   445→                return (
+   446→                  <div
+   447→                    key={card.title}
+   448→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   449→                  >
+   450→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   451→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   452→                    </div>
+   453→                    <div>
+   454→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   455→                        {card.title}
+   456→                      </h3>
+   457→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   458→                        {card.description}
+   459→                      </p>
+   460→                    </div>
+   461→                  </div>
+   462→                );
+   463→              })}
+   464→            </div>
+   465→          </motion.div>
+   466→        </div>
+   467→
+   468→        {/* Third + fourth cards as a 2-column strip */}
+   469→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   470→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   471→            const Icon = card.icon;
+   472→            return (
+   473→              <motion.div
+   474→                key={card.title}
+   475→                initial={{ opacity: 0, y: 20 }}
+   476→                whileInView={{ opacity: 1, y: 0 }}
+   477→                viewport={{ once: true, margin: "-40px" }}
+   478→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   479→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   480→              >
+   481→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   482→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   483→                </div>
+   484→                <div>
+   485→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   486→                    {card.title}
+   487→                  </h3>
+   488→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   489→                    {card.description}
+   490→                  </p>
+   491→                </div>
+   492→              </motion.div>
+   493→            );
+   494→          })}
+   495→        </div>
+   496→      </div>
+   497→    </section>
+   498→  );
+   499→}
+   500→
+   501→// ============================================================
+   502→// Section 3 - Our Total Surface Maintenance Checklist
+   503→// (Semantic H2: "Our Total Surface Maintenance Checklist")
+   504→// Brief-specific section with 3 H3 sub-sections:
+   505→//   1. Deep Cleaning & Sanitisation
+   506→//   2. Precision Sealing & Protection
+   507→//   3. Floor & Wall Restoration
+   508→// Carries the id="checklist" anchor that the CTA buttons link to.
+   509→// ============================================================
+   510→
+   511→const CHECKLIST_ITEMS = [
+   512→  {
+   513→    icon: SprayCan,
+   514→    image: IMG.checklistDeep,
+   515→    imageAlt: "Alkaline pre-spray being agitated into a Scottish bathroom tile floor with a rotating brush",
+   516→    title: "Deep Cleaning & Sanitisation",
+   517→    description:
+   518→      "The technical core of every restoration. We move beyond the surface mop to address the porous grout joint and the tile micropores &mdash; where the real contamination lives. Aggressive chemistry, matched dwell times, and mechanical agitation are how we shift years of build-up that mop-and-bucket cleaning simply redistributes.",
+   519→    points: [
+   520→      {
+   521→        icon: Brush,
+   522→        title: "Intensive Scrubbing",
+   523→        text: "Removing deep-seated grime and bacteria from grout lines and textured tile surfaces. A rotating brush head agitates the alkaline pre-spray into the grout joint at 800-1,200 PSI for ceramic and porcelain &mdash; the only method that physically flushes the dissolved soil out of the joint.",
+   524→      },
+   525→      {
+   526→        icon: Droplets,
+   527→        title: "Limescale & Mould Removal",
+   528→        text: "Targeting high-moisture areas in showers, cloakrooms, and utility rooms. We dissolve limescale with pH-appropriate chemistry (never acid on marble or limestone) and kill mould at the root with a biocidal pre-treatment that prevents regrowth for 12-18 months on most Scottish bathroom surfaces.",
+   529→      },
+   530→      {
+   531→        icon: Shield,
+   532→        title: "High-Touch Point Care",
+   533→        text: "Disinfecting all ceramic items and buffing chrome fixtures to a high shine as part of the surrounding area care. We never leave a job with dirty adjacent surfaces &mdash; taps, shower frames, and chrome trims are detailed as standard, not as a &pound;50 add-on tacked on at the end.",
+   534→      },
+   535→    ],
+   536→  },
+   537→  {
+   538→    icon: Shield,
+   539→    image: IMG.checklistProtect,
+   540→    imageAlt: "Pigmented grout sealer being precision-applied to a freshly cleaned tile floor",
+   541→    title: "Precision Sealing & Protection",
+   542→    description:
+   543→      "Cleaning without sealing is a temporary fix &mdash; the grout darkens again within 3-6 months. Our protection step is what makes the result last for 3-5 years. We apply the right sealer for the right material &mdash; pigmented sealer for grout, penetrating sealer for natural stone, topical sealer for Victorian encaustic tiles.",
+   544→    points: [
+   545→      {
+   546→        icon: Layers,
+   547→        title: "Grout Sealing",
+   548→        text: "Applying a protective barrier to prevent future spills from becoming permanent stains. Penetrating sealer bonds below the grout surface and repels water, oil, and soil &mdash; with correct maintenance, the grout stays clean for years, not months. Re-apply every 3-5 years and we&rsquo;ll remind you.",
+   549→      },
+   550→      {
+   551→        icon: Palette,
+   552→        title: "Recolouring & Unifying",
+   553→        text: "Restoring discoloured grout to a flawless, tailored style that enhances your entire room. Available in 12 standard colours &mdash; from white and grey to charcoal and black &mdash; this gives a uniform appearance regardless of the underlying stain and transforms the look of the floor in a single visit.",
+   554→      },
+   555→      {
+   556→        icon: Wrench,
+   557→        title: "Surface Repairs",
+   558→        text: "Addressing minor damages, cracks, and wear and tear that detract from the functionality of your space. We flag cracked or missing grout during the clean and recommend a tiler where re-grouting is required. We can also re-seal the joints with pigmented sealer to fill micro-cracks and provide a uniform colour.",
+   559→      },
+   560→    ],
+   561→  },
+   562→  {
+   563→    icon: Building2,
+   564→    image: IMG.checklistRestore,
+   565→    imageAlt: "Restored Victorian encaustic tile hallway in a Scottish tenement with topical sealer applied",
+   566→    title: "Floor & Wall Restoration",
+   567→    description:
+   568→      "The finish work that takes a job from &lsquo;cleaned&rsquo; to &lsquo;restored&rsquo;. We address the surrounding surfaces &mdash; hard floors, skirtings, door frames, and window sills &mdash; so the entire room feels reset, not just the centre of the floor. Particularly critical for sale prep and end-of-tenancy handovers.",
+   569→    points: [
+   570→      {
+   571→        icon: Home,
+   572→        title: "Hard Floor Care",
+   573→        text: "Intensive mopping and sanitising of hard floors to kill germs and maintain freshness. We finish with a pH-neutral rinse that removes all chemical residue &mdash; no sticky film, no re-soiling, no slippery surface. The floor is damp, not soaking, and dry in 4-8 hours with ventilation.",
+   574→      },
+   575→      {
+   576→        icon: CheckCircle2,
+   577→        title: "Detail Finishing",
+   578→        text: "Meticulous cleaning of skirting boards, door frames, and window sills surrounding the tiled area. The most common complaint with cheaper tile cleaners is that they leave dirty edges &mdash; we hand-detail every perimeter surface as standard. The &lsquo;WOW factor&rsquo; only happens when the edges match the centre.",
+   579→      },
+   580→    ],
+   581→  },
+   582→];
+   583→
+   584→export function TileGroutSeoChecklist() {
+   585→  return (
+   586→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   587→      <div className="max-w-[1400px] mx-auto px-6">
+   588→        <motion.div
+   589→          initial={{ opacity: 0, y: 20 }}
+   590→          whileInView={{ opacity: 1, y: 0 }}
+   591→          viewport={{ once: true, margin: "-80px" }}
+   592→          transition={{ duration: 0.5 }}
+   593→          className="max-w-3xl mb-12"
+   594→        >
+   595→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   596→            Beyond the basic mop
+   597→          </span>
+   598→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   599→            Our Total Surface Maintenance Checklist
+   600→          </h2>
+   601→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   602→            Our tile and grout cleaning follows a rigorous, agency-approved checklist designed to
+   603→            deliver a &ldquo;speechlessly spotless&rdquo; finish that standard cleaners often miss.
+   604→            Below is the scope we deliver as standard on every restoration visit &mdash; from the
+   605→            technical core of deep extraction, through to precision sealing, to the detail finishing
+   606→            that makes the room feel genuinely reset.
+   607→          </p>
+   608→        </motion.div>
+   609→
+   610→        <div className="grid lg:grid-cols-3 gap-6">
+   611→          {CHECKLIST_ITEMS.map((item, i) => {
+   612→            const Icon = item.icon;
+   613→            return (
+   614→              <motion.div
+   615→                key={item.title}
+   616→                initial={{ opacity: 0, y: 24 }}
+   617→                whileInView={{ opacity: 1, y: 0 }}
+   618→                viewport={{ once: true, margin: "-40px" }}
+   619→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   620→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   621→              >
+   622→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   623→                  <img
+   624→                    src={item.image}
+   625→                    alt={item.imageAlt}
+   626→                    className="absolute inset-0 w-full h-full object-cover"
+   627→                    loading="lazy"
+   628→                  />
+   629→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   630→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   631→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   632→                  </div>
+   633→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   634→                    {item.title}
+   635→                  </h3>
+   636→                </div>
+   637→                <div className="p-6 flex-1 flex flex-col">
+   638→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   639→                    {item.description}
+   640→                  </p>
+   641→                  <ul className="space-y-3 mt-auto">
+   642→                    {item.points.map((point) => {
+   643→                      const PointIcon = point.icon;
+   644→                      return (
+   645→                        <li
+   646→                          key={point.title}
+   647→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   648→                        >
+   649→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   650→                          <span>
+   651→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   652→                            &mdash; {point.text}
+   653→                          </span>
+   654→                        </li>
+   655→                      );
+   656→                    })}
+   657→                  </ul>
+   658→                </div>
+   659→              </motion.div>
+   660→            );
+   661→          })}
+   662→        </div>
+   663→      </div>
+   664→    </section>
+   665→  );
+   666→}
+   667→
+   668→// ============================================================
+   669→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   670→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   671→// ============================================================
+   672→
+   673→const BOOKING_STEPS = [
+   674→  {
+   675→    icon: Zap,
+   676→    step: "01",
+   677→    title: "Instant 30-Second Quote",
+   678→    description:
+   679→      "Use our online price calculator to receive a simple, fixed-price quote based on your room size and tile type. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months, with no contracts tying you in and no on-the-day upsells for sealer or recolour.",
+   680→  },
+   681→  {
+   682→    icon: UserCheck,
+   683→    step: "02",
+   684→    title: "Professional Assessment",
+   685→    description:
+   686→      "Our experienced team arrives fully equipped to establish a schedule and standard of excellence tailored to your home&rsquo;s specific layout. We confirm the tile material (ceramic, porcelain, travertine, marble, slate, or Victorian encaustic), flag any permanent stains, and walk you through the cleaning plan before any water touches the surface.",
+   687→  },
+   688→  {
+   689→    icon: CalendarCheck,
+   690→    step: "03",
+   691→    title: "Enjoy a Revitalised Sanctuary",
+   692→    description:
+   693→      "Experience a home that feels fresh, clean, and &ldquo;showcase&rdquo; ready, backed by our Maundy Clean satisfaction guarantee. We finish with sealing or recolouring as appropriate, walk the property with you at completion, and re-treat on the spot if anything is flagged. Care card and re-clean reminder at 12 months &mdash; from &pound;149 per room.",
+   694→  },
+   695→];
+   696→
+   697→export function TileGroutSeoBooking() {
+   698→  return (
+   699→    <section className="py-16 lg:py-24 bg-background">
+   700→      <div className="max-w-[1400px] mx-auto px-6">
+   701→        <motion.div
+   702→          initial={{ opacity: 0, y: 20 }}
+   703→          whileInView={{ opacity: 1, y: 0 }}
+   704→          viewport={{ once: true, margin: "-80px" }}
+   705→          transition={{ duration: 0.5 }}
+   706→          className="text-center mb-14"
+   707→        >
+   708→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   709→            Hassle-free booking
+   710→          </span>
+   711→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   712→            The 3-Step &ldquo;Hassle-Free&rdquo; Process
+   713→          </h3>
+   714→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   715→            We have optimized our booking system to be uncomplicated and straightforward,
+   716→            addressing the slow response times common in the Scottish market. From quote to first
+   717→            clean in under 48 hours &mdash; no friction, no waiting, no surprises.
+   718→          </p>
+   719→        </motion.div>
+   720→
+   721→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   722→          {/* Connector line */}
+   723→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   724→
+   725→          {BOOKING_STEPS.map((step, i) => {
+   726→            const Icon = step.icon;
+   727→            return (
+   728→              <motion.div
+   729→                key={step.step}
+   730→                initial={{ opacity: 0, y: 24 }}
+   731→                whileInView={{ opacity: 1, y: 0 }}
+   732→                viewport={{ once: true, margin: "-40px" }}
+   733→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   734→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   735→              >
+   736→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   737→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   738→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   739→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   740→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   741→                    {step.step}
+   742→                  </span>
+   743→                </div>
+   744→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   745→                  {step.title}
+   746→                </h3>
+   747→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   748→                  {step.description}
+   749→                </p>
+   750→              </motion.div>
+   751→            );
+   752→          })}
+   753→        </div>
+   754→
+   755→        <motion.div
+   756→          initial={{ opacity: 0, y: 16 }}
+   757→          whileInView={{ opacity: 1, y: 0 }}
+   758→          viewport={{ once: true }}
+   759→          transition={{ duration: 0.5, delay: 0.3 }}
+   760→          className="text-center mt-10"
+   761→        >
+   762→          <Button
+   763→            size="lg"
+   764→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   765→            asChild
+   766→          >
+   767→            <Link href="/quote">
+   768→              Get My 30-Second Instant Quote
+   769→              <ArrowRight className="w-5 h-5" />
+   770→            </Link>
+   771→          </Button>
+   772→        </motion.div>
+   773→      </div>
+   774→    </section>
+   775→  );
+   776→}
+   777→
+   778→// ============================================================
+   779→// Section 5 - A Solution for Every Property Cycle
+   780→// (Semantic H2: "A Solution for Every Property Cycle")
+   781→// Image-topped cards with internal links to specialist services
+   782→// ============================================================
+   783→
+   784→const INTERLINK_SOLUTIONS = [
+   785→  {
+   786→    icon: CalendarCheck,
+   787→    title: "Maintaining the Standard &middot; Recurring Home Cleaning",
+   788→    href: "/services/recurring-home-cleaning",
+   789→    image: IMG.leaseRecurring,
+   790→    imageAlt: "Scottish home receiving recurring interior cleaning alongside annual tile and grout restoration",
+   791→    description:
+   792→      "After your surfaces are restored, keep them pristine with a Recurring Home Cleaning plan &mdash; weekly or fortnightly. Edge-to-edge vacuuming, immediate spill response, and quarterly deep cleans prevent the environmental buildup that darkens grout and dulls tile. The single biggest factor in how long a restoration lasts.",
+   793→    cta: "Explore recurring cleaning",
+   794→  },
+   795→  {
+   796→    icon: Home,
+   797→    title: "The Move-In Reset &middot; Deep House Cleaning",
+   798→    href: "/services/deep-house-cleaning",
+   799→    image: IMG.leaseDeep,
+   800→    imageAlt: "Scottish home receiving an intensive deep clean alongside tile and grout restoration for sale prep",
+   801→    description:
+   802→      "Preparing to sell? Our Sale Ready Service combined with a Deep House Cleaning creates the &ldquo;WOW factor&rdquo; that attracts buyers and adds value to your property. Stale odours, dark grout, and tired bathrooms are the single biggest turn-off at viewings &mdash; we fix all three in a single coordinated visit.",
+   803→    cta: "Explore deep house cleaning",
+   804→  },
+   805→  {
+   806→    icon: KeyRound,
+   807→    title: "Property Transitions &middot; End of Tenancy Cleaning",
+   808→    href: "/services/move-in-out-cleaning",
+   809→    image: IMG.leaseTenancy,
+   810→    imageAlt: "Empty Scottish flat being deep cleaned with bathroom and kitchen tile restoration included",
+   811→    description:
+   812→      "Our End of Tenancy Cleaning includes professional bathroom and kitchen sanitation to ensure you get your full deposit back. We work to the letting agent&rsquo;s inventory, restore the tile and grout to its original appearance, and come back free of charge if anything is flagged on the inspection.",
+   813→    cta: "Explore end of tenancy",
+   814→  },
+   815→  {
+   816→    icon: Hammer,
+   817→    title: "Post-Renovation &middot; After Builders Clean",
+   818→    href: "/services/post-construction-cleaning",
+   819→    image: IMG.leaseBuilders,
+   820→    imageAlt: "Post-builders cleanup removing fine construction dust from tile grout lines in a Scottish kitchen",
+   821→    description:
+   822→      "If you have recently had home improvements, our After Builders Clean removes the heavy layers of construction dust that settle in grout lines. Includes steam-cleaning of grout, fine-dust wipe-down of all surfaces, and high-pressure extraction of the cement and grout residue the builders left behind.",
+   823→    cta: "Explore after builders cleaning",
+   824→  },
+   825→];
+   826→
+   827→export function TileGroutSeoInterlinking() {
+   828→  return (
+   829→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   830→      <div className="max-w-[1400px] mx-auto px-6">
+   831→        <motion.div
+   832→          initial={{ opacity: 0, y: 20 }}
+   833→          whileInView={{ opacity: 1, y: 0 }}
+   834→          viewport={{ once: true, margin: "-80px" }}
+   835→          transition={{ duration: 0.5 }}
+   836→          className="max-w-3xl mb-12"
+   837→        >
+   838→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   839→            Beyond the reset &middot; property milestones
+   840→          </span>
+   841→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   842→            A Solution for Every Property Cycle
+   843→          </h2>
+   844→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   845→            Our tile and grout cleaning is the technical foundation for a healthy home, but it works
+   846→            best when integrated into your wider maintenance schedule. From maintaining the standard
+   847→            after a restoration, to a sale-prep reset, to the heavy-duty post-builders clear-out
+   848→            &mdash; the same trusted crew can step up whenever life changes.
+   849→          </p>
+   850→        </motion.div>
+   851→
+   852→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   853→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   854→            const Icon = sol.icon;
+   855→            return (
+   856→              <motion.div
+   857→                key={sol.title}
+   858→                initial={{ opacity: 0, y: 24 }}
+   859→                whileInView={{ opacity: 1, y: 0 }}
+   860→                viewport={{ once: true, margin: "-40px" }}
+   861→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   862→              >
+   863→                <Link
+   864→                  href={sol.href}
+   865→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   866→                >
+   867→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   868→                    <img
+   869→                      src={sol.image}
+   870→                      alt={sol.imageAlt}
+   871→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   872→                      loading="lazy"
+   873→                    />
+   874→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   875→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   876→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   877→                    </div>
+   878→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   879→                      {sol.title}
+   880→                    </h3>
+   881→                  </div>
+   882→                  <div className="p-5">
+   883→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   884→                      {sol.description}
+   885→                    </p>
+   886→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   887→                      {sol.cta}
+   888→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   889→                    </span>
+   890→                  </div>
+   891→                </Link>
+   892→              </motion.div>
+   893→            );
+   894→          })}
+   895→        </div>
+   896→      </div>
+   897→    </section>
+   898→  );
+   899→}
+   900→
+   901→// ============================================================
+   902→// Section 6 - "Near Me" Location Internal Links
+   903→// (Semantic H2: "Tile & Grout Cleaning Services Near Me in Scotland")
+   904→// Split layout with map image + 36-location grid
+   905→// ============================================================
+   906→
+   907→export function TileGroutSeoNearMe() {
+   908→  return (
+   909→    <section className="py-16 lg:py-24 bg-background">
+   910→      <div className="max-w-[1400px] mx-auto px-6">
+   911→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   912→          {/* Left: copy + map image */}
+   913→          <motion.div
+   914→            initial={{ opacity: 0, y: 20 }}
+   915→            whileInView={{ opacity: 1, y: 0 }}
+   916→            viewport={{ once: true, margin: "-80px" }}
+   917→            transition={{ duration: 0.5 }}
+   918→          >
+   919→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   920→              Local tile &amp; grout restoration across Scotland
+   921→            </span>
+   922→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   923→              Tile &amp; Grout Cleaning Services Near Me in Scotland
+   924→            </h2>
+   925→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   926→              Searching for &ldquo;tile and grout cleaning near me&rdquo; or &ldquo;grout recolour
+   927→              near me&rdquo; in Scotland? Maundy Clean covers 72+ towns and cities across the
+   928→              Central Belt, Highlands, Borders, and Islands. Same material-trained standard, same
+   929→              100% satisfaction guarantee, same dedicated technician &mdash; wherever your property
+   930→              happens to be. Find your local tile and grout restoration specialist below.
+   931→            </p>
+   932→
+   933→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   934→              <img
+   935→                src={IMG.nearMeMap}
+   936→                alt="Map of Scotland showing Maundy Clean tile and grout cleaning service coverage areas"
+   937→                className="absolute inset-0 w-full h-full object-cover"
+   938→                loading="lazy"
+   939→              />
+   940→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   941→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   942→                <div className="flex items-center gap-2 mb-1">
+   943→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   944→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   945→                    72+ Scottish towns covered
+   946→                  </span>
+   947→                </div>
+   948→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   949→                  Same material-trained technicians, same 100% satisfaction guarantee &mdash; from
+   950→                  Glasgow to Lerwick.
+   951→                </p>
+   952→              </div>
+   953→            </div>
+   954→          </motion.div>
+   955→
+   956→          {/* Right: location grid */}
+   957→          <motion.div
+   958→            initial={{ opacity: 0, y: 20 }}
+   959→            whileInView={{ opacity: 1, y: 0 }}
+   960→            viewport={{ once: true, margin: "-60px" }}
+   961→            transition={{ duration: 0.5 }}
+   962→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   963→          >
+   964→            <div className="flex items-center justify-between mb-5">
+   965→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   966→                Find your local tile &amp; grout crew
+   967→              </h3>
+   968→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   969→            </div>
+   970→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   971→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   972→                <motion.div
+   973→                  key={loc.slug}
+   974→                  initial={{ opacity: 0 }}
+   975→                  whileInView={{ opacity: 1 }}
+   976→                  viewport={{ once: true }}
+   977→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   978→                >
+   979→                  <Link
+   980→                    href={`/services/tile-grout-cleaning-near-me#${loc.slug}`}
+   981→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   982→                  >
+   983→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   984→                    <span>
+   985→                      <span className="font-medium">{loc.city}</span>
+   986→                      <span className="text-[var(--muted-foreground)]"> tile cleaning</span>
+   987→                    </span>
+   988→                  </Link>
+   989→                </motion.div>
+   990→              ))}
+   991→            </div>
+   992→
+   993→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   994→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   995→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+   996→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   997→              </div>
+   998→              <div className="flex flex-col sm:flex-row gap-3 items-center">
+   999→                <Link
+  1000→                  href="/services/tile-grout-cleaning-near-me"
+  1001→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1002→                >
+  1003→                  <MapPin className="w-4 h-4" />
+  1004→                  Browse the near-me directory
+  1005→                  <ArrowRight className="w-4 h-4" />
+  1006→                </Link>
+  1007→                <Link
+  1008→                  href="/locations"
+  1009→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1010→                >
+  1011→                  View all 72 Scottish locations
+  1012→                  <ArrowRight className="w-4 h-4" />
+  1013→                </Link>
+  1014→              </div>
+  1015→            </div>
+  1016→          </motion.div>
+  1017→        </div>
+  1018→
+  1019→        {/* SEO long-form paragraph for "near me" search intent */}
+  1020→        <motion.div
+  1021→          initial={{ opacity: 0, y: 16 }}
+  1022→          whileInView={{ opacity: 1, y: 0 }}
+  1023→          viewport={{ once: true, margin: "-40px" }}
+  1024→          transition={{ duration: 0.5, delay: 0.2 }}
+  1025→          className="mt-10 max-w-4xl mx-auto text-center"
+  1026→        >
+  1027→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1028→            Our local tile and grout restoration crews operate across Glasgow&rsquo;s West End,
+  1029→            Edinburgh&rsquo;s New Town, Aberdeen&rsquo;s suburbs, Dundee&rsquo;s city centre, and
+  1030→            the Highlands &mdash; from Inverness to Thurso, Fort William to Lerwick. Whether
+  1031→            you&rsquo;re searching for bathroom grout restoration in Glasgow, kitchen tile cleaning
+  1032→            in Edinburgh, Victorian tile restoration in Aberdeen, or commercial wet-room sanitisation
+  1033→            anywhere in between, Maundy Clean assigns a vetted, PAYE-employed technician that stays
+  1034→            with you for the long run. Same crew, same standard, same locked-in rate for 12 months.
+  1035→          </p>
+  1036→        </motion.div>
+  1037→      </div>
+  1038→    </section>
+  1039→  );
+  1040→}
+  1041→
+  1042→// ============================================================
+  1043→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1044→// (Semantic H3: "Ready to Book Your Tile & Grout Cleaning?")
+  1045→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1046→// ============================================================
+  1047→
+  1048→export function TileGroutSeoFinalCta() {
+  1049→  return (
+  1050→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1051→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1052→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1053→
+  1054→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1055→        <motion.div
+  1056→          initial={{ opacity: 0, y: 20 }}
+  1057→          whileInView={{ opacity: 1, y: 0 }}
+  1058→          viewport={{ once: true, margin: "-80px" }}
+  1059→          transition={{ duration: 0.5 }}
+  1060→        >
+  1061→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1062→            Ready to book your tile &amp; grout cleaning?
+  1063→          </span>
+  1064→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1065→            Ready to Book Your Tile &amp; Grout Cleaning?
+  1066→          </h3>
+  1067→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1068→            Get a fixed-price tile and grout cleaning quote in 30 seconds. No pushy sales call, no
+  1069→            waiting 24 hours for a callback. Material-trained technicians, precision grout
+  1070→            recolouring in 12 shades, child &amp; pet-safe products, and a 100% satisfaction
+  1071→            guarantee &mdash; from &pound;149 per room.
+  1072→          </p>
+  1073→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1074→            <Button
+  1075→              size="lg"
+  1076→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1077→              asChild
+  1078→            >
+  1079→              <Link href="/quote">
+  1080→                Get My 30-Second Instant Quote
+  1081→                <ArrowRight className="w-5 h-5" />
+  1082→              </Link>
+  1083→            </Button>
+  1084→            <Button
+  1085→              size="lg"
+  1086→              variant="outline"
+  1087→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1088→              asChild
+  1089→            >
+  1090→              <Link href="#checklist">
+  1091→                <CheckCircle2 className="w-4 h-4" />
+  1092→                View Our Regular Cleaning Checklist
+  1093→              </Link>
+  1094→            </Button>
+  1095→          </div>
+  1096→        </motion.div>
+  1097→      </div>
+  1098→    </section>
+  1099→  );
+  1100→}
+  1101→
+  1102→// ============================================================
+  1103→// Section 8 - SEO FAQ block
+  1104→// (Semantic H2: "Frequently Asked Questions")
+  1105→// 6 Q&As - 3 from the user brief (clean without replacing, deep vs regular, insured)
+  1106→// + 3 tile-grout-specific additions (pressure damage, dry time, Victorian tiles)
+  1107→// ============================================================
+  1108→
+  1109→const SEO_FAQS = [
+  1110→  {
+  1111→    q: "Can you clean tiles without replacing them?",
+  1112→    a: "Yes. Our process is designed to transform your tiled surfaces for an amazingly affordable price without the need for expensive replacements. In 90% of cases, high-pressure hot-water extraction returns the grout to its original colour in real-time as the head passes. For heavily stained grout where full restoration isn&rsquo;t possible, we offer grout recolour (pigmented sealer in 12 standard shades) which gives a uniform appearance regardless of the underlying stain &mdash; a fraction of the cost of re-tiling.",
+  1113→  },
+  1114→  {
+  1115→    q: "Do I need a deep clean or a regular clean?",
+  1116→    a: "A regular house clean is for ongoing maintenance &mdash; vacuuming, mopping, surface wiping. Our tile restoration is a specialized service recommended for surfaces that require a &ldquo;top-to-bottom&rdquo; intensive refresh or repair. If your grout has darkened from light grey to charcoal or black, if your tiles have lost their shine, or if you&rsquo;re preparing for sale or end-of-tenancy, you need the restoration. If the floor just needs a mop, book our recurring cleaning &mdash; we&rsquo;ll tell you straight either way.",
+  1117→  },
+  1118→  {
+  1119→    q: "Are your technicians insured?",
+  1120→    a: "Absolutely. Maundy Clean is a fully insured, registered professional cleaning company with years of experience serving the Central Belt of Scotland. We hold &pound;5m public liability cover, every technician is Disclosure Scotland PVG-checked, and all staff are PAYE-employed &mdash; we never use subcontractors or gig-economy labour. The same standard applies whether you&rsquo;re a one-off client or a recurring customer: vetted, uniformed, and accountable to the Maundy Clean name.",
+  1121→  },
+  1122→  {
+  1123→    q: "Will high-pressure extraction damage my tiles or grout?",
+  1124→    a: "Not when it is done correctly &mdash; and that&rsquo;s exactly why we identify the material before quoting. We cap pressure by surface: 800-1,200 PSI for ceramic and porcelain, 300-500 PSI for natural stone (travertine, limestone, marble, slate, sandstone), and hand-cleaning only for Victorian encaustic tiles. We never use acid-based cleaners on marble or limestone (they dissolve the calcium carbonate), never use high pressure on Victorian tiles (it cracks the lime-bed), and never use alkaline on slate (it strips the colour). Better to walk away than ruin a Victorian hallway.",
+  1125→  },
+  1126→  {
+  1127→    q: "How long until the floor is usable after cleaning?",
+  1128→    a: "4-8 hours after cleaning (without sealer) &mdash; the floor is damp, not soaking, thanks to simultaneous vacuum extraction. 24 hours after sealing (with sealer) &mdash; the sealer needs to fully cure before furniture is returned. Light foot traffic in socks is fine after 4 hours. Pets should be kept off until the floor is fully dry. We&rsquo;ll advise on the day based on humidity and ventilation &mdash; in winter with the windows closed, allow the full 8 hours; in summer with a through-draft, 4 hours is usually enough.",
+  1129→  },
+  1130→  {
+  1131→    q: "Can you restore Victorian encaustic tiles in a tenement hallway?",
+  1132→    a: "Yes, and we specialise in them. Victorian encaustic tiles (common in Edinburgh and Glasgow tenement hallways) are 100+ years old, often laid on a lime-bed, and require a hand-cleaning approach. We use minimal water (no high-pressure extraction &mdash; too risky for the bed), neutral pH cleaner, soft brushes, and a topical sealer to restore the depth of colour. We have restored dozens of tenement hallways &mdash; references available on request. Three firms may have told you it can&rsquo;t be done; we&rsquo;ll show you the photos from the last one we did.",
+  1133→  },
+  1134→];
+  1135→
+  1136→export function TileGroutSeoFaq() {
+  1137→  return (
+  1138→    <section className="py-16 lg:py-24 bg-background">
+  1139→      <div className="max-w-4xl mx-auto px-6">
+  1140→        <motion.div
+  1141→          initial={{ opacity: 0, y: 20 }}
+  1142→          whileInView={{ opacity: 1, y: 0 }}
+  1143→          viewport={{ once: true, margin: "-80px" }}
+  1144→          transition={{ duration: 0.5 }}
+  1145→          className="text-center mb-12"
+  1146→        >
+  1147→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1148→            Tile &amp; grout cleaning &middot; FAQ
+  1149→          </span>
+  1150→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1151→            Frequently Asked Questions
+  1152→          </h2>
+  1153→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1154→            Straight answers to the questions our tile and grout cleaning clients ask most often.
+  1155→            Can&rsquo;t find what you need? Call us on{" "}
+  1156→            <a
+  1157→              href={contactInfo.phoneHref}
+  1158→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1159→            >
+  1160→              {contactInfo.phone}
+  1161→            </a>{" "}
+  1162→            and we&rsquo;ll talk it through.
+  1163→          </p>
+  1164→        </motion.div>
+  1165→
+  1166→        <div className="space-y-4">
+  1167→          {SEO_FAQS.map((faq, i) => (
+  1168→            <motion.div
+  1169→              key={faq.q}
+  1170→              initial={{ opacity: 0, y: 16 }}
+  1171→              whileInView={{ opacity: 1, y: 0 }}
+  1172→              viewport={{ once: true, margin: "-40px" }}
+  1173→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1174→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1175→            >
+  1176→              <details className="group">
+  1177→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1178→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1179→                    {faq.q}
+  1180→                  </h3>
+  1181→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1182→                    <span className="relative w-3.5 h-3.5">
+  1183→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1184→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1185→                    </span>
+  1186→                  </span>
+  1187→                </summary>
+  1188→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1189→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+  1190→                    {faq.a}
+  1191→                  </p>
+  1192→                </div>
+  1193→              </details>
+  1194→            </motion.div>
+  1195→          ))}
+  1196→        </div>
+  1197→
+  1198→        <motion.div
+  1199→          initial={{ opacity: 0, y: 16 }}
+  1200→          whileInView={{ opacity: 1, y: 0 }}
+  1201→          viewport={{ once: true, margin: "-40px" }}
+  1202→          transition={{ duration: 0.5, delay: 0.3 }}
+  1203→          className="mt-10 text-center"
+  1204→        >
+  1205→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1206→            <Button
+  1207→              size="lg"
+  1208→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1209→              asChild
+  1210→            >
+  1211→              <Link href="/quote">
+  1212→                Get My 30-Second Instant Quote
+  1213→                <ArrowRight className="w-5 h-5" />
+  1214→              </Link>
+  1215→            </Button>
+  1216→            <Button
+  1217→              size="lg"
+  1218→              variant="outline"
+  1219→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1220→              asChild
+  1221→            >
+  1222→              <Link href="#checklist">
+  1223→                <CheckCircle2 className="w-4 h-4" />
+  1224→                View Our Regular Cleaning Checklist
+  1225→              </Link>
+  1226→            </Button>
+  1227→          </div>
+  1228→        </motion.div>
+  1229→      </div>
+  1230→    </section>
+  1231→  );
+  1232→}
+  1233→"""
+  1234→
+  1235→OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+  1236→OUT_PATH.write_text(TSX, encoding="utf-8")
+  1237→print(f"Wrote {OUT_PATH} ({len(TSX):,} chars, {TSX.count(chr(10)) + 1} lines)")
+  1238→

@@ -1,0 +1,662 @@
+     1→     1→// Maundy Clean — Scotland-focused site data
+     2→     2→// 117 services across 8 categories, 24 industries, 30 Scottish locations, 6 pricing tiers, blog, company pages
+     3→     3→// Phone: +44 7735 322362
+     4→     4→
+     5→     5→export type NavChild = {
+     6→     6→  name: string;
+     7→     7→  href: string;
+     8→     8→  description?: string;
+     9→     9→  popular?: boolean;
+    10→    10→  image?: string;
+    11→    11→};
+    12→    12→
+    13→    13→export type NavGroup = {
+    14→    14→  title: string;
+    15→    15→  icon?: string;
+    16→    16→  image?: string;
+    17→    17→  children: NavChild[];
+    18→    18→};
+    19→    19→
+    20→    20→// Curated image library (real, topic-related)
+    21→    21→export const IMG = {
+    22→    22→  // Hero / general
+    23→    23→  heroCrew: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    24→    24→  heroClean: "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    25→    25→  ecoSupplies: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    26→    26→  // Service categories
+    27→    27→  residential: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    28→    28→  commercial: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg",
+    29→    29→  janitorial: "https://sfile.chatglm.cn/images-ppt/2505b6c51368.jpg",
+    30→    30→  specialty: "https://sfile.chatglm.cn/images-ppt/0520b4be848e.jpg",
+    31→    31→  medical: "https://sfile.chatglm.cn/images-ppt/2be4158b7bb6.jpg",
+    32→    32→  industrial: "https://sfile.chatglm.cn/images-ppt/117ddf841aef.jpg",
+    33→    33→  outdoor: "https://sfile.chatglm.cn/images-ppt/23f9d6e7b05c.png",
+    34→    34→  addons: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    35→    35→  // Industries
+    36→    36→  healthcare: "https://sfile.chatglm.cn/images-ppt/2be4158b7bb6.jpg",
+    37→    37→  hospitality: "https://sfile.chatglm.cn/images-ppt/91c3c3de1361.jpg",
+    38→    38→  education: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    39→    39→  office: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    40→    40→  industrialInd: "https://sfile.chatglm.cn/images-ppt/c03f2f1596a1.jpg",
+    41→    41→  specialtyInd: "https://sfile.chatglm.cn/images-ppt/155be6f29550.jpg",
+    42→    42→  // Scotland cities / regions
+    43→    43→  edinburgh: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+    44→    44→  glasgow: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+    45→    45→  aberdeen: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg",
+    46→    46→  dundee: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg",
+    47→    47→  highlands: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg",
+    48→    48→  stirling: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+    49→    49→  // Blog
+    50→    50→  blogDeep: "https://sfile.chatglm.cn/images-ppt/ca678862de5f.jpg",
+    51→    51→  blogElectro: "https://sfile.chatglm.cn/images-ppt/2be4158b7bb6.jpg",
+    52→    52→  blogMove: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    53→    53→  blogRoof: "https://sfile.chatglm.cn/images-ppt/23f9d6e7b05c.png",
+    54→    54→  blogRestroom: "https://sfile.chatglm.cn/images-ppt/7fb67803598c.jpg",
+    55→    55→  blogOps: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    56→    56→};
+    57→    57→
+    58→    58→// ---------- 117 SERVICES (8 categories) ----------
+    59→    59→export const serviceCategories: NavGroup[] = [
+    60→    60→  {
+    61→    61→    title: "Residential Cleaning",
+    62→    62→    icon: "home",
+    63→    63→    image: IMG.residential,
+    64→    64→    children: [
+    65→    65→      { name: "Recurring Home Cleaning", href: "#", description: "Weekly, fortnightly & monthly plans", popular: true },
+    66→    66→      { name: "Deep House Cleaning", href: "#", description: "Top-to-bottom detailed clean", popular: true },
+    67→    67→      { name: "Move-In / Move-Out Cleaning", href: "#", description: "Full property reset for tenants & owners" },
+    68→    68→      { name: "Spring Cleaning", href: "#" },
+    69→    69→      { name: "Post-Construction Cleaning", href: "#", description: "Dust & debris removal after remodels" },
+    70→    70→      { name: "Flat Cleaning", href: "#" },
+    71→    71→      { name: "Tenement Cleaning", href: "#", description: "Edinburgh & Glasgow period tenements" },
+    72→    72→      { name: "Cottage Cleaning", href: "#", description: "Rural & Highland properties" },
+    73→    73→      { name: "Bungalow Cleaning", href: "#" },
+    74→    74→      { name: "Holiday Let Turnover", href: "#", description: "Airbnb & Booking.com guest-ready", popular: true },
+    75→    75→      { name: "Maid Service", href: "#" },
+    76→    76→      { name: "Housekeeping Services", href: "#" },
+    77→    77→      { name: "Carpet & Rug Cleaning", href: "#", popular: true },
+    78→    78→      { name: "Upholstery Cleaning", href: "#" },
+    79→    79→      { name: "Window Cleaning", href: "#", description: "Interior & exterior glass", popular: true },
+    80→    80→      { name: "Pressure Washing", href: "#", description: "Driveways, patios, decking & rendering" },
+    81→    81→      { name: "Gutter Cleaning", href: "#" },
+    82→    82→      { name: "Tile & Grout Cleaning", href: "#" },
+    83→    83→      { name: "Hardwood Floor Care", href: "#" },
+    84→    84→      { name: "Blind & Shade Cleaning", href: "#" },
+    85→    85→    ],
+    86→    86→  },
+    87→    87→  {
+    88→    88→    title: "Commercial Cleaning",
+    89→    89→    icon: "building",
+    90→    90→    image: IMG.commercial,
+    91→    91→    children: [
+    92→    92→      { name: "Office Cleaning", href: "#", description: "Daily, weekly & after-hours service", popular: true },
+    93→    93→      { name: "Corporate Facility Cleaning", href: "#" },
+    94→    94→      { name: "Retail Store Cleaning", href: "#" },
+    95→    95→      { name: "Restaurant Cleaning", href: "#", description: "FOH, BOH & kitchen deep cleans" },
+    96→    96→      { name: "Café & Coffee Shop Cleaning", href: "#" },
+    97→    97→      { name: "Gym & Fitness Centre Cleaning", href: "#", description: "Disinfection & changing rooms", popular: true },
+    98→    98→      { name: "Bank & Financial Office Cleaning", href: "#" },
+    99→    99→      { name: "Showroom Cleaning", href: "#" },
+   100→   100→      { name: "Warehouse Cleaning", href: "#" },
+   101→   101→      { name: "Distribution Centre Cleaning", href: "#" },
+   102→   102→      { name: "Car Park Cleaning", href: "#" },
+   103→   103→      { name: "Event Venue Cleaning", href: "#" },
+   104→   104→      { name: "Co-Working Space Cleaning", href: "#" },
+   105→   105→      { name: "Salon & Spa Cleaning", href: "#" },
+   106→   106→      { name: "Auto Dealership Cleaning", href: "#" },
+   107→   107→      { name: "Property Management Cleaning", href: "#" },
+   108→   108→    ],
+   109→   109→  },
+   110→   110→  {
+   111→   111→    title: "Janitorial & Facility",
+   112→   112→    icon: "clipboard-list",
+   113→   113→    image: IMG.janitorial,
+   114→   114→    children: [
+   115→   115→      { name: "Day Porter Services", href: "#", description: "On-site attendant all day", popular: true },
+   116→   116→      { name: "Nightly Janitorial", href: "#" },
+   117→   117→      { name: "Restroom Sanitation", href: "#" },
+   118→   118→      { name: "Rubbish & Recycling", href: "#" },
+   119→   119→      { name: "Floor Care & Stripping", href: "#" },
+   120→   120→      { name: "VCT Floor Care", href: "#" },
+   121→   121→      { name: "Marble Polishing", href: "#" },
+   122→   122→      { name: "High Dusting", href: "#" },
+   123→   123→      { name: "Glass Partition Cleaning", href: "#" },
+   124→   124→      { name: "Escalator & Lift Cleaning", href: "#" },
+   125→   125→      { name: "Disinfection Services", href: "#", description: "Electrostatic & HSE-approved", popular: true },
+   126→   126→      { name: "Pest Control Prep", href: "#" },
+   127→   127→    ],
+   128→   128→  },
+   129→   129→  {
+   130→   130→    title: "Specialty Cleaning",
+   131→   131→    icon: "sparkles",
+   132→   132→    image: IMG.specialty,
+   133→   133→    children: [
+   134→   134→      { name: "Hoarding Cleanup", href: "#", description: "Compassionate, discreet service" },
+   135→   135→      { name: "Biohazard Cleanup", href: "#" },
+   136→   136→      { name: "Crime Scene Cleanup", href: "#" },
+   137→   137→      { name: "Trauma Cleanup", href: "#" },
+   138→   138→      { name: "Vandalism & Graffiti Removal", href: "#" },
+   139→   139→      { name: "Odour Removal", href: "#", description: "Ozone & thermal fog", popular: true },
+   140→   140→      { name: "Mould Remediation Cleaning", href: "#" },
+   141→   141→      { name: "Water Damage Cleaning", href: "#" },
+   142→   142→      { name: "Fire & Smoke Restoration Cleaning", href: "#" },
+   143→   143→      { name: "Asbestos Cleanup Prep", href: "#" },
+   144→   144→      { name: "Lead Dust Cleanup", href: "#" },
+   145→   145→      { name: "Drug Lab Cleanup", href: "#" },
+   146→   146→    ],
+   147→   147→  },
+   148→   148→  {
+   149→   149→    title: "Medical & Educational",
+   150→   150→    icon: "stethoscope",
+   151→   151→    image: IMG.medical,
+   152→   152→    children: [
+   153→   153→      { name: "Medical Office Cleaning", href: "#", description: "HSE & GDPR compliant", popular: true },
+   154→   154→      { name: "Dental Surgery Cleaning", href: "#" },
+   155→   155→      { name: "Hospital Environmental Services", href: "#" },
+   156→   156→      { name: "Clinic Cleaning", href: "#" },
+   157→   157→      { name: "Urgent Care Cleaning", href: "#" },
+   158→   158→      { name: "Lab & Research Facility Cleaning", href: "#" },
+   159→   159→      { name: "Veterinary Practice Cleaning", href: "#" },
+   160→   160→      { name: "School & Nursery Cleaning", href: "#", description: "Child-safe products", popular: true },
+   161→   161→      { name: "University Campus Cleaning", href: "#" },
+   162→   162→      { name: "Halls of Residence Cleaning", href: "#" },
+   163→   163→      { name: "Library Cleaning", href: "#" },
+   164→   164→      { name: "Training Centre Cleaning", href: "#" },
+   165→   165→    ],
+   166→   166→  },
+   167→   167→  {
+   168→   168→    title: "Industrial & Manufacturing",
+   169→   169→    icon: "factory",
+   170→   170→    image: IMG.industrial,
+   171→   171→    children: [
+   172→   172→      { name: "Manufacturing Plant Cleaning", href: "#" },
+   173→   173→      { name: "Food Processing Facility Cleaning", href: "#", description: "FSA-compliant sanitation", popular: true },
+   174→   174→      { name: "Pharmaceutical Facility Cleaning", href: "#" },
+   175→   175→      { name: "Cleanroom Cleaning", href: "#" },
+   176→   176→      { name: "Machine & Equipment Cleaning", href: "#" },
+   177→   177→      { name: "Tank & Silo Cleaning", href: "#" },
+   178→   178→      { name: "Industrial Floor Scrubbing", href: "#" },
+   179→   179→      { name: "Warehouse High Dusting", href: "#" },
+   180→   180→      { name: "Loading Bay Cleaning", href: "#" },
+   181→   181→      { name: "Paint Booth Cleaning", href: "#" },
+   182→   182→    ],
+   183→   183→  },
+   184→   184→  {
+   185→   185→    title: "Outdoor & Exterior",
+   186→   186→    icon: "trees",
+   187→   187→    image: IMG.outdoor,
+   188→   188→    children: [
+   189→   189→      { name: "Residential Pressure Washing", href: "#" },
+   190→   190→      { name: "Commercial Pressure Washing", href: "#" },
+   191→   191→      { name: "Soft Wash Roof Cleaning", href: "#", description: "No-damage moss & algae removal", popular: true },
+   192→   192→      { name: "Decking & Fence Restoration", href: "#" },
+   193→   193→      { name: "Concrete Sealing", href: "#" },
+   194→   194→      { name: "Graffiti Removal", href: "#" },
+   195→   195→      { name: "Window Cleaning — Low Rise", href: "#" },
+   196→   196→      { name: "Window Cleaning — High Rise", href: "#" },
+   197→   197→      { name: "Solar Panel Cleaning", href: "#", description: "Boost efficiency up to 30%", popular: true },
+   198→   198→      { name: "Awning Cleaning", href: "#" },
+   199→   199→      { name: "Patio & Paver Cleaning", href: "#" },
+   200→   200→      { name: "Pool Surround Cleaning", href: "#" },
+   201→   201→    ],
+   202→   202→  },
+   203→   203→  {
+   204→   204→    title: "Add-On & Specialty Services",
+   205→   205→    icon: "plus-circle",
+   206→   206→    image: IMG.addons,
+   207→   207→    children: [
+   208→   208→      { name: "Oven Cleaning", href: "#" },
+   209→   209→      { name: "Fridge Cleaning", href: "#" },
+   210→   210→      { name: "Inside-Cabinet Cleaning", href: "#" },
+   211→   211→      { name: "Garage Cleaning", href: "#" },
+   212→   212→      { name: "Cellar Cleaning", href: "#" },
+   213→   213→      { name: "Loft Cleaning", href: "#" },
+   214→   214→      { name: "Laundry & Folding Add-On", href: "#" },
+   215→   215→      { name: "Ironing Service", href: "#" },
+   216→   216→      { name: "Pantry Organisation", href: "#" },
+   217→   217→      { name: "Wardrobe Organisation", href: "#" },
+   218→   218→      { name: "Bin Cleaning", href: "#" },
+   219→   219→      { name: "Pet Area Sanitisation", href: "#" },
+   220→   220→      { name: "Festive Decorating Prep", href: "#" },
+   221→   221→      { name: "Post-Party Cleanup", href: "#" },
+   222→   222→      { name: "Furniture Moving Add-On", href: "#" },
+   223→   223→      { name: "Plant Care Add-On", href: "#" },
+   224→   224→      { name: "Wall & Skirting Wipe-Down", href: "#" },
+   225→   225→      { name: "Light Fixture Cleaning", href: "#" },
+   226→   226→      { name: "Ceiling Fan Cleaning", href: "#" },
+   227→   227→      { name: "Smart-Home Device Wipe", href: "#" },
+   228→   228→      { name: "Electrostatic Disinfection Add-On", href: "#" },
+   229→   229→      { name: "Bedding Change Service", href: "#" },
+   230→   230→      { name: "Eco-Friendly Green Clean", href: "#" },
+   231→   231→    ],
+   232→   232→  },
+   233→   233→];
+   234→   234→
+   235→   235→// ---------- INDUSTRIES (24) ----------
+   236→   236→export const industryCategories: NavGroup[] = [
+   237→   237→  {
+   238→   238→    title: "Healthcare",
+   239→   239→    icon: "stethoscope",
+   240→   240→    image: IMG.healthcare,
+   241→   241→    children: [
+   242→   242→      { name: "Hospitals & NHS Trusts", href: "#", popular: true },
+   243→   243→      { name: "GP Surgeries & Clinics", href: "#" },
+   244→   244→      { name: "Dental Practices", href: "#" },
+   245→   245→      { name: "Veterinary Practices", href: "#" },
+   246→   246→    ],
+   247→   247→  },
+   248→   248→  {
+   249→   249→    title: "Hospitality & Retail",
+   250→   250→    icon: "utensils",
+   251→   251→    image: IMG.hospitality,
+   252→   252→    children: [
+   253→   253→      { name: "Hotels & Resorts", href: "#", popular: true },
+   254→   254→      { name: "Restaurants & QSR", href: "#", popular: true },
+   255→   255→      { name: "Retail Chains", href: "#" },
+   256→   256→      { name: "Shopping Centres", href: "#" },
+   257→   257→    ],
+   258→   258→  },
+   259→   259→  {
+   260→   260→    title: "Education",
+   261→   261→    icon: "graduation-cap",
+   262→   262→    image: IMG.education,
+   263→   263→    children: [
+   264→   264→      { name: "Primary & Secondary Schools", href: "#" },
+   265→   265→      { name: "Universities & Colleges", href: "#" },
+   266→   266→      { name: "Nurseries & Preschools", href: "#" },
+   267→   267→      { name: "Training & Tutoring Centres", href: "#" },
+   268→   268→    ],
+   269→   269→  },
+   270→   270→  {
+   271→   271→    title: "Commercial & Office",
+   272→   272→    icon: "building",
+   273→   273→    image: IMG.office,
+   274→   274→    children: [
+   275→   275→      { name: "Corporate Offices", href: "#", popular: true },
+   276→   276→      { name: "Co-Working Spaces", href: "#" },
+   277→   277→      { name: "Property Management Firms", href: "#" },
+   278→   278→      { name: "Estate Agencies", href: "#" },
+   279→   279→    ],
+   280→   280→  },
+   281→   281→  {
+   282→   282→    title: "Industrial",
+   283→   283→    icon: "factory",
+   284→   284→    image: IMG.industrialInd,
+   285→   285→    children: [
+   286→   286→      { name: "Food & Beverage Processing", href: "#" },
+   287→   287→      { name: "Pharma & Life Sciences", href: "#" },
+   288→   288→      { name: "Manufacturing Plants", href: "#" },
+   289→   289→      { name: "Logistics & Warehousing", href: "#" },
+   290→   290→    ],
+   291→   291→  },
+   292→   292→  {
+   293→   293→    title: "Specialty",
+   294→   294→    icon: "sparkles",
+   295→   295→    image: IMG.specialtyInd,
+   296→   296→    children: [
+   297→   297→      { name: "Gyms & Fitness Studios", href: "#", popular: true },
+   298→   298→      { name: "Auto Dealerships", href: "#" },
+   299→   299→      { name: "Salons & Spas", href: "#" },
+   300→   300→      { name: "Faith-Based Facilities", href: "#" },
+   301→   301→    ],
+   302→   302→  },
+   303→   303→];
+   304→   304→
+   305→   305→// ---------- LOCATIONS (30 Scottish cities/regions) ----------
+   306→   306→export const locationCategories: NavGroup[] = [
+   307→   307→  {
+   308→   308→    title: "Greater Glasgow",
+   309→   309→    icon: "map-pin",
+   310→   310→    image: IMG.glasgow,
+   311→   311→    children: [
+   312→   312→      { name: "Glasgow", href: "#", popular: true },
+   313→   313→      { name: "Paisley", href: "#" },
+   314→   314→      { name: "East Kilbride", href: "#" },
+   315→   315→      { name: "Livingston", href: "#" },
+   316→   316→      { name: "Hamilton", href: "#" },
+   317→   317→      { name: "Cumbernauld", href: "#" },
+   318→   318→      { name: "Coatbridge", href: "#" },
+   319→   319→      { name: "Motherwell", href: "#" },
+   320→   320→    ],
+   321→   321→  },
+   322→   322→  {
+   323→   323→    title: "Edinburgh & Lothians",
+   324→   324→    icon: "map-pin",
+   325→   325→    image: IMG.edinburgh,
+   326→   326→    children: [
+   327→   327→      { name: "Edinburgh", href: "#", popular: true },
+   328→   328→      { name: "Livingston", href: "#" },
+   329→   329→      { name: "Dunfermline", href: "#" },
+   330→   330→      { name: "Kirkcaldy", href: "#" },
+   331→   331→      { name: "Musselburgh", href: "#" },
+   332→   332→      { name: "Dalkeith", href: "#" },
+   333→   333→      { name: "Bathgate", href: "#" },
+   334→   334→      { name: "Haddington", href: "#" },
+   335→   335→    ],
+   336→   336→  },
+   337→   337→  {
+   338→   338→    title: "Aberdeen & Grampian",
+   339→   339→    icon: "map-pin",
+   340→   340→    image: IMG.aberdeen,
+   341→   341→    children: [
+   342→   342→      { name: "Aberdeen", href: "#", popular: true },
+   343→   343→      { name: "Elgin", href: "#" },
+   344→   344→      { name: "Peterhead", href: "#" },
+   345→   345→      { name: "Fraserburgh", href: "#" },
+   346→   346→      { name: "Inverurie", href: "#" },
+   347→   347→      { name: "Stonehaven", href: "#" },
+   348→   348→    ],
+   349→   349→  },
+   350→   350→  {
+   351→   351→    title: "Tayside, Fife & Stirling",
+   352→   352→    icon: "map-pin",
+   353→   353→    image: IMG.dundee,
+   354→   354→    children: [
+   355→   355→      { name: "Dundee", href: "#", popular: true },
+   356→   356→      { name: "Stirling", href: "#" },
+   357→   357→      { name: "Perth", href: "#" },
+   358→   358→      { name: "Falkirk", href: "#" },
+   359→   359→      { name: "Dunfermline", href: "#" },
+   360→   360→      { name: "St Andrews", href: "#" },
+   361→   361→    ],
+   362→   362→  },
+   363→   363→  {
+   364→   364→    title: "Highlands & Islands",
+   365→   365→    icon: "map-pin",
+   366→   366→    image: IMG.highlands,
+   367→   367→    children: [
+   368→   368→      { name: "Inverness", href: "#", popular: true },
+   369→   369→      { name: "Aviemore", href: "#" },
+   370→   370→      { name: "Oban", href: "#" },
+   371→   371→      { name: "Fort William", href: "#" },
+   372→   372→      { name: "Thurso", href: "#" },
+   373→   373→      { name: "Kirkwall (Orkney)", href: "#" },
+   374→   374→      { name: "Lerwick (Shetland)", href: "#" },
+   375→   375→      { name: "Stornoway (Lewis)", href: "#" },
+   376→   376→    ],
+   377→   377→  },
+   378→   378→  {
+   379→   379→    title: "Borders & South-West",
+   380→   380→    icon: "map-pin",
+   381→   381→    image: IMG.stirling,
+   382→   382→    children: [
+   383→   383→      { name: "Galashiels", href: "#" },
+   384→   384→      { name: "Ayr", href: "#" },
+   385→   385→      { name: "Kilmarnock", href: "#" },
+   386→   386→      { name: "Dumfries", href: "#" },
+   387→   387→      { name: "Greenock", href: "#" },
+   388→   388→      { name: "Stranraer", href: "#" },
+   389→   389→    ],
+   390→   390→  },
+   391→   391→];
+   392→   392→
+   393→   393→// ---------- PRICING TIERS (in £) ----------
+   394→   394→export const pricingTiers = [
+   395→   395→  {
+   396→   396→    name: "One-Time Clean",
+   397→   397→    tagline: "Single visit, deep results",
+   398→   398→    price: "£89",
+   399→   399→    unit: "from",
+   400→   400→    features: [
+   401→   401→      "Studio — 1-bed homes",
+   402→   402→      "2-professional crew",
+   403→   403→      "Up to 2.5 hours on-site",
+   404→   404→      "All supplies & equipment",
+   405→   405→      "100% satisfaction guarantee",
+   406→   406→    ],
+   407→   407→    highlighted: false,
+   408→   408→  },
+   409→   409→  {
+   410→   410→    name: "Weekly",
+   411→   411→    tagline: "Best value for active households",
+   412→   412→    price: "£62",
+   413→   413→    unit: "/visit",
+   414→   414→    features: [
+   415→   415→      "Same team every week",
+   416→   416→      "Priority scheduling",
+   417→   417→      "10% member discount",
+   418→   418→      "Free re-clean if unhappy",
+   419→   419→      "Locked-in rate guarantee",
+   420→   420→    ],
+   421→   421→    highlighted: true,
+   422→   422→  },
+   423→   423→  {
+   424→   424→    name: "Fortnightly",
+   425→   425→    tagline: "Most popular plan",
+   426→   426→    price: "£76",
+   427→   427→    unit: "/visit",
+   428→   428→    features: [
+   429→   429→      "Same team every visit",
+   430→   430→      "Priority scheduling",
+   431→   431→      "7% member discount",
+   432→   432→      "Free re-clean if unhappy",
+   433→   433→      "Locked-in rate guarantee",
+   434→   434→    ],
+   435→   435→    highlighted: false,
+   436→   436→  },
+   437→   437→  {
+   438→   438→    name: "Monthly",
+   439→   439→    tagline: "Maintenance for lower-traffic homes",
+   440→   440→    price: "£97",
+   441→   441→    unit: "/visit",
+   442→   442→    features: [
+   443→   443→      "Same team every visit",
+   444→   444→      "Standard scheduling",
+   445→   445→      "5% member discount",
+   446→   446→      "Free re-clean if unhappy",
+   447→   447→      "Locked-in rate guarantee",
+   448→   448→    ],
+   449→   449→    highlighted: false,
+   450→   450→  },
+   451→   451→  {
+   452→   452→    name: "Commercial",
+   453→   453→    tagline: "Tailored for business",
+   454→   454→    price: "Custom",
+   455→   455→    unit: "",
+   456→   456→    features: [
+   457→   457→      "On-site consultation",
+   458→   458→      "Scope-of-work proposal",
+   459→   459→      "Day porter or nightly crew",
+   460→   460→      "HSE-compliant supplies",
+   461→   461→      "Dedicated account manager",
+   462→   462→    ],
+   463→   463→    highlighted: false,
+   464→   464→  },
+   465→   465→  {
+   466→   466→    name: "Move In / Out",
+   467→   467→    tagline: "Full property reset",
+   468→   468→    price: "£179",
+   469→   469→    unit: "from",
+   470→   470→    features: [
+   471→   471→      "Top-to-bottom deep clean",
+   472→   472→      "Inside appliances & cabinets",
+   473→   473→      "Skirting & walls wiped",
+   474→   474→      "Carpet add-on available",
+   475→   475→      "Letting-agent approved checklist",
+   476→   476→    ],
+   477→   477→    highlighted: false,
+   478→   478→  },
+   479→   479→];
+   480→   480→
+   481→   481→// ---------- BLOG ----------
+   482→   482→export const blogPosts = [
+   483→   483→  {
+   484→   484→    title: "How Often Should You Deep Clean Your Home? A Room-by-Room Guide",
+   485→   485→    category: "Residential",
+   486→   486→    readTime: "8 min",
+   487→   487→    date: "10 Jul 2026",
+   488→   488→    excerpt:
+   489→   489→      "Frequency matters. We break down exactly how often each room in your home needs a deep clean — from kitchens and bathrooms to bedrooms and home offices — so you can build a realistic cleaning calendar for the Scottish climate.",
+   490→   490→    image: IMG.blogDeep,
+   491→   491→  },
+   492→   492→  {
+   493→   493→    title: "Electrostatic Disinfection: Why It's Now the Office Standard",
+   494→   494→    category: "Commercial",
+   495→   495→    readTime: "6 min",
+   496→   496→    date: "7 Jul 2026",
+   497→   497→    excerpt:
+   498→   498→      "Post-pandemic, electrostatic spraying moved from a niche hospital protocol to a baseline office service. Here's the science behind it, what it kills, and what it doesn't.",
+   499→   499→    image: IMG.blogElectro,
+   500→   500→  },
+   501→   501→  {
+   502→   502→    title: "Move-Out Cleaning Checklist That Actually Gets Your Deposit Back",
+   503→   503→    category: "Move In / Out",
+   504→   504→    readTime: "10 min",
+   505→   505→    date: "3 Jul 2026",
+   506→   506→    excerpt:
+   507→   507→      "We've audited 1,200 move-out walk-throughs with Scottish letting agents and pulled out the 47 things they check first. Print this checklist and walk through it the night before handover.",
+   508→   508→    image: IMG.blogMove,
+   509→   509→  },
+   510→   510→  {
+   511→   511→    title: "Why Soft-Wash Beats Pressure-Washing on Tile & Slate Roofs",
+   512→   512→    category: "Exterior",
+   513→   513→    readTime: "7 min",
+   514→   514→    date: "28 Jun 2026",
+   515→   515→    excerpt:
+   516→   516→      "High-pressure washing strips granules off slate and tile roofs and voids most manufacturer warranties. Soft-wash uses chemistry, not force — and lasts longer in the damp Scottish climate. Here's the side-by-side.",
+   517→   517→    image: IMG.blogRoof,
+   518→   518→  },
+   519→   519→  {
+   520→   520→    title: "Restroom Sanitation in Restaurants: Beyond the Surface Wipe",
+   521→   521→    category: "Industries",
+   522→   522→    readTime: "9 min",
+   523→   523→    date: "24 Jun 2026",
+   524→   524→    excerpt:
+   525→   525→      "Environmental Health Officers look for the same six things every visit. We walk through a full restaurant restroom protocol — including the touchpoints 80% of crews miss.",
+   526→   526→    image: IMG.blogRestroom,
+   527→   527→  },
+   528→   528→  {
+   529→   529→    title: "How to Build a Cleaning Schedule That Survives a Busy Season",
+   530→   530→    category: "Operations",
+   531→   531→    readTime: "5 min",
+   532→   532→    date: "19 Jun 2026",
+   533→   533→    excerpt:
+   534→   534→      "December is brutal for retail and hospitality. Here's the framework we use with our commercial clients to scale cleaning coverage without burning through the annual budget by November.",
+   535→   535→    image: IMG.blogOps,
+   536→   536→  },
+   537→   537→];
+   538→   538→
+   539→   539→// ---------- COMPANY / ABOUT PAGES ----------
+   540→   540→export const companyPages = [
+   541→   541→  { name: "About Maundy Clean", href: "#", description: "Our story, mission & values" },
+   542→   542→  { name: "Our Team", href: "#", description: "Meet the people behind the sparkle" },
+   543→   543→  { name: "Careers", href: "#", description: "Join a top-rated Scottish employer", popular: true },
+   544→   544→  { name: "Service Areas", href: "#", description: "30 Scottish locations and growing" },
+   545→   545→  { name: "Green Commitment", href: "#", description: "Eco supplies & low-VOC products" },
+   546→   546→  { name: "Press & Media", href: "#" },
+   547→   547→  { name: "Partner With Us", href: "#" },
+   548→   548→  { name: "Reviews & Testimonials", href: "#", description: "4.9 ★ across 6,200+ reviews" },
+   549→   549→  { name: "Blog", href: "#" },
+   550→   550→  { name: "Help Centre / FAQ", href: "#" },
+   551→   551→  { name: "Contact Us", href: "#" },
+   552→   552→  { name: "Get a Free Quote", href: "#", popular: true },
+   553→   553→];
+   554→   554→
+   555→   555→// ---------- TESTIMONIALS ----------
+   556→   556→export const testimonials = [
+   557→   557→  {
+   558→   558→    name: "Fiona McAllister",
+   559→   559→    role: "Homeowner · Newton Mearns, Glasgow",
+   560→   560→    quote:
+   561→   561→      "We've used three other services over the past decade. Maundy Clean is the only one that showed up on time, every time, and actually cleaned the skirting boards without being asked.",
+   562→   562→    rating: 5,
+   563→   563→  },
+   564→   564→  {
+   565→   565→    name: "Callum Ross",
+   566→   566→    role: "Office Manager · Edinburgh tech startup",
+   567→   567→    quote:
+   568→   568→      "Our team noticed the difference the morning after the first clean. The glass partitions looked invisible. The account manager actually remembers our preferences.",
+   569→   569→    rating: 5,
+   570→   570→  },
+   571→   571→  {
+   572→   572→    name: "Iain MacLeod",
+   573→   573→    role: "Franchise Owner · 4 hospitality venues, Aberdeen",
+   574→   574→    quote:
+   575→   575→      "EHO inspection scores went from 'Generally Satisfactory' to 'Excellent' across all four venues within two months. The night crew knows the BOH protocol cold. Worth every penny.",
+   576→   576→    rating: 5,
+   577→   577→  },
+   578→   578→  {
+   579→   579→    name: "Eilidh Drummond",
+   580→   580→    role: "Letting Agency Director · Dundee",
+   581→   581→    quote:
+   582→   582→      "I manage 240 tenancies. Move-out turnover used to be my biggest headache. Maundy Clean turns flats in 24 hours now, and I haven't had a single deposit-dispute complaint about cleanliness.",
+   583→   583→    rating: 5,
+   584→   584→  },
+   585→   585→];
+   586→   586→
+   587→   587→// ---------- STATS ----------
+   588→   588→export const stats = [
+   589→   589→  { value: "12+", label: "Years in business" },
+   590→   590→  { value: "6,200+", label: "5-star reviews" },
+   591→   591→  { value: "30", label: "Scottish locations" },
+   592→   592→  { value: "117", label: "Service types" },
+   593→   593→  { value: "98%", label: "Client retention" },
+   594→   594→  { value: "24/7", label: "Emergency response" },
+   595→   595→];
+   596→   596→
+   597→   597→// ---------- PROCESS STEPS ----------
+   598→   598→export const processSteps = [
+   599→   599→  {
+   600→   600→    step: "01",
+   601→   601→    title: "Tell Us Your Space",
+   602→   602→    description:
+   603→   603→      "Share your square footage, frequency, and priorities via our 60-second form or a quick call. No pushy sales — we just need the basics to scope your project accurately.",
+   604→   604→  },
+   605→   605→  {
+   606→   606→    step: "02",
+   607→   607→    title: "Get a Transparent Quote",
+   608→   608→    description:
+   609→   609→      "Within one business hour you receive an itemised quote. Flat-rate or hourly, your choice. No hidden fees, no surprise add-ons after the work is done.",
+   610→   610→  },
+   611→   611→  {
+   612→   612→    step: "03",
+   613→   613→    title: "We Match Your Crew",
+   614→   614→    description:
+   615→   615→      "We assign a PVG-checked, uniformed crew that fits your space and preferences. You get the same team every visit — they learn your home or building.",
+   616→   616→  },
+   617→   617→  {
+   618→   618→    step: "04",
+   619→   619→    title: "Sit Back & Relax",
+   620→   620→    description:
+   621→   621→      "Show up to a clean space. Rate each visit in one tap. Adjust your plan anytime. Not happy? We re-clean within 24 hours, free. That's the Maundy guarantee.",
+   622→   622→  },
+   623→   623→];
+   624→   624→
+   625→   625→// ---------- FAQ ----------
+   626→   626→export const faqs = [
+   627→   627→  {
+   628→   628→    q: "Are your cleaners PVG-checked and insured?",
+   629→   629→    a: "Every Maundy Clean team member passes a Disclosure Scotland PVG check, plus right-to-work and reference verification. We carry £5m public liability and employer's liability on every crew, and every employee is on payroll — never self-employed contractors.",
+   630→   630→  },
+   631→   631→  {
+   632→   632→    q: "Do I have to be home during the cleaning?",
+   633→   633→    a: "No. Most of our recurring clients are at work during their scheduled clean. We use secure key-handling and lockbox protocols, and you'll receive a photo-verified 'crew arrived' notification the moment we enter your home.",
+   634→   634→  },
+   635→   635→  {
+   636→   636→    q: "What cleaning products do you use?",
+   637→   637→    a: "We default to eco-labelled, low-VOC products that are safe for kids, pets, and sensitive airways. For commercial clients we can switch to hospital-grade disinfectants. Bring-your-own-products is also available.",
+   638→   638→  },
+   639→   639→  {
+   640→   640→    q: "What if I'm not satisfied with the cleaning?",
+   641→   641→    a: "Tell us within 24 hours and we'll send a team back to re-clean the missed areas at no charge — no questions, no friction. Our 4.9-star average across 6,200+ reviews exists because we actually honour this guarantee.",
+   642→   642→  },
+   643→   643→  {
+   644→   644→    q: "Can I customise my cleaning checklist?",
+   645→   645→    a: "Absolutely. Every recurring client gets a personalised checklist in their client portal. Add oven cleaning this week, skip the spare bedroom next week, rotate skirting boards monthly — you're in full control from your phone.",
+   646→   646→  },
+   647→   647→  {
+   648→   648→    q: "Do you offer one-time or same-day cleans?",
+   649→   649→    a: "Yes. Same-day availability is limited by postcode, but one-time deep cleans, move-in/out cleans, and post-construction cleans are bookable 7 days a week with as little as 24 hours' notice in most service areas.",
+   650→   650→  },
+   651→   651→];
+   652→   652→
+   653→   653→// ---------- CONTACT INFO ----------
+   654→   654→export const contactInfo = {
+   655→   655→  phone: "+44 7735 322362",
+   656→   656→  phoneHref: "tel:+447735322362",
+   657→   657→  email: "hello@maundyclean.co.uk",
+   658→   658→  address: "412 Byres Road, Glasgow, G12 8AS, Scotland",
+   659→   659→  vatNumber: "VAT GB 423 1897 56",
+   660→   660→  companyNumber: "SC528471",
+   661→   661→};
+   662→   662→

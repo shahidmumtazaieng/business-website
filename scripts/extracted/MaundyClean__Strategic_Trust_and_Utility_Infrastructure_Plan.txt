@@ -1,0 +1,38 @@
+To complete your 55-page website foundation and outperform competitors like Housekeep and Bonnie Brooms, your "Trust and Utility" pages must focus on extreme pricing transparency and local credibility. 1, 2
+Based on the market intelligence data and the 12-week semantic strategy, here is the plan for your pricing, trust, and legal infrastructure. 3, 4
+
+## [Heading 3] 1. The Pricing Hub: Transparency & Conversion (6 Pages)
+
+Competitors like Bonnie Brooms often lack instant quotes, creating a major opportunity for you to win on speed. 1
+/pricing/: Your primary hub targeting the high-intent keyword "deep cleaning price list" (KD 5). 5 This page must feature an interactive 30-second quote calculator and a comparison table showing you are 10-15% cheaper than Housekeep. 2, 6
+/pricing/end-of-tenancy-costs/: Targets "how much does end of tenancy cleaning cost" and lists your "sweet spot" pricing (e.g., £105-£135 for 1-bed, £180-£215 for 3-bed in Glasgow). 2, 7
+/pricing/one-off-cleaning-prices/: Targets "one-off deep clean prices" (260/mo volume, KD 18). 5
+/pricing/student-specials/: A dedicated landing page for your £99 flat rate student deal (June-August peak), specifically targeting university hubs. 8
+/pricing/commercial-cleaning-quotes/: A B2B focused page for office and industrial contracts with a "request a site audit" CTA. 9
+/pricing/emergency-service-rates/: Targets "same day cleaning" and "last-minute" bookings with a clear 20% premium for rapid response. 8
+
+## [Heading 3] 2. The Trust & Brand Silo (4 Pages)
+
+These pages move users from "browsing" to "booking" by establishing MaundyClean as a local Scottish authority. 4, 7
+/about-us/: Highlighting your professional cleaning company status in Scotland and your "Maundy" (service-oriented) brand rationale. 7, 10
+/our-deposit-back-guarantee/: A dedicated page for your #1 quick-win tactic. 8 Explain the "free re-clean" protocol if a landlord rejects the clean, which directly addresses tenant anxiety. 8
+/our-process-checklist/: A visual page showing your technical standards, before/after galleries, and use of eco-friendly products. 6, 8
+/reviews-case-studies/: Consolidating your local social proof from Glasgow, Edinburgh, and Aberdeen to beat the "impersonal" feel of national brands. 1, 11
+
+## [Heading 3] 3. Lead Capture & Contact Silo (2 Pages)
+
+/contact-us/: Primary conversion point with your local Scottish phone prefixes (0141 for Glasgow or 0131 for Edinburgh) to prove local presence. 10, 12
+/book-online/: A direct integration with a calendar (like Calendly) for 24/7 automated booking. 6, 13
+
+## [Heading 3] 4. Legal & Utility Infrastructure (3 Pages)
+
+Required for both compliance and to match the professional footprint of established competitors. 14, 15
+/privacy-policy/: Standard legal requirement. 15
+/cookie-policy/: UK-specific compliance. 15
+/find-us-online/: A directory page linking to your local citations (Yell, Yelp, Bark, etc.) to strengthen local SEO signals. 6, 15
+
+## [Heading 3] Strategic Implementation for Dominance
+
+Pricing Tactics: Position yourself as a "premium service at fair prices," specifically targeting the gap between high-priced national franchises and low-reliability independents. 2
+Interlinking: Every pricing sub-page must link directly back to your 6 primary service pages (e.g., the EOT cost page links to the /end-of-tenancy-cleaning/ service page). 16
+Mobile-First Design: Ensure these pricing tables and calculators are optimized for mobile, as over 70% of your Scottish target audience will search via phone. 6

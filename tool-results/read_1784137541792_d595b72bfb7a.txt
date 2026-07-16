@@ -1,0 +1,489 @@
+   955→  },
+   956→  {
+   957→    icon: Sparkles,
+   958→    title: "Seasonal Resets",
+   959→    href: "/services/deep-house-cleaning",
+   960→    image: IMG.leaseTenancy,
+   961→    imageAlt:
+   962→      "Seasonal deep clean of a Scottish residential communal lobby and amenity room to maintain building value and resident satisfaction",
+   963→    description: (
+   964→      <>
+   965→        Schedule a{" "}
+   966→        <Link
+   967→          href="/services/deep-house-cleaning"
+   968→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   969→        >
+   970→          Deep House Cleaning
+   971→        </Link>{" "}
+   972→        for communal lobbies and amenity rooms twice a year to maintain building
+   973→        value. The twice-yearly reset that lifts the cumulative contamination load
+   974→        the daily clean can&rsquo;t reach &mdash; high-level dusting of ceiling
+   975→        fixtures and vents, deep carpet extraction in communal lounges, hard floor
+   976→        machine-scrub and buff, and a full sanitiser fog of lift cars and amenity
+   977→        WCs.
+   978→      </>
+   979→    ),
+   980→    cta: "Explore deep house cleaning",
+   981→  },
+   982→  {
+   983→    icon: HeartPulse,
+   984→    title: "Specialist Fabric Care",
+   985→    href: "/services/upholstery-cleaning",
+   986→    image: IMG.leaseAntiviral,
+   987→    imageAlt:
+   988→      "Professional upholstery cleaning of communal seating and carpets in a Scottish residential block with Maundy Clean using certified fabric-safe chemistry",
+   989→    description: (
+   990→      <>
+   991→        Rejuvenate communal seating and carpets with our professional{" "}
+   992→        <Link
+   993→          href="/services/upholstery-cleaning"
+   994→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   995→        >
+   996→          Upholstery Cleaning
+   997→        </Link>{" "}
+   998→        to remove odors and stains. Hot-water extraction for cloth lounge seating
+   999→        in sheltered-housing communal rooms; leather conditioning for executive
+  1000→        amenity blocks; stain treatment for coffee, juice, and pet marks from
+  1001→        residents; odour neutralisation for lingering cooking and tobacco. The
+  1002→        detail that keeps your communal lounges feeling premium visit after
+  1003→        visit, year after year.
+  1004→      </>
+  1005→    ),
+  1006→    cta: "Explore upholstery cleaning",
+  1007→  },
+  1008→];
+  1009→
+  1010→export function PropertyManagementSeoInterlinking() {
+  1011→  return (
+  1012→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+  1013→      <div className="max-w-[1400px] mx-auto px-6">
+  1014→        <motion.div
+  1015→          initial={{ opacity: 0, y: 20 }}
+  1016→          whileInView={{ opacity: 1, y: 0 }}
+  1017→          viewport={{ once: true, margin: "-80px" }}
+  1018→          transition={{ duration: 0.5 }}
+  1019→          className="max-w-3xl mb-12"
+  1020→        >
+  1021→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1022→            Beyond the daily clean &middot; property milestones
+  1023→          </span>
+  1024→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1025→            Solutions for Every Property Need
+  1026→          </h2>
+  1027→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+  1028→            Our property management cleaning is the heartbeat of your
+  1029→            building&rsquo;s health, but we offer specialized support for major
+  1030→            milestones: from property transitions that need rapid-response
+  1031→            end-of-tenancy resets, through post-renovation dust clear-outs and
+  1032→            seasonal deep cleans, to specialist fabric care for communal seating
+  1033→            and carpets. The same trusted, vetted crew can step up whenever your
+  1034→            portfolio needs more than a standard visit, with the same child-safe,
+  1035→            surface-safe protocols in force.
+  1036→          </p>
+  1037→        </motion.div>
+  1038→
+  1039→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  1040→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+  1041→            const Icon = sol.icon;
+  1042→            return (
+  1043→              <motion.div
+  1044→                key={sol.title}
+  1045→                initial={{ opacity: 0, y: 24 }}
+  1046→                whileInView={{ opacity: 1, y: 0 }}
+  1047→                viewport={{ once: true, margin: "-40px" }}
+  1048→                transition={{ duration: 0.5, delay: i * 0.1 }}
+  1049→              >
+  1050→                <Link
+  1051→                  href={sol.href}
+  1052→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+  1053→                >
+  1054→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+  1055→                    <img
+  1056→                      src={sol.image}
+  1057→                      alt={sol.imageAlt}
+  1058→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+  1059→                      loading="lazy"
+  1060→                    />
+  1061→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+  1062→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+  1063→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+  1064→                    </div>
+  1065→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+  1066→                      {sol.title}
+  1067→                    </h3>
+  1068→                  </div>
+  1069→                  <div className="p-5">
+  1070→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+  1071→                      {typeof sol.description === "string" ? (
+  1072→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+  1073→                      ) : (
+  1074→                        sol.description
+  1075→                      )}
+  1076→                    </p>
+  1077→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+  1078→                      {sol.cta}
+  1079→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  1080→                    </span>
+  1081→                  </div>
+  1082→                </Link>
+  1083→              </motion.div>
+  1084→            );
+  1085→          })}
+  1086→        </div>
+  1087→      </div>
+  1088→    </section>
+  1089→  );
+  1090→}
+  1091→
+  1092→// ============================================================
+  1093→// Section 6 - "Near Me" Location Internal Links
+  1094→// (Semantic H2: "Property Management & Landlord Cleaning Near Me in Scotland")
+  1095→// Split layout with map image + 36-location grid.
+  1096→// The "Browse the near-me directory" button links to
+  1097→// /services/property-management-cleaning-near-me#locations
+  1098→// (WITH the #locations anchor) per the brief bug-warning —
+  1099→// yields 37 anchored near-me links on the main page.
+  1100→// ============================================================
+  1101→
+  1102→export function PropertyManagementSeoNearMe() {
+  1103→  return (
+  1104→    <section className="py-16 lg:py-24 bg-background">
+  1105→      <div className="max-w-[1400px] mx-auto px-6">
+  1106→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+  1107→          {/* Left: copy + map image */}
+  1108→          <motion.div
+  1109→            initial={{ opacity: 0, y: 20 }}
+  1110→            whileInView={{ opacity: 1, y: 0 }}
+  1111→            viewport={{ once: true, margin: "-80px" }}
+  1112→            transition={{ duration: 0.5 }}
+  1113→          >
+  1114→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1115→              Local property management &amp; block maintenance cleaning across Scotland
+  1116→            </span>
+  1117→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1118→              Property Management &amp; Landlord Cleaning Near Me in Scotland
+  1119→            </h2>
+  1120→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+  1121→              Searching for &ldquo;property management cleaning near me&rdquo; or
+  1122→              &ldquo;factor cleaning near me&rdquo; in Scotland? Maundy Clean covers
+  1123→              factors, private landlords, housing associations, and property
+  1124→              management companies across the Central Belt, Highlands, Borders, and
+  1125→              Islands &mdash; from Glasgow&rsquo;s West End tenements and
+  1126→              Edinburgh&rsquo;s New Town crescents to Aberdeen&rsquo;s granite
+  1127→              four-in-a-blocks and Dundee&rsquo;s Victorian terraces, plus
+  1128→              independent factors in Stirling, Perth, Inverness, and Ayr. Same
+  1129→              PVG-checked, uniformed crews, same dedicated crew every visit, same
+  1130→              reactive mobile team for last-minute VIP visits and emergency
+  1131→              scenarios &mdash; wherever your block happens to be. Find your local
+  1132→              property management cleaning specialist below.
+  1133→            </p>
+  1134→
+  1135→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+  1136→              <img
+  1137→                src={IMG.nearMeMap}
+  1138→                alt="Map of Scotland showing Maundy Clean property management &amp; block maintenance cleaning service coverage areas"
+  1139→                className="absolute inset-0 w-full h-full object-cover"
+  1140→                loading="lazy"
+  1141→              />
+  1142→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+  1143→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+  1144→                <div className="flex items-center gap-2 mb-1">
+  1145→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+  1146→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+  1147→                    72+ Scottish towns covered
+  1148→                  </span>
+  1149→                </div>
+  1150→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1151→                  Same PVG-checked crews, same 100% satisfaction guarantee &mdash; from
+  1152→                  Glasgow to Inverness.
+  1153→                </p>
+  1154→              </div>
+  1155→            </div>
+  1156→
+  1157→            <div className="mt-6">
+  1158→              <Button
+  1159→                size="lg"
+  1160→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+  1161→                asChild
+  1162→              >
+  1163→                <Link href="/services/property-management-cleaning-near-me#locations">
+  1164→                  <MapPin className="w-4 h-4" />
+  1165→                  Browse the near-me directory
+  1166→                  <ArrowRight className="w-4 h-4" />
+  1167→                </Link>
+  1168→              </Button>
+  1169→            </div>
+  1170→          </motion.div>
+  1171→
+  1172→          {/* Right: location grid */}
+  1173→          <motion.div
+  1174→            initial={{ opacity: 0, y: 20 }}
+  1175→            whileInView={{ opacity: 1, y: 0 }}
+  1176→            viewport={{ once: true, margin: "-60px" }}
+  1177→            transition={{ duration: 0.5 }}
+  1178→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1179→          >
+  1180→            <div className="flex items-center justify-between mb-5">
+  1181→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1182→                Find your local property crew
+  1183→              </h3>
+  1184→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1185→            </div>
+  1186→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1187→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1188→                <motion.div
+  1189→                  key={loc.slug}
+  1190→                  initial={{ opacity: 0 }}
+  1191→                  whileInView={{ opacity: 1 }}
+  1192→                  viewport={{ once: true }}
+  1193→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1194→                >
+  1195→                  <Link
+  1196→                    href={`/services/property-management-cleaning-near-me#${loc.slug}`}
+  1197→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1198→                  >
+  1199→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1200→                    <span>
+  1201→                      <span className="font-medium">{loc.city}</span>
+  1202→                      <span className="text-[var(--muted-foreground)]"> factor crew</span>
+  1203→                    </span>
+  1204→                  </Link>
+  1205→                </motion.div>
+  1206→              ))}
+  1207→            </div>
+  1208→
+  1209→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1210→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1211→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1212→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1213→              </div>
+  1214→              <Link
+  1215→                href="/locations"
+  1216→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1217→              >
+  1218→                View all 72 Scottish locations
+  1219→                <ArrowRight className="w-4 h-4" />
+  1220→              </Link>
+  1221→            </div>
+  1222→          </motion.div>
+  1223→        </div>
+  1224→
+  1225→        {/* SEO long-form paragraph for "near me" search intent */}
+  1226→        <motion.div
+  1227→          initial={{ opacity: 0, y: 16 }}
+  1228→          whileInView={{ opacity: 1, y: 0 }}
+  1229→          viewport={{ once: true, margin: "-40px" }}
+  1230→          transition={{ duration: 0.5, delay: 0.2 }}
+  1231→          className="mt-10 max-w-4xl mx-auto text-center"
+  1232→        >
+  1233→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1234→            Our local property management cleaning crews operate across
+  1235→            Glasgow&rsquo;s West End, Southside and Merchant City tenement blocks
+  1236→            (factors, housing associations and private landlords), Edinburgh&rsquo;s
+  1237→            New Town, Marchmont and Morningside crescents (factors and property
+  1238→            management companies), Aberdeen&rsquo;s West End and Rosemount granite
+  1239→            four-in-a-blocks (factors and private landlords), Dundee&rsquo;s West
+  1240→            End and City Centre Victorian terraces (factors and student
+  1241→            accommodation operators), and Scottish property management districts
+  1242→            across the Central Belt &mdash; from Inverness to Perth, Falkirk to
+  1243→            Ayr. Whether you&rsquo;re searching for early-morning close resets in
+  1244→            Glasgow, evening bin store hygiene in Edinburgh, weekend turnover
+  1245→            support in Aberdeen, or end-of-tenancy resets anywhere in between,
+  1246→            Maundy Clean assigns a vetted, PAYE-employed, PVG-checked crew that
+  1247→            stays with you for the long run. Same crew, same standard, same
+  1248→            locked-in rate for 12 months.
+  1249→          </p>
+  1250→        </motion.div>
+  1251→      </div>
+  1252→    </section>
+  1253→  );
+  1254→}
+  1255→
+  1256→// ============================================================
+  1257→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1258→// (Semantic H2: "Request Your Bespoke Portfolio Quote")
+  1259→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1260→// ============================================================
+  1261→
+  1262→export function PropertyManagementSeoFinalCta() {
+  1263→  return (
+  1264→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1265→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1266→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1267→
+  1268→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1269→        <motion.div
+  1270→          initial={{ opacity: 0, y: 20 }}
+  1271→          whileInView={{ opacity: 1, y: 0 }}
+  1272→          viewport={{ once: true, margin: "-80px" }}
+  1273→          transition={{ duration: 0.5 }}
+  1274→        >
+  1275→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1276→            Ready to book your portfolio survey?
+  1277→          </span>
+  1278→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1279→            Request Your Bespoke Portfolio Quote
+  1280→          </h2>
+  1281→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1282→            Book a free portfolio site survey with our management team and receive
+  1283→            an itemised proposal within 2 business days. Communal-area consistency
+  1284→            across every close and stairwell, a reactive mobile team for last-minute
+  1285→            VIP visits and emergency scenarios, 24/7 emergency response, end of
+  1286→            tenancy resets, forecourt power-washing, multi-site retainer options,
+  1287→            signed cleaning logs, &pound;5m public liability as standard, and a
+  1288→            100% satisfaction guarantee &mdash; from &pound;15 per hour for a single
+  1289→            block through to a fully bespoke multi-site portfolio retainer. No pushy
+  1290→            sales call, no waiting 24 hours for a callback.
+  1291→          </p>
+  1292→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1293→            <Button
+  1294→              size="lg"
+  1295→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1296→              asChild
+  1297→            >
+  1298→              <Link href="/quote">
+  1299→                Request Your Bespoke Portfolio Quote
+  1300→                <ArrowRight className="w-5 h-5" />
+  1301→              </Link>
+  1302→            </Button>
+  1303→            <Button
+  1304→              size="lg"
+  1305→              variant="outline"
+  1306→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1307→              asChild
+  1308→            >
+  1309→              <Link href="#checklist">
+  1310→                <CheckCircle2 className="w-4 h-4" />
+  1311→                View Our Property Management Checklist
+  1312→              </Link>
+  1313→            </Button>
+  1314→          </div>
+  1315→        </motion.div>
+  1316→      </div>
+  1317→    </section>
+  1318→  );
+  1319→}
+  1320→
+  1321→// ============================================================
+  1322→// Section 8 - SEO FAQ block
+  1323→// (Semantic H2: "Frequently Asked Questions")
+  1324→// 3 Q&As from the brief (insured for commercial and block
+  1325→// management, provide own cleaning supplies, 24/7 emergency
+  1326→// response)
+  1327→// ============================================================
+  1328→
+  1329→const SEO_FAQS = [
+  1330→  {
+  1331→    q: "Are your cleaners insured for commercial and block management?",
+  1332→    a: "Absolutely. MaundyClean is a fully insured, registered professional cleaning company with extensive experience serving Scotland&rsquo;s landlords and property managers. We carry &pound;5m public liability as standard &mdash; covering communal areas, bin stores, forecourts, and tenant-occupied units &mdash; and every operative is PVG-checked (essential for buildings where residents may be present), uniformed, and trained in property-management-specific protocols: communal area cleaning, end of tenancy resets, forecourt power-washing, tenement close cleaning, stairwell sanitisation, bin store hygiene, and reactive emergency response. We hold full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, and we can name your business on our policy as additional insured &mdash; a common requirement for factor agreements, housing association insurance terms, landlord insurance, and mortgage lender compliance files. Our documentation is audit-ready for factor inspection, environmental health inspection, and HSE review; we provide signed cleaning logs, RAMS, COSHH datasheets, training records, and vetting records (PVG) for your compliance file. We will not begin work until your factor or property manager has the documentation they need.",
+  1333→  },
+  1334→  {
+  1335→    q: "Do you provide your own cleaning supplies?",
+  1336→    a: "Yes. We supply all our own professional-grade equipment and eco-friendly products, which are included in your competitive quote. From HEPA-filtered vacuums for communal carpets and stone-safe pH-neutral cleaner for tenement stairs (no acid, no bleach), to industrial scrubber-driers for polished concrete forecourt restoration, hot-water extraction for communal lounge carpets, professional pressure-washers for forecourts and bin store surrounds, and COSHH-documented, child-safe, surface-safe chemistry by default &mdash; every tool is maintained to manufacturer spec. HEPA-filtered vacuums with extension tubes for close dust and cobwebs; industrial scrubber-driers for polished concrete and tiled communal floors; hot-water extraction for communal lounge carpets and unit carpets at tenancy change; pressure-washers for forecourts, walkways, and bin store surrounds; pH-neutral stone-safe cleaner for tenement stairs; fragrance-free sanitiser for high-touch handrails and entry phone systems; non-toxic degreaser for bin stores; HSE-compliant chemicals with COSHH datasheets on file; PPE; and non-toxic, child-safe, surface-safe chemistry by default. You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser wipes) or we can manage consumable restocking for an additional monthly fee.",
+  1337→  },
+  1338→  {
+  1339→    q: "Can you handle 24/7 emergency responses?",
+  1340→    a: "Yes. We offer emergency response services to ensure minimal disruption to your business should unforeseen situations arise. A burst pipe in a top-floor flat at 2am, a tenant abandoned-property handover at short notice, a flood in a communal basement, a factor inspection tomorrow morning, a VIP viewing of a vacant unit, or a deliberate-damage incident overnight &mdash; our reactive mobile team mobilises a vetted, uniformed, PVG-checked crew within hours, not days, with the right chemistry and equipment to make the building safe, dry, and presentable again. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. From &pound;15 per hour for a single block through to a fully bespoke retainer for a multi-site portfolio. Same trusted crew, same standard, same locked-in rate &mdash; the reactive partner your factor desk can call at any hour.",
+  1341→  },
+  1342→];
+  1343→
+  1344→export function PropertyManagementSeoFaq() {
+  1345→  return (
+  1346→    <section className="py-16 lg:py-24 bg-background">
+  1347→      <div className="max-w-4xl mx-auto px-6">
+  1348→        <motion.div
+  1349→          initial={{ opacity: 0, y: 20 }}
+  1350→          whileInView={{ opacity: 1, y: 0 }}
+  1351→          viewport={{ once: true, margin: "-80px" }}
+  1352→          transition={{ duration: 0.5 }}
+  1353→          className="text-center mb-12"
+  1354→        >
+  1355→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1356→            Property management &amp; landlord cleaning &middot; FAQ
+  1357→          </span>
+  1358→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1359→            Frequently Asked Questions
+  1360→          </h2>
+  1361→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1362→            Straight answers to the questions our property management &amp;
+  1363→            landlord cleaning clients ask most often. Can&rsquo;t find what you
+  1364→            need? Call us on{" "}
+  1365→            <a
+  1366→              href={contactInfo.phoneHref}
+  1367→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1368→            >
+  1369→              {contactInfo.phone}
+  1370→            </a>{" "}
+  1371→            and we&rsquo;ll talk it through.
+  1372→          </p>
+  1373→        </motion.div>
+  1374→
+  1375→        <div className="space-y-4">
+  1376→          {SEO_FAQS.map((faq, i) => (
+  1377→            <motion.div
+  1378→              key={faq.q}
+  1379→              initial={{ opacity: 0, y: 16 }}
+  1380→              whileInView={{ opacity: 1, y: 0 }}
+  1381→              viewport={{ once: true, margin: "-40px" }}
+  1382→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1383→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1384→            >
+  1385→              <details className="group">
+  1386→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1387→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1388→                    {faq.q}
+  1389→                  </h3>
+  1390→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1391→                    <span className="relative w-3.5 h-3.5">
+  1392→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1393→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1394→                    </span>
+  1395→                  </span>
+  1396→                </summary>
+  1397→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1398→                  <p
+  1399→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1400→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1401→                  />
+  1402→                </div>
+  1403→              </details>
+  1404→            </motion.div>
+  1405→          ))}
+  1406→        </div>
+  1407→
+  1408→        <motion.div
+  1409→          initial={{ opacity: 0, y: 16 }}
+  1410→          whileInView={{ opacity: 1, y: 0 }}
+  1411→          viewport={{ once: true, margin: "-40px" }}
+  1412→          transition={{ duration: 0.5, delay: 0.3 }}
+  1413→          className="mt-10 text-center"
+  1414→        >
+  1415→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1416→            <Button
+  1417→              size="lg"
+  1418→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1419→              asChild
+  1420→            >
+  1421→              <Link href="/quote">
+  1422→                Request Your Bespoke Portfolio Quote
+  1423→                <ArrowRight className="w-5 h-5" />
+  1424→              </Link>
+  1425→            </Button>
+  1426→            <Button
+  1427→              size="lg"
+  1428→              variant="outline"
+  1429→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1430→              asChild
+  1431→            >
+  1432→              <Link href="#checklist">
+  1433→                <CheckCircle2 className="w-4 h-4" />
+  1434→                View Our Property Management Checklist
+  1435→              </Link>
+  1436→            </Button>
+  1437→          </div>
+  1438→        </motion.div>
+  1439→      </div>
+  1440→    </section>
+  1441→  );
+  1442→}
+  1443→

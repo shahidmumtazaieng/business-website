@@ -1,0 +1,203 @@
+ 23800→    { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Touchpoint hand-wipe after electrostatic spray", caption: "Touchpoint hand-wipe after spray. Door handles, light switches, tap handles — the surfaces that account for 80% of cross-contamination." },
+ 23801→    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Soft furnishings being treated with electrostatic spray", caption: "Sofa and cushions treated with electrostatic spray. Chemistry is fabric-safe and dries without residue. Reduces viral load on items that can't be easily washed." },
+ 23802→    { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Disinfection certificate with batch numbers", caption: "Disinfection certificate issued after treatment. Batch numbers, contact time, EN standard test results. Audit-ready for insurance and compliance." },
+ 23803→  ],
+ 23804→};
+ 23805→
+ 23806→// ============================================================
+ 23807→// Add-On Service #10 — Bedding Change Service
+ 23808→// ============================================================
+ 23809→export const beddingChangeService: ServiceDetail = {
+ 23810→  slug: "bedding-change-service",
+ 23811→  name: "Bedding Change Service",
+ 23812→  category: "Add-On & Specialty Services",
+ 23813→  tagline: "Strip, wash, dry, iron, re-make — hotel-standard bed linen change in your own home.",
+ 23814→  heroHeadline: "Hotel bed,\nevery week.",
+ 23815→  heroSubhead:
+ 23816→    "Changing bed linen is one of those weekly tasks that takes longer than it should — strip, sort, wash, dry, iron (or not), re-make. Our bedding change service does the whole cycle in one visit: strip the bed, sort the linen, wash at 60°C (kills dust mites), dry, fold or iron, and re-make with crisp hospital corners. Hotel-standard linen change in your own home.",
+ 23817→  heroImage: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+ 23818→  breadcrumbParent: "Add-On & Specialty Services",
+ 23819→  metaTitle: "Bedding Change Service Scotland | Strip, Wash, Dry, Re-Make | Maundy Clean",
+ 23820→  metaDescription:
+ 23821→    "Bedding change service across Scotland. Strip the bed, wash at 60°C (dust mite kill), dry, fold or iron, re-make with hospital corners. Hotel-standard linen change in your own home. 4.9★ across 6,200+ reviews.",
+ 23822→  overviewParagraphs: [
+ 23823→    "Bedding change is one of the most popular add-ons we offer — particularly with busy professionals, new parents, people with mobility issues, and clients recovering from illness or surgery. The task sounds trivial but takes 90+ minutes per bed when you factor in stripping, sorting stains, washing at the right temperature, drying, folding or ironing, and re-making with proper tension. Multiply by 3-4 beds in a family home and it's a half-day's work that most people put off — and end up sleeping on sheets that should have been changed a week ago.",
+ 23824→    "Our bedding change service is hotel-standard. We wash at 60°C (the temperature at which dust mites die — 30°C and 40°C washes leave them alive and breeding). We use a non-biological detergent as standard (kinder to skin) with a biological detergent option for stubborn stains. We separate whites, colours, and darks. We sort stained items for pre-treatment. We dry according to the care label (tumble dry low for cotton, line dry for linen, flat dry for wool). And we re-make the bed with proper tension — hospital corners, duvet aligned, pillows fluffed and arranged.",
+ 23825→    "We work with your existing linen (we don't supply sheets — most clients prefer their own). If you have a linen rotation (two or three sets per bed, rotated weekly), we'll manage the rotation — bringing the fresh set from the airing cupboard and taking the dirty set to the laundry. If you don't have a rotation, we'll wash, dry, and re-make with the same set — but we recommend a minimum of two sets per bed so we can leave a fresh set while the washed set dries.",
+ 23826→  ],
+ 23827→  whatsIncluded: [
+ 23828→    {
+ 23829→      title: "Strip & sort",
+ 23830→      description:
+ 23831→        "Bed stripped — duvet cover, fitted sheet, flat sheet, pillowcases, mattress protector. Stained items identified and pre-treated with a stain remover. Whites, colours, and darks separated. Mattress protector and pillows assessed — we don't wash these every change, but we'll flag when they need it.",
+ 23832→    },
+ 23833→    {
+ 23834→      title: "60°C wash with non-bio detergent",
+ 23835→      description:
+ 23836→        "Bed linen washed at 60°C — the temperature at which dust mites die. Non-biological detergent as standard (kinder to skin, suitable for babies and eczema sufferers). Biological detergent option for stain removal. Softener only if requested — we don't use it as standard (it reduces towel absorbency and can irritate skin).",
+ 23837→    },
+ 23838→    {
+ 23839→      title: "Dry according to care label",
+ 23840→      description:
+ 23841→        "Cotton and polycotton — tumble dry low or line dry. Linen — line dry only (tumble drying shrinks linen). Wool blankets — flat dry (never tumble). Silk pillowcases — line dry away from sunlight. We follow the care label. If the care label is missing, we default to the gentlest method.",
+ 23842→    },
+ 23843→    {
+ 23844→      title: "Iron or fold",
+ 23845→      description:
+ 23846→        "Ironing optional. Duvet covers and flat sheets ironed if requested (gives a hotel-crisp finish). Fitted sheets folded (ironing a fitted sheet is a fool's errand). Pillowcases ironed. We use a steam iron and ironing board — no spray-on starch (causes skin irritation and reduces fabric life).",
+ 23847→    },
+ 23848→    {
+ 23849→      title: "Re-make with hospital corners",
+ 23850→      description:
+ 23851→        "Bed re-made with proper tension. Fitted sheet secured at all four corners. Flat sheet (if used) tucked with hospital corners. Duvet inserted and aligned (the buttons/facing at the closed end). Pillows fluffed and arranged — sleeping pillows at the back, shams at the front if you have them.",
+ 23852→    },
+ 23853→    {
+ 23854→      title: "Mattress & pillow care",
+ 23855→      description:
+ 23856→        "Mattress vacuumed with a HEPA-filtered UV-C vacuum (kills surface bacteria and removes dust mites and skin cells). Mattress rotated 180° (extends life — most mattresses should be rotated every 3-6 months). Pillows aired. Mattress protector and pillow protectors washed every 4 weeks (more frequently in allergy households).",
+ 23857→    },
+ 23858→  ],
+ 23859→  processSteps: [
+ 23860→    { step: "01", title: "Strip & sort", description: "Bed stripped, all linen sorted (whites, colours, darks). Stained items pre-treated. Mattress vacuumed with HEPA UV-C vacuum. Mattress rotated 180°.", duration: "15-20 mins" },
+ 23861→    { step: "02", title: "Wash at 60°C", description: "Linen washed at 60°C (dust mite kill temperature) with non-biological detergent. Biological option for stains. No softener as standard. Wash cycle is 90-120 minutes per load.", duration: "90-120 mins" },
+ 23862→    { step: "03", title: "Dry & finish", description: "Dried according to care label — cotton tumble or line, linen line only, wool flat dry. Ironed if requested (duvet covers, flat sheets, pillowcases). Fitted sheets folded. Pillows aired.", duration: "60-90 mins" },
+ 23863→    { step: "04", title: "Re-make & handover", description: "Bed re-made with hospital corners and proper tension. Duvet aligned. Pillows fluffed and arranged. Photo uploaded to your portal. Spare linen (if any) folded and returned to airing cupboard.", duration: "15-20 mins" },
+ 23864→  ],
+ 23865→  benefits: [
+ 23866→    { icon: "Shield", title: "60°C dust mite kill", description: "Bed linen washed at 60°C — the temperature at which dust mites die. 30°C and 40°C washes leave them alive and breeding. Significant benefit to allergy and asthma sufferers. The single biggest improvement you can make to bedroom air quality." },
+ 23867→    { icon: "Leaf", title: "Non-bio detergent as standard", description: "Non-biological detergent as standard — kinder to skin, suitable for babies, eczema sufferers, and sensitive skin. Biological detergent available for stain removal. No fabric softener as standard (reduces towel absorbency and can irritate skin)." },
+ 23868→    { icon: "Users", title: "Hospital corners, proper tension", description: "Bed re-made with proper tension. Fitted sheet secured at all four corners. Flat sheet tucked with hospital corners. Duvet aligned. Pillows fluffed. Hotel-standard finish — the kind of bed you want to dive into." },
+ 23869→    { icon: "Clock", title: "Full cycle in one visit", description: "Strip, wash, dry, finish, re-make — all in one visit. Total time per bed is 3-4 hours including the wash cycle. For a 3-bed house, we'll often start the first wash as we strip the first bed, so by the time we've stripped all beds the first load is ready to dry." },
+ 23870→    { icon: "Star", title: "Mattress & pillow care", description: "Mattress vacuumed with HEPA UV-C vacuum (kills surface bacteria, removes dust mites and skin cells). Mattress rotated 180° (extends life — most mattresses should be rotated every 3-6 months). Pillows aired. Mattress protector washed every 4 weeks." },
+ 23871→    { icon: "Smartphone", title: "Linen rotation managed", description: "If you have a linen rotation (two or three sets per bed, rotated weekly), we'll manage the rotation — bringing the fresh set from the airing cupboard and taking the dirty set to the laundry. If you don't have a rotation, we recommend a minimum of two sets per bed." },
+ 23872→  ],
+ 23873→  pricingTiers: [],
+ 23874→  serviceAreas: ["Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Stirling", "Perth", "Falkirk", "Inverness", "Ayr", "Kilmarnock", "Livingston", "East Kilbride", "Paisley", "Hamilton", "Motherwell", "Dunfermline", "Kirkcaldy", "Musselburgh", "Dalkeith", "Bathgate", "Cumbernauld", "Coatbridge", "St Andrews", "Elgin", "Peterhead", "Stonehaven", "Inverurie", "Oban", "Fort William", "Aviemore"],
+ 23875→  faqs: [
+ 23876→    { q: "Do you supply the bed linen?", a: "No — we work with your existing linen. Most clients prefer their own sheets (chosen for thread count, material, and aesthetic). If you'd like us to supply linen, we can source high-quality Egyptian cotton sets at trade price and charge them through at cost. But for most clients, the service is wash-and-replace-with-your-own." },
+ 23877→    { q: "How many sets of linen do I need per bed?", a: "Minimum two sets per bed — one on the bed, one in the wash. Ideally three sets per bed — one on, one in the wash, one in the airing cupboard ready to deploy. This allows us to leave a fresh set on the bed while the dirty set is being washed. If you only have one set, we'll wash, dry, and re-make with the same set (typically a 4-hour turnaround per bed)." },
+ 23878→    { q: "Will you wash duvets and pillows?", a: "Yes, as a separate service. Duvets and pillows should be washed 2-4 times a year (not weekly). We take them to a specialist laundry with commercial-size machines — domestic machines can't cope with the weight of a wet duvet. Typical turnaround is 5-7 days. We'll flag when your duvet or pillows are due for a wash." },
+ 23879→    { q: "Can you change the beds while we're at work?", a: "Yes — most bedding change services happen while clients are out. We have a key (or keypad code, or keysafe access). We strip, wash, dry, and re-make the beds while you're out. You come home to fresh beds. We send a 'clean complete' notification with a photo of the finished bed." },
+ 23880→    { q: "Will you wash at 60°C if my linen says 40°C?", a: "No — we follow the care label. If the care label says 40°C, we wash at 40°C (and accept that dust mites won't be killed). If the care label says 60°C or higher, we wash at 60°C. We'll flag any linen that's labelled 40°C so you can decide whether to replace it with 60°C-tolerant linen over time. Most modern cotton bed linen tolerates 60°C fine — but we don't override the care label." },
+ 23881→    { q: "How often should I book the bedding change service?", a: "Most clients book weekly (best for allergy sufferers, hot sleepers, and families with young children). Some book fortnightly (acceptable for most adults). Monthly is the absolute minimum — sleeping on sheets longer than a month is unhygienic. Pillowcases should be changed weekly regardless of the sheet change frequency (face oils build up faster than body oils)." },
+ 23882→  ],
+ 23883→  testimonials: [
+ 23884→    { name: "Claire Hamilton", role: "Busy Professional, Edinburgh", quote: "Two busy professionals, no time for laundry. Maundy Clean come in every Tuesday while we're at work — strip the bed, wash at 60°C, dry, re-make with hospital corners. Come home to a hotel bed every week. £25 well spent. They even rotate the spare bed linen from the airing cupboard.", rating: 5 },
+ 23885→    { name: "Susan Miller", role: "Allergy Sufferer, Glasgow", quote: "Severe dust mite allergy. Maundy Clean wash at 60°C (which kills the mites), vacuum the mattress with a UV-C HEPA machine, rotate the mattress, and wash the protector every 4 weeks. My allergy symptoms have dramatically improved since starting the service. Life-changing for me.", rating: 5 },
+ 23886→    { name: "Robert Davidson", role: "New Parent, Stirling", quote: "New baby, sleep deprivation, zero energy for laundry. Maundy Clean come weekly and change all three beds (ours, the toddler's, the baby's cot). They sort the breastmilk and poo stains from the regular linen and pre-treat appropriately. The cot sheet is always fresh. Lifesaver in the first 6 months.", rating: 5 },
+ 23887→  ],
+ 23888→  relatedServices: [
+ 23889→    { name: "Laundry & Folding Add-On", href: "/services/laundry-folding-add-on", description: "Full laundry service — wash, dry, fold, put away. Often booked alongside bedding change for a complete laundry solution." },
+ 23890→    { name: "Ironing Service", href: "/services/ironing-service", description: "Hotel-finish ironing — shirts, bedding, tablecloths. Booked alongside bedding change for ironed duvet covers." },
+ 23891→    { name: "Recurring Home Cleaning", href: "/services/recurring-home-cleaning", description: "Weekly, fortnightly or monthly home cleaning — bedding change as a weekly add-on." },
+ 23892→    { name: "Deep House Cleaning", href: "/services/deep-house-cleaning", description: "Full-house deep clean — bedding change frequently booked alongside for a complete home reset." },
+ 23893→    { name: "Mattress & Pillow Wash", href: "/services/bedding-change-service", description: "Specialist duvet and pillow washing — commercial laundry, 5-7 day turnaround. Ask us to add this every 3-6 months." },
+ 23894→    { name: "Holiday Let Turnover", href: "/services/holiday-let-turnover", description: "Holiday let changeover service — bedding change is a core part of the turnover protocol." },
+ 23895→  ],
+ 23896→  gallery: [
+ 23897→    { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Bed re-made with hospital corners and crisp white linen", caption: "Bed re-made with hospital corners, proper tension, duvet aligned, pillows fluffed. Hotel-standard finish in your own home." },
+ 23898→    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Linen being washed at 60°C", caption: "Bed linen washed at 60°C — the temperature at which dust mites die. Non-biological detergent as standard. Significant benefit for allergy sufferers." },
+ 23899→    { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Mattress being vacuumed with UV-C HEPA vacuum", caption: "Mattress vacuumed with HEPA-filtered UV-C vacuum. Kills surface bacteria, removes dust mites and skin cells. Mattress rotated 180°." },
+ 23900→    { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Freshly ironed duvet cover being folded", caption: "Duvet cover ironed (optional add-on) and folded ready for the airing cupboard. Hotel-crisp finish. Starch never used — causes skin irritation." },
+ 23901→  ],
+ 23902→};
+ 23903→
+ 23904→// ============================================================
+ 23905→// Add-On Service #11 — Eco-Friendly Green Clean
+ 23906→// ============================================================
+ 23907→export const ecoFriendlyGreenClean: ServiceDetail = {
+ 23908→  slug: "eco-friendly-green-clean",
+ 23909→  name: "Eco-Friendly Green Clean",
+ 23910→  category: "Add-On & Specialty Services",
+ 23911→  tagline: "EU Ecolabel, low-VOC, plant-based chemistry — for households that don't want compromise on cleaning power.",
+ 23912→  heroHeadline: "Clean home,\nclean conscience.",
+ 23913→  heroSubhead:
+ 23914→    "Our eco-friendly green clean uses EU Ecolabel-certified, low-VOC, plant-based chemistry throughout — no bleach, no phosphates, no NTA, no EDTA, no aggressive solvents. The products are dermatologically tested, cruelty-free, and biodegradable. And crucially, they work — passing the same EN 1276 bactericidal tests as conventional chemistry.",
+ 23915→  heroImage: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+ 23916→  breadcrumbParent: "Add-On & Specialty Services",
+ 23917→  metaTitle: "Eco-Friendly Green Clean Scotland | EU Ecolabel, Low-VOC, Plant-Based | Maundy Clean",
+ 23918→  metaDescription:
+ 23919→    "Eco-friendly green cleaning across Scotland. EU Ecolabel-certified, low-VOC, plant-based chemistry. No bleach, no phosphates, no NTA, no EDTA. Dermatologically tested, cruelty-free, biodegradable. EN 1276 bactericidal. 4.9★ across 6,200+ reviews.",
+ 23920→  overviewParagraphs: [
+ 23921→    "Eco-friendly cleaning has come a long way in the last decade. The early plant-based products were genuinely less effective than conventional chemistry — they left smear marks on glass, struggled with grease, and didn't pass the bactericidal tests that commercial cleaners require. That's no longer true. Modern EU Ecolabel-certified plant-based detergents pass the same EN 1276 bactericidal tests as conventional products, perform as well on grease and grime, and cost only marginally more. The compromise is gone.",
+ 23922→    "Our eco-friendly green clean uses EU Ecolabel-certified products throughout. The EU Ecolabel is the strictest ecolabel in Europe — it bans bleach, phosphates, NTA, EDTA, LAS, and a long list of other concerning chemicals. It requires biodegradability within 28 days. It requires dermatological testing. It requires cruelty-free certification. And it requires that the product actually works — passing the relevant EN cleaning standards. We don't use products with vague 'natural' or 'green' marketing claims without the EU Ecolabel certification.",
+ 23923→    "The green clean is bookable as a one-off (try it on a deep clean and see if you can tell the difference) or as a regular plan. Most clients who try it switch permanently — the absence of bleach fumes, the absence of chemical smell on the duvet, the absence of skin irritation, and the absence of plastic waste (we use refillable 5L containers, not single-use trigger sprays) make a noticeable difference to the household environment. And the cleaning result is indistinguishable from our conventional service.",
+ 23924→  ],
+ 23925→  whatsIncluded: [
+ 23926→    {
+ 23927→      title: "EU Ecolabel-certified chemistry",
+ 23928→      description:
+ 23929→        "Every cleaning product we use carries the EU Ecolabel — the strictest ecolabel in Europe. No bleach, no phosphates, no NTA, no EDTA, no LAS. Biodegradable within 28 days. Dermatologically tested. Cruelty-free. And crucially, EN 1276 bactericidal — proven against 99.999% of common bacteria.",
+ 23930→    },
+ 23931→    {
+ 23932→      title: "Low-VOC, low-odour",
+ 23933→      description:
+ 23934→        "Volatile Organic Compounds (VOCs) are the chemical fumes that cause headaches, eye irritation, and respiratory symptoms. Our eco products are low-VOC (under 1% w/w, vs 10-30% in conventional products). No chemical smell on duvets, no fume-induced headaches, no airing-the-house-for-3-hours-after-cleaning.",
+ 23935→    },
+ 23936→    {
+ 23937→      title: "Plant-based, not petroleum-based",
+ 23938→      description:
+ 23939→        "Surfactants derived from plant oils (coconut, rapeseed, corn) rather than petroleum. Lower carbon footprint, lower aquatic toxicity, faster biodegradability. The cleaning performance is identical to petroleum-based surfactants — modern formulation chemistry has closed the gap entirely.",
+ 23940→    },
+ 23941→    {
+ 23942→      title: "Refillable containers, zero plastic waste",
+ 23943→      description:
+ 23944→        "We use refillable 5L containers dosed into reusable spray bottles — not single-use trigger sprays. Over a year, a typical household prevents 30-50 plastic trigger spray bottles from going to landfill. The 5L containers themselves are returned to the supplier for refilling — closed-loop.",
+ 23945→    },
+ 23946→    {
+ 23947→      title: "EN 1276 bactericidal (yes, really)",
+ 23948→      description:
+ 23949→        "Our eco disinfectant passes EN 1276 — the European standard for bactericidal efficacy. Proven against 99.999% of common bacteria including E. coli, MRSA, Salmonella, and Listeria. The misconception that eco = less effective is outdated. Modern eco chemistry passes the same tests as conventional chemistry.",
+ 23950→    },
+ 23951→    {
+ 23952→      title: "Microfibre, not paper",
+ 23953→      description:
+ 23954→        "We use washable microfibre cloths (200+ wash cycles before retirement) and washable mop pads. We don't use paper towels for cleaning (only for biohazard cleanups). The microfibre captures bacteria physically as well as chemically — a damp microfibre removes 99% of bacteria from a surface without any disinfectant at all.",
+ 23955→    },
+ 23956→  ],
+ 23957→  processSteps: [
+ 23958→    { step: "01", title: "Product briefing", description: "First visit: we walk through the products we'll use, show you the EU Ecolabel certification, and explain the chemistry. You can read every product datasheet. We'll answer any questions about ingredients, biodegradability, or performance.", duration: "15 mins (first visit)" },
+ 23959→    { step: "02", title: "Standard clean protocol", description: "Same protocol as our conventional clean — high-dusting, surface wiping, bathroom sanitation, kitchen deep-reset, floor care, detail touchpoints. The only difference is the chemistry. The cleaning result is identical.", duration: "2-4 hours" },
+ 23960→    { step: "03", title: "Microfibre capture", description: "Microfibre cloths used per-room (no cross-contamination). Cloths laundered at 90°C between visits to kill bacteria. Mop pads swapped per-room. The microfibre captures bacteria physically as well as chemically — 99% removal with no disinfectant at all.", duration: "Included" },
+ 23961→    { step: "04", title: "Air-quality check & handover", description: "After the clean, no chemical smell, no fume-induced headache. Air quality is often better than before the clean (the dust we removed was a bigger irritant than the eco products). Before/after photos uploaded to your portal.", duration: "10 mins" },
+ 23962→  ],
+ 23963→  benefits: [
+ 23964→    { icon: "Shield", title: "EU Ecolabel certified", description: "The strictest ecolabel in Europe. Bans bleach, phosphates, NTA, EDTA, LAS. Requires 28-day biodegradability, dermatological testing, cruelty-free certification, and proven cleaning performance. Not a vague 'natural' claim — a regulated certification." },
+ 23965→    { icon: "Leaf", title: "Low-VOC, low-odour", description: "Volatile Organic Compounds cause headaches, eye irritation, and respiratory symptoms. Our eco products are low-VOC (under 1% w/w). No chemical smell on duvets, no fume-induced headaches, no airing-the-house-for-3-hours-after-cleaning." },
+ 23966→    { icon: "Users", title: "EN 1276 bactericidal", description: "Our eco disinfectant passes EN 1276 — the European standard for bactericidal efficacy. 99.999% bacterial kill against E. coli, MRSA, Salmonella, Listeria. The misconception that eco = less effective is outdated. Modern eco chemistry passes the same tests as conventional chemistry." },
+ 23967→    { icon: "Clock", title: "Same cleaning performance", description: "Our eco products perform identically to conventional chemistry on grease, grime, limescale, and bacteria. We've tested them side-by-side. The only difference is the smell (less) and the skin irritation (none). The cleaning result is indistinguishable." },
+ 23968→    { icon: "Star", title: "Zero plastic waste", description: "Refillable 5L containers dosed into reusable spray bottles. Over a year, a typical household prevents 30-50 plastic trigger spray bottles from going to landfill. The 5L containers themselves are returned to the supplier for refilling — closed-loop." },
+ 23969→    { icon: "Smartphone", title: "Dermatologically tested", description: "Every product dermatologically tested. No skin irritation, no contact dermatitis, no gloves required (though our technicians do wear them as standard for hygiene reasons). Safe for babies, eczema sufferers, and anyone with sensitive skin." },
+ 23970→  ],
+ 23971→  pricingTiers: [],
+ 23972→  serviceAreas: ["Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Stirling", "Perth", "Falkirk", "Inverness", "Ayr", "Kilmarnock", "Livingston", "East Kilbride", "Paisley", "Hamilton", "Motherwell", "Dunfermline", "Kirkcaldy", "Musselburgh", "Dalkeith", "Bathgate", "Cumbernauld", "Coatbridge", "St Andrews", "Elgin", "Peterhead", "Stonehaven", "Inverurie", "Oban", "Fort William", "Aviemore"],
+ 23973→  faqs: [
+ 23974→    { q: "Do eco products actually kill bacteria?", a: "Yes. Our eco disinfectant passes EN 1276 — the European standard for bactericidal efficacy. It kills 99.999% of common bacteria including E. coli, MRSA, Salmonella, and Listeria. The old 'eco = weak' stereotype is outdated. Modern eco chemistry passes the same tests as conventional chemistry. The EU Ecolabel certification specifically requires that products meet the relevant EN cleaning standards — a product that doesn't clean doesn't get the ecolabel." },
+ 23975→    { q: "Will the eco clean remove limescale?", a: "Yes — our eco limescale remover is citric acid-based (rather than phosphoric or hydrochloric acid) and works as well as conventional limescale removers on Scottish hard water. Dwell time is slightly longer (5-10 minutes vs 2-5 minutes for conventional), but the result is the same. We don't use harsh acids in showerheads or toilets — the eco chemistry is safer for the substrate as well as the user." },
+ 23976→    { q: "Is the eco clean safe for babies and pets?", a: "Yes — once dry, all our eco products are safe for crawling babies, pets, and food prep surfaces. The chemistry is dermatologically tested, low-VOC, and biodegradable. We still recommend the standard 30-minute air-out window for any cleaning (the dust we've disturbed is more of an irritant than the eco products). No chemical residue on duvets, no fume-induced symptoms." },
+ 23977→    { q: "Is the eco clean more expensive than your standard clean?", a: "Only marginally. The eco products cost us about 15-20% more than conventional products, and we pass that through. The total cost of the clean is typically 10-15% more than conventional. Most clients who try it switch permanently — the absence of chemical smell and skin irritation is worth the small premium. We don't charge a 'green premium' — we charge cost-plus on the products." },
+ 23978→    { q: "Do you supply the products, or do I need to?", a: "We supply all products. Our technicians carry a full kit of EU Ecolabel-certified products in 5L refillable containers, dosed into reusable spray bottles. You don't need to provide anything. If you have a specific product you'd like us to use (e.g. your own favourite eco brand), we'll use it if it carries the EU Ecolabel — we won't use products with vague 'natural' claims without certification." },
+ 23979→    { q: "Can I switch my recurring clean to eco-friendly mid-contract?", a: "Yes — just let us know. We'll switch your recurring clean to the eco protocol from the next visit. No fee, no contract change, no notice period. Some clients alternate (eco one week, conventional the next) but most go fully eco once they try it. The cleaning result is the same — only the chemistry changes." },
+ 23980→  ],
+ 23981→  testimonials: [
+ 23982→    { name: "Dr Fiona MacDonald", role: "Asthma Sufferer, Edinburgh", quote: "Conventional cleaning products trigger my asthma. Maundy Clean's eco clean uses EU Ecolabel products that don't. The house is just as clean (they showed me the EN 1276 certification), and I don't need to leave for 3 hours afterwards to avoid the fumes. Switched our recurring plan permanently.", rating: 5 },
+ 23983→    { name: "The Robertson Family", role: "Family with New Baby, Glasgow", quote: "New baby, two dogs, an eco-conscious household. Maundy Clean's eco clean ticked every box — EU Ecolabel, cruelty-free, biodegradable, no plastic waste. They showed us the certification and answered every ingredient question. The cleaning is indistinguishable from conventional. We've been on the eco plan for 18 months.", rating: 5 },
+ 23984→    { name: "James Cameron", role: "Allergy Sufferer, Stirling", quote: "Contact dermatitis from conventional cleaning products. Maundy Clean's eco clean is the only service I've found that uses genuinely certified products (not greenwashed 'natural' claims). My hands are fine after they've been. The clean is excellent. The price is 12% more than conventional — worth it for me.", rating: 5 },
+ 23985→  ],
+ 23986→  relatedServices: [
+ 23987→    { name: "Recurring Home Cleaning", href: "/services/recurring-home-cleaning", description: "Weekly, fortnightly or monthly home cleaning — eco-friendly green clean available on any plan." },
+ 23988→    { name: "Deep House Cleaning", href: "/services/deep-house-cleaning", description: "Full-house deep clean — eco-friendly green clean option available for the deep clean protocol." },
+ 23989→    { name: "End of Tenancy Cleaning", href: "/services/move-in-out-cleaning", description: "Move-out cleaning with eco-friendly products — agents accept the EN 1276 certification." },
+ 23990→    { name: "Plant Care Add-On", href: "/services/plant-care-add-on", description: "Houseplant care — eco-friendly cleaning is safer for sensitive plant species." },
+ 23991→    { name: "Pet Area Sanitisation", href: "/services/pet-area-sanitisation", description: "Pet-safe sanitisation — eco-friendly green clean is the standard protocol for pet households." },
+ 23992→    { name: "Smart-Home Device Wipe", href: "/services/smart-home-device-wipe", description: "Smart-home device wipe — uses electronics-safe IPA, but the surrounding eco clean keeps VOCs low." },
+ 23993→  ],
+ 23994→  gallery: [
+ 23995→    { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "EU Ecolabel-certified product line-up in refillable 5L containers", caption: "EU Ecolabel-certified products in refillable 5L containers. No single-use trigger sprays. Closed-loop supply chain." },
+ 23996→    { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Microfibre cloths being used per-room to prevent cross-contamination", caption: "Per-room microfibre cloths laundered at 90°C between visits. 99% bacterial removal without disinfectant. 200+ wash cycles before retirement." },
+ 23997→    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Eco cleaning in progress with no chemical smell", caption: "Eco clean in progress. No chemical smell, no fume-induced headache, no airing-the-house-for-3-hours. Air quality often better after the clean than before." },
+ 23998→    { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "EU Ecolabel certification close-up", caption: "EU Ecolabel — the strictest ecolabel in Europe. Bans bleach, phosphates, NTA, EDTA. Requires 28-day biodegradability and EN standard cleaning performance." },
+ 23999→  ],
+ 24000→};
+
+[showing lines 23800-24000 of 24001; use offset=24001 with limit to continue reading]

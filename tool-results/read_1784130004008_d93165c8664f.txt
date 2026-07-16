@@ -1,0 +1,447 @@
+     1→    title: "1. External Concourse &amp; Entrance Care",
+     2→    description:
+     3→      "External concourses, forecourts, and entrance plazas are the first impression your attendees form &mdash; and the highest-risk slip-and-fall zones in any venue. Oil and food spills, dropped glass, chewing gum, discarded confetti, leaf litter, and organic growth (algae and moss on damp Scottish stonework) all accumulate between events. Our external protocol uses ride-on sweepers for large concourse areas, walk-behind scrubber-dryers for tight entrance zones, rotary pressure cleaning with superheated water for stubborn stains and gum removal, and bioremediation products for spill response &mdash; delivered to a slip-hazard-free, &ldquo;speechlessly spotless&rdquo; standard before doors open.",
+     4→    points: [
+     5→      {
+     6→        title: "Commercial Pressure Washing",
+     7→        text: "Intensive cleaning of hard surfaces, walkways, and forecourts to remove city-center pollutants and organic growth. Ride-on sweepers (Tennant, Karcher) tackle large open concourse areas at 3,000&ndash;6,000m&sup2;/hour; walk-behind scrubber-dryers handle tight entrance zones, queue barriers, and around ticket machines; rotary pressure lances with superheated water lift stubborn staining, discarded gum, and food-and-drink residue from monoblock, tarmac, and concrete. Bioremediation products break down organic spills (vomit, food, drink) at a molecular level rather than spreading them. Algae and moss on damp Scottish stonework treated with anti-fungal products so the entrance doesn&rsquo;t turn into a slip hazard after every rainfall.",
+     8→      },
+     9→      {
+    10→        title: "Access Route Restoration",
+    11→        text: "Ensuring all entry points are &ldquo;speechlessly spotless&rdquo; to create a positive first impression for guests. Entrances, turnstile banks, queue barriers, signage, wayfinding totems, and ticket-machine housings wiped down with a pH-neutral sanitiser; glass foyers and entrance canopies cleaned (interior and exterior where reachable); litter picked and bins emptied before, during, and after every event; high-touch points (entry-phone handsets, scanner housings, barrier buttons) treated with EN 14476 virucidal disinfectant with a verified 60-second contact time. A spotless entrance sets the tone for the entire event experience.",
+    12→      },
+    13→      {
+    14→        title: "Car Park Maintenance",
+    15→        text: (
+    16→          <>
+    17→            Specialized{" "}
+    18→            <Link
+    19→              href="/services/car-park-cleaning"
+    20→              className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+    21→            >
+    22→              Car Park Cleaning
+    23→            </Link>{" "}
+    24→            to ensure road markings are visible and surfaces are free of oil and grease stains.
+    25→            Coordinated with our specialist car park cleaning protocol &mdash; ride-on sweepers
+    26→            for event parking, oil-stain bioremediation in disabled and family bays, line-marking
+    27→            inspection and refresh coordination, drainage-channel clearance, and SEPA-compliant
+    28→            oily-water capture and licensed-waste disposal (never down surface water drains).
+    29→            Clean car parks reduce slip hazards for visitors, protect your line-marking investment,
+    30→            and project the same &ldquo;curtain-up&rdquo; standard from the moment guests park to
+    31→            the moment they take their seats.
+    32→          </>
+    33→        ),
+    34→      },
+    35→    ],
+    36→  },
+    37→  {
+    38→    icon: Warehouse,
+    39→    image: IMG.checklistCounter,
+    40→    imageAlt: "Maundy Clean crew deep cleaning auditoria seating, sanitising armrests and cup holders, and restoring hospitality-suite carpets in a Scottish concert hall between events",
+    41→    title: "2. Internal Seating &amp; Arena Sanitation",
+    42→    description:
+    43→      "Auditoria and seating areas are the heart of any venue &mdash; and the surfaces your guests touch most. Armrests, cup holders, seat flips, aisle edges, and staircases all collect spilled drinks, dropped food, confetti, chewing gum, and bodily-fluid residue between events. Our internal seating protocol uses HEPA-filtered vacuums for auditoria carpet, industrial-grade extractors for hospitality-suite carpet restoration, EN 14476 virucidal disinfectant on every armrest and cup holder, and biohazard kits for spill response &mdash; delivered to a uniform, audit-grade standard across every seating zone, every event.",
+    44→    points: [
+    45→      {
+    46→        title: "Intensive Seating Cleans",
+    47→        text: "Meticulous wiping and disinfecting of all seating areas and concourse fixtures. Seats vacuumed (litter, confetti, dropped food, glass); armrests wiped with EN 14476 virucidal disinfectant (the highest-touch surface in any auditorium); cup holders emptied, wiped, and sanitised; seat flips checked for lost property; aisle edges and staircases swept and mopped; handrails sanitised; vomit and spill response with specific biohazard protocols; stage edge (where accessible) cleaned; lighting and audio equipment wiped where safe. A clean auditorium is the difference between a venue guests remember and one they avoid.",
+    48→      },
+    49→      {
+    50→        title: "Floor &amp; Carpet Restoration",
+    51→        text: "Using industrial-grade equipment to bring old or dirty carpets in hospitality suites back to life. Hospitality suites, VIP boxes, backstage corridors, and dressing rooms get heavy use and visible wear. Industrial carpet extractors (Karcher Puzzi, Truvox) lift embedded dirt, drink spills, and food stains; low-moisture encapsulation for areas that need to be back in service within the hour; protective Scotchgard application on request for high-traffic routes; hard floors scrubbed, buffed, and slip-tested. A restored carpet projects premium care to your VIP guests and protects your flooring investment for the long run.",
+    52→      },
+    53→      {
+    54→        title: "Window &amp; Glass Detailing",
+    55→        text: "Cleaning the inside and outside of windows to maximize natural light and maintain a bright, professional atmosphere. Glass foyers, atrium glazing, internal partition glass, lift-lobby doors, mirror walls in hospitality suites, and showcase cabinets all collect fingerprints, smudges, and airborne grime between events. Glass wiped with an alcohol-free anti-static cleaner and buffed to a streak-free finish; frames and sills detailed; smudges and fingerprints removed from high-touch glass (especially lift-lobby doors and entry-phone glass). External high-reach glazing is coordinated with our Window Cleaning service &mdash; the detail that turns a &ldquo;cleaned&rdquo; venue into a &ldquo;speechlessly spotless&rdquo; one.",
+    56→      },
+    57→    ],
+    58→  },
+    59→  {
+    60→    icon: Sparkles,
+    61→    image: IMG.checklistKitchen,
+    62→    imageAlt: "Maundy Clean crew detailing event venue washroom chrome, signage, fixtures, and entry systems to a high-shine, sanitised standard in Scotland",
+    63→    title: "3. Often-Missed Technical Details",
+    64→    description:
+    65→      "The details visitors notice first &mdash; and the details most cleaners skip. Signage and fixture refresh, washroom deep cleaning, back-of-house touchpoints, and the chrome details that signal genuine care. These are the moments that turn a &ldquo;cleaned&rdquo; venue into a &ldquo;speechlessly spotless&rdquo; one, and the details that protect your reputation in event post-mortems, online reviews, and licensing inspections.",
+    66→    points: [
+    67→      {
+    68→        title: "Washroom Deep Cleaning",
+    69→        text: "Intensive sanitation of all public restrooms, including buffing chrome to a high shine and disinfecting all high-touch points. Toilets descaled, disinfected with EN 1276-certified bactericide, and polished; urinals descaled and deodorised; tiles and grout scrubbed; partition screens disinfected; mirrors squeegeed; floors mopped edge-to-edge with a slip-resistant sanitiser. Chrome taps, soap dispensers, towel dispensers, hand-dryer nozzles, door furniture, and cubicle locks buffed with a streak-free stainless-steel cleaner to a high shine. Sanitary bins checked and emptied; disabled-access and changing-places toilets given particular attention; consumables (toilet paper, hand soap, paper towel, sanitiser) restocked every visit. Continuous attendant service during events for high-capacity venues.",
+    70→      },
+    71→      {
+    72→        title: "Signage &amp; Fixture Refresh",
+    73→        text: "Meticulously wiping visible skirting boards, door frames, and entry systems in communal areas. Skirting boards, door frames, architraves, switch plates, handrails, fire-extinguisher brackets, notice-board trims, signage housings, ATM fascias, ticket-machine fronts, and entry-system keypads in foyers, concourses, and lift lobbies damp-wiped with a pH-neutral sanitiser. Ceiling light fixtures, air-conditioning vents, and extractor grilles dusted with extendable HEPA-filtered attachments (we don&rsquo;t just brush the dust back into the air); cable trays, picture frames, and wayfinding totems wiped down. These are the details visitors notice first &mdash; and the details most cleaners skip.",
+    74→      },
+    75→    ],
+    76→  },
+    77→];
+    78→
+    79→export function EventVenueSeoChecklist() {
+    80→  return (
+    81→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+    82→      <div className="max-w-[1400px] mx-auto px-6">
+    83→        <motion.div
+    84→          initial={{ opacity: 0, y: 20 }}
+    85→          whileInView={{ opacity: 1, y: 0 }}
+    86→          viewport={{ once: true, margin: "-80px" }}
+    87→          transition={{ duration: 0.5 }}
+    88→          className="max-w-3xl mb-12"
+    89→        >
+    90→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+    91→            Beyond the standard surface wipe
+    92→          </span>
+    93→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+    94→            Our Total Venue Maintenance &amp; Post-Event Checklist
+    95→          </h2>
+    96→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+    97→            Our recurring cleaning philosophy for venues follows a rigorous, agency approved
+    98→            checklist designed to restore cleanliness and reduce slip hazards for visitors. We
+    99→            deliver technical depth in every zone of your facility &mdash; from the external
+   100→            concourse and entrance care zone (pressure washing, access route restoration, car park
+   101→            coordination) through the internal seating and arena sanitation zone (intensive seating
+   102→            cleans, floor and carpet restoration, window and glass detailing) to the often-missed
+   103→            technical details (washroom deep cleaning, signage and fixture refresh). Below is the
+   104→            scope we deliver as standard, regardless of venue type, footprint, or event schedule.
+   105→          </p>
+   106→        </motion.div>
+   107→
+   108→        <div className="grid lg:grid-cols-3 gap-6">
+   109→          {CHECKLIST_ITEMS.map((item, i) => {
+   110→            const Icon = item.icon;
+   111→            return (
+   112→              <motion.div
+   113→                key={item.title}
+   114→                initial={{ opacity: 0, y: 24 }}
+   115→                whileInView={{ opacity: 1, y: 0 }}
+   116→                viewport={{ once: true, margin: "-40px" }}
+   117→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   118→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   119→              >
+   120→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   121→                  <img
+   122→                    src={item.image}
+   123→                    alt={item.imageAlt}
+   124→                    className="absolute inset-0 w-full h-full object-cover"
+   125→                    loading="lazy"
+   126→                  />
+   127→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   128→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   129→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   130→                  </div>
+   131→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   132→                    {item.title}
+   133→                  </h3>
+   134→                </div>
+   135→                <div className="p-6 flex-1 flex flex-col">
+   136→                  {item.description ? (
+   137→                    <p
+   138→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   139→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   140→                    />
+   141→                  ) : null}
+   142→                  <ul className="space-y-3 mt-auto">
+   143→                    {item.points.map((point) => {
+   144→                      const PointIcon = CheckCircle2;
+   145→                      return (
+   146→                        <li
+   147→                          key={point.title}
+   148→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   149→                        >
+   150→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   151→                          <span>
+   152→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   153→                            &mdash;{" "}
+   154→                            {typeof point.text === "string" ? (
+   155→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   156→                            ) : (
+   157→                              point.text
+   158→                            )}
+   159→                          </span>
+   160→                        </li>
+   161→                      );
+   162→                    })}
+   163→                  </ul>
+   164→                </div>
+   165→              </motion.div>
+   166→            );
+   167→          })}
+   168→        </div>
+   169→      </div>
+   170→    </section>
+   171→  );
+   172→}
+   173→
+   174→// ============================================================
+   175→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   176→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   177→// Per the brief: icons ClipboardCheck / FileText / Sparkles
+   178→// ============================================================
+   179→
+   180→const BOOKING_STEPS = [
+   181→  {
+   182→    icon: ClipboardCheck,
+   183→    step: "01",
+   184→    title: "Site Assessment & Quote",
+   185→    description:
+   186→      "Contact us for a free, no-obligation quote. We conduct a thorough assessment to determine the most effective cleaning method for your specific venue. We walk your venue with your facilities manager, identify your venue type (stadium, arena, concert hall, conference centre, exhibition centre, wedding venue), capacity (100 to 67,000 guests), event calendar (one-off concerts, recurring conferences, exhibition cycles, wedding season), access windows (overnight post-event resets, daytime between-event maintenance, during-event day porters and toilet attendants), turnaround windows (90 minutes to 24 hours between events), and any specific cleaning challenges (backstage artist-rider standards, lost-property protocol, slip-risk zones, vulnerable surfaces). We send an itemised proposal within 2 business days: crew size, surge capacity (2&ndash;3 cleaners for routine maintenance up to 20&ndash;50 cleaners for major events), visit frequency, time on-site, scope of work, fixed monthly rate, RAMS, COSHH datasheets, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   187→  },
+   188→  {
+   189→    icon: FileText,
+   190→    step: "02",
+   191→    title: "Professional Matching",
+   192→    description:
+   193→      "We hand-pick a team with experience in large-scale event support and commercial hygiene. Your allocated crew lead is PVG-checked (essential for venues with public access), uniformed, and trained in event-specific protocols &mdash; crowd safety, lost child procedures, spill response, vomit and bodily fluid cleanup, artist-rider standards for backstage and dressing rooms, and audience-flow management. We brief the crew on your venue layout, your event calendar, your access preferences, your &ldquo;risky&rdquo; zones (concourse bottlenecks, washroom peaks, bar queues, disabled viewing platforms, EV charging in car parks) and your lost-property protocol &mdash; so cleaning happens around your operations, not through them. The same crew returns for every scheduled session, building real knowledge of your shift patterns, your signage protocol, and your event-day pressures. We arrive in liveried vehicles, in uniform with photo I.D. and PPE, with commercial-grade ride-on sweepers for concourses, HEPA-filtered vacuums for auditoria seating, industrial carpet extractors for hospitality suites, bioremediation products for spill response, and COSHH-compliant, child-safe, surface-safe chemistry.",
+   194→  },
+   195→  {
+   196→    icon: Sparkles,
+   197→    step: "03",
+   198→    title: "Enjoy a Pristine Venue",
+   199→    description:
+   200→      "Experience a space that feels fresh and safe for your participants, backed by our MaundyClean 100% satisfaction guarantee. You receive a signed cleaning log after every visit (operative signature, facilities-manager counter-signature on request), arrival and departure times, tasks completed, and any issues flagged &mdash; like a fresh spill in a disabled bay, a damaged fixture, a blocked drainage channel, a low-stock consumable, or a lost-property item handed to security &mdash; before they undermine a turnaround window, an environmental health inspection, or a guest review. From &pound;14 per hour for a small wedding venue through to a fully bespoke retainer for a multi-arena national portfolio. We hold &pound;5m public liability as standard (increased for major venues) and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   201→  },
+   202→];
+   203→
+   204→export function EventVenueSeoBooking() {
+   205→  return (
+   206→    <section className="py-16 lg:py-24 bg-background">
+   207→      <div className="max-w-[1400px] mx-auto px-6">
+   208→        <motion.div
+   209→          initial={{ opacity: 0, y: 20 }}
+   210→          whileInView={{ opacity: 1, y: 0 }}
+   211→          viewport={{ once: true, margin: "-80px" }}
+   212→          transition={{ duration: 0.5 }}
+   213→          className="text-center mb-14"
+   214→        >
+   215→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   216→            Hassle-free booking
+   217→          </span>
+   218→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   219→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   220→          </h3>
+   221→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   222→            We have optimized our booking experience to be uncomplicated and straightforward,
+   223→            providing the dependable results Scottish venue managers rely on. From free site
+   224→            assessment and itemised quote to first clean in under a week &mdash; no friction, no
+   225→            waiting, no surprises. Just a pristine venue, every event, on schedule, and a compliance
+   226→            file that&rsquo;s audit-ready the day your environmental health officer or licensing
+   227→            inspector walks in.
+   228→          </p>
+   229→        </motion.div>
+   230→
+   231→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   232→          {/* Connector line */}
+   233→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   234→
+   235→          {BOOKING_STEPS.map((step, i) => {
+   236→            const Icon = step.icon;
+   237→            return (
+   238→              <motion.div
+   239→                key={step.step}
+   240→                initial={{ opacity: 0, y: 24 }}
+   241→                whileInView={{ opacity: 1, y: 0 }}
+   242→                viewport={{ once: true, margin: "-40px" }}
+   243→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   244→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   245→              >
+   246→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   247→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   248→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   249→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   250→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   251→                    {step.step}
+   252→                  </span>
+   253→                </div>
+   254→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   255→                  {step.title}
+   256→                </h3>
+   257→                <p
+   258→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   259→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   260→                />
+   261→              </motion.div>
+   262→            );
+   263→          })}
+   264→        </div>
+   265→
+   266→        <motion.div
+   267→          initial={{ opacity: 0, y: 16 }}
+   268→          whileInView={{ opacity: 1, y: 0 }}
+   269→          viewport={{ once: true }}
+   270→          transition={{ duration: 0.5, delay: 0.3 }}
+   271→          className="text-center mt-10"
+   272→        >
+   273→          <Button
+   274→            size="lg"
+   275→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   276→            asChild
+   277→          >
+   278→            <Link href="/quote">
+   279→              Request Your Free Venue Survey Today
+   280→              <ArrowRight className="w-5 h-5" />
+   281→            </Link>
+   282→          </Button>
+   283→        </motion.div>
+   284→      </div>
+   285→    </section>
+   286→  );
+   287→}
+   288→
+   289→// ============================================================
+   290→// Section 5 - Solutions for Every Property Cycle
+   291→// (Semantic H2: "Solutions for Every Property Cycle")
+   292→// Brief drops the interlinking prefix per the cleanup rules.
+   293→// Image-topped cards with internal links to specialist services.
+   294→// All 4 cards use plain string descriptions (no inline <Link> in
+   295→// card descriptions per the brief - only the Intro section has
+   296→// inline Links, and the Checklist Card 1 third sub-point has one).
+   297→// ============================================================
+   298→
+   299→type InterlinkSolution = {
+   300→  icon: typeof Sparkles;
+   301→  title: string;
+   302→  href: string;
+   303→  image: string;
+   304→  imageAlt: string;
+   305→  description: ReactNode;
+   306→  cta: string;
+   307→};
+   308→
+   309→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   310→  {
+   311→    icon: Sparkles,
+   312→    title: "Pre-Season Reset &middot; Deep House Cleaning",
+   313→    href: "/services/deep-house-cleaning",
+   314→    image: IMG.leaseSpring,
+   315→    imageAlt: "Pre-season deep clean of event venue interior offices and back-of-house zones combined with Deep House Cleaning protocol in Scotland",
+   316→    description:
+   317→      "Combine a venue clean with a Deep House Cleaning protocol for your interior offices to ensure your entire building is front-line ready. Backstage offices, green rooms, production offices, and staff welfare zones get the same meticulous, top-to-bottom treatment as your auditoria and concourses &mdash; the same trusted, vetted crew, the same child-safe eco chemistry, the same signed cleaning log after every visit.",
+   318→    cta: "Explore deep house cleaning",
+   319→  },
+   320→  {
+   321→    icon: Hammer,
+   322→    title: "Post-Renovation &middot; After Builders Clean",
+   323→    href: "/services/post-construction-cleaning",
+   324→    image: IMG.leaseBuilders,
+   325→    imageAlt: "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish arena concourse before reopening day",
+   326→    description:
+   327→      "If your arena has undergone improvements, our After Builders Clean is designed to remove heavy layers of builders&rsquo; dust. Fine dust left on auditoria seating, concourse flooring, or hospitality suites undermines the customer-trust signal the moment the venue re-opens &mdash; we vacuum, damp-wipe, and protect every surface before the dust has a chance to damage your guests&rsquo; experience or your freshly-painted finishes.",
+   328→    cta: "Explore after builders cleaning",
+   329→  },
+   330→  {
+   331→    icon: Utensils,
+   332→    title: "Hospitality Excellence &middot; Restaurant Deep Cleaning",
+   333→    href: "/services/restaurant-cleaning",
+   334→    image: IMG.leaseAntiviral,
+   335→    imageAlt: "Deep cleaning of on-site bars, eateries and concession kitchens in a Scottish event venue to food hygiene standards with Maundy Clean",
+   336→    description:
+   337→      "For on-site bars and eateries, our Restaurant Deep Cleaning ensures compliance with food hygiene standards. Extraction hoods degreased, prep surfaces descaled and sanitised, canopies and baffle filters deep-cleaned, floors edge-to-edge mopped with food-safe chemistry, and audit-ready documentation for EHO inspection &mdash; the same specialist standard we deliver to standalone Scottish restaurants, applied to your venue&rsquo;s catering and concession zones.",
+   338→    cta: "Explore restaurant deep cleaning",
+   339→  },
+   340→  {
+   341→    icon: HeartPulse,
+   342→    title: "Fabric Rejuvenation &middot; Upholstery Cleaning",
+   343→    href: "/services/upholstery-cleaning",
+   344→    image: IMG.leaseTenancy,
+   345→    imageAlt: "Rejuvenating VIP suite upholstery, hospitality seating and dressing room soft furnishings in a Scottish event venue with Maundy Clean",
+   346→    description:
+   347→      "Bring freshness back to VIP suites with our professional Upholstery Cleaning to remove germs and unwanted odors. VIP box seating, hospitality-suite sofas, backstage dressing room chairs, and reception-area suites all benefit from a periodic specialist reset &mdash; hot-water extraction, stain treatment, odour neutralisation, and Scotchgard protection on request. The detail that turns a &ldquo;cleaned&rdquo; venue into a &ldquo;speechlessly spotless&rdquo; one.",
+   348→    cta: "Explore upholstery cleaning",
+   349→  },
+   350→];
+   351→
+   352→export function EventVenueSeoInterlinking() {
+   353→  return (
+   354→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   355→      <div className="max-w-[1400px] mx-auto px-6">
+   356→        <motion.div
+   357→          initial={{ opacity: 0, y: 20 }}
+   358→          whileInView={{ opacity: 1, y: 0 }}
+   359→          viewport={{ once: true, margin: "-80px" }}
+   360→          transition={{ duration: 0.5 }}
+   361→          className="max-w-3xl mb-12"
+   362→        >
+   363→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   364→            Beyond the daily clean &middot; property milestones
+   365→          </span>
+   366→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   367→            Solutions for Every Property Cycle
+   368→          </h2>
+   369→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   370→            Our venue cleaning services ensure your facility is always &ldquo;curtain-up&rdquo;
+   371→            ready, but we offer specialized support for major transitions: from pre-season resets
+   372→            that combine venue cleaning with deep house cleaning for interior offices, through
+   373→            post-renovation dust clear-outs and hospitality-zone restaurant deep cleaning, to
+   374→            fabric rejuvenation for VIP suites. The same trusted, vetted crew can step up whenever
+   375→            your venue needs more than a standard visit, with the same child-safe, surface-safe
+   376→            protocols in force.
+   377→          </p>
+   378→        </motion.div>
+   379→
+   380→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   381→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   382→            const Icon = sol.icon;
+   383→            return (
+   384→              <motion.div
+   385→                key={sol.title}
+   386→                initial={{ opacity: 0, y: 24 }}
+   387→                whileInView={{ opacity: 1, y: 0 }}
+   388→                viewport={{ once: true, margin: "-40px" }}
+   389→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   390→              >
+   391→                <Link
+   392→                  href={sol.href}
+   393→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   394→                >
+   395→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   396→                    <img
+   397→                      src={sol.image}
+   398→                      alt={sol.imageAlt}
+   399→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   400→                      loading="lazy"
+   401→                    />
+   402→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   403→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   404→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   405→                    </div>
+   406→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   407→                      {sol.title}
+   408→                    </h3>
+   409→                  </div>
+   410→                  <div className="p-5">
+   411→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   412→                      {typeof sol.description === "string" ? (
+   413→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+   414→                      ) : (
+   415→                        sol.description
+   416→                      )}
+   417→                    </p>
+   418→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   419→                      {sol.cta}
+   420→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   421→                    </span>
+   422→                  </div>
+   423→                </Link>
+   424→              </motion.div>
+   425→            );
+   426→          })}
+   427→        </div>
+   428→      </div>
+   429→    </section>
+   430→  );
+   431→}
+   432→
+   433→// ============================================================
+   434→// Section 6 - "Near Me" Location Internal Links
+   435→// (Semantic H2: "Event Venue Cleaning Near Me in Scotland")
+   436→// Split layout with map image + 36-location grid
+   437→// ============================================================
+   438→
+   439→export function EventVenueSeoNearMe() {
+   440→  return (
+   441→    <section className="py-16 lg:py-24 bg-background">
+   442→      <div className="max-w-[1400px] mx-auto px-6">
+   443→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   444→          {/* Left: copy + map image */}
+   445→          <motion.div
+   446→            initial={{ opacity: 0, y: 20 }}
+   447→

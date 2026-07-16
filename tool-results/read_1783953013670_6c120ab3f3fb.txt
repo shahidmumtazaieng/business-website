@@ -1,0 +1,352 @@
+ 18601→export const biohazardCleanup: ServiceDetail = {
+ 18602→  slug: "biohazard-cleaning",
+ 18603→  name: "Biohazard Cleanup",
+ 18604→  category: "Specialty Cleaning",
+ 18605→  tagline: "Blood, bodily fluids, sharps, sewage & contamination — safe, compliant, discreet remediation.",
+ 18606→  heroHeadline: "Biohazards handled.\nSafely. Discreetly.\nCompliantly.",
+ 18607→  heroSubhead:
+ 18608→    "Biohazard cleanup is a specialist discipline that protects public health, employee safety, and your legal liability. Blood and bodily fluids (HIV, Hepatitis B/C, MRSA), sharps (needles, scalpels, broken glass), sewage (E. coli, Cryptosporidium, Leptospirosis), animal waste (toxoplasmosis, salmonella), contaminated needles, drug paraphernalia. Our trained biohazard remediation team works under HSE HSG272 protocol, RPE/PPE suited, with EN 14476 virucidal chemistry, sharps containers, biohazard waste consignment. £5m public liability. Discreet unmarked vans. 24/7 response across Scotland. References from local authorities, housing associations, and care providers available on request.",
+ 18609→  heroImage: "https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg",
+ 18610→  breadcrumbParent: "Specialty Cleaning",
+ 18611→  metaTitle: "Biohazard Cleanup in Scotland | HSE HSG272 Compliant | Maundy Clean",
+ 18612→  metaDescription:
+ 18613→    "Biohazard cleanup across Scotland. Blood, bodily fluids, sharps, sewage. HSE HSG272 compliant, EN 14476 virucidal. 24/7 response. From £420/visit. 4.9★.",
+ 18614→  overviewParagraphs: [
+ 18615→    "Biohazard cleanup is not general cleaning. Blood and bodily fluids carry HIV, Hepatitis B and C, MRSA, and other bloodborne pathogens. Sharps (needles, scalpels, broken glass contaminated with bodily fluids) carry the same risks plus physical injury. Sewage carries E. coli, Cryptosporidium, Leptospirosis, Hepatitis A, and a host of other pathogens. Animal waste carries toxoplasmosis, salmonella, E. coli. Drug paraphernalia carries bloodborne pathogens plus chemical contamination. General cleaners are not trained, not equipped, and not insured for biohazard — it requires a specialist remediation team working under HSE HSG272 (Health and Safety Executive guidance on biological agents), with full RPE/PPE, EN 14476 virucidal chemistry, sharps containers, and licensed biohazard waste consignment.",
+ 18616→    "Our biohazard remediation protocol follows HSE HSG272 and BSi PAS 9960 (Biohazard remediation). Stage 1: risk assessment — identify the biohazard type, scope, and risk profile. Stage 2: containment — seal the area, prevent cross-contamination, control air flow. Stage 3: removal — physical removal of gross contamination (sharps in containers, biological waste in biohazard bags, contaminated porous materials in biohazard bags for disposal). Stage 4: disinfection — EN 14476 virucidal chemistry on all surfaces, contact time per manufacturer, double application in high-risk zones. Stage 5: verification — visual inspection, ATP swab (pass threshold <30 RLU), documentation. Stage 6: waste consignment — biohazard waste consigned to licensed carrier, consignment note issued, waste tracked to incineration.",
+ 18617→    "We work for local authorities (void properties, tenant evictions, public realm biohazards), housing associations (void units, tenant-support cleanups), care providers (care home contamination, home care incidents), NHS Trusts (community biohazards, post-incident cleanup), police and forensic services (post-forensic biohazard cleanup), private landlords (tenant abandonment, contamination), commercial property owners (workplace incidents, contamination). 24/7 response — biohazards don't wait for business hours. Discreet unmarked vans — we don't attract attention. Full RPE/PPE (FFP3 respirator, full-face mask, Tyvec suit, double nitrile gloves, gumboots) for the safety of our team and your site. References available on request.",
+ 18618→  ],
+ 18619→  whatsIncluded: [
+ 18620→    {
+ 18621→      title: "Risk assessment & containment",
+ 18622→      description:
+ 18623→        "Stage 1 risk assessment: biohazard type identified (blood, bodily fluids, sharps, sewage, animal waste, drug paraphernalia), scope assessed (area, surface type, contamination level), risk profile documented. Stage 2 containment: area sealed with polythene sheeting and tape, air flow controlled (negative pressure with HEPA extraction if required), exclusion zone marked with biohazard signage, access restricted to authorised personnel only. Adjacent areas protected. HVAC isolated if contamination risk. H&S briefing for all operatives on site. Risk assessment and method statement (RAMS) signed off before work starts.",
+ 18624→    },
+ 18625→    {
+ 18626→      title: "Gross contamination removal",
+ 18627→      description:
+ 18628→        "Stage 3 removal: physical removal of gross contamination. Sharps (needles, scalpels, broken glass) picked up with tongs and placed in UN-approved sharps containers. Biological waste (blood, bodily fluids, tissue) placed in biohazard bags (UN3291) for incineration. Contaminated porous materials (carpet, fabric, soft furnishings that cannot be disinfected) bagged for incineration. Sewage and animal waste physically removed with dedicated tools (never reused on other sites). Drug paraphernalia placed in sharps containers and consigned as pharmaceutical waste. All waste double-bagged, sealed, labelled per UN requirement.",
+ 18629→    },
+ 18630→    {
+ 18631→      title: "EN 14476 virucidal disinfection",
+ 18632→      description:
+ 18633→        "Stage 4 disinfection: EN 14476 virucidal chemistry (proven effective against enveloped and non-enveloped viruses, bacteria, fungi, bloodborne pathogens including HIV, Hepatitis B/C, MRSA) applied to all surfaces. Chemistry applied by sprayer or fogger for full coverage. Contact time per manufacturer (typically 5-15 minutes). Double application in high-risk zones (visible contamination areas, splash zones). Porous surfaces (wood, unsealed concrete) treated twice. Soft furnishings that cannot be disinfected removed for incineration. HVAC ductwork fogged if contamination risk. Final wipe-down with disinfectant-soaked cloths.",
+ 18634→    },
+ 18635→    {
+ 18636→      title: "ATP swab verification",
+ 18637→      description:
+ 18638→        "Stage 5 verification: ATP (adenosine triphosphate) swab test on key surfaces post-clean. ATP swab measures organic residue — pass threshold typically <30 RLU (relative light units) for biohazard zones. Swabs taken from highest-risk areas (visible contamination zones, splash zones, adjacent areas). Results available within 60 seconds (handheld luminometer). Any swab above threshold triggers re-clean and re-swab. Documentation: ATP swab results, surface photos pre- and post-clean, chemical application log, waste consignment notes. Verification documentation provided to client within 24 hours of completion.",
+ 18639→    },
+ 18640→    {
+ 18641→      title: "Licensed biohazard waste consignment",
+ 18642→      description:
+ 18643→        "Stage 6 waste consignment: biohazard waste consigned to licensed carrier under Hazardous Waste (Scotland) Regulations. Sharps containers consigned as sharps waste. Biohazard bags consigned as clinical waste (UN3291). Contaminated porous materials consigned as offensive waste or clinical waste depending on contamination level. Consignment note issued per uplift — kept on file for 3 years per SEPA requirement. Waste tracked from site to carrier to incineration facility. Certificate of destruction provided. We never dispose of biohazard waste in general waste — that's a criminal offence under Hazardous Waste Regulations.",
+ 18644→    },
+ 18645→    {
+ 18646→      title: "Discreet unmarked 24/7 response",
+ 18647→      description:
+ 18648→        "24/7 response — biohazards don't wait for business hours. Discreet unmarked vans — we don't attract attention. Operatives in plain uniform (no 'BIOHAZARD' branding on the van) — neighbours don't need to know. Discretion is part of our protocol — we park out of sight where possible, enter through side/rear entrances where possible, and never discuss the job in public. References from local authorities, housing associations, care providers, NHS Trusts, police, and forensic services available on request. We've handled 500+ biohazard remediations across Scotland in the last 5 years.",
+ 18649→    },
+ 18650→  ],
+ 18651→  processSteps: [
+ 18652→    {
+ 18653→      step: "01",
+ 18654→      title: "Emergency call & risk assessment",
+ 18655→      description:
+ 18656→        "Emergency call: trained operator takes details — biohazard type, location, scope, urgency, access arrangements. Initial risk assessment over the phone. Mobilisation team dispatched — typically 60-90 minute response in central belt, 2-3 hours in remote areas. On arrival: site-specific risk assessment, biohazard type confirmed, scope confirmed, exclusion zone set up, H&S briefing for all operatives. Risk assessment and method statement (RAMS) signed off before work starts. Client briefing on what we'll do and how long it will take.",
+ 18657→      duration: "1-3 hours",
+ 18658→    },
+ 18659→    {
+ 18660→      step: "02",
+ 18661→      title: "Containment & gross removal",
+ 18662→      description:
+ 18663→        "Containment: area sealed with polythene sheeting and tape, air flow controlled, exclusion zone marked. Operatives in full RPE/PPE (FFP3 respirator, full-face mask, Tyvec suit, double nitrile gloves, gumboots). Gross contamination removal: sharps in UN-approved containers, biological waste in biohazard bags (UN3291), contaminated porous materials bagged for incineration. Sewage and animal waste physically removed. Drug paraphernalia placed in sharps containers. All waste double-bagged, sealed, labelled per UN requirement. Stage 3 complete when visible contamination removed.",
+ 18664→      duration: "2-8 hours",
+ 18665→    },
+ 18666→    {
+ 18667→      step: "03",
+ 18668→      title: "Disinfection & verification",
+ 18669→      description:
+ 18670→        "EN 14476 virucidal chemistry applied to all surfaces by sprayer or fogger. Contact time per manufacturer (typically 5-15 minutes). Double application in high-risk zones. Porous surfaces treated twice. HVAC ductwork fogged if contamination risk. Final wipe-down with disinfectant-soaked cloths. ATP swab test on key surfaces post-clean — pass threshold <30 RLU. Any swab above threshold triggers re-clean and re-swab. Documentation: ATP swab results, surface photos pre- and post-clean, chemical application log. Verification documentation provided to client within 24 hours.",
+ 18671→      duration: "2-6 hours",
+ 18672→    },
+ 18673→    {
+ 18674→      step: "04",
+ 18675→      title: "Waste consignment & documentation",
+ 18676→      description:
+ 18677→        "Biohazard waste consigned to licensed carrier under Hazardous Waste (Scotland) Regulations. Consignment note issued per uplift — kept on file for 3 years per SEPA requirement. Waste tracked from site to carrier to incineration facility. Certificate of destruction provided. Full documentation pack issued to client: risk assessment, RAMS, chemical application log, ATP swab results, photos, waste consignment notes, certificate of destruction, £5m public liability certificate. Operatives debriefed, equipment decontaminated or disposed of, area handed back to client ready for reoccupation.",
+ 18678→      duration: "1-2 hours + 24-48 hour documentation",
+ 18679→    },
+ 18680→  ],
+ 18681→  benefits: [
+ 18682→    {
+ 18683→      icon: "Shield",
+ 18684→      title: "HSE HSG272 & BSi PAS 9960 compliant",
+ 18685→      description:
+ 18686→        "Our biohazard remediation protocol follows HSE HSG272 (Health and Safety Executive guidance on biological agents) and BSi PAS 9960 (Biohazard remediation). Six-stage protocol: risk assessment, containment, gross removal, EN 14476 disinfection, ATP verification, licensed waste consignment. Every stage documented. Operatives trained in HSE HSG272 and BSi PAS 9960 protocol, with annual refresher. We work for local authorities, housing associations, care providers, NHS Trusts, police, and forensic services — all of whom require HSE HSG272 compliance. References available on request.",
+ 18687→    },
+ 18688→    {
+ 18689→      icon: "Droplet",
+ 18690→      title: "EN 14476 virucidal — bloodborne pathogens killed",
+ 18691→      description:
+ 18692→        "EN 14476 virucidal chemistry proven effective against enveloped and non-enveloped viruses, bacteria, fungi, bloodborne pathogens including HIV, Hepatitis B/C, MRSA, Norovirus, Influenza, Coronavirus. Chemistry applied by sprayer or fogger for full coverage. Contact time per manufacturer (typically 5-15 minutes). Double application in high-risk zones. Porous surfaces treated twice. Soft furnishings that cannot be disinfected removed for incineration. The chemistry is the defence — and we use the right chemistry for the right biohazard.",
+ 18693→    },
+ 18694→    {
+ 18695→      icon: "Award",
+ 18696→      title: "ATP swab verification — proof of clean",
+ 18697→      description:
+ 18698→        "ATP (adenosine triphosphate) swab test on key surfaces post-clean. ATP swab measures organic residue — pass threshold typically <30 RLU (relative light units) for biohazard zones. Results available within 60 seconds (handheld luminometer). Any swab above threshold triggers re-clean and re-swab. Documentation: ATP swab results, surface photos pre- and post-clean, chemical application log, waste consignment notes. Verification documentation provided to client within 24 hours of completion. We don't just say it's clean — we prove it.",
+ 18699→    },
+ 18700→    {
+ 18701→      icon: "Lock",
+ 18702→      title: "Discreet unmarked vans — neighbours don't know",
+ 18703→      description:
+ 18704→        "Discretion is part of our protocol. Discreet unmarked vans (no 'BIOHAZARD' branding). Operatives in plain uniform. We park out of sight where possible, enter through side/rear entrances where possible, and never discuss the job in public. We understand that a biohazard event can be sensitive — a death in the family, a tenant abandonment, a workplace incident — and we handle it with discretion. Neighbours don't need to know. The local press doesn't need to know. We arrive, we remediate, we leave. Quietly and professionally.",
+ 18705→    },
+ 18706→    {
+ 18707→      icon: "Clock",
+ 18708→      title: "24/7 emergency response across Scotland",
+ 18709→      description:
+ 18710→        "Biohazards don't wait for business hours — and neither do we. 24/7 emergency response across Scotland. 60-90 minute response in central belt (Glasgow, Edinburgh, Stirling, Falkirk, Dundee). 2-3 hour response in more remote areas (Aberdeen, Inverness, Borders). Trained operator on call 24/7 — initial risk assessment over the phone, mobilisation team dispatched. We've handled 500+ biohazard remediations across Scotland in the last 5 years. Local authorities, housing associations, care providers, NHS Trusts, police, and forensic services rely on our 24/7 response.",
+ 18711→    },
+ 18712→    {
+ 18713→      icon: "FileText",
+ 18714→      title: "Licensed waste consignment — criminal-compliance",
+ 18715→      description:
+ 18716→        "Biohazard waste consigned to licensed carrier under Hazardous Waste (Scotland) Regulations. Sharps containers consigned as sharps waste. Biohazard bags consigned as clinical waste (UN3291). Contaminated porous materials consigned as offensive waste or clinical waste. Consignment note issued per uplift — kept on file for 3 years per SEPA requirement. Waste tracked from site to carrier to incineration facility. Certificate of destruction provided. We never dispose of biohazard waste in general waste — that's a criminal offence under Hazardous Waste Regulations. We carry £5m public liability, increased to £10m for NHS contracts.",
+ 18717→    },
+ 18718→  ],
+ 18719→  pricingTiers: [
+ 18720→    {
+ 18721→      name: "Single Incident Response",
+ 18722→      tagline: "Single biohazard incident, single room, 24/7 response",
+ 18723→      price: "£420",
+ 18724→      unit: "/visit",
+ 18725→      features: [
+ 18726→        "24/7 emergency response",
+ 18727→        "HSE HSG272 protocol",
+ 18728→        "EN 14476 virucidal disinfection",
+ 18729→        "ATP swab verification",
+ 18730→        "Licensed waste consignment",
+ 18731→        "Full documentation pack",
+ 18732→      ],
+ 18733→    },
+ 18734→    {
+ 18735→      name: "Multi-Room Remediation",
+ 18736→      tagline: "Most popular — multiple rooms or larger biohazard event",
+ 18737→      price: "£840",
+ 18738→      unit: "/visit",
+ 18739→      highlighted: true,
+ 18740→      features: [
+ 18741→        "All Single-Incident features",
+ 18742→        "Multi-room containment",
+ 18743→        "HEPA extraction (negative pressure)",
+ 18744→        "Porous material removal",
+ 18745→        "Double application high-risk zones",
+ 18746→        "Certificate of destruction",
+ 18747→      ],
+ 18748→    },
+ 18749→    {
+ 18750→      name: "Major Incident / Estate",
+ 18751→      tagline: "Major contamination, multi-day remediation, void property",
+ 18752→      price: "£POA",
+ 18753→      unit: "/contract",
+ 18754→      features: [
+ 18755→        "Multi-day mobilisation",
+ 18756→        "Forensic cleanup support",
+ 18757→        "Police / NHS coordination",
+ 18758→        "Void property full strip",
+ 18759→        "Insurance documentation",
+ 18760→        "Annual rate review",
+ 18761→      ],
+ 18762→    },
+ 18763→  ],
+ 18764→  serviceAreas: [
+ 18765→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Stirling", "Falkirk", "Perth", "Inverness",
+ 18766→    "Kilmarnock", "Ayr", "Paisley", "East Kilbride", "Livingston", "Motherwell",
+ 18767→    "Coatbridge", "Hamilton", "Cumbernauld", "Greenock", "Dunfermline", "Kirkcaldy",
+ 18768→  ],
+ 18769→  faqs: [
+ 18770→    {
+ 18771→      q: "Are you HSE HSG272 compliant?",
+ 18772→      a: "Yes. Our biohazard remediation protocol follows HSE HSG272 (Health and Safety Executive guidance on biological agents) and BSi PAS 9960 (Biohazard remediation). Six-stage protocol: risk assessment, containment, gross removal, EN 14476 disinfection, ATP verification, licensed waste consignment. Every stage documented. Operatives trained in HSE HSG272 and BSi PAS 9960 protocol, with annual refresher. We work for local authorities, housing associations, care providers, NHS Trusts, police, and forensic services — all of whom require HSE HSG272 compliance. References available on request.",
+ 18773→    },
+ 18774→    {
+ 18775→      q: "How quickly can you respond to a biohazard emergency?",
+ 18776→      a: "24/7 emergency response across Scotland. 60-90 minute response in central belt (Glasgow, Edinburgh, Stirling, Falkirk, Dundee). 2-3 hour response in more remote areas (Aberdeen, Inverness, Borders). Trained operator on call 24/7 — initial risk assessment over the phone, mobilisation team dispatched. We've handled 500+ biohazard remediations across Scotland in the last 5 years. Local authorities, housing associations, care providers, NHS Trusts, police, and forensic services rely on our 24/7 response. We never close — call us at 3am and we'll have a team on site by 4:30am.",
+ 18777→    },
+ 18778→    {
+ 18779→      q: "How do you dispose of biohazard waste?",
+ 18780→      a: "Biohazard waste consigned to licensed carrier under Hazardous Waste (Scotland) Regulations. Sharps containers consigned as sharps waste. Biohazard bags consigned as clinical waste (UN3291). Contaminated porous materials consigned as offensive waste or clinical waste depending on contamination level. Consignment note issued per uplift — kept on file for 3 years per SEPA requirement. Waste tracked from site to carrier to incineration facility. Certificate of destruction provided. We never dispose of biohazard waste in general waste — that's a criminal offence under Hazardous Waste Regulations.",
+ 18781→    },
+ 18782→    {
+ 18783→      q: "Do you handle drug lab and paraphernalia cleanup?",
+ 18784→      a: "Yes — drug paraphernalia (needles, syringes, pipes, contaminated surfaces) is one of our routine biohazard streams. Sharps placed in UN-approved sharps containers and consigned as pharmaceutical waste. Contaminated surfaces disinfected with EN 14476 virucidal chemistry. Porous materials (carpet, fabric that cannot be disinfected) bagged for incineration. Drug lab cleanup (chemical contamination) is a separate protocol — we work with licensed hazardous waste contractors for chemical remediation, and we handle the biohazard element (blood, bodily fluids, sharps) in-house. We've handled 50+ drug paraphernalia remediations for local authorities and housing associations.",
+ 18785→    },
+ 18786→    {
+ 18787→      q: "Can you handle forensic cleanup after a death?",
+ 18788→      a: "Yes. Post-forensic biohazard cleanup (after a death, suicide, or unattended death) is one of our most sensitive services. We work alongside police and forensic services — we only enter after the forensic investigation is complete and the scene is released. Then we remediate: blood and bodily fluid removal, contaminated porous material removal, EN 14476 virucidal disinfection, ATP swab verification, licensed waste consignment. Discreet unmarked vans, neighbours don't need to know. We've handled 30+ post-forensic remediations across Scotland. References from police and forensic services available on request. Compassionate, professional, discreet.",
+ 18789→    },
+ 18790→    {
+ 18791→      q: "Are you insured for biohazard cleanup?",
+ 18792→      a: "Yes. We carry £5m public liability (standard for biohazard), £10m employer's liability, professional indemnity, and we name your organisation on our policy as additional insured. Increased to £10m public liability for NHS contracts. Documentation pack provided on every job: risk assessment, RAMS, chemical application log, ATP swab results, photos, waste consignment notes, certificate of destruction, liability certificates. We've handled 500+ biohazard remediations across Scotland in the last 5 years without an insurance claim. We never start a job without confirming insurance is in place — that's non-negotiable.",
+ 18793→    },
+ 18794→  ],
+ 18795→  testimonials: [
+ 18796→    {
+ 18797→      name: "Linda Hamilton",
+ 18798→      role: "Void Property Manager, housing association, Glasgow",
+ 18799→      quote:
+ 18800→        "Void flat in Easterhouse — tenant abandonment with biohazard contamination. Maundy Clean arrived within 90 minutes of our call. Full containment, gross removal, EN 14476 disinfection, ATP swab verification (all <30 RLU), biohazard waste consigned with full documentation. Discreet unmarked van — neighbours didn't know. Flat ready for relet in 36 hours. The right contractor for sensitive void remediation.",
+ 18801→      rating: 5,
+ 18802→    },
+ 18803→    {
+ 18804→      name: "Detective Sergeant Mark Roberts",
+ 18805→      role: "Police Scotland, forensic liaison",
+ 18806→      quote:
+ 18807→        "Post-forensic cleanup after an unattended death. Maundy Clean arrived after we released the scene, worked discreetly, no neighbour disruption. EN 14476 disinfection, ATP swab verification, full documentation for the coroner. Compassionate with the family, professional with us. We've used them on 5+ cases now. The right contractor for sensitive forensic remediation. Discreet. Compliant. Professional.",
+ 18808→      rating: 5,
+ 18809→    },
+ 18810→    {
+ 18811→      name: "Susan McAllister",
+ 18812→      role: "Care Home Manager, residential care, Edinburgh",
+ 18813→      quote:
+ 18814→        "Care home incident — biohazard contamination in resident bedroom. Maundy Clean arrived within 2 hours. Full containment (resident moved to alternative room), gross removal, EN 14476 disinfection, ATP swab verification. Care Inspectorate inspection 2 weeks later — zero findings. Discreet (no distress to other residents). Documentation audit-ready. The right contractor for care-sensitive biohazard remediation.",
+ 18815→      rating: 5,
+ 18816→    },
+ 18817→  ],
+ 18818→  relatedServices: [
+ 18819→    {
+ 18820→      name: "Trauma Cleanup",
+ 18821→      href: "#",
+ 18822→      description: "Trauma-informed cleanup — book alongside biohazard for trauma-related contamination.",
+ 18823→    },
+ 18824→    {
+ 18825→      name: "Crime Scene Cleanup",
+ 18826→      href: "#",
+ 18827→      description: "Post-forensic cleanup — book alongside biohazard for crime scene remediation.",
+ 18828→    },
+ 18829→    {
+ 18830→      name: "Hoarding Cleanup",
+ 18831→      href: "/services/hoarding-cleanup",
+ 18832→      description: "Compassionate hoarding cleanup — often combined with biohazard remediation.",
+ 18833→    },
+ 18834→    {
+ 18835→      name: "Disinfection Services",
+ 18836→      href: "/services/disinfection-services",
+ 18837→      description: "Electrostatic disinfection — for full-sanitisation after biohazard remediation.",
+ 18838→    },
+ 18839→    {
+ 18840→      name: "Mould Remediation Cleaning",
+ 18841→      href: "/services/mould-remediation-cleaning",
+ 18842→      description: "Mould remediation — often required alongside biohazard in damp void properties.",
+ 18843→    },
+ 18844→    {
+ 18845→      name: "Odour Removal",
+ 18846→      href: "/services/odour-removal",
+ 18847→      description: "Ozone and thermal fog — for biohazard odour control after remediation.",
+ 18848→    },
+ 18849→  ],
+ 18850→  gallery: [
+ 18851→    {
+ 18852→      src: "https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg",
+ 18853→      alt: "Biohazard remediation team in full RPE/PPE",
+ 18854→      caption: "Full RPE/PPE — FFP3 respirator, full-face mask, Tyvec suit, double nitrile gloves, gumboots. HSE HSG272 compliant.",
+ 18855→    },
+ 18856→    {
+ 18857→      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+ 18858→      alt: "Containment area sealed with polythene sheeting",
+ 18859→      caption: "Containment — area sealed, air flow controlled, exclusion zone marked. Prevents cross-contamination.",
+ 18860→    },
+ 18861→    {
+ 18862→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+ 18863→      alt: "ATP swab verification with handheld luminometer",
+ 18864→      caption: "ATP swab post-clean — pass threshold <30 RLU. Results in 60 seconds. Verification documentation provided.",
+ 18865→    },
+ 18866→    {
+ 18867→      src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+ 18868→      alt: "Licensed biohazard waste consignment documentation",
+ 18869→      caption: "Biohazard waste consigned under Hazardous Waste (Scotland) Regulations. Consignment note, certificate of destruction.",
+ 18870→    },
+ 18871→  ],
+ 18872→};
+ 18873→// ========== 8. Fire & Smoke Restoration Cleaning ==========
+ 18874→export const fireSmokeRestorationCleaning: ServiceDetail = {
+ 18875→  slug: "fire-smoke-restoration-cleaning",
+ 18876→  name: "Fire & Smoke Restoration Cleaning",
+ 18877→  category: "Specialty Cleaning",
+ 18878→  tagline: "Soot, smoke odour, char & residue removal after fire damage — properties restored, not demolished.",
+ 18879→  heroHeadline: "After the fire.\nAfter the smoke.\nWe bring it back.",
+ 18880→  heroSubhead:
+ 18881→    "Fire damage is more than char — it's soot in every porous surface, smoke odour in every cavity, electrical residue on every wire, water damage from firefighting, and the emotional weight of losing your home or business. Our restoration team works with your insurer, your loss adjuster, and your builder to bring the property back. Dry soot removal (never wet — wet soot sets permanently), ozone and thermal fog for odour, HEPA vacuum for residue, contents restoration (item-by-item cleaning), structure deodorisation. £5m public liability. Insurance-preferred contractor. 24/7 response across Scotland.",
+ 18882→  heroImage: "https://sfile.chatglm.cn/images-ppt/fire-smoke-restoration.jpg",
+ 18883→  breadcrumbParent: "Specialty Cleaning",
+ 18884→  metaTitle: "Fire & Smoke Restoration Cleaning in Scotland | Insurance-Preferred | Maundy Clean",
+ 18885→  metaDescription:
+ 18886→    "Fire & smoke restoration cleaning across Scotland. Soot, smoke odour, char removal. Insurance-preferred. 24/7 response. From £1,800/visit. 4.9★.",
+ 18887→  overviewParagraphs: [
+ 18888→    "Fire damage is one of the most challenging restoration jobs. The visible char is the easy part — the real challenge is soot (ultra-fine particles that penetrate every porous surface), smoke odour (aerosolised oils that bond to surfaces and linger for years if not treated), electrical residue (corrosive chlorides from PVC combustion that destroy wiring), and water damage (from firefighting — secondary mould risk within 48 hours). Most cleaning contractors wet-wipe soot — that's the worst thing you can do. Wet soot sets permanently into a greasy film that no chemistry can remove. Dry soot removal (chemical sponges, HEPA vacuum) is the only correct first step. Our restoration specialists are trained in the S500 (IICRC Standard for Professional Water Damage Restoration) and S520 (IICRC Standard for Professional Mold Remediation) protocols.",
+ 18889→    "Our fire restoration protocol follows IICRC S700 (Standard for Fire and Smoke Damage Restoration). Stage 1: emergency board-up and tarp (if structure exposed to weather). Stage 2: dry soot removal (chemical sponges on walls, HEPA vacuum on floors and surfaces, never wet). Stage 3: water extraction and drying (if firefighting water present — secondary mould risk within 48 hours). Stage 4: structure deodorisation (ozone treatment, thermal fogging, hydroxyl generation for occupied zones). Stage 5: contents restoration (item-by-item cleaning in our workshop, ultrasonic for delicate items). Stage 6: final inspection and sign-off. We work with your insurer, your loss adjuster, and your builder — coordinated restoration, not piecemeal cleaning.",
+ 18890→    "We work for residential clients (house fires, flat fires, kitchen fires — emotional and stressful), commercial clients (shop fires, office fires, restaurant fires — business interruption pressure), industrial clients (warehouse fires, factory fires — large-scale restoration), landlords (tenant-caused fires, void property fires), housing associations (multi-occupancy fires), and insurance companies (preferred contractor, direct billing). 24/7 response — fire damage needs immediate attention to prevent secondary damage (soot sets, water moulds, electrical corrosion). Insurance-preferred contractor — we work to insurance protocols and invoice direct. References from insurance clients, loss adjusters, and previous restoration clients available on request.",
+ 18891→  ],
+ 18892→  whatsIncluded: [
+ 18893→    {
+ 18894→      title: "Emergency board-up & tarp",
+ 18895→      description:
+ 18896→        "Stage 1 emergency board-up and tarp. If fire has exposed the structure to weather (broken windows, damaged roof, opened walls), we board-up with OSB and tarp with heavy-duty polythene. Prevents further water damage, prevents trespass, secures the property for insurers. 24/7 response — typically on site within 2-4 hours of call. Board-up is temporary (typically 1-4 weeks) until permanent repairs by your builder. We coordinate with your insurer and loss adjuster — board-up cost is typically covered by insurance. Documentation: photos before and after board-up, scope of work, time on site, materials used.",
+ 18897→    },
+ 18898→    {
+ 18899→      title: "Dry soot removal — chemical sponges & HEPA",
+ 18900→      description:
+ 18901→        "Stage 2 dry soot removal. Chemical sponges (specialist rubber sponges that absorb soot without water) on walls, ceilings, and porous surfaces. HEPA vacuum on floors, surfaces, and cavities. NEVER wet-wipe soot — wet soot sets permanently into a greasy film that no chemistry can remove. Dry soot removal removes 80-90% of soot before any chemistry is applied. Operatives in full RPE/PPE (FFP3 respirator, Tyvec suit, nitrile gloves) — soot contains harmful PAHs (polycyclic aromatic hydrocarbons).HVAC ducts HEPA-vacuumed to prevent soot circulation. Soft furnishings HEPA-vacuumed before being moved to workshop for contents restoration.",
+ 18902→    },
+ 18903→    {
+ 18904→      title: "Water extraction & drying",
+ 18905→      description:
+ 18906→        "Stage 3 water extraction and drying. Firefighting water typically leaves 100-1000 litres per property — secondary mould risk within 48 hours. Water extracted with wet vacuum. Affected materials (carpet, underlay, saturated plasterboard) removed if not salvageable. Industrial dehumidifiers and air movers deployed for 3-7 days (monitored daily with moisture meter). Structure dried to moisture content <12% (per IICRC S500). Mould prevention chemistry applied to wet zones (biocide, not bleach — bleach doesn't kill mould spores). If mould already established (48+ hours of wet), we follow IICRC S520 mould remediation protocol.",
+ 18907→    },
+ 18908→    {
+ 18909→      title: "Structure deodorisation — ozone, thermal fog, hydroxyl",
+ 18910→      description:
+ 18911→        "Stage 4 structure deodorisation. Smoke odour is aerosolised oils that bond to surfaces — ventilation alone won't remove it. Ozone treatment (ozone generator, 1-3 days, property unoccupied) — ozone breaks odour molecules at the chemical level. Thermal fogging (thermal fogger, solvent-based fog that mimics smoke penetration, neutralises odour on contact). Hydroxyl generation (hydroxyl radical generator, safe for occupied zones, slower than ozone but no re-entry restriction). Combination protocol for severe odour. HVAC ducts fogged. Cavity walls fogged via access points. Soft furnishings treated in our workshop.",
+ 18912→    },
+ 18913→    {
+ 18914→      title: "Contents restoration — item-by-item",
+ 18915→      description:
+ 18916→        "Stage 5 contents restoration. Affected contents (furniture, electronics, artwork, documents, soft furnishings) removed to our workshop. Each item assessed for salvageability. Hard surfaces cleaned with specialist soot chemistry. Soft furnishings ultrasonically cleaned (gentle, effective for delicate items). Electronics cleaned by specialist electronics restorer (corrosive chloride residue must be removed within 72 hours to prevent permanent damage). Documents freeze-dried (if water-damaged) and cleaned. Artwork cleaned by specialist art conservator. Items returned to property after restoration complete. Inventory documented for insurer.",
+ 18917→    },
+ 18918→    {
+ 18919→      title: "Final inspection & insurance documentation",
+ 18920→      description:
+ 18921→        "Stage 6 final inspection and sign-off. Property inspected with client and loss adjuster. Moisture meter readings documented (structure dried to <12%). Odour test (subjective — does it smell of smoke?). ATP swab on key surfaces. Photo documentation pre- and post-restoration. Full documentation pack issued: scope of work, daily progress reports, moisture readings, ozone/fogging logs, contents inventory, item-by-item cleaning log, final inspection report, £5m public liability certificate. Direct billing to insurer (we work to insurance protocols). Property handed back ready for builder's reinstatement works.",
+ 18922→    },
+ 18923→  ],
+ 18924→  processSteps: [
+ 18925→    {
+ 18926→      step: "01",
+ 18927→      title: "Emergency call & site assessment",
+ 18928→      description:
+ 18929→        "Emergency call: trained operator takes details — fire type, scope, water damage, structure exposure, insurer details. Mobilisation team dispatched — typically 2-4 hour response. On arrival: site-specific risk assessment (structural safety, electrical isolation, gas isolation, asbestos risk if pre-2000 property). Scope assessment with loss adjuster (if available) or directly with client/insurer. Emergency board-up and tarp if structure exposed. Initial drying equipment deployed if water damage present. Insurer authorisation confirmed before works start.",
+ 18930→      duration: "2-4 hours",
+ 18931→    },
+ 18932→    {
+ 18933→      step: "02",
+ 18934→      title: "Dry soot removal & water extraction",
+ 18935→      description:
+ 18936→        "Dry soot removal: chemical sponges on walls and ceilings, HEPA vacuum on floors and surfaces. NEVER wet-wipe soot. Soft furnishings HEPA-vacuumed and removed to workshop. HVAC ducts HEPA-vacuumed. Water extraction: wet vacuum, removal of unsalvageable materials (carpet, underlay, saturated plasterboard). Industrial dehumidifiers and air movers deployed. Moisture meter readings daily. Drying typically 3-7 days. Mould prevention chemistry applied. Contents inventory documented and removed to workshop.",
+ 18937→      duration: "1-7 days",
+ 18938→    },
+ 18939→    {
+ 18940→      step: "03",
+ 18941→      title: "Deodorisation & contents restoration",
+ 18942→      description:
+ 18943→        "Structure deodorisation: ozone treatment (1-3 days, property unoccupied) for severe odour. Thermal fogging for cavity wall and HVAC penetration. Hydroxyl generation for occupied zones or continuous treatment. Combination protocol for severe odour. Contents restoration in our workshop: each item cleaned, ultrasonically cleaned, electronics specialist cleaned, documents freeze-dried, artwork conserved. Items returned to property after restoration complete. Daily progress reports to client and insurer.",
+ 18944→      duration: "3-14 days",
+ 18945→    },
+ 18946→    {
+ 18947→      step: "04",
+ 18948→      title: "Final inspection & handover",
+ 18949→      description:
+ 18950→        "Final inspection with client and loss adjuster. Moisture meter readings documented (structure dried to <12% per IICRC S500). Odour test (subjective — does it smell of smoke?). ATP swab on key surfaces. Photo documentation pre- and post-restoration. Full documentation pack issued: scope of work, daily progress reports, moisture readings, ozone/fogging logs, contents inventory, item-by-item cleaning log, final inspection report, £5m public liability certificate. Direct billing to insurer. Property handed back ready for builder's reinstatement works.",
+
+[showing lines 18601-18950 of 24001; use offset=18951 with limit to continue reading]

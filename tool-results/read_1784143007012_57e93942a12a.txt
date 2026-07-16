@@ -1,0 +1,302 @@
+ 17801→// ========== 4. Floor Care & Stripping ==========
+ 17802→export const floorCareStripping: ServiceDetail = {
+ 17803→  slug: "floor-care-stripping",
+ 17804→  name: "Floor Care & Stripping",
+ 17805→  category: "Janitorial & Facility",
+ 17806→  tagline: "Strip, refinish & polish — VCT, linoleum, rubber, terrazzo, sealed concrete & stone floors.",
+ 17807→  heroHeadline: "Floors stripped.\nFloors refinished.\nFloors that gleam.",
+ 17808→  heroSubhead:
+ 17809→    "Floor care is a specialist discipline. Strip back years of yellowed acrylic build-up, refinish with high-solids metal-interlock polish, burnish to a wet-look gloss. We handle VCT (vinyl composition tile), linoleum, rubber, terrazzo, sealed concrete, and natural stone (marble, granite, slate). Quarterly top-up scrub and recoat, annual full strip and refinish, daily burnish programme. colour-coded pads, chemistry matched to floor type, dust-free stripping where possible. From school halls to hospital corridors to retail store entrances — your floors are the first thing customers see.",
+ 17810→  heroImage: "https://sfile.chatglm.cn/images-ppt/floor-care-stripping.jpg",
+ 17811→  breadcrumbParent: "Janitorial & Facility",
+ 17812→  metaTitle: "Floor Care & Stripping in Scotland | VCT, Linoleum, Terrazzo | Maundy Clean",
+ 17813→  metaDescription:
+ 17814→    "Floor care & stripping across Scotland. VCT, linoleum, rubber, terrazzo, sealed concrete, natural stone. Strip, refinish, burnish. From £4/m². 4.9★.",
+ 17815→  overviewParagraphs: [
+ 17816→    "Floor care is a specialist discipline that most general cleaners get wrong. Wrong chemistry on linoleum causes permanent damage (linseed oil substrate is alkaline-sensitive). Wrong pad on marble causes deep scratching (marble is 3 on Mohs scale, softer than the silicon carbide in aggressive pads). Wrong polish on rubber causes permanent discoloration (rubber requires a specific water-based acrylic). Wrong technique on VCT causes 'polish pop' — the layers separate and peel. A floor care mistake is expensive to fix and easy to make. Our floor care specialists are trained on every floor type, every chemistry, every pad — colour-coded systems, chemistry matched to floor type, dust-free stripping where possible, and quarterly inspection programmes.",
+ 17817→    "We handle the full range of commercial and residential hard floors: VCT (vinyl composition tile — the standard commercial floor in schools, hospitals, retail), linoleum (environmentally preferred, alkaline-sensitive), rubber (often in gyms and hospitals, requires water-based acrylic), terrazzo (chip-and-cement, needs diamond polishing), sealed concrete (warehouse and retail, requires densifier and polish), natural stone (marble, granite, slate, limestone — each needs specific protocols). Each floor type has a specific chemistry, specific pad, specific technique. We never use one product across all floors — we tailor the protocol to the floor type, age, condition, and traffic pattern.",
+ 17818→    "Our floor care programmes are built around your traffic pattern and budget. Annual full strip and refinish for high-traffic entrances (the polish takes a beating over 12 months). Quarterly top-up scrub and recoat for medium-traffic zones (extend the life of the polish between full strips). Daily burnish programme for premium floors (polishing pad under a high-speed burner brings back the wet-look gloss every night). Residential natural stone floors — annual diamond-grit restoration (50-grit through 3000-grit) and crystallisation for marble. We work for schools, hospitals, retail chains, hotels, gyms, leisure centres, and premium residential clients across Scotland.",
+ 17819→  ],
+ 17820→  whatsIncluded: [
+ 17821→    {
+ 17822→      title: "Full strip and refinish — annual for high-traffic",
+ 17823→      description:
+ 17824→        "Full strip back to bare floor — chemical stripper (chemistry matched to floor type), aggressive pad (black for VCT, green for linoleum, white for rubber), wet vacuum pickup, double-rinse with clean water, neutraliser rinse to bring floor back to pH 7. Floor dried thoroughly. Then refinish: 4-6 coats of high-solids metal-interlock polish (typically 25% solids for commercial, 30% for premium), each coat dried 30-45 minutes before next. Final coat cured 24 hours before traffic. Floor restored to wet-look gloss. Annual cycle for high-traffic entrances, biennial for medium-traffic.",
+ 17825→    },
+ 17826→    {
+ 17827→      title: "Scrub and recoat — quarterly top-up",
+ 17828→      description:
+ 17829→        "Top-up between full strips — extends the life of the polish by 6-12 months. Light scrub with a neutral cleaner and red pad (removes topsoil and scuff marks without stripping the polish). Floor dried thoroughly. Then 2 coats of the same polish applied (interlock with existing layers). Final coat cured 12 hours before traffic. Gloss restored, scuff marks gone, polish depth maintained. Quarterly cycle for medium-traffic zones. About half the cost of a full strip — pays for itself in extended polish life.",
+ 17830→    },
+ 17831→    {
+ 17832→      title: "Daily burnish — wet-look gloss restoration",
+ 17833→      description:
+ 17834→        "High-speed burnish (1500-2000 RPM) with a polishing pad (natural hair or hogs-hair blend) and a burnish cream (if required). Heat from the burner softens the top microns of polish, the pad relevels it, restoring the wet-look gloss. Daily for premium floors (hotel lobbies, retail entrances, corporate reception), weekly for medium-traffic. Burnishing does not remove polish — it relevels it. 15-30 minutes per 100m². Pads colour-coded: black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish.",
+ 17835→    },
+ 17836→    {
+ 17837→      title: "Natural stone — diamond restoration & crystallisation",
+ 17838→      description:
+ 17839→        "Marble, granite, slate, limestone floors restored by diamond-grit honing. 50-grit for deep scratch removal, 100-grit to refine, 220-grit to smooth, 400-grit to pre-polish, 800-grit to polish, 1500-grit to refine polish, 3000-grit to high polish. Then crystallisation (acid-based chemical reaction that creates a harder, glossier surface) for marble. Poultice for stain removal (oil, rust, organic stains). Impregnating sealer (penetrating, not film-forming) to protect against future staining. Annual cycle for residential, semi-annual for commercial. We do NOT use wax on natural stone — wax traps moisture and discolours.",
+ 17840→    },
+ 17841→    {
+ 17842→      title: "Terrazzo — diamond polish, no coating",
+ 17843→      description:
+ 17844→        "Terrazzo (chip-and-cement floor) is best polished with diamond grit, not coated with polish. The polish peels within 6 months because terrazzo is too dense for polish to bond. We diamond-polish: 50-grit through 3000-grit, then a final polishing compound. Floor polished to a mirror finish — no coating, no peeling, no future strip required. Densifier applied to harden the surface and improve gloss. Annual re-polish (light pass with 800-grit and 3000-grit) to refresh the gloss. Stain removal with poultice. Impregnating sealer applied. The right way to care for terrazzo.",
+ 17845→    },
+ 17846→    {
+ 17847→      title: "Sealed concrete — densifier & polish",
+ 17848→      description:
+ 17849→        "Sealed concrete floors (warehouse, retail, modern office) — densifier applied (lithium silicate reacts with calcium hydroxide in concrete to form calcium silicate hydrate, hardening the surface). Floor then diamond-polished (200-grit through 3000-grit) to the desired gloss level. Impregnating sealer applied for stain resistance. No film-forming coating (which would peel under forklift traffic). Annual re-polish with 800-grit and burnish to maintain gloss. Stain removal with alkaline degreaser and poultice. The right way to care for sealed concrete — long-lasting, low-maintenance, no peeling.",
+ 17850→    },
+ 17851→  ],
+ 17852→  processSteps: [
+ 17853→    {
+ 17854→      step: "01",
+ 17855→      title: "Floor audit & protocol design",
+ 17856→      description:
+ 17857→        "On-site floor audit: every floor type identified and mapped (VCT, linoleum, rubber, terrazzo, sealed concrete, natural stone). Floor condition assessed (existing polish depth, scratch level, stain extent, traffic pattern). Existing chemistry checked (if any). Polish type recommended per floor type per traffic pattern. Strip/refinish schedule designed (annual for high-traffic, biennial for medium, quarterly scrub-and-recoat for top-up). Burnish programme scoped if required. Priced per m² per protocol.",
+ 17858→      duration: "1-2 weeks",
+ 17859→    },
+ 17860→    {
+ 17861→      step: "02",
+ 17862→      title: "Pre-clean & protection",
+ 17863→      description:
+ 17864→        "Pre-clean: floor swept, dust-mopped, then wet-mopped with neutral cleaner to remove all surface soil. Furniture moved and protected (legs wrapped, IT unplugged, vulnerable items removed). Adjacent surfaces protected (carpet edges taped, skirting boards masked, low walls masked if aggressive stripping). Wet/dry vacuum staged. Air movers staged for drying. Signage placed ('Wet Floor — Keep Off'). Operatives in correct PPE (chemical-resistant gloves, safety glasses, slip-resistant boots).",
+ 17865→      duration: "1 day",
+ 17866→    },
+ 17867→    {
+ 17868→      step: "03",
+ 17869→      title: "Strip, refinish & polish",
+ 17870→      description:
+ 17871→        "Strip: chemical stripper applied per spec, aggressive pad, wet vacuum pickup, double-rinse, neutraliser rinse, dry thoroughly. Refinish: 4-6 coats of high-solids metal-interlock polish, 30-45 min dry between coats, 24-hour cure before traffic. Or for natural stone/terrazzo/sealed concrete: diamond-grit honing (50 through 3000-grit), crystallisation or densifier, impregnating sealer. Burnish: high-speed burnish with hogs-hair pad and burnish cream if required. Final inspection with the facilities manager. Floor signed off.",
+ 17872→      duration: "1-3 days",
+ 17873→    },
+ 17874→    {
+ 17875→      step: "04",
+ 17876→      title: "Quarterly inspection & maintenance",
+ 17877→      description:
+ 17878→        "Quarterly inspection: floor condition assessed, gloss meter reading taken, polish depth measured. Top-up scrub and recoat if required (typically quarterly for medium-traffic). Stain removal if required (poultice for natural stone, alkaline degreaser for VCT). Burnish programme adjusted if gloss dropping. Annual full strip and refinish for high-traffic. Biennial for medium-traffic. Annual re-polish for natural stone/terrazzo/sealed concrete. Documentation maintained: floor type map, polish spec, inspection log, treatment log.",
+ 17879→      duration: "Quarterly / annual",
+ 17880→    },
+ 17881→  ],
+ 17882→  benefits: [
+ 17883→    {
+ 17884→      icon: "Sparkles",
+ 17885→      title: "Chemistry matched to floor type — no damage",
+ 17886→      description:
+ 17887→        "Wrong chemistry on the wrong floor causes permanent damage. Linoleum (alkaline-sensitive), rubber (requires water-based acrylic), marble (softer than aggressive pads), VCT (prone to 'polish pop' if chemistry wrong). We match the chemistry and pad to the floor type — every time, no exceptions. Colour-coded pads (black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish) prevent mix-ups. Our floor care specialists are trained on every floor type — they know which chemistry, which pad, which technique. No floor damaged in 14 years of specialist floor care.",
+ 17888→    },
+ 17889→    {
+ 17890→      icon: "Layers",
+ 17891→      title: "High-solids metal-interlock polish — long-lasting",
+ 17892→      description:
+ 17893→        "We use high-solids metal-interlock polish for VCT, linoleum, and rubber floors. 25% solids for commercial traffic, 30% for premium. Metal-interlock means the polish layers bond chemically — no peeling between coats. High-solids means more acrylic per coat — fewer coats needed, deeper gloss, longer life. Typically 4-6 coats applied, each dried 30-45 minutes. Final coat cured 24 hours before traffic. Polish life: 12 months for high-traffic, 18-24 months for medium-traffic with quarterly scrub-and-recoat. Wet-look gloss maintained with daily/weekly burnish.",
+ 17894→    },
+ 17895→    {
+ 17896→      icon: "Diamond",
+ 17897→      title: "Diamond-grit restoration for natural stone & terrazzo",
+ 17898→      description:
+ 17899→        "Marble, granite, slate, limestone, and terrazzo floors restored by diamond-grit honing. 50-grit for deep scratch removal, 100-grit to refine, 220-grit to smooth, 400-grit to pre-polish, 800-grit to polish, 1500-grit to refine polish, 3000-grit to high polish. Then crystallisation (marble) or densifier (concrete/terrazzo). Impregnating sealer applied. No film-forming coating (which would peel). Mirror finish achieved. Annual re-polish (light pass with 800-grit and 3000-grit) to maintain gloss. Stain removal with poultice.",
+ 17900→    },
+ 17901→    {
+ 17902→      icon: "Gauge",
+ 17903→      title: "Quarterly inspection programme",
+ 17904→      description:
+ 17905→        "Quarterly inspection: floor condition assessed, gloss meter reading taken, polish depth measured, stain and damage log reviewed. Top-up scrub and recoat if required. Burnish programme adjusted if gloss dropping. Stain removal if required. Documentation maintained: floor type map, polish spec, inspection log, treatment log. Annual full strip and refinish for high-traffic. Biennial for medium-traffic. Annual re-polish for natural stone/terrazzo/sealed concrete. Preventative maintenance catches issues early — saves money long-term.",
+ 17906→    },
+ 17907→    {
+ 17908→      icon: "Wind",
+ 17909→      title: "Dust-free stripping where possible",
+ 17910→      description:
+ 17911→        "Where floor type and condition allow, we use dust-free stripping. Wet stripping: chemical stripper applied as a liquid, aggressive pad under a low-speed machine, slurry picked up by wet vacuum. No airborne dust. Operatives in correct PPE (chemical-resistant gloves, safety glasses, slip-resistant boots). Adjacent surfaces protected (carpet edges taped, skirting boards masked). Air movers for fast drying. Dust-free stripping is safer for operatives, cleaner for the site, and faster than dry stripping. We use dust-free as the default — dry stripping only where floor type demands it.",
+ 17912→    },
+ 17913→    {
+ 17914→      icon: "Award",
+ 17915→      title: "14 years specialist floor care — no damage",
+ 17916→      description:
+ 17917→        "14 years of specialist floor care — no floor damaged in that time. Our floor care operatives are full-time specialists (not general cleaners given a scrubber). They train on every floor type, every chemistry, every pad. They know which floor needs which protocol — they spot the difference between VCT and linoleum at a glance (linoleum has a jute backing, VCT does not). They know which marble is which (Carrara, Calacatta, Crema Marfil — each polishes differently). They know which terrazzo is cement-based vs epoxy-based. References from premium floor care clients available on request.",
+ 17918→    },
+ 17919→  ],
+ 17920→  pricingTiers: [
+ 17921→    {
+ 17922→      name: "Scrub & Recoat",
+ 17923→      tagline: "Quarterly top-up — extends polish life 6-12 months",
+ 17924→      price: "£4",
+ 17925→      unit: "/m²",
+ 17926→      features: [
+ 17927→        "Light scrub with red pad",
+ 17928→        "Neutral cleaner",
+ 17929→        "2 coats metal-interlock polish",
+ 17930→        "12-hour cure before traffic",
+ 17931→        "Gloss meter reading",
+ 17932→        "Quarterly inspection",
+ 17933→      ],
+ 17934→    },
+ 17935→    {
+ 17936→      name: "Full Strip & Refinish",
+ 17937→      tagline: "Most popular — annual for high-traffic, biennial for medium",
+ 17938→      price: "£12",
+ 17939→      unit: "/m²",
+ 17940→      highlighted: true,
+ 17941→      features: [
+ 17942→        "Full strip to bare floor",
+ 17943→        "4-6 coats high-solids polish",
+ 17944→        "24-hour cure before traffic",
+ 17945→        "Wet vacuum & air movers",
+ 17946→        "Furniture move & protect",
+ 17947→        "Floor type map & documentation",
+ 17948→      ],
+ 17949→    },
+ 17950→    {
+ 17951→      name: "Diamond Restoration",
+ 17952→      tagline: "Natural stone, terrazzo, sealed concrete — annual",
+ 17953→      price: "£28",
+ 17954→      unit: "/m²",
+ 17955→      features: [
+ 17956→        "50-grit through 3000-grit honing",
+ 17957→        "Crystallisation (marble) or densifier (concrete)",
+ 17958→        "Impregnating sealer",
+ 17959→        "Poultice stain removal",
+ 17960→        "Mirror finish achieved",
+ 17961→        "Annual re-polish included",
+ 17962→      ],
+ 17963→    },
+ 17964→  ],
+ 17965→  serviceAreas: [
+ 17966→    "Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Stirling", "Falkirk", "Perth", "Inverness",
+ 17967→    "Kilmarnock", "Ayr", "Paisley", "East Kilbride", "Livingston", "Motherwell",
+ 17968→    "Coatbridge", "Hamilton", "Cumbernauld", "Greenock", "Dunfermline", "Kirkcaldy",
+ 17969→  ],
+ 17970→  faqs: [
+ 17971→    {
+ 17972→      q: "How often should I strip and refinish my floors?",
+ 17973→      a: "It depends on traffic. High-traffic entrances (retail, hospital, school): annual full strip and refinish. Medium-traffic zones (office corridors): biennial full strip. Low-traffic zones (private offices): every 3 years. Quarterly scrub-and-recoat top-up between full strips extends the polish life by 6-12 months and costs about half what a full strip costs. We provide a quarterly inspection with a gloss meter reading — the data tells us when a strip is needed. We never strip a floor that doesn't need it — it shortens the floor's life.",
+ 17974→    },
+ 17975→    {
+ 17976→      q: "What's the difference between VCT, linoleum, and rubber floors?",
+ 17977→      a: "VCT (vinyl composition tile) is the standard commercial floor in schools, hospitals, retail — solid vinyl with fillers, takes polish beautifully. Linoleum is environmentally preferred (linseed oil substrate) — alkaline-sensitive, requires pH-neutral chemistry. Rubber (often in gyms and hospitals) — requires water-based acrylic polish, solvent-based chemistry discolours it permanently. They look similar but each needs different chemistry, different pad, different technique. We match the protocol to the floor type — every time, no exceptions. Wrong chemistry on linoleum causes permanent damage within one strip cycle.",
+ 17978→    },
+ 17979→    {
+ 17980→      q: "Can you polish natural stone floors (marble, granite)?",
+ 17981→      a: "Yes — we use diamond-grit honing for natural stone. 50-grit for deep scratch removal, 100-grit to refine, 220-grit to smooth, 400-grit to pre-polish, 800-grit to polish, 1500-grit to refine polish, 3000-grit to high polish. Then crystallisation for marble (acid-based chemical reaction creates a harder, glossier surface). Impregnating sealer applied. We do NOT use wax on natural stone — wax traps moisture and discolours. Annual re-polish (light pass with 800-grit and 3000-grit) maintains the gloss. Stain removal with poultice (oil, rust, organic stains).",
+ 17982→    },
+ 17983→    {
+ 17984→      q: "How do you polish terrazzo floors?",
+ 17985→      a: "Terrazzo is best diamond-polished, NOT coated with polish. The polish peels within 6 months because terrazzo is too dense for polish to bond. We diamond-polish: 50-grit through 3000-grit, then a final polishing compound. Floor polished to a mirror finish — no coating, no peeling, no future strip required. Densifier applied to harden the surface and improve gloss. Annual re-polish (light pass with 800-grit and 3000-grit) to maintain gloss. Stain removal with poultice. Impregnating sealer applied. The right way to care for terrazzo — long-lasting, low-maintenance.",
+ 17986→    },
+ 17987→    {
+ 17988→      q: "Do you offer a daily burnish programme for premium floors?",
+ 17989→      a: "Yes. Daily burnish programme for premium floors — hotel lobbies, retail entrances, corporate reception. High-speed burnish (1500-2000 RPM) with a hogs-hair pad and burnish cream if required. Heat from the burner softens the top microns of polish, the pad relevels it, restoring the wet-look gloss. Burnishing does not remove polish — it relevels it. 15-30 minutes per 100m². Pads colour-coded: black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish. Weekly burnish for medium-traffic, daily for high-traffic premium.",
+ 17990→    },
+ 17991→    {
+ 17992→      q: "How do you protect adjacent surfaces during stripping?",
+ 17993→      a: "Adjacent surfaces are protected: carpet edges taped with low-tack tape, skirting boards masked with protective film, low walls masked with protective film if aggressive stripping. Furniture moved and protected (legs wrapped, IT unplugged, vulnerable items removed). Wet/dry vacuum staged. Air movers staged for drying. Signage placed ('Wet Floor — Keep Off'). Operatives in correct PPE (chemical-resistant gloves, safety glasses, slip-resistant boots). Dust-free wet stripping used as default — no airborne dust. We never apply stripper without protecting adjacent surfaces first.",
+ 17994→    },
+ 17995→  ],
+ 17996→  testimonials: [
+ 17997→    {
+ 17998→      name: "Margaret McLean",
+ 17999→      role: "Facilities Manager, secondary school, Fife",
+ 18000→      quote:
+ 18001→        "School hall — 600m² of VCT, 30 years of polish build-up. Yellowed, scuffed, looked awful. Maundy Clean stripped it back to bare tile, refinished with 5 coats of metal-interlock polish, daily burnish programme. The hall gleams. Priced per m², no surprises. Quarterly scrub-and-recoat keeps it fresh. Annual strip scheduled for summer holidays. Best floor care contractor we've had in 20 years.",
+ 18002→      rating: 5,
+ 18003→    },
+ 18004→    {
+ 18005→      name: "Alex Dunlop",
+ 18006→      role: "Hotel Manager, boutique hotel, Edinburgh",
+ 18007→      quote:
+ 18008→        "Marble lobby floor — 200m² of Crema Marfil, scratched and dulled by 8 years of foot traffic. Maundy Clean diamond-honed 50-grit through 3000-grit, crystallised, sealed. Floor looks like a mirror — guests photograph it. Annual re-polish keeps it perfect. They also handle our terrazzo reception (diamond polish, no coating — no peeling). Top-tier specialist. £28/m² well spent.",
+ 18009→      rating: 5,
+ 18010→    },
+ 18011→    {
+ 18012→      name: "Sandra Walker",
+ 18013→      role: "Operations Manager, retail chain, central belt",
+ 18014→      quote:
+ 18015→        "20-storey retail chain, each store has VCT entrance. Maundy Clean manage the full floor care programme — annual strip per store, quarterly scrub-and-recoat, burnish where needed. National pricing per m², one invoice. Gloss meter readings on every inspection. Floor care was a mess before — 5 different contractors, no consistency. Now one contractor, one standard, one invoice. Recommended.",
+ 18016→      rating: 5,
+ 18017→    },
+ 18018→  ],
+ 18019→  relatedServices: [
+ 18020→    {
+ 18021→      name: "VCT Floor Care",
+ 18022→      href: "/services/vct-floor-care",
+ 18023→      description: "VCT-specific floor care — book alongside general floor care for VCT-heavy sites.",
+ 18024→    },
+ 18025→    {
+ 18026→      name: "Marble Polishing",
+ 18027→      href: "/services/marble-polishing",
+ 18028→      description: "Marble-specific restoration — book alongside general floor care for marble-heavy sites.",
+ 18029→    },
+ 18030→    {
+ 18031→      name: "Hardwood Floor Care",
+ 18032→      href: "/services/hardwood-floor-care",
+ 18033→      description: "Hardwood floor sanding and refinishing — for sites with mixed floor types.",
+ 18034→    },
+ 18035→    {
+ 18036→      name: "Tile & Grout Cleaning",
+ 18037→      href: "/services/tile-grout-cleaning",
+ 18038→      description: "Tile and grout deep clean — for sites with tile floors alongside hard floors.",
+ 18039→    },
+ 18040→    {
+ 18041→      name: "Nightly Janitorial",
+ 18042→      href: "/services/nightly-janitorial",
+ 18043→      description: "After-hours janitorial — for daily floor maintenance between specialist strip cycles.",
+ 18044→    },
+ 18045→    {
+ 18046→      name: "Day Porter Services",
+ 18047→      href: "/services/day-porter-services",
+ 18048→      description: "On-site attendant — for sites that need floor care attention during operating hours.",
+ 18049→    },
+ 18050→  ],
+ 18051→  gallery: [
+ 18052→    {
+ 18053→      src: "https://sfile.chatglm.cn/images-ppt/floor-care-stripping.jpg",
+ 18054→      alt: "VCT floor stripped and refinished to wet-look gloss",
+ 18055→      caption: "VCT floor after full strip and refinish — 5 coats high-solids metal-interlock polish, daily burnish, wet-look gloss.",
+ 18056→    },
+ 18057→    {
+ 18058→      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+ 18059→      alt: "Diamond-grit honing on marble floor",
+ 18060→      caption: "Marble floor diamond-honed 50-grit through 3000-grit, crystallised, impregnating sealer. Mirror finish achieved.",
+ 18061→    },
+ 18062→    {
+ 18063→      src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+ 18064→      alt: "Colour-coded floor care pads",
+ 18065→      caption: "Colour-coded pads prevent mix-ups — black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish.",
+ 18066→    },
+ 18067→    {
+ 18068→      src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+ 18069→      alt: "High-speed burnish programme in retail store",
+ 18070→      caption: "High-speed burnish (1500-2000 RPM) with hogs-hair pad — wet-look gloss restored in 15-30 minutes per 100m². Daily for premium floors.",
+ 18071→    },
+ 18072→  ],
+ 18073→};
+ 18074→// ========== 5. VCT Floor Care ==========
+ 18075→export const vctFloorCare: ServiceDetail = {
+ 18076→  slug: "vct-floor-care",
+ 18077→  name: "VCT Floor Care",
+ 18078→  category: "Janitorial & Facility",
+ 18079→  tagline: "Specialist vinyl composition tile strip, refinish & burnish — wet-look gloss for commercial VCT.",
+ 18080→  heroHeadline: "VCT that gleams.\nNot VCT that\nhas given up.",
+ 18081→  heroSubhead:
+ 18082→    "VCT (vinyl composition tile) is the workhorse of commercial flooring — schools, hospitals, retail, offices, leisure centres. With proper care it lasts 25+ years and looks immaculate. Without proper care it yellows, scuffs, scratches, and looks tired within 5 years. Our VCT specialists strip back years of acrylic build-up, refinish with high-solids metal-interlock polish, and maintain with quarterly scrub-and-recoat and daily burnish. colour-coded pads, dust-free wet stripping, gloss meter readings. £5m public liability. 14 years of VCT care across Scotland.",
+ 18083→  heroImage: "https://sfile.chatglm.cn/images-ppt/vct-floor-care.jpg",
+ 18084→  breadcrumbParent: "Janitorial & Facility",
+ 18085→  metaTitle: "VCT Floor Care in Scotland | Strip, Refinish, Burnish | Maundy Clean",
+ 18086→  metaDescription:
+ 18087→    "VCT floor care across Scotland. Strip, refinish, scrub-and-recoat, burnish. High-solids metal-interlock polish. From £4/m². 4.9★.",
+ 18088→  overviewParagraphs: [
+ 18089→    "VCT (vinyl composition tile) is the most common commercial hard floor in Scotland — schools, hospitals, retail, offices, leisure centres, GP surgeries, dental practices. It's a 3mm-thick tile made of polyvinyl chloride (PVC) binder with limestone filler, available in 30cm x 30cm squares. VCT is durable (25+ year lifespan with proper care), affordable, and takes polish beautifully. But VCT is also porous (the limestone filler absorbs staining) — without proper polish protection, VCT stains permanently within months. Proper VCT care is a specialist discipline: full strip and refinish annually for high-traffic, biennial for medium, quarterly scrub-and-recoat top-up, daily burnish for premium floors.",
+ 18090→    "Our VCT specialists handle every stage of the VCT care lifecycle. Strip: chemical stripper (typically alkaline-based, formulated for VCT), aggressive black pad under a low-speed machine, slurry picked up by wet vacuum, double-rinse with clean water, neutraliser rinse to bring floor back to pH 7 (critical — alkaline residue prevents polish bonding). Refinish: 4-6 coats of high-solids metal-interlock polish (25% solids commercial, 30% premium), each coat dried 30-45 minutes before next, final coat cured 24 hours before traffic. Scrub-and-recoat: light scrub with red pad and neutral cleaner, 2 top-up coats, 12-hour cure. Burnish: high-speed (1500-2000 RPM) with hogs-hair pad and burnish cream if required.",
+ 18091→    "We work for schools (gym halls, corridors, classrooms), hospitals (corridors, wards, treatment rooms — EN 14476 chemistry for clinical zones), retail chains (store entrances — annual strip per store, national pricing), offices (reception, corridors, meeting rooms), leisure centres (pool surrounds — slip-resistant polish), GP surgeries and dental practices (HTM 01-05 compliant chemistry), and large commercial estates. Each environment has different priorities: schools need school-holiday strips, hospitals need EN 14476 chemistry and quiet-shift working, retail needs after-hours strips, GP practices need weekend strips. We tailor the schedule and the chemistry to your operation. References from VCT clients available on request.",
+ 18092→  ],
+ 18093→  whatsIncluded: [
+ 18094→    {
+ 18095→      title: "Full strip and refinish — annual for high-traffic",
+ 18096→      description:
+ 18097→        "Full strip back to bare VCT tile. Chemical stripper applied (alkaline-based, formulated for VCT), aggressive black pad under a low-speed machine (175 RPM), slurry picked up by wet vacuum. Double-rinse with clean water. Neutraliser rinse to bring floor back to pH 7 (critical — alkaline residue prevents polish bonding). Floor dried thoroughly. Then refinish: 4-6 coats of high-solids metal-interlock polish (25% solids commercial, 30% premium), each coat dried 30-45 minutes before next. Final coat cured 24 hours before traffic. Floor restored to wet-look gloss.",
+ 18098→    },
+ 18099→    {
+ 18100→      title: "Scrub and recoat — quarterly top-up",
+
+[showing lines 17801-18100 of 25776; use offset=18101 with limit to continue reading]

@@ -1,0 +1,1256 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  ShieldCheck,
+     7→  Leaf,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  KeyRound,
+    16→  Hammer,
+    17→  UserCheck,
+    18→  ClipboardCheck,
+    19→  FileText,
+    20→  HeartPulse,
+    21→  Wrench,
+    22→  Dumbbell,
+    23→  ShowerHead,
+    24→  Search,
+    25→} from "lucide-react";
+    26→import { Button } from "@/components/ui/button";
+    27→import { contactInfo } from "@/lib/site-data";
+    28→
+    29→// ============================================================
+    30→// Images - hand-picked from in-house search service
+    31→// (matches cafe-coffee-shop + restaurant-cleaning image pool)
+    32→// ============================================================
+    33→const IMG = {
+    34→  heroWide:
+    35→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    36→  introSplit:
+    37→    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    38→  whyCrew:
+    39→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    40→  checklistFront:
+    41→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    42→  checklistCounter:
+    43→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    44→  checklistKitchen:
+    45→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    46→  leaseDeep:
+    47→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    48→  leaseTenancy:
+    49→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    50→  leaseBuilders:
+    51→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    52→  leaseAntiviral:
+    53→    "https://sfile.chatglm.cn/images-ppt/8a7c4d6e0b51.jpg",
+    54→  nearMeMap:
+    55→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    56→};
+    57→
+    58→// ============================================================
+    59→// 36 Scottish locations covered by the near-me grid
+    60→// (city-centre + neighbourhood coverage across Scotland)
+    61→// ============================================================
+    62→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    63→  { city: "Glasgow", slug: "glasgow" },
+    64→  { city: "Edinburgh", slug: "edinburgh" },
+    65→  { city: "Aberdeen", slug: "aberdeen" },
+    66→  { city: "Dundee", slug: "dundee" },
+    67→  { city: "Stirling", slug: "stirling" },
+    68→  { city: "Inverness", slug: "inverness" },
+    69→  { city: "Perth", slug: "perth" },
+    70→  { city: "Falkirk", slug: "falkirk" },
+    71→  { city: "Paisley", slug: "paisley" },
+    72→  { city: "East Kilbride", slug: "east-kilbride" },
+    73→  { city: "Livingston", slug: "livingston" },
+    74→  { city: "Hamilton", slug: "hamilton" },
+    75→  { city: "Ayr", slug: "ayr" },
+    76→  { city: "Kilmarnock", slug: "kilmarnock" },
+    77→  { city: "Greenock", slug: "greenock" },
+    78→  { city: "Coatbridge", slug: "coatbridge" },
+    79→  { city: "Airdrie", slug: "airdrie" },
+    80→  { city: "Motherwell", slug: "motherwell" },
+    81→  { city: "Wishaw", slug: "wishaw" },
+    82→  { city: "Dunfermline", slug: "dunfermline" },
+    83→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+    84→  { city: "Glenrothes", slug: "glenrothes" },
+    85→  { city: "Dundonald", slug: "dundonald" },
+    86→  { city: "Bearsden", slug: "bearsden" },
+    87→  { city: "Milngavie", slug: "milngavie" },
+    88→  { city: "Bishopbriggs", slug: "bishopbriggs" },
+    89→  { city: "Lenzie", slug: "lenzie" },
+    90→  { city: "Giffnock", slug: "giffnock" },
+    91→  { city: "Newton Mearns", slug: "newton-mearns" },
+    92→  { city: "Clarkston", slug: "clarkston" },
+    93→  { city: "Barrhead", slug: "barrhead" },
+    94→  { city: "Johnstone", slug: "johnstone" },
+    95→  { city: "Renfrew", slug: "renfrew" },
+    96→  { city: "Rutherglen", slug: "rutherglen" },
+    97→  { city: "Cambuslang", slug: "cambuslang" },
+    98→  { city: "Bellshill", slug: "bellshill" },
+    99→];
+   100→
+   101→// ============================================================
+   102→// Section 0 - Full-width hero banner
+   103→// Semantic H1: "Professional Gym & Fitness Centre Cleaning Services Scotland"
+   104→// ============================================================
+   105→
+   106→export function GymFitnessSeoHeroBanner() {
+   107→  return (
+   108→    <section className="relative overflow-hidden">
+   109→      {/* Full-width background image */}
+   110→      <div className="absolute inset-0">
+   111→        <img
+   112→          src={IMG.heroWide}
+   113→          alt="Maundy Clean uniformed gym and fitness centre cleaning team resetting a Scottish health club before opening"
+   114→          className="w-full h-full object-cover"
+   115→          loading="eager"
+   116→          fetchPriority="high"
+   117→        />
+   118→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   119→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   120→      </div>
+   121→
+   122→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   123→        <motion.div
+   124→          initial="hidden"
+   125→          animate="visible"
+   126→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   127→          className="max-w-3xl"
+   128→        >
+   129→          <motion.div
+   130→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   131→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   132→          >
+   133→            <span className="relative flex w-2 h-2">
+   134→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   135→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   136→            </span>
+   137→            Gym &amp; Fitness Centre Cleaning &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   138→          </motion.div>
+   139→
+   140→          <motion.h1
+   141→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   142→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   143→          >
+   144→            Professional Gym &amp; Fitness Centre Cleaning Services Scotland
+   145→          </motion.h1>
+   146→
+   147→          <motion.p
+   148→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   149→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   150→          >
+   151→            Meticulous Hygiene, Technical Decontamination, and the Maundy Tradition of Excellence
+   152→            for Scottish Fitness Communities. In the high-stakes world of the fitness industry, your
+   153→            facility is more than a gym; it is a sanctuary for your members&rsquo; health and
+   154→            physical well-being &mdash; and a high-traffic leisure environment that demands far more
+   155→            than a standard surface wipe.
+   156→          </motion.p>
+   157→
+   158→          <motion.div
+   159→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   160→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   161→          >
+   162→            <Button
+   163→              size="lg"
+   164→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   165→              asChild
+   166→            >
+   167→              <Link href="/quote">
+   168→                Book Your Free Site Survey Today
+   169→                <ArrowRight className="w-5 h-5" />
+   170→              </Link>
+   171→            </Button>
+   172→            <Button
+   173→              size="lg"
+   174→              variant="outline"
+   175→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   176→              asChild
+   177→            >
+   178→              <Link href="#checklist">
+   179→                <CheckCircle2 className="w-4 h-4" />
+   180→                View Our Commercial Cleaning Checklist
+   181→              </Link>
+   182→            </Button>
+   183→          </motion.div>
+   184→
+   185→          <motion.div
+   186→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   187→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   188→          >
+   189→            <div className="flex items-center gap-1.5">
+   190→              <div className="flex">
+   191→                {[1, 2, 3, 4, 5].map((s) => (
+   192→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   193→                ))}
+   194→              </div>
+   195→              <span className="font-semibold text-white">4.9/5</span>
+   196→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   197→            </div>
+   198→            <div className="flex items-center gap-1.5">
+   199→              <ShieldCheck className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; PVG-Checked
+   200→            </div>
+   201→            <div className="flex items-center gap-1.5">
+   202→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe, Non-Toxic Supplies
+   203→            </div>
+   204→            <div className="flex items-center gap-1.5">
+   205→              <Clock className="w-4 h-4 text-[var(--gold)]" /> Pre-Open &amp; Post-Close, 7 Days
+   206→            </div>
+   207→          </motion.div>
+   208→        </motion.div>
+   209→      </div>
+   210→    </section>
+   211→  );
+   212→}
+   213→
+   214→// ============================================================
+   215→// Section 1 - Long-form semantic SEO intro
+   216→// Sits right after the hero, before the existing ServiceOverview.
+   217→// Split-layout with aspect-[4/3] image on the left and the two
+   218→// verbatim intro paragraphs on the right (paragraph 2 contains
+   219→// the two inline <Link>s to /services/move-in-out-cleaning for
+   220→// "End of Tenancy Cleaning" and /services/deep-house-cleaning
+   221→// for "Deep Cleaning Services").
+   222→// ============================================================
+   223→
+   224→export function GymFitnessSeoIntro() {
+   225→  return (
+   226→    <section className="py-16 lg:py-24 bg-background">
+   227→      <div className="max-w-[1400px] mx-auto px-6">
+   228→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   229→          {/* Image side */}
+   230→          <motion.div
+   231→            initial={{ opacity: 0, scale: 0.96 }}
+   232→            whileInView={{ opacity: 1, scale: 1 }}
+   233→            viewport={{ once: true, margin: "-80px" }}
+   234→            transition={{ duration: 0.6 }}
+   235→            className="relative order-2 lg:order-1"
+   236→          >
+   237→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   238→              <img
+   239→                src={IMG.introSplit}
+   240→                alt="Maundy Clean uniformed gym cleaning crew decontaminating a Scottish fitness centre before opening"
+   241→                className="absolute inset-0 w-full h-full object-cover"
+   242→                loading="lazy"
+   243→              />
+   244→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   245→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   246→                <div className="flex items-center gap-2 mb-1">
+   247→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   248→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   249→                    Sanctuary Care for the Fitness World
+   250→                  </span>
+   251→                </div>
+   252→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   253→                  The same level of technical intimacy, &ldquo;same-staff&rdquo; consistency, and
+   254→                  &ldquo;sanctuary&rdquo; care we bring to Scotland&rsquo;s finest residences &mdash;
+   255→                  applied to your gym, leisure centre, or boutique studio.
+   256→                </p>
+   257→              </div>
+   258→            </div>
+   259→            <motion.div
+   260→              animate={{ y: [0, -8, 0] }}
+   261→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   262→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   263→            >
+   264→              <div className="flex items-center gap-2">
+   265→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   266→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   267→                </div>
+   268→                <div>
+   269→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   270→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m cover</div>
+   271→                </div>
+   272→              </div>
+   273→            </motion.div>
+   274→          </motion.div>
+   275→
+   276→          {/* Copy side */}
+   277→          <motion.div
+   278→            initial={{ opacity: 0, y: 20 }}
+   279→            whileInView={{ opacity: 1, y: 0 }}
+   280→            viewport={{ once: true, margin: "-80px" }}
+   281→            transition={{ duration: 0.5 }}
+   282→            className="order-1 lg:order-2"
+   283→          >
+   284→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   285→              Gym &amp; fitness centre care &middot; Scotland
+   286→            </span>
+   287→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   288→              The Maundy Clean Standard for Scottish Fitness Communities
+   289→            </h2>
+   290→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   291→              In the high-stakes world of the fitness industry, your facility is more than a gym; it
+   292→              is a sanctuary for your members&rsquo; health and physical well-being. However,
+   293→              high-traffic leisure environments demand far more than a standard surface wipe. Dust,
+   294→              debris, and bacteria buildup can directly impact member retention, equipment lifespan,
+   295→              and compliance with strict industry safety regulations. At{" "}
+   296→              <strong className="font-semibold text-[var(--ink)]">MaundyClean</strong>, we provide a
+   297→              premium gym and fitness centre cleaning service that ensures your facility operates at
+   298→              peak performance, safely and efficiently.
+   299→            </p>
+   300→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   301→              While we are the recognized authority in{" "}
+   302→              <Link
+   303→                href="/services/move-in-out-cleaning"
+   304→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   305→              >
+   306→                End of Tenancy Cleaning
+   307→              </Link>{" "}
+   308→              and{" "}
+   309→              <Link
+   310→                href="/services/deep-house-cleaning"
+   311→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   312→              >
+   313→                Deep Cleaning Services
+   314→              </Link>{" "}
+   315→              for Scotland&rsquo;s most demanding property transitions, we bring that same level of
+   316→              technical intimacy, &ldquo;same-staff&rdquo; consistency, and &ldquo;sanctuary&rdquo;
+   317→              care to the commercial leisure sector. Serving Glasgow, Edinburgh, and the Central
+   318→              Belt, we act as a strategic partner to help you maintain a safe, productive workout
+   319→              space.
+   320→            </p>
+   321→
+   322→            {/* Compact trust strip */}
+   323→            <motion.div
+   324→              initial={{ opacity: 0, y: 16 }}
+   325→              whileInView={{ opacity: 1, y: 0 }}
+   326→              viewport={{ once: true, margin: "-40px" }}
+   327→              transition={{ duration: 0.5, delay: 0.15 }}
+   328→              className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3"
+   329→            >
+   330→              {[
+   331→                { label: "Visits completed in 2025", value: "99.6%" },
+   332→                { label: "Vetted, uniformed crews", value: "100%" },
+   333→                { label: "From per hour", value: "&pound;16" },
+   334→                { label: "Star rating", value: "4.9/5" },
+   335→              ].map((stat) => (
+   336→                <div
+   337→                  key={stat.label}
+   338→                  className="bg-[var(--cream)] rounded-xl p-3 border border-[var(--brand)]/10 text-center"
+   339→                >
+   340→                  <div
+   341→                    className="font-display font-extrabold text-xl text-gradient-brand"
+   342→                    dangerouslySetInnerHTML={{ __html: stat.value }}
+   343→                  />
+   344→                  <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">{stat.label}</div>
+   345→                </div>
+   346→              ))}
+   347→            </motion.div>
+   348→          </motion.div>
+   349→        </div>
+   350→      </div>
+   351→    </section>
+   352→  );
+   353→}
+   354→
+   355→// ============================================================
+   356→// Section 2 - Why MaundyClean is Scotland's Authority in Fitness Facility Maintenance
+   357→// (Semantic H2: "Why MaundyClean is Scotland's Authority in Fitness Facility Maintenance")
+   358→// Image+copy split layout with 4 trust cards.
+   359→// Per the brief: icons UserCheck / ShieldCheck / Wrench / Leaf
+   360→// ============================================================
+   361→
+   362→const TRUST_CARDS = [
+   363→  {
+   364→    icon: UserCheck,
+   365→    title: "The Same Trusted Team Every Visit",
+   366→    description:
+   367→      "Reliability is the bedrock of facility management. We ensure the same vetted professionals manage your account every time. This allows our team to build a deep understanding of your unique equipment layouts and high-traffic &ldquo;risky&rdquo; areas &mdash; from the free-weight zone and the cable-machine rigs through the studio floors and the changing-room choke points. The same crew lead returns every visit, building real accountability to your hygiene standard, your member-experience score, and your EHO inspection file. When the regular crew lead is on annual leave, we send a trained backup who has been briefed on your site and we tell you in advance &mdash; never a rotating cast of agency strangers, never a &ldquo;new face every week&rdquo;.",
+   368→  },
+   369→  {
+   370→    icon: ShieldCheck,
+   371→    title: "Total Regulatory Compliance",
+   372→    description:
+   373→      "Industrial and leisure environments demand more than aesthetic cleaning. Our teams are trained in robust decontamination protocols, ensuring your sports halls and community facilities remain compliant with health and safety industry regulations. Every product we use has a current COSHH datasheet on file, every method is mapped to your HACCP-style cleaning plan, and every crew member is trained on infection-control standards (colour-coded microfibre to prevent cross-contamination between equipment, mats, washroom, and changing zones). We hold &pound;5m public liability cover and &pound;5m employer&rsquo;s liability cover &mdash; suitable for independent gyms, council leisure centres, boutique studios, and franchise operators alike. Audit-ready documentation is provided every visit, including EN 14476 virucidal contact-time logs and ATP swab-test results.",
+   374→  },
+   375→  {
+   376→    icon: Wrench,
+   377→    title: "Professional-Grade Technical Equipment",
+   378→    description:
+   379→      "We utilize proven systems and industrial-grade equipment designed to handle heavy-duty environments. From high-reach ventilation dusting and extractor-grille degreasing to specialized floor degreasing on rubber weight-room flooring, we ensure a &ldquo;speechlessly spotless&rdquo; finish. Our crews arrive in liveried vans with commercial-grade HEPA-filtered vacuums (Sebo BS36/BS46, Henry HVR200), flat-mop systems with separate dirty-water extraction (no double-dipping), 180&deg;C dry-steam sanitizers for yoga mats and foam rollers, ultra-low-volume foggers for outbreak response, and ATP luminometers for post-clean verification on a random sample of touchpoints. We use EN 14476 virucidal disinfectant with a verified 60-second contact time on every dumbbell, kettlebell, plate, cable grip, machine pin, treadmill console, bike handlebar, and rower chain.",
+   380→  },
+   381→  {
+   382→    icon: Leaf,
+   383→    title: "Safe for Your Members",
+   384→    description:
+   385→      "Your members&rsquo; health is paramount. We utilize only certified non-toxic and child-safe products. This is essential for community facilities and family-friendly gyms, providing a healthy environment without the harsh chemical odors common with national agencies. COSHH datasheets are available for every product we use, and we default to eco-labelled chemistry with food-safe alternatives (EN 1276 bactericide, EN 14476 virucide) for reception desks, member check-in tablets, water-fountain buttons, and vending-machine keypads. All PPE is provided. Colour-coded microfibre cloths prevent cross-contamination between equipment zones, mats, washrooms, and changing rooms. Your members notice the fresh-air feel &mdash; no chlorine-choked studios, no ammoniated changing rooms, no chemical haze in the weight area.",
+   386→  },
+   387→];
+   388→
+   389→export function GymFitnessSeoWhy() {
+   390→  return (
+   391→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   392→      <div className="max-w-[1400px] mx-auto px-6">
+   393→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   394→          {/* Image side */}
+   395→          <motion.div
+   396→            initial={{ opacity: 0, scale: 0.96 }}
+   397→            whileInView={{ opacity: 1, scale: 1 }}
+   398→            viewport={{ once: true, margin: "-80px" }}
+   399→            transition={{ duration: 0.6 }}
+   400→            className="relative order-2 lg:order-1"
+   401→          >
+   402→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   403→              <img
+   404→                src={IMG.whyCrew}
+   405→                alt="Maundy Clean gym cleaning crew &mdash; uniformed, PVG-checked, and trained on EN 14476 virucidal disinfection protocols"
+   406→                className="absolute inset-0 w-full h-full object-cover"
+   407→                loading="lazy"
+   408→              />
+   409→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   410→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   411→                <div className="flex items-center gap-2 mb-1">
+   412→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   413→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   414→                    A Strategic Partner, Not an Impersonal Agency
+   415→                  </span>
+   416→                </div>
+   417→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   418→                  Employed, vetted, uniformed, and trained in infection-control standards. Same crew
+   419→                  every visit &mdash; never a rotating cast of strangers handling your equipment.
+   420→                </p>
+   421→              </div>
+   422→            </div>
+   423→            <motion.div
+   424→              animate={{ y: [0, -8, 0] }}
+   425→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   426→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   427→            >
+   428→              <div className="flex items-center gap-2">
+   429→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   430→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   431→                </div>
+   432→                <div>
+   433→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   434→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m cover</div>
+   435→                </div>
+   436→              </div>
+   437→            </motion.div>
+   438→          </motion.div>
+   439→
+   440→          {/* Copy side */}
+   441→          <motion.div
+   442→            initial={{ opacity: 0, y: 20 }}
+   443→            whileInView={{ opacity: 1, y: 0 }}
+   444→            viewport={{ once: true, margin: "-80px" }}
+   445→            transition={{ duration: 0.5 }}
+   446→            className="order-1 lg:order-2"
+   447→          >
+   448→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   449→              Why choose Maundy Clean
+   450→            </span>
+   451→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   452→              Why MaundyClean is Scotland&rsquo;s Authority in Fitness Facility Maintenance
+   453→            </h2>
+   454→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   455→              Many commercial contractors rely on high-turnover agency staff, leading to inconsistent
+   456→              results. MaundyClean addresses these exploitable weaknesses by focusing on high-trust
+   457→              relationships and vocational excellence. By combining vetted uniformed teams, the same
+   458→              dedicated crew every visit, robust decontamination protocols, professional-grade
+   459→              technical equipment, and child-safe eco-friendly supplies as standard, we project the
+   460→              high standards your members expect &mdash; and the audit-ready documentation your
+   461→              health-and-safety inspector demands.
+   462→            </p>
+   463→
+   464→            <div className="space-y-3">
+   465→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   466→                const Icon = card.icon;
+   467→                return (
+   468→                  <div
+   469→                    key={card.title}
+   470→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   471→                  >
+   472→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   473→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   474→                    </div>
+   475→                    <div>
+   476→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   477→                        {card.title}
+   478→                      </h3>
+   479→                      <p
+   480→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   481→                        dangerouslySetInnerHTML={{ __html: card.description }}
+   482→                      />
+   483→                    </div>
+   484→                  </div>
+   485→                );
+   486→              })}
+   487→            </div>
+   488→          </motion.div>
+   489→        </div>
+   490→
+   491→        {/* Third + fourth cards as a 2-column strip */}
+   492→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   493→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   494→            const Icon = card.icon;
+   495→            return (
+   496→              <motion.div
+   497→                key={card.title}
+   498→                initial={{ opacity: 0, y: 20 }}
+   499→                whileInView={{ opacity: 1, y: 0 }}
+   500→                viewport={{ once: true, margin: "-40px" }}
+   501→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   502→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   503→              >
+   504→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   505→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   506→                </div>
+   507→                <div>
+   508→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   509→                    {card.title}
+   510→                  </h3>
+   511→                  <p
+   512→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   513→                    dangerouslySetInnerHTML={{ __html: card.description }}
+   514→                  />
+   515→                </div>
+   516→              </motion.div>
+   517→            );
+   518→          })}
+   519→        </div>
+   520→      </div>
+   521→    </section>
+   522→  );
+   523→}
+   524→
+   525→// ============================================================
+   526→// Section 3 - Our Total Gym Maintenance & Deep Decontamination Checklist
+   527→// (Semantic H2: "Our Total Gym Maintenance & Deep Decontamination Checklist")
+   528→// Brief-specific section with 3 H3 sub-sections:
+   529→//   1. Equipment & Production Floors
+   530→//   2. "Clean Room" Standards for Amenities
+   531→//   3. Often-Missed Technical Details
+   532→// Carries the id="checklist" anchor that the CTA buttons link to.
+   533→// ============================================================
+   534→
+   535→const CHECKLIST_ITEMS = [
+   536→  {
+   537→    icon: Dumbbell,
+   538→    image: IMG.checklistFront,
+   539→    imageAlt: "Maundy Clean crew disinfecting gym equipment, free weights, and resistance machines in Scotland",
+   540→    title: "1. Equipment & Production Floors",
+   541→    description:
+   542→      "The weight room, cardio zone, and studio floors are the highest-touch, highest-contamination surfaces in any fitness facility. Independent laboratory swab tests consistently find free weights carrying up to 362 times more bacteria than a public toilet seat &mdash; including Staphylococcus aureus, ringworm fungal spores, and rhinovirus. A standard spray-and-wipe with a generic cleaner does not kill these pathogens; it just moves them around. Our equipment protocol uses EN 14476 virucidal disinfectant with a verified 60-second contact time on every touchpoint, applied by trained infection-control-aware crews.",
+   543→    points: [
+   544→      {
+   545→        title: "High-Touch Point Sanitization",
+   546→        text: "Meticulous disinfecting of cardiorespiratory equipment, free weights, resistance machines, and entry phone systems to keep germs and bugs at bay. Every dumbbell, kettlebell, plate, cable grip, machine pin, treadmill console, bike handlebar, and rower chain is wiped with EN 14476 virucidal disinfectant &mdash; 60-second contact time, then dried with a clean microfibre. Never a single rag across multiple stations. Member check-in tablets, water-fountain buttons, vending-machine keypads, and door handles are disinfected every visit, with particular attention during cold and flu season.",
+   547→      },
+   548→      {
+   549→        title: "Specialized Mat Care",
+   550→        text: "Technical cleaning of BJJ mats, yoga mats, and stretching areas to prevent the spread of skin infections. Studio mats are steam-sanitised at 180&deg;C dry steam on both sides (the only method that reliably kills ringworm fungal spores and Staphylococcus on porous surfaces), then dried flat. BJJ and martial-arts mats get an additional EN 14476 fogging pass after every session block. Foam rollers, blocks, and resistance bands are individually wiped with a quat-based disinfectant &mdash; critical for community facilities and family-friendly gyms where skin-to-surface contact is unavoidable.",
+   551→      },
+   552→      {
+   553→        title: "Hard Floor & Degreasing",
+   554→        text: "Intensive vacuuming and mopping of workout floors to remove sweat, rubber dust, and grime. Weight-room rubber flooring is vacuumed with a HEPA-filtered upright (no beater bar &mdash; it degrades the rubber compound), then mopped with a gym-specific sanitiser that doesn&rsquo;t degrade the rubber. Studio floors are swept and flat-mopped with separate dirty-water extraction (no double-dipping). Treadmill and elliptical areas get degreased to remove the sweat-and-oil film that builds up under cardio machines. A polished gym floor reflects the lighting and makes the whole room feel premium.",
+   555→      },
+   556→    ],
+   557→  },
+   558→  {
+   559→    icon: ShowerHead,
+   560→    image: IMG.checklistCounter,
+   561→    imageAlt: "Maundy Clean crew deep cleaning gym locker rooms, showers, and sauna facilities in Scotland",
+   562→    title: "2. \u201cClean Room\u201d Standards for Amenities",
+   563→    description:
+   564→      "Locker rooms, showers, and sauna/steam rooms are the second-highest-risk zone in any fitness facility &mdash; the &ldquo;clean room&rdquo; standard amenities demand. High-moisture environments culture bacteria in minutes; warm humid air cultures mould and legionella in hours. Our amenities protocol uses non-caustic, food-safe chemistry and 180&deg;C dry-steam sanitation on tile, grout, and chrome &mdash; applied by trained catering-experienced crews who know the difference between a descale cycle and a sanitise cycle. We buff and polish all chrome fixtures to a high shine as part of our &ldquo;showcase&rdquo; standards.",
+   565→    points: [
+   566→      {
+   567→        title: "Washroom & Locker Room Deep Cleaning",
+   568→        text: "Intensive sanitation of ceramic items, toilets, and showers. We descale toilets with a non-abrasive acid, disinfect with an EN 1276-certified bactericide, and polish chrome fittings to a high shine as part of our &ldquo;showcase&rdquo; standards. Tiles and grout are scrubbed, shower glass is squeegeed and treated, locker interiors are wiped, benches are sanitised, toilet partitions are disinfected, and floors are mopped with a slip-resistant sanitiser. Hair traps are cleared daily in communal showers to prevent drain blockages. Mirrors are squeegeed, never wiped &mdash; a streaked mirror kills the room&rsquo;s perception of cleanliness.",
+   569→      },
+   570→      {
+   571→        title: "Sauna & Steam Room Care",
+   572→        text: "Using approved products and methods to minimise contamination in high-moisture controlled environments. Sauna benches are wiped with a food-safe, non-taint bactericide (never a chlorine sanitiser &mdash; it off-gasses at sauna temperatures and irritates airways). Steam-room tiles and grout are scrubbed, the drain is sanitised, and the ceiling is wiped to remove biofilm. Wood surfaces are treated with a specialist sauna-wood cleaner that prevents resin build-up without damaging the timber. Legionella controls are logged every visit &mdash; temperature checks, shower-head descale, and cold-water tank inspection where access permits.",
+   573→      },
+   574→      {
+   575→        title: "Chrome & Fixture Polishing",
+   576→        text: "We buff and polish all chrome fixtures to a high shine as part of our &ldquo;showcase&rdquo; standards. Shower heads, taps, soap dispensers, locker handles, bench frames, and door furniture are polished with a streak-free stainless-steel cleaner. Sanitary bins are checked, emptied, and replaced. Hair-dryer handles, mirror edges, and plug sockets are detailed. The amenities zone is where members decide whether to renew their membership &mdash; a smudged tap or a stained grout line undermines the whole facility&rsquo;s perceived standard.",
+   577→      },
+   578→    ],
+   579→  },
+   580→  {
+   581→    icon: Search,
+   582→    image: IMG.checklistKitchen,
+   583→    imageAlt: "Maundy Clean crew detailing skirting boards, door frames, and ceiling fixtures in a Scottish gym",
+   584→    title: "3. Often-Missed Technical Details",
+   585→    description:
+   586→      "These are the surfaces that members notice subconsciously &mdash; a dusty vent, a stained ceiling tile, a streaked internal window. We hand-detail every perimeter surface, dust ceiling light fixtures and air-conditioning vents, and wipe down the inside of the windows so the room feels genuinely reset, not just the centre of the floor. These details are the difference between &ldquo;clean&rdquo; and &ldquo;speechlessly spotless&rdquo; &mdash; and the difference between a member who renews and a member who churns.",
+   587→    points: [
+   588→      {
+   589→        title: "Surface Restoration",
+   590→        text: "Meticulously wiping visible skirting boards, door frames, and ceiling fixtures. Skirting boards are damp-wiped with a pH-neutral cleaner; door frames and architraves are detailed; ceiling light fixtures, air-conditioning vents, and extractor grilles are dusted and degreased. High-reach ventilation dusting is performed with extendable poles and HEPA-filtered attachments &mdash; we don&rsquo;t just brush the dust back into the air. Cable trays, overhead rigging, and pull-up bar frames are wiped down. A dusty vent or a stained grout line undermines a polished weight room within seconds.",
+   591→      },
+   592→      {
+   593→        title: "Inside Window Care",
+   594→        text: "Meticulous cleaning of internal glass to maximize natural light and maintain a bright, welcoming atmosphere for members. We squeegee the inside of all glass doors, internal partitions, studio-view windows, mirror walls, and reception-area glazing on every visit, and schedule external window cleaning weekly (or daily for high-street units exposed to bus-stop and traffic grime). Mirrors in studios, changing rooms, and behind weight racks are squeegeed, never wiped &mdash; a streaked mirror kills the room&rsquo;s perception of cleanliness and undermines member-confidence in front of the barbell.",
+   595→      },
+   596→      {
+   597→        title: "Air Quality & Ventilation",
+   598→        text: "Air quality is the #1 driver of perceived cleanliness in member surveys &mdash; bad air undermines everything else. We service HVAC intake grilles, change extractor filters where you&rsquo;ve authorised it, and recommend an ozone-shock treatment monthly for high-traffic studios. The weight-room air-handling unit gets a coil-brush and drip-tray sanitise. The studio ozone treatment neutralises the sweat-and-rubber odour that builds up in a closed fitness environment. A gym that smells fresh is a gym that retains members &mdash; we manage the olfactory experience as carefully as the visual.",
+   599→      },
+   600→    ],
+   601→  },
+   602→];
+   603→
+   604→export function GymFitnessSeoChecklist() {
+   605→  return (
+   606→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   607→      <div className="max-w-[1400px] mx-auto px-6">
+   608→        <motion.div
+   609→          initial={{ opacity: 0, y: 20 }}
+   610→          whileInView={{ opacity: 1, y: 0 }}
+   611→          viewport={{ once: true, margin: "-80px" }}
+   612→          transition={{ duration: 0.5 }}
+   613→          className="max-w-3xl mb-12"
+   614→        >
+   615→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   616→            Beyond the standard surface wipe
+   617→          </span>
+   618→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   619→            Our Total Gym Maintenance &amp; Deep Decontamination Checklist
+   620→          </h2>
+   621→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   622→            Our recurring cleaning for fitness centres follows a rigorous, agency-approved checklist
+   623→            designed to address the specific hygiene challenges of active spaces. We move beyond the
+   624→            basic surface wipe to deliver technical depth in every area of your facility &mdash; from
+   625→            the free-weight zone and cardio floor through the locker rooms and sauna to the
+   626→            often-missed ceiling fixtures and internal glazing. Below is the scope we deliver as
+   627→            standard, regardless of facility size or membership volume.
+   628→          </p>
+   629→        </motion.div>
+   630→
+   631→        <div className="grid lg:grid-cols-3 gap-6">
+   632→          {CHECKLIST_ITEMS.map((item, i) => {
+   633→            const Icon = item.icon;
+   634→            return (
+   635→              <motion.div
+   636→                key={item.title}
+   637→                initial={{ opacity: 0, y: 24 }}
+   638→                whileInView={{ opacity: 1, y: 0 }}
+   639→                viewport={{ once: true, margin: "-40px" }}
+   640→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   641→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   642→              >
+   643→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   644→                  <img
+   645→                    src={item.image}
+   646→                    alt={item.imageAlt}
+   647→                    className="absolute inset-0 w-full h-full object-cover"
+   648→                    loading="lazy"
+   649→                  />
+   650→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   651→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   652→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   653→                  </div>
+   654→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   655→                    {item.title}
+   656→                  </h3>
+   657→                </div>
+   658→                <div className="p-6 flex-1 flex flex-col">
+   659→                  <p
+   660→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   661→                    dangerouslySetInnerHTML={{ __html: item.description }}
+   662→                  />
+   663→                  <ul className="space-y-3 mt-auto">
+   664→                    {item.points.map((point) => {
+   665→                      const PointIcon = CheckCircle2;
+   666→                      return (
+   667→                        <li
+   668→                          key={point.title}
+   669→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   670→                        >
+   671→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   672→                          <span>
+   673→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   674→                            &mdash; <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   675→                          </span>
+   676→                        </li>
+   677→                      );
+   678→                    })}
+   679→                  </ul>
+   680→                </div>
+   681→              </motion.div>
+   682→            );
+   683→          })}
+   684→        </div>
+   685→      </div>
+   686→    </section>
+   687→  );
+   688→}
+   689→
+   690→// ============================================================
+   691→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   692→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   693→// ============================================================
+   694→
+   695→const BOOKING_STEPS = [
+   696→  {
+   697→    icon: ClipboardCheck,
+   698→    step: "01",
+   699→    title: "Site Survey & Bespoke Plan",
+   700→    description:
+   701→      "Contact us to design a tailored cleaning plan. We walk the facility with your duty manager, identify priority zones (free-weight zone, cardio floor, studio mats, locker rooms, sauna, reception), review opening hours and access windows, capture your cleaning-compliance file and COSHH register, and establish the high standards and frequency required for your specific membership volume. We send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   702→  },
+   703→  {
+   704→    icon: FileText,
+   705→    step: "02",
+   706→    title: "Professional Matching",
+   707→    description:
+   708→      "We hand-pick a team of trained technicians who follow strict protocols and regular check-ins to ensure a good line of communication. Your allocated crew lead is briefed on your equipment layouts, your mat-care schedule, your washroom choke-points, and your high-traffic &ldquo;risky&rdquo; areas &mdash; so cleaning happens around the membership, not through it. The same crew returns for every scheduled session, building real knowledge of your facility&rsquo;s routines, your screen-sensitive surfaces, and your access preferences. We arrive in liveried vehicles, in uniform with photo I.D., with commercial-grade equipment and COSHH-compliant infection-control chemistry.",
+   709→  },
+   710→  {
+   711→    icon: Sparkles,
+   712→    step: "03",
+   713→    title: "Enjoy a Pristine Facility",
+   714→    description:
+   715→      "Experience a workout space that looks, smells, and feels fresh every single day, backed by our MaundyClean satisfaction guarantee. You receive a signed daily checklist after every visit (cleaner signature, duty manager counter-signature), arrival and departure times, tasks completed, and any issues flagged &mdash; like a leaking shower head, a blown bulb, or a treadmill due for belt-lube &mdash; before they become complaints. From &pound;16 per hour for a small independent studio through to a fully bespoke retainer for a multi-site leisure group. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   716→  },
+   717→];
+   718→
+   719→export function GymFitnessSeoBooking() {
+   720→  return (
+   721→    <section className="py-16 lg:py-24 bg-background">
+   722→      <div className="max-w-[1400px] mx-auto px-6">
+   723→        <motion.div
+   724→          initial={{ opacity: 0, y: 20 }}
+   725→          whileInView={{ opacity: 1, y: 0 }}
+   726→          viewport={{ once: true, margin: "-80px" }}
+   727→          transition={{ duration: 0.5 }}
+   728→          className="text-center mb-14"
+   729→        >
+   730→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   731→            Hassle-free booking
+   732→          </span>
+   733→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   734→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   735→          </h3>
+   736→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   737→            We have optimized our booking experience to be uncomplicated and straightforward,
+   738→            providing the responsive management support Scottish business owners demand. From site
+   739→            survey to first clean in under a week &mdash; no friction, no waiting, no surprises. Just
+   740→            a pristine facility, every visit, on schedule.
+   741→          </p>
+   742→        </motion.div>
+   743→
+   744→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   745→          {/* Connector line */}
+   746→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   747→
+   748→          {BOOKING_STEPS.map((step, i) => {
+   749→            const Icon = step.icon;
+   750→            return (
+   751→              <motion.div
+   752→                key={step.step}
+   753→                initial={{ opacity: 0, y: 24 }}
+   754→                whileInView={{ opacity: 1, y: 0 }}
+   755→                viewport={{ once: true, margin: "-40px" }}
+   756→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   757→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   758→              >
+   759→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   760→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   761→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   762→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   763→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   764→                    {step.step}
+   765→                  </span>
+   766→                </div>
+   767→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   768→                  {step.title}
+   769→                </h3>
+   770→                <p
+   771→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   772→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   773→                />
+   774→              </motion.div>
+   775→            );
+   776→          })}
+   777→        </div>
+   778→
+   779→        <motion.div
+   780→          initial={{ opacity: 0, y: 16 }}
+   781→          whileInView={{ opacity: 1, y: 0 }}
+   782→          viewport={{ once: true }}
+   783→          transition={{ duration: 0.5, delay: 0.3 }}
+   784→          className="text-center mt-10"
+   785→        >
+   786→          <Button
+   787→            size="lg"
+   788→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   789→            asChild
+   790→          >
+   791→            <Link href="/quote">
+   792→              Book Your Free Site Survey Today
+   793→              <ArrowRight className="w-5 h-5" />
+   794→            </Link>
+   795→          </Button>
+   796→        </motion.div>
+   797→      </div>
+   798→    </section>
+   799→  );
+   800→}
+   801→
+   802→// ============================================================
+   803→// Section 5 - Solutions for Every Property Stage
+   804→// (Semantic H2: "Solutions for Every Property Stage")
+   805→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   806→// Image-topped cards with internal links to specialist services
+   807→// ============================================================
+   808→
+   809→const INTERLINK_SOLUTIONS = [
+   810→  {
+   811→    icon: KeyRound,
+   812→    title: "Property Transitions &middot; End of Tenancy Cleaning",
+   813→    href: "/services/move-in-out-cleaning",
+   814→    image: IMG.leaseTenancy,
+   815→    imageAlt: "Empty gym unit being deep cleaned for lease handover by Maundy Clean in Scotland",
+   816→    description:
+   817→      "Opening a new location or moving units? Our End of Tenancy Cleaning ensures properties are front-line ready for launch and pass all initial safety inspections. We work to the letting agent&rsquo;s inventory, restore the unit to its original condition, and come back free of charge if anything is flagged on the inspection &mdash; the most stress-free way to close out a gym lease or open a new fitness concept.",
+   818→    cta: "Explore end of tenancy",
+   819→  },
+   820→  {
+   821→    icon: Hammer,
+   822→    title: "Post-Renovation &middot; After Builders Clean",
+   823→    href: "/services/post-construction-cleaning",
+   824→    image: IMG.leaseBuilders,
+   825→    imageAlt: "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish gym and fitness centre",
+   826→    description:
+   827→      "If your gym has had home improvements or new equipment installed, our After Builders Clean is designed to remove heavy layers of builders&rsquo; dust. Fine dust left on a weight-room floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect every surface before the dust has a chance to damage equipment, rubber flooring, or your members&rsquo; first impression on reopening day.",
+   828→    cta: "Explore after builders cleaning",
+   829→  },
+   830→  {
+   831→    icon: Sparkles,
+   832→    title: "Fabric &amp; Floor Rejuvenation &middot; Deep Carpet Cleaning",
+   833→    href: "/services/carpet-rug-cleaning",
+   834→    image: IMG.leaseDeep,
+   835→    imageAlt: "Deep carpet cleaning of a gym reception and lobby area by Maundy Clean in Scotland",
+   836→    description:
+   837→      "Bring tired lobby carpets back to life with our Deep Carpet Cleaning service to remove deep-seated city-center dust and odors. We hot-water-extract reception-area carpets, stretch-zone runners, and studio floor covers &mdash; removing the sweat-and-rubber smell that builds up in a busy fitness environment and refreshing the appearance of the high-traffic entrance your members see first.",
+   838→    cta: "Explore deep carpet cleaning",
+   839→  },
+   840→  {
+   841→    icon: HeartPulse,
+   842→    title: "Hygiene Resets &middot; Antiviral Sanitisation",
+   843→    href: "/services/disinfection-services",
+   844→    image: IMG.leaseAntiviral,
+   845→    imageAlt: "Antiviral sanitisation treatment being applied to high-touch gym surfaces in Scotland",
+   846→    description:
+   847→      "Ask about our specialist Antiviral Sanitisation and decontamination services for controlled environments. EN 14476 virucidal chemistry is fogged and wiped across every high-touch surface in your gym &mdash; from dumbbell knurling and treadmill consoles to locker handles and sauna benches &mdash; reducing the spread of seasonal colds, flu, ringworm, and norovirus among your members and staff during peak trading and outbreak response.",
+   848→    cta: "Explore antiviral sanitisation",
+   849→  },
+   850→];
+   851→
+   852→export function GymFitnessSeoInterlinking() {
+   853→  return (
+   854→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   855→      <div className="max-w-[1400px] mx-auto px-6">
+   856→        <motion.div
+   857→          initial={{ opacity: 0, y: 20 }}
+   858→          whileInView={{ opacity: 1, y: 0 }}
+   859→          viewport={{ once: true, margin: "-80px" }}
+   860→          transition={{ duration: 0.5 }}
+   861→          className="max-w-3xl mb-12"
+   862→        >
+   863→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   864→            Beyond the daily clean &middot; gym milestones
+   865→          </span>
+   866→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   867→            Solutions for Every Property Stage
+   868→          </h2>
+   869→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   870→            Our recurring cleaning for leisure centres is the heartbeat of your facility&rsquo;s
+   871→            health, but we offer specialized &ldquo;resets&rdquo; for major property milestones &mdash;
+   872→            from lease handovers and post-refurbishment dust clear-outs to fabric rejuvenation and
+   873→            outbreak-response hygiene resets. The same trusted crew can step up whenever your
+   874→            facility needs more than a standard visit.
+   875→          </p>
+   876→        </motion.div>
+   877→
+   878→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   879→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   880→            const Icon = sol.icon;
+   881→            return (
+   882→              <motion.div
+   883→                key={sol.title}
+   884→                initial={{ opacity: 0, y: 24 }}
+   885→                whileInView={{ opacity: 1, y: 0 }}
+   886→                viewport={{ once: true, margin: "-40px" }}
+   887→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   888→              >
+   889→                <Link
+   890→                  href={sol.href}
+   891→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   892→                >
+   893→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   894→                    <img
+   895→                      src={sol.image}
+   896→                      alt={sol.imageAlt}
+   897→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   898→                      loading="lazy"
+   899→                    />
+   900→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   901→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   902→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   903→                    </div>
+   904→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   905→                      {sol.title}
+   906→                    </h3>
+   907→                  </div>
+   908→                  <div className="p-5">
+   909→                    <p
+   910→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   911→                      dangerouslySetInnerHTML={{ __html: sol.description }}
+   912→                    />
+   913→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   914→                      {sol.cta}
+   915→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   916→                    </span>
+   917→                  </div>
+   918→                </Link>
+   919→              </motion.div>
+   920→            );
+   921→          })}
+   922→        </div>
+   923→      </div>
+   924→    </section>
+   925→  );
+   926→}
+   927→
+   928→// ============================================================
+   929→// Section 6 - "Near Me" Location Internal Links
+   930→// (Semantic H2: "Gym & Fitness Centre Cleaning Near Me, Across Scotland")
+   931→// Split layout with map image + 36-location grid
+   932→// ============================================================
+   933→
+   934→export function GymFitnessSeoNearMe() {
+   935→  return (
+   936→    <section className="py-16 lg:py-24 bg-background">
+   937→      <div className="max-w-[1400px] mx-auto px-6">
+   938→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   939→          {/* Left: copy + map image */}
+   940→          <motion.div
+   941→            initial={{ opacity: 0, y: 20 }}
+   942→            whileInView={{ opacity: 1, y: 0 }}
+   943→            viewport={{ once: true, margin: "-80px" }}
+   944→            transition={{ duration: 0.5 }}
+   945→          >
+   946→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   947→              Local gym &amp; fitness centre cleaning across Scotland
+   948→            </span>
+   949→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   950→              Gym &amp; Fitness Centre Cleaning Near Me, Across Scotland
+   951→            </h2>
+   952→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   953→              Searching for &ldquo;gym cleaning near me&rdquo; or &ldquo;fitness centre cleaning
+   954→              company near me&rdquo; in Scotland? Maundy Clean covers independent gyms, council
+   955→              leisure centres, boutique studios, and F45-style concept facilities across the Central
+   956→              Belt, Highlands, Borders, and Islands. Same vetted uniformed crews, same child-safe
+   957→              eco-friendly supplies, same dedicated crew every visit &mdash; wherever your facility
+   958→              happens to be. Find your local gym cleaning specialist below.
+   959→            </p>
+   960→
+   961→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   962→              <img
+   963→                src={IMG.nearMeMap}
+   964→                alt="Map of Scotland showing Maundy Clean gym and fitness centre cleaning service coverage areas"
+   965→                className="absolute inset-0 w-full h-full object-cover"
+   966→                loading="lazy"
+   967→              />
+   968→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   969→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   970→                <div className="flex items-center gap-2 mb-1">
+   971→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   972→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   973→                    72+ Scottish towns covered
+   974→                  </span>
+   975→                </div>
+   976→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   977→                  Same vetted uniformed crews, same 100% satisfaction guarantee &mdash; from Glasgow
+   978→                  to Inverness.
+   979→                </p>
+   980→              </div>
+   981→            </div>
+   982→
+   983→            <div className="mt-6">
+   984→              <Button
+   985→                size="lg"
+   986→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   987→                asChild
+   988→              >
+   989→                <Link href="/services/gym-fitness-cleaning-near-me">
+   990→                  <MapPin className="w-4 h-4" />
+   991→                  Browse the near-me directory
+   992→                  <ArrowRight className="w-4 h-4" />
+   993→                </Link>
+   994→              </Button>
+   995→            </div>
+   996→          </motion.div>
+   997→
+   998→          {/* Right: location grid */}
+   999→          <motion.div
+  1000→            initial={{ opacity: 0, y: 20 }}
+  1001→            whileInView={{ opacity: 1, y: 0 }}
+  1002→            viewport={{ once: true, margin: "-60px" }}
+  1003→            transition={{ duration: 0.5 }}
+  1004→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1005→          >
+  1006→            <div className="flex items-center justify-between mb-5">
+  1007→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1008→                Find your local gym crew
+  1009→              </h3>
+  1010→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1011→            </div>
+  1012→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1013→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1014→                <motion.div
+  1015→                  key={loc.slug}
+  1016→                  initial={{ opacity: 0 }}
+  1017→                  whileInView={{ opacity: 1 }}
+  1018→                  viewport={{ once: true }}
+  1019→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1020→                >
+  1021→                  <Link
+  1022→                    href={`/services/gym-fitness-cleaning-near-me#${loc.slug}`}
+  1023→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1024→                  >
+  1025→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1026→                    <span>
+  1027→                      <span className="font-medium">{loc.city}</span>
+  1028→                      <span className="text-[var(--muted-foreground)]"> gym</span>
+  1029→                    </span>
+  1030→                  </Link>
+  1031→                </motion.div>
+  1032→              ))}
+  1033→            </div>
+  1034→
+  1035→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1036→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1037→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1038→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1039→              </div>
+  1040→              <Link
+  1041→                href="/locations"
+  1042→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1043→              >
+  1044→                View all 72 Scottish locations
+  1045→                <ArrowRight className="w-4 h-4" />
+  1046→              </Link>
+  1047→            </div>
+  1048→          </motion.div>
+  1049→        </div>
+  1050→
+  1051→        {/* SEO long-form paragraph for "near me" search intent */}
+  1052→        <motion.div
+  1053→          initial={{ opacity: 0, y: 16 }}
+  1054→          whileInView={{ opacity: 1, y: 0 }}
+  1055→          viewport={{ once: true, margin: "-40px" }}
+  1056→          transition={{ duration: 0.5, delay: 0.2 }}
+  1057→          className="mt-10 max-w-4xl mx-auto text-center"
+  1058→        >
+  1059→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1060→            Our local gym and fitness centre cleaning crews operate across Glasgow&rsquo;s Merchant
+  1061→            City, Edinburgh&rsquo;s New Town, Aberdeen&rsquo;s Union Street, Dundee&rsquo;s West End,
+  1062→            and the Highlands &mdash; from Inverness to Perth, Falkirk to Ayr. Whether you&rsquo;re
+  1063→            searching for daily touchpoint disinfection in Glasgow, after-hours deep decontamination
+  1064→            in Edinburgh, studio mat steam-sanitising in Aberdeen, or neighbourhood gym cleaning
+  1065→            anywhere in between, Maundy Clean assigns a vetted, PAYE-employed crew that stays with
+  1066→            you for the long run. Same crew, same standard, same locked-in rate for 12 months.
+  1067→          </p>
+  1068→        </motion.div>
+  1069→      </div>
+  1070→    </section>
+  1071→  );
+  1072→}
+  1073→
+  1074→// ============================================================
+  1075→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1076→// (Semantic H2: "Book Your Free Site Survey Today")
+  1077→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1078→// ============================================================
+  1079→
+  1080→export function GymFitnessSeoFinalCta() {
+  1081→  return (
+  1082→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1083→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1084→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1085→
+  1086→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1087→        <motion.div
+  1088→          initial={{ opacity: 0, y: 20 }}
+  1089→          whileInView={{ opacity: 1, y: 0 }}
+  1090→          viewport={{ once: true, margin: "-80px" }}
+  1091→          transition={{ duration: 0.5 }}
+  1092→        >
+  1093→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1094→            Ready to book your site survey?
+  1095→          </span>
+  1096→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1097→            Book Your Free Site Survey Today
+  1098→          </h2>
+  1099→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1100→            Book a free, no-obligation site survey with our management team and receive an itemised
+  1101→            proposal within 2 business days. Vetted uniformed crews, infection-control-trained
+  1102→            technicians, EN 14476 virucidal disinfection, ATP swab verification, audit-ready
+  1103→            compliance documentation, signed daily checklists, and a 100% satisfaction guarantee
+  1104→            &mdash; from &pound;16 per hour for a small independent studio through to a fully bespoke
+  1105→            multi-site leisure retainer. No pushy sales call, no waiting 24 hours for a callback.
+  1106→          </p>
+  1107→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1108→            <Button
+  1109→              size="lg"
+  1110→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1111→              asChild
+  1112→            >
+  1113→              <Link href="/quote">
+  1114→                Book Your Free Site Survey Today
+  1115→                <ArrowRight className="w-5 h-5" />
+  1116→              </Link>
+  1117→            </Button>
+  1118→            <Button
+  1119→              size="lg"
+  1120→              variant="outline"
+  1121→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1122→              asChild
+  1123→            >
+  1124→              <Link href="#checklist">
+  1125→                <CheckCircle2 className="w-4 h-4" />
+  1126→                View Our Commercial Cleaning Checklist
+  1127→              </Link>
+  1128→            </Button>
+  1129→          </div>
+  1130→        </motion.div>
+  1131→      </div>
+  1132→    </section>
+  1133→  );
+  1134→}
+  1135→
+  1136→// ============================================================
+  1137→// Section 8 - SEO FAQ block
+  1138→// (Semantic H2: "Frequently Asked Questions")
+  1139→// 3 Q&As from the brief (insured for industrial/leisure spaces,
+  1140→// provide own professional equipment, communication & quality control)
+  1141→// ============================================================
+  1142→
+  1143→const SEO_FAQS = [
+  1144→  {
+  1145→    q: "Are your cleaners insured for industrial and leisure spaces?",
+  1146→    a: "Absolutely. MaundyClean is a fully insured, registered professional cleaning company with years of experience serving both the residential and commercial sectors across Scotland. We hold &pound;5m public liability cover (suitable for independent gyms, council leisure centres, boutique studios, F45-style concept facilities, and franchise operators), &pound;5m employer&rsquo;s liability cover, and contingent employers&rsquo; liability. Every crew member carries Disclosure Scotland PVG scheme membership, wears an official uniform with photo I.D., and is trained on infection-control protocols (HACCP-aware, allergen-aware, colour-coded microfibre to prevent cross-contamination between equipment, mats, washroom, and changing zones). We can name your facility on our policy as additional insured &mdash; a common requirement for council leisure contracts, shopping-centre gym units, and franchise leasehold agreements &mdash; and provide enhanced background checks for staff handling secure keyholding or operating in sensitive locations. Certificates of insurance and our full compliance file (COSHH datasheets, risk assessments, method statements, training records, EN 14476 virucidal contact-time logs, ATP swab-test history) are available on request; we will not begin work until your facilities team and your health-and-safety inspector have the documentation they need.",
+  1147→  },
+  1148→  {
+  1149→    q: "Do you provide your own professional equipment?",
+  1150→    a: "Yes. We supply all our own professional-grade equipment and non-toxic supplies, ensuring we handle heavy-duty environments without additional costs to you. Every crew arrives in a liveried van with commercial-grade HEPA-filtered vacuums (Sebo BS36/BS46, Henry HVR200), microfibre flat-mop systems with separate dirty-water extraction (no double-dipping), colour-coded cloths (red for equipment, blue for mats, green for member-facing, yellow for washroom and changing), HSE-compliant chemicals with COSHH datasheets on file, PPE, squeegees for windows and mirrors, 180&deg;C dry-steam sanitizers for yoga mats and foam rollers, ultra-low-volume foggers for outbreak response, and ATP luminometers for post-clean verification on a random sample of touchpoints. We use EN 14476 virucidal disinfectant with a verified 60-second contact time on every dumbbell, kettlebell, plate, cable grip, machine pin, treadmill console, bike handlebar, and rower chain. We use non-toxic, child-safe, pet-safe products by default &mdash; no harsh chemical odours left in studios or changing rooms &mdash; with eco-labelled alternatives for the weight-room floor, locker rooms, and reception. You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser wipes) or we can manage consumable restocking for an additional monthly fee so you never run out during trading.",
+  1151→  },
+  1152→  {
+  1153→    q: "How do you handle communication and quality control?",
+  1154→    a: "Our management team is highly responsive, with regular check-ins and a good line of communication to ensure staff are supported and your standards are strictly adhered to. Every gym and fitness centre client gets a dedicated account manager who knows your facility, your team, your access protocols, and your infection-control plan &mdash; direct mobile number, 24-hour response, quarterly on-site walk-throughs alongside your duty manager. After every visit you receive a signed daily checklist (cleaner signature, duty manager counter-signature), arrival and departure times, tasks completed, and any issues flagged &mdash; like a leaking shower head, a blown bulb, a treadmill due for belt-lube, or a weight-stack cable due for replacement &mdash; before they become complaints. We also conduct unannounced quality audits (typically monthly for high-footfall gyms, quarterly for low-volume studios) using our internal scoring rubric and ATP swab-test verification on a random sample of touchpoints, share the results with you, and trigger a free re-clean within 24 to 48 hours if any line item drops below standard. Our visit-completion rate in 2025 was 99.6%.",
+  1155→  },
+  1156→];
+  1157→
+  1158→export function GymFitnessSeoFaq() {
+  1159→  return (
+  1160→    <section className="py-16 lg:py-24 bg-background">
+  1161→      <div className="max-w-4xl mx-auto px-6">
+  1162→        <motion.div
+  1163→          initial={{ opacity: 0, y: 20 }}
+  1164→          whileInView={{ opacity: 1, y: 0 }}
+  1165→          viewport={{ once: true, margin: "-80px" }}
+  1166→          transition={{ duration: 0.5 }}
+  1167→          className="text-center mb-12"
+  1168→        >
+  1169→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1170→            Gym &amp; fitness centre cleaning &middot; FAQ
+  1171→          </span>
+  1172→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1173→            Frequently Asked Questions
+  1174→          </h2>
+  1175→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1176→            Straight answers to the questions our gym and fitness centre cleaning clients ask most
+  1177→            often. Can&rsquo;t find what you need? Call us on{" "}
+  1178→            <a
+  1179→              href={contactInfo.phoneHref}
+  1180→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1181→            >
+  1182→              {contactInfo.phone}
+  1183→            </a>{" "}
+  1184→            and we&rsquo;ll talk it through.
+  1185→          </p>
+  1186→        </motion.div>
+  1187→
+  1188→        <div className="space-y-4">
+  1189→          {SEO_FAQS.map((faq, i) => (
+  1190→            <motion.div
+  1191→              key={faq.q}
+  1192→              initial={{ opacity: 0, y: 16 }}
+  1193→              whileInView={{ opacity: 1, y: 0 }}
+  1194→              viewport={{ once: true, margin: "-40px" }}
+  1195→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1196→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1197→            >
+  1198→              <details className="group">
+  1199→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1200→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1201→                    {faq.q}
+  1202→                  </h3>
+  1203→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1204→                    <span className="relative w-3.5 h-3.5">
+  1205→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1206→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1207→                    </span>
+  1208→                  </span>
+  1209→                </summary>
+  1210→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1211→                  <p
+  1212→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1213→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1214→                  />
+  1215→                </div>
+  1216→              </details>
+  1217→            </motion.div>
+  1218→          ))}
+  1219→        </div>
+  1220→
+  1221→        <motion.div
+  1222→          initial={{ opacity: 0, y: 16 }}
+  1223→          whileInView={{ opacity: 1, y: 0 }}
+  1224→          viewport={{ once: true, margin: "-40px" }}
+  1225→          transition={{ duration: 0.5, delay: 0.3 }}
+  1226→          className="mt-10 text-center"
+  1227→        >
+  1228→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1229→            <Button
+  1230→              size="lg"
+  1231→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1232→              asChild
+  1233→            >
+  1234→              <Link href="/quote">
+  1235→                Book Your Free Site Survey Today
+  1236→                <ArrowRight className="w-5 h-5" />
+  1237→              </Link>
+  1238→            </Button>
+  1239→            <Button
+  1240→              size="lg"
+  1241→              variant="outline"
+  1242→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1243→              asChild
+  1244→            >
+  1245→              <Link href="#checklist">
+  1246→                <CheckCircle2 className="w-4 h-4" />
+  1247→                View Our Commercial Cleaning Checklist
+  1248→              </Link>
+  1249→            </Button>
+  1250→          </div>
+  1251→        </motion.div>
+  1252→      </div>
+  1253→    </section>
+  1254→  );
+  1255→}
+  1256→

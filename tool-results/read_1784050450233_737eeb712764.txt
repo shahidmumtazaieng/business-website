@@ -1,0 +1,1155 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Users,
+     7→  Shield,
+     8→  Leaf,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Home,
+    15→  KeyRound,
+    16→  Hammer,
+    17→  Star,
+    18→  Zap,
+    19→  UserCheck,
+    20→  CalendarCheck,
+    21→  SprayCan,
+    22→  Wind,
+    23→  Bath,
+    24→  Sun,
+    25→  Building2,
+    26→  Crown,
+    27→  Heart,
+    28→  TreePine,
+    29→} from "lucide-react";
+    30→import { Button } from "@/components/ui/button";
+    31→import { contactInfo } from "@/lib/site-data";
+    32→
+    33→// ============================================================
+    34→// Images — hand-picked from in-house search service
+    35→// ============================================================
+    36→const IMG = {
+    37→  heroWide:
+    38→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg", // housekeeping in a Scottish country home
+    39→  whyCrew:
+    40→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // uniformed Maundy Clean housekeeper
+    41→  specializedCare:
+    42→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // hardwood floor buffing
+    43→  checklistLiving:
+    44→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg", // bright living room, morning light
+    45→  checklistKitchen:
+    46→    "https://sfile.chatglm.cn/images-ppt/8fce1b536378.jpg", // eco-spray kitchen
+    47→  checklistBathroom:
+    48→    "https://sfile.chatglm.cn/images-ppt/b9a3fe6960e9.webp", // sparkling bathroom chrome
+    49→  checklistFloors:
+    50→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // freshly vacuumed/mopped floor
+    51→  leaseDeep:
+    52→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg", // deep clean / intensive refresh
+    53→  leaseTenancy:
+    54→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty flat move-in
+    55→  leaseSpring:
+    56→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg", // spring-clean refresh
+    57→  leaseBuilders:
+    58→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg", // post-builders cleanup
+    59→  nearMeMap:
+    60→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    61→};
+    62→
+    63→// ============================================================
+    64→// Section 0 — Full-width hero banner
+    65→// Semantic H1: "Professional Housekeeping & Recurring Home Cleaning Scotland"
+    66→// ============================================================
+    67→
+    68→export function HousekeepingSeoHeroBanner() {
+    69→  return (
+    70→    <section className="relative overflow-hidden">
+    71→      {/* Full-width background image */}
+    72→      <div className="absolute inset-0">
+    73→        <img
+    74→          src={IMG.heroWide}
+    75→          alt="Maundy Clean housekeeping in a Scottish country home — vetted, uniformed, and meticulous"
+    76→          className="w-full h-full object-cover"
+    77→          loading="eager"
+    78→          fetchPriority="high"
+    79→        />
+    80→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+    81→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+    82→      </div>
+    83→
+    84→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+    85→        <motion.div
+    86→          initial="hidden"
+    87→          animate="visible"
+    88→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+    89→          className="max-w-3xl"
+    90→        >
+    91→          <motion.div
+    92→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+    93→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+    94→          >
+    95→            <span className="relative flex w-2 h-2">
+    96→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+    97→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+    98→            </span>
+    99→            Housekeeping · Recurring Home Cleaning · Edinburgh · Glasgow · Central Belt
+   100→          </motion.div>
+   101→
+   102→          <motion.h1
+   103→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   104→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   105→          >
+   106→            Professional Housekeeping &amp; Recurring Home Cleaning Scotland
+   107→          </motion.h1>
+   108→
+   109→          <motion.p
+   110→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   111→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   112→          >
+   113→            The Right Staff, the Right Attitude, and a Passion for High-Standard Housekeeping. Built
+   114→            on the Maundy tradition of service and care, our recurring home cleaning provides a
+   115→            seamless, premium experience tailored to the unique rhythms of Scottish households &mdash;
+   116→            from city-centre apartments to rural retreats, with the same vetted professional every
+   117→            visit from £20/hr.
+   118→          </motion.p>
+   119→
+   120→          <motion.div
+   121→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   122→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   123→          >
+   124→            <Button
+   125→              size="lg"
+   126→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   127→              asChild
+   128→            >
+   129→              <Link href="/quote">
+   130→                Get My 30-Second Instant Quote
+   131→                <ArrowRight className="w-5 h-5" />
+   132→              </Link>
+   133→            </Button>
+   134→            <Button
+   135→              size="lg"
+   136→              variant="outline"
+   137→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   138→              asChild
+   139→            >
+   140→              <Link href="#checklist">
+   141→                <CheckCircle2 className="w-4 h-4" />
+   142→                View Our Regular Cleaning Checklist
+   143→              </Link>
+   144→            </Button>
+   145→          </motion.div>
+   146→
+   147→          <motion.div
+   148→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   149→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   150→          >
+   151→            <div className="flex items-center gap-1.5">
+   152→              <div className="flex">
+   153→                {[1, 2, 3, 4, 5].map((s) => (
+   154→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   155→                ))}
+   156→              </div>
+   157→              <span className="font-semibold text-white">4.9/5</span>
+   158→              <span className="text-white/70">· 6,200+ reviews</span>
+   159→            </div>
+   160→            <div className="flex items-center gap-1.5">
+   161→              <Shield className="w-4 h-4 text-[var(--gold)]" /> PVG-Checked &amp; £5m Insured
+   162→            </div>
+   163→            <div className="flex items-center gap-1.5">
+   164→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe Products
+   165→            </div>
+   166→            <div className="flex items-center gap-1.5">
+   167→              <Clock className="w-4 h-4 text-[var(--gold)]" /> Same Housekeeper Every Visit
+   168→            </div>
+   169→          </motion.div>
+   170→        </motion.div>
+   171→      </div>
+   172→    </section>
+   173→  );
+   174→}
+   175→
+   176→// ============================================================
+   177→// Section 1 — Long-form semantic SEO intro
+   178→// Sits right after the hero, before the existing ServiceOverview.
+   179→// ============================================================
+   180→
+   181→export function HousekeepingSeoIntro() {
+   182→  return (
+   183→    <section className="py-16 lg:py-24 bg-background">
+   184→      <div className="max-w-[1100px] mx-auto px-6">
+   185→        <motion.div
+   186→          initial={{ opacity: 0, y: 20 }}
+   187→          whileInView={{ opacity: 1, y: 0 }}
+   188→          viewport={{ once: true, margin: "-80px" }}
+   189→          transition={{ duration: 0.5 }}
+   190→          className="max-w-3xl mx-auto text-center mb-10"
+   191→        >
+   192→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   193→            Specialist housekeeping · Scotland
+   194→          </span>
+   195→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   196→            The Maundy Clean Standard for Trusted Housekeeping
+   197→          </h2>
+   198→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   199→            In a world where presentation is everything, your home deserves more than a standard
+   200→            tidy-up. At <strong className="font-semibold text-[var(--ink)]">Maundy Clean</strong>, we
+   201→            understand that elite housekeeping is about more than just hygiene; it is about
+   202→            showcasing your living spaces to their absolute best. Built on the{" "}
+   203→            <strong className="font-semibold text-[var(--ink)]">Maundy tradition of service and
+   204→            care</strong>, our recurring home cleaning provides a seamless, premium experience
+   205→            tailored to the unique rhythms of Scottish households &mdash; from city-centre
+   206→            apartments to rural retreats.
+   207→          </p>
+   208→        </motion.div>
+   209→
+   210→        {/* Trust strip */}
+   211→        <motion.div
+   212→          initial={{ opacity: 0, y: 16 }}
+   213→          whileInView={{ opacity: 1, y: 0 }}
+   214→          viewport={{ once: true, margin: "-60px" }}
+   215→          transition={{ duration: 0.5 }}
+   216→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   217→        >
+   218→          {[
+   219→            { label: "4.9★ rating", value: "6,200+ reviews" },
+   220→            { label: "Client tenure", value: "3.4 years avg" },
+   221→            { label: "Housekeeper retention", value: "80%+" },
+   222→            { label: "Crew coverage", value: "30 Scottish towns" },
+   223→          ].map((stat) => (
+   224→            <div
+   225→              key={stat.label}
+   226→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   227→            >
+   228→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   229→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   230→            </div>
+   231→          ))}
+   232→        </motion.div>
+   233→      </div>
+   234→    </section>
+   235→  );
+   236→}
+   237→
+   238→// ============================================================
+   239→// Section 2 — Why Maundy Clean is Scotland's Choice for Trusted Housekeeping
+   240→// (Semantic H2: "Why Maundy Clean is Scotland's Choice for Trusted Housekeeping")
+   241→// Image+copy split layout with 4 trust cards
+   242→// ============================================================
+   243→
+   244→const TRUST_CARDS = [
+   245→  {
+   246→    icon: Users,
+   247→    title: "Same Trusted Professional Every Visit",
+   248→    description:
+   249→      "We believe trust is the foundation of a 5-star service. We ensure the same vetted professional visits your home every time to build a deep understanding of your specific cleaning preferences and showcasing requirements. Your housekeeper is allocated to your home and your time slot &mdash; they don&rsquo;t get reassigned, shared, or pulled elsewhere. Continuity is what turns a clean into a relationship.",
+   250→  },
+   251→  {
+   252→    icon: Sparkles,
+   253→    title: "The Maundy Standard of Excellence",
+   254→    description:
+   255→      "Our housekeepers are polite, well-organized, and vocationally trained to follow a rigorous schedule and clear standards of excellence. Each visit follows a documented checklist that&rsquo;s been refined across 6,200+ cleans, and your housekeeper is briefed on your home&rsquo;s specific priorities before they walk through the door. We don&rsquo;t send gig-economy temps &mdash; we send trained, employed professionals.",
+   256→  },
+   257→  {
+   258→    icon: Leaf,
+   259→    title: "Safe for Your Sanctuary",
+   260→    description:
+   261→      "Your health is our priority. We utilize only certified child and pet-safe products and eco-friendly supplies, ensuring a healthy environment for your family and pets. EU Ecolabel and DEFRA-approved low-VOC products as standard. Hospital-grade alternatives available on request for medical needs or sensitive airways. Your home stays a sanctuary &mdash; not a chemistry lab.",
+   262→  },
+   263→  {
+   264→    icon: Shield,
+   265→    title: "Fully Vetted and Insured",
+   266→    description:
+   267→      "Every Maundy Clean housekeeper is fully trained, background-checked, and carries official identification for your total peace of mind. Disclosure Scotland PVG scheme membership, £5m public liability cover, and an official Maundy Clean ID lanyard worn on every visit. We are a registered Scottish company &mdash; not an agency, not a gig platform, not a revolving door of strangers.",
+   268→  },
+   269→];
+   270→
+   271→export function HousekeepingSeoWhy() {
+   272→  return (
+   273→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   274→      <div className="max-w-[1400px] mx-auto px-6">
+   275→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   276→          {/* Image side */}
+   277→          <motion.div
+   278→            initial={{ opacity: 0, scale: 0.96 }}
+   279→            whileInView={{ opacity: 1, scale: 1 }}
+   280→            viewport={{ once: true, margin: "-80px" }}
+   281→            transition={{ duration: 0.6 }}
+   282→            className="relative order-2 lg:order-1"
+   283→          >
+   284→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   285→              <img
+   286→                src={IMG.whyCrew}
+   287→                alt="Maundy Clean housekeeper — uniformed, PVG-checked, and trained in discretion"
+   288→                className="absolute inset-0 w-full h-full object-cover"
+   289→                loading="lazy"
+   290→              />
+   291→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   292→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   293→                <div className="flex items-center gap-2 mb-1">
+   294→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   295→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   296→                    A Trusted Presence in Your Home
+   297→                  </span>
+   298→                </div>
+   299→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   300→                  Employed, PVG-checked, uniformed, and trained in discretion. Same housekeeper
+   301→                  every visit &mdash; never a rotating cast of strangers.
+   302→                </p>
+   303→              </div>
+   304→            </div>
+   305→            <motion.div
+   306→              animate={{ y: [0, -8, 0] }}
+   307→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   308→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   309→            >
+   310→              <div className="flex items-center gap-2">
+   311→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   312→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   313→                </div>
+   314→                <div>
+   315→                  <div className="text-[10px] text-[var(--muted-foreground)]">Housekeeper retention</div>
+   316→                  <div className="text-xs font-bold text-[var(--ink)]">80%+</div>
+   317→                </div>
+   318→              </div>
+   319→            </motion.div>
+   320→          </motion.div>
+   321→
+   322→          {/* Copy side */}
+   323→          <motion.div
+   324→            initial={{ opacity: 0, y: 20 }}
+   325→            whileInView={{ opacity: 1, y: 0 }}
+   326→            viewport={{ once: true, margin: "-80px" }}
+   327→            transition={{ duration: 0.5 }}
+   328→            className="order-1 lg:order-2"
+   329→          >
+   330→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   331→              Why choose Maundy Clean
+   332→            </span>
+   333→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   334→              Why Maundy Clean is Scotland&rsquo;s Choice for Trusted Housekeeping
+   335→            </h2>
+   336→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   337→              While national platforms often provide impersonal, inconsistent service, Maundy Clean
+   338→              is a local specialist focused on building high-trust relationships. We hand-pick our
+   339→              team for their in-depth knowledge of maintaining fine furniture, art, and delicate
+   340→              furnishings &mdash; the same vetted professional every visit, vocationally trained
+   341→              staff, family-safe products, and full PVG-checked insurance.
+   342→            </p>
+   343→
+   344→            <div className="space-y-3">
+   345→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   346→                const Icon = card.icon;
+   347→                return (
+   348→                  <div
+   349→                    key={card.title}
+   350→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   351→                  >
+   352→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   353→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   354→                    </div>
+   355→                    <div>
+   356→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   357→                        {card.title}
+   358→                      </h3>
+   359→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   360→                        {card.description}
+   361→                      </p>
+   362→                    </div>
+   363→                  </div>
+   364→                );
+   365→              })}
+   366→            </div>
+   367→          </motion.div>
+   368→        </div>
+   369→
+   370→        {/* Third + fourth cards as a 2-column strip */}
+   371→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   372→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   373→            const Icon = card.icon;
+   374→            return (
+   375→              <motion.div
+   376→                key={card.title}
+   377→                initial={{ opacity: 0, y: 20 }}
+   378→                whileInView={{ opacity: 1, y: 0 }}
+   379→                viewport={{ once: true, margin: "-40px" }}
+   380→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   381→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   382→              >
+   383→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   384→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   385→                </div>
+   386→                <div>
+   387→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   388→                    {card.title}
+   389→                  </h3>
+   390→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   391→                    {card.description}
+   392→                  </p>
+   393→                </div>
+   394→              </motion.div>
+   395→            );
+   396→          })}
+   397→        </div>
+   398→      </div>
+   399→    </section>
+   400→  );
+   401→}
+   402→
+   403→// ============================================================
+   404→// Section 3 — Specialized Care for Premium Surfaces
+   405→// (Semantic H2: "Specialized Care for Premium Surfaces")
+   406→// Brief-specific section with 2 H3 sub-sections:
+   407→//   1. Expert Hardwood Floor Maintenance
+   408→//   2. Total Property Technical Checklist
+   409→// Carries the id="checklist" anchor that the CTA buttons link to.
+   410→// ============================================================
+   411→
+   412→export function HousekeepingSeoSpecializedCare() {
+   413→  return (
+   414→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   415→      <div className="max-w-[1400px] mx-auto px-6">
+   416→        <motion.div
+   417→          initial={{ opacity: 0, y: 20 }}
+   418→          whileInView={{ opacity: 1, y: 0 }}
+   419→          viewport={{ once: true, margin: "-80px" }}
+   420→          transition={{ duration: 0.5 }}
+   421→          className="max-w-3xl mb-12"
+   422→        >
+   423→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   424→            Beyond the surface wipe
+   425→          </span>
+   426→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   427→            Specialized Care for Premium Surfaces
+   428→          </h2>
+   429→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   430→            A true housekeeping authority understands that different materials require different
+   431→            technical approaches. We go beyond the surface wipe to provide specialized care for
+   432→            your home&rsquo;s most valuable assets &mdash; from hardwood floors to fine ceramics,
+   433→            from antique brass to delicate glass. Our housekeepers are trained in material-specific
+   434→            techniques that protect and enhance, not just clean.
+   435→          </p>
+   436→        </motion.div>
+   437→
+   438→        <div className="grid lg:grid-cols-2 gap-8">
+   439→          {/* Sub-section 1: Expert Hardwood Floor Maintenance */}
+   440→          <motion.div
+   441→            initial={{ opacity: 0, y: 24 }}
+   442→            whileInView={{ opacity: 1, y: 0 }}
+   443→            viewport={{ once: true, margin: "-40px" }}
+   444→            transition={{ duration: 0.5 }}
+   445→            className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   446→          >
+   447→            <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   448→              <img
+   449→                src={IMG.specializedCare}
+   450→                alt="Hardwood floor being gently buffed and polished by a Maundy Clean housekeeper"
+   451→                className="absolute inset-0 w-full h-full object-cover"
+   452→                loading="lazy"
+   453→              />
+   454→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   455→              <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   456→                <TreePine className="w-6 h-6 text-[var(--brand)]" />
+   457→              </div>
+   458→              <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   459→                Expert Hardwood Floor Maintenance
+   460→              </h3>
+   461→            </div>
+   462→            <div className="p-6 flex-1 flex flex-col">
+   463→              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   464→                Many Scottish homes feature gorgeous wooden floors that require specialized
+   465→                programs. We avoid layering thick polish that can hide the beautiful grain and knots
+   466→                of the wood &mdash; instead, we maintain the natural aesthetic with the right
+   467→                techniques and products for each finish.
+   468→              </p>
+   469→              <ul className="space-y-3 mt-auto">
+   470→                <li className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85">
+   471→                  <CheckCircle2 className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   472→                  <span>
+   473→                    <strong className="font-semibold text-[var(--ink)]">Gently Buffed &amp; Polished Finishes</strong>
+   474→                    &mdash; a daily or weekly program to maintain the natural aesthetics of your
+   475→                    hardwood, without the dark dull buildup of standard products.
+   476→                  </span>
+   477→                </li>
+   478→                <li className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85">
+   479→                  <CheckCircle2 className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   480→                  <span>
+   481→                    <strong className="font-semibold text-[var(--ink)]">Dust-Free Restoration</strong>
+   482→                    &mdash; specialized care to keep your hardwood looking its best, removing
+   483→                    ingrained dust and residue without abrading the finish or damaging the grain.
+   484→                  </span>
+   485→                </li>
+   486→              </ul>
+   487→            </div>
+   488→          </motion.div>
+   489→
+   490→          {/* Sub-section 2: Total Property Technical Checklist */}
+   491→          <motion.div
+   492→            initial={{ opacity: 0, y: 24 }}
+   493→            whileInView={{ opacity: 1, y: 0 }}
+   494→            viewport={{ once: true, margin: "-40px" }}
+   495→            transition={{ duration: 0.5, delay: 0.1 }}
+   496→            className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   497→          >
+   498→            <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   499→              <img
+   500→                src={IMG.checklistLiving}
+   501→                alt="Scottish living room meticulously dusted and polished by a Maundy Clean housekeeper"
+   502→                className="absolute inset-0 w-full h-full object-cover"
+   503→                loading="lazy"
+   504→              />
+   505→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   506→              <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   507→                <CheckCircle2 className="w-6 h-6 text-[var(--brand)]" />
+   508→              </div>
+   509→              <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   510→                Total Property Technical Checklist
+   511→              </h3>
+   512→            </div>
+   513→            <div className="p-6 flex-1 flex flex-col">
+   514→              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   515→                Our recurring home cleaning ensures every inch of your property is maintained from
+   516→                top to bottom, including the areas often missed by standard services. From skirting
+   517→                boards to the inside of windows, no detail is too small.
+   518→              </p>
+   519→              <ul className="space-y-3 mt-auto">
+   520→                <li className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85">
+   521→                  <Home className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   522→                  <span>
+   523→                    <strong className="font-semibold text-[var(--ink)]">Living Areas</strong>
+   524→                    &mdash; meticulous dusting of ornaments, light fixtures, and family photos. We
+   525→                    polish wood, glass, and mirrors to a streak-free shine.
+   526→                  </span>
+   527→                </li>
+   528→                <li className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85">
+   529→                  <Bath className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   530→                  <span>
+   531→                    <strong className="font-semibold text-[var(--ink)]">Kitchens &amp; Bathrooms</strong>
+   532→                    &mdash; given special treatment with disinfecting of ceramic items, buffing
+   533→                    chrome to a high shine, and scrubbing shower doors.
+   534→                  </span>
+   535→                </li>
+   536→                <li className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85">
+   537→                  <Sparkles className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   538→                  <span>
+   539→                    <strong className="font-semibold text-[var(--ink)]">Often-Missed Details</strong>
+   540→                    &mdash; our housekeepers meticulously wipe skirting boards, door frames, and
+   541→                    even the inside of the windows as standard.
+   542→                  </span>
+   543→                </li>
+   544→              </ul>
+   545→            </div>
+   546→          </motion.div>
+   547→        </div>
+   548→      </div>
+   549→    </section>
+   550→  );
+   551→}
+   552→
+   553→// ============================================================
+   554→// Section 4 — 3-Step "Hassle-Free" Booking Process
+   555→// (Semantic H3: "The 3-Step 'Hassle-Free' Process")
+   556→// ============================================================
+   557→
+   558→const BOOKING_STEPS = [
+   559→  {
+   560→    icon: Zap,
+   561→    step: "01",
+   562→    title: "Instant Online Quote",
+   563→    description:
+   564→      "Use our 30-second price calculator to receive a fixed-price quote based on your home size and required hours. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months from your start date, with no contracts tying you in.",
+   565→  },
+   566→  {
+   567→    icon: UserCheck,
+   568→    step: "02",
+   569→    title: "Initial Consultation",
+   570→    description:
+   571→      "We meet with you to establish your specific needs and develop a schedule that our housekeepers will closely adhere to. Your housekeeper is briefed on your home&rsquo;s specific cleaning priorities &mdash; including any &lsquo;do not touch&rsquo; items, antiques, art, and access protocols &mdash; before the first visit.",
+   572→  },
+   573→  {
+   574→    icon: CalendarCheck,
+   575→    step: "03",
+   576→    title: "Enjoy a Pristine Sanctuary",
+   577→    description:
+   578→      "Walk into a space that feels refreshed, welcoming, and showcase-ready, backed by our Maundy Clean satisfaction guarantee. Adjust your personalised checklist anytime from your phone &mdash; your housekeeper receives the update automatically before the next visit. Not happy? We re-clean within 24 hours, free.",
+   579→  },
+   580→];
+   581→
+   582→export function HousekeepingSeoBooking() {
+   583→  return (
+   584→    <section className="py-16 lg:py-24 bg-background">
+   585→      <div className="max-w-[1400px] mx-auto px-6">
+   586→        <motion.div
+   587→          initial={{ opacity: 0, y: 20 }}
+   588→          whileInView={{ opacity: 1, y: 0 }}
+   589→          viewport={{ once: true, margin: "-80px" }}
+   590→          transition={{ duration: 0.5 }}
+   591→          className="text-center mb-14"
+   592→        >
+   593→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   594→            Hassle-free booking
+   595→          </span>
+   596→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   597→            The 3-Step &ldquo;Hassle-Free&rdquo; Process
+   598→          </h3>
+   599→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   600→            We have optimized our booking experience to be uncomplicated and straightforward. From
+   601→            quote to first clean in under 48 hours &mdash; no friction, no waiting, no surprises.
+   602→          </p>
+   603→        </motion.div>
+   604→
+   605→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   606→          {/* Connector line */}
+   607→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   608→
+   609→          {BOOKING_STEPS.map((step, i) => {
+   610→            const Icon = step.icon;
+   611→            return (
+   612→              <motion.div
+   613→                key={step.step}
+   614→                initial={{ opacity: 0, y: 24 }}
+   615→                whileInView={{ opacity: 1, y: 0 }}
+   616→                viewport={{ once: true, margin: "-40px" }}
+   617→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   618→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   619→              >
+   620→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   621→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   622→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   623→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   624→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   625→                    {step.step}
+   626→                  </span>
+   627→                </div>
+   628→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   629→                  {step.title}
+   630→                </h3>
+   631→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   632→                  {step.description}
+   633→                </p>
+   634→              </motion.div>
+   635→            );
+   636→          })}
+   637→        </div>
+   638→
+   639→        <motion.div
+   640→          initial={{ opacity: 0, y: 16 }}
+   641→          whileInView={{ opacity: 1, y: 0 }}
+   642→          viewport={{ once: true }}
+   643→          transition={{ duration: 0.5, delay: 0.3 }}
+   644→          className="text-center mt-10"
+   645→        >
+   646→          <Button
+   647→            size="lg"
+   648→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   649→            asChild
+   650→          >
+   651→            <Link href="/quote">
+   652→              Get My 30-Second Instant Quote
+   653→              <ArrowRight className="w-5 h-5" />
+   654→            </Link>
+   655→          </Button>
+   656→        </motion.div>
+   657→      </div>
+   658→    </section>
+   659→  );
+   660→}
+   661→
+   662→// ============================================================
+   663→// Section 5 — A Solution for Every Stage
+   664→// (Semantic H2: "A Solution for Every Stage")
+   665→// Image-topped cards with internal links to specialist services
+   666→// ============================================================
+   667→
+   668→const INTERLINK_SOLUTIONS = [
+   669→  {
+   670→    icon: Sparkles,
+   671→    title: "Intensive Maintenance · Deep House Cleaning",
+   672→    href: "/services/deep-house-cleaning",
+   673→    image: IMG.leaseDeep,
+   674→    imageAlt: "Scottish home receiving an intensive deep clean with furniture moved",
+   675→    description:
+   676→      "If your home hasn&rsquo;t had professional attention in 6 months, we recommend an initial Deep House Cleaning to move furniture and clean behind and underneath. Perfect as a baseline reset before starting a recurring housekeeping plan, or as an annual top-to-bottom refresh.",
+   677→    cta: "Book a deep clean",
+   678→  },
+   679→  {
+   680→    icon: KeyRound,
+   681→    title: "Property Transitions · End of Tenancy Cleaning",
+   682→    href: "/services/move-in-out-cleaning",
+   683→    image: IMG.leaseTenancy,
+   684→    imageAlt: "Empty Scottish flat being deep cleaned for a new tenant move-in",
+   685→    description:
+   686→      "Moving homes? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee, ensuring properties are front-line ready for new occupants. We work to the letting agent&rsquo;s inventory, not ours, and we&rsquo;ll come back free of charge if the agent flags anything.",
+   687→    cta: "Book end of tenancy cleaning",
+   688→  },
+   689→  {
+   690→    icon: Sun,
+   691→    title: "Seasonal Resets · One-Off Spring Clean",
+   692→    href: "/services/spring-cleaning",
+   693→    image: IMG.leaseSpring,
+   694→    imageAlt: "Sparkling Scottish kitchen after a comprehensive spring clean",
+   695→    description:
+   696→      "Perfect for those who want a top-to-bottom refresh without moving heavy furniture, book a One-Off Spring Clean. Ideal as a quarterly reset on top of your recurring housekeeping &mdash; or as a standalone treat when your home needs a little extra love.",
+   697→    cta: "Book a spring clean",
+   698→  },
+   699→  {
+   700→    icon: Hammer,
+   701→    title: "Post-Renovation · After Builders Clean",
+   702→    href: "/services/post-construction-cleaning",
+   703→    image: IMG.leaseBuilders,
+   704→    imageAlt: "Post-builders cleanup removing fine construction dust from a Scottish home",
+   705→    description:
+   706→      "If you&rsquo;ve recently had home improvements, our After Builders Clean removes heavy layers of builders&rsquo; dust and grime. Includes steam-cleaning of grout, extraction of upholstery, and the fine-dust wipe-down that builders never include in their quote.",
+   707→    cta: "Get after builders cleaning quote",
+   708→  },
+   709→];
+   710→
+   711→export function HousekeepingSeoInterlinking() {
+   712→  return (
+   713→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   714→      <div className="max-w-[1400px] mx-auto px-6">
+   715→        <motion.div
+   716→          initial={{ opacity: 0, y: 20 }}
+   717→          whileInView={{ opacity: 1, y: 0 }}
+   718→          viewport={{ once: true, margin: "-80px" }}
+   719→          transition={{ duration: 0.5 }}
+   720→          className="max-w-3xl mb-12"
+   721→        >
+   722→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   723→            Beyond maintenance · property milestones
+   724→          </span>
+   725→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   726→            A Solution for Every Stage
+   727→          </h2>
+   728→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   729→            While our recurring home cleaning maintains your daily sanctuary, we provide a full
+   730→            spectrum of specialist support for those top-to-bottom moments &mdash; from intensive
+   731→            maintenance resets to property transitions and post-renovation dust removal. The same
+   732→            trusted crew can step up when life changes.
+   733→          </p>
+   734→        </motion.div>
+   735→
+   736→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   737→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   738→            const Icon = sol.icon;
+   739→            return (
+   740→              <motion.div
+   741→                key={sol.title}
+   742→                initial={{ opacity: 0, y: 24 }}
+   743→                whileInView={{ opacity: 1, y: 0 }}
+   744→                viewport={{ once: true, margin: "-40px" }}
+   745→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   746→              >
+   747→                <Link
+   748→                  href={sol.href}
+   749→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   750→                >
+   751→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   752→                    <img
+   753→                      src={sol.image}
+   754→                      alt={sol.imageAlt}
+   755→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   756→                      loading="lazy"
+   757→                    />
+   758→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   759→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   760→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   761→                    </div>
+   762→                    <h4 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   763→                      {sol.title}
+   764→                    </h4>
+   765→                  </div>
+   766→                  <div className="p-5">
+   767→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   768→                      {sol.description}
+   769→                    </p>
+   770→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   771→                      {sol.cta}
+   772→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   773→                    </span>
+   774→                  </div>
+   775→                </Link>
+   776→              </motion.div>
+   777→            );
+   778→          })}
+   779→        </div>
+   780→      </div>
+   781→    </section>
+   782→  );
+   783→}
+   784→
+   785→// ============================================================
+   786→// Section 6 — "Near Me" Location Internal Links
+   787→// (Semantic H2: "Housekeeping Services Near Me in Scotland")
+   788→// Split layout with map image + 36-location grid
+   789→// ============================================================
+   790→
+   791→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   792→  { city: "Glasgow", slug: "glasgow" },
+   793→  { city: "Edinburgh", slug: "edinburgh" },
+   794→  { city: "Aberdeen", slug: "aberdeen" },
+   795→  { city: "Dundee", slug: "dundee" },
+   796→  { city: "Stirling", slug: "stirling" },
+   797→  { city: "Perth", slug: "perth" },
+   798→  { city: "Falkirk", slug: "falkirk" },
+   799→  { city: "Inverness", slug: "inverness" },
+   800→  { city: "Ayr", slug: "ayr" },
+   801→  { city: "Kilmarnock", slug: "kilmarnock" },
+   802→  { city: "Livingston", slug: "livingston" },
+   803→  { city: "East Kilbride", slug: "east-kilbride" },
+   804→  { city: "Paisley", slug: "paisley" },
+   805→  { city: "Hamilton", slug: "hamilton" },
+   806→  { city: "Motherwell", slug: "motherwell" },
+   807→  { city: "Dunfermline", slug: "dunfermline" },
+   808→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   809→  { city: "Musselburgh", slug: "musselburgh" },
+   810→  { city: "Dalkeith", slug: "dalkeith" },
+   811→  { city: "Bathgate", slug: "bathgate" },
+   812→  { city: "Cumbernauld", slug: "cumbernauld" },
+   813→  { city: "Coatbridge", slug: "coatbridge" },
+   814→  { city: "St Andrews", slug: "st-andrews" },
+   815→  { city: "Elgin", slug: "elgin" },
+   816→  { city: "Peterhead", slug: "peterhead" },
+   817→  { city: "Stonehaven", slug: "stonehaven" },
+   818→  { city: "Inverurie", slug: "inverurie" },
+   819→  { city: "Oban", slug: "oban" },
+   820→  { city: "Fort William", slug: "fort-william" },
+   821→  { city: "Aviemore", slug: "aviemore" },
+   822→  { city: "Dumfries", slug: "dumfries" },
+   823→  { city: "Stranraer", slug: "stranraer" },
+   824→  { city: "Wick", slug: "wick" },
+   825→  { city: "Thurso", slug: "thurso" },
+   826→  { city: "Lerwick", slug: "lerwick" },
+   827→  { city: "Kirkwall", slug: "kirkwall" },
+   828→];
+   829→
+   830→export function HousekeepingSeoNearMe() {
+   831→  return (
+   832→    <section className="py-16 lg:py-24 bg-background">
+   833→      <div className="max-w-[1400px] mx-auto px-6">
+   834→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   835→          {/* Left: copy + map image */}
+   836→          <motion.div
+   837→            initial={{ opacity: 0, y: 20 }}
+   838→            whileInView={{ opacity: 1, y: 0 }}
+   839→            viewport={{ once: true, margin: "-80px" }}
+   840→            transition={{ duration: 0.5 }}
+   841→          >
+   842→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   843→              Local housekeepers across Scotland
+   844→            </span>
+   845→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   846→              Housekeeping Services Near Me in Scotland
+   847→            </h2>
+   848→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   849→              Searching for &ldquo;housekeeping services near me&rdquo; in Scotland? Maundy Clean
+   850→              covers 72+ towns and cities across the Central Belt, Highlands, Borders, and Islands.
+   851→              Same PVG-checked standard, same 100% re-clean guarantee, same dedicated housekeeper
+   852→              every visit &mdash; wherever your home happens to be. Find your local housekeeper
+   853→              below.
+   854→            </p>
+   855→
+   856→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   857→              <img
+   858→                src={IMG.nearMeMap}
+   859→                alt="Map of Scotland showing Maundy Clean housekeeping service coverage areas"
+   860→                className="absolute inset-0 w-full h-full object-cover"
+   861→                loading="lazy"
+   862→              />
+   863→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   864→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   865→                <div className="flex items-center gap-2 mb-1">
+   866→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   867→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   868→                    72+ Scottish towns covered
+   869→                  </span>
+   870→                </div>
+   871→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   872→                  Same PVG-checked housekeepers, same trusted professional every visit, same 100%
+   873→                  re-clean guarantee &mdash; from Glasgow to Lerwick.
+   874→                </p>
+   875→              </div>
+   876→            </div>
+   877→          </motion.div>
+   878→
+   879→          {/* Right: location grid */}
+   880→          <motion.div
+   881→            initial={{ opacity: 0, y: 20 }}
+   882→            whileInView={{ opacity: 1, y: 0 }}
+   883→            viewport={{ once: true, margin: "-60px" }}
+   884→            transition={{ duration: 0.5 }}
+   885→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   886→          >
+   887→            <div className="flex items-center justify-between mb-5">
+   888→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   889→                Find your local housekeeper
+   890→              </h3>
+   891→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   892→            </div>
+   893→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   894→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   895→                <motion.div
+   896→                  key={loc.slug}
+   897→                  initial={{ opacity: 0 }}
+   898→                  whileInView={{ opacity: 1 }}
+   899→                  viewport={{ once: true }}
+   900→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   901→                >
+   902→                  <Link
+   903→                    href={`/locations/${loc.slug}`}
+   904→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   905→                  >
+   906→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   907→                    <span>
+   908→                      <span className="font-medium">{loc.city}</span>
+   909→                      <span className="text-[var(--muted-foreground)]"> housekeepers</span>
+   910→                    </span>
+   911→                  </Link>
+   912→                </motion.div>
+   913→              ))}
+   914→            </div>
+   915→
+   916→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   917→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   918→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+   919→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   920→              </div>
+   921→              <div className="flex flex-col sm:flex-row gap-3 items-center">
+   922→                <Link
+   923→                  href="/services/housekeeping-services-near-me"
+   924→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   925→                >
+   926→                  <MapPin className="w-4 h-4" />
+   927→                  Browse the near-me directory
+   928→                  <ArrowRight className="w-4 h-4" />
+   929→                </Link>
+   930→                <Link
+   931→                  href="/locations"
+   932→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   933→                >
+   934→                  View all 72 Scottish locations
+   935→                  <ArrowRight className="w-4 h-4" />
+   936→                </Link>
+   937→              </div>
+   938→            </div>
+   939→          </motion.div>
+   940→        </div>
+   941→
+   942→        {/* SEO long-form paragraph for "near me" search intent */}
+   943→        <motion.div
+   944→          initial={{ opacity: 0, y: 16 }}
+   945→          whileInView={{ opacity: 1, y: 0 }}
+   946→          viewport={{ once: true, margin: "-40px" }}
+   947→          transition={{ duration: 0.5, delay: 0.2 }}
+   948→          className="mt-10 max-w-4xl mx-auto text-center"
+   949→        >
+   950→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   951→            Our local housekeepers operate across Glasgow&rsquo;s West End, Edinburgh&rsquo;s New
+   952→            Town, Aberdeen&rsquo;s suburbs, Dundee&rsquo;s city centre, and the Highlands &mdash;
+   953→            from Inverness to Thurso, Fort William to Lerwick. Whether you&rsquo;re searching for
+   954→            weekly housekeeping in Glasgow, fortnightly housekeeping in Edinburgh, monthly
+   955→            housekeeping in Aberdeen, or a private housekeeper anywhere in between, Maundy Clean
+   956→            assigns a PVG-checked, PAYE-employed professional that stays with you for the long run.
+   957→            Same housekeeper, same day, same locked-in rate for 12 months.
+   958→          </p>
+   959→        </motion.div>
+   960→      </div>
+   961→    </section>
+   962→  );
+   963→}
+   964→
+   965→// ============================================================
+   966→// Section 7 — Final SEO CTA strip (companion to ServiceFinalCta)
+   967→// (Semantic H3: "Ready to Book Your Housekeeping Service?")
+   968→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+   969→// ============================================================
+   970→
+   971→export function HousekeepingSeoFinalCta() {
+   972→  return (
+   973→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   974→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   975→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   976→
+   977→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   978→        <motion.div
+   979→          initial={{ opacity: 0, y: 20 }}
+   980→          whileInView={{ opacity: 1, y: 0 }}
+   981→          viewport={{ once: true, margin: "-80px" }}
+   982→          transition={{ duration: 0.5 }}
+   983→        >
+   984→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   985→            Ready to book your housekeeping service?
+   986→          </span>
+   987→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   988→            Ready to Book Your Housekeeping Service?
+   989→          </h3>
+   990→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   991→            Get a fixed-price housekeeping quote in 30 seconds. No pushy sales call, no waiting 24
+   992→            hours for a callback. PVG-checked housekeepers, same professional every visit, child
+   993→            &amp; pet-safe products, secure key safe system, and a 100% satisfaction guarantee
+   994→            &mdash; from £20/hr.
+   995→          </p>
+   996→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   997→            <Button
+   998→              size="lg"
+   999→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1000→              asChild
+  1001→            >
+  1002→              <Link href="/quote">
+  1003→                Get My 30-Second Instant Quote
+  1004→                <ArrowRight className="w-5 h-5" />
+  1005→              </Link>
+  1006→            </Button>
+  1007→            <Button
+  1008→              size="lg"
+  1009→              variant="outline"
+  1010→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1011→              asChild
+  1012→            >
+  1013→              <Link href="#checklist">
+  1014→                <CheckCircle2 className="w-4 h-4" />
+  1015→                View Our Regular Cleaning Checklist
+  1016→              </Link>
+  1017→            </Button>
+  1018→          </div>
+  1019→        </motion.div>
+  1020→      </div>
+  1021→    </section>
+  1022→  );
+  1023→}
+  1024→
+  1025→// ============================================================
+  1026→// Section 8 — SEO FAQ block
+  1027→// (Semantic H2: "Frequently Asked Questions")
+  1028→// 6 Q&As — 3 from the user brief (area, equipment, contracts) + 3 housekeeping-specific additions
+  1029→// ============================================================
+  1030→
+  1031→const SEO_FAQS = [
+  1032→  {
+  1033→    q: "Do you provide services in my area?",
+  1034→    a: "We offer a range of cleaning services to customers based across the Central Belt, including Glasgow, Edinburgh, Stirling, and Paisley. Our network of 72+ Scottish towns also covers Aberdeen, Dundee, Inverness, the Highlands, Borders, and the Islands &mdash; from Stornoway to Lerwick. Use the location finder above to find your local housekeeper, or call us and we&rsquo;ll confirm coverage for your specific postcode.",
+  1035→  },
+  1036→  {
+  1037→    q: "Do I need to provide any equipment?",
+  1038→    a: "No. We bring all of our own professional-grade cleaning equipment and supplies with us, which are included in your competitive quote &mdash; no surprise add-on charges, no asking you to stock products. Your housekeeper arrives with everything they need: eco-labelled products, extendable poles for high ceilings, steam cleaners for grout, squeegees for windows, microfibre cloths, hardwood-specific floor care kit, and specialist chemistry for delicate surfaces. You don&rsquo;t need to provide anything except access to the property (and a power socket for the vacuum).",
+  1039→  },
+  1040→  {
+  1041→    q: "Are there long-term contracts?",
+  1042→    a: "No. At Maundy Clean, we let our professionalism and the quality of our work speak for us. You are never tied into a long-term contract for your regular housekeeping. We offer flexible appointments across five days a week with no contracts to tie you in. Pause for holidays, renovations, or anything else with 48 hours&rsquo; notice via the portal. Cancel entirely with one tap. If we&rsquo;re not earning your repeat business every visit, we don&rsquo;t deserve it. Your per-visit rate is locked in for 12 months from your start date.",
+  1043→  },
+  1044→  {
+  1045→    q: "Will the same housekeeper visit every time?",
+  1046→    a: "Yes. We assign a dedicated housekeeper to your home for the duration of your plan &mdash; they don&rsquo;t get reassigned, shared with other clients in your slot, or pulled to a different area. We believe reliability is built on familiarity. If your regular housekeeper is ever on annual leave or off sick, we send a briefed relief housekeeper who has been trained on your home&rsquo;s plan and your preferences &mdash; and we&rsquo;ll tell you in advance via the portal. Crew continuity is the single biggest reason our clients stay with us for an average of 3.4 years.",
+  1047→  },
+  1048→  {
+  1049→    q: "How often will my housekeeper visit?",
+  1050→    a: "Most housekeeping clients choose 2 to 4 full days per week (typically 7-8 hours per visit) for larger family homes, or daily part-day visits for high-specification properties. Smaller homes may opt for a single full day per week. The frequency is agreed with you at the initial consultation based on your home size, household routines, and the scope agreed (cleaning, laundry, provisioning, trades liaison, guest prep, seasonal deep-cleaning). Plans can be adjusted at any time via your portal &mdash; add a day for a dinner party week, reduce during school holidays, or pause entirely for renovations.",
+  1051→  },
+  1052→  {
+  1053→    q: "What does a housekeeping service include?",
+  1054→    a: "Our housekeeping service covers the full scope of household management. The cleaning foundation &mdash; kitchens, bathrooms, reception rooms, bedrooms, hallways, boot rooms &mdash; to a high standard, every visit. Beyond cleaning: laundry and linen management (wash, dry, fold, iron, linen cupboard rotation), wardrobe management (seasonal rotation, minor repairs flagged), provisioning (grocery shopping, pantry and wine cellar stock), trades liaison (being home for engineers and confirming completion), guest preparation (bedroom setup, welcome hampers), and seasonal deep-cleaning schedules (carpets in spring, windows quarterly, ovens monthly, curtains annually). Scope is agreed with you at the outset and reviewed quarterly.",
+  1055→  },
+  1056→];
+  1057→
+  1058→export function HousekeepingSeoFaq() {
+  1059→  return (
+  1060→    <section className="py-16 lg:py-24 bg-background">
+  1061→      <div className="max-w-4xl mx-auto px-6">
+  1062→        <motion.div
+  1063→          initial={{ opacity: 0, y: 20 }}
+  1064→          whileInView={{ opacity: 1, y: 0 }}
+  1065→          viewport={{ once: true, margin: "-80px" }}
+  1066→          transition={{ duration: 0.5 }}
+  1067→          className="text-center mb-12"
+  1068→        >
+  1069→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1070→            Housekeeping · FAQ
+  1071→          </span>
+  1072→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1073→            Frequently Asked Questions
+  1074→          </h2>
+  1075→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1076→            Straight answers to the questions our housekeeping clients ask most often. Can&rsquo;t
+  1077→            find what you need? Call us on{" "}
+  1078→            <a
+  1079→              href={contactInfo.phoneHref}
+  1080→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1081→            >
+  1082→              {contactInfo.phone}
+  1083→            </a>{" "}
+  1084→            and we&rsquo;ll talk it through.
+  1085→          </p>
+  1086→        </motion.div>
+  1087→
+  1088→        <div className="space-y-4">
+  1089→          {SEO_FAQS.map((faq, i) => (
+  1090→            <motion.div
+  1091→              key={faq.q}
+  1092→              initial={{ opacity: 0, y: 16 }}
+  1093→              whileInView={{ opacity: 1, y: 0 }}
+  1094→              viewport={{ once: true, margin: "-40px" }}
+  1095→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1096→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1097→            >
+  1098→              <details className="group">
+  1099→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1100→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1101→                    {faq.q}
+  1102→                  </h3>
+  1103→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1104→                    <span className="relative w-3.5 h-3.5">
+  1105→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1106→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1107→                    </span>
+  1108→                  </span>
+  1109→                </summary>
+  1110→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1111→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+  1112→                    {faq.a}
+  1113→                  </p>
+  1114→                </div>
+  1115→              </details>
+  1116→            </motion.div>
+  1117→          ))}
+  1118→        </div>
+  1119→
+  1120→        <motion.div
+  1121→          initial={{ opacity: 0, y: 16 }}
+  1122→          whileInView={{ opacity: 1, y: 0 }}
+  1123→          viewport={{ once: true, margin: "-40px" }}
+  1124→          transition={{ duration: 0.5, delay: 0.3 }}
+  1125→          className="mt-10 text-center"
+  1126→        >
+  1127→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1128→            <Button
+  1129→              size="lg"
+  1130→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1131→              asChild
+  1132→            >
+  1133→              <Link href="/quote">
+  1134→                Get My 30-Second Instant Quote
+  1135→                <ArrowRight className="w-5 h-5" />
+  1136→              </Link>
+  1137→            </Button>
+  1138→            <Button
+  1139→              size="lg"
+  1140→              variant="outline"
+  1141→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1142→              asChild
+  1143→            >
+  1144→              <Link href="#checklist">
+  1145→                <CheckCircle2 className="w-4 h-4" />
+  1146→                View Our Regular Cleaning Checklist
+  1147→              </Link>
+  1148→            </Button>
+  1149→          </div>
+  1150→        </motion.div>
+  1151→      </div>
+  1152→    </section>
+  1153→  );
+  1154→}
+  1155→

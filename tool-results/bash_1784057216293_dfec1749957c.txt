@@ -1,0 +1,200 @@
+
+---
+Task ID: carpet-rug-design-fix + near-me-page
+Agent: main
+Task: Fix design/color scheme pattern on carpet-rug-cleaning-seo.tsx to match housekeeping-services-seo.tsx, and create the standalone /services/carpet-rug-cleaning-near-me/ page based on the housekeeping-services-near-me template.
+
+Work Log:
+- Read /home/z/my-project/src/components/service-detail/housekeeping-services-seo.tsx (1155 lines) to extract the canonical design pattern: section background alternation (background -> cream -> background -> background -> cream -> background -> brand-dark -> background), card styles (rounded-2xl/3xl, border var(--border), bg-white, hover:shadow-brand), image aspect ratios (4/3 for hero images, 16/9 for card images), icon badge style (w-12 h-12 rounded-xl bg-white/95 backdrop-blur), heading hierarchy (H2 for section titles, H3 for sub-cards, H4 only on interlink image overlays).
+- Read /home/z/my-project/src/components/service-detail/carpet-rug-cleaning-seo.tsx (1163 lines) to identify 4 design mismatches:
+  1. CarpetRugSeoChecklist section used `bg-[var(--cream)]` instead of `bg-background` — broke the alternation rhythm (two consecutive creams)
+  2. CarpetRugSeoChecklist card images used `aspect-[16/10]` instead of `aspect-[16/9]`
+  3. CarpetRugSeoInterlinking section used `bg-background` instead of `bg-[var(--cream)]` — broke the alternation rhythm (two consecutive backgrounds)
+  4. CarpetRugSeoInterlinking heading used `<h3>` instead of `<h2>` for "A Solution for Every Cycle"
+- Applied all 4 fixes directly to carpet-rug-cleaning-seo.tsx via MultiEdit (atomic, in-place) — file now matches the housekeeping pattern exactly.
+- Mirrored all 4 fixes into /home/z/my-project/scripts/gen_carpet_rug_seo.py (Rule 9 — persistent generator script) so future regeneration stays aligned.
+- Read /home/z/my-project/src/components/service-detail/housekeeping-near-me-page.tsx (864 lines) as the template for the standalone near-me page.
+- Created /home/z/my-project/src/components/service-detail/carpet-rug-cleaning-near-me-page.tsx (~640 lines) — exports `CarpetRugNearMeHero` component with 8 sections mirroring the housekeeping-near-me pattern: Hero (H1), Intro+stats (H2), Location grid with map (H2), Trust pillars (H2), 3-step booking (H2), Cross-links to specialist services (H2), Final CTA (H2), FAQ (H2). All content carpet-specific: NCCA & WoolSafe certifications, hot-water extraction, Persian rug workshop bathing, £18/room pricing. Per-city anchor IDs (id="glasgow", id="edinburgh", etc.) added so deep links from the main carpet page scroll correctly.
+- Created /home/z/my-project/src/app/services/carpet-rug-cleaning-near-me/page.tsx — wraps the CarpetRugNearMeHero component in SiteHeader / SiteFooter / MobileStickyCta. Metadata includes 14 keyword variations of "carpet cleaning near me" / "rug cleaning near me", OpenGraph image, canonical URL.
+- Fixed a typo I introduced in the FAQ +/- icon: `bottom:0` → `bottom-0` (Tailwind syntax).
+- Ran verification:
+  - npx tsc --noEmit: 0 errors in src/ (only unrelated errors in examples/ and skills/)
+  - HTTP 200 confirmed on both /services/carpet-rug-cleaning and /services/carpet-rug-cleaning-near-me
+  - SEO leak scan: 0 matches across all 4 files (no "Topical Authority", no "[H1]/[H2]/[H3]", no bracketed placeholders, no competitor names)
+  - H1 count: exactly 1 on each page
+  - H2 count: 17 on carpet-rug-cleaning (includes standard ServiceDetail sections), 7 on carpet-rug-cleaning-near-me
+  - Section background pattern on carpet-rug-cleaning-seo.tsx now identical to housekeeping-services-seo.tsx (background -> cream -> background -> background -> cream -> background -> brand-dark -> background)
+  - "A Solution for Every Cycle" now renders as <h2> (was <h3>)
+  - All 8 image cards now use aspect-[16/9] (was [16/10])
+  - All 36 city anchors (id="glasgow" through id="kirkwall") + 5 region anchors + #locations main anchor present on near-me page
+
+Stage Summary:
+- carpet-rug-cleaning-seo.tsx design now perfectly matches the housekeeping-services-seo.tsx pattern (background alternation, image aspect ratios, heading hierarchy all aligned).
+- New standalone /services/carpet-rug-cleaning-near-me/ page live with 8 sections, 36 city anchors, carpet-specific content (NCCA/WoolSafe, hot-water extraction, £18/room).
+- Generator script (gen_carpet_rug_seo.py) updated to preserve the alignment on future regenerations.
+- Deep links from the main carpet page's near-me section (e.g. /services/carpet-rug-cleaning-near-me#glasgow) now resolve to anchored locations.
+- All SEO-leak scans clean, all TypeScript clean, both pages HTTP 200.
+
+---
+Task ID: upholstery-seo-batch
+Agent: main
+Task: Apply the Upholstery & Sofa Deep Cleaning SEO content brief to the existing /services/upholstery-cleaning page, following the exact same 20-section interleaved pattern used for housekeeping-services, maid-service, and carpet-rug-cleaning pages. Create a standalone near-me landing page at /services/upholstery-cleaning-near-me/. Match the design and color scheme of housekeeping-services-seo.tsx exactly.
+
+Work Log:
+- Read all reference files: carpet-rug-cleaning-seo.tsx (9-component template), carpet-rug-cleaning-near-me-page.tsx (8-section near-me template), carpet-rug-cleaning page.tsx (20-section interleaved pattern), service-detail-data.ts (upholsteryCleaning export at line 5080), and the existing upholstery-cleaning/page.tsx (5-section simple layout).
+- Verified all bracketed link placeholder targets exist: /services/recurring-home-cleaning ✓, /services/move-in-out-cleaning ✓, /services/deep-house-cleaning ✓, /services/spring-cleaning ✓, /services/carpet-rug-cleaning ✓. [Mattress Deep Cleaning] has no /services/mattress-cleaning route — rendered as plain text in the FAQ answer (no broken link).
+- Created /home/z/my-project/src/components/service-detail/upholstery-cleaning-seo.tsx (1163 lines, 9 exported components):
+  1. UpholsterySeoHeroBanner — full-width image hero, H1 "Professional Upholstery & Sofa Deep Cleaning Scotland", gold CTA + outline button, trust badges
+  2. UpholsterySeoIntro — centered text intro + 4-stat band (touch-dry 2-4 hrs, 8+ fibre types, 14 spotters, 24-48 hr re-clean)
+  3. UpholsterySeoWhy — bg-[var(--cream)], image+copy split, 4 trust pillars (Same Trusted Professional, Vocationally Trained Technicians, Eco-Friendly & Safe, Fully Insured & Guaranteed)
+  4. UpholsterySeoChecklist — bg-background, 4 image-per-card checklist items (Specialized Fabric Assessment, Advanced Stain Removal, Intensive Steam & Extraction, Protective Fabric Finishes) with 16/9 aspect images, inline cross-link to carpet-rug-cleaning
+  5. UpholsterySeoBooking — bg-background, 3-step hassle-free process (Instant Online Quote, Professional Execution, Enjoy Your Refreshed Sanctuary) with connector line + circular icons
+  6. UpholsterySeoInterlinking — bg-[var(--cream)], 4 image-topped interlink cards (Recurring Home Cleaning, End of Tenancy, Deep House, Spring Clean) all with real <Link> components
+  7. UpholsterySeoNearMe — bg-background, [1fr_1.3fr] split with map image + 36-location grid, all linking to /services/upholstery-cleaning-near-me#city
+  8. UpholsterySeoFinalCta — bg-[var(--brand-dark)] with blur orbs, "Ready to Book Your Upholstery & Sofa Cleaning?" with gold + outline buttons
+  9. UpholsterySeoFaq — bg-background, 6 Q&As (3 from brief: dry time, mattress, insured + 3 additions: velvet/viscose, leather, frequency) with +/- accordion icons
+- Background alternation pattern matches carpet-rug/housekeeping exactly: image → background → cream → background → background → cream → background → brand-dark → background.
+- Rewrote /home/z/my-project/src/app/services/upholstery-cleaning/page.tsx with the full 20-section interleaved pattern (9 SEO components + 11 standard ServiceDetail components).
+- Updated upholsteryCleaning.metaTitle and metaDescription in service-detail-data.ts (line 5090-5093) to match the new H1 and content brief.
+- Created /home/z/my-project/src/components/service-detail/upholstery-cleaning-near-me-page.tsx (870 lines, 8 sections: Hero, Intro+stats, Location grid with 36 anchors, Why Maundy Clean 4 pillars, 3-step booking, 4 cross-link cards, Final CTA, FAQ 6 Q&As).
+- Created /home/z/my-project/src/app/services/upholstery-cleaning-near-me/page.tsx (page wrapper with metadata, keywords, canonical).
+- All forbidden SEO-strategy language stripped: "Topical Authority", "MaundyClean Semantic SEO Strategy", "Semantic Interlinking:", "[H1]/[H2]/[H3]", "[Button: ...]" — verified via grep (0 matches).
+- All source-citation placeholders stripped: [Rug Cleaner Source], [Fastclean Source], [31, Fastclean Source], [370, Blitzers Source], [325, Rug Cleaner Source] — verified via grep (0 matches).
+- All bracketed link placeholders converted to real Next.js <Link> components: [Recurring Home Cleaning]→/services/recurring-home-cleaning, [End of Tenancy Cleaning]→/services/move-in-out-cleaning, [Deep House Cleaning]→/services/deep-house-cleaning, [One-Off Spring Clean]→/services/spring-cleaning, [30-Second Quote Tool]→/quote — verified via grep (0 bracketed placeholders remaining).
+
+Stage Summary:
+- 2 new pages shipped: /services/upholstery-cleaning (rewritten, 20-section interleaved, 332KB body) and /services/upholstery-cleaning-near-me (new, 8-section standalone, 172KB body).
+- Both pages return HTTP 200 with exactly 1 H1 each (SEO-compliant).
+- 36 internal near-me location links on the main page, all pointing to anchored city sections on the near-me page.
+- 36 city anchor IDs confirmed on the near-me page (glasgow, edinburgh, aberdeen, ... lerwick, kirkwall).
+- 4 key interlinking services all present with multiple links: recurring-home-cleaning (3), move-in-out-cleaning (2), deep-house-cleaning (3), spring-cleaning (2), carpet-rug-cleaning (3).
+- 6 /quote CTA links on the main page.
+- TypeScript clean on src/ (only pre-existing errors in examples/ and skills/ dirs).
+- SEO-leak scan clean on both new component files (0 matches for all forbidden phrases).
+- Design pattern matches housekeeping-services-seo.tsx and carpet-rug-cleaning-seo.tsx exactly: same background alternation, 16/9 image aspect ratios on cards, H2 for section titles, H3 for sub-cards, rounded-2xl borders, bg-[var(--brand-light)] icon backgrounds, motion.div with whileInView animations, same color tokens (--brand, --brand-dark, --gold, --cream, --ink, --border).
+
+---
+Task ID: window-seo-batch
+Agent: main
+Task: Apply the Window Cleaning SEO content brief to the existing /services/window-cleaning page, following the exact same 20-section interleaved pattern used for housekeeping-services, maid-service, carpet-rug-cleaning, and upholstery-cleaning pages. Create a standalone near-me landing page at /services/window-cleaning-near-me/. Match the design and color scheme of housekeeping-services-seo.tsx exactly.
+
+Work Log:
+- Read existing window-cleaning/page.tsx (5-section simple layout) and windowCleaning data from service-detail-data.ts (line 2032, includes 3 overview paragraphs, 6 whats-included, 4 process steps, 6 benefits, 3 pricing tiers, 6 FAQs, 3 testimonials, 6 related services, 4 gallery images).
+- Verified all bracketed link placeholder targets exist as live routes: /services/recurring-home-cleaning ✓, /services/move-in-out-cleaning ✓, /services/deep-house-cleaning ✓, /services/post-construction-cleaning ✓ (for [After Builders Clean]), /services/gutter-cleaning ✓ (for [Gutter Clean]). All 5 targets confirmed present.
+- Created /home/z/my-project/src/components/service-detail/window-cleaning-seo.tsx (1166 lines, 9 exported components):
+  1. WindowSeoHeroBanner — full-width image hero, H1 "Professional Window Cleaning Services in Glasgow & Edinburgh", gold CTA + outline button, trust badges (4.9/5, Fully Qualified & Insured, Pure Deionised Water, 100% Satisfaction Guarantee)
+  2. WindowSeoIntro — centered text intro + 4-stat band (Reach-and-wash height Up to 65ft, Water purity 0 ppm TDS, Re-clean guarantee 48 hrs, Industry experience 25+ yrs)
+  3. WindowSeoWhy — bg-[var(--cream)], image+copy split, 4 trust pillars (Same Trusted Professionals, Advanced Reach & Wash Technology, Pure Deionized Water, Fully Qualified & Insured)
+  4. WindowSeoChecklist — bg-background, 4 image-per-card checklist items (Residential & Domestic Window Care, Reach & Wash High-Reach Cleans, Commercial & High-Reach Specialist Cleans, Frames/Sills & Gutter Integration) with 16/9 aspect images, inline cross-link to gutter-cleaning
+  5. WindowSeoBooking — bg-background, 3-step hassle-free process (Instant 30-Second Quote, Professional Execution, Spotless Results Guaranteed) with connector line + circular icons
+  6. WindowSeoInterlinking — bg-[var(--cream)], 4 image-topped interlink cards (Recurring Home Cleaning, End of Tenancy, Deep House, After Builders Clean) all with real <Link> components
+  7. WindowSeoNearMe — bg-background, [1fr_1.3fr] split with map image + 36-location grid, all linking to /services/window-cleaning-near-me#city
+  8. WindowSeoFinalCta — bg-[var(--brand-dark)] with blur orbs, "Ready to Book Your Window Cleaning?" with gold + outline buttons
+  9. WindowSeoFaq — bg-background, 6 Q&As (3 from brief: frequency, frames/sills, rain + 3 additions: pure water vs detergent, tenement flats, listed buildings) with +/- accordion icons
+- Background alternation pattern matches carpet-rug/upholstery/housekeeping exactly: image → background → cream → background → background → cream → background → brand-dark → background.
+- Rewrote /home/z/my-project/src/app/services/window-cleaning/page.tsx with the full 20-section interleaved pattern (9 SEO components + 11 standard ServiceDetail components).
+- Updated windowCleaning.metaTitle and metaDescription in service-detail-data.ts (line 2042-2045) to match the new H1 and content brief.
+- Created /home/z/my-project/src/components/service-detail/window-cleaning-near-me-page.tsx (870 lines, 8 sections: Hero, Intro+stats, Location grid with 36 anchors, Why Maundy Clean 4 pillars, 3-step booking, 4 cross-link cards, Final CTA, FAQ 6 Q&As).
+- Created /home/z/my-project/src/app/services/window-cleaning-near-me/page.tsx (page wrapper with metadata, keywords, canonical).
+- Adjusted hero chip from "Window Cleaning Scotland" to "Pure-Water Window Cleaning · Glasgow · Edinburgh · Central Belt" to avoid any ambiguity with the competitor name "Window Cleaning Scotland" mentioned in the brief — keeps the chip pattern consistent with carpet-rug/upholstery while avoiding competitor brand association.
+- All forbidden SEO-strategy language stripped: "Topical Authority", "MaundyClean Semantic SEO Strategy", "Semantic Interlinking:", "[H1]/[H2]/[H3]", "[Button: ...]" — verified via grep (0 matches).
+- All source-citation placeholders stripped: [Competitor Source] (appears 6 times in brief) — verified via grep (0 matches).
+- All competitor names stripped: "Window Cleaning Scotland", "Pure Cleaning Scotland" — verified via grep on rendered HTML (0 matches).
+- All bracketed link placeholders converted to real Next.js <Link> components: [Gutter Clean]→/services/gutter-cleaning, [End of Tenancy Cleaning]→/services/move-in-out-cleaning, [Deep House Cleaning]→/services/deep-house-cleaning, [After Builders Clean]→/services/post-construction-cleaning, [30-Second Quote Tool]→/quote — verified via grep (0 bracketed placeholders remaining).
+
+Stage Summary:
+- 2 new pages shipped: /services/window-cleaning (rewritten, 20-section interleaved, 327KB body) and /services/window-cleaning-near-me (new, 8-section standalone, 172KB body).
+- Both pages return HTTP 200 with exactly 1 H1 each (SEO-compliant).
+- 36 internal near-me location links on the main page, all pointing to anchored city sections on the near-me page.
+- 36 city anchor IDs confirmed on the near-me page (glasgow, edinburgh, aberdeen, ... lerwick, kirkwall).
+- 5 key interlinking services all present with multiple links: recurring-home-cleaning (3), move-in-out-cleaning (2), deep-house-cleaning (3), post-construction-cleaning (2), gutter-cleaning (2).
+- 6 /quote CTA links on the main page.
+- TypeScript clean on src/ (only pre-existing errors in examples/ and skills/ dirs).
+- SEO-leak scan clean on both new component files AND rendered HTML (0 matches for all forbidden phrases including competitor names).
+- Design pattern matches housekeeping-services-seo.tsx, carpet-rug-cleaning-seo.tsx, and upholstery-cleaning-seo.tsx exactly: same background alternation, 16/9 image aspect ratios on cards, H2 for section titles, H3 for sub-cards, rounded-2xl borders, bg-[var(--brand-light)] icon backgrounds, motion.div with whileInView animations, same color tokens (--brand, --brand-dark, --gold, --cream, --ink, --border).
+
+---
+
+---
+Task ID: pressure-washing-seo-batch
+Agent: main
+Task: Apply the Pressure Washing & Exterior Cleaning SEO content brief to the existing /services/pressure-washing page, following the exact same 20-section interleaved pattern used for housekeeping-services, maid-service, carpet-rug-cleaning, upholstery-cleaning, and window-cleaning pages. Create a standalone near-me landing page at /services/pressure-washing-near-me/. Match the design and color scheme of housekeeping-services-seo.tsx exactly.
+
+Work Log:
+- Read existing pressure-washing/page.tsx (5-section simple layout) and pressureWashing data from service-detail-data.ts (line 2864, includes 3 overview paragraphs about rotary surface cleaners/substrate pressure caps/sealing, 6 whats-included, 4 process steps, 6 benefits, 3 pricing tiers £3.50/£2.95/£POA, 6 FAQs, 3 testimonials, 6 related services, 4 gallery images).
+- Verified all bracketed link placeholder targets exist as live routes: /services/recurring-home-cleaning ✓, /services/move-in-out-cleaning ✓, /services/deep-house-cleaning ✓, /services/post-construction-cleaning ✓ (for [After Builders Clean]), /quote ✓. All 5 targets confirmed present.
+- Created /home/z/my-project/scripts/gen_pressure_washing_seo.py (1232 lines) — Python generator using r"""" delimiter to avoid nested triple-quote parsing issues. Rule 9 persisted script.
+- Generated /home/z/my-project/src/components/service-detail/pressure-washing-seo.tsx (1175 lines, 9 exported components):
+  1. PressureWashingSeoHeroBanner — full-width image hero, H1 "Professional Pressure Washing & Exterior Cleaning Scotland", gold CTA + outline button, trust badges (4.9/5, PVG-Checked & £5m Insured, Child & Pet-Safe Products, Same Crew Every Visit). Intro paragraph contains inline Link to /services/recurring-home-cleaning.
+  2. PressureWashingSeoIntro — centered text intro + 4-stat band (72+ Scottish towns, 200 bar max rotary pressure, 18 months regrowth inhibition, 4.9/5 rating)
+  3. PressureWashingSeoWhy — bg-[var(--cream)], image+copy split, 4 trust pillars (The Same Trusted Professionals, Specialist Surface Knowledge, Safety-First Approach, Eco-Friendly & Family Safe)
+  4. PressureWashingSeoChecklist — bg-background, 3 image-per-card checklist items (Driveways & Pathways, Patios & Decking Revitalisation, Facade & Wall Cleaning) each with 2 sub-bullets and 16/9 aspect images. Carries id="checklist" anchor.
+  5. PressureWashingSeoBooking — bg-background, 3-step hassle-free process (Instant 30-Second Quote, Professional Execution, Spotless Results Guaranteed) with connector line + circular icons. Section title uses <h3> per housekeeping pattern.
+  6. PressureWashingSeoInterlinking — bg-[var(--cream)], 4 image-topped interlink cards (Recurring Home Cleaning, Deep House Cleaning, End of Tenancy, After Builders Clean) all with real <Link> components. Section title uses <h2>.
+  7. PressureWashingSeoNearMe — bg-background, [1fr_1.3fr] split with map image + 36-location grid, all linking to /services/pressure-washing-near-me#city
+  8. PressureWashingSeoFinalCta — bg-[var(--brand-dark)] with blur orbs, "Ready to Book Your Pressure Washing Service?" with gold + outline buttons
+  9. PressureWashingSeoFaq — bg-background, 6 Q&As (3 from brief: driveway frequency, commercial, need-to-be-home + 3 additions: substrate damage, regrowth period, runoff handling) with +/- accordion icons
+- Background alternation pattern matches carpet-rug/upholstery/window/housekeeping exactly: image → background → cream → background → background → cream → background → brand-dark → background.
+- Rewrote /home/z/my-project/src/app/services/pressure-washing/page.tsx with the full 20-section interleaved pattern (9 SEO components + 11 standard ServiceDetail components).
+- Updated pressureWashing.metaTitle and metaDescription in service-detail-data.ts (line 2874-2876) to match the new H1 and content brief ("Professional Pressure Washing & Exterior Cleaning Scotland | Driveways, Patios, Render | Maundy Clean").
+- Created /home/z/my-project/src/components/service-detail/pressure-washing-near-me-page.tsx (~880 lines, 8 sections: Hero, Intro+stats, Location grid with 36 anchors + 5 region anchors, Why Maundy Clean 4 pillars, 3-step booking, 4 cross-link cards, Final CTA, FAQ 6 Q&As). All content pressure-washing-specific: substrate-trained, rotary surface cleaners, biocidal pre-treatment, £3.50/m² pricing.
+- Created /home/z/my-project/src/app/services/pressure-washing-near-me/page.tsx (page wrapper with metadata, 15 keyword variations of "pressure washing near me" / "driveway cleaning near me", OpenGraph image, canonical URL).
+- All forbidden SEO-strategy language stripped: "Topical Authority", "MaundyClean Semantic SEO Strategy", "Semantic Interlinking:", "[H1]/[H2]/[H3]", "[Button: ...]" — verified via grep on both source files AND rendered HTML (0 matches).
+- All source-citation placeholders stripped: [Precise Source], [314, Precise Source], [373, Precise Source], [315, Precise Source] — verified via grep on both source files AND rendered HTML (0 matches).
+- All competitor names stripped: "Precise Pressure Washing Services", "Pressure Washing Direct" — verified via grep on both source files AND rendered HTML (0 matches).
+- All bracketed link placeholders converted to real Next.js <Link> components: [Recurring Home Cleaning]→/services/recurring-home-cleaning, [End of Tenancy Cleaning]→/services/move-in-out-cleaning, [Deep House Cleaning]→/services/deep-house-cleaning, [After Builders Clean]→/services/post-construction-cleaning, [30-Second Quote Tool]→/quote — verified via grep (0 bracketed placeholders remaining on rendered HTML).
+
+Stage Summary:
+- 2 new pages shipped: /services/pressure-washing (rewritten, 20-section interleaved, 325KB body) and /services/pressure-washing-near-me (new, 8-section standalone, 173KB body).
+- Both pages return HTTP 200 with exactly 1 H1 each (SEO-compliant). H1 content on main: "Professional Pressure Washing & Exterior Cleaning Scotland". H1 content on near-me: "Pressure Washing Services Near Me in Scotland".
+- H2 count: 17 on main pressure-washing page (includes standard ServiceDetail sections), 7 on near-me page.
+- 36 internal near-me location links on the main page, all pointing to anchored city sections on the near-me page (e.g. /services/pressure-washing-near-me#glasgow).
+- 36 city anchor IDs confirmed on the near-me page (glasgow, edinburgh, aberdeen, ... lerwick, kirkwall), plus 5 region anchors (central-belt, east, north-east, highlands-islands, south) plus #locations main anchor = 42 unique IDs total.
+- 5 key interlinking services all present with multiple links on main page: recurring-home-cleaning (3), move-in-out-cleaning (2), deep-house-cleaning (3), post-construction-cleaning (2), pressure-washing-near-me (1 page link + 36 anchor links).
+- 6 /quote CTA links on the main page.
+- TypeScript clean on src/ (0 errors related to pressure-washing).
+- SEO-leak scan clean on both new component files AND rendered HTML (0 matches for all forbidden phrases including competitor names "Precise Pressure Washing Services" and "Pressure Washing Direct").
+- Design pattern matches housekeeping-services-seo.tsx, carpet-rug-cleaning-seo.tsx, upholstery-cleaning-seo.tsx, and window-cleaning-seo.tsx exactly: same background alternation (background → cream → background → background → cream → background → brand-dark → background), 16/9 image aspect ratios on cards, 4/3 on split-layout hero images, H2 for section titles (including "A Solution for Every Property Cycle"), H3 for sub-cards, rounded-2xl borders, bg-[var(--brand-light)] icon backgrounds, motion.div with whileInView animations, same color tokens (--brand, --brand-dark, --gold, --cream, --ink, --border).
+- Generator script (gen_pressure_washing_seo.py) preserved at /home/z/my-project/scripts/ for future regenerations.
+
+---
+Task ID: tile-grout-cleaning-seo-batch
+Agent: main
+Task: Apply the Tile & Grout Cleaning SEO content brief to the existing /services/tile-grout-cleaning page, following the exact same 20-section interleaved pattern used for housekeeping-services, maid-service, carpet-rug-cleaning, upholstery-cleaning, window-cleaning, and pressure-washing pages. Create a standalone near-me landing page at /services/tile-grout-cleaning-near-me/. Match the design and color scheme of housekeeping-services-seo.tsx exactly.
+
+Work Log:
+- Read existing tile-grout-cleaning/page.tsx (5-section simple layout: Hero, Overview, WhatsIncluded, Pricing, FinalCta) and tileGroutCleaning data from service-detail-data.ts (line 5634, includes 3 overview paragraphs about hot-water extraction/tile-material-specific chemistry/sealing options, 6 whats-included, 4 process steps, 6 benefits, 3 pricing tiers £149/£295/£POA, 6 FAQs, 3 testimonials, 6 related services, 4 gallery images).
+- Verified all bracketed link placeholder targets exist as live routes: /services/recurring-home-cleaning ✓, /services/move-in-out-cleaning ✓, /services/deep-house-cleaning ✓, /services/post-construction-cleaning ✓ (for [After Builders Clean]), /quote ✓. All 5 targets confirmed present.
+- Created /home/z/my-project/scripts/gen_tile_grout_seo.py (1232 lines) — Python generator using r"""" delimiter to avoid nested triple-quote parsing issues. Rule 9 persisted script.
+- Generated /home/z/my-project/src/components/service-detail/tile-grout-cleaning-seo.tsx (1187 lines, 9 exported components):
+  1. TileGroutSeoHeroBanner — full-width image hero, H1 "Professional Tile & Grout Cleaning Services Scotland", gold CTA + outline button, trust badges (4.9/5, Fully Insured & Vetted, Child & Pet-Safe Products, Same Crew Every Visit). Intro paragraph contains inline Link to /services/recurring-home-cleaning.
+  2. TileGroutSeoIntro — centered text intro + 4-stat band (6+ tile materials handled, 800-1,200 PSI extraction, 3-5 yrs sealed grout longevity, 4.9/5 rating)
+  3. TileGroutSeoWhy — bg-[var(--cream)], image+copy split, 4 trust pillars (Specialist Material Knowledge, The Same Trusted Professionals, Precision Grout Recolouring, Eco-Friendly & Family Safe)
+  4. TileGroutSeoChecklist — bg-background, 3 image-per-card checklist items (Deep Cleaning & Sanitisation, Precision Sealing & Protection, Floor & Wall Restoration) with 16/9 aspect images. Carries id="checklist" anchor.
+  5. TileGroutSeoBooking — bg-background, 3-step hassle-free process (Instant 30-Second Quote, Professional Assessment, Enjoy a Revitalised Sanctuary) with connector line + circular icons. Section title uses <h3> per housekeeping pattern.
+  6. TileGroutSeoInterlinking — bg-[var(--cream)], 4 image-topped interlink cards (Recurring Home Cleaning, Deep House Cleaning, End of Tenancy, After Builders Clean) all with real <Link> components. Section title uses <h2>.
+  7. TileGroutSeoNearMe — bg-background, [1fr_1.3fr] split with map image + 36-location grid, all linking to /services/tile-grout-cleaning-near-me#city
+  8. TileGroutSeoFinalCta — bg-[var(--brand-dark)] with blur orbs, "Ready to Book Your Tile & Grout Cleaning?" with gold + outline buttons
+  9. TileGroutSeoFaq — bg-background, 6 Q&As (3 from brief: clean without replacing, deep vs regular, insured + 3 additions: pressure damage, dry time, Victorian tiles) with +/- accordion icons
+- Background alternation pattern matches carpet-rug/upholstery/window/pressure-washing/housekeeping exactly: image → background → cream → background → background → cream → background → brand-dark → background.
+- Rewrote /home/z/my-project/src/app/services/tile-grout-cleaning/page.tsx with the full 20-section interleaved pattern (9 SEO components + 11 standard ServiceDetail components).
+- Updated tileGroutCleaning.metaTitle and metaDescription in service-detail-data.ts (line 5644-5646) to match the new H1 and content brief ("Professional Tile & Grout Cleaning Services Scotland | Maundy Clean").
+- Created /home/z/my-project/src/components/service-detail/tile-grout-cleaning-near-me-page.tsx (~870 lines, 8 sections: Hero, Intro+stats, Location grid with 36 anchors + 5 region anchors, Why Maundy Clean 4 pillars, 3-step booking, 4 cross-link cards, Final CTA, FAQ 6 Q&As). All content tile-grout-specific: material-trained, high-pressure extraction 800-1,200 PSI, pH-appropriate chemistry, grout recolour in 12 shades, £149/room pricing.
+- Created /home/z/my-project/src/app/services/tile-grout-cleaning-near-me/page.tsx (page wrapper with metadata, 15 keyword variations of "tile and grout cleaning near me" / "grout recolour near me", OpenGraph image, canonical URL).
+- All forbidden SEO-strategy language stripped: "Topical Authority", "MaundyClean Semantic SEO Strategy", "Semantic Interlinking:", "[H1]/[H2]/[H3]", "[Button: ...]" — verified via grep -F on both source files AND rendered HTML (0 matches).
+- All source-citation placeholders stripped: none present in this brief (verified via grep).
+- All competitor names stripped: "Repair Restore Revive" (mentioned in the brief's strategy intro) — verified via grep -F on both source files AND rendered HTML (0 matches).
+- All bracketed link placeholders converted to real Next.js <Link> components: [Recurring Home Cleaning]→/services/recurring-home-cleaning, [End of Tenancy Cleaning]→/services/move-in-out-cleaning, [Deep House Cleaning]→/services/deep-house-cleaning, [After Builders Clean]→/services/post-construction-cleaning, [30-Second Quote Tool]→/quote — verified via grep -F on rendered HTML (0 bracketed placeholders remaining).
+
+Stage Summary:
+- 2 new pages shipped: /services/tile-grout-cleaning (rewritten, 20-section interleaved, 332KB body) and /services/tile-grout-cleaning-near-me (new, 8-section standalone, 173KB body).
+- Both pages return HTTP 200 with exactly 1 H1 each (SEO-compliant). H1 content on main: "Professional Tile & Grout Cleaning Services Scotland". H1 content on near-me: "Tile & Grout Cleaning Services Near Me in Scotland".
+- H2 count: 17 on main tile-grout-cleaning page (includes standard ServiceDetail sections), 7 on near-me page.
+- 36 internal near-me location links on the main page, all pointing to anchored city sections on the near-me page (e.g. /services/tile-grout-cleaning-near-me#glasgow).
+- 36 city anchor IDs confirmed on the near-me page (glasgow, edinburgh, aberdeen, ... lerwick, kirkwall), plus 5 region anchors (central-belt, east, north-east, highlands-islands, south) plus #locations main anchor = 42 unique IDs total.
+- 4 key interlinking services all present with multiple links on main page: recurring-home-cleaning (5), move-in-out-cleaning (4), deep-house-cleaning (4), post-construction-cleaning (2), tile-grout-cleaning-near-me (37 = 1 page link + 36 anchor links).
+- 6 /quote CTA links on the main page; 7 /quote CTA links on the near-me page.
+- TypeScript clean on src/ (0 errors related to tile-grout-cleaning).
+- SEO-leak scan clean on both new component files AND rendered HTML (0 matches for all forbidden phrases including competitor name "Repair Restore Revive").
+- Design pattern matches housekeeping-services-seo.tsx, carpet-rug-cleaning-seo.tsx, upholstery-cleaning-seo.tsx, window-cleaning-seo.tsx, and pressure-washing-seo.tsx exactly: same background alternation (background → cream → background → background → cream → background → brand-dark → background), 16/9 image aspect ratios on cards, 4/3 on split-layout hero images, H2 for section titles (including "A Solution for Every Property Cycle"), H3 for sub-cards, rounded-2xl borders, bg-[var(--brand-light)] icon backgrounds, motion.div with whileInView animations, same color tokens (--brand, --brand-dark, --gold, --cream, --ink, --border).
+- Generator script (gen_tile_grout_seo.py) preserved at /home/z/my-project/scripts/ for future regenerations.

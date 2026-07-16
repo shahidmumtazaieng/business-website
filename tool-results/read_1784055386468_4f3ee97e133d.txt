@@ -1,0 +1,1233 @@
+     1→#!/usr/bin/env python3
+     2→"""
+     3→Generator for /src/components/service-detail/carpet-rug-cleaning-seo.tsx
+     4→
+     5→Produces 9 client-side React components that interleave with the standard
+     6→ServiceDetail components to form a 20-section page on
+     7→/services/carpet-rug-cleaning.
+     8→
+     9→Design pattern matches maid-service-seo.tsx exactly:
+    10→  - Centered text intros with brand chip + font-extrabold headings
+    11→  - text-gradient-brand on stat values
+    12→  - Image+copy split with aspect-[4/3] rounded-3xl shadow-brand
+    13→  - In-image overlay caption with bg-white/95 backdrop-blur
+    14→  - 2+2 trust card layout with bg-[var(--brand-light)] icon bg
+    15→  - Booking section with connector line + circular icon design
+    16→  - 4-column horizontal interlink cards with aspect-[16/9] image headers
+    17→  - Near-me section with [1fr_1.3fr] split + white grid card
+    18→  - Final CTA with decorative blur orbs
+    19→  - FAQ with motion.div wrapping details + custom +/- icon
+    20→  - HTML entities for typography consistency
+    21→  - Pound sign (£) instead of "GBP"
+    22→
+    23→The user brief (Carpet & Rug Cleaning semantic SEO) was processed to:
+    24→  - Strip SEO-strategy language: "Topical Authority", "Semantic Interlinking:",
+    25→    "MaundyClean Semantic SEO Strategy", "[H1]/[H2]/[H3]", "[Button: ...]"
+    26→  - Strip source-citation placeholders: "[Rug Cleaner Source]",
+    27→    "[Fastclean Source]", "[Blitzers Source]"
+    28→  - Strip competitor names: "Rug Cleaner Scotland", "Fastclean Scotland"
+    29→  - Convert bracketed link placeholders to real Next.js <Link> components:
+    30→      [Recurring Home Cleaning]    -> /services/recurring-home-cleaning
+    31→      [Sofa Deep Cleaning]         -> /services/upholstery-cleaning
+    32→      [End of Tenancy Cleaning]    -> /services/move-in-out-cleaning
+    33→      [Deep House Cleaning]        -> /services/deep-house-cleaning
+    34→      [One-Off Spring Clean]       -> /services/spring-cleaning
+    35→      [30-Second Quote Tool]       -> /quote
+    36→
+    37→Output: /home/z/my-project/src/components/service-detail/carpet-rug-cleaning-seo.tsx
+    38→"""
+    39→
+    40→from pathlib import Path
+    41→
+    42→OUT_PATH = Path("/home/z/my-project/src/components/service-detail/carpet-rug-cleaning-seo.tsx")
+    43→
+    44→# Use a raw triple-double-quoted string. The TSX content uses single quotes
+    45→# for HTML attributes / imports, so no escaping is needed.
+    46→TSX = r""""use client";
+    47→
+    48→import Link from "next/link";
+    49→import { motion } from "framer-motion";
+    50→import {
+    51→  Shield,
+    52→  Leaf,
+    53→  Star,
+    54→  Clock,
+    55→  Sparkles,
+    56→  MapPin,
+    57→  ArrowRight,
+    58→  CheckCircle2,
+    59→  Droplets,
+    60→  Wind,
+    61→  SprayCan,
+    62→  Crown,
+    63→  Users,
+    64→  Home,
+    65→  KeyRound,
+    66→  Hammer,
+    67→  Zap,
+    68→  UserCheck,
+    69→  CalendarCheck,
+    70→  Award,
+    71→  Gem,
+    72→  Building2,
+    73→} from "lucide-react";
+    74→import { Button } from "@/components/ui/button";
+    75→import { contactInfo } from "@/lib/site-data";
+    76→
+    77→// ============================================================
+    78→// Images - hand-picked from in-house search service
+    79→// ============================================================
+    80→const IMG = {
+    81→  heroWide:
+    82→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    83→  whyCrew:
+    84→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    85→  checklistExtraction:
+    86→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    87→  checklistStain:
+    88→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    89→  checklistUpholstery:
+    90→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    91→  checklistProtect:
+    92→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    93→  leaseRecurring:
+    94→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    95→  leaseTenancy:
+    96→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    97→  leaseDeep:
+    98→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    99→  leaseSpring:
+   100→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+   101→  nearMeMap:
+   102→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+   103→};
+   104→
+   105→// ============================================================
+   106→// 36 Scottish locations covered by the near-me grid
+   107→// ============================================================
+   108→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+   109→  { city: "Glasgow", slug: "glasgow" },
+   110→  { city: "Edinburgh", slug: "edinburgh" },
+   111→  { city: "Aberdeen", slug: "aberdeen" },
+   112→  { city: "Dundee", slug: "dundee" },
+   113→  { city: "Stirling", slug: "stirling" },
+   114→  { city: "Perth", slug: "perth" },
+   115→  { city: "Falkirk", slug: "falkirk" },
+   116→  { city: "Inverness", slug: "inverness" },
+   117→  { city: "Ayr", slug: "ayr" },
+   118→  { city: "Kilmarnock", slug: "kilmarnock" },
+   119→  { city: "Livingston", slug: "livingston" },
+   120→  { city: "East Kilbride", slug: "east-kilbride" },
+   121→  { city: "Paisley", slug: "paisley" },
+   122→  { city: "Hamilton", slug: "hamilton" },
+   123→  { city: "Motherwell", slug: "motherwell" },
+   124→  { city: "Dunfermline", slug: "dunfermline" },
+   125→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+   126→  { city: "Musselburgh", slug: "musselburgh" },
+   127→  { city: "Dalkeith", slug: "dalkeith" },
+   128→  { city: "Bathgate", slug: "bathgate" },
+   129→  { city: "Cumbernauld", slug: "cumbernauld" },
+   130→  { city: "Coatbridge", slug: "coatbridge" },
+   131→  { city: "St Andrews", slug: "st-andrews" },
+   132→  { city: "Elgin", slug: "elgin" },
+   133→  { city: "Peterhead", slug: "peterhead" },
+   134→  { city: "Stonehaven", slug: "stonehaven" },
+   135→  { city: "Inverurie", slug: "inverurie" },
+   136→  { city: "Oban", slug: "oban" },
+   137→  { city: "Fort William", slug: "fort-william" },
+   138→  { city: "Aviemore", slug: "aviemore" },
+   139→  { city: "Dumfries", slug: "dumfries" },
+   140→  { city: "Stranraer", slug: "stranraer" },
+   141→  { city: "Wick", slug: "wick" },
+   142→  { city: "Thurso", slug: "thurso" },
+   143→  { city: "Lerwick", slug: "lerwick" },
+   144→  { city: "Kirkwall", slug: "kirkwall" },
+   145→];
+   146→
+   147→// ============================================================
+   148→// Section 0 - Full-width hero banner
+   149→// Semantic H1: "Professional Carpet & Rug Deep Cleaning Scotland"
+   150→// ============================================================
+   151→
+   152→export function CarpetRugSeoHeroBanner() {
+   153→  return (
+   154→    <section className="relative overflow-hidden">
+   155→      {/* Full-width background image */}
+   156→      <div className="absolute inset-0">
+   157→        <img
+   158→          src={IMG.heroWide}
+   159→          alt="Maundy Clean technician restoring a freshly cleaned wool carpet in a Scottish living room"
+   160→          className="w-full h-full object-cover"
+   161→          loading="eager"
+   162→          fetchPriority="high"
+   163→        />
+   164→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   165→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   166→      </div>
+   167→
+   168→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   169→        <motion.div
+   170→          initial="hidden"
+   171→          animate="visible"
+   172→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   173→          className="max-w-3xl"
+   174→        >
+   175→          <motion.div
+   176→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   177→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   178→          >
+   179→            <span className="relative flex w-2 h-2">
+   180→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   181→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   182→            </span>
+   183→            Carpet &amp; Rug Deep Cleaning Scotland · Glasgow · Edinburgh · Central Belt
+   184→          </motion.div>
+   185→
+   186→          <motion.h1
+   187→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   188→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   189→          >
+   190→            Professional Carpet &amp; Rug Deep Cleaning Scotland
+   191→          </motion.h1>
+   192→
+   193→          <motion.p
+   194→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   195→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   196→          >
+   197→            Rejuvenating your home&rsquo;s fabrics with meticulous care and technical excellence. From
+   198→            hot-water extraction on synthetics to full-immersion rug bathing for Persian and antique
+   199→            pieces, we restore the vibrant, pristine appearance of your home&rsquo;s most important
+   200→            textiles &mdash; with the same NCCA-certified technician every visit from £18/room.
+   201→          </motion.p>
+   202→
+   203→          <motion.div
+   204→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   205→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   206→          >
+   207→            <Button
+   208→              size="lg"
+   209→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   210→              asChild
+   211→            >
+   212→              <Link href="/quote">
+   213→                Get My 30-Second Instant Quote
+   214→                <ArrowRight className="w-5 h-5" />
+   215→              </Link>
+   216→            </Button>
+   217→            <Button
+   218→              size="lg"
+   219→              variant="outline"
+   220→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   221→              asChild
+   222→            >
+   223→              <Link href="/locations">
+   224→                <MapPin className="w-4 h-4" />
+   225→                View Our Service Areas in Scotland
+   226→              </Link>
+   227→            </Button>
+   228→          </motion.div>
+   229→
+   230→          <motion.div
+   231→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   232→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   233→          >
+   234→            <div className="flex items-center gap-1.5">
+   235→              <div className="flex">
+   236→                {[1, 2, 3, 4, 5].map((s) => (
+   237→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   238→                ))}
+   239→              </div>
+   240→              <span className="font-semibold text-white">4.9/5</span>
+   241→              <span className="text-white/70">· 6,200+ reviews</span>
+   242→            </div>
+   243→            <div className="flex items-center gap-1.5">
+   244→              <Shield className="w-4 h-4 text-[var(--gold)]" /> NCCA &amp; WoolSafe Certified
+   245→            </div>
+   246→            <div className="flex items-center gap-1.5">
+   247→              <Leaf className="w-4 h-4 text-[var(--gold)]" /> Child &amp; Pet-Safe Products
+   248→            </div>
+   249→            <div className="flex items-center gap-1.5">
+   250→              <Clock className="w-4 h-4 text-[var(--gold)]" /> 100% Re-Clean Guarantee
+   251→            </div>
+   252→          </motion.div>
+   253→        </motion.div>
+   254→      </div>
+   255→    </section>
+   256→  );
+   257→}
+   258→
+   259→// ============================================================
+   260→// Section 1 - Long-form semantic SEO intro
+   261→// Sits right after the hero, before the existing ServiceOverview.
+   262→// ============================================================
+   263→
+   264→export function CarpetRugSeoIntro() {
+   265→  return (
+   266→    <section className="py-16 lg:py-24 bg-background">
+   267→      <div className="max-w-[1100px] mx-auto px-6">
+   268→        <motion.div
+   269→          initial={{ opacity: 0, y: 20 }}
+   270→          whileInView={{ opacity: 1, y: 0 }}
+   271→          viewport={{ once: true, margin: "-80px" }}
+   272→          transition={{ duration: 0.5 }}
+   273→          className="max-w-3xl mx-auto text-center mb-10"
+   274→        >
+   275→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   276→            Specialist carpet &amp; rug cleaning · Scotland
+   277→          </span>
+   278→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   279→            The Maundy Clean Standard for Fabric Care
+   280→          </h2>
+   281→          <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   282→            A truly clean home starts from the floor up. While our{" "}
+   283→            <strong className="font-semibold text-[var(--ink)]">recurring home cleaning</strong> keeps
+   284→            your living spaces tidy day to day, your carpets and rugs act as a filter for city-centre
+   285→            dust, pollen, skin cells, and microplastics tracked in on footwear. At Maundy Clean, we
+   286→            provide a premium{" "}
+   287→            <strong className="font-semibold text-[var(--ink)]">carpet deep cleaning service</strong>{" "}
+   288→            that goes beyond the surface to restore the vibrant, pristine appearance of your
+   289→            home&rsquo;s most important fabrics &mdash; built on the{" "}
+   290→            <strong className="font-semibold text-[var(--ink)]">Maundy tradition of care and
+   291→            service</strong> across Glasgow, Edinburgh, and the Central Belt.
+   292→          </p>
+   293→        </motion.div>
+   294→
+   295→        {/* Trust strip */}
+   296→        <motion.div
+   297→          initial={{ opacity: 0, y: 16 }}
+   298→          whileInView={{ opacity: 1, y: 0 }}
+   299→          viewport={{ once: true, margin: "-60px" }}
+   300→          transition={{ duration: 0.5 }}
+   301→          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   302→        >
+   303→          {[
+   304→            { label: "Touch-dry time", value: "3-5 hrs" },
+   305→            { label: "Extraction pressure", value: "200 PSI" },
+   306→            { label: "Spotters on every van", value: "14 types" },
+   307→            { label: "Rug workshop turnaround", value: "5-7 days" },
+   308→          ].map((stat) => (
+   309→            <div
+   310→              key={stat.label}
+   311→              className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   312→            >
+   313→              <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   314→              <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   315→            </div>
+   316→          ))}
+   317→        </motion.div>
+   318→      </div>
+   319→    </section>
+   320→  );
+   321→}
+   322→
+   323→// ============================================================
+   324→// Section 2 - Why Maundy Clean is the Authority in Rug Restoration
+   325→// (Semantic H2: "Why Maundy Clean is the Authority in Rug Restoration")
+   326→// Image+copy split layout with 4 trust cards
+   327→// ============================================================
+   328→
+   329→const TRUST_CARDS = [
+   330→  {
+   331→    icon: Gem,
+   332→    title: "Specialist Fabric Knowledge",
+   333→    description:
+   334→      "Our teams are trained on every variety of textile, from modern synthetic twist pile and berber to delicate hand-knotted Persian, Oriental, and silk-blend rugs. We identify the fibre before any chemistry touches it, so the right cleaning solution is matched to every weave &mdash; whether you have a contemporary rug or a 19th-century Tabriz.",
+   335→  },
+   336→  {
+   337→    icon: Users,
+   338→    title: "The Same Trusted Professionals",
+   339→    description:
+   340→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, and background-checked technicians who manage your regular house cleaning are the ones performing your intensive fabric care. Continuity matters when the stakes are a Persian heirloom or a wool staircase runner.",
+   341→  },
+   342→  {
+   343→    icon: Leaf,
+   344→    title: "Eco-Friendly & Safe for Your Sanctuary",
+   345→    description:
+   346→      "Your health is our priority. We use only certified child-safe and pet-safe products with EU Ecolabel or WoolSafe approval. Our cleaning methods remove germs, dust mites, and unwanted odours without leaving behind harsh chemical residues that re-soil the pile and trigger respiratory sensitivity.",
+   347→  },
+   348→  {
+   349→    icon: Shield,
+   350→    title: "Fully Insured & Guaranteed",
+   351→    description:
+   352→      "We stand by the quality of our work. Every technician is Disclosure Scotland PVG-checked, we hold £5m public liability cover, and we offer a free re-clean within 24 to 48 hours if you are not 100% satisfied &mdash; part of the Maundy Clean standard of excellence on every visit.",
+   353→  },
+   354→];
+   355→
+   356→export function CarpetRugSeoWhy() {
+   357→  return (
+   358→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   359→      <div className="max-w-[1400px] mx-auto px-6">
+   360→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   361→          {/* Image side */}
+   362→          <motion.div
+   363→            initial={{ opacity: 0, scale: 0.96 }}
+   364→            whileInView={{ opacity: 1, scale: 1 }}
+   365→            viewport={{ once: true, margin: "-80px" }}
+   366→            transition={{ duration: 0.6 }}
+   367→            className="relative order-2 lg:order-1"
+   368→          >
+   369→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   370→              <img
+   371→                src={IMG.whyCrew}
+   372→                alt="Maundy Clean technician preparing fibre-matched chemistry for carpet cleaning"
+   373→                className="absolute inset-0 w-full h-full object-cover"
+   374→                loading="lazy"
+   375→              />
+   376→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   377→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   378→                <div className="flex items-center gap-2 mb-1">
+   379→                  <Award className="w-4 h-4 text-[var(--brand)]" />
+   380→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   381→                    NCCA &amp; WoolSafe Certified on Every Fibre
+   382→                  </span>
+   383→                </div>
+   384→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   385→                  Employed, PVG-checked, uniformed, and trained on wool, silk, jute, sisal, and
+   386→                  synthetic &mdash; we never apply the wrong chemistry.
+   387→                </p>
+   388→              </div>
+   389→            </div>
+   390→            <motion.div
+   391→              animate={{ y: [0, -8, 0] }}
+   392→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   393→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   394→            >
+   395→              <div className="flex items-center gap-2">
+   396→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   397→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   398→                </div>
+   399→                <div>
+   400→                  <div className="text-[10px] text-[var(--muted-foreground)]">Re-clean rate</div>
+   401→                  <div className="text-xs font-bold text-[var(--ink)]">1.2% only</div>
+   402→                </div>
+   403→              </div>
+   404→            </motion.div>
+   405→          </motion.div>
+   406→
+   407→          {/* Copy side */}
+   408→          <motion.div
+   409→            initial={{ opacity: 0, y: 20 }}
+   410→            whileInView={{ opacity: 1, y: 0 }}
+   411→            viewport={{ once: true, margin: "-80px" }}
+   412→            transition={{ duration: 0.5 }}
+   413→            className="order-1 lg:order-2"
+   414→          >
+   415→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   416→              Why choose Maundy Clean
+   417→            </span>
+   418→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   419→              Why Maundy Clean is the Authority in Rug Restoration
+   420→            </h2>
+   421→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   422→              While many local companies focus only on standard synthetic carpets, Maundy Clean
+   423→              understands the technical requirements of high-value textiles. We treat every item
+   424→              individually, ensuring the perfect cleaning solution for every fibre type &mdash; from
+   425→              a modern synthetic twist pile to a hand-knotted Tabriz.
+   426→            </p>
+   427→
+   428→            <div className="space-y-3">
+   429→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   430→                const Icon = card.icon;
+   431→                return (
+   432→                  <div
+   433→                    key={card.title}
+   434→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   435→                  >
+   436→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   437→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   438→                    </div>
+   439→                    <div>
+   440→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   441→                        {card.title}
+   442→                      </h3>
+   443→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   444→                        {card.description}
+   445→                      </p>
+   446→                    </div>
+   447→                  </div>
+   448→                );
+   449→              })}
+   450→            </div>
+   451→          </motion.div>
+   452→        </div>
+   453→
+   454→        {/* Third + fourth cards as a 2-column strip */}
+   455→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   456→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   457→            const Icon = card.icon;
+   458→            return (
+   459→              <motion.div
+   460→                key={card.title}
+   461→                initial={{ opacity: 0, y: 20 }}
+   462→                whileInView={{ opacity: 1, y: 0 }}
+   463→                viewport={{ once: true, margin: "-40px" }}
+   464→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   465→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   466→              >
+   467→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   468→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   469→                </div>
+   470→                <div>
+   471→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   472→                    {card.title}
+   473→                  </h3>
+   474→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   475→                    {card.description}
+   476→                  </p>
+   477→                </div>
+   478→              </motion.div>
+   479→            );
+   480→          })}
+   481→        </div>
+   482→      </div>
+   483→    </section>
+   484→  );
+   485→}
+   486→
+   487→// ============================================================
+   488→// Section 3 - The Maundy Clean Technical Checklist for Deep Clean
+   489→// (Semantic H2: "The Maundy Clean Technical Checklist")
+   490→// Image-per-card layout - 4 checklist categories
+   491→// ============================================================
+   492→
+   493→const CHECKLIST_DETAIL = [
+   494→  {
+   495→    icon: SprayCan,
+   496→    title: "Advanced Stain Removal & Pre-Treatment",
+   497→    image: IMG.checklistStain,
+   498→    imageAlt: "Eco-labelled spotters and fibre-specific chemistry laid out for carpet stain removal",
+   499→    description:
+   500→      "We target the risky areas first. Our specialists use advanced techniques and state-of-the-art equipment to tackle deep-seated stains and high-traffic grime before extraction begins. We carry 14 different spotters &mdash; wine, coffee, ink, makeup, pet accidents, dye transfer &mdash; each with chemistry specific to the stain class rather than a single &lsquo;universal&rsquo; solution that rarely works.",
+   501→    points: [
+   502→      "Fibre ID test before any chemistry is applied",
+   503→      "14 stain-specific spotters carried on every van",
+   504→      "Pre-spray agitated into the pile with a rotary machine",
+   505→      "High-traffic zones treated separately",
+   506→      "Permanent stains flagged up-front, never billed hopefully",
+   507→    ],
+   508→  },
+   509→  {
+   510→    icon: Droplets,
+   511→    title: "Intensive Extraction Cleaning",
+   512→    image: IMG.checklistExtraction,
+   513→    imageAlt: "Hot-water extraction in progress on a Scottish living room wool carpet",
+   514→    description:
+   515→      "Using professional-grade equipment, we perform a thorough top-to-bottom extraction. Heated eco-labelled solution is injected at 200 PSI and immediately extracted in 2-metre overlapping passes. This not only makes colours brighter but removes deep-seated allergens and bacteria that regular vacuuming cannot reach &mdash; the genuine reset your pile needs once a year.",
+   516→    points: [
+   517→      "Heated solution injected at 200 PSI",
+   518→      "2-metre overlapping passes for even coverage",
+   519→      "Allergens, dust mites & bacteria extracted at the fibre",
+   520→      "Acid rinse neutraliser prevents re-soiling",
+   521→      "Touch-dry in 3-5 hours, faster with air-movers",
+   522→    ],
+   523→  },
+   524→  {
+   525→    icon: Wind,
+   526→    title: "Upholstery & Sofa Deep Cleaning",
+   527→    image: IMG.checklistUpholstery,
+   528→    imageAlt: "Maundy Clean technician deep cleaning a sofa with fibre-matched chemistry",
+   529→    description:
+   530→      "Extend the life of your furniture. Our upholstery service uses the same meticulous fibre-matched standards to refresh suites, leather chairs, dining chairs, and other fabric furnishings, leaving them smelling fresh for months. The same technician, the same chemistry discipline, the same guarantee &mdash; booked as a standalone service or alongside your carpet clean.",
+   531→    points: [
+   532→      "Fibre-matched chemistry for every fabric type",
+   533→      "Suites, armchairs, dining chairs & leather",
+   534→      "Pet-accident enzyme digester for odour removal",
+   535→      "Optional Scotchgard-equivalent protectant",
+   536→      "Bookable alongside carpet cleaning or standalone",
+   537→    ],
+   538→  },
+   539→  {
+   540→    icon: Shield,
+   541→    title: "Protective Finishes & Aftercare",
+   542→    image: IMG.checklistProtect,
+   543→    imageAlt: "Bright Scottish living room with freshly protected carpet after a deep clean",
+   544→    description:
+   545→      "Upon request, we apply a specialised fluorochemical protectant to prevent future spills from becoming permanent stains, ensuring your investment stays pristine between recurring cleaning visits. Every client receives a written aftercare card with drying guidance, a 12-month re-clean reminder at the locked-in rate, and spill-response instructions for the first 48 hours.",
+   546→    points: [
+   547→      "Fluorochemical protectant re-application (optional)",
+   548→      "6-12 months of spill resistance added to the pile",
+   549→      "Written aftercare card with drying guidance",
+   550→      "12-month re-clean reminder at locked-in rate",
+   551→      "Spill-response instructions for the first 48 hours",
+   552→    ],
+   553→  },
+   554→];
+   555→
+   556→export function CarpetRugSeoChecklist() {
+   557→  return (
+   558→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   559→      <div className="max-w-[1400px] mx-auto px-6">
+   560→        <motion.div
+   561→          initial={{ opacity: 0, y: 20 }}
+   562→          whileInView={{ opacity: 1, y: 0 }}
+   563→          viewport={{ once: true, margin: "-80px" }}
+   564→          transition={{ duration: 0.5 }}
+   565→          className="max-w-3xl mb-12"
+   566→        >
+   567→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   568→            Technical checklist · the detail
+   569→          </span>
+   570→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   571→            The Maundy Clean Technical Checklist for Deep Clean
+   572→          </h2>
+   573→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   574→            Our carpet deep cleaning follows a rigorous, agency-approved checklist designed to bring
+   575→            old or dirty fabrics back to life. Every stage is documented in your post-clean care
+   576→            card, so you know exactly what was treated and what to expect over the next 12 months.
+   577→          </p>
+   578→        </motion.div>
+   579→
+   580→        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   581→          {CHECKLIST_DETAIL.map((item, i) => {
+   582→            const Icon = item.icon;
+   583→            return (
+   584→              <motion.div
+   585→                key={item.title}
+   586→                initial={{ opacity: 0, y: 24 }}
+   587→                whileInView={{ opacity: 1, y: 0 }}
+   588→                viewport={{ once: true, margin: "-40px" }}
+   589→                transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
+   590→                className="bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/30 transition-all flex flex-col"
+   591→              >
+   592→                {/* Image header */}
+   593→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   594→                  <img
+   595→                    src={item.image}
+   596→                    alt={item.imageAlt}
+   597→                    className="absolute inset-0 w-full h-full object-cover"
+   598→                    loading="lazy"
+   599→                  />
+   600→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   601→                  <div className="absolute top-4 left-4 w-11 h-11 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   602→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   603→                  </div>
+   604→                  <div className="absolute bottom-4 left-4 right-4">
+   605→                    <h3 className="font-display font-bold text-lg text-white leading-tight">
+   606→                      {item.title}
+   607→                    </h3>
+   608→                  </div>
+   609→                </div>
+   610→
+   611→                {/* Body */}
+   612→                <div className="p-6 flex-1 flex flex-col">
+   613→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   614→                    {item.description}
+   615→                  </p>
+   616→                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mt-auto">
+   617→                    {item.points.map((point) => (
+   618→                      <li
+   619→                        key={point}
+   620→                        className="flex items-start gap-2 text-sm text-[var(--ink)]/85"
+   621→                      >
+   622→                        <CheckCircle2 className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   623→                        <span>{point}</span>
+   624→                      </li>
+   625→                    ))}
+   626→                  </ul>
+   627→                </div>
+   628→              </motion.div>
+   629→            );
+   630→          })}
+   631→        </div>
+   632→
+   633→        {/* Inline interlink to upholstery service */}
+   634→        <motion.div
+   635→          initial={{ opacity: 0, y: 16 }}
+   636→          whileInView={{ opacity: 1, y: 0 }}
+   637→          viewport={{ once: true, margin: "-40px" }}
+   638→          transition={{ duration: 0.5, delay: 0.3 }}
+   639→          className="mt-8 text-center"
+   640→        >
+   641→          <Link
+   642→            href="/services/upholstery-cleaning"
+   643→            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)]"
+   644→          >
+   645→            Explore our Sofa &amp; Upholstery Deep Cleaning service
+   646→            <ArrowRight className="w-4 h-4" />
+   647→          </Link>
+   648→        </motion.div>
+   649→      </div>
+   650→    </section>
+   651→  );
+   652→}
+   653→
+   654→// ============================================================
+   655→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   656→// (Semantic H3: "The 3-Step 'Hassle-Free' Booking Process")
+   657→// ============================================================
+   658→
+   659→const BOOKING_STEPS = [
+   660→  {
+   661→    icon: Zap,
+   662→    step: "01",
+   663→    title: "Instant Online Quote",
+   664→    description:
+   665→      "Use our 30-second quote tool to calculate the cost of your rug or carpet cleaning based on room size and material. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in, fully transparent, with no on-the-day upsells for spotters or air-movers.",
+   666→  },
+   667→  {
+   668→    icon: UserCheck,
+   669→    step: "02",
+   670→    title: "Professional Service",
+   671→    description:
+   672→      "We arrive at a time that fits your schedule, fully equipped with professional-grade materials and chemistry &mdash; already included in your fair, transparent price. The technician confirms fibre type, flags any permanent stains, and walks you through the cleaning plan before any chemistry touches the pile.",
+   673→  },
+   674→  {
+   675→    icon: CalendarCheck,
+   676→    step: "03",
+   677→    title: "A Healthier Home",
+   678→    description:
+   679→      "Walk onto floors that look, feel, and smell fresh, backed by our 100% satisfaction guarantee. Most carpets are touch-dry in 3 to 5 hours; we loan air-movers free for 24 hours on whole-home cleans to cut that to 90 minutes. You receive a written care card and a 12-month re-clean reminder at the locked-in rate.",
+   680→  },
+   681→];
+   682→
+   683→export function CarpetRugSeoBooking() {
+   684→  return (
+   685→    <section className="py-16 lg:py-24 bg-background">
+   686→      <div className="max-w-[1400px] mx-auto px-6">
+   687→        <motion.div
+   688→          initial={{ opacity: 0, y: 20 }}
+   689→          whileInView={{ opacity: 1, y: 0 }}
+   690→          viewport={{ once: true, margin: "-80px" }}
+   691→          transition={{ duration: 0.5 }}
+   692→          className="text-center mb-14"
+   693→        >
+   694→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   695→            Hassle-free booking
+   696→          </span>
+   697→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   698→            The 3-Step &ldquo;Hassle-Free&rdquo; Booking Process
+   699→          </h3>
+   700→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   701→            We have optimized the booking experience to be uncomplicated and straightforward,
+   702→            addressing the slow response times common in the Scottish market. From quote to clean
+   703→            in under 48 hours for most postcodes in the Central Belt &mdash; no friction, no waiting.
+   704→          </p>
+   705→        </motion.div>
+   706→
+   707→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   708→          {/* Connector line */}
+   709→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   710→
+   711→          {BOOKING_STEPS.map((step, i) => {
+   712→            const Icon = step.icon;
+   713→            return (
+   714→              <motion.div
+   715→                key={step.step}
+   716→                initial={{ opacity: 0, y: 24 }}
+   717→                whileInView={{ opacity: 1, y: 0 }}
+   718→                viewport={{ once: true, margin: "-40px" }}
+   719→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   720→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   721→              >
+   722→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   723→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   724→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   725→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   726→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   727→                    {step.step}
+   728→                  </span>
+   729→                </div>
+   730→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   731→                  {step.title}
+   732→                </h3>
+   733→                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   734→                  {step.description}
+   735→                </p>
+   736→              </motion.div>
+   737→            );
+   738→          })}
+   739→        </div>
+   740→
+   741→        <motion.div
+   742→          initial={{ opacity: 0, y: 16 }}
+   743→          whileInView={{ opacity: 1, y: 0 }}
+   744→          viewport={{ once: true }}
+   745→          transition={{ duration: 0.5, delay: 0.3 }}
+   746→          className="text-center mt-10"
+   747→        >
+   748→          <Button
+   749→            size="lg"
+   750→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   751→            asChild
+   752→          >
+   753→            <Link href="/quote">
+   754→              Get My 30-Second Instant Quote
+   755→              <ArrowRight className="w-5 h-5" />
+   756→            </Link>
+   757→          </Button>
+   758→        </motion.div>
+   759→      </div>
+   760→    </section>
+   761→  );
+   762→}
+   763→
+   764→// ============================================================
+   765→// Section 5 - A Solution for Every Cycle (interlinking)
+   766→// (Semantic H2: "A Solution for Every Cycle")
+   767→// Image-topped cards with internal links
+   768→// ============================================================
+   769→
+   770→const INTERLINK_SOLUTIONS = [
+   771→  {
+   772→    icon: CalendarCheck,
+   773→    title: "Maintaining the Standard · Recurring Home Cleaning",
+   774→    href: "/services/recurring-home-cleaning",
+   775→    image: IMG.leaseRecurring,
+   776→    imageAlt: "Recurring home cleaning at a Scottish family home with freshly vacuumed carpets",
+   777→    description:
+   778→      "After your fabrics are restored, keep them pristine with a recurring home cleaning schedule &mdash; weekly or fortnightly. Edge-to-edge vacuuming and immediate spill response are the single biggest factors in how long a deep clean lasts. 15% member discount for existing carpet cleaning clients.",
+   779→    cta: "Explore recurring home cleaning",
+   780→  },
+   781→  {
+   782→    icon: KeyRound,
+   783→    title: "The Move-In Reset · End of Tenancy Cleaning",
+   784→    href: "/services/move-in-out-cleaning",
+   785→    image: IMG.leaseTenancy,
+   786→    imageAlt: "Empty Scottish flat being deep cleaned for a new tenant move-in with carpet extraction",
+   787→    description:
+   788→      "Preparing for a new tenant or moving out? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee and professional carpet extraction as standard. We work to the letting agent&rsquo;s inventory and come back free of charge if anything is flagged at the check-out inspection.",
+   789→    cta: "Book end of tenancy cleaning",
+   790→  },
+   791→  {
+   792→    icon: Home,
+   793→    title: "Property Transitions · Deep House Cleaning",
+   794→    href: "/services/deep-house-cleaning",
+   795→    image: IMG.leaseDeep,
+   796→    imageAlt: "Deep house cleaning team refreshing a Scottish property before going on the market",
+   797→    description:
+   798→      "If you are putting a house up for sale, a Deep House Cleaning combined with rug rejuvenation creates the WOW factor that attracts buyers and lifts offers. Stale odours and tired carpets are the single biggest turn-off at viewings &mdash; we address both in a single coordinated visit.",
+   799→    cta: "Book a deep house cleaning",
+   800→  },
+   801→  {
+   802→    icon: Sparkles,
+   803→    title: "Seasonal Refreshes · One-Off Spring Clean",
+   804→    href: "/services/spring-cleaning",
+   805→    image: IMG.leaseSpring,
+   806→    imageAlt: "Bright Scottish living room refreshed with a comprehensive spring clean",
+   807→    description:
+   808→      "Book a One-Off Spring Clean for a comprehensive top-to-bottom refresh of your entire home &mdash; skirtings, light fittings, behind appliances, and the carpet extraction that pulls a winter&rsquo;s worth of grit from the pile. Perfect as a seasonal reset on top of your regular cleaning routine.",
+   809→    cta: "Book a one-off spring clean",
+   810→  },
+   811→];
+   812→
+   813→export function CarpetRugSeoInterlinking() {
+   814→  return (
+   815→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   816→      <div className="max-w-[1400px] mx-auto px-6">
+   817→        <motion.div
+   818→          initial={{ opacity: 0, y: 20 }}
+   819→          whileInView={{ opacity: 1, y: 0 }}
+   820→          viewport={{ once: true, margin: "-80px" }}
+   821→          transition={{ duration: 0.5 }}
+   822→          className="max-w-3xl mb-12"
+   823→        >
+   824→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   825→            Beyond the reset · property cycles
+   826→          </span>
+   827→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   828→            A Solution for Every Cycle
+   829→          </h2>
+   830→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   831→            Our carpet deep cleaning is the perfect reset to combine with our other specialist
+   832→            services. Restore the pile today, then keep it pristine with the right ongoing routine
+   833→            for your household, your tenancy cycle, or your sale timeline &mdash; the same trusted
+   834→            crew can step up whenever life changes.
+   835→          </p>
+   836→        </motion.div>
+   837→
+   838→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   839→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   840→            const Icon = sol.icon;
+   841→            return (
+   842→              <motion.div
+   843→                key={sol.title}
+   844→                initial={{ opacity: 0, y: 24 }}
+   845→                whileInView={{ opacity: 1, y: 0 }}
+   846→                viewport={{ once: true, margin: "-40px" }}
+   847→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   848→              >
+   849→                <Link
+   850→                  href={sol.href}
+   851→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   852→                >
+   853→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   854→                    <img
+   855→                      src={sol.image}
+   856→                      alt={sol.imageAlt}
+   857→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   858→                      loading="lazy"
+   859→                    />
+   860→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   861→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   862→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   863→                    </div>
+   864→                    <h4 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   865→                      {sol.title}
+   866→                    </h4>
+   867→                  </div>
+   868→                  <div className="p-5">
+   869→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   870→                      {sol.description}
+   871→                    </p>
+   872→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   873→                      {sol.cta}
+   874→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   875→                    </span>
+   876→                  </div>
+   877→                </Link>
+   878→              </motion.div>
+   879→            );
+   880→          })}
+   881→        </div>
+   882→      </div>
+   883→    </section>
+   884→  );
+   885→}
+   886→
+   887→// ============================================================
+   888→// Section 6 - "Near Me" Location Internal Links
+   889→// (Semantic H2: "Carpet & Rug Cleaning Near Me in Scotland")
+   890→// Split layout with map image + 36-location grid
+   891→// ============================================================
+   892→
+   893→export function CarpetRugSeoNearMe() {
+   894→  return (
+   895→    <section className="py-16 lg:py-24 bg-background">
+   896→      <div className="max-w-[1400px] mx-auto px-6">
+   897→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   898→          {/* Left: copy + map image */}
+   899→          <motion.div
+   900→            initial={{ opacity: 0, y: 20 }}
+   901→            whileInView={{ opacity: 1, y: 0 }}
+   902→            viewport={{ once: true, margin: "-80px" }}
+   903→            transition={{ duration: 0.5 }}
+   904→          >
+   905→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   906→              Local carpet &amp; rug cleaning across Scotland
+   907→            </span>
+   908→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   909→              Carpet &amp; Rug Cleaning Near Me in Scotland
+   910→            </h2>
+   911→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   912→              Searching for &ldquo;carpet cleaning near me&rdquo; or &ldquo;rug cleaning near me&rdquo;
+   913→              in Scotland? Maundy Clean covers 72+ towns and cities across the Central Belt,
+   914→              Highlands, Borders, and Islands. Same NCCA-certified standard, same 100% re-clean
+   915→              guarantee, same dedicated technician &mdash; wherever your home happens to be. Find
+   916→              your local carpet &amp; rug cleaning crew below.
+   917→            </p>
+   918→
+   919→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   920→              <img
+   921→                src={IMG.nearMeMap}
+   922→                alt="Map of Scotland showing Maundy Clean carpet and rug cleaning coverage areas"
+   923→                className="absolute inset-0 w-full h-full object-cover"
+   924→                loading="lazy"
+   925→              />
+   926→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   927→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   928→                <div className="flex items-center gap-2 mb-1">
+   929→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   930→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   931→                    72+ Scottish towns covered
+   932→                  </span>
+   933→                </div>
+   934→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   935→                  Same NCCA-certified technicians, same 100% re-clean guarantee &mdash; from Glasgow
+   936→                  to Lerwick.
+   937→                </p>
+   938→              </div>
+   939→            </div>
+   940→          </motion.div>
+   941→
+   942→          {/* Right: location grid */}
+   943→          <motion.div
+   944→            initial={{ opacity: 0, y: 20 }}
+   945→            whileInView={{ opacity: 1, y: 0 }}
+   946→            viewport={{ once: true, margin: "-60px" }}
+   947→            transition={{ duration: 0.5 }}
+   948→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   949→          >
+   950→            <div className="flex items-center justify-between mb-5">
+   951→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   952→                Find your local carpet cleaner
+   953→              </h3>
+   954→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+   955→            </div>
+   956→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   957→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+   958→                <motion.div
+   959→                  key={loc.slug}
+   960→                  initial={{ opacity: 0 }}
+   961→                  whileInView={{ opacity: 1 }}
+   962→                  viewport={{ once: true }}
+   963→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+   964→                >
+   965→                  <Link
+   966→                    href={`/services/carpet-rug-cleaning-near-me#${loc.slug}`}
+   967→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   968→                  >
+   969→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   970→                    <span>
+   971→                      <span className="font-medium">{loc.city}</span>
+   972→                      <span className="text-[var(--muted-foreground)]"> carpet</span>
+   973→                    </span>
+   974→                  </Link>
+   975→                </motion.div>
+   976→              ))}
+   977→            </div>
+   978→
+   979→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   980→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   981→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+   982→                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+   983→              </div>
+   984→              <Link
+   985→                href="/services/carpet-rug-cleaning-near-me"
+   986→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   987→              >
+   988→                View the full near-me page
+   989→                <ArrowRight className="w-4 h-4" />
+   990→              </Link>
+   991→            </div>
+   992→          </motion.div>
+   993→        </div>
+   994→
+   995→        {/* SEO long-form paragraph for "near me" search intent */}
+   996→        <motion.div
+   997→          initial={{ opacity: 0, y: 16 }}
+   998→          whileInView={{ opacity: 1, y: 0 }}
+   999→          viewport={{ once: true, margin: "-40px" }}
+  1000→          transition={{ duration: 0.5, delay: 0.2 }}
+  1001→          className="mt-10 max-w-4xl mx-auto text-center"
+  1002→        >
+  1003→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1004→            Our local carpet &amp; rug cleaning crews operate across Glasgow&rsquo;s West End,
+  1005→            Edinburgh&rsquo;s New Town, Aberdeen&rsquo;s suburbs, Dundee&rsquo;s city centre, and the
+  1006→            Highlands &mdash; from Inverness to Thurso, Fort William to Lerwick. Whether you&rsquo;re
+  1007→            searching for hot-water extraction in Glasgow, Persian rug bathing in Edinburgh, wool
+  1008→            carpet cleaning in Aberdeen, or pet-stain removal anywhere in between, Maundy Clean
+  1009→            assigns an NCCA-certified, PAYE-employed technician that stays with you for the long run.
+  1010→            Same technician, same standard, same locked-in rate for 12 months.
+  1011→          </p>
+  1012→        </motion.div>
+  1013→      </div>
+  1014→    </section>
+  1015→  );
+  1016→}
+  1017→
+  1018→// ============================================================
+  1019→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1020→// (Semantic H3: "Ready to Book Your Carpet & Rug Cleaning?")
+  1021→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1022→// ============================================================
+  1023→
+  1024→export function CarpetRugSeoFinalCta() {
+  1025→  return (
+  1026→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1027→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1028→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1029→
+  1030→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1031→        <motion.div
+  1032→          initial={{ opacity: 0, y: 20 }}
+  1033→          whileInView={{ opacity: 1, y: 0 }}
+  1034→          viewport={{ once: true, margin: "-80px" }}
+  1035→          transition={{ duration: 0.5 }}
+  1036→        >
+  1037→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1038→            Ready to book your carpet &amp; rug cleaning?
+  1039→          </span>
+  1040→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1041→            Ready to Book Your Carpet &amp; Rug Cleaning?
+  1042→          </h3>
+  1043→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1044→            Get a fixed-price quote in 30 seconds. No pushy sales call, no waiting 24 hours for a
+  1045→            callback. NCCA &amp; WoolSafe certified technicians, child &amp; pet-safe products, a
+  1046→            100% re-clean guarantee, and a written aftercare card with every visit &mdash; from
+  1047→            £18/room.
+  1048→          </p>
+  1049→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1050→            <Button
+  1051→              size="lg"
+  1052→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1053→              asChild
+  1054→            >
+  1055→              <Link href="/quote">
+  1056→                Get My Instant Quote Now
+  1057→                <ArrowRight className="w-5 h-5" />
+  1058→              </Link>
+  1059→            </Button>
+  1060→            <Button
+  1061→              size="lg"
+  1062→              variant="outline"
+  1063→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1064→              asChild
+  1065→            >
+  1066→              <Link href="#checklist">
+  1067→                <CheckCircle2 className="w-4 h-4" />
+  1068→                View Our Technical Checklist
+  1069→              </Link>
+  1070→            </Button>
+  1071→          </div>
+  1072→        </motion.div>
+  1073→      </div>
+  1074→    </section>
+  1075→  );
+  1076→}
+  1077→
+  1078→// ============================================================
+  1079→// Section 8 - SEO FAQ block
+  1080→// (Semantic H2: "Frequently Asked Questions")
+  1081→// 6 Q&As - 3 from the user brief + 3 carpet-specific additions
+  1082→// ============================================================
+  1083→
+  1084→const SEO_FAQS = [
+  1085→  {
+  1086→    q: "Do you clean rugs on or off-site?",
+  1087→    a: "For your convenience, we can perform cleaning both on and off-site, depending on the material and the intensity of the stain removal required. Synthetic and modern wool rugs are typically cleaned in place with hot-water extraction. Hand-knotted Persian, Oriental, silk, and antique rugs are transported to our Glasgow workshop for full-immersion bathing &mdash; the only safe method for pieces that may bleed, shrink, or fringe-tangle. We collect and deliver within 25 miles at no charge.",
+  1088→  },
+  1089→  {
+  1090→    q: "Are your cleaners insured?",
+  1091→    a: "Yes. Maundy Clean is a fully insured professional cleaning company with years of experience serving Glasgow, Edinburgh, and across Scotland. Every technician carries Disclosure Scotland PVG membership, we hold £5 million public liability cover, and we carry WoolSafe and NCCA accreditation, which means our fibre-care training is current and audited. We are a registered Scottish company &mdash; not a gig-economy agency.",
+  1092→  },
+  1093→  {
+  1094→    q: "How long does it take for carpets to dry?",
+  1095→    a: "Using our state-of-the-art equipment, most carpets and rugs are touch-dry within 3 to 5 hours, allowing you to return to your normal routine quickly. We loan air-movers free of charge for 24 hours on whole-home cleans, which cuts drying to around 90 minutes. For commercial properties that cannot close, we offer low-moisture encapsulation cleaning that is walk-on-dry in 45 minutes.",
+  1096→  },
+  1097→  {
+  1098→    q: "Is hot-water extraction safe for wool carpets?",
+  1099→    a: "Yes, when it is performed by a WoolSafe-certified technician. Wool is sensitive to high pH (above 9) and excessive heat (above 60 degrees Celsius), so we use a wool-specific pre-spray at pH 7.5 to 8.0 and keep solution temperature at 50 degrees Celsius. We never use high-pH detergents on wool &mdash; they strip the natural lanolin and cause irreversible fibre damage. Our NCCA accreditation covers every fibre type from axminster to sisal.",
+  1100→  },
+  1101→  {
+  1102→    q: "How often should I have my carpets professionally cleaned?",
+  1103→    a: "Every 12 months for high-traffic areas such as hallways, stairs, and living rooms, and every 18 to 24 months for bedrooms. Households with pets, allergies, or young children benefit from 6-monthly cleaning of high-traffic zones. We send a no-pressure reminder at the 11-month mark with a locked-in rate, so you never lose track of the cycle. Most recurring home cleaning clients book a carpet reset once a year alongside their fortnightly visits.",
+  1104→  },
+  1105→  {
+  1106→    q: "Can you remove red wine, coffee, and pet stains?",
+  1107→    a: "Most biological and tannin stains &mdash; wine, coffee, food, pet accidents &mdash; respond well to specialised spotters, typically 80 to 95% removal. Bleach spots, dye transfer, and burns are permanent and we will flag these in the pre-inspection so you do not pay for a clean that cannot fix them. Pet accidents are treated with a live-enzyme digester that breaks down uric acid crystals at the molecular level, so the smell does not return on humid days.",
+  1108→  },
+  1109→];
+  1110→
+  1111→export function CarpetRugSeoFaq() {
+  1112→  return (
+  1113→    <section className="py-16 lg:py-24 bg-background">
+  1114→      <div className="max-w-4xl mx-auto px-6">
+  1115→        <motion.div
+  1116→          initial={{ opacity: 0, y: 20 }}
+  1117→          whileInView={{ opacity: 1, y: 0 }}
+  1118→          viewport={{ once: true, margin: "-80px" }}
+  1119→          transition={{ duration: 0.5 }}
+  1120→          className="text-center mb-12"
+  1121→        >
+  1122→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1123→            Carpet &amp; rug cleaning · FAQ
+  1124→          </span>
+  1125→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1126→            Frequently Asked Questions
+  1127→          </h2>
+  1128→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1129→            Straight answers to the questions our carpet &amp; rug cleaning clients ask most often.
+  1130→            Can&apos;t find what you need? Call us on{" "}
+  1131→            <a
+  1132→              href={contactInfo.phoneHref}
+  1133→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1134→            >
+  1135→              {contactInfo.phone}
+  1136→            </a>{" "}
+  1137→            and we&apos;ll talk it through.
+  1138→          </p>
+  1139→        </motion.div>
+  1140→
+  1141→        <div className="space-y-4">
+  1142→          {SEO_FAQS.map((faq, i) => (
+  1143→            <motion.div
+  1144→              key={faq.q}
+  1145→              initial={{ opacity: 0, y: 16 }}
+  1146→              whileInView={{ opacity: 1, y: 0 }}
+  1147→              viewport={{ once: true, margin: "-40px" }}
+  1148→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1149→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1150→            >
+  1151→              <details className="group">
+  1152→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1153→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1154→                    {faq.q}
+  1155→                  </h3>
+  1156→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1157→                    <span className="relative w-3.5 h-3.5">
+  1158→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1159→                      <span className="absolute left-1/2 top-0 bottom:0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1160→                    </span>
+  1161→                  </span>
+  1162→                </summary>
+  1163→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1164→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+  1165→                    {faq.a}
+  1166→                  </p>
+  1167→                </div>
+  1168→              </details>
+  1169→            </motion.div>
+  1170→          ))}
+  1171→        </div>
+  1172→
+  1173→        <motion.div
+  1174→          initial={{ opacity: 0, y: 16 }}
+  1175→          whileInView={{ opacity: 1, y: 0 }}
+  1176→          viewport={{ once: true, margin: "-40px" }}
+  1177→          transition={{ duration: 0.5, delay: 0.3 }}
+  1178→          className="mt-10 text-center"
+  1179→        >
+  1180→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1181→            <Button
+  1182→              size="lg"
+  1183→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1184→              asChild
+  1185→            >
+  1186→              <Link href="/quote">
+  1187→                Get My Instant Quote Now
+  1188→                <ArrowRight className="w-5 h-5" />
+  1189→              </Link>
+  1190→            </Button>
+  1191→            <Button
+  1192→              size="lg"
+  1193→              variant="outline"
+  1194→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1195→              asChild
+  1196→            >
+  1197→              <Link href="#checklist">
+  1198→                <CheckCircle2 className="w-4 h-4" />
+  1199→                View Our Technical Checklist
+  1200→              </Link>
+  1201→            </Button>
+  1202→          </div>
+  1203→        </motion.div>
+  1204→      </div>
+  1205→    </section>
+  1206→  );
+  1207→}
+  1208→"""
+  1209→
+  1210→# Fix the typo introduced in the FAQ +/- icon (top:0 bottom:0 with colon instead of space)
+  1211→TSX = TSX.replace(
+  1212→    '<span className="absolute left-1/2 top-0 bottom:0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />',
+  1213→    '<span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />',
+  1214→)
+  1215→
+  1216→
+  1217→def main() -> None:
+  1218→    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+  1219→    # The TSX content is stored as r""""...""" (4 quotes) so it starts with
+  1220→    # a literal " char that needs to be removed. The first real char of the
+  1221→    # file should be the " of "use client";.
+  1222→    content = TSX
+  1223→    if content.startswith('""use client'):
+  1224→        # Strip the single extra leading " (the 4th quote of r"""")
+  1225→        content = content[1:]
+  1226→    content = content.lstrip("\n")
+  1227→    OUT_PATH.write_text(content, encoding="utf-8")
+  1228→    print(f"Wrote {OUT_PATH} ({len(content):,} bytes, {content.count(chr(10)) + 1} lines)")
+  1229→
+  1230→
+  1231→if __name__ == "__main__":
+  1232→    main()
+  1233→

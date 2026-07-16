@@ -1,0 +1,545 @@
+   385→            >
+   386→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   387→                Coverage across Scotland
+   388→              </span>
+   389→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   390→                Find Your Local Night Crew
+   391→              </h2>
+   392→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   393→                Our network of vetted, PVG-checked, uniformed night crews spans the
+   394→                entire country. From the corporate towers and professional services
+   395→                firms of Glasgow and Edinburgh to the energy operators of Aberdeen
+   396→                and the Waterfront professional services of Dundee, and the
+   397→                corporate estates of the Central Belt, we have a local night crew
+   398→                ready to care for your facility. Browse by region below, or call us
+   399→                to confirm coverage for your specific postcode.
+   400→              </p>
+   401→
+   402→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   403→                <img
+   404→                  src={IMG.scotlandMap}
+   405→                  alt="Map of Scotland showing Maundy Clean nightly janitorial services &amp; after-hours office cleaning coverage areas"
+   406→                  className="absolute inset-0 w-full h-full object-cover"
+   407→                  loading="lazy"
+   408→                />
+   409→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   410→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   411→                  <div className="flex items-center gap-2 mb-1">
+   412→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   413→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   414→                      72+ Scottish towns covered
+   415→                    </span>
+   416→                  </div>
+   417→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   418→                    Same PVG-checked night crews, same 100% satisfaction guarantee &mdash; from
+   419→                    Glasgow to Inverness.
+   420→                  </p>
+   421→                </div>
+   422→              </div>
+   423→
+   424→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   425→                <Button
+   426→                  size="lg"
+   427→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   428→                  asChild
+   429→                >
+   430→                  <Link href="/quote">
+   431→                    <ClipboardCheck className="w-4 h-4" />
+   432→                    Request Your Bespoke Janitorial Quote
+   433→                  </Link>
+   434→                </Button>
+   435→                <Button
+   436→                  size="lg"
+   437→                  variant="outline"
+   438→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   439→                  asChild
+   440→                >
+   441→                  <a href={contactInfo.phoneHref}>
+   442→                    <Phone className="w-4 h-4" />
+   443→                    {contactInfo.phone}
+   444→                  </a>
+   445→                </Button>
+   446→              </div>
+   447→            </motion.div>
+   448→
+   449→            {/* Right: regional location grid */}
+   450→            <motion.div
+   451→              initial={{ opacity: 0, y: 20 }}
+   452→              whileInView={{ opacity: 1, y: 0 }}
+   453→              viewport={{ once: true, margin: "-60px" }}
+   454→              transition={{ duration: 0.5 }}
+   455→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   456→            >
+   457→              <div className="flex items-center justify-between mb-5">
+   458→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   459→                  Browse by region
+   460→                </h3>
+   461→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   462→              </div>
+   463→
+   464→              <div className="space-y-6">
+   465→                {locationsByRegion.map((regionGroup) => (
+   466→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   467→                    <div className="flex items-center gap-2 mb-3">
+   468→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   469→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   470→                        {regionGroup.region}
+   471→                      </span>
+   472→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   473→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   474→                        {regionGroup.cities.length} towns
+   475→                      </span>
+   476→                    </div>
+   477→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   478→                      {regionGroup.cities.map((loc) => (
+   479→                        <Link
+   480→                          key={loc.slug}
+   481→                          id={loc.slug}
+   482→                          href={`/services/nightly-janitorial-near-me#${loc.slug}`}
+   483→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   484→                        >
+   485→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   486→                          <span>
+   487→                            <span className="font-medium">{loc.city}</span>
+   488→                            <span className="text-[var(--muted-foreground)]"> night cleaning</span>
+   489→                          </span>
+   490→                        </Link>
+   491→                      ))}
+   492→                    </div>
+   493→                  </div>
+   494→                ))}
+   495→              </div>
+   496→
+   497→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   498→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   499→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   500→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   501→                </div>
+   502→                <Link
+   503→                  href="/locations"
+   504→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   505→                >
+   506→                  View all 72 Scottish locations
+   507→                  <ArrowRight className="w-4 h-4" />
+   508→                </Link>
+   509→              </div>
+   510→            </motion.div>
+   511→          </div>
+   512→        </div>
+   513→      </section>
+   514→
+   515→      {/* ============================================================ */}
+   516→      {/* SECTION 4 - Why Maundy Clean for your local nightly janitorial service */}
+   517→      {/* H2: Why Scottish Facilities Managers Choose Maundy Clean */}
+   518→      {/* ============================================================ */}
+   519→      <section className="py-16 lg:py-24 bg-background">
+   520→        <div className="max-w-[1400px] mx-auto px-6">
+   521→          <motion.div
+   522→            initial={{ opacity: 0, y: 20 }}
+   523→            whileInView={{ opacity: 1, y: 0 }}
+   524→            viewport={{ once: true, margin: "-80px" }}
+   525→            transition={{ duration: 0.5 }}
+   526→            className="max-w-3xl mx-auto text-center mb-14"
+   527→          >
+   528→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   529→              The Maundy Clean difference
+   530→            </span>
+   531→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   532→              Why Scottish Facilities Managers Choose Maundy Clean
+   533→            </h2>
+   534→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   535→              We&rsquo;re a local specialist, not an impersonal national franchise.
+   536→              Our vetted, uniformed, PVG-checked night crews live in your area, know
+   537→              your city&rsquo;s commercial property stock, and stay with you for the
+   538→              long run. Here&rsquo;s what sets us apart from the gig-economy apps
+   539→              and high-turnover agencies operating in Scotland.
+   540→            </p>
+   541→          </motion.div>
+   542→
+   543→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   544→            {TRUST_PILLARS.map((pillar, i) => {
+   545→              const Icon = pillar.icon;
+   546→              return (
+   547→                <motion.div
+   548→                  key={pillar.title}
+   549→                  initial={{ opacity: 0, y: 24 }}
+   550→                  whileInView={{ opacity: 1, y: 0 }}
+   551→                  viewport={{ once: true, margin: "-40px" }}
+   552→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   553→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   554→                >
+   555→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   556→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   557→                  </div>
+   558→                  <div>
+   559→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   560→                      {pillar.title}
+   561→                    </h3>
+   562→                    <p
+   563→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   564→                      dangerouslySetInnerHTML={{ __html: pillar.description }}
+   565→                    />
+   566→                  </div>
+   567→                </motion.div>
+   568→              );
+   569→            })}
+   570→          </div>
+   571→        </div>
+   572→      </section>
+   573→
+   574→      {/* ============================================================ */}
+   575→      {/* SECTION 5 - 3-step booking */}
+   576→      {/* H2: From Free Site Survey to First Night Crew in Under a Week */}
+   577→      {/* ============================================================ */}
+   578→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   579→        <div className="max-w-[1400px] mx-auto px-6">
+   580→          <motion.div
+   581→            initial={{ opacity: 0, y: 20 }}
+   582→            whileInView={{ opacity: 1, y: 0 }}
+   583→            viewport={{ once: true, margin: "-80px" }}
+   584→            transition={{ duration: 0.5 }}
+   585→            className="text-center mb-14"
+   586→          >
+   587→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   588→              Hassle-free booking
+   589→            </span>
+   590→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   591→              From Free Site Survey to First Night Crew in Under a Week
+   592→            </h2>
+   593→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   594→              We have optimised our booking experience to be uncomplicated and
+   595→              straightforward, providing the responsive management support Scottish
+   596→              business owners demand. Get a free site survey and itemised proposal,
+   597→              get matched with a local vetted PVG-checked night crew, and enjoy a
+   598→              pristine workplace every morning &mdash; no friction, no waiting, no
+   599→              surprises.
+   600→            </p>
+   601→          </motion.div>
+   602→
+   603→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   604→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   605→
+   606→            {BOOKING_STEPS.map((step, i) => {
+   607→              const Icon = step.icon;
+   608→              return (
+   609→                <motion.div
+   610→                  key={step.step}
+   611→                  initial={{ opacity: 0, y: 24 }}
+   612→                  whileInView={{ opacity: 1, y: 0 }}
+   613→                  viewport={{ once: true, margin: "-40px" }}
+   614→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   615→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   616→                >
+   617→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   618→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   619→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   620→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   621→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   622→                      {step.step}
+   623→                    </span>
+   624→                  </div>
+   625→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   626→                    {step.title}
+   627→                  </h3>
+   628→                  <p
+   629→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   630→                    dangerouslySetInnerHTML={{ __html: step.description }}
+   631→                  />
+   632→                </motion.div>
+   633→              );
+   634→            })}
+   635→          </div>
+   636→
+   637→          <motion.div
+   638→            initial={{ opacity: 0, y: 16 }}
+   639→            whileInView={{ opacity: 1, y: 0 }}
+   640→            viewport={{ once: true }}
+   641→            transition={{ duration: 0.5, delay: 0.3 }}
+   642→            className="text-center mt-10"
+   643→          >
+   644→            <Button
+   645→              size="lg"
+   646→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   647→              asChild
+   648→            >
+   649→              <Link href="/quote">
+   650→                Request Your Bespoke Janitorial Quote
+   651→                <ArrowRight className="w-5 h-5" />
+   652→              </Link>
+   653→            </Button>
+   654→          </motion.div>
+   655→        </div>
+   656→      </section>
+   657→
+   658→      {/* ============================================================ */}
+   659→      {/* SECTION 6 - Cross-links to specialist pages */}
+   660→      {/* H2: Specialist Services for Every Property Milestone */}
+   661→      {/* ============================================================ */}
+   662→      <section className="py-16 lg:py-24 bg-background">
+   663→        <div className="max-w-[1400px] mx-auto px-6">
+   664→          <motion.div
+   665→            initial={{ opacity: 0, y: 20 }}
+   666→            whileInView={{ opacity: 1, y: 0 }}
+   667→            viewport={{ once: true, margin: "-80px" }}
+   668→            transition={{ duration: 0.5 }}
+   669→            className="max-w-3xl mb-12"
+   670→          >
+   671→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   672→              Beyond the nightly clean &middot; property milestones
+   673→            </span>
+   674→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   675→              Specialist Services for Every Property Milestone
+   676→            </h2>
+   677→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   678→              Our nightly janitorial services are the heartbeat of your
+   679→              office&rsquo;s health, but we provide specialised support for every
+   680→              property milestone &mdash; from recurring home cleaning that brings
+   681→              night-crew standards into your residence, through end-of-tenancy
+   682→              resets for unit handovers, post-renovation dust clear-outs, and
+   683→              periodic antiviral sanitisation biological resets. The same trusted,
+   684→              vetted crew can step up whenever your facility needs more than a
+   685→              standard nightly janitorial visit.
+   686→            </p>
+   687→          </motion.div>
+   688→
+   689→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   690→            {[
+   691→              {
+   692→                icon: KeyRound,
+   693→                title: "Recurring Home Cleaning",
+   694→                href: "/services/recurring-home-cleaning",
+   695→                description:
+   696→                  "For your personal residence, our Recurring Home Cleaning brings the same meticulous nightly-janitorial standards into your home on a weekly or fortnightly basis. The same vetted uniformed crew, the same child-safe eco chemistry, the same signed cleaning log after every visit &mdash; so the standard you see at work follows you home.",
+   697→                cta: "Explore recurring home cleaning",
+   698→              },
+   699→              {
+   700→                icon: Hammer,
+   701→                title: "End of Tenancy Cleaning",
+   702→                href: "/services/move-in-out-cleaning",
+   703→                description:
+   704→                  "Preparing to move offices? Our End of Tenancy Cleaning ensures units are front-line ready for the next occupant. Every surface detailed top-to-bottom, deposit-back guarantees met, and the same trusted vetted crew your night team knows &mdash; so your unit handover starts from a &ldquo;speechlessly spotless&rdquo; baseline.",
+   705→                cta: "Explore end of tenancy cleaning",
+   706→              },
+   707→              {
+   708→                icon: Sparkles,
+   709→                title: "After Builders Clean",
+   710→                href: "/services/post-construction-cleaning",
+   711→                description:
+   712→                  "If your facility has had home improvements or refitting, our After Builders Clean is designed to remove heavy construction dust. Fine plaster and MDF dust on every horizontal surface, paint overspray on fixtures, adhesive residue on new flooring &mdash; lifted in full before your night crew picks up the ongoing maintenance brief.",
+   713→                cta: "Explore after builders cleaning",
+   714→              },
+   715→              {
+   716→                icon: HeartPulse,
+   717→                title: "Antiviral Sanitisation",
+   718→                href: "/services/disinfection-services",
+   719→                description:
+   720→                  "Book an Antiviral Sanitisation session for a total biological &ldquo;reset&rdquo; of your environment. EN 14476 virucidal ULV fogging of every surface, every meeting room, every washroom &mdash; the periodic deep biological reset that lifts the cumulative contamination load a nightly clean can&rsquo;t reach.",
+   721→                cta: "Explore antiviral sanitisation",
+   722→              },
+   723→            ].map((sol, i) => {
+   724→              const Icon = sol.icon;
+   725→              return (
+   726→                <motion.div
+   727→                  key={sol.title}
+   728→                  initial={{ opacity: 0, y: 24 }}
+   729→                  whileInView={{ opacity: 1, y: 0 }}
+   730→                  viewport={{ once: true, margin: "-40px" }}
+   731→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   732→                >
+   733→                  <Link
+   734→                    href={sol.href}
+   735→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   736→                  >
+   737→                    <div className="p-6">
+   738→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   739→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   740→                      </div>
+   741→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   742→                        {sol.title}
+   743→                      </h3>
+   744→                      <p
+   745→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   746→                        dangerouslySetInnerHTML={{ __html: sol.description }}
+   747→                      />
+   748→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   749→                        {sol.cta}
+   750→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   751→                      </span>
+   752→                    </div>
+   753→                  </Link>
+   754→                </motion.div>
+   755→              );
+   756→            })}
+   757→          </div>
+   758→
+   759→          <motion.div
+   760→            initial={{ opacity: 0, y: 16 }}
+   761→            whileInView={{ opacity: 1, y: 0 }}
+   762→            viewport={{ once: true }}
+   763→            transition={{ duration: 0.5, delay: 0.2 }}
+   764→            className="mt-10 text-center"
+   765→          >
+   766→            <Link
+   767→              href="/services/nightly-janitorial"
+   768→              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] bg-[var(--brand-light)]/40 hover:bg-[var(--brand-light)]/70 transition-colors px-5 py-3 rounded-full"
+   769→            >
+   770→              <Sparkles className="w-4 h-4" />
+   771→              Explore the full nightly janitorial services page
+   772→              <ArrowRight className="w-4 h-4" />
+   773→            </Link>
+   774→          </motion.div>
+   775→        </div>
+   776→      </section>
+   777→
+   778→      {/* ============================================================ */}
+   779→      {/* SECTION 7 - Final CTA */}
+   780→      {/* H2: Ready for a Night Crew Near You? */}
+   781→      {/* ============================================================ */}
+   782→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   783→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   784→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   785→
+   786→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   787→          <motion.div
+   788→            initial={{ opacity: 0, y: 20 }}
+   789→            whileInView={{ opacity: 1, y: 0 }}
+   790→            viewport={{ once: true, margin: "-80px" }}
+   791→            transition={{ duration: 0.5 }}
+   792→          >
+   793→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   794→              Ready to book your local night crew?
+   795→            </span>
+   796→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   797→              Ready for a Night Crew Near You?
+   798→            </h2>
+   799→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   800→              Book a free, no-obligation site survey with our management team and
+   801→              receive an itemised proposal within 2 business days. Vetted
+   802→              PVG-checked uniformed night crews, the same dedicated crew every
+   803→              night, desk &amp; keyboard sanitisation, floor &amp; carpet maintenance,
+   804→              washroom deep cleans, kitchenette refresh, bin &amp; recycling handling,
+   805→              high-touch sanitisation, fixed monthly retainer, multi-site
+   806→              one-invoice convenience, child-safe eco chemistry, signed nightly
+   807→              logs, &pound;5m public liability as standard, fresh-start every morning
+   808→              by 8:00 AM, and a 100% satisfaction guarantee &mdash; from &pound;13
+   809→              per hour for a single-site nightly janitorial through to a fully
+   810→              bespoke multi-site corporate estate retainer. Coverage across 72+
+   811→              Scottish towns.
+   812→            </p>
+   813→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   814→              <Button
+   815→                size="lg"
+   816→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   817→                asChild
+   818→              >
+   819→                <Link href="/quote">
+   820→                  Request Your Bespoke Janitorial Quote
+   821→                  <ArrowRight className="w-5 h-5" />
+   822→                </Link>
+   823→              </Button>
+   824→              <Button
+   825→                size="lg"
+   826→                variant="outline"
+   827→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   828→                asChild
+   829→              >
+   830→                <a href={contactInfo.phoneHref}>
+   831→                  <Phone className="w-4 h-4" />
+   832→                  Call {contactInfo.phone}
+   833→                </a>
+   834→              </Button>
+   835→            </div>
+   836→          </motion.div>
+   837→        </div>
+   838→      </section>
+   839→
+   840→      {/* ============================================================ */}
+   841→      {/* SECTION 8 - Near-me FAQ */}
+   842→      {/* H2: Frequently Asked Questions */}
+   843→      {/* ============================================================ */}
+   844→      <section className="py-16 lg:py-24 bg-background">
+   845→        <div className="max-w-4xl mx-auto px-6">
+   846→          <motion.div
+   847→            initial={{ opacity: 0, y: 20 }}
+   848→            whileInView={{ opacity: 1, y: 0 }}
+   849→            viewport={{ once: true, margin: "-80px" }}
+   850→            transition={{ duration: 0.5 }}
+   851→            className="text-center mb-12"
+   852→          >
+   853→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   854→              Nightly janitorial services near me &middot; FAQ
+   855→            </span>
+   856→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   857→              Frequently Asked Questions
+   858→            </h2>
+   859→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   860→              Straight answers to the questions our local nightly janitorial clients
+   861→              ask most often. Can&rsquo;t find what you need? Call us on{" "}
+   862→              <a
+   863→                href={contactInfo.phoneHref}
+   864→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   865→              >
+   866→                {contactInfo.phone}
+   867→              </a>{" "}
+   868→              and we&rsquo;ll talk it through.
+   869→            </p>
+   870→          </motion.div>
+   871→
+   872→          <div className="space-y-4">
+   873→            {NEAR_ME_FAQS.map((faq, i) => (
+   874→              <motion.div
+   875→                key={faq.q}
+   876→                initial={{ opacity: 0, y: 16 }}
+   877→                whileInView={{ opacity: 1, y: 0 }}
+   878→                viewport={{ once: true, margin: "-40px" }}
+   879→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   880→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   881→              >
+   882→                <details className="group">
+   883→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   884→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   885→                      {faq.q}
+   886→                    </h3>
+   887→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   888→                      <span className="relative w-3.5 h-3.5">
+   889→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   890→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   891→                      </span>
+   892→                    </span>
+   893→                  </summary>
+   894→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   895→                    <p
+   896→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   897→                      dangerouslySetInnerHTML={{ __html: faq.a }}
+   898→                    />
+   899→                  </div>
+   900→                </details>
+   901→              </motion.div>
+   902→            ))}
+   903→          </div>
+   904→
+   905→          <motion.div
+   906→            initial={{ opacity: 0, y: 16 }}
+   907→            whileInView={{ opacity: 1, y: 0 }}
+   908→            viewport={{ once: true, margin: "-40px" }}
+   909→            transition={{ duration: 0.5, delay: 0.3 }}
+   910→            className="mt-10 text-center"
+   911→          >
+   912→            <Button
+   913→              size="lg"
+   914→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   915→              asChild
+   916→            >
+   917→              <Link href="/quote">
+   918→                Request Your Bespoke Janitorial Quote
+   919→                <ArrowRight className="w-5 h-5" />
+   920→              </Link>
+   921→            </Button>
+   922→          </motion.div>
+   923→        </div>
+   924→      </section>
+   925→    </>
+   926→  );
+   927→}
+
+[showing lines 385-927 of 928; use offset=928 with limit to continue reading]

@@ -1,0 +1,867 @@
+     1→"use client";
+     2→
+     3→import * as React from "react";
+     4→import { motion, AnimatePresence } from "framer-motion";
+     5→import {
+     6→  Sparkles,
+     7→  ChevronDown,
+     8→  ArrowRight,
+     9→  Search,
+    10→  Phone,
+    11→  Menu,
+    12→  X,
+    13→  MapPin,
+    14→  Building2,
+    15→  Factory,
+    16→  Home,
+    17→  Stethoscope,
+    18→  Utensils,
+    19→  GraduationCap,
+    20→  ClipboardList,
+    21→  PlusCircle,
+    22→  Trees,
+    23→  CheckCircle2,
+    24→  Star,
+    25→} from "lucide-react";
+    26→import { Button } from "@/components/ui/button";
+    27→import {
+    28→  serviceCategories,
+    29→  industryCategories,
+    30→  locationCategories,
+    31→  companyPages,
+    32→} from "@/lib/site-data";
+    33→
+    34→type MegaKey = "services" | "industries" | "locations" | "company" | null;
+    35→
+    36→const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    37→  home: Home,
+    38→  building: Building2,
+    39→  "clipboard-list": ClipboardList,
+    40→  sparkles: Sparkles,
+    41→  stethoscope: Stethoscope,
+    42→  factory: Factory,
+    43→  trees: Trees,
+    44→  "plus-circle": PlusCircle,
+    45→  utensils: Utensils,
+    46→  "graduation-cap": GraduationCap,
+    47→  "map-pin": MapPin,
+    48→};
+    49→
+    50→export function SiteHeader() {
+    51→  const [active, setActive] = React.useState<MegaKey>(null);
+    52→  const [mobileOpen, setMobileOpen] = React.useState(false);
+    53→  const [hoveredGroup, setHoveredGroup] = React.useState<string | null>(null);
+    54→  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+    55→
+    56→  const openMenu = (k: Exclude<MegaKey, null>) => {
+    57→    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    58→    setActive(k);
+    59→  };
+    60→  const closeMenu = () => {
+    61→    timeoutRef.current = setTimeout(() => setActive(null), 120);
+    62→  };
+    63→
+    64→  // Top nav items
+    65→  const navItems: { key: Exclude<MegaKey, null>; label: string }[] = [
+    66→    { key: "services", label: "Services" },
+    67→    { key: "industries", label: "Industries" },
+    68→    { key: "locations", label: "Locations" },
+    69→    { key: "company", label: "Company" },
+    70→  ];
+    71→
+    72→  return (
+    73→    <>
+    74→      {/* Top utility bar */}
+    75→      <div className="hidden lg:block bg-[var(--ink)] text-white/90 text-xs">
+    76→        <div className="max-w-[1400px] mx-auto px-6 py-2 flex items-center justify-between">
+    77→          <div className="flex items-center gap-5">
+    78→            <span className="flex items-center gap-1.5">
+    79→              <Star className="w-3.5 h-3.5 fill-[var(--gold)] text-[var(--gold)]" />
+    80→              4.9 ★ · 6,200+ reviews
+    81→            </span>
+    82→            <span className="opacity-60">|</span>
+    83→            <span className="flex items-center gap-1.5">
+    84→              <CheckCircle2 className="w-3.5 h-3.5 text-[var(--brand)]" />
+    85→              PVG-Checked · Insured · Trusted
+    86→            </span>
+    87→            <span className="opacity-60">|</span>
+    88→            <span>30 Scottish Locations</span>
+    89→          </div>
+    90→          <div className="flex items-center gap-5">
+    91→            <a href="#" className="hover:text-[var(--gold)] transition-colors">Client Portal</a>
+    92→            <a href="#" className="hover:text-[var(--gold)] transition-colors">Careers</a>
+    93→            <a href="#" className="hover:text-[var(--gold)] transition-colors">Help</a>
+    94→            <a
+    95→              href="tel:+447735322362"
+    96→              className="flex items-center gap-1.5 text-[var(--gold)] hover:text-white transition-colors"
+    97→            >
+    98→              <Phone className="w-3.5 h-3.5" /> +44 7735 322362
+    99→            </a>
+   100→          </div>
+   101→        </div>
+   102→      </div>
+   103→
+   104→      {/* Main header */}
+   105→      <header
+   106→        className="sticky top-0 z-50 glass-nav"
+   107→        onMouseLeave={closeMenu}
+   108→      >
+   109→        <div className="max-w-[1400px] mx-auto px-6">
+   110→          <div className="flex items-center justify-between h-[72px]">
+   111→            {/* Logo */}
+   112→            <a href="#" className="flex items-center gap-2.5 shrink-0">
+   113→              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--brand)] to-[var(--brand-dark)] flex items-center justify-center shadow-brand">
+   114→                <Sparkles className="w-5 h-5 text-white" />
+   115→                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[var(--gold)] ring-2 ring-white" />
+   116→              </div>
+   117→              <div className="leading-tight">
+   118→                <div className="font-display font-extrabold text-lg tracking-tight">
+   119→                  Maundy<span className="text-[var(--brand)]">Clean</span>
+   120→                </div>
+   121→                <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted-foreground)] -mt-0.5">
+   122→                  Premium Cleaning Co.
+   123→                </div>
+   124→              </div>
+   125→            </a>
+   126→
+   127→            {/* Desktop Nav */}
+   128→            <nav className="hidden lg:flex items-center gap-1">
+   129→              {navItems.map((item) => (
+   130→                <button
+   131→                  key={item.key}
+   132→                  onMouseEnter={() => openMenu(item.key)}
+   133→                  onFocus={() => openMenu(item.key)}
+   134→                  className={`relative px-4 py-2.5 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 ${
+   135→                    active === item.key
+   136→                      ? "text-[var(--brand)] bg-[var(--brand-light)]/40"
+   137→                      : "text-[var(--ink)] hover:text-[var(--brand)]"
+   138→                  }`}
+   139→                >
+   140→                  {item.label}
+   141→                  <ChevronDown
+   142→                    className={`w-3.5 h-3.5 transition-transform ${active === item.key ? "rotate-180" : ""}`}
+   143→                  />
+   144→                </button>
+   145→              ))}
+   146→              <a
+   147→                href="#"
+   148→                className="px-4 py-2.5 text-sm font-medium rounded-lg text-[var(--ink)] hover:text-[var(--brand)] transition-colors"
+   149→              >
+   150→                Pricing
+   151→              </a>
+   152→              <a
+   153→                href="#"
+   154→                className="px-4 py-2.5 text-sm font-medium rounded-lg text-[var(--ink)] hover:text-[var(--brand)] transition-colors"
+   155→              >
+   156→                Blog
+   157→              </a>
+   158→            </nav>
+   159→
+   160→            {/* CTAs */}
+   161→            <div className="hidden lg:flex items-center gap-2 shrink-0">
+   162→              <Button variant="ghost" size="sm" className="gap-1.5">
+   163→                <Search className="w-4 h-4" /> Search
+   164→              </Button>
+   165→              <Button
+   166→                size="sm"
+   167→                className="gap-1.5 bg-[var(--brand)] hover:bg-[var(--brand-dark)] shadow-brand"
+   168→                asChild
+   169→              >
+   170→                <a href="#">
+   171→                  Get Free Quote <ArrowRight className="w-4 h-4" />
+   172→                </a>
+   173→              </Button>
+   174→            </div>
+   175→
+   176→            {/* Mobile toggle */}
+   177→            <button
+   178→              className="lg:hidden p-2 rounded-lg hover:bg-[var(--muted)]"
+   179→              onClick={() => setMobileOpen(true)}
+   180→              aria-label="Open menu"
+   181→            >
+   182→              <Menu className="w-6 h-6" />
+   183→            </button>
+   184→          </div>
+   185→        </div>
+   186→
+   187→        {/* MEGA MENU PANEL */}
+   188→        <AnimatePresence>
+   189→          {active && (
+   190→            <motion.div
+   191→              initial={{ opacity: 0, y: -8 }}
+   192→              animate={{ opacity: 1, y: 0 }}
+   193→              exit={{ opacity: 0, y: -8 }}
+   194→              transition={{ duration: 0.18, ease: "easeOut" }}
+   195→              className="absolute left-0 right-0 top-full hidden lg:block"
+   196→              onMouseEnter={() => openMenu(active)}
+   197→            >
+   198→              <div className="mx-6 mt-1 rounded-2xl bg-white border border-[var(--border)] shadow-2xl overflow-hidden">
+   199→                {active === "services" && (
+   200→                  <ServicesMega hovered={hoveredGroup} setHovered={setHoveredGroup} />
+   201→                )}
+   202→                {active === "industries" && (
+   203→                  <IndustriesMega hovered={hoveredGroup} setHovered={setHoveredGroup} />
+   204→                )}
+   205→                {active === "locations" && (
+   206→                  <LocationsMega hovered={hoveredGroup} setHovered={setHoveredGroup} />
+   207→                )}
+   208→                {active === "company" && <CompanyMega />}
+   209→              </div>
+   210→            </motion.div>
+   211→          )}
+   212→        </AnimatePresence>
+   213→      </header>
+   214→
+   215→      {/* Mobile drawer */}
+   216→      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
+   217→    </>
+   218→  );
+   219→}
+   220→
+   221→/* ---------- SERVICES MEGA (left nav + right preview, 117 services) ---------- */
+   222→function ServicesMega({
+   223→  hovered,
+   224→  setHovered,
+   225→}: {
+   226→  hovered: string | null;
+   227→  setHovered: (v: string | null) => void;
+   228→}) {
+   229→  const activeGroup =
+   230→    serviceCategories.find((g) => g.title === hovered) ?? serviceCategories[0];
+   231→  const totalServices = serviceCategories.reduce(
+   232→    (n, g) => n + g.children.length,
+   233→    0
+   234→  );
+   235→
+   236→  return (
+   237→    <div className="grid grid-cols-[260px_1fr] min-h-[520px]">
+   238→      {/* LEFT: categories */}
+   239→      <div className="bg-[var(--cream)] border-r border-[var(--border)] p-3 mega-scroll overflow-y-auto max-h-[560px]">
+   240→        <div className="px-3 pt-2 pb-3 flex items-center justify-between">
+   241→          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">
+   242→            All Service Categories
+   243→          </span>
+   244→          <span className="text-[10px] font-semibold text-[var(--brand)] bg-white px-1.5 py-0.5 rounded-full">
+   245→            {totalServices}
+   246→          </span>
+   247→        </div>
+   248→        {serviceCategories.map((g) => {
+   249→          const Icon = iconMap[g.icon ?? ""] ?? Sparkles;
+   250→          const isActive = activeGroup.title === g.title;
+   251→          return (
+   252→            <button
+   253→              key={g.title}
+   254→              onMouseEnter={() => setHovered(g.title)}
+   255→              className={`group w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all ${
+   256→                isActive
+   257→                  ? "bg-white shadow-sm text-[var(--brand)]"
+   258→                  : "hover:bg-white/60 text-[var(--ink)]"
+   259→              }`}
+   260→            >
+   261→              <span
+   262→                className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+   263→                  isActive
+   264→                    ? "bg-[var(--brand)] text-white"
+   265→                    : "bg-white text-[var(--brand)] group-hover:bg-[var(--brand-light)]"
+   266→                }`}
+   267→              >
+   268→                <Icon className="w-4 h-4" />
+   269→              </span>
+   270→              <span className="flex-1 min-w-0">
+   271→                <span className="block text-sm font-semibold leading-tight">
+   272→                  {g.title}
+   273→                </span>
+   274→                <span className="block text-[11px] text-[var(--muted-foreground)] mt-0.5">
+   275→                  {g.children.length} services
+   276→                </span>
+   277→              </span>
+   278→              <ArrowRight
+   279→                className={`w-3.5 h-3.5 transition-opacity ${
+   280→                  isActive ? "opacity-100" : "opacity-0"
+   281→                }`}
+   282→              />
+   283→            </button>
+   284→          );
+   285→        })}
+   286→      </div>
+   287→
+   288→      {/* RIGHT: services in active category */}
+   289→      <div className="p-6 mega-scroll overflow-y-auto max-h-[560px]">
+   290→        <div className="flex items-end justify-between mb-4 gap-3">
+   291→          <div className="flex items-center gap-3">
+   292→            {/* Category image thumbnail */}
+   293→            <div className="relative w-14 h-14 rounded-lg overflow-hidden shrink-0">
+   294→              {/* eslint-disable-next-line @next/next/no-img-element */}
+   295→              <img
+   296→                src={activeGroup.image}
+   297→                alt={activeGroup.title}
+   298→                className="absolute inset-0 w-full h-full object-cover"
+   299→              />
+   300→              <div className="absolute inset-0 bg-[var(--brand-dark)]/30" />
+   301→            </div>
+   302→            <div>
+   303→              <h3 className="font-display text-xl font-bold text-[var(--ink)]">
+   304→                {activeGroup.title}
+   305→              </h3>
+   306→              <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+   307→                Browse {activeGroup.children.length} specialised services — click any for pricing & details
+   308→              </p>
+   309→            </div>
+   310→          </div>
+   311→          <a
+   312→            href="#"
+   313→            className="text-xs font-semibold text-[var(--brand)] hover:underline flex items-center gap-1 shrink-0"
+   314→          >
+   315→            View all <ArrowRight className="w-3 h-3" />
+   316→          </a>
+   317→        </div>
+   318→        <div className="grid grid-cols-3 gap-2">
+   319→          {activeGroup.children.map((c, idx) => (
+   320→            <motion.a
+   321→              key={c.name}
+   322→              href={c.href}
+   323→              initial={{ opacity: 0, y: 6 }}
+   324→              animate={{ opacity: 1, y: 0 }}
+   325→              transition={{ duration: 0.15, delay: idx * 0.015 }}
+   326→              className="group relative p-3 rounded-lg border border-[var(--border)] hover:border-[var(--brand)] hover:bg-[var(--brand-light)]/30 transition-all"
+   327→            >
+   328→              {c.popular && (
+   329→                <span className="absolute top-2 right-2 text-[9px] font-bold uppercase tracking-wide text-[var(--gold-dark)] bg-[var(--gold)]/20 px-1.5 py-0.5 rounded">
+   330→                  Popular
+   331→                </span>
+   332→              )}
+   333→              <div className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--brand)] transition-colors pr-12">
+   334→                {c.name}
+   335→              </div>
+   336→              {c.description && (
+   337→                <div className="text-[11px] text-[var(--muted-foreground)] mt-1 leading-snug">
+   338→                  {c.description}
+   339→                </div>
+   340→              )}
+   341→            </motion.a>
+   342→          ))}
+   343→        </div>
+   344→
+   345→        {/* Bottom CTA strip */}
+   346→        <div className="mt-5 p-4 rounded-xl bg-gradient-to-r from-[var(--brand-dark)] to-[var(--brand)] text-white flex items-center justify-between">
+   347→          <div>
+   348→            <div className="text-sm font-semibold">Not sure which service you need?</div>
+   349→            <div className="text-xs text-white/80 mt-0.5">
+   350→              Answer 5 questions and we'll recommend the perfect plan.
+   351→            </div>
+   352→          </div>
+   353→          <Button
+   354→            size="sm"
+   355→            variant="secondary"
+   356→            className="bg-white text-[var(--brand-dark)] hover:bg-white/90"
+   357→          >
+   358→            Service Quiz <ArrowRight className="w-3.5 h-3.5" />
+   359→          </Button>
+   360→        </div>
+   361→      </div>
+   362→    </div>
+   363→  );
+   364→}
+   365→
+   366→/* ---------- INDUSTRIES MEGA ---------- */
+   367→function IndustriesMega({
+   368→  hovered,
+   369→  setHovered,
+   370→}: {
+   371→  hovered: string | null;
+   372→  setHovered: (v: string | null) => void;
+   373→}) {
+   374→  const activeGroup =
+   375→    industryCategories.find((g) => g.title === hovered) ?? industryCategories[0];
+   376→
+   377→  return (
+   378→    <div className="grid grid-cols-[260px_1fr] min-h-[440px]">
+   379→      <div className="bg-[var(--cream)] border-r border-[var(--border)] p-3">
+   380→        <div className="px-3 pt-2 pb-3">
+   381→          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">
+   382→            Industries We Serve
+   383→          </span>
+   384→        </div>
+   385→        {industryCategories.map((g) => {
+   386→          const Icon = iconMap[g.icon ?? ""] ?? Sparkles;
+   387→          const isActive = activeGroup.title === g.title;
+   388→          return (
+   389→            <button
+   390→              key={g.title}
+   391→              onMouseEnter={() => setHovered(g.title)}
+   392→              className={`group w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all ${
+   393→                isActive
+   394→                  ? "bg-white shadow-sm text-[var(--brand)]"
+   395→                  : "hover:bg-white/60 text-[var(--ink)]"
+   396→              }`}
+   397→            >
+   398→              <span
+   399→                className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+   400→                  isActive
+   401→                    ? "bg-[var(--brand)] text-white"
+   402→                    : "bg-white text-[var(--brand)] group-hover:bg-[var(--brand-light)]"
+   403→                }`}
+   404→              >
+   405→                <Icon className="w-4 h-4" />
+   406→              </span>
+   407→              <span className="flex-1 min-w-0">
+   408→                <span className="block text-sm font-semibold leading-tight">
+   409→                  {g.title}
+   410→                </span>
+   411→                <span className="block text-[11px] text-[var(--muted-foreground)] mt-0.5">
+   412→                  {g.children.length} sectors
+   413→                </span>
+   414→              </span>
+   415→              <ArrowRight
+   416→                className={`w-3.5 h-3.5 transition-opacity ${
+   417→                  isActive ? "opacity-100" : "opacity-0"
+   418→                }`}
+   419→              />
+   420→            </button>
+   421→          );
+   422→        })}
+   423→      </div>
+   424→      <div className="p-6">
+   425→        <div className="flex items-end justify-between mb-4">
+   426→          <div>
+   427→            <h3 className="font-display text-xl font-bold text-[var(--ink)]">
+   428→              {activeGroup.title}
+   429→            </h3>
+   430→            <p className="text-xs text-[var(--muted-foreground)] mt-1">
+   431→              Specialized protocols, compliance & certifications for each sector
+   432→            </p>
+   433→          </div>
+   434→        </div>
+   435→        <div className="grid grid-cols-2 gap-3">
+   436→          {activeGroup.children.map((c, idx) => (
+   437→            <motion.a
+   438→              key={c.name}
+   439→              href={c.href}
+   440→              initial={{ opacity: 0, y: 6 }}
+   441→              animate={{ opacity: 1, y: 0 }}
+   442→              transition={{ duration: 0.15, delay: idx * 0.04 }}
+   443→              className="group p-4 rounded-xl border border-[var(--border)] hover:border-[var(--brand)] hover:bg-[var(--brand-light)]/30 transition-all flex items-start gap-3"
+   444→            >
+   445→              <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center group-hover:bg-[var(--brand)] group-hover:text-white text-[var(--brand)] transition-colors shrink-0">
+   446→                <Building2 className="w-5 h-5" />
+   447→              </div>
+   448→              <div className="flex-1">
+   449→                <div className="flex items-center gap-2">
+   450→                  <span className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--brand)]">
+   451→                    {c.name}
+   452→                  </span>
+   453→                  {c.popular && (
+   454→                    <span className="text-[9px] font-bold uppercase tracking-wide text-[var(--gold-dark)] bg-[var(--gold)]/20 px-1.5 py-0.5 rounded">
+   455→                      Top
+   456→                    </span>
+   457→                  )}
+   458→                </div>
+   459→                <div className="text-[11px] text-[var(--muted-foreground)] mt-1">
+   460→                  Compliance-ready · Custom SLA · Dedicated manager
+   461→                </div>
+   462→              </div>
+   463→              <ArrowRight className="w-4 h-4 text-[var(--brand)] opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
+   464→            </motion.a>
+   465→          ))}
+   466→        </div>
+   467→      </div>
+   468→    </div>
+   469→  );
+   470→}
+   471→
+   472→/* ---------- LOCATIONS MEGA ---------- */
+   473→function LocationsMega({
+   474→  hovered,
+   475→  setHovered,
+   476→}: {
+   477→  hovered: string | null;
+   478→  setHovered: (v: string | null) => void;
+   479→}) {
+   480→  const activeGroup =
+   481→    locationCategories.find((g) => g.title === hovered) ?? locationCategories[0];
+   482→  const totalLocations = locationCategories.reduce(
+   483→    (n, g) => n + g.children.length,
+   484→    0
+   485→  );
+   486→
+   487→  return (
+   488→    <div className="grid grid-cols-[260px_1fr] min-h-[440px]">
+   489→      <div className="bg-[var(--cream)] border-r border-[var(--border)] p-3">
+   490→        <div className="px-3 pt-2 pb-3 flex items-center justify-between">
+   491→          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">
+   492→            Service Regions
+   493→          </span>
+   494→          <span className="text-[10px] font-semibold text-[var(--brand)] bg-white px-1.5 py-0.5 rounded-full">
+   495→            {totalLocations} cities
+   496→          </span>
+   497→        </div>
+   498→        {locationCategories.map((g) => {
+   499→          const isActive = activeGroup.title === g.title;
+   500→          return (
+   501→            <button
+   502→              key={g.title}
+   503→              onMouseEnter={() => setHovered(g.title)}
+   504→              className={`group w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all ${
+   505→                isActive
+   506→                  ? "bg-white shadow-sm text-[var(--brand)]"
+   507→                  : "hover:bg-white/60 text-[var(--ink)]"
+   508→              }`}
+   509→            >
+   510→              <span
+   511→                className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+   512→                  isActive
+   513→                    ? "bg-[var(--brand)] text-white"
+   514→                    : "bg-white text-[var(--brand)] group-hover:bg-[var(--brand-light)]"
+   515→                }`}
+   516→              >
+   517→                <MapPin className="w-4 h-4" />
+   518→              </span>
+   519→              <span className="flex-1 min-w-0">
+   520→                <span className="block text-sm font-semibold leading-tight">
+   521→                  {g.title}
+   522→                </span>
+   523→                <span className="block text-[11px] text-[var(--muted-foreground)] mt-0.5">
+   524→                  {g.children.length} cities
+   525→                </span>
+   526→              </span>
+   527→              <ArrowRight
+   528→                className={`w-3.5 h-3.5 transition-opacity ${
+   529→                  isActive ? "opacity-100" : "opacity-0"
+   530→                }`}
+   531→              />
+   532→            </button>
+   533→          );
+   534→        })}
+   535→      </div>
+   536→      <div className="p-6">
+   537→        <div className="flex items-end justify-between mb-4">
+   538→          <div>
+   539→            <h3 className="font-display text-xl font-bold text-[var(--ink)]">
+   540→              {activeGroup.title}
+   541→            </h3>
+   542→            <p className="text-xs text-[var(--muted-foreground)] mt-1">
+   543→              Local crews, local dispatch — same Maundy standard everywhere
+   544→            </p>
+   545→          </div>
+   546→          <a href="#" className="text-xs font-semibold text-[var(--brand)] hover:underline">
+   547→            View coverage map <ArrowRight className="w-3 h-3 inline" />
+   548→          </a>
+   549→        </div>
+   550→        <div className="grid grid-cols-3 gap-2">
+   551→          {activeGroup.children.map((c, idx) => (
+   552→            <motion.a
+   553→              key={c.name}
+   554→              href={c.href}
+   555→              initial={{ opacity: 0, y: 6 }}
+   556→              animate={{ opacity: 1, y: 0 }}
+   557→              transition={{ duration: 0.15, delay: idx * 0.03 }}
+   558→              className="group p-3 rounded-lg border border-[var(--border)] hover:border-[var(--brand)] hover:bg-[var(--brand-light)]/30 transition-all flex items-center gap-2"
+   559→            >
+   560→              <MapPin className="w-4 h-4 text-[var(--brand)] shrink-0" />
+   561→              <div className="flex-1 min-w-0">
+   562→                <div className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--brand)] truncate">
+   563→                  {c.name}
+   564→                </div>
+   565→                <div className="text-[10px] text-[var(--muted-foreground)]">
+   566→                  Maundy Clean of {c.name.split(",")[0]}
+   567→                </div>
+   568→              </div>
+   569→              {c.popular && (
+   570→                <span className="text-[9px] font-bold uppercase tracking-wide text-[var(--gold-dark)] bg-[var(--gold)]/20 px-1.5 py-0.5 rounded shrink-0">
+   571→                  Hub
+   572→                </span>
+   573→              )}
+   574→            </motion.a>
+   575→          ))}
+   576→        </div>
+   577→      </div>
+   578→    </div>
+   579→  );
+   580→}
+   581→
+   582→/* ---------- COMPANY MEGA ---------- */
+   583→function CompanyMega() {
+   584→  return (
+   585→    <div className="grid grid-cols-[1fr_300px] min-h-[360px]">
+   586→      <div className="p-6">
+   587→        <h3 className="font-display text-xl font-bold text-[var(--ink)] mb-4">
+   588→          About Maundy Clean
+   589→        </h3>
+   590→        <div className="grid grid-cols-2 gap-2">
+   591→          {companyPages.map((p, idx) => (
+   592→            <motion.a
+   593→              key={p.name}
+   594→              href={p.href}
+   595→              initial={{ opacity: 0, y: 6 }}
+   596→              animate={{ opacity: 1, y: 0 }}
+   597→              transition={{ duration: 0.15, delay: idx * 0.025 }}
+   598→              className="group p-3 rounded-lg hover:bg-[var(--brand-light)]/30 transition-all flex items-start justify-between gap-2"
+   599→            >
+   600→              <div>
+   601→                <div className="flex items-center gap-2">
+   602→                  <span className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--brand)]">
+   603→                    {p.name}
+   604→                  </span>
+   605→                  {p.popular && (
+   606→                    <span className="text-[9px] font-bold uppercase tracking-wide text-[var(--gold-dark)] bg-[var(--gold)]/20 px-1.5 py-0.5 rounded">
+   607→                      Popular
+   608→                    </span>
+   609→                  )}
+   610→                </div>
+   611→                {p.description && (
+   612→                  <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">
+   613→                    {p.description}
+   614→                  </div>
+   615→                )}
+   616→              </div>
+   617→              <ArrowRight className="w-3.5 h-3.5 text-[var(--brand)] opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
+   618→            </motion.a>
+   619→          ))}
+   620→        </div>
+   621→      </div>
+   622→      <div className="bg-gradient-to-br from-[var(--brand-dark)] to-[var(--brand)] p-6 text-white flex flex-col">
+   623→        <div className="text-[10px] uppercase tracking-[0.18em] text-white/70 font-semibold">
+   624→          Why Maundy
+   625→        </div>
+   626→        <div className="mt-3 space-y-3 text-sm">
+   627→          <div className="flex items-start gap-2">
+   628→            <CheckCircle2 className="w-4 h-4 text-[var(--gold)] mt-0.5 shrink-0" />
+   629→            <span>Same crew every visit — never a stranger</span>
+   630→          </div>
+   631→          <div className="flex items-start gap-2">
+   632→            <CheckCircle2 className="w-4 h-4 text-[var(--gold)] mt-0.5 shrink-0" />
+   633→            <span>W-2 employees, never contractors</span>
+   634→          </div>
+   635→          <div className="flex items-start gap-2">
+   636→            <CheckCircle2 className="w-4 h-4 text-[var(--gold)] mt-0.5 shrink-0" />
+   637→            <span>Free re-clean within 24 hrs if unhappy</span>
+   638→          </div>
+   639→          <div className="flex items-start gap-2">
+   640→            <CheckCircle2 className="w-4 h-4 text-[var(--gold)] mt-0.5 shrink-0" />
+   641→            <span>EPA Safer Choice supplies standard</span>
+   642→          </div>
+   643→        </div>
+   644→        <Button className="mt-auto bg-[var(--gold)] text-[var(--ink)] hover:bg-[var(--gold-dark)] hover:text-white">
+   645→          Get Free Quote <ArrowRight className="w-4 h-4" />
+   646→        </Button>
+   647→      </div>
+   648→    </div>
+   649→  );
+   650→}
+   651→
+   652→/* ---------- MOBILE NAV ---------- */
+   653→function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
+   654→  const [expanded, setExpanded] = React.useState<string | null>("services");
+   655→  const [subExpanded, setSubExpanded] = React.useState<string | null>(null);
+   656→
+   657→  return (
+   658→    <AnimatePresence>
+   659→      {open && (
+   660→        <>
+   661→          <motion.div
+   662→            initial={{ opacity: 0 }}
+   663→            animate={{ opacity: 1 }}
+   664→            exit={{ opacity: 0 }}
+   665→            onClick={onClose}
+   666→            className="fixed inset-0 bg-black/50 z-[60] lg:hidden"
+   667→          />
+   668→          <motion.aside
+   669→            initial={{ x: "100%" }}
+   670→            animate={{ x: 0 }}
+   671→            exit={{ x: "100%" }}
+   672→            transition={{ type: "spring", damping: 28, stiffness: 240 }}
+   673→            className="fixed top-0 right-0 bottom-0 z-[70] w-full max-w-[420px] bg-white shadow-2xl flex flex-col lg:hidden"
+   674→          >
+   675→            <div className="flex items-center justify-between p-4 border-b border-[var(--border)]">
+   676→              <span className="font-display font-bold text-lg">Menu</span>
+   677→              <button onClick={onClose} className="p-2 rounded-lg hover:bg-[var(--muted)]">
+   678→                <X className="w-5 h-5" />
+   679→              </button>
+   680→            </div>
+   681→            <div className="flex-1 overflow-y-auto p-3 mega-scroll">
+   682→              {/* Services */}
+   683→              <MobileSection
+   684→                title="Services"
+   685→                count="117"
+   686→                expanded={expanded === "services"}
+   687→                onToggle={() => setExpanded(expanded === "services" ? null : "services")}
+   688→              >
+   689→                {serviceCategories.map((g) => (
+   690→                  <MobileSubSection
+   691→                    key={g.title}
+   692→                    title={g.title}
+   693→                    count={g.children.length}
+   694→                    expanded={subExpanded === g.title}
+   695→                    onToggle={() =>
+   696→                      setSubExpanded(subExpanded === g.title ? null : g.title)
+   697→                    }
+   698→                    items={g.children.map((c) => c.name)}
+   699→                  />
+   700→                ))}
+   701→              </MobileSection>
+   702→
+   703→              {/* Industries */}
+   704→              <MobileSection
+   705→                title="Industries"
+   706→                count="24"
+   707→                expanded={expanded === "industries"}
+   708→                onToggle={() => setExpanded(expanded === "industries" ? null : "industries")}
+   709→              >
+   710→                {industryCategories.map((g) => (
+   711→                  <MobileSubSection
+   712→                    key={g.title}
+   713→                    title={g.title}
+   714→                    count={g.children.length}
+   715→                    expanded={subExpanded === g.title}
+   716→                    onToggle={() =>
+   717→                      setSubExpanded(subExpanded === g.title ? null : g.title)
+   718→                    }
+   719→                    items={g.children.map((c) => c.name)}
+   720→                  />
+   721→                ))}
+   722→              </MobileSection>
+   723→
+   724→              {/* Locations */}
+   725→              <MobileSection
+   726→                title="Locations"
+   727→                count="36"
+   728→                expanded={expanded === "locations"}
+   729→                onToggle={() => setExpanded(expanded === "locations" ? null : "locations")}
+   730→              >
+   731→                {locationCategories.map((g) => (
+   732→                  <MobileSubSection
+   733→                    key={g.title}
+   734→                    title={g.title}
+   735→                    count={g.children.length}
+   736→                    expanded={subExpanded === g.title}
+   737→                    onToggle={() =>
+   738→                      setSubExpanded(subExpanded === g.title ? null : g.title)
+   739→                    }
+   740→                    items={g.children.map((c) => c.name)}
+   741→                  />
+   742→                ))}
+   743→              </MobileSection>
+   744→
+   745→              {/* Company links flat */}
+   746→              <MobileSection
+   747→                title="Company"
+   748→                expanded={expanded === "company"}
+   749→                onToggle={() => setExpanded(expanded === "company" ? null : "company")}
+   750→              >
+   751→                <div className="space-y-1 pl-2">
+   752→                  {companyPages.map((p) => (
+   753→                    <a
+   754→                      key={p.name}
+   755→                      href="#"
+   756→                      className="block py-2 text-sm text-[var(--ink)] hover:text-[var(--brand)]"
+   757→                    >
+   758→                      {p.name}
+   759→                    </a>
+   760→                  ))}
+   761→                </div>
+   762→              </MobileSection>
+   763→
+   764→              <div className="pt-2">
+   765→                <a href="#" className="block py-2.5 text-sm font-medium hover:text-[var(--brand)]">
+   766→                  Pricing
+   767→                </a>
+   768→                <a href="#" className="block py-2.5 text-sm font-medium hover:text-[var(--brand)]">
+   769→                  Blog
+   770→                </a>
+   771→              </div>
+   772→            </div>
+   773→            <div className="p-4 border-t border-[var(--border)] space-y-2">
+   774→              <Button className="w-full bg-[var(--brand)] hover:bg-[var(--brand-dark)]">
+   775→                Get Free Quote
+   776→              </Button>
+   777→              <Button variant="outline" className="w-full">
+   778→                <Phone className="w-4 h-4 mr-2" /> +44 7735 322362
+   779→              </Button>
+   780→            </div>
+   781→          </motion.aside>
+   782→        </>
+   783→      )}
+   784→    </AnimatePresence>
+   785→  );
+   786→}
+   787→
+   788→function MobileSection({
+   789→  title,
+   790→  count,
+   791→  expanded,
+   792→  onToggle,
+   793→  children,
+   794→}: {
+   795→  title: string;
+   796→  count?: string;
+   797→  expanded: boolean;
+   798→  onToggle: () => void;
+   799→  children: React.ReactNode;
+   800→}) {
+   801→  return (
+   802→    <div className="border-b border-[var(--border)]">
+   803→      <button
+   804→        onClick={onToggle}
+   805→        className="w-full flex items-center justify-between py-3 px-1"
+   806→      >
+   807→        <span className="flex items-center gap-2">
+   808→          <span className="font-semibold text-[var(--ink)]">{title}</span>
+   809→          {count && (
+   810→            <span className="text-[10px] font-semibold text-[var(--brand)] bg-[var(--brand-light)] px-1.5 py-0.5 rounded-full">
+   811→              {count}
+   812→            </span>
+   813→          )}
+   814→        </span>
+   815→        <ChevronDown
+   816→          className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+   817→        />
+   818→      </button>
+   819→      {expanded && <div className="pb-2">{children}</div>}
+   820→    </div>
+   821→  );
+   822→}
+   823→
+   824→function MobileSubSection({
+   825→  title,
+   826→  count,
+   827→  expanded,
+   828→  onToggle,
+   829→  items,
+   830→}: {
+   831→  title: string;
+   832→  count: number;
+   833→  expanded: boolean;
+   834→  onToggle: () => void;
+   835→  items: string[];
+   836→}) {
+   837→  return (
+   838→    <div className="ml-2 border-l-2 border-[var(--brand-light)] pl-3 mb-1">
+   839→      <button
+   840→        onClick={onToggle}
+   841→        className="w-full flex items-center justify-between py-2"
+   842→      >
+   843→        <span className="flex items-center gap-2 text-sm text-[var(--ink)]">
+   844→          {title}
+   845→          <span className="text-[10px] text-[var(--muted-foreground)]">({count})</span>
+   846→        </span>
+   847→        <ChevronDown
+   848→          className={`w-3.5 h-3.5 transition-transform ${expanded ? "rotate-180" : ""}`}
+   849→        />
+   850→      </button>
+   851→      {expanded && (
+   852→        <div className="space-y-0.5">
+   853→          {items.map((it) => (
+   854→            <a
+   855→              key={it}
+   856→              href="#"
+   857→              className="block py-1.5 text-xs text-[var(--muted-foreground)] hover:text-[var(--brand)]"
+   858→            >
+   859→              {it}
+   860→            </a>
+   861→          ))}
+   862→        </div>
+   863→      )}
+   864→    </div>
+   865→  );
+   866→}
+   867→

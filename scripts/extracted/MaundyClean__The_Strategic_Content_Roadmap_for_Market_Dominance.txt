@@ -1,0 +1,40 @@
+To outperform competitors like Bonnie Brooms and Pure Cleaning Scotland, who currently lack personality and comprehensive SEO blogs, your content strategy must focus on Topic Authority rather than just keyword stuffing 1. By building a blog that acts as an informational hub for your service pages, you can capture massive traffic and convert it into leads 2, 3.
+Based on your market intelligence and semantic roadmap, here is the depth-segregated blog plan for MaundyClean, organized into high-impact clusters.
+
+## [Heading 3] 1. The "Quick Win" Informational Hub (High Volume / Low KD)
+
+These blogs target keywords with extremely low difficulty (KD) to get you ranking on Page 1 within 2-6 weeks 4.
+/blog/deep-cleaning-vs-regular-cleaning/: Targets a volume of 210/mo with a KD of only 8 3. Use this to explain the technical difference and up-sell your deep cleaning service 3, 5.
+/blog/how-to-deep-clean-wooden-floors/: Another low-difficulty target (KD 8) with 260/mo volume 3. This serves as a perfect cross-sell for your carpet and upholstery services 3.
+/blog/how-much-does-deep-cleaning-cost-scotland/: Targets pricing transparency (KD 10) 3. Break down your specific Glasgow and Edinburgh "sweet spot" pricing (e.g., £105–£135 for 1-bed flats) to beat the high prices of Housekeep 6.
+
+## [Heading 3] 2. The "Massive Traffic" Authority Hub
+
+These posts target high-volume "how-to" keywords to establish dominance in the broader cleaning market 3.
+/blog/how-to-deep-clean-bathroom-guide/: A massive traffic target with 9,900/mo volume 3. Link this directly to your /bathroom-deep-cleaning/ service page (KD 6) for maximum conversion 3, 7.
+/blog/how-to-deep-clean-kitchen-pro-tips/: Targets 8,100/mo volume 3. Use this to support your Breakout Niche for "kitchen deep cleaning services near me" 8, 9.
+/blog/what-is-deep-cleaning-the-ultimate-definition/: Targets 390/mo volume to establish you as a topical authority 3.
+
+## [Heading 3] 3. The "Revenue Driver" Cluster (End of Tenancy Focus)
+
+These blogs target the high-anxiety pain points of tenants in university hubs like Glasgow, Edinburgh, and Aberdeen 10, 11.
+/blog/end-of-tenancy-cleaning-checklist-scotland-2026/: A localized guide for renters 5, 12. Use this as a lead magnet to promote your EOT services 13.
+/blog/how-to-get-your-deposit-back-cleaning-secrets/: Targets the high-intent segment of tenants 5. Promote your "Deposit-Back Guarantee" here to beat Cleanifiq, which lacks tenant-facing guarantees 1, 13.
+/blog/5-things-scottish-landlords-check-during-inspection/: Strategic content for Month 2 to drive high-intent leads 12.
+/blog/student-moving-out-guide-university-of-glasgow-edinburgh/: Specifically targets your £99 Student Special during the peak months of June and August 11, 13.
+
+## [Heading 3] 4. B2B & Seasonal Content Cluster
+
+/blog/airbnb-cleaning-checklist-for-scottish-hosts/: Target the booming tourism market in the Highlands and major cities 11.
+/blog/signs-your-office-needs-a-professional-deep-clean/: Educational content to build recurring B2B contracts with local dental practices and offices 14.
+/blog/same-day-cleaning-when-it-is-worth-the-premium/: Targets the high-intent "emergency" market (390/mo volume) where you can charge a 20% surcharge 13, 15.
+
+## [Heading 3] Strategic Interlinking and Rollout
+
+To beat your competitors, follow these strict semantic rules:
+Internal Linking: Every blog must link to 2-3 relevant service pages using exact-match (20%), partial-match (50%), and branded (30%) anchor text 16, 17. For example, your Kitchen Guide must link to /kitchen-deep-cleaning/ using the anchor "kitchen deep cleaning services" 18.
+Lead Magnets: Use the "MaundyClean Checklist" as a downloadable PDF in your /blog/deep-cleaning-checklist/ post to capture email addresses 3, 13.
+Timeline:
+Month 2: Focus on EOT checklists and cost guides to feed your initial Google Ads campaigns 12.
+Month 3: Roll out the massive traffic "how-to" guides for bathrooms and kitchens to build long-term organic traffic 11, 15.
+This blog structure ensures you are seen by Google as THE authority on deep cleaning in Scotland, providing the informational depth that competitors like Pure Cleaning Scotland currently lack 1, 2.

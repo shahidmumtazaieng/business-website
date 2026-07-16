@@ -1,0 +1,910 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  ShieldCheck,
+     7→  Star,
+     8→  Clock,
+     9→  Sparkles,
+    10→  MapPin,
+    11→  ArrowRight,
+    12→  CheckCircle2,
+    13→  Crown,
+    14→  Warehouse,
+    15→  Users,
+    16→  UserCheck,
+    17→  CalendarCheck,
+    18→  Hammer,
+    19→  Award,
+    20→  Phone,
+    21→  HeartPulse,
+    22→  ClipboardCheck,
+    23→  Utensils,
+    24→} from "lucide-react";
+    25→import { Button } from "@/components/ui/button";
+    26→import { contactInfo } from "@/lib/site-data";
+    27→
+    28→// ============================================================
+    29→// Images - hand-picked from in-house search service
+    30→// ============================================================
+    31→const IMG = {
+    32→  heroWide:
+    33→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    34→  scotlandMap:
+    35→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    36→  localCrew:
+    37→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    38→  warehouseClean:
+    39→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    40→};
+    41→
+    42→// ============================================================
+    43→// 36 Scottish locations covered by the near-me page
+    44→// (city-centre + neighbourhood coverage)
+    45→// ============================================================
+    46→const LOCATIONS: { city: string; slug: string; region: string }[] = [
+    47→  // Central Belt
+    48→  { city: "Glasgow", slug: "glasgow", region: "Central Belt" },
+    49→  { city: "Edinburgh", slug: "edinburgh", region: "Central Belt" },
+    50→  { city: "Stirling", slug: "stirling", region: "Central Belt" },
+    51→  { city: "Falkirk", slug: "falkirk", region: "Central Belt" },
+    52→  { city: "Livingston", slug: "livingston", region: "Central Belt" },
+    53→  { city: "East Kilbride", slug: "east-kilbride", region: "Central Belt" },
+    54→  { city: "Paisley", slug: "paisley", region: "Central Belt" },
+    55→  { city: "Hamilton", slug: "hamilton", region: "Central Belt" },
+    56→  { city: "Motherwell", slug: "motherwell", region: "Central Belt" },
+    57→  { city: "Wishaw", slug: "wishaw", region: "Central Belt" },
+    58→  { city: "Coatbridge", slug: "coatbridge", region: "Central Belt" },
+    59→  { city: "Airdrie", slug: "airdrie", region: "Central Belt" },
+    60→  { city: "Dunfermline", slug: "dunfermline", region: "Central Belt" },
+    61→  { city: "Kirkcaldy", slug: "kirkcaldy", region: "Central Belt" },
+    62→  { city: "Glenrothes", slug: "glenrothes", region: "Central Belt" },
+    63→  { city: "Dundonald", slug: "dundonald", region: "Central Belt" },
+    64→  { city: "Bearsden", slug: "bearsden", region: "Central Belt" },
+    65→  { city: "Milngavie", slug: "milngavie", region: "Central Belt" },
+    66→  { city: "Bishopbriggs", slug: "bishopbriggs", region: "Central Belt" },
+    67→  { city: "Lenzie", slug: "lenzie", region: "Central Belt" },
+    68→  { city: "Giffnock", slug: "giffnock", region: "Central Belt" },
+    69→  { city: "Newton Mearns", slug: "newton-mearns", region: "Central Belt" },
+    70→  { city: "Clarkston", slug: "clarkston", region: "Central Belt" },
+    71→  { city: "Barrhead", slug: "barrhead", region: "Central Belt" },
+    72→  { city: "Johnstone", slug: "johnstone", region: "Central Belt" },
+    73→  { city: "Renfrew", slug: "renfrew", region: "Central Belt" },
+    74→  { city: "Rutherglen", slug: "rutherglen", region: "Central Belt" },
+    75→  { city: "Cambuslang", slug: "cambuslang", region: "Central Belt" },
+    76→  { city: "Bellshill", slug: "bellshill", region: "Central Belt" },
+    77→  { city: "Ayr", slug: "ayr", region: "Central Belt" },
+    78→  { city: "Kilmarnock", slug: "kilmarnock", region: "Central Belt" },
+    79→  { city: "Greenock", slug: "greenock", region: "Central Belt" },
+    80→  // East
+    81→  { city: "Dundee", slug: "dundee", region: "East" },
+    82→  { city: "Perth", slug: "perth", region: "East" },
+    83→  // North East
+    84→  { city: "Aberdeen", slug: "aberdeen", region: "North East" },
+    85→  // Highlands & Islands
+    86→  { city: "Inverness", slug: "inverness", region: "Highlands & Islands" },
+    87→];
+    88→
+    89→// Group by region for cleaner display
+    90→const REGION_ORDER = ["Central Belt", "East", "North East", "Highlands & Islands"];
+    91→const locationsByRegion = REGION_ORDER.map((region) => ({
+    92→  region,
+    93→  cities: LOCATIONS.filter((l) => l.region === region),
+    94→}));
+    95→
+    96→// ============================================================
+    97→// Trust badges for the hero
+    98→// ============================================================
+    99→const HERO_BADGES = [
+   100→  { icon: Star, label: "4.9/5 \u00b7 6,200+ reviews" },
+   101→  { icon: UserCheck, label: "Same Trusted Team Every Event" },
+   102→  { icon: ShieldCheck, label: "PVG-Checked & Vetted Crews" },
+   103→  { icon: Clock, label: "Pre / During / Post-Event Shifts" },
+   104→];
+   105→
+   106→// ============================================================
+   107→// The 4 trust pillars
+   108→// ============================================================
+   109→const TRUST_PILLARS = [
+   110→  {
+   111→    icon: Warehouse,
+   112→    title: "Local Event Venue Specialists, Not an Impersonal Agency",
+   113→    description:
+   114→      "Maundy Clean is a Scottish event venue cleaning company built on the Maundy tradition of service and care. We don&rsquo;t operate as an impersonal national franchise &mdash; we&rsquo;re a local specialist with vetted, uniformed, PVG-checked crews living and working in your area. Whether you&rsquo;re searching for overnight post-concert deep cleaning at Glasgow&rsquo;s OVO Hydro or SEC Centre, weekend conference-centre resets at Edinburgh&rsquo;s EICC and Usher Hall, exhibition turnaround at Aberdeen&rsquo;s P&amp;J Live and Music Hall, or wedding-venue resets at Dundee&rsquo;s Caird Hall and V&amp;A Dundee events, we assign a vetted, PAYE-employed crew that stays with you for the long run. Same team, same standard, same locked-in rate for 12 months.",
+   115→  },
+   116→  {
+   117→    icon: Users,
+   118→    title: "The Same Trusted Crew Every Event",
+   119→    description:
+   120→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, PVG-checked crew that manages your first clean is the crew that returns for every scheduled session. Continuity matters when the stakes are surge crowds of 67,000 fans at Murrayfield, 13,000 at the OVO Hydro, lost-child procedures, spill response, bodily-fluid cleanup, artist-rider standards for backstage and dressing rooms, and tight turnaround windows (down to 90 minutes) &mdash; we don&rsquo;t send rotating crews of agency strangers walking an active event floor. When your regular crew lead is on annual leave, we send a trained backup who has been briefed on your venue layout, your event calendar, your artist-rider standards, your audience-flow patterns, and your lost-property protocol &mdash; and we tell you in advance.",
+   121→  },
+   122→  {
+   123→    icon: ShieldCheck,
+   124→    title: "PVG-Checked, Fully Insured & £5m Public Liability",
+   125→    description:
+   126→      "Every technician is PVG-checked (essential for venues with public access), trained in event-specific protocols &mdash; crowd safety, lost child procedures, spill response, vomit and bodily fluid cleanup, artist-rider standards for backstage and dressing rooms &mdash; and is trained on venue-specific protocols before stepping foot on site: HSE compliance, RAMS as standard, Safe Systems of Work, COSHH-documented chemistry, ride-on sweepers for concourses, HEPA-filtered vacuums for auditoria seating, industrial carpet extractors for hospitality suites, bioremediation products for spill response, and audit-ready documentation for environmental health inspection and event post-mortem. We use non-toxic, child-safe, surface-safe chemistry by default. We hold &pound;5m public liability as standard, increased for major venues &mdash; full employer&rsquo;s liability, professional indemnity, and can name your business on our policy as additional insured.",
+   127→  },
+   128→  {
+   129→    icon: Award,
+   130→    title: "Signed Cleaning Logs & 100% Satisfaction Guarantee",
+   131→    description:
+   132→      "Every event venue client gets a dedicated account manager who knows your venue, your operations team, your event calendar, and your audit regime &mdash; direct mobile number, 24-hour response, monthly compliance walk-throughs alongside your facilities manager. After every visit you receive a signed cleaning log (operative signature, facilities-manager counter-signature on request), arrival and departure times, tasks completed, and any issues flagged &mdash; like a fresh spill in a disabled bay, a damaged fixture, a blocked drainage channel, a low-stock consumable, or a lost-property item handed to security &mdash; before they undermine a turnaround window, an environmental health inspection, or a guest review. We offer a free re-clean within 24 to 48 hours if you are not 100% satisfied, and our visit-completion rate in 2025 was 99.6%. From &pound;14 per hour for a small wedding venue through to a fully bespoke retainer for a multi-arena national portfolio.",
+   133→  },
+   134→];
+   135→
+   136→// ============================================================
+   137→// The 3-step booking process
+   138→// ============================================================
+   139→const BOOKING_STEPS = [
+   140→  {
+   141→    icon: ClipboardCheck,
+   142→    step: "01",
+   143→    title: "Site Assessment & Quote",
+   144→    description:
+   145→      "Contact us for a free, no-obligation quotation. We conduct a thorough site assessment to determine the most effective cleaning method for your specific venue. We walk your venue with your facilities manager, identify your venue type (stadium, arena, concert hall, conference centre, exhibition centre, wedding venue), capacity (100 to 67,000 guests), event calendar (one-off concerts, recurring conferences, exhibition cycles, wedding season), access windows (overnight post-event resets, daytime between-event maintenance, during-event day porters and toilet attendants), turnaround windows (90 minutes to 24 hours between events), and any specific cleaning challenges. We develop a tailored RAMS package (Risk Assessments and Method Statements) and Safe Systems of Work for your venue&rsquo;s unique operational needs. We send an itemised proposal within 2 business days: crew size, surge capacity (2&ndash;3 cleaners for routine maintenance up to 20&ndash;50 cleaners for major events), visit frequency, time on-site, scope of work, fixed monthly rate, RAMS, COSHH datasheets, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months.",
+   146→  },
+   147→  {
+   148→    icon: UserCheck,
+   149→    step: "02",
+   150→    title: "Local Crew Matching & Onboarding",
+   151→    description:
+   152→      "We hand-pick a team with experience in large-scale event support and commercial hygiene. Your allocated crew lead is PVG-checked, trained in event-specific protocols (crowd safety, lost child procedures, spill response, vomit and bodily fluid cleanup, artist-rider standards for backstage and dressing rooms), and briefed on your venue layout, your event calendar, your access preferences, your &ldquo;risky&rdquo; zones (concourse bottlenecks, washroom peaks, bar queues, disabled viewing platforms), and your lost-property protocol &mdash; so cleaning happens around your operations, not through them. The same crew returns for every scheduled session, building real knowledge of your shift patterns, your signage protocol, and your event-day pressures. We arrive in liveried vehicles, in uniform with photo I.D. and PPE, with commercial-grade ride-on sweepers for concourses, HEPA-filtered vacuums for auditoria seating, industrial carpet extractors for hospitality suites, bioremediation products for spill response, and COSHH-compliant, child-safe, surface-safe chemistry.",
+   153→  },
+   154→  {
+   155→    icon: CalendarCheck,
+   156→    step: "03",
+   157→    title: "Verifiable Results, Every Event",
+   158→    description:
+   159→      "Receive pre and post-clean reports to ensure every technical specification was met, backed by our MaundyClean satisfaction guarantee. You receive a signed cleaning log after every visit, arrival and departure times, tasks completed, and any issues flagged. Your dedicated account manager visits monthly for a compliance walk-through with your facilities manager, and proactively raises concerns before they undermine a turnaround window, an environmental health inspection, or a guest review. From &pound;14 per hour for a small wedding venue through to a fully bespoke multi-arena national portfolio. We hold &pound;5m public liability as standard (increased for major venues) and can name your business on our policy as additional insured.",
+   160→  },
+   161→];
+   162→
+   163→// ============================================================
+   164→// FAQ for the near-me page
+   165→// ============================================================
+   166→const NEAR_ME_FAQS = [
+   167→  {
+   168→    q: "How do I know if you cover my area?",
+   169→    a: "We cover 72+ towns and cities across Scotland &mdash; from Glasgow and Edinburgh in the Central Belt to Inverness in the Highlands and everywhere in between. Use the location grid above to find your town. If you don&rsquo;t see your postcode listed, call us &mdash; we add new event-venue coverage areas every month and may already have a vetted uniformed PVG-checked crew near you. Our local event venue cleaning crews operate across Glasgow&rsquo;s OVO Hydro and SEC Centre (Exhibition Way), Edinburgh&rsquo;s Usher Hall, EICC and the Playhouse, Aberdeen&rsquo;s P&amp;J Live and Music Hall, Dundee&rsquo;s Caird Hall and V&amp;A Dundee events, and Scottish wedding venues (castles, country house hotels, dedicated wedding barns) across the Central Belt.",
+   170→  },
+   171→  {
+   172→    q: "How quickly can a local event venue cleaning crew start?",
+   173→    a: "From free site assessment and itemised quote to first clean in 5&ndash;7 working days for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 7&ndash;10 working days for crew routing, ride-on equipment mobilisation, and travel planning. Same-week starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee &mdash; call us to check availability. Major stadia concerts, arena tours, and exhibition cycles typically schedule 3&ndash;4 weeks out to allow for full site survey, proposal, mobilisation, surge-capacity crew onboarding (20&ndash;50 cleaners for major events), and equipment delivery across every zone of your venue.",
+   174→  },
+   175→  {
+   176→    q: "Will the crew travel to my venue, or do I need to bring anything to you?",
+   177→    a: "All event venue cleaning is performed on-site at your premises &mdash; we never transport anything off-site. Our crews arrive in liveried vans with commercial-grade ride-on sweepers (Tennant, Karcher) for concourses, walk-behind scrubber-dryers for tight entrance zones and around ticket machines, rotary pressure lances with superheated water for stubborn staining on external forecourts, HEPA-filtered vacuums with extension tubes for auditoria seating and high dusting, industrial carpet extractors (Karcher Puzzi, Truvox) for hospitality-suite carpet restoration, bioremediation products for organic spill response (vomit, food, drink), biohazard kits for bodily-fluid cleanup, EN 14476 virucidal disinfectants for high-touch surfaces, EN 1276 bactericides for washroom deep cleans, colour-coded cloths (red for high-contamination, green for product-facing, yellow for washroom, blue for back-of-house), HSE-compliant chemicals with COSHH datasheets, PPE, and non-toxic, child-safe, surface-safe chemistry. You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser wipes) or we can manage consumable restocking for an additional monthly fee.",
+   178→  },
+   179→  {
+   180→    q: "Do you have event venue cleaning crews experienced with surge capacity, tight turnaround windows, and PVG-checked public-access protocols?",
+   181→    a: "Yes. Our crews are trained specifically on event venue protocols &mdash; HSE compliance, RAMS as standard, Safe Systems of Work, surge capacity mobilisation of 20&ndash;50 cleaners for major concerts and stadium events at short notice (then scale-down to 2&ndash;3 cleaners for routine venue maintenance between events), turnaround windows as tight as 90 minutes (concert to corporate conference setup), PVG-checking (essential for venues with public access), crowd safety, lost child procedures, spill response, vomit and bodily fluid cleanup, artist-rider standards for backstage and dressing rooms, ride-on sweepers for concourses, HEPA-filtered vacuums for auditoria seating, industrial carpet extractors for hospitality suites, bioremediation spill response, and audit-ready documentation for environmental health inspection and event post-mortem. We provide audit-ready signed cleaning logs, COSHH datasheets, RAMS, training records, vetting records (PVG), and &pound;5m public liability certificates (increased for major venues) for your compliance file. We currently service 13,000-capacity arenas like the OVO Hydro, conference centres like the EICC, stadia like Murrayfield, exhibition venues like the SEC Centre and P&amp;J Live Aberdeen, concert halls like the Usher Hall and Caird Hall, and Scottish wedding venues across the country.",
+   182→  },
+   183→  {
+   184→    q: "Can you handle secure access, alarm systems, and out-of-hours cleaning at my venue?",
+   185→    a: "Absolutely. We&rsquo;re trained on all major alarm systems (Texecom, Honeywell, Pyronix, Risco) and follow strict key-handling protocols: keys stored in a coded safe between visits, alarm codes encrypted and only released to your assigned crew lead, never labelled with your address. We hold &pound;5m public liability as standard (increased for major venues) &mdash; full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, suitable for stadia, arenas, concert halls, conference centres, exhibition venues, and wedding venues. The most common windows are overnight post-event deep cleaning (typically 11pm&ndash;7am after a concert, when the venue is empty and the crew has the full auditoria to themselves), daytime between-event maintenance for conference centres and exhibition venues (with traffic management and zone cordoning), during-event day-porter and toilet-attendant service for high-capacity events (continuous spill response, bin emptying, washroom refresh, lost-property handover), and pre-event resets the night before doors open. We can also split: light touch during the event (litter picking, spill response, touchpoint wipes every couple of hours), deep clean after hours.",
+   186→  },
+   187→  {
+   188→    q: "What&rsquo;s the difference between nightly post-event, weekly maintenance, and during-event day-porter cleaning near me?",
+   189→    a: "Nightly post-event cleaning (typically 11pm&ndash;7am after a concert or event) is the right choice for stadia, arenas, and concert halls where the cumulative audience load, spill volume, litter, and washroom contamination is too high for less frequent visits &mdash; the crew becomes part of your overnight turnaround. Weekly cleaning suits smaller wedding venues, low-traffic community venues, or between-event maintenance for conference centres where the daily contamination load is manageable. During-event day-porter cleaning means your crew works alongside your audience &mdash; continuous litter picking, spill response, washroom attendant service, and touchpoint wipes &mdash; giving your audience a spotless venue throughout the event, not just at the start. We can also split: day porters during the event for high-traffic welfare areas, full deep clean after the event. We&rsquo;ve handled turnaround windows as tight as 90 minutes (concert to corporate conference setup) and surge mobilisations of 20&ndash;50 cleaners for stadia concerts and festival weekends. Your account manager will advise on the best schedule for your specific venue type, capacity, and event calendar.",
+   190→  },
+   191→];
+   192→
+   193→// ============================================================
+   194→// Main page component
+   195→// ============================================================
+   196→
+   197→export function EventVenueCleaningNearMeHero() {
+   198→  return (
+   199→    <>
+   200→      {/* ============================================================ */}
+   201→      {/* SECTION 1 - Hero */}
+   202→      {/* H1: Event Venue Cleaning Near Me in Scotland */}
+   203→      {/* ============================================================ */}
+   204→      <section className="relative overflow-hidden">
+   205→        <div className="absolute inset-0">
+   206→          <img
+   207→            src={IMG.heroWide}
+   208→            alt="Maundy Clean PVG-checked, vetted event venue cleaning crew resetting a Scottish arena concourse overnight"
+   209→            className="w-full h-full object-cover"
+   210→            loading="eager"
+   211→            fetchPriority="high"
+   212→          />
+   213→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   214→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   215→        </div>
+   216→
+   217→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   218→          <motion.div
+   219→            initial="hidden"
+   220→            animate="visible"
+   221→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   222→            className="max-w-3xl"
+   223→          >
+   224→            <motion.div
+   225→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   226→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   227→            >
+   228→              <span className="relative flex w-2 h-2">
+   229→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   230→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   231→              </span>
+   232→              72+ Scottish towns &middot; PVG-checked crews &middot; Same team every event
+   233→            </motion.div>
+   234→
+   235→            <motion.h1
+   236→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   237→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   238→            >
+   239→              Event Venue Cleaning Near Me in Scotland
+   240→            </motion.h1>
+   241→
+   242→            <motion.p
+   243→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   244→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   245→            >
+   246→              Searching for &ldquo;event venue cleaning near me&rdquo; or &ldquo;stadium cleaning
+   247→              near me&rdquo; in Scotland? Maundy Clean covers stadia, arenas, concert halls,
+   248→              conference centres, exhibition venues, and wedding venues across the Central Belt,
+   249→              Highlands, Borders, and Islands &mdash; from Glasgow&rsquo;s OVO Hydro and SEC Centre
+   250→              to Edinburgh&rsquo;s Usher Hall, EICC and Playhouse, Aberdeen&rsquo;s P&amp;J Live
+   251→              and Music Hall, and Dundee&rsquo;s Caird Hall and V&amp;A Dundee events. Same
+   252→              PVG-checked, uniformed crews, surge capacity of 20&ndash;50 cleaners for major
+   253→              events, 90-minute turnaround capability. From &pound;14 per hour for a small wedding
+   254→              venue through to a fully bespoke multi-arena national retainer.
+   255→            </motion.p>
+   256→
+   257→            <motion.div
+   258→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   259→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   260→            >
+   261→              <Button
+   262→                size="lg"
+   263→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   264→                asChild
+   265→              >
+   266→                <Link href="/quote">
+   267→                  Request Your Free Venue Survey Today
+   268→                  <ArrowRight className="w-5 h-5" />
+   269→                </Link>
+   270→              </Button>
+   271→              <Button
+   272→                size="lg"
+   273→                variant="outline"
+   274→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   275→                asChild
+   276→              >
+   277→                <Link href="#locations">
+   278→                  <MapPin className="w-4 h-4" />
+   279→                  Find Your Local Event Venue Crew
+   280→                </Link>
+   281→              </Button>
+   282→            </motion.div>
+   283→
+   284→            <motion.div
+   285→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   286→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   287→            >
+   288→              {HERO_BADGES.map((badge) => {
+   289→                const Icon = badge.icon;
+   290→                return (
+   291→                  <div key={badge.label} className="flex items-center gap-1.5">
+   292→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   293→                  </div>
+   294→                );
+   295→              })}
+   296→            </motion.div>
+   297→          </motion.div>
+   298→        </div>
+   299→      </section>
+   300→
+   301→      {/* ============================================================ */}
+   302→      {/* SECTION 2 - Intro + stats */}
+   303→      {/* H2: Local Event Venue Cleaning You Can Trust */}
+   304→      {/* ============================================================ */}
+   305→      <section className="py-16 lg:py-24 bg-background">
+   306→        <div className="max-w-[1100px] mx-auto px-6">
+   307→          <motion.div
+   308→            initial={{ opacity: 0, y: 20 }}
+   309→            whileInView={{ opacity: 1, y: 0 }}
+   310→            viewport={{ once: true, margin: "-80px" }}
+   311→            transition={{ duration: 0.5 }}
+   312→            className="max-w-3xl mx-auto text-center mb-10"
+   313→          >
+   314→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   315→              Local event venue cleaning &middot; Scotland-wide
+   316→            </span>
+   317→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   318→              Local Event Venue Cleaning You Can Trust
+   319→            </h2>
+   320→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   321→              Maundy Clean is a Scottish event venue cleaning company built on the Maundy tradition
+   322→              of service and care. We don&rsquo;t operate as an impersonal national franchise
+   323→              &mdash; we&rsquo;re a local specialist with vetted, uniformed, PVG-checked crews
+   324→              living and working in your area. Whether you&rsquo;re searching for overnight
+   325→              post-concert deep cleaning at Glasgow&rsquo;s OVO Hydro or SEC Centre, weekend
+   326→              conference-centre resets at Edinburgh&rsquo;s EICC and Usher Hall, exhibition
+   327→              turnaround at Aberdeen&rsquo;s P&amp;J Live and Music Hall, or wedding-venue resets
+   328→              at Dundee&rsquo;s Caird Hall and V&amp;A Dundee events, we assign a vetted,
+   329→              PAYE-employed crew that stays with you for the long run. Same crew, same standard,
+   330→              same locked-in rate for 12 months.
+   331→            </p>
+   332→          </motion.div>
+   333→
+   334→          <motion.div
+   335→            initial={{ opacity: 0, y: 16 }}
+   336→            whileInView={{ opacity: 1, y: 0 }}
+   337→            viewport={{ once: true, margin: "-60px" }}
+   338→            transition={{ duration: 0.5 }}
+   339→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   340→          >
+   341→            {[
+   342→              { label: "Visits completed in 2025", value: "99.6%" },
+   343→              { label: "PVG-checked operatives", value: "100%" },
+   344→              { label: "From per hour", value: "&pound;14" },
+   345→              { label: "Star rating", value: "4.9/5" },
+   346→            ].map((stat) => (
+   347→              <div
+   348→                key={stat.label}
+   349→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   350→              >
+   351→                <div
+   352→                  className="font-display font-extrabold text-2xl text-gradient-brand"
+   353→                  dangerouslySetInnerHTML={{ __html: stat.value }}
+   354→                />
+   355→                <div
+   356→                  className="text-xs text-[var(--muted-foreground)] mt-1"
+   357→                  dangerouslySetInnerHTML={{ __html: stat.label }}
+   358→                />
+   359→              </div>
+   360→            ))}
+   361→          </motion.div>
+   362→        </div>
+   363→      </section>
+   364→
+   365→      {/* ============================================================ */}
+   366→      {/* SECTION 3 - Location grid (id="locations" anchor target) */}
+   367→      {/* H2: Find Your Local Event Venue Cleaning Crew */}
+   368→      {/* ============================================================ */}
+   369→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   370→        <div className="max-w-[1400px] mx-auto px-6">
+   371→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   372→            {/* Left: copy + map */}
+   373→            <motion.div
+   374→              initial={{ opacity: 0, y: 20 }}
+   375→              whileInView={{ opacity: 1, y: 0 }}
+   376→              viewport={{ once: true, margin: "-80px" }}
+   377→              transition={{ duration: 0.5 }}
+   378→            >
+   379→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   380→                Coverage across Scotland
+   381→              </span>
+   382→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   383→                Find Your Local Event Venue Cleaning Crew
+   384→              </h2>
+   385→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   386→                Our network of vetted, PVG-checked, uniformed event venue cleaning crews spans the
+   387→                entire country. From the city-centre stadia and arenas of Glasgow and Edinburgh to
+   388→                the concert halls and conference centres of Aberdeen and Dundee, and the wedding
+   389→                venues (castles, country house hotels, dedicated wedding barns) of the Central
+   390→                Belt, we have a local team ready to care for your venue. Browse by region below, or
+   391→                call us to confirm coverage for your specific postcode.
+   392→              </p>
+   393→
+   394→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   395→                <img
+   396→                  src={IMG.scotlandMap}
+   397→                  alt="Map of Scotland showing Maundy Clean event venue cleaning coverage areas"
+   398→                  className="absolute inset-0 w-full h-full object-cover"
+   399→                  loading="lazy"
+   400→                />
+   401→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   402→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   403→                  <div className="flex items-center gap-2 mb-1">
+   404→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   405→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   406→                      72+ Scottish towns covered
+   407→                    </span>
+   408→                  </div>
+   409→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   410→                    Same PVG-checked crews, same 100% satisfaction guarantee &mdash; from
+   411→                    Glasgow to Inverness.
+   412→                  </p>
+   413→                </div>
+   414→              </div>
+   415→
+   416→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   417→                <Button
+   418→                  size="lg"
+   419→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   420→                  asChild
+   421→                >
+   422→                  <Link href="/quote">
+   423→                    <ClipboardCheck className="w-4 h-4" />
+   424→                    Request Your Free Venue Survey Today
+   425→                  </Link>
+   426→                </Button>
+   427→                <Button
+   428→                  size="lg"
+   429→                  variant="outline"
+   430→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   431→                  asChild
+   432→                >
+   433→                  <a href={contactInfo.phoneHref}>
+   434→                    <Phone className="w-4 h-4" />
+   435→                    {contactInfo.phone}
+   436→                  </a>
+   437→                </Button>
+   438→              </div>
+   439→            </motion.div>
+   440→
+   441→            {/* Right: regional location grid */}
+   442→            <motion.div
+   443→              initial={{ opacity: 0, y: 20 }}
+   444→              whileInView={{ opacity: 1, y: 0 }}
+   445→              viewport={{ once: true, margin: "-60px" }}
+   446→              transition={{ duration: 0.5 }}
+   447→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   448→            >
+   449→              <div className="flex items-center justify-between mb-5">
+   450→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   451→                  Browse by region
+   452→                </h3>
+   453→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   454→              </div>
+   455→
+   456→              <div className="space-y-6">
+   457→                {locationsByRegion.map((regionGroup) => (
+   458→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   459→                    <div className="flex items-center gap-2 mb-3">
+   460→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   461→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   462→                        {regionGroup.region}
+   463→                      </span>
+   464→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   465→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   466→                        {regionGroup.cities.length} towns
+   467→                      </span>
+   468→                    </div>
+   469→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   470→                      {regionGroup.cities.map((loc) => (
+   471→                        <Link
+   472→                          key={loc.slug}
+   473→                          id={loc.slug}
+   474→                          href={`/services/event-venue-cleaning-near-me#${loc.slug}`}
+   475→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   476→                        >
+   477→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   478→                          <span>
+   479→                            <span className="font-medium">{loc.city}</span>
+   480→                            <span className="text-[var(--muted-foreground)]"> venue</span>
+   481→                          </span>
+   482→                        </Link>
+   483→                      ))}
+   484→                    </div>
+   485→                  </div>
+   486→                ))}
+   487→              </div>
+   488→
+   489→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   490→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   491→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   492→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   493→                </div>
+   494→                <Link
+   495→                  href="/locations"
+   496→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   497→                >
+   498→                  View all 72 Scottish locations
+   499→                  <ArrowRight className="w-4 h-4" />
+   500→                </Link>
+   501→              </div>
+   502→            </motion.div>
+   503→          </div>
+   504→        </div>
+   505→      </section>
+   506→
+   507→      {/* ============================================================ */}
+   508→      {/* SECTION 4 - Why Maundy Clean for your local event venue cleaning */}
+   509→      {/* H2: Why Scottish Venue Managers Choose Maundy Clean */}
+   510→      {/* ============================================================ */}
+   511→      <section className="py-16 lg:py-24 bg-background">
+   512→        <div className="max-w-[1400px] mx-auto px-6">
+   513→          <motion.div
+   514→            initial={{ opacity: 0, y: 20 }}
+   515→            whileInView={{ opacity: 1, y: 0 }}
+   516→            viewport={{ once: true, margin: "-80px" }}
+   517→            transition={{ duration: 0.5 }}
+   518→            className="max-w-3xl mx-auto text-center mb-14"
+   519→          >
+   520→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   521→              The Maundy Clean difference
+   522→            </span>
+   523→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   524→              Why Scottish Venue Managers Choose Maundy Clean
+   525→            </h2>
+   526→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   527→              We&rsquo;re a local specialist, not an impersonal national franchise. Our vetted,
+   528→              uniformed, PVG-checked event venue crews live in your area, know your city&rsquo;s
+   529→              venue scene, and stay with you for the long run. Here&rsquo;s what sets us apart from
+   530→              the gig-economy apps and high-turnover agencies operating in Scotland.
+   531→            </p>
+   532→          </motion.div>
+   533→
+   534→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   535→            {TRUST_PILLARS.map((pillar, i) => {
+   536→              const Icon = pillar.icon;
+   537→              return (
+   538→                <motion.div
+   539→                  key={pillar.title}
+   540→                  initial={{ opacity: 0, y: 24 }}
+   541→                  whileInView={{ opacity: 1, y: 0 }}
+   542→                  viewport={{ once: true, margin: "-40px" }}
+   543→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   544→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   545→                >
+   546→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   547→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   548→                  </div>
+   549→                  <div>
+   550→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   551→                      {pillar.title}
+   552→                    </h3>
+   553→                    <p
+   554→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   555→                      dangerouslySetInnerHTML={{ __html: pillar.description }}
+   556→                    />
+   557→                  </div>
+   558→                </motion.div>
+   559→              );
+   560→            })}
+   561→          </div>
+   562→        </div>
+   563→      </section>
+   564→
+   565→      {/* ============================================================ */}
+   566→      {/* SECTION 5 - 3-step booking */}
+   567→      {/* H2: From Free Site Assessment to First Clean in Under a Week */}
+   568→      {/* ============================================================ */}
+   569→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   570→        <div className="max-w-[1400px] mx-auto px-6">
+   571→          <motion.div
+   572→            initial={{ opacity: 0, y: 20 }}
+   573→            whileInView={{ opacity: 1, y: 0 }}
+   574→            viewport={{ once: true, margin: "-80px" }}
+   575→            transition={{ duration: 0.5 }}
+   576→            className="text-center mb-14"
+   577→          >
+   578→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   579→              Hassle-free booking
+   580→            </span>
+   581→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   582→              From Free Site Assessment to First Clean in Under a Week
+   583→            </h2>
+   584→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   585→              We have optimized our booking experience to be uncomplicated and straightforward,
+   586→              providing the responsive support Scottish venue managers demand. Get a free site
+   587→              assessment and itemised quote, get matched with a local vetted PVG-checked crew, and
+   588→              enjoy a pristine venue &mdash; no friction, no waiting, no surprises.
+   589→            </p>
+   590→          </motion.div>
+   591→
+   592→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   593→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   594→
+   595→            {BOOKING_STEPS.map((step, i) => {
+   596→              const Icon = step.icon;
+   597→              return (
+   598→                <motion.div
+   599→                  key={step.step}
+   600→                  initial={{ opacity: 0, y: 24 }}
+   601→                  whileInView={{ opacity: 1, y: 0 }}
+   602→                  viewport={{ once: true, margin: "-40px" }}
+   603→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   604→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   605→                >
+   606→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   607→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   608→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   609→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   610→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   611→                      {step.step}
+   612→                    </span>
+   613→                  </div>
+   614→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   615→                    {step.title}
+   616→                  </h3>
+   617→                  <p
+   618→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   619→                    dangerouslySetInnerHTML={{ __html: step.description }}
+   620→                  />
+   621→                </motion.div>
+   622→              );
+   623→            })}
+   624→          </div>
+   625→
+   626→          <motion.div
+   627→            initial={{ opacity: 0, y: 16 }}
+   628→            whileInView={{ opacity: 1, y: 0 }}
+   629→            viewport={{ once: true }}
+   630→            transition={{ duration: 0.5, delay: 0.3 }}
+   631→            className="text-center mt-10"
+   632→          >
+   633→            <Button
+   634→              size="lg"
+   635→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   636→              asChild
+   637→            >
+   638→              <Link href="/quote">
+   639→                Request Your Free Venue Survey Today
+   640→                <ArrowRight className="w-5 h-5" />
+   641→              </Link>
+   642→            </Button>
+   643→          </motion.div>
+   644→        </div>
+   645→      </section>
+   646→
+   647→      {/* ============================================================ */}
+   648→      {/* SECTION 6 - Cross-links to specialist pages */}
+   649→      {/* H2: Specialist Services for Every Property Cycle */}
+   650→      {/* ============================================================ */}
+   651→      <section className="py-16 lg:py-24 bg-background">
+   652→        <div className="max-w-[1400px] mx-auto px-6">
+   653→          <motion.div
+   654→            initial={{ opacity: 0, y: 20 }}
+   655→            whileInView={{ opacity: 1, y: 0 }}
+   656→            viewport={{ once: true, margin: "-80px" }}
+   657→            transition={{ duration: 0.5 }}
+   658→            className="max-w-3xl mb-12"
+   659→          >
+   660→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   661→              Beyond the daily clean &middot; property milestones
+   662→            </span>
+   663→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   664→              Specialist Services for Every Property Cycle
+   665→            </h2>
+   666→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   667→              Our daily event venue cleaning is the heartbeat of your facility&rsquo;s
+   668→              presentation and safety, but we provide specialized support for major transitions
+   669→              &mdash; from pre-season resets that combine venue cleaning with deep house cleaning
+   670→              for interior offices, through post-renovation dust clear-outs and hospitality-zone
+   671→              restaurant deep cleaning, to fabric rejuvenation for VIP suites. The same trusted,
+   672→              vetted crew can step up whenever your venue needs more than a standard visit.
+   673→            </p>
+   674→          </motion.div>
+   675→
+   676→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   677→            {[
+   678→              {
+   679→                icon: Sparkles,
+   680→                title: "Deep House Cleaning",
+   681→                href: "/services/deep-house-cleaning",
+   682→                description:
+   683→                  "Combine a venue clean with a Deep House Cleaning protocol for your interior offices to ensure your entire building is front-line ready. Backstage offices, green rooms, production offices, and staff welfare zones get the same meticulous, top-to-bottom treatment as your auditoria and concourses.",
+   684→                cta: "Explore deep house cleaning",
+   685→              },
+   686→              {
+   687→                icon: Hammer,
+   688→                title: "After Builders Clean",
+   689→                href: "/services/post-construction-cleaning",
+   690→                description:
+   691→                  "If your arena has undergone improvements, our After Builders Clean is designed to remove heavy layers of builders&rsquo; dust and construction debris from auditoria seating, concourse flooring, and hospitality suites before the venue re-opens.",
+   692→                cta: "Explore after builders cleaning",
+   693→              },
+   694→              {
+   695→                icon: Utensils,
+   696→                title: "Restaurant Deep Cleaning",
+   697→                href: "/services/restaurant-cleaning",
+   698→                description:
+   699→                  "For on-site bars and eateries, our Restaurant Deep Cleaning ensures compliance with food hygiene standards. Extraction hoods degreased, prep surfaces descaled, and audit-ready documentation for EHO inspection &mdash; applied to your venue&rsquo;s catering and concession zones.",
+   700→                cta: "Explore restaurant deep cleaning",
+   701→              },
+   702→              {
+   703→                icon: HeartPulse,
+   704→                title: "Upholstery Cleaning",
+   705→                href: "/services/upholstery-cleaning",
+   706→                description:
+   707→                  "Bring freshness back to VIP suites with our professional Upholstery Cleaning to remove germs and unwanted odors. VIP box seating, hospitality-suite sofas, dressing-room chairs, and reception-area suites all benefit from a periodic specialist reset.",
+   708→                cta: "Explore upholstery cleaning",
+   709→              },
+   710→            ].map((sol, i) => {
+   711→              const Icon = sol.icon;
+   712→              return (
+   713→                <motion.div
+   714→                  key={sol.title}
+   715→                  initial={{ opacity: 0, y: 24 }}
+   716→                  whileInView={{ opacity: 1, y: 0 }}
+   717→                  viewport={{ once: true, margin: "-40px" }}
+   718→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   719→                >
+   720→                  <Link
+   721→                    href={sol.href}
+   722→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   723→                  >
+   724→                    <div className="p-6">
+   725→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   726→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   727→                      </div>
+   728→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   729→                        {sol.title}
+   730→                      </h3>
+   731→                      <p
+   732→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   733→                        dangerouslySetInnerHTML={{ __html: sol.description }}
+   734→                      />
+   735→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   736→                        {sol.cta}
+   737→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   738→                      </span>
+   739→                    </div>
+   740→                  </Link>
+   741→                </motion.div>
+   742→              );
+   743→            })}
+   744→          </div>
+   745→
+   746→          <motion.div
+   747→            initial={{ opacity: 0, y: 16 }}
+   748→            whileInView={{ opacity: 1, y: 0 }}
+   749→            viewport={{ once: true }}
+   750→            transition={{ duration: 0.5, delay: 0.2 }}
+   751→            className="mt-10 text-center"
+   752→          >
+   753→            <Link
+   754→              href="/services/event-venue-cleaning"
+   755→              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] bg-[var(--brand-light)]/40 hover:bg-[var(--brand-light)]/70 transition-colors px-5 py-3 rounded-full"
+   756→            >
+   757→              <Warehouse className="w-4 h-4" />
+   758→              Explore the full event venue cleaning service
+   759→              <ArrowRight className="w-4 h-4" />
+   760→            </Link>
+   761→          </motion.div>
+   762→        </div>
+   763→      </section>
+   764→
+   765→      {/* ============================================================ */}
+   766→      {/* SECTION 7 - Final CTA */}
+   767→      {/* H2: Ready for an Event Venue Cleaning Crew Near You? */}
+   768→      {/* ============================================================ */}
+   769→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   770→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   771→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   772→
+   773→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   774→          <motion.div
+   775→            initial={{ opacity: 0, y: 20 }}
+   776→            whileInView={{ opacity: 1, y: 0 }}
+   777→            viewport={{ once: true, margin: "-80px" }}
+   778→            transition={{ duration: 0.5 }}
+   779→          >
+   780→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   781→              Ready to book your local venue crew?
+   782→            </span>
+   783→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   784→              Ready for an Event Venue Cleaning Crew Near You?
+   785→            </h2>
+   786→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   787→              Book a free, no-obligation site survey with our management team and receive an
+   788→              itemised proposal within 2 business days. Vetted PVG-checked crews, the same
+   789→              dedicated team every event, surge capacity (20&ndash;50 cleaners for major events),
+   790→              90-minute turnaround capability, child-safe eco chemistry, signed cleaning logs,
+   791→              &pound;5m public liability as standard, and a 100% satisfaction guarantee &mdash;
+   792→              from &pound;14 per hour for a small wedding venue through to a fully bespoke
+   793→              multi-arena national retainer. Coverage across 72+ Scottish towns.
+   794→            </p>
+   795→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   796→              <Button
+   797→                size="lg"
+   798→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   799→                asChild
+   800→              >
+   801→                <Link href="/quote">
+   802→                  Request Your Free Venue Survey Today
+   803→                  <ArrowRight className="w-5 h-5" />
+   804→                </Link>
+   805→              </Button>
+   806→              <Button
+   807→                size="lg"
+   808→                variant="outline"
+   809→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   810→                asChild
+   811→              >
+   812→                <a href={contactInfo.phoneHref}>
+   813→                  <Phone className="w-4 h-4" />
+   814→                  Call {contactInfo.phone}
+   815→                </a>
+   816→              </Button>
+   817→            </div>
+   818→          </motion.div>
+   819→        </div>
+   820→      </section>
+   821→
+   822→      {/* ============================================================ */}
+   823→      {/* SECTION 8 - Near-me FAQ */}
+   824→      {/* H2: Frequently Asked Questions */}
+   825→      {/* ============================================================ */}
+   826→      <section className="py-16 lg:py-24 bg-background">
+   827→        <div className="max-w-4xl mx-auto px-6">
+   828→          <motion.div
+   829→            initial={{ opacity: 0, y: 20 }}
+   830→            whileInView={{ opacity: 1, y: 0 }}
+   831→            viewport={{ once: true, margin: "-80px" }}
+   832→            transition={{ duration: 0.5 }}
+   833→            className="text-center mb-12"
+   834→          >
+   835→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   836→              Event venue cleaning near me &middot; FAQ
+   837→            </span>
+   838→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   839→              Frequently Asked Questions
+   840→            </h2>
+   841→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   842→              Straight answers to the questions our local event venue cleaning clients ask most
+   843→              often. Can&rsquo;t find what you need? Call us on{" "}
+   844→              <a
+   845→                href={contactInfo.phoneHref}
+   846→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   847→              >
+   848→                {contactInfo.phone}
+   849→              </a>{" "}
+   850→              and we&rsquo;ll talk it through.
+   851→            </p>
+   852→          </motion.div>
+   853→
+   854→          <div className="space-y-4">
+   855→            {NEAR_ME_FAQS.map((faq, i) => (
+   856→              <motion.div
+   857→                key={faq.q}
+   858→                initial={{ opacity: 0, y: 16 }}
+   859→                whileInView={{ opacity: 1, y: 0 }}
+   860→                viewport={{ once: true, margin: "-40px" }}
+   861→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   862→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   863→              >
+   864→                <details className="group">
+   865→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   866→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   867→                      {faq.q}
+   868→                    </h3>
+   869→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   870→                      <span className="relative w-3.5 h-3.5">
+   871→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   872→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   873→                      </span>
+   874→                    </span>
+   875→                  </summary>
+   876→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   877→                    <p
+   878→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   879→                      dangerouslySetInnerHTML={{ __html: faq.a }}
+   880→                    />
+   881→                  </div>
+   882→                </details>
+   883→              </motion.div>
+   884→            ))}
+   885→          </div>
+   886→
+   887→          <motion.div
+   888→            initial={{ opacity: 0, y: 16 }}
+   889→            whileInView={{ opacity: 1, y: 0 }}
+   890→            viewport={{ once: true, margin: "-40px" }}
+   891→            transition={{ duration: 0.5, delay: 0.3 }}
+   892→            className="mt-10 text-center"
+   893→          >
+   894→            <Button
+   895→              size="lg"
+   896→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   897→              asChild
+   898→            >
+   899→              <Link href="/quote">
+   900→                Request Your Free Venue Survey Today
+   901→                <ArrowRight className="w-5 h-5" />
+   902→              </Link>
+   903→            </Button>
+   904→          </motion.div>
+   905→        </div>
+   906→      </section>
+   907→    </>
+   908→  );
+   909→}
+   910→

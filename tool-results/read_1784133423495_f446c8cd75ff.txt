@@ -1,0 +1,452 @@
+   455→              While many local cleaners offer a generic service, MaundyClean focuses on the topic
+   456→              of professional hygiene. We understand that in a spa or hair salon, reliability and
+   457→              first-class standards are not just &ldquo;nice to have&rdquo; &mdash; they are
+   458→              crucial for customer loyalty. We combine vetted PVG-checked uniformed teams, the same
+   459→              dedicated crew every visit, antimicrobial fogging and sanitisation, flexible
+   460→              out-of-hours scheduling around your opening hours, child-safe eco chemistry, and
+   461→              signed cleaning logs &mdash; so the salon your client walks into looks, feels, and
+   462→              operates safely every single appointment.
+   463→            </p>
+   464→
+   465→            <div className="space-y-3">
+   466→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   467→                const Icon = card.icon;
+   468→                return (
+   469→                  <div
+   470→                    key={card.title}
+   471→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   472→                  >
+   473→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   474→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   475→                    </div>
+   476→                    <div>
+   477→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   478→                        {card.title}
+   479→                      </h3>
+   480→                      <p
+   481→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   482→                        dangerouslySetInnerHTML={{ __html: card.description }}
+   483→                      />
+   484→                    </div>
+   485→                  </div>
+   486→                );
+   487→              })}
+   488→            </div>
+   489→          </motion.div>
+   490→        </div>
+   491→
+   492→        <div className="grid md:grid-cols-2 gap-6">
+   493→          {TRUST_CARDS.slice(2).map((card, i) => {
+   494→            const Icon = card.icon;
+   495→            return (
+   496→              <motion.div
+   497→                key={card.title}
+   498→                initial={{ opacity: 0, y: 24 }}
+   499→                whileInView={{ opacity: 1, y: 0 }}
+   500→                viewport={{ once: true, margin: "-40px" }}
+   501→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   502→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   503→              >
+   504→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   505→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   506→                </div>
+   507→                <div>
+   508→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   509→                    {card.title}
+   510→                  </h3>
+   511→                  <p
+   512→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   513→                    dangerouslySetInnerHTML={{ __html: card.description }}
+   514→                  />
+   515→                </div>
+   516→              </motion.div>
+   517→            );
+   518→          })}
+   519→        </div>
+   520→      </div>
+   521→    </section>
+   522→  );
+   523→}
+   524→
+   525→// ============================================================
+   526→// Section 3 - Our Total Salon Maintenance & Hygiene Checklist
+   527→// (Semantic H2: "Our Total Salon Maintenance & Hygiene Checklist")
+   528→// Brief-specific section with 3 H3 sub-sections:
+   529→//   1. Styling Stations & Public Areas
+   530→//   2. Treatment Rooms & Spa Facilities
+   531→//   3. Often-Missed Technical Details
+   532→// Carries the id="checklist" anchor that the CTA buttons link to.
+   533→// All sub-points are plain strings (no ReactNode/inline Link needed
+   534→// per the brief - inline Links only appear in the Intro paragraph 2
+   535→// and in the Interlinking card descriptions).
+   536→// ============================================================
+   537→
+   538→type ChecklistPoint = {
+   539→  title: string;
+   540→  text: ReactNode;
+   541→};
+   542→
+   543→const CHECKLIST_ITEMS: {
+   544→  icon: typeof Building2;
+   545→  image: string;
+   546→  imageAlt: string;
+   547→  title: string;
+   548→  description: string;
+   549→  points: ChecklistPoint[];
+   550→}[] = [
+   551→  {
+   552→    icon: Scissors,
+   553→    image: IMG.checklistFront,
+   554→    imageAlt: "Maundy Clean crew deep cleaning styling stations, mirrors and reception areas in a Scottish hair salon before opening",
+   555→    title: "1. Styling Stations &amp; Public Areas",
+   556→    description:
+   557→      "Styling stations and public areas are the front-of-house face of your salon &mdash; the surfaces your clients touch, photograph, and judge within the first thirty seconds of arriving. Hair spray residue, clippings, product spills, fingerprinted mirrors, and city-centre dust all accumulate between appointments. Our front-of-house protocol uses streak-free glass cleaner on every mirror and partition, pH-neutral sanitiser on every workstation and product shelf, HEPA-filtered vacuums for cut hair on flooring, and colour-coded cloths to prevent cross-contamination &mdash; delivered to a &ldquo;speechlessly spotless&rdquo; standard before your first client walks in.",
+   558→    points: [
+   559→      {
+   560→        title: "Glass &amp; Mirror Restoration",
+   561→        text: "Meticulous cleaning of all mirrors and glass partitions to a streak-free, crystal-clear shine as standard. Styling-station mirrors, partition screens, retail display glass, reception desk screens, and entrance door glass all wiped with an alcohol-free anti-static cleaner and buffed to a streak-free finish; frames and sills detailed; fingerprints, hair spray residue, and product smudges removed from high-touch glass (especially styling-station mirrors and reception screens). A spotless mirror is the difference between a salon clients photograph and one they avoid.",
+   562→      },
+   563→      {
+   564→        title: "Surface Sanitisation",
+   565→        text: "Deep cleaning of workstations, product shelves, and reception desks to remove hair spray residue and city-centre dust. Styling stations, trolleys, hydraulic chair bases and pedals (where hair collects), product shelves (fronted forward, labels aligned), reception desk, card terminal (high-touch), magazine rack, and seating all wiped with a pH-neutral sanitiser; hair clippings swept from corners and underneath stations; product spills (hair dye, peroxide, styling product) cleaned immediately with the correct solvent. A sanitised workstation projects premium care to your client and protects your styling-team&rsquo;s health.",
+   566→      },
+   567→      {
+   568→        title: "Floor Care",
+   569→        text: "Intensive vacuuming and mopping of high-traffic styling areas to ensure hair-free, slip-resistant surfaces. HEPA-filtered vacuums lift cut hair from hard flooring and from carpeted waiting areas (where hair drifts on air currents and settles hours after the last cut); hard flooring mopped edge-to-edge with a slip-resistant sanitiser; entrance matting shaken and refreshed; thresholds and transitions detailed; spill response for hair dye, peroxide, and styling product. A hair-free, slip-resistant floor protects your clients from falls and your styling team from litigation.",
+   570→      },
+   571→    ],
+   572→  },
+   573→  {
+   574→    icon: Sparkles,
+   575→    image: IMG.checklistCounter,
+   576→    imageAlt: "Maundy Clean crew sanitising treatment couches, chrome fixtures and internal glass in a Scottish beauty spa between treatments",
+   577→    title: "2. Treatment Rooms &amp; Spa Facilities",
+   578→    description:
+   579→      "Treatment rooms and spa facilities are the most hygiene-sensitive zones in any salon or spa &mdash; the surfaces where &ldquo;close contact&rdquo; literally means skin-to-skin. Treatment couches, massage tables, ceramic items, chrome taps, and internal glass all need hospital-grade disinfection between every client, not just a daily wipe-down. Our treatment-room protocol uses EN 14476 virucidal disinfectant on every couch and high-touch surface, EN 1276 bactericide for ceramic sinks and taps, professional chrome buffing, and meticulous internal glass care &mdash; delivered to a uniform, audit-grade standard across every treatment room, every visit.",
+   580→    points: [
+   581→      {
+   582→        title: "Deep Sanitisation",
+   583→        text: "Disinfecting all ceramic items, massage tables, and sinks to the highest industry hygiene standards. Treatment couches (including headrest, armrests, and underneath) wiped with EN 14476 virucidal disinfectant with a verified 60-second contact time; fresh couch roll or laundry fitted between every client; trolleys wiped and restocked (cotton wool, spatulas, tweezers, mirrors); hot towel cabinet cleaned and refilled; magnifying lamp wiped; steamer descaled; ceramic sinks descaled and disinfected with EN 1276 bactericide; massage tables sanitised between every treatment; wax pots and surrounds deep cleaned; sharps containers (for aesthetics clinics) checked and logged. The standard your environmental health officer expects &mdash; the standard your clients demand.",
+   584→      },
+   585→      {
+   586→        title: "Chrome &amp; Fixture Buffing",
+   587→        text: "Professional buffing of all chrome taps and fixtures to a high shine as part of our &ldquo;showcase&rdquo; standards. Chrome taps, towel rails, soap dispensers, door furniture, magnifying-lamp stems, styling-station chrome, treatment-couch chrome, and any stainless-steel surface buffed with a streak-free stainless-steel cleaner to a high shine; water spots and limescale removed (a major issue in Scottish hard water areas); fingerprints and product residue removed from high-touch chrome. Chrome that gleams signals genuine care &mdash; chrome that&rsquo;s dull or spotted signals a salon that&rsquo;s cutting corners.",
+   588→      },
+   589→      {
+   590→        title: "Inside Window Care",
+   591→        text: "Meticulous cleaning of internal glass to maximise natural light and maintain a bright, welcoming atmosphere for relaxation. Internal partition glass, treatment-room screens, salon-front glazing (interior side), mirror walls, display cabinets, and reception screens all wiped with an alcohol-free anti-static cleaner and buffed to a streak-free finish; frames and sills detailed; fingerprints, product smudges, and condensation marks removed. A bright, naturally-lit treatment room is essential for relaxation therapies and aesthetics consultations &mdash; internal glass care is the detail that protects the calm atmosphere your clients pay for.",
+   592→      },
+   593→    ],
+   594→  },
+   595→  {
+   596→    icon: Building2,
+   597→    image: IMG.checklistKitchen,
+   598→    imageAlt: "Maundy Clean crew detailing salon washroom chrome, skirting boards, towel cupboard and back-of-house areas to a high-shine, sanitised standard in Scotland",
+   599→    title: "3. Often-Missed Technical Details",
+   600→    description:
+   601→      "The details clients notice first &mdash; and the details most cleaners skip. Visible skirting boards and sills, washroom and kitchen hygiene, towel-cupboard organisation, and back-of-house touchpoints are the moments that turn a &ldquo;cleaned&rdquo; salon into a &ldquo;speechlessly spotless&rdquo; one, and the details that protect your reputation in client reviews, environmental health inspections, and Care Inspectorate audits (for aesthetics clinics and registered treatment providers).",
+   602→    points: [
+   603→      {
+   604→        title: "Visible Skirting Boards &amp; Sills",
+   605→        text: "Our cleaners meticulously wipe all skirting boards, door frames, and window sills in communal areas. Skirting boards, door frames, architraves, switch plates, picture rails, window sills, fire-extinguisher brackets, notice-board trims, signage housings, retail-shelf uprights, and styling-station bases in foyers, styling areas, treatment corridors, and lift lobbies damp-wiped with a pH-neutral sanitiser. Ceiling light fixtures, air-conditioning vents, and extractor grilles dusted with extendable HEPA-filtered attachments (we don&rsquo;t just brush the dust back into the air); cable trays, picture frames, and wayfinding totems wiped down. These are the details clients notice first &mdash; and the details most cleaners skip.",
+   606→      },
+   607→      {
+   608→        title: "Washroom &amp; Kitchen Hygiene",
+   609→        text: "Full sanitisation of staff rooms and guest restrooms, ensuring they reflect the same high standards as your main floor. Toilets descaled, disinfected with EN 1276-certified bactericide, and polished; urinals descaled and deodorised; tiles and grout scrubbed; partition screens disinfected; mirrors squeegeed; floors mopped edge-to-edge with a slip-resistant sanitiser. Chrome taps, soap dispensers, towel dispensers, hand-dryer nozzles, door furniture, and cubicle locks buffed with a streak-free stainless-steel cleaner. Sanitary bins checked and emptied; consumables (toilet paper, hand soap, paper towel, sanitiser) restocked every visit. Staff kitchens and back-of-house laundry zones (washing machine exteriors, dryer lint cleared, microwave, kettle, fridge exterior, worktops) sanitised to the same standard as the front-of-house &mdash; your team deserves the same care as your clients.",
+   610→      },
+   611→    ],
+   612→  },
+   613→];
+   614→
+   615→export function SalonSpaSeoChecklist() {
+   616→  return (
+   617→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   618→      <div className="max-w-[1400px] mx-auto px-6">
+   619→        <motion.div
+   620→          initial={{ opacity: 0, y: 20 }}
+   621→          whileInView={{ opacity: 1, y: 0 }}
+   622→          viewport={{ once: true, margin: "-80px" }}
+   623→          transition={{ duration: 0.5 }}
+   624→          className="max-w-3xl mb-12"
+   625→        >
+   626→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   627→            Beyond the standard surface wipe
+   628→          </span>
+   629→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   630→            Our Total Salon Maintenance &amp; Hygiene Checklist
+   631→          </h2>
+   632→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   633→            Our recurring cleaning for salons follows a rigorous, agency approved checklist
+   634→            designed to address the specific hygiene risks of the beauty industry. We deliver
+   635→            technical depth in every zone of your facility &mdash; from the styling stations and
+   636→            public areas zone (glass and mirror restoration, surface sanitisation, floor care)
+   637→            through the treatment rooms and spa facilities zone (deep sanitisation, chrome and
+   638→            fixture buffing, inside window care) to the often-missed technical details (visible
+   639→            skirting boards and sills, washroom and kitchen hygiene). Below is the scope we deliver
+   640→            as standard, regardless of salon type, footprint, or appointment schedule.
+   641→          </p>
+   642→        </motion.div>
+   643→
+   644→        <div className="grid lg:grid-cols-3 gap-6">
+   645→          {CHECKLIST_ITEMS.map((item, i) => {
+   646→            const Icon = item.icon;
+   647→            return (
+   648→              <motion.div
+   649→                key={item.title}
+   650→                initial={{ opacity: 0, y: 24 }}
+   651→                whileInView={{ opacity: 1, y: 0 }}
+   652→                viewport={{ once: true, margin: "-40px" }}
+   653→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   654→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   655→              >
+   656→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   657→                  <img
+   658→                    src={item.image}
+   659→                    alt={item.imageAlt}
+   660→                    className="absolute inset-0 w-full h-full object-cover"
+   661→                    loading="lazy"
+   662→                  />
+   663→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   664→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   665→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   666→                  </div>
+   667→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   668→                    {item.title}
+   669→                  </h3>
+   670→                </div>
+   671→                <div className="p-6 flex-1 flex flex-col">
+   672→                  {item.description ? (
+   673→                    <p
+   674→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   675→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   676→                    />
+   677→                  ) : null}
+   678→                  <ul className="space-y-3 mt-auto">
+   679→                    {item.points.map((point) => {
+   680→                      const PointIcon = CheckCircle2;
+   681→                      return (
+   682→                        <li
+   683→                          key={point.title}
+   684→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   685→                        >
+   686→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   687→                          <span>
+   688→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   689→                            &mdash;{" "}
+   690→                            {typeof point.text === "string" ? (
+   691→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   692→                            ) : (
+   693→                              point.text
+   694→                            )}
+   695→                          </span>
+   696→                        </li>
+   697→                      );
+   698→                    })}
+   699→                  </ul>
+   700→                </div>
+   701→              </motion.div>
+   702→            );
+   703→          })}
+   704→        </div>
+   705→      </div>
+   706→    </section>
+   707→  );
+   708→}
+   709→
+   710→// ============================================================
+   711→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   712→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   713→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   714→// (FileText imported for safety/template parity even if not used.)
+   715→// ============================================================
+   716→
+   717→const BOOKING_STEPS = [
+   718→  {
+   719→    icon: ClipboardCheck,
+   720→    step: "01",
+   721→    title: "Instant Quote &amp; Site Survey",
+   722→    description:
+   723→      "Contact us for a free site survey. We provide a 30-second instant quote for standard salon layouts or a bespoke proposal for large-scale spas. We walk your premises with your salon manager, identify your salon type (hair salon, beauty spa, aesthetics clinic, barber shop, nail bar), capacity (2 to 25 styling stations or treatment rooms), opening hours (early morning, late evening, 7 days a week), turnaround windows (between-appointment touch-ups, end-of-day deep cleans, weekly resets), and any specific cleaning challenges (sharps handling for aesthetics clinics, blood spill procedures, chemical spill management for hair dye and acetone, premium finishes, listed-building constraints). We send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, RAMS, COSHH datasheets, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   724→  },
+   725→  {
+   726→    icon: UserCheck,
+   727→    step: "02",
+   728→    title: "Professional Matching",
+   729→    description:
+   730→      "We hand-pick a team of trained technicians with in-depth knowledge of &ldquo;close contact&rdquo; hygiene protocols. Your allocated crew lead is PVG-checked (essential for salons with public access and for aesthetics clinics subject to Care Inspectorate oversight), uniformed, and trained in salon-specific protocols &mdash; treatment-room disinfection, sharps handling for aesthetics clinics, blood spill procedures, chemical spill management for hair dye and acetone, towel-launderette operations, and colour-coded cloth systems to prevent cross-contamination. We brief the crew on your salon layout, your appointment calendar, your opening hours, your &ldquo;risky&rdquo; zones (treatment rooms, waxing areas, washrooms, towel cupboard, sharps storage) and your premium finishes &mdash; so cleaning happens around your client bookings, not through them. The same crew returns for every scheduled session, building real knowledge of your appointment flow, your peak hours, and your quiet periods. We arrive in liveried vehicles, in uniform with photo I.D. and PPE, with HEPA-filtered vacuums for cut hair, EN 14476 virucidal disinfectants for treatment rooms, EN 1276 bactericides for washroom deep cleans, professional chrome polish, streak-free glass cleaner, and COSHH-compliant, child-safe, surface-safe chemistry.",
+   731→  },
+   732→  {
+   733→    icon: Sparkles,
+   734→    step: "03",
+   735→    title: "Enjoy a Pristine Venue",
+   736→    description:
+   737→      "Experience a space that looks, smells, and feels fresh every single morning, backed by our MaundyClean satisfaction guarantee. You receive a signed cleaning log after every visit (operative signature, salon-manager counter-signature on request), arrival and departure times, tasks completed, and any issues flagged &mdash; like a low-stock consumable, a damaged fixture, a blocked drain, a low towel supply, or a sharps-container nearing capacity &mdash; before they undermine an appointment, an environmental health inspection, or a client review. From &pound;16 per hour for a small hair salon through to a fully bespoke retainer for a multi-site spa group. We hold &pound;5m public liability as standard (increased for aesthetics clinics) and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   738→  },
+   739→];
+   740→
+   741→export function SalonSpaSeoBooking() {
+   742→  return (
+   743→    <section className="py-16 lg:py-24 bg-background">
+   744→      <div className="max-w-[1400px] mx-auto px-6">
+   745→        <motion.div
+   746→          initial={{ opacity: 0, y: 20 }}
+   747→          whileInView={{ opacity: 1, y: 0 }}
+   748→          viewport={{ once: true, margin: "-80px" }}
+   749→          transition={{ duration: 0.5 }}
+   750→          className="text-center mb-14"
+   751→        >
+   752→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   753→            Hassle-free booking
+   754→          </span>
+   755→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   756→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   757→          </h3>
+   758→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   759→            We have optimised our booking experience to be uncomplicated and straightforward,
+   760→            addressing the fast-paced needs of the Scottish beauty scene. From 30-second instant
+   761→            quote and free site survey to first clean in under a week &mdash; no friction, no
+   762→            waiting, no surprises. Just a pristine salon, every morning, every appointment, and a
+   763→            compliance file that&rsquo;s audit-ready the day your environmental health officer or
+   764→            Care Inspectorate inspector walks in.
+   765→          </p>
+   766→        </motion.div>
+   767→
+   768→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   769→          {/* Connector line */}
+   770→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   771→
+   772→          {BOOKING_STEPS.map((step, i) => {
+   773→            const Icon = step.icon;
+   774→            return (
+   775→              <motion.div
+   776→                key={step.step}
+   777→                initial={{ opacity: 0, y: 24 }}
+   778→                whileInView={{ opacity: 1, y: 0 }}
+   779→                viewport={{ once: true, margin: "-40px" }}
+   780→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   781→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   782→              >
+   783→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   784→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   785→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   786→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   787→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   788→                    {step.step}
+   789→                  </span>
+   790→                </div>
+   791→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   792→                  {step.title}
+   793→                </h3>
+   794→                <p
+   795→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   796→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   797→                />
+   798→              </motion.div>
+   799→            );
+   800→          })}
+   801→        </div>
+   802→
+   803→        <motion.div
+   804→          initial={{ opacity: 0, y: 16 }}
+   805→          whileInView={{ opacity: 1, y: 0 }}
+   806→          viewport={{ once: true }}
+   807→          transition={{ duration: 0.5, delay: 0.3 }}
+   808→          className="text-center mt-10"
+   809→        >
+   810→          <Button
+   811→            size="lg"
+   812→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   813→            asChild
+   814→          >
+   815→            <Link href="/quote">
+   816→              Request Your 30-Second Instant Quote
+   817→              <ArrowRight className="w-5 h-5" />
+   818→            </Link>
+   819→          </Button>
+   820→        </motion.div>
+   821→      </div>
+   822→    </section>
+   823→  );
+   824→}
+   825→
+   826→// ============================================================
+   827→// Section 5 - Solutions for Every Business Stage
+   828→// (Semantic H2: "Solutions for Every Business Stage")
+   829→// Brief drops the interlinking prefix per the cleanup rules.
+   830→// Image-topped cards with internal links to specialist services.
+   831→// All 4 card descriptions are ReactNode values (containing an
+   832→// inline <Link> per the brief) - rendered via the
+   833→// typeof sol.description === "string" check.
+   834→// ============================================================
+   835→
+   836→type InterlinkSolution = {
+   837→  icon: typeof Sparkles;
+   838→  title: string;
+   839→  href: string;
+   840→  image: string;
+   841→  imageAlt: string;
+   842→  description: ReactNode;
+   843→  cta: string;
+   844→};
+   845→
+   846→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   847→  {
+   848→    icon: KeyRound,
+   849→    title: "New Salon Launch &middot; End of Tenancy Cleaning",
+   850→    href: "/services/move-in-out-cleaning",
+   851→    image: IMG.leaseSpring,
+   852→    imageAlt: "Pre-launch deep clean of a new Scottish salon premises combined with End of Tenancy Cleaning protocol before opening day",
+   853→    description: (
+   854→      <>
+   855→        Opening a new location? Our{" "}
+   856→        <Link
+   857→          href="/services/move-in-out-cleaning"
+   858→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   859→        >
+   860→          End of Tenancy Cleaning
+   861→        </Link>{" "}
+   862→        protocol ensures your premises are front-line ready for your grand opening. Every surface
+   863→        detailed top-to-bottom &mdash; the same trusted, vetted crew, the same child-safe eco
+   864→        chemistry, the same signed cleaning log after every visit &mdash; so your opening day
+   865→        photographs, your launch event, and your first client appointments all start from a
+   866→        &ldquo;speechlessly spotless&rdquo; baseline.
+   867→      </>
+   868→    ),
+   869→    cta: "Explore end of tenancy cleaning",
+   870→  },
+   871→  {
+   872→    icon: Hammer,
+   873→    title: "Post-Renovation &middot; After Builders Clean",
+   874→    href: "/services/post-construction-cleaning",
+   875→    image: IMG.leaseBuilders,
+   876→    imageAlt: "Post-shopfitting cleanup removing fine construction dust from a refurbished Scottish salon before reopening day",
+   877→    description: (
+   878→      <>
+   879→        If your salon has had home improvements or shopfitting, our{" "}
+   880→        <Link
+   881→          href="/services/post-construction-cleaning"
+   882→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   883→        >
+   884→          After Builders Clean
+   885→        </Link>{" "}
+   886→        is designed to remove heavy layers of builders&rsquo; dust. Fine dust left on styling
+   887→        stations, mirrors, treatment-room couches, or retail shelves undermines the customer-trust
+   888→        signal the moment the salon re-opens &mdash; we vacuum, damp-wipe, and protect every
+   889→        surface before the dust has a chance to damage your clients&rsquo; experience or your
+   890→        freshly-painted finishes.
+   891→      </>
+   892→    ),
+   893→    cta: "Explore after builders cleaning",
+   894→  },
+   895→  {
+   896→    icon: Sparkles,
+   897→    title: "Intensive Maintenance &middot; Deep House Cleaning",
+   898→    href: "/services/deep-house-cleaning",
+   899→    image: IMG.leaseTenancy,
+   900→    imageAlt: "Twice-yearly intensive deep clean of a Scottish salon facility combined with Deep House Cleaning protocol to reach the unreachable areas",
+   901→    description: (
+   902→      <>
+   903→        Book a{" "}
+   904→        <Link
+
+[showing lines 455-904 of 1365; use offset=905 with limit to continue reading]

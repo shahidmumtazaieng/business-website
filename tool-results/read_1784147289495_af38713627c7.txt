@@ -1,0 +1,452 @@
+   510→            return (
+   511→              <motion.div
+   512→                key={card.title}
+   513→                initial={{ opacity: 0, y: 24 }}
+   514→                whileInView={{ opacity: 1, y: 0 }}
+   515→                viewport={{ once: true, margin: "-40px" }}
+   516→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   517→                className="bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm flex flex-col sm:flex-row items-start gap-5"
+   518→              >
+   519→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   520→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   521→                </div>
+   522→                <div>
+   523→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   524→                    {card.title}
+   525→                  </h3>
+   526→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   527→                    {typeof card.description === "string" ? (
+   528→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   529→                    ) : (
+   530→                      card.description
+   531→                    )}
+   532→                  </p>
+   533→                </div>
+   534→              </motion.div>
+   535→            );
+   536→          })}
+   537→        </div>
+   538→      </div>
+   539→    </section>
+   540→  );
+   541→}
+   542→
+   543→// ============================================================
+   544→// Section 3 - Our Total Glass & Partition Maintenance Checklist
+   545→// (Semantic H2: "Our Total Glass & Partition Maintenance Checklist")
+   546→// Brief-specific section with 3 H3 sub-sections (like VCT pattern):
+   547→//   1. Internal Partition & Glazing Care (3 items)
+   548→//   2. Specialized High-Reach & External Systems (3 items)
+   549→//   3. Often-Missed Technical Details (2 items)
+   550→// Carries the id="checklist" anchor that the CTA buttons link to.
+   551→// Per the brief: NO intro paragraphs on the 3 checklist cards
+   552→// (just H3 title + sub-points). ALL sub-point bodies in ALL 3
+   553→// cards are plain strings per the brief (no inline Links), but
+   554→// typed as ReactNode (via ChecklistPoint.text) for codebase
+   555→// consistency.
+   556→// ============================================================
+   557→
+   558→type ChecklistPoint = {
+   559→  title: string;
+   560→  text: ReactNode;
+   561→};
+   562→
+   563→const CHECKLIST_ITEMS: {
+   564→  icon: typeof Building2;
+   565→  image: string;
+   566→  imageAlt: string;
+   567→  title: string;
+   568→  description: string;
+   569→  points: ChecklistPoint[];
+   570→}[] = [
+   571→  {
+   572→    icon: SprayCan,
+   573→    image: IMG.checklistInternal,
+   574→    imageAlt:
+   575→      "Maundy Clean glass partition cleaning specialist squeegeeing a frameless internal glass partition to a streak-free crystal-clear finish in a Scottish commercial office using pure-water de-ionised technique",
+   576→    title: "1. Internal Partition & Glazing Care",
+   577→    description: "",
+   578→    points: [
+   579→      {
+   580→        title: "Fingerprint & Smudge Removal",
+   581→        text: "Meticulous wiping of all glass surfaces to remove oils and build-up. Meeting-room door handles, lift-lobby push-plates, reception entry doors, partition corners in busy corridors &mdash; every high-touch glass surface in a Scottish commercial office accumulates a film of human sebum (the natural oil on skin) that bonds to glass within hours and turns cloudy grey within days. We use pure-water de-ionised application with a professional T-bar, squeegee off with an Ettore or Unger squeegee, and detail the edges with a lint-free microfibre cloth. The result is genuinely streak-free glass &mdash; not the &ldquo;spray-and-wipe&rdquo; smearing that most cleaning contractors deliver. For stubborn oily residues on door handles and push-plates, a pH-neutral plant-derived degreaser (citrus-oil based, biodegradable, food-safe) cuts the oil without leaving a chemical film. The fingerprint removal that restores the &ldquo;showcase&rdquo; impression your interior designer specified the glass for.",
+   582→      },
+   583→      {
+   584→        title: "Frame & Track Detailing",
+   585→        text: "Meticulously wiping all visible skirting boards, door frames, and glass tracks as standard. Frames and tracks are the most-neglected surfaces in commercial glass cleaning &mdash; the contractor cleans the glass, leaves the dust in the track, and the dust blows back onto the glass the moment the door slides open. We vacuum aluminium partition tracks (the sliding-door channels that collect grit, dust, and debris), wipe down all visible skirting boards and door frames (aluminium, steel, or timber &mdash; each with the right chemistry), detail the hinges and pivots on swing doors (dust traps), and hand-wipe every linear metre of frame edge. Stainless-steel fittings (handles, hinges, brackets) polished with stainless-steel cleaner (not glass cleaner &mdash; it smears). The perimeter work that separates a &ldquo;glass clean&rdquo; from a &ldquo;partition reset&rdquo; &mdash; and the work your facilities manager notices first on the snagging walk.",
+   586→      },
+   587→      {
+   588→        title: "Streak-Free Polishing",
+   589→        text: "Professional buffing of glass to ensure a crystal-clear appearance that maximizes natural light. The final stage of every glass-clean is the polish. After squeegeeing, we inspect each pane with a flashlight at an angle (the same test your facilities manager uses) to flag any remaining streaks, smears, or drip marks. Streaks are buffed out with a fresh lint-free microfibre cloth and a fine mist of de-ionised water. Smears are re-squeegeed. Drip marks (where solution pooled at the bottom of the pane) are detailed and dried. The result is glass that maximizes the natural light transmission the partition was installed for &mdash; the showcase impression that signals &ldquo;this business is cared for&rdquo; to every visitor, tenant, and inspector who walks in. The level of finish that most contractors skip because it&rsquo;s &ldquo;too time-consuming&rdquo; &mdash; at MaundyClean, it&rsquo;s in every brief.",
+   590→      },
+   591→    ],
+   592→  },
+   593→  {
+   594→    icon: Mountain,
+   595→    image: IMG.checklistHighReach,
+   596→    imageAlt:
+   597→      "Maundy Clean glass partition cleaning specialist using Reach-and-Wash telescopic carbon-fibre poles and Rope Access to clean high-reach internal and external glazing in a Scottish commercial property",
+   598→    title: "2. Specialized High-Reach & External Systems",
+   599→    description: "",
+   600→    points: [
+   601→      {
+   602→        title: "Reach and Wash System",
+   603→        text: "Using lightweight telescopic poles to reach difficult areas safely and effectively from the ground. Our Reach-and-Wash system uses carbon-fibre telescopic poles up to 65 feet (20m) in length, fed with pure de-ionised water from a vehicle-mounted tank, with a brush-head at the top that agitates the dirt while the pure water rinses it away. No ladders, no MEWP, no scaffolding &mdash; we clean high-reach internal atrium glazing and external curtain-walling from the safety of the ground. The pure water dries spot-free (no mineral residue), the brush-head is the only thing that touches the glass (no metal squeegee blades on coated or solar-control glass), and the system is HSE-compliant for working at height without the cost and disruption of MEWP hire. Especially valuable for Glasgow IFSD corporate towers, Edinburgh New Town atria, and Aberdeen harbour-side offices where ground-level access is constrained.",
+   604→      },
+   605→      {
+   606→        title: "Complex Access Solutions",
+   607→        text: "For surfaces exceeding standard heights, we provide specialist teams trained in Rope Access, Mobile Platforms, and Cradles. Atrium high-reach glazing above 20m, curtain-walling above 65 feet, sloped skylights, glass roofs, and building-perimeter glazing where Reach-and-Wash poles cannot reach &mdash; we deploy IRATA-trained Rope Access technicians (the same qualification used by steeplejacks and offshore maintenance crews), IPAF-certified Mobile Platform operators (cherry-picker and scissor-lift), and BMU (Building Maintenance Unit) cradle operators for buildings with permanent cradle systems. Every complex-access job starts with a site survey and Risk Assessment &amp; Method Statement &mdash; the access method is engineered for the specific glass, the specific building, and the specific operational window. Rope Access is often the most cost-effective solution for high-reach glass &mdash; no MEWP hire, no road closures, no scaffolding, and a smaller team on site. We hold &pound;5m public liability covering all access methods.",
+   608→      },
+   609→      {
+   610→        title: "Fascia & Gutter Refresh",
+   611→        text: "We can extend our services to include the cleaning of external fascias and gutter cleaning to maintain your building&rsquo;s total curb appeal. The external fascia (the band of cladding between the roofline and the top of the wall) and the gutters (the channels that carry rainwater off the roof) are the building&rsquo;s first impression &mdash; and they collect the same city-centre dust, traffic film, and biological growth (algae, moss, lichen) that coats your glazing. We refresh external fascias (PVC, aluminium, timber, render &mdash; each with the right chemistry), clear and clean gutters (hand-cleared of leaves and debris, then flushed with low-pressure water to confirm flow), and clean downpipes externally. The result is a building perimeter that looks as cared-for as the interior &mdash; the curb-appeal refresh that signals &ldquo;this business is cared for top-to-bottom&rdquo; to every visitor, tenant, and prospective client who walks in.",
+   612→      },
+   613→    ],
+   614→  },
+   615→  {
+   616→    icon: FileText,
+   617→    image: IMG.checklistDetails,
+   618→    imageAlt:
+   619→      "Maundy Clean glass partition cleaning specialist detailing entry phone systems, internal glass signage, and mirror restoration in a Scottish commercial reception and washroom area",
+   620→    title: "3. Often-Missed Technical Details",
+   621→    description: "",
+   622→    points: [
+   623→      {
+   624→        title: "Entry Phone & Signage",
+   625→        text: "Cleaning glass entry systems and internal glass signage to ensure a professional first impression. The first thing a visitor touches at your reception is the glass entry phone &mdash; and the first thing they read is the internal glass signage (your logo etched onto the partition, your meeting-room name vinyl-applied to the door). These are the highest-touch and highest-visibility surfaces in your entire premises, and they are almost never in a standard cleaning contract. We clean glass entry phone keypads (sanitised, not just wiped &mdash; cold and flu viruses survive on glass for up to 24 hours), intercom speaker grilles (vacuumed, then damp-wiped), door-release buttons (sanitised), and the surrounding glass on the entry door (the smudge-zone where every visitor puts their hand to push the door open). Internal glass signage &mdash; vinyl-applied logos, etched meeting-room names, frosted privacy panels &mdash; detailed with the right chemistry (vinyl and etched glass need a gentler chemistry than annealed glass). The first-impression detail that most contractors skip.",
+   626→      },
+   627→      {
+   628→        title: "Mirror Restoration",
+   629→        text: "Deep cleaning and polishing of all mirrors in communal and washroom areas to a high shine. Mirrors are technically glass &mdash; but they require a different cleaning protocol. The silvering on the back of a mirror is delicate (aggressive chemistry or excess water at the edges can seep behind the frame and oxidise the silvering, producing black edges within months). We clean mirrors with a minimal-liquid technique: de-ionised water applied to the cloth (not sprayed onto the glass), wiped in one direction (not circular &mdash; circular marks the silvering), and buffed dry with a lint-free cloth. Edges detailed with a dry microfibre (no liquid near the frame). Particularly critical for hotel bathrooms, restaurant washrooms, gym changing rooms, and corporate reception feature-walls &mdash; the mirrored surfaces that visitors inspect closely and that signal the standard of care throughout the building. The detail work that separates a &ldquo;mirror wipe&rdquo; from a &ldquo;mirror restoration&rdquo; &mdash; and the work that extends mirror life by years.",
+   630→      },
+   631→    ],
+   632→  },
+   633→];
+   634→
+   635→export function GlassPartitionCleaningSeoChecklist() {
+   636→  return (
+   637→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   638→      <div className="max-w-[1400px] mx-auto px-6">
+   639→        <motion.div
+   640→          initial={{ opacity: 0, y: 20 }}
+   641→          whileInView={{ opacity: 1, y: 0 }}
+   642→          viewport={{ once: true, margin: "-80px" }}
+   643→          transition={{ duration: 0.5 }}
+   644→          className="max-w-3xl mb-12"
+   645→        >
+   646→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   647→            Beyond the standard spray-and-wipe
+   648→          </span>
+   649→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   650→            Our Total Glass &amp; Partition Maintenance Checklist
+   651→          </h2>
+   652→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   653→            Our recurring cleaning for internal glass follows a rigorous,
+   654→            agency-approved checklist designed to address every situation
+   655→            from basement windows to high-reach office glazing. From internal
+   656→            partition and glazing care through specialized high-reach and
+   657→            external systems to the often-missed technical details that
+   658→            separate a &ldquo;glass clean&rdquo; from a &ldquo;partition
+   659→            reset&rdquo; &mdash; below is the scope we deliver as standard,
+   660→            regardless of building type, footprint, or occupancy schedule.
+   661→          </p>
+   662→        </motion.div>
+   663→
+   664→        <div className="grid lg:grid-cols-3 gap-6">
+   665→          {CHECKLIST_ITEMS.map((item, i) => {
+   666→            const Icon = item.icon;
+   667→            return (
+   668→              <motion.div
+   669→                key={item.title}
+   670→                initial={{ opacity: 0, y: 24 }}
+   671→                whileInView={{ opacity: 1, y: 0 }}
+   672→                viewport={{ once: true, margin: "-40px" }}
+   673→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   674→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   675→              >
+   676→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   677→                  <img
+   678→                    src={item.image}
+   679→                    alt={item.imageAlt}
+   680→                    className="absolute inset-0 w-full h-full object-cover"
+   681→                    loading="lazy"
+   682→                  />
+   683→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   684→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   685→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   686→                  </div>
+   687→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   688→                    {item.title}
+   689→                  </h3>
+   690→                </div>
+   691→                <div className="p-6 flex-1 flex flex-col">
+   692→                  {item.description ? (
+   693→                    <p
+   694→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   695→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   696→                    />
+   697→                  ) : null}
+   698→                  <ul className="space-y-3 mt-auto">
+   699→                    {item.points.map((point) => {
+   700→                      const PointIcon = CheckCircle2;
+   701→                      return (
+   702→                        <li
+   703→                          key={point.title}
+   704→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   705→                        >
+   706→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   707→                          <span>
+   708→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   709→                            &mdash;{" "}
+   710→                            {typeof point.text === "string" ? (
+   711→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   712→                            ) : (
+   713→                              point.text
+   714→                            )}
+   715→                          </span>
+   716→                        </li>
+   717→                      );
+   718→                    })}
+   719→                  </ul>
+   720→                </div>
+   721→              </motion.div>
+   722→            );
+   723→          })}
+   724→        </div>
+   725→      </div>
+   726→    </section>
+   727→  );
+   728→}
+   729→
+   730→
+   731→// ============================================================
+   732→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   733→// (Semantic H2: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   734→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   735→// (FileText imported for safety/template parity even if not used.)
+   736→// Brief HAS NO [H3] marker on this heading, so we use <h2>
+   737→// (matches the VCT pattern when no [H3] marker is present).
+   738→// ============================================================
+   739→
+   740→const BOOKING_STEPS = [
+   741→  {
+   742→    icon: ClipboardCheck,
+   743→    step: "01",
+   744→    title: "Site Assessment & Quote",
+   745→    description:
+   746→      "Contact us to organize a visit. We will assess your glazing shapes and sizes to determine the most appropriate cleaning methods. On-site glass audit: every glass zone mapped (meeting-room partitions, lift-lobby glazing, reception entry doors, atrium high-reach glazing, balustrades, mirror walls, internal signage, external curtain-walling, fascias and gutters), glass type identified (annealed, toughened BS EN 12150, laminated BS EN ISO 12543, mirrored, low-E coated, anti-reflective coated, privacy-filmed), frame material assessed (aluminium, steel, frameless, timber), access method assessed per zone (ground-level squeegee, step-ladder, scaffold-tower, Reach-and-Wash telescopic pole up to 65 feet, MEWP cherry-picker or scissor-lift, Rope Access), occupancy constraints reviewed (in-hours presence, after-hours unsupervised, key-safes and alarm codes), operational window confirmed (overnight, weekend, holiday closure). Risk Assessment &amp; Method Statement prepared. HSE working-at-height compliance check. ISO 14001 environmental compliance confirmed. Fixed-price quote within 2 business days &mdash; no on-the-day upsells.",
+   747→  },
+   748→  {
+   749→    icon: UserCheck,
+   750→    step: "02",
+   751→    title: "Professional Matching",
+   752→    description:
+   753→      "We hand-pick a team of trained technicians who follow strict safety protocols and regular check-ins. Your allocated glazing crew is PVG-checked, uniformed, and trained in glass-specific protocols &mdash; pure-water de-ionised systems, Reach-and-Wash telescopic pole use, Rope Access (IRATA-certified), Mobile Platform operation (IPAF-certified cherry-picker and scissor-lift), professional squeegee technique (Ettore or Unger), frame and track detailing, mirror restoration, fascia and gutter refresh, and ISO 14001 environmental methodology. We brief the crew on your glass audit (glass type per zone, frame material, coating register, access map), your access window (overnight, weekend, holiday closure), your occupancy constraints (occupied office, hotel with guests in the building, retail with trading hours), your premium finishes (mirror walls, etched signage, frosted privacy panels, vinyl-applied logos), and any operational constraints on chemistry or method. The same crew returns every visit, building real knowledge of your premises and your inspection regime.",
+   754→  },
+   755→  {
+   756→    icon: Sparkles,
+   757→    step: "03",
+   758→    title: "Enjoy a Pristine Workplace",
+   759→    description:
+   760→      "Experience glass that looks, smells, and feels fresh every single day, backed by our MaundyClean satisfaction guarantee. You receive a signed glass-care log after every visit (crew name, time in/out, areas treated, glass type per zone, access method per zone, chemistry used, defects flagged), arrival and departure times, before-and-after photographs for major work, and issue-flagging for coating degradation, seal failure, frame corrosion, hinge wear, or scratched glass &mdash; before they undermine a client visit, an environmental health inspection, or a guest impression. From &pound;14 per hour for routine partition maintenance through to &pound;395 per visit for a full atrium high-reach clean with Rope Access. POA for external curtain-walling programmes with Reach-and-Wash or BMU cradle access. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   761→  },
+   762→];
+   763→
+   764→export function GlassPartitionCleaningSeoBooking() {
+   765→  return (
+   766→    <section className="py-16 lg:py-24 bg-background">
+   767→      <div className="max-w-[1400px] mx-auto px-6">
+   768→        <motion.div
+   769→          initial={{ opacity: 0, y: 20 }}
+   770→          whileInView={{ opacity: 1, y: 0 }}
+   771→          viewport={{ once: true, margin: "-80px" }}
+   772→          transition={{ duration: 0.5 }}
+   773→          className="text-center mb-14"
+   774→        >
+   775→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   776→            Hassle-free booking
+   777→          </span>
+   778→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   779→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   780→          </h2>
+   781→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   782→            We have optimized our booking experience to be uncomplicated and
+   783→            straightforward, providing the responsive management support
+   784→            Scottish business owners demand. From free site assessment and
+   785→            quote through specialist crew matching to a pristine workplace
+   786→            &mdash; no friction, no waiting, no surprises. Just streak-free
+   787→            glass, every partition, every door, every balustrade, and a
+   788→            compliance file that&rsquo;s audit-ready the day a facilities
+   789→            director, insurer, or operations manager walks in.
+   790→          </p>
+   791→        </motion.div>
+   792→
+   793→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   794→          {/* Connector line */}
+   795→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   796→
+   797→          {BOOKING_STEPS.map((step, i) => {
+   798→            const Icon = step.icon;
+   799→            return (
+   800→              <motion.div
+   801→                key={step.step}
+   802→                initial={{ opacity: 0, y: 24 }}
+   803→                whileInView={{ opacity: 1, y: 0 }}
+   804→                viewport={{ once: true, margin: "-40px" }}
+   805→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   806→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   807→              >
+   808→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   809→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   810→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   811→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   812→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   813→                    {step.step}
+   814→                  </span>
+   815→                </div>
+   816→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   817→                  {step.title}
+   818→                </h3>
+   819→                <p
+   820→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   821→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   822→                />
+   823→              </motion.div>
+   824→            );
+   825→          })}
+   826→        </div>
+   827→
+   828→        <motion.div
+   829→          initial={{ opacity: 0, y: 16 }}
+   830→          whileInView={{ opacity: 1, y: 0 }}
+   831→          viewport={{ once: true }}
+   832→          transition={{ duration: 0.5, delay: 0.3 }}
+   833→          className="text-center mt-10"
+   834→        >
+   835→          <Button
+   836→            size="lg"
+   837→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   838→            asChild
+   839→          >
+   840→            <Link href="/quote">
+   841→              Request Your Bespoke Glass Quote Today
+   842→              <ArrowRight className="w-5 h-5" />
+   843→            </Link>
+   844→          </Button>
+   845→        </motion.div>
+   846→      </div>
+   847→    </section>
+   848→  );
+   849→}
+   850→
+   851→// ============================================================
+   852→// Section 5 - Solutions for Every Property Need
+   853→// (Semantic H2: "Solutions for Every Property Need")
+   854→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   855→// Image-topped cards with internal links to specialist services.
+   856→// All 4 card descriptions are ReactNode values (each contains an
+   857→// inline <Link> per the brief) - rendered via the
+   858→// typeof sol.description === "string" check.
+   859→// ============================================================
+   860→
+   861→type InterlinkSolution = {
+   862→  icon: typeof Sparkles;
+   863→  title: string;
+   864→  href: string;
+   865→  image: string;
+   866→  imageAlt: string;
+   867→  description: ReactNode;
+   868→  cta: string;
+   869→};
+   870→
+   871→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   872→  {
+   873→    icon: Home,
+   874→    title: "Maintaining the Sanctuary",
+   875→    href: "/services/recurring-home-cleaning",
+   876→    image: IMG.leaseRecurring,
+   877→    imageAlt:
+   878→      "Recurring home cleaning bringing glass-partition-cleaning standards of meticulous pure-water maintenance to a Scottish private residence on a weekly or fortnightly basis",
+   879→    description: (
+   880→      <>
+   881→        For your personal residence, our{" "}
+   882→        <Link
+   883→          href="/services/recurring-home-cleaning"
+   884→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   885→        >
+   886→          Recurring Home Cleaning
+   887→        </Link>{" "}
+   888→        brings this same level of meticulous glass care to your private
+   889→        sanctuary. The same vetted uniformed crew, the same pure-water
+   890→        de-ionised technique, the same child-safe eco chemistry, and the
+   891→        same signed cleaning log after every visit &mdash; so the
+   892→        &ldquo;Maundy&rdquo; standard you see at work follows you home.
+   893→      </>
+   894→    ),
+   895→    cta: "Explore recurring home cleaning",
+   896→  },
+   897→  {
+   898→    icon: KeyRound,
+   899→    title: "Property Transitions",
+   900→    href: "/services/move-in-out-cleaning",
+   901→    image: IMG.leaseTenancy,
+   902→    imageAlt:
+   903→      "End of tenancy cleaning combined with internal glass partition cleaning to ensure a Scottish commercial office unit passes final inspection and lease handover",
+   904→    description: (
+   905→      <>
+   906→        Moving offices? Our{" "}
+   907→        <Link
+   908→          href="/services/move-in-out-cleaning"
+   909→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   910→        >
+   911→          End of Tenancy Cleaning
+   912→        </Link>{" "}
+   913→        ensures all glazing and partitions are front-line ready for handover
+   914→        and pass all final inspections. Every glass surface detailed
+   915→        top-to-bottom, deposit-back guarantees met, and the same trusted
+   916→        vetted crew your glass-partition team knows &mdash; so your unit
+   917→        handover starts from a &ldquo;speechlessly spotless&rdquo; baseline.
+   918→      </>
+   919→    ),
+   920→    cta: "Explore end of tenancy cleaning",
+   921→  },
+   922→  {
+   923→    icon: Hammer,
+   924→    title: "Post-Renovation",
+   925→    href: "/services/post-construction-cleaning",
+   926→    image: IMG.leaseBuilders,
+   927→    imageAlt:
+   928→      "After builders clean removing heavy layers of builders dust from internal glass partitions and frames in a Scottish post-construction commercial office fit-out",
+   929→    description: (
+   930→      <>
+   931→        If your workspace has undergone refitting, our{" "}
+   932→        <Link
+   933→          href="/services/post-construction-cleaning"
+   934→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   935→        >
+   936→          After Builders Clean
+   937→        </Link>{" "}
+   938→        is essential for removing heavy layers of builders&rsquo; dust from
+   939→        glass surfaces. Construction dust on internal partitions and frames
+   940→        re-enters the air for months after a fit-out &mdash; we capture it
+   941→        at source before it becomes a long-term air-quality problem.
+   942→      </>
+   943→    ),
+   944→    cta: "Explore after builders cleaning",
+   945→  },
+   946→  {
+   947→    icon: HeartPulse,
+   948→    title: "Intensive Hygiene Resets",
+   949→    href: "/services/disinfection-services",
+   950→    image: IMG.leaseAntiviral,
+   951→    imageAlt:
+   952→      "Antiviral sanitisation and electrostatic disinfection of high-touch glass doors and entry systems in a Scottish commercial reception alongside routine glass partition cleaning",
+   953→    description: (
+   954→      <>
+   955→        Ask about our{" "}
+   956→        <Link
+   957→          href="/services/disinfection-services"
+   958→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   959→        >
+
+[showing lines 510-959 of 1423; use offset=960 with limit to continue reading]

@@ -1,0 +1,452 @@
+   400→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   401→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   402→                    A Local Partner, Not an Impersonal Agency
+   403→                  </span>
+   404→                </div>
+   405→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   406→                  Employed, vetted, uniformed, and trained in food-safe catering etiquette. Same crew
+   407→                  every visit &mdash; never a rotating cast of strangers.
+   408→                </p>
+   409→              </div>
+   410→            </div>
+   411→            <motion.div
+   412→              animate={{ y: [0, -8, 0] }}
+   413→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   414→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   415→            >
+   416→              <div className="flex items-center gap-2">
+   417→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   418→                  <Star className="w-4 h-4 text-[var(--gold-dark)] fill-[var(--gold-dark)]" />
+   419→                </div>
+   420→                <div>
+   421→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   422→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m cover</div>
+   423→                </div>
+   424→              </div>
+   425→            </motion.div>
+   426→          </motion.div>
+   427→
+   428→          {/* Copy side */}
+   429→          <motion.div
+   430→            initial={{ opacity: 0, y: 20 }}
+   431→            whileInView={{ opacity: 1, y: 0 }}
+   432→            viewport={{ once: true, margin: "-80px" }}
+   433→            transition={{ duration: 0.5 }}
+   434→            className="order-1 lg:order-2"
+   435→          >
+   436→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   437→              Why choose Maundy Clean
+   438→            </span>
+   439→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   440→              Why MaundyClean is Scotland&rsquo;s Authority in Café Maintenance
+   441→            </h2>
+   442→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   443→              While national franchises often provide inconsistent staff, MaundyClean focuses on
+   444→              building high-trust, long-term relationships. We address the primary priorities of
+   445→              business owners: reliability, flexibility, and impeccable standards. By combining
+   446→              vetted uniformed teams, the same dedicated crew every visit, flexible out-of-hours
+   447→              scheduling, and child-safe eco-friendly supplies as standard, we project the high
+   448→              standards your customers expect &mdash; and the audit-ready documentation your EHO
+   449→              inspector demands.
+   450→            </p>
+   451→
+   452→            <div className="space-y-3">
+   453→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   454→                const Icon = card.icon;
+   455→                return (
+   456→                  <div
+   457→                    key={card.title}
+   458→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   459→                  >
+   460→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   461→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   462→                    </div>
+   463→                    <div>
+   464→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   465→                        {card.title}
+   466→                      </h3>
+   467→                      <p
+   468→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   469→                        dangerouslySetInnerHTML={{ __html: card.description }}
+   470→                      />
+   471→                    </div>
+   472→                  </div>
+   473→                );
+   474→              })}
+   475→            </div>
+   476→          </motion.div>
+   477→        </div>
+   478→
+   479→        {/* Third + fourth cards as a 2-column strip */}
+   480→        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+   481→          {TRUST_CARDS.slice(2, 4).map((card, i) => {
+   482→            const Icon = card.icon;
+   483→            return (
+   484→              <motion.div
+   485→                key={card.title}
+   486→                initial={{ opacity: 0, y: 20 }}
+   487→                whileInView={{ opacity: 1, y: 0 }}
+   488→                viewport={{ once: true, margin: "-40px" }}
+   489→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   490→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   491→              >
+   492→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   493→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   494→                </div>
+   495→                <div>
+   496→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   497→                    {card.title}
+   498→                  </h3>
+   499→                  <p
+   500→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   501→                    dangerouslySetInnerHTML={{ __html: card.description }}
+   502→                  />
+   503→                </div>
+   504→              </motion.div>
+   505→            );
+   506→          })}
+   507→        </div>
+   508→      </div>
+   509→    </section>
+   510→  );
+   511→}
+   512→
+   513→// ============================================================
+   514→// Section 3 - Our Comprehensive Café & Coffee Shop Cleaning Checklist
+   515→// (Semantic H2: "Our Comprehensive Café & Coffee Shop Cleaning Checklist")
+   516→// Brief-specific section with 3 H3 sub-sections:
+   517→//   1. Front-of-House & Customer Areas
+   518→//   2. Counter & Service Areas (The Technical Hub)
+   519→//   3. Back-of-House & Kitchen Hygiene
+   520→// Carries the id="checklist" anchor that the CTA buttons link to.
+   521→// ============================================================
+   522→
+   523→const CHECKLIST_ITEMS = [
+   524→  {
+   525→    icon: Crown,
+   526→    image: IMG.checklistFront,
+   527→    imageAlt: "Maundy Clean crew polishing a café front-of-house dining area, espresso bar, and fixtures in Scotland",
+   528→    title: "1. Front-of-House & Customer Areas",
+   529→    description:
+   530→      "The seating zone and shopfront are where the customer decides whether to stay &mdash; or walk past. A sticky table, a smudged glass door, or a streaked mirror chips at the customer&rsquo;s impression of your brand within seconds &mdash; and a single Tripadvisor review mentioning &ldquo;dirty&rdquo; can cost you 30 covers a day. Our FOH protocol protects the customer experience without disrupting service: light touch during trading (table-tops sanitised between covers, glass polished, floors swept), full reset after close. The barista zone gets full high-touch disinfection on every close: portafilter handles, group-head spouts, steam-wand tips, POS terminal, card reader, menus, and condiment caddies.",
+   531→    points: [
+   532→      {
+   533→        title: "Seating & Table Sanitization",
+   534→        text: "Meticulous disinfecting of all surfaces to ensure a safe and inviting dining experience. Table-tops, chair arms, booth banquettes, high-chair trays, and condiment caddies are sanitised with EN 1276 food-safe bactericide between every cover &mdash; no perfume, no taint, no residue. Customer-facing touch-points (door handles, light switches, POS terminal, card reader, menus) are disinfected on every visit. The customer&rsquo;s first 30 seconds set the tone of the whole visit.",
+   535→      },
+   536→      {
+   537→        title: "Surface Polishing",
+   538→        text: "Dusting and wiping of displays, fixtures, and ornaments. We polish wood, glass, and mirrors to a streak-free shine. Pastry-display glass, cake domes, light fixtures, signage, and shelving are detailed with the correct chemistry &mdash; pH-neutral for premium wood, lint-free cloths for glass and chrome, anti-static for acrylic menu boards. Your barista will never arrive to a smudged portafilter handle or a sticky grinder collar.",
+   539→      },
+   540→      {
+   541→        title: "Floor Care & Degreasing",
+   542→        text: "Intensive vacuuming and mopping of high-traffic flooring, with specialized degreasing to remove coffee spills and footfall grime. We use the right method for the right surface &mdash; low-moisture scrubbing for vinyl and LVT, dry-only methods for laminate joins, machine-scrubbing for tile grout. Coffee-oil spills, milk-splash residue, sugar-stickiness, and heel marks are spot-treated. A polished café floor reflects the lighting and makes the whole room feel premium.",
+   543→      },
+   544→      {
+   545→        title: "Inside Window Care",
+   546→        text: "Meticulous cleaning of internal glass to maximize natural light and street-side appeal. We squeegee the inside of all glass doors, storefront windows, internal partitions, and pastry-display glass on every visit, and schedule external window cleaning weekly (or daily for high-street units exposed to bus-stop and traffic grime). Mirrors in washrooms and behind bars are squeegeed, never wiped &mdash; a streaked mirror kills the room&rsquo;s perception of cleanliness.",
+   547→      },
+   548→    ],
+   549→  },
+   550→  {
+   551→    icon: UtensilsCrossed,
+   552→    image: IMG.checklistCounter,
+   553→    imageAlt: "Maundy Clean café crew deep cleaning an espresso machine, grinder, and barista service counter in Scotland",
+   554→    title: "2. Counter & Service Areas (The Technical Hub)",
+   555→    description:
+   556→      "The counter and barista zone are the highest-risk, highest-visibility area in any café &mdash; the &ldquo;technical hub&rdquo; where customers stand to order, watch the espresso shot pull, and judge the standard of your operation. Coffee oils oxidise into a sticky residue within hours; milk residue cultures bacteria in minutes. Our counter protocol uses food-safe, non-taint chemistry and colour-coded microfibre (blue for bar-zone, green for customer-facing, yellow for washroom) &mdash; applied by trained catering-experienced crews who know the difference between a portafilter and a steam wand.",
+   557→    points: [
+   558→      {
+   559→        title: "Equipment Maintenance",
+   560→        text: "Wiping down coffee machines, grinders, and service counters to professional standards. Espresso machine group-heads are backflushed with food-safe detergent, portafilter baskets are soaked in Cafiza, steam-wand tips are soaked in milk-frother cleaner, drip trays are descaled, and the machine housing is polished with a food-safe stainless-steel cleaner. The grinder collar, dosing chamber, and bean hopper are vacuumed and wiped. Counter surfaces, bar-tops, and glass-rails are sanitised with EN 1276 bactericide.",
+   561→      },
+   562→      {
+   563→        title: "Sanitary Dispensing",
+   564→        text: "Cleaning bar and drinks stations, ensuring all high-touch points are bacteria-free. The barista zone gets full high-touch disinfection on every close: portafilter handles, group-head spouts, steam-wand tips, knock-box, grinder collar, scales, tamper, and distribution tools. The cold-drink station, ice-machine scoop, syrup-pump nozzles, and water-dispenser spouts are sanitised. POS terminal, card reader, receipt printer, and menu tablets are disinfected with electronics-safe wipes &mdash; critical for both customer perception and staff health.",
+   565→      },
+   566→      {
+   567→        title: "Washroom Deep Cleaning",
+   568→        text: "Intensive sanitation of ceramic items, toilets, and sinks to the highest industry standards. We descale toilets with a non-abrasive acid, disinfect with an EN 1276-certified bactericide, and polish chrome fittings to a streak-free shine. Mirrors are squeegeed, never wiped. Sanitary bins are checked, emptied, and replaced. Chrome taps, soap dispensers, and door handles are disinfected every visit &mdash; the touch-points your customers actually notice. A dirty café WC = no return visit, full stop.",
+   569→      },
+   570→    ],
+   571→  },
+   572→  {
+   573→    icon: ShieldCheck,
+   574→    image: IMG.checklistKitchen,
+   575→    imageAlt: "Café back-of-house kitchenette being deep sanitised by Maundy Clean crew in Scotland",
+   576→    title: "3. Back-of-House & Kitchen Hygiene",
+   577→    description:
+   578→      "The back-of-house kitchenette is where EHO inspectors look first &mdash; and where most cleaning failures are found. A 60-cover café generates the same cleaning load per square metre as a 150-cover restaurant &mdash; coffee grounds, milk residue, pastry crumbs, condiments, and the constant turnover of fridges and prep surfaces. Our kitchen protocol uses non-damaging formulas and food-safe chemistry &mdash; no chlorine on stainless steel, no caustic on aluminium &mdash; applied by trained catering-experienced crews who know the difference between a defrost cycle and a descale cycle.",
+   579→    points: [
+   580→      {
+   581→        title: "Surface Restoration",
+   582→        text: "Deep cleaning of kitchen equipment, prep surfaces, and splashbacks. Under-counter fridges are degreased inside and out, with seals and drip-trays detailed. Prep surfaces are sanitised with food-safe EN 1276 bactericide; splashbacks are degreased; walls behind the prep zone are wiped down. Stainless-steel worktops are polished to a streak-free shine. Microwave interiors are steam-cleaned, oven interiors are degreased, and the toaster crumb-tray is emptied and washed.",
+   583→      },
+   584→      {
+   585→        title: "Waste Management",
+   586→        text: "Efficient handling of waste and recycling to maintain a clear and hygienic workspace. Coffee grounds are separated for composting or specialist recycling, glass is segregated, food waste is bagged and removed, and the bin area is degreased and sanitised after every close. Recycling stations are audited for compliance with your local authority&rsquo;s segregation rules &mdash; reducing your waste-disposal cost and your environmental footprint. The waste area is the #1 source of fruit-fly infestations in a café &mdash; we eliminate the source.",
+   587→      },
+   588→      {
+   589→        title: "Often-Missed Details",
+   590→        text: "Our cleaners meticulously wipe visible skirting boards, door frames, and even ceiling fixtures as standard. These are the surfaces that customers notice subconsciously &mdash; a dusty vent or a stained grout line undermines a polished counter. We hand-detail every perimeter surface, dust ceiling light fixtures and air-conditioning vents, and wipe down the inside of the windows so the room feels genuinely reset, not just the centre of the floor. Ceiling fixtures, extractor-fan grilles, and light switches are detailed weekly as standard.",
+   591→      },
+   592→    ],
+   593→  },
+   594→];
+   595→
+   596→export function CafeCoffeeShopSeoChecklist() {
+   597→  return (
+   598→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   599→      <div className="max-w-[1400px] mx-auto px-6">
+   600→        <motion.div
+   601→          initial={{ opacity: 0, y: 20 }}
+   602→          whileInView={{ opacity: 1, y: 0 }}
+   603→          viewport={{ once: true, margin: "-80px" }}
+   604→          transition={{ duration: 0.5 }}
+   605→          className="max-w-3xl mb-12"
+   606→        >
+   607→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   608→            Beyond the standard surface wipe
+   609→          </span>
+   610→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   611→            Our Comprehensive Café &amp; Coffee Shop Cleaning Checklist
+   612→          </h2>
+   613→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   614→            Our recurring cleaning for hospitality venues follows a rigorous, agency-approved
+   615→            checklist designed to deliver a &ldquo;speechlessly spotless&rdquo; finish that attracts
+   616→            repeat business. We move beyond the basic surface wipe to deliver technical depth in
+   617→            every area of your café &mdash; from the espresso machine zone through the customer WC
+   618→            to the back-of-house kitchenette. Below is the scope we deliver as standard, regardless
+   619→            of venue size or footfall.
+   620→          </p>
+   621→        </motion.div>
+   622→
+   623→        <div className="grid lg:grid-cols-3 gap-6">
+   624→          {CHECKLIST_ITEMS.map((item, i) => {
+   625→            const Icon = item.icon;
+   626→            return (
+   627→              <motion.div
+   628→                key={item.title}
+   629→                initial={{ opacity: 0, y: 24 }}
+   630→                whileInView={{ opacity: 1, y: 0 }}
+   631→                viewport={{ once: true, margin: "-40px" }}
+   632→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   633→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   634→              >
+   635→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   636→                  <img
+   637→                    src={item.image}
+   638→                    alt={item.imageAlt}
+   639→                    className="absolute inset-0 w-full h-full object-cover"
+   640→                    loading="lazy"
+   641→                  />
+   642→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   643→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   644→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   645→                  </div>
+   646→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   647→                    {item.title}
+   648→                  </h3>
+   649→                </div>
+   650→                <div className="p-6 flex-1 flex flex-col">
+   651→                  <p
+   652→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   653→                    dangerouslySetInnerHTML={{ __html: item.description }}
+   654→                  />
+   655→                  <ul className="space-y-3 mt-auto">
+   656→                    {item.points.map((point) => {
+   657→                      const PointIcon = CheckCircle2;
+   658→                      return (
+   659→                        <li
+   660→                          key={point.title}
+   661→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   662→                        >
+   663→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   664→                          <span>
+   665→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   666→                            &mdash; <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   667→                          </span>
+   668→                        </li>
+   669→                      );
+   670→                    })}
+   671→                  </ul>
+   672→                </div>
+   673→              </motion.div>
+   674→            );
+   675→          })}
+   676→        </div>
+   677→      </div>
+   678→    </section>
+   679→  );
+   680→}
+   681→
+   682→// ============================================================
+   683→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   684→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   685→// ============================================================
+   686→
+   687→const BOOKING_STEPS = [
+   688→  {
+   689→    icon: ClipboardCheck,
+   690→    step: "01",
+   691→    title: "Initial Consultation & Site Survey",
+   692→    description:
+   693→      "Contact us to establish your specific requirements and hours. We walk the venue with your duty manager, identify priority zones (espresso machine zone, barista counter, customer WC, kitchenette, FOH seating), review trading hours and access windows, capture your HACCP plan and COSHH file, and develop a bespoke schedule and standards of excellence that our team will closely adhere to. We send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback.",
+   694→  },
+   695→  {
+   696→    icon: FileText,
+   697→    step: "02",
+   698→    title: "Professional Matching",
+   699→    description:
+   700→      "We hand-pick a team or individual with in-depth knowledge of &ldquo;showcasing&rdquo; requirements and catering hygiene. Your allocated crew lead is briefed on your espresso machine layout, your group-head backflush routine, your milk-wand purge schedule, your pastry-display rotation, and your front-of-house floor plan &mdash; so cleaning happens around the service, not through it. The same crew returns for every scheduled session, building real knowledge of your high-traffic zones, your screen-sensitive surfaces, and your access preferences. We arrive in liveried vehicles, in uniform with photo I.D., with commercial-grade equipment and COSHH-compliant food-safe chemistry.",
+   701→  },
+   702→  {
+   703→    icon: Sparkles,
+   704→    step: "03",
+   705→    title: "Enjoy a Pristine Venue",
+   706→    description:
+   707→      "Experience a space that looks, smells, and feels fresh every single day, backed by our MaundyClean satisfaction guarantee. You receive a signed daily checklist after every visit (cleaner signature, duty manager counter-signature), arrival and departure times, tasks completed, and any issues flagged &mdash; like a leaking under-counter fridge, a blown bulb, or an espresso machine due for descale &mdash; before they become complaints. From &pound;16 per hour for a small independent café through to a fully bespoke retainer for a multi-site specialty coffee group. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   708→  },
+   709→];
+   710→
+   711→export function CafeCoffeeShopSeoBooking() {
+   712→  return (
+   713→    <section className="py-16 lg:py-24 bg-background">
+   714→      <div className="max-w-[1400px] mx-auto px-6">
+   715→        <motion.div
+   716→          initial={{ opacity: 0, y: 20 }}
+   717→          whileInView={{ opacity: 1, y: 0 }}
+   718→          viewport={{ once: true, margin: "-80px" }}
+   719→          transition={{ duration: 0.5 }}
+   720→          className="text-center mb-14"
+   721→        >
+   722→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   723→            Hassle-free booking
+   724→          </span>
+   725→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   726→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   727→          </h3>
+   728→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   729→            We have optimized our booking experience to be uncomplicated and straightforward,
+   730→            addressing the fast-paced needs of the Scottish hospitality scene. From site survey to
+   731→            first clean in under a week &mdash; no friction, no waiting, no surprises. Just a
+   732→            pristine venue, every visit, on schedule.
+   733→          </p>
+   734→        </motion.div>
+   735→
+   736→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   737→          {/* Connector line */}
+   738→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   739→
+   740→          {BOOKING_STEPS.map((step, i) => {
+   741→            const Icon = step.icon;
+   742→            return (
+   743→              <motion.div
+   744→                key={step.step}
+   745→                initial={{ opacity: 0, y: 24 }}
+   746→                whileInView={{ opacity: 1, y: 0 }}
+   747→                viewport={{ once: true, margin: "-40px" }}
+   748→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   749→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   750→              >
+   751→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   752→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   753→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   754→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   755→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   756→                    {step.step}
+   757→                  </span>
+   758→                </div>
+   759→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   760→                  {step.title}
+   761→                </h3>
+   762→                <p
+   763→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   764→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   765→                />
+   766→              </motion.div>
+   767→            );
+   768→          })}
+   769→        </div>
+   770→
+   771→        <motion.div
+   772→          initial={{ opacity: 0, y: 16 }}
+   773→          whileInView={{ opacity: 1, y: 0 }}
+   774→          viewport={{ once: true }}
+   775→          transition={{ duration: 0.5, delay: 0.3 }}
+   776→          className="text-center mt-10"
+   777→        >
+   778→          <Button
+   779→            size="lg"
+   780→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   781→            asChild
+   782→          >
+   783→            <Link href="/quote">
+   784→              Book Your Free Consultation Today
+   785→              <ArrowRight className="w-5 h-5" />
+   786→            </Link>
+   787→          </Button>
+   788→        </motion.div>
+   789→      </div>
+   790→    </section>
+   791→  );
+   792→}
+   793→
+   794→// ============================================================
+   795→// Section 5 - Solutions for Every Business Stage
+   796→// (Semantic H2: "Solutions for Every Business Stage")
+   797→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   798→// Image-topped cards with internal links to specialist services
+   799→// ============================================================
+   800→
+   801→const INTERLINK_SOLUTIONS = [
+   802→  {
+   803→    icon: Sparkles,
+   804→    title: "Seasonal Resets &middot; Deep House Cleaning",
+   805→    href: "/services/deep-house-cleaning",
+   806→    image: IMG.leaseDeep,
+   807→    imageAlt: "Top-to-bottom seasonal deep clean of a Scottish café before the Christmas or Spring rush",
+   808→    description:
+   809→      "Prepare for the Christmas or Spring rush with a top-to-bottom Deep House Cleaning protocol applied to your commercial space. We pull equipment away from walls, detail ceiling vents and high shelving, degrease extraction ductwork, machine-scrub kitchenette floors, and reset the entire venue to a &ldquo;like-new&rdquo; baseline. The single most effective way to start a new trading season with a spotless, EHO-ready café.",
+   810→    cta: "Explore deep house cleaning",
+   811→  },
+   812→  {
+   813→    icon: KeyRound,
+   814→    title: "Property Transitions &middot; End of Tenancy Cleaning",
+   815→    href: "/services/move-in-out-cleaning",
+   816→    image: IMG.leaseTenancy,
+   817→    imageAlt: "Empty café unit being deep cleaned for lease handover by Maundy Clean in Scotland",
+   818→    description:
+   819→      "Opening a new site? Our End of Tenancy Cleaning ensures properties are front-line ready for launch and pass all initial inspections. We work to the letting agent&rsquo;s inventory, restore the unit to its original condition, and come back free of charge if anything is flagged on the inspection &mdash; the most stress-free way to close out a café lease or open a new coffee bar.",
+   820→    cta: "Explore end of tenancy",
+   821→  },
+   822→  {
+   823→    icon: Hammer,
+   824→    title: "Post-Renovation &middot; After Builders Clean",
+   825→    href: "/services/post-construction-cleaning",
+   826→    image: IMG.leaseBuilders,
+   827→    imageAlt: "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish café and coffee shop",
+   828→    description:
+   829→      "If your café has had home improvements or shopfitting, our After Builders Clean is designed to remove heavy layers of builders&rsquo; dust. Fine dust left on a kitchenette floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect every surface before the dust has a chance to damage equipment, soft furnishings, or your customers&rsquo; first impression on reopening day.",
+   830→    cta: "Explore after builders cleaning",
+   831→  },
+   832→  {
+   833→    icon: HeartPulse,
+   834→    title: "Specialist Hygiene &middot; Antiviral Sanitisation",
+   835→    href: "/services/disinfection-services",
+   836→    image: IMG.leaseAntiviral,
+   837→    imageAlt: "Antiviral sanitisation treatment being applied to high-touch surfaces in a Scottish café",
+   838→    description:
+   839→      "Ask about our Antiviral Sanitisation using certified virucidal cleaners to keep germs and bugs at bay. EN 14476 virucidal chemistry is fogged and wiped across every high-touch surface in your café &mdash; from portafilter handles and POS terminals to washroom door handles and customer seating &mdash; reducing the spread of seasonal colds, flu, and norovirus among your staff and customers during peak trading.",
+   840→    cta: "Explore antiviral sanitisation",
+   841→  },
+   842→];
+   843→
+   844→export function CafeCoffeeShopSeoInterlinking() {
+   845→  return (
+   846→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   847→      <div className="max-w-[1400px] mx-auto px-6">
+   848→        <motion.div
+   849→          initial={{ opacity: 0, y: 20 }}
+
+[showing lines 400-849 of 1247; use offset=850 with limit to continue reading]

@@ -1,0 +1,497 @@
+   800→  );
+   801→}
+   802→
+   803→// ============================================================
+   804→// Section 5 - Solutions for Every Logistics Cycle
+   805→// (Semantic H2: "Solutions for Every Logistics Cycle")
+   806→// Brief drops the interlinking prefix per the cleanup rules.
+   807→// Image-topped cards with internal links to specialist services
+   808→// ============================================================
+   809→
+   810→type InterlinkSolution = {
+   811→  icon: typeof KeyRound;
+   812→  title: string;
+   813→  href: string;
+   814→  image: string;
+   815→  imageAlt: string;
+   816→  description: ReactNode;
+   817→  cta: string;
+   818→};
+   819→
+   820→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   821→  {
+   822→    icon: KeyRound,
+   823→    title: "Move-In/Move-Out &middot; End of Tenancy Cleaning",
+   824→    href: "/services/move-in-out-cleaning",
+   825→    image: IMG.leaseTenancy,
+   826→    imageAlt: "Empty distribution centre being deep cleaned for lease handover and launch by Maundy Clean in Scotland",
+   827→    description:
+   828→      "Occupying a new warehouse? Our End of Tenancy Cleaning protocol ensures properties are front-line ready and pass all initial safety inspections. We work to the letting agent&rsquo;s inventory, restore the unit to its original condition, and come back free of charge if anything is flagged on the inspection &mdash; the most stress-free way to take on a new distribution centre, RDC, or 3PL operation.",
+   829→    cta: "Explore end of tenancy",
+   830→  },
+   831→  {
+   832→    icon: Hammer,
+   833→    title: "Post-Renovation &middot; After Builders Clean",
+   834→    href: "/services/post-construction-cleaning",
+   835→    image: IMG.leaseBuilders,
+   836→    imageAlt: "Post-refurbishment cleanup removing fine construction dust from a refurbished Scottish distribution centre before reopening day",
+   837→    description:
+   838→      "If your facility has undergone extension or refitting, our After Builders Clean is designed to remove heavy layers of builders&rsquo; dust and construction debris. Fine dust left on racking, conveyor lines, or finished product undermines the customer-trust signal the moment the facility re-opens &mdash; we vacuum, damp-wipe, and protect every surface before the dust has a chance to damage your product or your workforce.",
+   839→    cta: "Explore after builders cleaning",
+   840→  },
+   841→  {
+   842→    icon: Sparkles,
+   843→    title: "Exterior Facade Restoration &middot; Window Cleaning + Pressure Washing",
+   844→    href: "/services/window-cleaning",
+   845→    image: IMG.leaseWindow,
+   846→    imageAlt: "High-reach window cleaning and pressure washing restoring the exterior cladding of a Scottish distribution centre with Maundy Clean",
+   847→    description: (
+   848→      <>
+   849→        Enhance your professional image with our high-reach{" "}
+   850→        <Link
+   851→          href="/services/window-cleaning"
+   852→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   853→        >
+   854→          Window Cleaning
+   855→        </Link>{" "}
+   856→        or{" "}
+   857→        <Link
+   858→          href="/services/pressure-washing"
+   859→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   860→        >
+   861→          Pressure Washing
+   862→        </Link>{" "}
+   863→        for exterior cladding. Cladding panels, dispatch-door canopies, roller-shutter housings,
+   864→        signage, and high-reach office-block glazing all benefit from a periodic specialist reset
+   865→        &mdash; the detail that turns a &ldquo;cleaned&rdquo; distribution centre into a
+   866→        &ldquo;speechlessly spotless&rdquo; one.
+   867→      </>
+   868→    ),
+   869→    cta: "Explore window cleaning",
+   870→  },
+   871→  {
+   872→    icon: HeartPulse,
+   873→    title: "Hygiene Resets &middot; Antiviral Sanitisation",
+   874→    href: "/services/disinfection-services",
+   875→    image: IMG.leaseAntiviral,
+   876→    imageAlt: "Antiviral sanitisation treatment being applied to high-touch distribution centre surfaces, locker handles and time-clock keypads in Scotland",
+   877→    description:
+   878→      "Ask about our Antiviral Sanitisation and electrostatic fogging treatments to keep your workforce healthy and operational. EN 14476 virucidal chemistry is fogged and wiped across every high-touch surface in your facility &mdash; from door handles, locker handles, and time-clock keypads to canteen tables, vending machines, and welfare fittings &mdash; reducing the spread of seasonal colds, flu, and norovirus among your shift during peak season and outbreak response.",
+   879→    cta: "Explore antiviral sanitisation",
+   880→  },
+   881→];
+   882→
+   883→export function DistributionCentreSeoInterlinking() {
+   884→  return (
+   885→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   886→      <div className="max-w-[1400px] mx-auto px-6">
+   887→        <motion.div
+   888→          initial={{ opacity: 0, y: 20 }}
+   889→          whileInView={{ opacity: 1, y: 0 }}
+   890→          viewport={{ once: true, margin: "-80px" }}
+   891→          transition={{ duration: 0.5 }}
+   892→          className="max-w-3xl mb-12"
+   893→        >
+   894→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   895→            Beyond the daily clean &middot; property milestones
+   896→          </span>
+   897→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   898→            Solutions for Every Logistics Cycle
+   899→          </h2>
+   900→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   901→            Our distribution centre maintenance ensures daily safety, but we offer specialized
+   902→            &ldquo;resets&rdquo; for major property milestones: from new unit launches and
+   903→            post-renovation dust clear-outs to exterior facade restoration and antiviral hygiene
+   904→            resets. The same trusted, vetted crew can step up whenever your facility needs more than
+   905→            a standard visit, with the same child-safe, food-safe protocols in force.
+   906→          </p>
+   907→        </motion.div>
+   908→
+   909→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   910→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+   911→            const Icon = sol.icon;
+   912→            return (
+   913→              <motion.div
+   914→                key={sol.title}
+   915→                initial={{ opacity: 0, y: 24 }}
+   916→                whileInView={{ opacity: 1, y: 0 }}
+   917→                viewport={{ once: true, margin: "-40px" }}
+   918→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   919→              >
+   920→                <Link
+   921→                  href={sol.href}
+   922→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   923→                >
+   924→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   925→                    <img
+   926→                      src={sol.image}
+   927→                      alt={sol.imageAlt}
+   928→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+   929→                      loading="lazy"
+   930→                    />
+   931→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+   932→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   933→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+   934→                    </div>
+   935→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+   936→                      {sol.title}
+   937→                    </h3>
+   938→                  </div>
+   939→                  <div className="p-5">
+   940→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   941→                      {typeof sol.description === "string" ? (
+   942→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+   943→                      ) : (
+   944→                        sol.description
+   945→                      )}
+   946→                    </p>
+   947→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   948→                      {sol.cta}
+   949→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   950→                    </span>
+   951→                  </div>
+   952→                </Link>
+   953→              </motion.div>
+   954→            );
+   955→          })}
+   956→        </div>
+   957→      </div>
+   958→    </section>
+   959→  );
+   960→}
+   961→
+   962→// ============================================================
+   963→// Section 6 - "Near Me" Location Internal Links
+   964→// (Semantic H2: "Distribution Centre Cleaning Near Me in Scotland")
+   965→// Split layout with map image + 36-location grid
+   966→// ============================================================
+   967→
+   968→export function DistributionCentreSeoNearMe() {
+   969→  return (
+   970→    <section className="py-16 lg:py-24 bg-background">
+   971→      <div className="max-w-[1400px] mx-auto px-6">
+   972→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+   973→          {/* Left: copy + map image */}
+   974→          <motion.div
+   975→            initial={{ opacity: 0, y: 20 }}
+   976→            whileInView={{ opacity: 1, y: 0 }}
+   977→            viewport={{ once: true, margin: "-80px" }}
+   978→            transition={{ duration: 0.5 }}
+   979→          >
+   980→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   981→              Local distribution centre cleaning across Scotland
+   982→            </span>
+   983→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   984→              Distribution Centre Cleaning Near Me in Scotland
+   985→            </h2>
+   986→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   987→              Searching for &ldquo;distribution centre cleaning near me&rdquo; or &ldquo;DC cleaning
+   988→              company near me&rdquo; in Scotland? Maundy Clean covers grocery RDCs, e-commerce
+   989→              fulfilment hubs, 3PL operations, cold-storage facilities, and national distribution
+   990→              centres across the Central Belt, Highlands, Borders, and Islands. Same MHE-aware,
+   991→              IPAF-certified uniformed crews, same HSE and BRCGS-compliant protocols, same
+   992→              dedicated crew every visit &mdash; wherever your facility happens to be. Find your
+   993→              local distribution centre cleaning specialist below.
+   994→            </p>
+   995→
+   996→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   997→              <img
+   998→                src={IMG.nearMeMap}
+   999→                alt="Map of Scotland showing Maundy Clean distribution centre and logistics cleaning service coverage areas"
+  1000→                className="absolute inset-0 w-full h-full object-cover"
+  1001→                loading="lazy"
+  1002→              />
+  1003→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+  1004→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+  1005→                <div className="flex items-center gap-2 mb-1">
+  1006→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+  1007→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+  1008→                    72+ Scottish towns covered
+  1009→                  </span>
+  1010→                </div>
+  1011→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1012→                  Same MHE-aware, IPAF-certified crews, same 100% satisfaction guarantee &mdash;
+  1013→                  from Glasgow to Inverness.
+  1014→                </p>
+  1015→              </div>
+  1016→            </div>
+  1017→
+  1018→            <div className="mt-6">
+  1019→              <Button
+  1020→                size="lg"
+  1021→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+  1022→                asChild
+  1023→              >
+  1024→                <Link href="/services/distribution-centre-cleaning-near-me">
+  1025→                  <MapPin className="w-4 h-4" />
+  1026→                  Browse the near-me directory
+  1027→                  <ArrowRight className="w-4 h-4" />
+  1028→                </Link>
+  1029→              </Button>
+  1030→            </div>
+  1031→          </motion.div>
+  1032→
+  1033→          {/* Right: location grid */}
+  1034→          <motion.div
+  1035→            initial={{ opacity: 0, y: 20 }}
+  1036→            whileInView={{ opacity: 1, y: 0 }}
+  1037→            viewport={{ once: true, margin: "-60px" }}
+  1038→            transition={{ duration: 0.5 }}
+  1039→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1040→          >
+  1041→            <div className="flex items-center justify-between mb-5">
+  1042→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1043→                Find your local DC crew
+  1044→              </h3>
+  1045→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1046→            </div>
+  1047→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1048→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1049→                <motion.div
+  1050→                  key={loc.slug}
+  1051→                  initial={{ opacity: 0 }}
+  1052→                  whileInView={{ opacity: 1 }}
+  1053→                  viewport={{ once: true }}
+  1054→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1055→                >
+  1056→                  <Link
+  1057→                    href={`/services/distribution-centre-cleaning-near-me#${loc.slug}`}
+  1058→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1059→                  >
+  1060→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1061→                    <span>
+  1062→                      <span className="font-medium">{loc.city}</span>
+  1063→                      <span className="text-[var(--muted-foreground)]"> DC</span>
+  1064→                    </span>
+  1065→                  </Link>
+  1066→                </motion.div>
+  1067→              ))}
+  1068→            </div>
+  1069→
+  1070→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1071→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1072→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1073→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1074→              </div>
+  1075→              <Link
+  1076→                href="/locations"
+  1077→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1078→              >
+  1079→                View all 72 Scottish locations
+  1080→                <ArrowRight className="w-4 h-4" />
+  1081→              </Link>
+  1082→            </div>
+  1083→          </motion.div>
+  1084→        </div>
+  1085→
+  1086→        {/* SEO long-form paragraph for "near me" search intent */}
+  1087→        <motion.div
+  1088→          initial={{ opacity: 0, y: 16 }}
+  1089→          whileInView={{ opacity: 1, y: 0 }}
+  1090→          viewport={{ once: true, margin: "-40px" }}
+  1091→          transition={{ duration: 0.5, delay: 0.2 }}
+  1092→          className="mt-10 max-w-4xl mx-auto text-center"
+  1093→        >
+  1094→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1095→            Our local distribution centre cleaning crews operate across Glasgow&rsquo;s Eurocentral
+  1096→            and the Bellshill and Uddingston distribution corridor, Edinburgh&rsquo;s Midlothian
+  1097→            logistics belt (Sheriffhall, Straiton), Aberdeen&rsquo;s Altens and Tullos industrial
+  1098→            estates, Dundee&rsquo;s dockside cold-store and tech parks, and the Central Belt&rsquo;s
+  1099→            national RDC cluster &mdash; from Inverness to Perth, Falkirk to Ayr. Whether
+  1100→            you&rsquo;re searching for nightly distribution-centre deep cleaning in Glasgow, weekend
+  1101→            dispatch-floor degreasing in Edinburgh, cold-store sanitation in Aberdeen, or
+  1102→            neighbourhood 3PL cleaning anywhere in between, Maundy Clean assigns a vetted,
+  1103→            PAYE-employed, MHE-aware crew that stays with you for the long run. Same crew, same
+  1104→            standard, same locked-in rate for 12 months.
+  1105→          </p>
+  1106→        </motion.div>
+  1107→      </div>
+  1108→    </section>
+  1109→  );
+  1110→}
+  1111→
+  1112→// ============================================================
+  1113→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1114→// (Semantic H2: "Request Your Detailed Proposal Today")
+  1115→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1116→// ============================================================
+  1117→
+  1118→export function DistributionCentreSeoFinalCta() {
+  1119→  return (
+  1120→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1121→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1122→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1123→
+  1124→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1125→        <motion.div
+  1126→          initial={{ opacity: 0, y: 20 }}
+  1127→          whileInView={{ opacity: 1, y: 0 }}
+  1128→          viewport={{ once: true, margin: "-80px" }}
+  1129→          transition={{ duration: 0.5 }}
+  1130→        >
+  1131→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1132→            Ready to request your detailed proposal?
+  1133→          </span>
+  1134→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1135→            Request Your Detailed Proposal Today
+  1136→          </h2>
+  1137→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1138→            Book a free, no-obligation site survey with our management team and receive an itemised
+  1139→            proposal within 2 business days. Vetted MHE-aware crews, the same dedicated team every
+  1140→            visit, RAMS as standard, HSE and BRCGS compliance, IPAF-trained high-reach operatives,
+  1141→            child-safe eco chemistry, signed cleaning logs, &pound;5m public liability standard
+  1142→            (&pound;10m for BRCGS-grocery contracts), and a 100% satisfaction guarantee &mdash; from
+  1143→            &pound;17 per hour for a small single-shift distribution centre through to a fully
+  1144→            bespoke multi-site national distribution retainer. No pushy sales call, no waiting 24
+  1145→            hours for a callback.
+  1146→          </p>
+  1147→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1148→            <Button
+  1149→              size="lg"
+  1150→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1151→              asChild
+  1152→            >
+  1153→              <Link href="/quote">
+  1154→                Request Your Detailed Proposal Today
+  1155→                <ArrowRight className="w-5 h-5" />
+  1156→              </Link>
+  1157→            </Button>
+  1158→            <Button
+  1159→              size="lg"
+  1160→              variant="outline"
+  1161→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1162→              asChild
+  1163→            >
+  1164→              <Link href="#checklist">
+  1165→                <CheckCircle2 className="w-4 h-4" />
+  1166→                View Our Commercial Cleaning Checklist
+  1167→              </Link>
+  1168→            </Button>
+  1169→          </div>
+  1170→        </motion.div>
+  1171→      </div>
+  1172→    </section>
+  1173→  );
+  1174→}
+  1175→
+  1176→// ============================================================
+  1177→// Section 8 - SEO FAQ block
+  1178→// (Semantic H2: "Frequently Asked Questions")
+  1179→// 3 Q&As from the brief (insured for industrial environments,
+  1180→// provide own professional equipment, high-level cleaning for warehouses)
+  1181→// ============================================================
+  1182→
+  1183→const SEO_FAQS = [
+  1184→  {
+  1185→    q: "Are your cleaners insured for industrial environments?",
+  1186→    a: "Absolutely. MaundyClean is a fully insured, registered professional cleaning company with extensive experience in the heavy-duty industrial and logistics sectors. We carry &pound;5m public liability as standard, increased to &pound;10m for BRCGS-grocery contracts &mdash; and our operatives are MHE-aware trained, hi-vis uniformed, IPAF-certified for powered access where required, and inducted to your site&rsquo;s H&amp;S protocols (RAMS, permits to work, Safe Systems of Work). We hold full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, and we can name your business on our policy as additional insured &mdash; a common requirement for major-retailer vendor agreements, 3PL contracts, and landlord consent for leased distribution units. Our documentation is audit-ready for BRCGS, MHRA, ISO 9001, and major customer audits; we will not begin work until your facilities team and your compliance team have the documentation they need.",
+  1187→  },
+  1188→  {
+  1189→    q: "Do you provide your own cleaning equipment?",
+  1190→    a: "Yes. We supply all our own professional-grade equipment and eco-friendly, non-toxic products, which are included in your keen price options. From ride-on sweepers and scrubber-dryers rated for 24/7 dock-floor use, to HEPA-filtered industrial vacuums for high-bay racking and confined-space entry kits for silo cleans &mdash; every tool is COSHH-documented and maintained to manufacturer spec. Ride-on sweepers (Tennant, Karcher) for large open dock floors, scrubber-dryers for spill removal, walk-behind equipment for tight corners and racking aisles, HEPA-filtered industrial vacuums with extension tubes for high racking (never compressed air &mdash; it redistributes dust and creates explosion risk in some dust classes), scissor lifts and boom lifts for IPAF-operated high-reach work (8&ndash;12m racking, rafters, ductwork), 180&deg;C dry-steam sanitizers for tile grout and chrome, colour-coded cloths (red for high-contamination, green for product-facing, yellow for washroom and kitchenette, blue for back-of-house), HSE-compliant chemicals with COSHH datasheets on file, PPE, and non-toxic, child-safe, food-safe chemistry by default. You provide consumables (bin liners, paper towel, toilet paper, hand soap, sanitiser wipes) or we can manage consumable restocking for an additional monthly fee.",
+  1191→  },
+  1192→  {
+  1193→    q: "Do you handle high-level cleaning for warehouses?",
+  1194→    a: "Yes. Our Special Access Team has serviced thousands of high and low-level structures, including silos and major distribution hubs across the UK. We use IPAF-certified MEWPs (3a/3b), scissor lifts, telescopic handlers, and confined-space entry teams with standalone atmospheric monitoring &mdash; every high-reach clean is RAMS-covered and signed off with pre and post-clean reports. High-bay racking (8&ndash;12m tall) and beam levels dusted using extension poles, vacuum systems with extension tubes, or scissor lifts and cherry pickers where needed; dust removed from beam tops, uprights, and pallet locations &mdash; critical for product quality (especially food, pharma, electronics) and fire safety. We&rsquo;ve worked in distribution centres where the cleaning window was 90 minutes between shift handovers, in cold storage at &minus;25&deg;C, and in silos requiring CRN-trained confined-space entry teams &mdash; we know what we&rsquo;re doing.",
+  1195→  },
+  1196→];
+  1197→
+  1198→export function DistributionCentreSeoFaq() {
+  1199→  return (
+  1200→    <section className="py-16 lg:py-24 bg-background">
+  1201→      <div className="max-w-4xl mx-auto px-6">
+  1202→        <motion.div
+  1203→          initial={{ opacity: 0, y: 20 }}
+  1204→          whileInView={{ opacity: 1, y: 0 }}
+  1205→          viewport={{ once: true, margin: "-80px" }}
+  1206→          transition={{ duration: 0.5 }}
+  1207→          className="text-center mb-12"
+  1208→        >
+  1209→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1210→            Distribution centre &amp; logistics cleaning &middot; FAQ
+  1211→          </span>
+  1212→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1213→            Frequently Asked Questions
+  1214→          </h2>
+  1215→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1216→            Straight answers to the questions our distribution centre and logistics cleaning clients
+  1217→            ask most often. Can&rsquo;t find what you need? Call us on{" "}
+  1218→            <a
+  1219→              href={contactInfo.phoneHref}
+  1220→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1221→            >
+  1222→              {contactInfo.phone}
+  1223→            </a>{" "}
+  1224→            and we&rsquo;ll talk it through.
+  1225→          </p>
+  1226→        </motion.div>
+  1227→
+  1228→        <div className="space-y-4">
+  1229→          {SEO_FAQS.map((faq, i) => (
+  1230→            <motion.div
+  1231→              key={faq.q}
+  1232→              initial={{ opacity: 0, y: 16 }}
+  1233→              whileInView={{ opacity: 1, y: 0 }}
+  1234→              viewport={{ once: true, margin: "-40px" }}
+  1235→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1236→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1237→            >
+  1238→              <details className="group">
+  1239→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1240→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1241→                    {faq.q}
+  1242→                  </h3>
+  1243→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1244→                    <span className="relative w-3.5 h-3.5">
+  1245→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1246→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1247→                    </span>
+  1248→                  </span>
+  1249→                </summary>
+  1250→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1251→                  <p
+  1252→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1253→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1254→                  />
+  1255→                </div>
+  1256→              </details>
+  1257→            </motion.div>
+  1258→          ))}
+  1259→        </div>
+  1260→
+  1261→        <motion.div
+  1262→          initial={{ opacity: 0, y: 16 }}
+  1263→          whileInView={{ opacity: 1, y: 0 }}
+  1264→          viewport={{ once: true, margin: "-40px" }}
+  1265→          transition={{ duration: 0.5, delay: 0.3 }}
+  1266→          className="mt-10 text-center"
+  1267→        >
+  1268→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1269→            <Button
+  1270→              size="lg"
+  1271→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1272→              asChild
+  1273→            >
+  1274→              <Link href="/quote">
+  1275→                Request Your Detailed Proposal Today
+  1276→                <ArrowRight className="w-5 h-5" />
+  1277→              </Link>
+  1278→            </Button>
+  1279→            <Button
+  1280→              size="lg"
+  1281→              variant="outline"
+  1282→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1283→              asChild
+  1284→            >
+  1285→              <Link href="#checklist">
+  1286→                <CheckCircle2 className="w-4 h-4" />
+  1287→                View Our Commercial Cleaning Checklist
+  1288→              </Link>
+  1289→            </Button>
+  1290→          </div>
+  1291→        </motion.div>
+  1292→      </div>
+  1293→    </section>
+  1294→  );
+  1295→}
+  1296→

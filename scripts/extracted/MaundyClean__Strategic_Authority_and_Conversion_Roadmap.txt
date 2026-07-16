@@ -1,0 +1,37 @@
+To finalize your website structure and achieve total Topic Authority in the Scottish market, you must build out the remaining "Trust, Utility, and Legal" pages. These pages move users from browsing to booking by addressing the weaknesses of competitors like Bonnie Brooms (slow response) and Pure Cleaning Scotland (generic branding) 1.
+Based on the 12-week roadmap and market intelligence, here is the plan for your remaining 15 pages.
+
+## [Heading 3] 1. Brand & Trust Authority Silo (4 Pages)
+
+These pages establish "MaundyClean" as a memorable, established Scottish brand rather than an impersonal national franchise 1, 2.
+/about-us/: Targets the keyword "professional cleaning company Scotland" 3. It should detail the "Maundy" rationale—evoking tradition, care, and service—to build immediate emotional trust with Scottish homeowners 2.
+/our-reviews-case-studies/: Consolidates social proof and testimonials 4, 5. This page is critical for beating Housekeep, as users often search for "deep clean experts reviews" (Volume: 140, KD: 21) before hiring 6.
+/before-after-gallery/: A visual portfolio required for local SEO. High-quality imagery of "team in uniform" and "branded vans" are specifically recommended to boost credibility 5, 7.
+/how-it-works/: A step-by-step visual guide (e.g., Book → Clean → Inspect) to simplify the user journey, mirroring successful competitor layouts 8.
+
+## [Heading 3] 2. Transactional & Utility Hub (4 Pages)
+
+These pages are designed for high conversion and speed, targeting users ready to buy.
+/pricing/: Your primary conversion hub targeting the low-competition keyword "deep cleaning price list" (Volume: 110, KD: 5) 9. It must include an interactive 30-second quote calculator and a "Compare our prices" table to show you are 10-15% cheaper than national franchises 5, 10, 11.
+/book-online/: A dedicated booking page with a live calendar integration (e.g., Calendly) for 24/7 automation 5, 12.
+/frequently-asked-questions/: Uses FAQ schema to capture long-tail informational searches like "are deep cleanings necessary?" (Volume: 20, KD: 31) or "what does a deep clean include?" (Volume: 140, KD: 14) 13-15.
+/maundyclean-checklist/: A high-value landing page where users can download your professional cleaning checklist as a PDF 16, 17.
+
+## [Heading 3] 3. Strategic Conversion Landing Pages (4 Pages)
+
+These are "quick-win" pages designed to convert specific high-anxiety or high-intent segments 17.
+/deposit-back-guarantee/: Your #1 conversion tool for tenants 17. It should outline your protocol for a free re-clean if a landlord rejects the final inspection, directly beating Cleanifiq which lacks tenant-facing guarantees 1.
+/same-day-emergency-cleaning/: Targets high-intent searches for "same day cleaning" (Volume: 390, KD: 26) and "emergency cleaning" 18, 19. Position this as a premium service with a 20% surcharge 17.
+/referral-program/: Designed to boost off-season revenue by offering discounts to existing clients who refer new business 1, 20.
+/student-specials/: A seasonal landing page for your "£99 student flat rate" deal, targeting peak moving months like June and September 17, 20.
+
+## [Heading 3] 4. Legal & Footer Infrastructure (3 Pages)
+
+Standard professional pages required for compliance and to match the digital footprint of competitors like All Clean and Clear 21, 22.
+/privacy-policy/: Standard legal disclosure for data handling 22.
+/cookie-policy/: Mandatory UK compliance page 22.
+/find-us-online/: A citation hub that links to your local directory listings (Yell, Yelp, Bark, etc.), which strengthens your Local SEO foundation 5, 22.
+
+## [Heading 3] Implementation Tip
+
+To dominate the SERPs, your Pricing Page and Guarantee Page must be linked from the main navigation of every service page using clear call-to-action (CTA) banners 23, 24. This ensures that even when a user lands on a specific sub-service like /oven-cleaning/, they are immediately guided toward the conversion funnel.

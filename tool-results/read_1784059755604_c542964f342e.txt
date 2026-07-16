@@ -1,0 +1,815 @@
+    90→  // South
+    91→  { city: "Dumfries", slug: "dumfries", region: "South" },
+    92→  { city: "Stranraer", slug: "stranraer", region: "South" },
+    93→];
+    94→
+    95→// Group by region for cleaner display
+    96→const REGION_ORDER = ["Central Belt", "East", "North East", "Highlands & Islands", "South"];
+    97→const locationsByRegion = REGION_ORDER.map((region) => ({
+    98→  region,
+    99→  cities: LOCATIONS.filter((l) => l.region === region),
+   100→}));
+   101→
+   102→// ============================================================
+   103→// Trust badges for the hero
+   104→// ============================================================
+   105→const HERO_BADGES = [
+   106→  { icon: Star, label: "4.9/5 \u00b7 6,200+ reviews" },
+   107→  { icon: Shield, label: "Fully Insured & PVG-Checked" },
+   108→  { icon: Leaf, label: "HSE-Compliant Supplies" },
+   109→  { icon: Clock, label: "After-Hours & Early-Morning" },
+   110→];
+   111→
+   112→// ============================================================
+   113→// The 4 trust pillars
+   114→// ============================================================
+   115→const TRUST_PILLARS = [
+   116→  {
+   117→    icon: Building2,
+   118→    title: "Local Commercial Specialists, Not an Impersonal Agency",
+   119→    description:
+   120→      "Maundy Clean is a Scottish commercial cleaning company built on the Maundy tradition of service and care. We don&rsquo;t operate as an impersonal national agency &mdash; we&rsquo;re a local specialist with PVG-checked crews living and working in your area. Whether you&rsquo;re searching for daily office cleaning in Glasgow&rsquo;s financial district, after-hours janitorial service in Edinburgh&rsquo;s New Town, or GDPR-aware cleaning for a legal firm in Aberdeen, we assign a vetted, PAYE-employed crew that stays with you for the long run. Same team, same standard, same locked-in rate for 12 months.",
+   121→  },
+   122→  {
+   123→    icon: Users,
+   124→    title: "The Same Trusted Crew Every Visit",
+   125→    description:
+   126→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, and PVG-checked crew that manages your first clean is the crew that returns for every scheduled session. Continuity matters when the stakes are sensitive data, expensive equipment, and a 100% re-clean guarantee &mdash; we don&rsquo;t send rotating crews of strangers to your workplace. When your regular crew lead is on annual leave, we send a trained backup who has been briefed on your site specifics and we tell you in advance.",
+   127→  },
+   128→  {
+   129→    icon: Shield,
+   130→    title: "PVG-Checked, GDPR-Aware & HSE-Compliant",
+   131→    description:
+   132→      "Every technician carries Disclosure Scotland PVG scheme membership, and we train them on GDPR-aware commercial cleaning: don&rsquo;t touch documents on desks, don&rsquo;t plug or unplug devices, don&rsquo;t photograph the space, don&rsquo;t discuss what you&rsquo;ve seen. All HSE-compliant chemicals come with COSHH datasheets on file, and we default to eco-labelled products with hospital-grade alternatives for medical or food-prep areas. We hold &pound;5m public liability cover, &pound;5m employer&rsquo;s liability cover, and can provide enhanced background checks and additional NDAs for sensitive environments.",
+   133→  },
+   134→  {
+   135→    icon: Award,
+   136→    title: "Dedicated Account Manager & 100% Satisfaction Guarantee",
+   137→    description:
+   138→      "Every office client gets a dedicated account manager who knows your building, your team, your access protocols, and your priorities &mdash; direct mobile number, 24-hour response, quarterly on-site walk-throughs. We offer a free re-clean within 24 to 48 hours if you are not 100% satisfied, and our visit-completion rate in 2025 was 99.6%. From &pound;89 per visit for a Small Office through to a fully bespoke contract for a multi-floor headquarters, the Maundy Clean standard applies on every visit.",
+   139→  },
+   140→];
+   141→
+   142→// ============================================================
+   143→// The 3-step booking process
+   144→// ============================================================
+   145→const BOOKING_STEPS = [
+   146→  {
+   147→    icon: ClipboardList,
+   148→    step: "01",
+   149→    title: "Free Site Survey & Proposal",
+   150→    description:
+   151→      "Contact us for a free site survey with our management team. We measure the space, identify priority zones, review access protocols, and discuss timing windows &mdash; then send an itemised proposal within 2 business days: crew size, visit frequency, time on-site, scope of work, fixed monthly rate, and a draft cleaning schedule. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months.",
+   152→  },
+   153→  {
+   154→    icon: UserCheck,
+   155→    step: "02",
+   156→    title: "Local Crew Matching & Onboarding",
+   157→    description:
+   158→      "We match you with a vetted, PVG-checked crew in your postcode. Your allocated crew lead is briefed on your site, GDPR-trained if you handle sensitive data, and introduced to your reception or facilities team on the first visit. The same crew returns for every scheduled session &mdash; building real knowledge of your office&rsquo;s high-traffic zones, screen-sensitive surfaces, and access preferences.",
+   159→  },
+   160→  {
+   161→    icon: CalendarCheck,
+   162→    step: "03",
+   163→    title: "A Pristine Workplace, Every Visit",
+   164→    description:
+   165→      "Experience a workspace that looks, smells, and feels fresh, backed by our 100% satisfaction guarantee. You receive monthly cleaning logs showing every visit, arrival and departure times, tasks completed, and any issues flagged. Your dedicated account manager visits quarterly for a walk-through and proactively raises concerns before they become complaints. From &pound;89 per visit through to a fully bespoke multi-floor contract.",
+   166→  },
+   167→];
+   168→
+   169→// ============================================================
+   170→// FAQ for the near-me page
+   171→// ============================================================
+   172→const NEAR_ME_FAQS = [
+   173→  {
+   174→    q: "How do I know if you cover my area?",
+   175→    a: "We cover 72+ towns and cities across Scotland &mdash; from Glasgow and Edinburgh in the Central Belt to Lerwick in Shetland and everywhere in between. Use the location grid above to find your town. If you don&rsquo;t see your postcode listed, call us &mdash; we add new commercial coverage areas every month and may already have an office cleaning crew near you.",
+   176→  },
+   177→  {
+   178→    q: "How quickly can a local office cleaning crew start?",
+   179→    a: "From site survey to first clean in 5-7 working days for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 7-10 working days for crew routing and travel planning. Same-week starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee &mdash; call us to check availability. Large multi-floor contracts typically schedule 2-3 weeks out to allow for full site survey, proposal, and crew onboarding.",
+   180→  },
+   181→  {
+   182→    q: "Will the crew travel to my office, or do I need to bring anything to you?",
+   183→    a: "All office cleaning is performed on-site at your premises &mdash; we never transport anything off-site. Our crews arrive in liveried vans with commercial-grade vacuums (Sebo BS36/BS46, Henry HVR200), microfibre flat-mop systems, colour-coded cloths (red for toilets, blue for sinks, green for kitchens, yellow for desks), HSE-compliant chemicals with COSHH datasheets, and PPE. You provide consumables &mdash; bin liners, paper towel, toilet paper, hand soap &mdash; or we can manage consumable restocking for an additional monthly fee.",
+   184→  },
+   185→  {
+   186→    q: "Do you have office cleaning crews available in rural Scotland?",
+   187→    a: "Yes. We cover rural Scotland including Perthshire, Angus, Fife, the Borders, Argyll, Aberdeenshire, and parts of the Highlands. For very remote commercial properties (Islands, far North), we may operate on a minimum-visit basis or schedule combined visits with neighbouring businesses to keep travel costs down. Call us to discuss your specific location &mdash; we&rsquo;ll always give you a straight answer on coverage and lead time.",
+   188→  },
+   189→  {
+   190→    q: "Can you handle secure access and alarm systems at my office?",
+   191→    a: "Absolutely. We&rsquo;re trained on all major alarm systems (Texecom, Honeywell, Pyronix, Risco) and follow strict key-handling protocols: keys stored in a coded safe between visits, alarm codes encrypted and only released to your assigned crew lead, never labelled with your address. We hold &pound;5m public liability cover and &pound;5m employer&rsquo;s liability cover. For particularly sensitive sites (legal, financial, medical), we can provide enhanced background checks and additional NDAs at no extra cost.",
+   192→  },
+   193→  {
+   194→    q: "What&rsquo;s the difference between daily, weekly, and after-hours office cleaning near me?",
+   195→    a: "Daily cleaning (typically Monday-Friday, after-hours 6pm-10pm) is the right choice for offices with 20+ desks, high client traffic, or food preparation areas &mdash; the cumulative soil load is too high for less frequent visits. Weekly cleaning suits small offices (5-15 desks) or low-traffic professional suites. After-hours cleaning means your crew works when your team isn&rsquo;t there &mdash; typically 6pm-10pm or 5am-7am &mdash; giving them the empty space they need to do a proper job without vacuuming around people on calls. We can also split: light touch during the day, deep clean after hours. Your account manager will advise on the best schedule for your specific footprint and density.",
+   196→  },
+   197→];
+   198→
+   199→// ============================================================
+   200→// Main page component
+   201→// ============================================================
+   202→
+   203→export function OfficeCleaningNearMeHero() {
+   204→  return (
+   205→    <>
+   206→      {/* ============================================================ */}
+   207→      {/* SECTION 1 - Hero */}
+   208→      {/* H1: Office Cleaning Services Near Me in Scotland */}
+   209→      {/* ============================================================ */}
+   210→      <section className="relative overflow-hidden">
+   211→        <div className="absolute inset-0">
+   212→          <img
+   213→            src={IMG.heroWide}
+   214→            alt="Maundy Clean uniformed commercial cleaning crew resetting an open-plan office in Scotland after hours"
+   215→            className="w-full h-full object-cover"
+   216→            loading="eager"
+   217→            fetchPriority="high"
+   218→          />
+   219→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   220→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   221→        </div>
+   222→
+   223→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   224→          <motion.div
+   225→            initial="hidden"
+   226→            animate="visible"
+   227→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   228→            className="max-w-3xl"
+   229→          >
+   230→            <motion.div
+   231→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   232→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   233→            >
+   234→              <span className="relative flex w-2 h-2">
+   235→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   236→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   237→              </span>
+   238→              72+ Scottish towns &middot; PVG-checked commercial crews &middot; Same team every visit
+   239→            </motion.div>
+   240→
+   241→            <motion.h1
+   242→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   243→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   244→            >
+   245→              Office Cleaning Services Near Me in Scotland
+   246→            </motion.h1>
+   247→
+   248→            <motion.p
+   249→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   250→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   251→            >
+   252→              Searching for &ldquo;office cleaning near me&rdquo; or &ldquo;commercial cleaning
+   253→              company near me&rdquo; in Scotland? Maundy Clean covers 72+ towns and cities across
+   254→              the Central Belt, Highlands, Borders, and Islands. Same PVG-checked crews, same
+   255→              HSE-compliant supplies, same dedicated account manager &mdash; wherever your business
+   256→              happens to be. From &pound;89 per visit for a Small Office through to a fully bespoke
+   257→              contract for a multi-floor headquarters.
+   258→            </motion.p>
+   259→
+   260→            <motion.div
+   261→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   262→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   263→            >
+   264→              <Button
+   265→                size="lg"
+   266→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   267→                asChild
+   268→              >
+   269→                <Link href="/quote">
+   270→                  Book My Free Site Survey
+   271→                  <ArrowRight className="w-5 h-5" />
+   272→                </Link>
+   273→              </Button>
+   274→              <Button
+   275→                size="lg"
+   276→                variant="outline"
+   277→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   278→                asChild
+   279→              >
+   280→                <Link href="#locations">
+   281→                  <MapPin className="w-4 h-4" />
+   282→                  Find Your Local Office Crew
+   283→                </Link>
+   284→              </Button>
+   285→            </motion.div>
+   286→
+   287→            <motion.div
+   288→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   289→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   290→            >
+   291→              {HERO_BADGES.map((badge) => {
+   292→                const Icon = badge.icon;
+   293→                return (
+   294→                  <div key={badge.label} className="flex items-center gap-1.5">
+   295→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   296→                  </div>
+   297→                );
+   298→              })}
+   299→            </motion.div>
+   300→          </motion.div>
+   301→        </div>
+   302→      </section>
+   303→
+   304→      {/* ============================================================ */}
+   305→      {/* SECTION 2 - Intro + stats */}
+   306→      {/* H2: Local Commercial Office Cleaning You Can Trust */}
+   307→      {/* ============================================================ */}
+   308→      <section className="py-16 lg:py-24 bg-background">
+   309→        <div className="max-w-[1100px] mx-auto px-6">
+   310→          <motion.div
+   311→            initial={{ opacity: 0, y: 20 }}
+   312→            whileInView={{ opacity: 1, y: 0 }}
+   313→            viewport={{ once: true, margin: "-80px" }}
+   314→            transition={{ duration: 0.5 }}
+   315→            className="max-w-3xl mx-auto text-center mb-10"
+   316→          >
+   317→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   318→              Local commercial office cleaning &middot; Scotland-wide
+   319→            </span>
+   320→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   321→              Local Commercial Office Cleaning You Can Trust
+   322→            </h2>
+   323→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   324→              Maundy Clean is a Scottish commercial cleaning company built on the Maundy tradition of
+   325→              service and care. We don&rsquo;t operate as an impersonal national agency &mdash;
+   326→              we&rsquo;re a local specialist with PVG-checked crews living and working in your area.
+   327→              Whether you&rsquo;re searching for daily office cleaning in Glasgow&rsquo;s financial
+   328→              district, after-hours janitorial service in Edinburgh&rsquo;s New Town, GDPR-aware
+   329→              cleaning for a legal firm in Aberdeen, or restaurant kitchen deep cleaning anywhere in
+   330→              between, we assign a vetted, PAYE-employed crew that stays with you for the long run.
+   331→              Same crew, same standard, same locked-in rate for 12 months.
+   332→            </p>
+   333→          </motion.div>
+   334→
+   335→          <motion.div
+   336→            initial={{ opacity: 0, y: 16 }}
+   337→            whileInView={{ opacity: 1, y: 0 }}
+   338→            viewport={{ once: true, margin: "-60px" }}
+   339→            transition={{ duration: 0.5 }}
+   340→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   341→          >
+   342→            {[
+   343→              { label: "Visits completed in 2025", value: "99.6%" },
+   344→              { label: "PVG-checked crews", value: "100%" },
+   345→              { label: "From per visit", value: "&pound;89" },
+   346→              { label: "Star rating", value: "4.9/5" },
+   347→            ].map((stat) => (
+   348→              <div
+   349→                key={stat.label}
+   350→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   351→              >
+   352→                <div
+   353→                  className="font-display font-extrabold text-2xl text-gradient-brand"
+   354→                  dangerouslySetInnerHTML={{ __html: stat.value }}
+   355→                />
+   356→                <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   357→              </div>
+   358→            ))}
+   359→          </motion.div>
+   360→        </div>
+   361→      </section>
+   362→
+   363→      {/* ============================================================ */}
+   364→      {/* SECTION 3 - Location grid (id="locations" anchor target) */}
+   365→      {/* H2: Find Your Local Office Cleaning Crew */}
+   366→      {/* ============================================================ */}
+   367→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   368→        <div className="max-w-[1400px] mx-auto px-6">
+   369→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   370→            {/* Left: copy + map */}
+   371→            <motion.div
+   372→              initial={{ opacity: 0, y: 20 }}
+   373→              whileInView={{ opacity: 1, y: 0 }}
+   374→              viewport={{ once: true, margin: "-80px" }}
+   375→              transition={{ duration: 0.5 }}
+   376→            >
+   377→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   378→                Coverage across Scotland
+   379→              </span>
+   380→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   381→                Find Your Local Office Cleaning Crew
+   382→              </h2>
+   383→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   384→                Our network of vetted, PVG-checked commercial cleaning crews spans the entire
+   385→                country. From the Central Belt to the Highlands and Islands, we have a local team
+   386→                ready to care for your workplace. Browse by region below, or call us to confirm
+   387→                coverage for your specific postcode.
+   388→              </p>
+   389→
+   390→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   391→                <img
+   392→                  src={IMG.scotlandMap}
+   393→                  alt="Map of Scotland showing Maundy Clean office cleaning coverage areas"
+   394→                  className="absolute inset-0 w-full h-full object-cover"
+   395→                  loading="lazy"
+   396→                />
+   397→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   398→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   399→                  <div className="flex items-center gap-2 mb-1">
+   400→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   401→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   402→                      72+ Scottish towns covered
+   403→                    </span>
+   404→                  </div>
+   405→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   406→                    Same PVG-checked crews, same 100% satisfaction guarantee &mdash; from Glasgow to
+   407→                    Lerwick.
+   408→                  </p>
+   409→                </div>
+   410→              </div>
+   411→
+   412→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   413→                <Button
+   414→                  size="lg"
+   415→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   416→                  asChild
+   417→                >
+   418→                  <Link href="/quote">
+   419→                    <ClipboardList className="w-4 h-4" />
+   420→                    Book My Free Site Survey
+   421→                  </Link>
+   422→                </Button>
+   423→                <Button
+   424→                  size="lg"
+   425→                  variant="outline"
+   426→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   427→                  asChild
+   428→                >
+   429→                  <a href={contactInfo.phoneHref}>
+   430→                    <Phone className="w-4 h-4" />
+   431→                    {contactInfo.phone}
+   432→                  </a>
+   433→                </Button>
+   434→              </div>
+   435→            </motion.div>
+   436→
+   437→            {/* Right: regional location grid */}
+   438→            <motion.div
+   439→              initial={{ opacity: 0, y: 20 }}
+   440→              whileInView={{ opacity: 1, y: 0 }}
+   441→              viewport={{ once: true, margin: "-60px" }}
+   442→              transition={{ duration: 0.5 }}
+   443→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   444→            >
+   445→              <div className="flex items-center justify-between mb-5">
+   446→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   447→                  Browse by region
+   448→                </h3>
+   449→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   450→              </div>
+   451→
+   452→              <div className="space-y-6">
+   453→                {locationsByRegion.map((regionGroup) => (
+   454→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   455→                    <div className="flex items-center gap-2 mb-3">
+   456→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   457→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   458→                        {regionGroup.region}
+   459→                      </span>
+   460→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   461→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   462→                        {regionGroup.cities.length} towns
+   463→                      </span>
+   464→                    </div>
+   465→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   466→                      {regionGroup.cities.map((loc) => (
+   467→                        <Link
+   468→                          key={loc.slug}
+   469→                          id={loc.slug}
+   470→                          href={`/services/office-cleaning-near-me#${loc.slug}`}
+   471→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   472→                        >
+   473→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   474→                          <span>
+   475→                            <span className="font-medium">{loc.city}</span>
+   476→                            <span className="text-[var(--muted-foreground)]"> office</span>
+   477→                          </span>
+   478→                        </Link>
+   479→                      ))}
+   480→                    </div>
+   481→                  </div>
+   482→                ))}
+   483→              </div>
+   484→
+   485→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   486→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   487→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   488→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   489→                </div>
+   490→                <Link
+   491→                  href="/locations"
+   492→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   493→                >
+   494→                  View all 72 Scottish locations
+   495→                  <ArrowRight className="w-4 h-4" />
+   496→                </Link>
+   497→              </div>
+   498→            </motion.div>
+   499→          </div>
+   500→        </div>
+   501→      </section>
+   502→
+   503→      {/* ============================================================ */}
+   504→      {/* SECTION 4 - Why Maundy Clean for your local office cleaning */}
+   505→      {/* H2: Why Scottish Businesses Choose Maundy Clean */}
+   506→      {/* ============================================================ */}
+   507→      <section className="py-16 lg:py-24 bg-background">
+   508→        <div className="max-w-[1400px] mx-auto px-6">
+   509→          <motion.div
+   510→            initial={{ opacity: 0, y: 20 }}
+   511→            whileInView={{ opacity: 1, y: 0 }}
+   512→            viewport={{ once: true, margin: "-80px" }}
+   513→            transition={{ duration: 0.5 }}
+   514→            className="max-w-3xl mx-auto text-center mb-14"
+   515→          >
+   516→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   517→              The Maundy Clean difference
+   518→            </span>
+   519→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   520→              Why Scottish Businesses Choose Maundy Clean
+   521→            </h2>
+   522→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   523→              We&rsquo;re a local specialist, not an impersonal national agency. Our PVG-checked
+   524→              commercial crews live in your area, know your neighbourhood, and stay with you for the
+   525→              long run. Here&rsquo;s what sets us apart from the gig-economy apps and high-turnover
+   526→              agencies operating in Scotland.
+   527→            </p>
+   528→          </motion.div>
+   529→
+   530→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   531→            {TRUST_PILLARS.map((pillar, i) => {
+   532→              const Icon = pillar.icon;
+   533→              return (
+   534→                <motion.div
+   535→                  key={pillar.title}
+   536→                  initial={{ opacity: 0, y: 24 }}
+   537→                  whileInView={{ opacity: 1, y: 0 }}
+   538→                  viewport={{ once: true, margin: "-40px" }}
+   539→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   540→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   541→                >
+   542→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   543→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   544→                  </div>
+   545→                  <div>
+   546→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   547→                      {pillar.title}
+   548→                    </h3>
+   549→                    <p
+   550→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   551→                      dangerouslySetInnerHTML={{ __html: pillar.description }}
+   552→                    />
+   553→                  </div>
+   554→                </motion.div>
+   555→              );
+   556→            })}
+   557→          </div>
+   558→        </div>
+   559→      </section>
+   560→
+   561→      {/* ============================================================ */}
+   562→      {/* SECTION 5 - 3-step booking */}
+   563→      {/* H2: From Site Survey to First Clean in Under a Week */}
+   564→      {/* ============================================================ */}
+   565→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   566→        <div className="max-w-[1400px] mx-auto px-6">
+   567→          <motion.div
+   568→            initial={{ opacity: 0, y: 20 }}
+   569→            whileInView={{ opacity: 1, y: 0 }}
+   570→            viewport={{ once: true, margin: "-80px" }}
+   571→            transition={{ duration: 0.5 }}
+   572→            className="text-center mb-14"
+   573→          >
+   574→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   575→              Hassle-free booking
+   576→            </span>
+   577→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   578→              From Site Survey to First Clean in Under a Week
+   579→            </h2>
+   580→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   581→              We have optimized our booking experience to be uncomplicated and straightforward,
+   582→              addressing the slow response times common among local competitors. Book a free site
+   583→              survey, get matched with a local PVG-checked crew, and enjoy a pristine workplace
+   584→              &mdash; no friction, no waiting, no surprises.
+   585→            </p>
+   586→          </motion.div>
+   587→
+   588→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   589→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   590→
+   591→            {BOOKING_STEPS.map((step, i) => {
+   592→              const Icon = step.icon;
+   593→              return (
+   594→                <motion.div
+   595→                  key={step.step}
+   596→                  initial={{ opacity: 0, y: 24 }}
+   597→                  whileInView={{ opacity: 1, y: 0 }}
+   598→                  viewport={{ once: true, margin: "-40px" }}
+   599→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   600→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   601→                >
+   602→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   603→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   604→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   605→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   606→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   607→                      {step.step}
+   608→                    </span>
+   609→                  </div>
+   610→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   611→                    {step.title}
+   612→                  </h3>
+   613→                  <p
+   614→                    className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   615→                    dangerouslySetInnerHTML={{ __html: step.description }}
+   616→                  />
+   617→                </motion.div>
+   618→              );
+   619→            })}
+   620→          </div>
+   621→
+   622→          <motion.div
+   623→            initial={{ opacity: 0, y: 16 }}
+   624→            whileInView={{ opacity: 1, y: 0 }}
+   625→            viewport={{ once: true }}
+   626→            transition={{ duration: 0.5, delay: 0.3 }}
+   627→            className="text-center mt-10"
+   628→          >
+   629→            <Button
+   630→              size="lg"
+   631→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   632→              asChild
+   633→            >
+   634→              <Link href="/quote">
+   635→                Book My Free Site Survey
+   636→                <ArrowRight className="w-5 h-5" />
+   637→              </Link>
+   638→            </Button>
+   639→          </motion.div>
+   640→        </div>
+   641→      </section>
+   642→
+   643→      {/* ============================================================ */}
+   644→      {/* SECTION 6 - Cross-links to specialist pages */}
+   645→      {/* H2: Specialist Services for Every Commercial Cycle */}
+   646→      {/* ============================================================ */}
+   647→      <section className="py-16 lg:py-24 bg-background">
+   648→        <div className="max-w-[1400px] mx-auto px-6">
+   649→          <motion.div
+   650→            initial={{ opacity: 0, y: 20 }}
+   651→            whileInView={{ opacity: 1, y: 0 }}
+   652→            viewport={{ once: true, margin: "-80px" }}
+   653→            transition={{ duration: 0.5 }}
+   654→            className="max-w-3xl mb-12"
+   655→          >
+   656→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   657→              Beyond the daily clean &middot; commercial cycles
+   658→            </span>
+   659→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   660→              Specialist Services for Every Commercial Cycle
+   661→            </h2>
+   662→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   663→              Our office cleaning is the heartbeat of your property&rsquo;s maintenance, but we
+   664→              provide specialized support for major transitions &mdash; from industry-specific
+   665→              hospitality deep cleans, through lease handovers and post-renovation dust clear-outs,
+   666→              to quarterly antiviral hygiene resets. The same trusted crew can step up whenever your
+   667→              business needs more than a standard visit.
+   668→            </p>
+   669→          </motion.div>
+   670→
+   671→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   672→            {[
+   673→              {
+   674→                icon: UtensilsCrossed,
+   675→                title: "Restaurant Deep Cleaning",
+   676→                href: "/services/restaurant-cleaning",
+   677→                description:
+   678→                  "We provide specialist Restaurant Deep Cleaning to help hospitality businesses meet rigorous health and safety standards. From kitchen extraction canopy degreasing to fryer boil-outs and food-safe surface sanitisation, our hospitality team understands HACCP, EHO inspection standards, and the deadlines of operating a commercial kitchen.",
+   679→                cta: "Explore restaurant cleaning",
+   680→              },
+   681→              {
+   682→                icon: KeyRound,
+   683→                title: "End of Tenancy Cleaning",
+   684→                href: "/services/move-in-out-cleaning",
+   685→                description:
+   686→                  "Moving offices? Our End of Tenancy Cleaning is perfect for businesses looking to fulfill lease requirements and secure their full deposit back. We work to the letting agent&rsquo;s inventory, restore the suite to its original condition, and come back free of charge if anything is flagged on the inspection.",
+   687→                cta: "Explore end of tenancy",
+   688→              },
+   689→              {
+   690→                icon: Hammer,
+   691→                title: "After Builders Clean",
+   692→                href: "/services/post-construction-cleaning",
+   693→                description:
+   694→                  "If you&rsquo;ve had building work or office improvements, our After Builders Clean is designed to remove heavy layers of construction dust. Fine dust left on a commercial floor acts like sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect every surface before the dust causes permanent damage.",
+   695→                cta: "Explore after builders cleaning",
+   696→              },
+   697→              {
+   698→                icon: HeartPulse,
+   699→                title: "Antiviral Sanitisation",
+   700→                href: "/services/disinfection-services",
+   701→                description:
+   702→                  "Book an Antiviral Sanitisation or &ldquo;Covid-19 Deep Cleaning &amp; Fogging&rdquo; session to keep your environment germ-free. Our electrostatic disinfection service covers every surface with an EN 14476-certified virucide &mdash; ideal for flu season, post-illness, or quarterly compliance resets.",
+   703→                cta: "Explore disinfection services",
+   704→              },
+   705→            ].map((sol, i) => {
+   706→              const Icon = sol.icon;
+   707→              return (
+   708→                <motion.div
+   709→                  key={sol.title}
+   710→                  initial={{ opacity: 0, y: 24 }}
+   711→                  whileInView={{ opacity: 1, y: 0 }}
+   712→                  viewport={{ once: true, margin: "-40px" }}
+   713→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   714→                >
+   715→                  <Link
+   716→                    href={sol.href}
+   717→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   718→                  >
+   719→                    <div className="p-6">
+   720→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   721→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   722→                      </div>
+   723→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   724→                        {sol.title}
+   725→                      </h3>
+   726→                      <p
+   727→                        className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   728→                        dangerouslySetInnerHTML={{ __html: sol.description }}
+   729→                      />
+   730→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   731→                        {sol.cta}
+   732→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   733→                      </span>
+   734→                    </div>
+   735→                  </Link>
+   736→                </motion.div>
+   737→              );
+   738→            })}
+   739→          </div>
+   740→
+   741→          <motion.div
+   742→            initial={{ opacity: 0, y: 16 }}
+   743→            whileInView={{ opacity: 1, y: 0 }}
+   744→            viewport={{ once: true }}
+   745→            transition={{ duration: 0.5, delay: 0.2 }}
+   746→            className="mt-10 text-center"
+   747→          >
+   748→            <Link
+   749→              href="/services/office-cleaning"
+   750→              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] bg-[var(--brand-light)]/40 hover:bg-[var(--brand-light)]/70 transition-colors px-5 py-3 rounded-full"
+   751→            >
+   752→              <Building2 className="w-4 h-4" />
+   753→              Explore the full office cleaning service
+   754→              <ArrowRight className="w-4 h-4" />
+   755→            </Link>
+   756→          </motion.div>
+   757→        </div>
+   758→      </section>
+   759→
+   760→      {/* ============================================================ */}
+   761→      {/* SECTION 7 - Final CTA */}
+   762→      {/* H2: Ready for an Office Cleaning Crew Near You? */}
+   763→      {/* ============================================================ */}
+   764→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   765→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   766→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   767→
+   768→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   769→          <motion.div
+   770→            initial={{ opacity: 0, y: 20 }}
+   771→            whileInView={{ opacity: 1, y: 0 }}
+   772→            viewport={{ once: true, margin: "-80px" }}
+   773→            transition={{ duration: 0.5 }}
+   774→          >
+   775→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   776→              Ready to book your local office crew?
+   777→            </span>
+   778→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   779→              Ready for an Office Cleaning Crew Near You?
+   780→            </h2>
+   781→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   782→              Book a free site survey with our management team and receive an itemised proposal
+   783→              within 2 business days. PVG-checked crews, GDPR-aware workstation care, HSE-compliant
+   784→              supplies, monthly cleaning logs, and a 100% satisfaction guarantee &mdash; from
+   785→              &pound;89 per visit for a Small Office through to a fully bespoke contract for a
+   786→              multi-floor headquarters. Coverage across 72+ Scottish towns.
+   787→            </p>
+   788→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   789→              <Button
+   790→                size="lg"
+   791→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   792→                asChild
+   793→              >
+   794→                <Link href="/quote">
+   795→                  Book My Free Site Survey
+   796→                  <ArrowRight className="w-5 h-5" />
+   797→                </Link>
+   798→              </Button>
+   799→              <Button
+   800→                size="lg"
+   801→                variant="outline"
+   802→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   803→                asChild
+   804→              >
+   805→                <a href={contactInfo.phoneHref}>
+   806→                  <Phone className="w-4 h-4" />
+   807→                  Call {contactInfo.phone}
+   808→                </a>
+   809→              </Button>
+   810→            </div>
+   811→          </motion.div>
+   812→        </div>
+   813→      </section>
+   814→
+   815→      {/* ============================================================ */}
+   816→      {/* SECTION 8 - Near-me FAQ */}
+   817→      {/* H2: Frequently Asked Questions */}
+   818→      {/* ============================================================ */}
+   819→      <section className="py-16 lg:py-24 bg-background">
+   820→        <div className="max-w-4xl mx-auto px-6">
+   821→          <motion.div
+   822→            initial={{ opacity: 0, y: 20 }}
+   823→            whileInView={{ opacity: 1, y: 0 }}
+   824→            viewport={{ once: true, margin: "-80px" }}
+   825→            transition={{ duration: 0.5 }}
+   826→            className="text-center mb-12"
+   827→          >
+   828→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   829→              Office cleaning near me &middot; FAQ
+   830→            </span>
+   831→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   832→              Frequently Asked Questions
+   833→            </h2>
+   834→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   835→              Straight answers to the questions our local office cleaning clients ask most often.
+   836→              Can&rsquo;t find what you need? Call us on{" "}
+   837→              <a
+   838→                href={contactInfo.phoneHref}
+   839→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   840→              >
+   841→                {contactInfo.phone}
+   842→              </a>{" "}
+   843→              and we&rsquo;ll talk it through.
+   844→            </p>
+   845→          </motion.div>
+   846→
+   847→          <div className="space-y-4">
+   848→            {NEAR_ME_FAQS.map((faq, i) => (
+   849→              <motion.div
+   850→                key={faq.q}
+   851→                initial={{ opacity: 0, y: 16 }}
+   852→                whileInView={{ opacity: 1, y: 0 }}
+   853→                viewport={{ once: true, margin: "-40px" }}
+   854→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   855→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   856→              >
+   857→                <details className="group">
+   858→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   859→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   860→                      {faq.q}
+   861→                    </h3>
+   862→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   863→                      <span className="relative w-3.5 h-3.5">
+   864→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   865→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   866→                      </span>
+   867→                    </span>
+   868→                  </summary>
+   869→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   870→                    <p
+   871→                      className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+   872→                      dangerouslySetInnerHTML={{ __html: faq.a }}
+   873→                    />
+   874→                  </div>
+   875→                </details>
+   876→              </motion.div>
+   877→            ))}
+   878→          </div>
+   879→
+   880→          <motion.div
+   881→            initial={{ opacity: 0, y: 16 }}
+   882→            whileInView={{ opacity: 1, y: 0 }}
+   883→            viewport={{ once: true, margin: "-40px" }}
+   884→            transition={{ duration: 0.5, delay: 0.3 }}
+   885→            className="mt-10 text-center"
+   886→          >
+   887→            <Button
+   888→              size="lg"
+   889→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   890→              asChild
+   891→            >
+   892→              <Link href="/quote">
+   893→                Book My Free Site Survey
+   894→                <ArrowRight className="w-5 h-5" />
+   895→              </Link>
+   896→            </Button>
+   897→          </motion.div>
+   898→        </div>
+   899→      </section>
+   900→    </>
+   901→  );
+   902→}
+   903→
+   904→

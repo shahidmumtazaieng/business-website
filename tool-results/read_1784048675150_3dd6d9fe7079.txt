@@ -1,0 +1,864 @@
+     1→"use client";
+     2→
+     3→import Link from "next/link";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Users,
+     7→  Shield,
+     8→  Leaf,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Star,
+    15→  Zap,
+    16→  UserCheck,
+    17→  CalendarCheck,
+    18→  Home,
+    19→  Crown,
+    20→  Phone,
+    21→} from "lucide-react";
+    22→import { Button } from "@/components/ui/button";
+    23→import { contactInfo } from "@/lib/site-data";
+    24→
+    25→// ============================================================
+    26→// Images — hand-picked from in-house search service
+    27→// ============================================================
+    28→const IMG = {
+    29→  heroWide:
+    30→    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    31→  scotlandMap:
+    32→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    33→  localCrew:
+    34→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    35→  homeClean:
+    36→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    37→};
+    38→
+    39→// ============================================================
+    40→// 36 Scottish locations covered by the near-me page
+    41→// ============================================================
+    42→const LOCATIONS: { city: string; slug: string; region: string }[] = [
+    43→  // Central Belt
+    44→  { city: "Glasgow", slug: "glasgow", region: "Central Belt" },
+    45→  { city: "Edinburgh", slug: "edinburgh", region: "Central Belt" },
+    46→  { city: "Stirling", slug: "stirling", region: "Central Belt" },
+    47→  { city: "Falkirk", slug: "falkirk", region: "Central Belt" },
+    48→  { city: "Livingston", slug: "livingston", region: "Central Belt" },
+    49→  { city: "East Kilbride", slug: "east-kilbride", region: "Central Belt" },
+    50→  { city: "Paisley", slug: "paisley", region: "Central Belt" },
+    51→  { city: "Hamilton", slug: "hamilton", region: "Central Belt" },
+    52→  { city: "Motherwell", slug: "motherwell", region: "Central Belt" },
+    53→  { city: "Cumbernauld", slug: "cumbernauld", region: "Central Belt" },
+    54→  { city: "Coatbridge", slug: "coatbridge", region: "Central Belt" },
+    55→  { city: "Ayr", slug: "ayr", region: "Central Belt" },
+    56→  { city: "Kilmarnock", slug: "kilmarnock", region: "Central Belt" },
+    57→  { city: "Dunfermline", slug: "dunfermline", region: "Central Belt" },
+    58→  { city: "Kirkcaldy", slug: "kirkcaldy", region: "Central Belt" },
+    59→  { city: "Musselburgh", slug: "musselburgh", region: "Central Belt" },
+    60→  { city: "Dalkeith", slug: "dalkeith", region: "Central Belt" },
+    61→  { city: "Bathgate", slug: "bathgate", region: "Central Belt" },
+    62→  // East
+    63→  { city: "Dundee", slug: "dundee", region: "East" },
+    64→  { city: "Perth", slug: "perth", region: "East" },
+    65→  { city: "St Andrews", slug: "st-andrews", region: "East" },
+    66→  // North East
+    67→  { city: "Aberdeen", slug: "aberdeen", region: "North East" },
+    68→  { city: "Elgin", slug: "elgin", region: "North East" },
+    69→  { city: "Peterhead", slug: "peterhead", region: "North East" },
+    70→  { city: "Stonehaven", slug: "stonehaven", region: "North East" },
+    71→  { city: "Inverurie", slug: "inverurie", region: "North East" },
+    72→  // Highlands & Islands
+    73→  { city: "Inverness", slug: "inverness", region: "Highlands & Islands" },
+    74→  { city: "Oban", slug: "oban", region: "Highlands & Islands" },
+    75→  { city: "Fort William", slug: "fort-william", region: "Highlands & Islands" },
+    76→  { city: "Aviemore", slug: "aviemore", region: "Highlands & Islands" },
+    77→  { city: "Wick", slug: "wick", region: "Highlands & Islands" },
+    78→  { city: "Thurso", slug: "thurso", region: "Highlands & Islands" },
+    79→  { city: "Lerwick", slug: "lerwick", region: "Highlands & Islands" },
+    80→  { city: "Kirkwall", slug: "kirkwall", region: "Highlands & Islands" },
+    81→  // South
+    82→  { city: "Dumfries", slug: "dumfries", region: "South" },
+    83→  { city: "Stranraer", slug: "stranraer", region: "South" },
+    84→];
+    85→
+    86→// Group by region for cleaner display
+    87→const REGION_ORDER = ["Central Belt", "East", "North East", "Highlands & Islands", "South"];
+    88→const locationsByRegion = REGION_ORDER.map((region) => ({
+    89→  region,
+    90→  cities: LOCATIONS.filter((l) => l.region === region),
+    91→}));
+    92→
+    93→// ============================================================
+    94→// Trust badges for the hero
+    95→// ============================================================
+    96→const HERO_BADGES = [
+    97→  { icon: Star, label: "4.9/5 · 6,200+ reviews" },
+    98→  { icon: Shield, label: "PVG-Checked & £5m Insured" },
+    99→  { icon: Leaf, label: "Child & Pet-Safe Products" },
+   100→  { icon: Clock, label: "Same Housekeeper Every Visit" },
+   101→];
+   102→
+   103→// ============================================================
+   104→// The 4 trust pillars
+   105→// ============================================================
+   106→const TRUST_PILLARS = [
+   107→  {
+   108→    icon: Users,
+   109→    title: "Same Trusted Professional Every Visit",
+   110→    description:
+   111→      "We assign a dedicated housekeeper to your home for the duration of your plan. They don't get reassigned, shared with other clients in your slot, or pulled to a different area. Continuity is what turns a clean into a relationship.",
+   112→  },
+   113→  {
+   114→    icon: Crown,
+   115→    title: "Vocationally Trained & Fully Insured",
+   116→    description:
+   117→      "Every housekeeper is fully trained, background-checked through Disclosure Scotland's PVG scheme, and carries official Maundy Clean identification. £5m public liability cover as standard on every visit.",
+   118→  },
+   119→  {
+   120→    icon: Leaf,
+   121→    title: "Safe for Families and Pets",
+   122→    description:
+   123→      "We use only certified child and pet-safe products and eco-friendly supplies. EU Ecolabel and DEFRA-approved low-VOC products as standard. Your home stays a sanctuary — not a chemistry lab.",
+   124→  },
+   125→  {
+   126→    icon: Clock,
+   127→    title: "Total Flexibility — No Contracts",
+   128→    description:
+   129→      "You are never tied into a long-term contract. We offer flexible appointments across five days a week. Pause for holidays or renovations with 48 hours' notice. Cancel entirely with one tap. Your rate is locked in for 12 months.",
+   130→  },
+   131→];
+   132→
+   133→// ============================================================
+   134→// The 3-step booking process
+   135→// ============================================================
+   136→const BOOKING_STEPS = [
+   137→  {
+   138→    icon: Zap,
+   139→    step: "01",
+   140→    title: "30-Second Instant Quote",
+   141→    description:
+   142→      "Tell us about your home and receive a fixed-price quote in under a minute. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay.",
+   143→  },
+   144→  {
+   145→    icon: UserCheck,
+   146→    step: "02",
+   147→    title: "Local Housekeeper Matching",
+   148→    description:
+   149→      "We match you with a vetted housekeeper in your postcode. They're briefed on your home's specific cleaning priorities before the first visit. Secure key safe system available if you're at work.",
+   150→  },
+   151→  {
+   152→    icon: CalendarCheck,
+   153→    step: "03",
+   154→    title: "Enjoy a Pristine Sanctuary",
+   155→    description:
+   156→      "Walk into a home that feels refreshed, welcoming, and showcase-ready — backed by our 100% satisfaction guarantee. Adjust your checklist anytime from your phone. Not happy? We re-clean within 24 hours, free.",
+   157→  },
+   158→];
+   159→
+   160→// ============================================================
+   161→// FAQ for the near-me page
+   162→// ============================================================
+   163→const NEAR_ME_FAQS = [
+   164→  {
+   165→    q: "How do I know if you cover my area?",
+   166→    a: "We cover 72+ towns and cities across Scotland — from Glasgow and Edinburgh in the Central Belt to Lerwick in Shetland and everywhere in between. Use the location grid above to find your town. If you don't see your postcode listed, call us — we add new coverage areas every month and may already have a housekeeper near you.",
+   167→  },
+   168→  {
+   169→    q: "How quickly can a local housekeeper start?",
+   170→    a: "From quote to first clean in under 48 hours for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 5-7 working days for housekeeper matching and travel planning. Same-day starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee — call us to check availability.",
+   171→  },
+   172→  {
+   173→    q: "Will the housekeeper travel to me, or do I need to come to you?",
+   174→    a: "Our housekeepers travel to your home. We assign housekeepers based on postcode proximity to minimise travel time and keep your rates low. Your housekeeper typically lives within 30 minutes of your home — which means reliable attendance, no travel surcharges, and a genuine local who knows your area.",
+   175→  },
+   176→  {
+   177→    q: "Do you have housekeepers available in rural Scotland?",
+   178→    a: "Yes. We cover rural Scotland including Perthshire, Angus, Fife, the Borders, Argyll, Aberdeenshire, and parts of the Highlands. For very remote properties (Islands, far North), we may operate on a minimum-hours-per-visit basis or schedule fortnightly rather than weekly visits. Call us to discuss your specific location.",
+   179→  },
+   180→  {
+   181→    q: "Can I get a housekeeper for my holiday let or second home?",
+   182→    a: "Absolutely. Many of our clients use us for holiday lets, second homes, and pieds-à-terre across Scotland. We provide turnover cleaning between guests, periodic deep cleans during void periods, and full housekeeping management for premium short-term lets. Visit our Holiday Let Turnover page for more detail.",
+   183→  },
+   184→  {
+   185→    q: "What's the difference between a housekeeper and a cleaner near me?",
+   186→    a: "A cleaner cleans — they visit on a schedule, do the cleaning tasks agreed, and leave. A housekeeper manages a household — they clean, but also handle laundry and linen, provisioning and supplier relationships, trades liaison, guest preparation, household admin, and seasonal deep-cleaning schedules. If you want someone to take ownership of your home's presentation and routines, you want a housekeeper. If you just want the cleaning done, our Maid Service or Recurring Home Cleaning pages cover that.",
+   187→  },
+   188→];
+   189→
+   190→// ============================================================
+   191→// Main page component
+   192→// ============================================================
+   193→
+   194→export function HousekeepingNearMeHero() {
+   195→  return (
+   196→    <>
+   197→      {/* ============================================================ */}
+   198→      {/* SECTION 1 — Hero */}
+   199→      {/* H1: Housekeeping Services Near Me in Scotland */}
+   200→      {/* ============================================================ */}
+   201→      <section className="relative overflow-hidden">
+   202→        <div className="absolute inset-0">
+   203→          <img
+   204→            src={IMG.heroWide}
+   205→            alt="Maundy Clean local housekeeper arriving at a Scottish family home"
+   206→            className="w-full h-full object-cover"
+   207→            loading="eager"
+   208→            fetchPriority="high"
+   209→          />
+   210→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   211→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   212→        </div>
+   213→
+   214→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   215→          <motion.div
+   216→            initial="hidden"
+   217→            animate="visible"
+   218→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   219→            className="max-w-3xl"
+   220→          >
+   221→            <motion.div
+   222→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   223→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   224→            >
+   225→              <span className="relative flex w-2 h-2">
+   226→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   227→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   228→              </span>
+   229→              72+ Scottish towns · Local PVG-checked housekeepers · Same crew every visit
+   230→            </motion.div>
+   231→
+   232→            <motion.h1
+   233→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   234→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   235→            >
+   236→              Housekeeping Services Near Me in Scotland
+   237→            </motion.h1>
+   238→
+   239→            <motion.p
+   240→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   241→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   242→            >
+   243→              Searching for &ldquo;housekeeping services near me&rdquo; in Scotland? Maundy Clean
+   244→              covers 72+ towns and cities across the Central Belt, Highlands, Borders, and Islands.
+   245→              Same PVG-checked standard, same 100% re-clean guarantee, same dedicated housekeeper
+   246→              every visit &mdash; wherever your home happens to be. From £20/hr.
+   247→            </motion.p>
+   248→
+   249→            <motion.div
+   250→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   251→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   252→            >
+   253→              <Button
+   254→                size="lg"
+   255→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   256→                asChild
+   257→              >
+   258→                <Link href="/quote">
+   259→                  Get My 30-Second Instant Quote
+   260→                  <ArrowRight className="w-5 h-5" />
+   261→                </Link>
+   262→              </Button>
+   263→              <Button
+   264→                size="lg"
+   265→                variant="outline"
+   266→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   267→                asChild
+   268→              >
+   269→                <Link href="#locations">
+   270→                  <MapPin className="w-4 h-4" />
+   271→                  Find Your Local Housekeeper
+   272→                </Link>
+   273→              </Button>
+   274→            </motion.div>
+   275→
+   276→            <motion.div
+   277→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   278→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   279→            >
+   280→              {HERO_BADGES.map((badge) => {
+   281→                const Icon = badge.icon;
+   282→                return (
+   283→                  <div key={badge.label} className="flex items-center gap-1.5">
+   284→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   285→                  </div>
+   286→                );
+   287→              })}
+   288→            </motion.div>
+   289→          </motion.div>
+   290→        </div>
+   291→      </section>
+   292→
+   293→      {/* ============================================================ */}
+   294→      {/* SECTION 2 — Intro + stats */}
+   295→      {/* H2: Local Housekeepers You Can Trust */}
+   296→      {/* ============================================================ */}
+   297→      <section className="py-16 lg:py-24 bg-background">
+   298→        <div className="max-w-[1100px] mx-auto px-6">
+   299→          <motion.div
+   300→            initial={{ opacity: 0, y: 20 }}
+   301→            whileInView={{ opacity: 1, y: 0 }}
+   302→            viewport={{ once: true, margin: "-80px" }}
+   303→            transition={{ duration: 0.5 }}
+   304→            className="max-w-3xl mx-auto text-center mb-10"
+   305→          >
+   306→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   307→              Local housekeeping · Scotland-wide
+   308→            </span>
+   309→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   310→              Local Housekeepers You Can Trust
+   311→            </h2>
+   312→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   313→              Maundy Clean is a Scottish housekeeping company built on the Maundy tradition of
+   314→              service and care. We don&rsquo;t operate as an impersonal national agency &mdash;
+   315→              we&rsquo;re a local specialist with vetted housekeepers living and working in your
+   316→              area. Whether you&rsquo;re searching for weekly housekeeping in Glasgow&rsquo;s West
+   317→              End, fortnightly housekeeping in Edinburgh&rsquo;s New Town, monthly housekeeping in
+   318→              Aberdeen&rsquo;s suburbs, or a private housekeeper anywhere in between, we assign a
+   319→              PVG-checked, PAYE-employed professional that stays with you for the long run. Same
+   320→              housekeeper, same day, same locked-in rate for 12 months.
+   321→            </p>
+   322→          </motion.div>
+   323→
+   324→          <motion.div
+   325→            initial={{ opacity: 0, y: 16 }}
+   326→            whileInView={{ opacity: 1, y: 0 }}
+   327→            viewport={{ once: true, margin: "-60px" }}
+   328→            transition={{ duration: 0.5 }}
+   329→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   330→          >
+   331→            {[
+   332→              { label: "Scottish towns covered", value: "72+" },
+   333→              { label: "Client tenure", value: "3.4 yrs avg" },
+   334→              { label: "Housekeeper retention", value: "80%+" },
+   335→              { label: "Star rating", value: "4.9/5" },
+   336→            ].map((stat) => (
+   337→              <div
+   338→                key={stat.label}
+   339→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   340→              >
+   341→                <div className="font-display font-extrabold text-2xl text-gradient-brand">{stat.value}</div>
+   342→                <div className="text-xs text-[var(--muted-foreground)] mt-1">{stat.label}</div>
+   343→              </div>
+   344→            ))}
+   345→          </motion.div>
+   346→        </div>
+   347→      </section>
+   348→
+   349→      {/* ============================================================ */}
+   350→      {/* SECTION 3 — Location grid (id="locations" anchor target) */}
+   351→      {/* H2: Find Your Local Housekeeper */}
+   352→      {/* ============================================================ */}
+   353→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   354→        <div className="max-w-[1400px] mx-auto px-6">
+   355→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   356→            {/* Left: copy + map */}
+   357→            <motion.div
+   358→              initial={{ opacity: 0, y: 20 }}
+   359→              whileInView={{ opacity: 1, y: 0 }}
+   360→              viewport={{ once: true, margin: "-80px" }}
+   361→              transition={{ duration: 0.5 }}
+   362→            >
+   363→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   364→                Coverage across Scotland
+   365→              </span>
+   366→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   367→                Find Your Local Housekeeper
+   368→              </h2>
+   369→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   370→                Our network of vetted, PVG-checked housekeepers spans the entire country. From the
+   371→                Central Belt to the Highlands and Islands, we have a local professional ready to
+   372→                take ownership of your home. Browse by region below, or call us to confirm coverage
+   373→                for your specific postcode.
+   374→              </p>
+   375→
+   376→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   377→                <img
+   378→                  src={IMG.scotlandMap}
+   379→                  alt="Map of Scotland showing Maundy Clean housekeeping service coverage areas"
+   380→                  className="absolute inset-0 w-full h-full object-cover"
+   381→                  loading="lazy"
+   382→                />
+   383→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   384→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   385→                  <div className="flex items-center gap-2 mb-1">
+   386→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   387→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   388→                      72+ Scottish towns covered
+   389→                    </span>
+   390→                  </div>
+   391→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   392→                    Same PVG-checked housekeepers, same trusted professional every visit, same 100%
+   393→                    re-clean guarantee &mdash; from Glasgow to Lerwick.
+   394→                  </p>
+   395→                </div>
+   396→              </div>
+   397→
+   398→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   399→                <Button
+   400→                  size="lg"
+   401→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   402→                  asChild
+   403→                >
+   404→                  <Link href="/quote">
+   405→                    <Zap className="w-4 h-4" />
+   406→                    Get My Instant Quote
+   407→                  </Link>
+   408→                </Button>
+   409→                <Button
+   410→                  size="lg"
+   411→                  variant="outline"
+   412→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   413→                  asChild
+   414→                >
+   415→                  <a href={contactInfo.phoneHref}>
+   416→                    <Phone className="w-4 h-4" />
+   417→                    {contactInfo.phone}
+   418→                  </a>
+   419→                </Button>
+   420→              </div>
+   421→            </motion.div>
+   422→
+   423→            {/* Right: regional location grid */}
+   424→            <motion.div
+   425→              initial={{ opacity: 0, y: 20 }}
+   426→              whileInView={{ opacity: 1, y: 0 }}
+   427→              viewport={{ once: true, margin: "-60px" }}
+   428→              transition={{ duration: 0.5 }}
+   429→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   430→            >
+   431→              <div className="flex items-center justify-between mb-5">
+   432→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   433→                  Browse by region
+   434→                </h3>
+   435→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   436→              </div>
+   437→
+   438→              <div className="space-y-6">
+   439→                {locationsByRegion.map((regionGroup) => (
+   440→                  <div key={regionGroup.region}>
+   441→                    <div className="flex items-center gap-2 mb-3">
+   442→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   443→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   444→                        {regionGroup.region}
+   445→                      </span>
+   446→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   447→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   448→                        {regionGroup.cities.length} towns
+   449→                      </span>
+   450→                    </div>
+   451→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   452→                      {regionGroup.cities.map((loc) => (
+   453→                        <Link
+   454→                          key={loc.slug}
+   455→                          href={`/locations/${loc.slug}`}
+   456→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+   457→                        >
+   458→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   459→                          <span>
+   460→                            <span className="font-medium">{loc.city}</span>
+   461→                            <span className="text-[var(--muted-foreground)]"> housekeepers</span>
+   462→                          </span>
+   463→                        </Link>
+   464→                      ))}
+   465→                    </div>
+   466→                  </div>
+   467→                ))}
+   468→              </div>
+   469→
+   470→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   471→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   472→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   473→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   474→                </div>
+   475→                <Link
+   476→                  href="/locations"
+   477→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   478→                >
+   479→                  View all 72 Scottish locations
+   480→                  <ArrowRight className="w-4 h-4" />
+   481→                </Link>
+   482→              </div>
+   483→            </motion.div>
+   484→          </div>
+   485→        </div>
+   486→      </section>
+   487→
+   488→      {/* ============================================================ */}
+   489→      {/* SECTION 4 — Why Maundy Clean for your local housekeeping */}
+   490→      {/* H2: Why Scottish Households Choose Maundy Clean */}
+   491→      {/* ============================================================ */}
+   492→      <section className="py-16 lg:py-24 bg-background">
+   493→        <div className="max-w-[1400px] mx-auto px-6">
+   494→          <motion.div
+   495→            initial={{ opacity: 0, y: 20 }}
+   496→            whileInView={{ opacity: 1, y: 0 }}
+   497→            viewport={{ once: true, margin: "-80px" }}
+   498→            transition={{ duration: 0.5 }}
+   499→            className="max-w-3xl mx-auto text-center mb-14"
+   500→          >
+   501→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   502→              The Maundy Clean difference
+   503→            </span>
+   504→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   505→              Why Scottish Households Choose Maundy Clean
+   506→            </h2>
+   507→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   508→              We&rsquo;re a local specialist, not an impersonal national agency. Our housekeepers
+   509→              live in your area, know your neighbourhood, and stay with you for the long run. Here&rsquo;s
+   510→              what sets us apart from the gig-economy apps and high-turnover agencies operating in
+   511→              Scotland.
+   512→            </p>
+   513→          </motion.div>
+   514→
+   515→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   516→            {TRUST_PILLARS.map((pillar, i) => {
+   517→              const Icon = pillar.icon;
+   518→              return (
+   519→                <motion.div
+   520→                  key={pillar.title}
+   521→                  initial={{ opacity: 0, y: 24 }}
+   522→                  whileInView={{ opacity: 1, y: 0 }}
+   523→                  viewport={{ once: true, margin: "-40px" }}
+   524→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   525→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   526→                >
+   527→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   528→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+   529→                  </div>
+   530→                  <div>
+   531→                    <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   532→                      {pillar.title}
+   533→                    </h3>
+   534→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   535→                      {pillar.description}
+   536→                    </p>
+   537→                  </div>
+   538→                </motion.div>
+   539→              );
+   540→            })}
+   541→          </div>
+   542→        </div>
+   543→      </section>
+   544→
+   545→      {/* ============================================================ */}
+   546→      {/* SECTION 5 — 3-step booking */}
+   547→      {/* H2: From Quote to First Clean in 48 Hours */}
+   548→      {/* ============================================================ */}
+   549→      <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   550→        <div className="max-w-[1400px] mx-auto px-6">
+   551→          <motion.div
+   552→            initial={{ opacity: 0, y: 20 }}
+   553→            whileInView={{ opacity: 1, y: 0 }}
+   554→            viewport={{ once: true, margin: "-80px" }}
+   555→            transition={{ duration: 0.5 }}
+   556→            className="text-center mb-14"
+   557→          >
+   558→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   559→              Hassle-free booking
+   560→            </span>
+   561→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   562→              From Quote to First Clean in 48 Hours
+   563→            </h2>
+   564→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   565→              We have optimized our booking experience to be uncomplicated and straightforward.
+   566→              Tell us about your home, get matched with a local housekeeper, and enjoy a pristine
+   567→              sanctuary &mdash; no friction, no waiting, no surprises.
+   568→            </p>
+   569→          </motion.div>
+   570→
+   571→          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   572→            <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   573→
+   574→            {BOOKING_STEPS.map((step, i) => {
+   575→              const Icon = step.icon;
+   576→              return (
+   577→                <motion.div
+   578→                  key={step.step}
+   579→                  initial={{ opacity: 0, y: 24 }}
+   580→                  whileInView={{ opacity: 1, y: 0 }}
+   581→                  viewport={{ once: true, margin: "-40px" }}
+   582→                  transition={{ duration: 0.5, delay: i * 0.12 }}
+   583→                  className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   584→                >
+   585→                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   586→                    <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   587→                    <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   588→                    <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   589→                    <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   590→                      {step.step}
+   591→                    </span>
+   592→                  </div>
+   593→                  <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   594→                    {step.title}
+   595→                  </h3>
+   596→                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   597→                    {step.description}
+   598→                  </p>
+   599→                </motion.div>
+   600→              );
+   601→            })}
+   602→          </div>
+   603→
+   604→          <motion.div
+   605→            initial={{ opacity: 0, y: 16 }}
+   606→            whileInView={{ opacity: 1, y: 0 }}
+   607→            viewport={{ once: true }}
+   608→            transition={{ duration: 0.5, delay: 0.3 }}
+   609→            className="text-center mt-10"
+   610→          >
+   611→            <Button
+   612→              size="lg"
+   613→              className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   614→              asChild
+   615→            >
+   616→              <Link href="/quote">
+   617→                Get My 30-Second Instant Quote
+   618→                <ArrowRight className="w-5 h-5" />
+   619→              </Link>
+   620→            </Button>
+   621→          </motion.div>
+   622→        </div>
+   623→      </section>
+   624→
+   625→      {/* ============================================================ */}
+   626→      {/* SECTION 6 — Cross-links to specialist pages */}
+   627→      {/* H2: Specialist Services for Every Property Milestone */}
+   628→      {/* ============================================================ */}
+   629→      <section className="py-16 lg:py-24 bg-background">
+   630→        <div className="max-w-[1400px] mx-auto px-6">
+   631→          <motion.div
+   632→            initial={{ opacity: 0, y: 20 }}
+   633→            whileInView={{ opacity: 1, y: 0 }}
+   634→            viewport={{ once: true, margin: "-80px" }}
+   635→            transition={{ duration: 0.5 }}
+   636→            className="max-w-3xl mb-12"
+   637→          >
+   638→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   639→              Beyond recurring housekeeping
+   640→            </span>
+   641→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   642→              Specialist Services for Every Property Milestone
+   643→            </h2>
+   644→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   645→              While our recurring housekeeping service maintains your daily sanctuary, we provide a
+   646→              full spectrum of specialist support for those top-to-bottom moments &mdash; from
+   647→              intensive maintenance resets to property transitions and post-renovation dust removal.
+   648→              The same trusted crew can step up when life changes.
+   649→            </p>
+   650→          </motion.div>
+   651→
+   652→          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+   653→            {[
+   654→              {
+   655→                icon: Sparkles,
+   656→                title: "Deep House Cleaning",
+   657→                href: "/services/deep-house-cleaning",
+   658→                description:
+   659→                  "If your home hasn&rsquo;t had professional attention in 6 months, our Deep House Cleaning moves furniture and cleans behind and underneath. Perfect as a baseline reset before recurring housekeeping.",
+   660→                cta: "Explore deep cleaning",
+   661→              },
+   662→              {
+   663→                icon: Home,
+   664→                title: "End of Tenancy Cleaning",
+   665→                href: "/services/move-in-out-cleaning",
+   666→                description:
+   667→                  "Moving homes? Our End of Tenancy Cleaning includes a Deposit-Back Guarantee, ensuring properties are front-line ready for new occupants. We work to the letting agent&rsquo;s inventory.",
+   668→                cta: "Explore end of tenancy",
+   669→              },
+   670→              {
+   671→                icon: Crown,
+   672→                title: "Full Housekeeping Service",
+   673→                href: "/services/housekeeping-services",
+   674→                description:
+   675→                  "Beyond cleaning &mdash; laundry and linen management, provisioning, trades liaison, guest preparation, household admin. The full housekeeping scope for larger homes and busy lives.",
+   676→                cta: "Explore full housekeeping",
+   677→              },
+   678→              {
+   679→                icon: Users,
+   680→                title: "Maid Service",
+   681→                href: "/services/maid-service",
+   682→                description:
+   683→                  "Lighter-touch recurring maid service &mdash; same cleaner every visit, with laundry and bed-making, but without the full household management scope of housekeeping.",
+   684→                cta: "Explore maid service",
+   685→              },
+   686→            ].map((sol, i) => {
+   687→              const Icon = sol.icon;
+   688→              return (
+   689→                <motion.div
+   690→                  key={sol.title}
+   691→                  initial={{ opacity: 0, y: 24 }}
+   692→                  whileInView={{ opacity: 1, y: 0 }}
+   693→                  viewport={{ once: true, margin: "-40px" }}
+   694→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   695→                >
+   696→                  <Link
+   697→                    href={sol.href}
+   698→                    className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+   699→                  >
+   700→                    <div className="p-6">
+   701→                      <div className="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center mb-4">
+   702→                        <Icon className="w-6 h-6 text-[var(--brand)]" />
+   703→                      </div>
+   704→                      <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-2 leading-tight group-hover:text-[var(--brand)] transition-colors">
+   705→                        {sol.title}
+   706→                      </h3>
+   707→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+   708→                        {sol.description}
+   709→                      </p>
+   710→                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+   711→                        {sol.cta}
+   712→                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+   713→                      </span>
+   714→                    </div>
+   715→                  </Link>
+   716→                </motion.div>
+   717→              );
+   718→            })}
+   719→          </div>
+   720→        </div>
+   721→      </section>
+   722→
+   723→      {/* ============================================================ */}
+   724→      {/* SECTION 7 — Final CTA */}
+   725→      {/* H2: Ready for a Housekeeper Near You? */}
+   726→      {/* ============================================================ */}
+   727→      <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+   728→        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+   729→        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+   730→
+   731→        <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+   732→          <motion.div
+   733→            initial={{ opacity: 0, y: 20 }}
+   734→            whileInView={{ opacity: 1, y: 0 }}
+   735→            viewport={{ once: true, margin: "-80px" }}
+   736→            transition={{ duration: 0.5 }}
+   737→          >
+   738→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+   739→              Ready to book your local housekeeper?
+   740→            </span>
+   741→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+   742→              Ready for a Housekeeper Near You?
+   743→            </h2>
+   744→            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+   745→              Get a fixed-price housekeeping quote in 30 seconds. No pushy sales call, no waiting 24
+   746→              hours for a callback. PVG-checked housekeepers, same professional every visit, child
+   747→              &amp; pet-safe products, secure key safe system, and a 100% satisfaction guarantee
+   748→              &mdash; from £20/hr. Coverage across 72+ Scottish towns.
+   749→            </p>
+   750→            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+   751→              <Button
+   752→                size="lg"
+   753→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   754→                asChild
+   755→              >
+   756→                <Link href="/quote">
+   757→                  Get My 30-Second Instant Quote
+   758→                  <ArrowRight className="w-5 h-5" />
+   759→                </Link>
+   760→              </Button>
+   761→              <Button
+   762→                size="lg"
+   763→                variant="outline"
+   764→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   765→                asChild
+   766→              >
+   767→                <a href={contactInfo.phoneHref}>
+   768→                  <Phone className="w-4 h-4" />
+   769→                  Call {contactInfo.phone}
+   770→                </a>
+   771→              </Button>
+   772→            </div>
+   773→          </motion.div>
+   774→        </div>
+   775→      </section>
+   776→
+   777→      {/* ============================================================ */}
+   778→      {/* SECTION 8 — Near-me FAQ */}
+   779→      {/* H2: Frequently Asked Questions */}
+   780→      {/* ============================================================ */}
+   781→      <section className="py-16 lg:py-24 bg-background">
+   782→        <div className="max-w-4xl mx-auto px-6">
+   783→          <motion.div
+   784→            initial={{ opacity: 0, y: 20 }}
+   785→            whileInView={{ opacity: 1, y: 0 }}
+   786→            viewport={{ once: true, margin: "-80px" }}
+   787→            transition={{ duration: 0.5 }}
+   788→            className="text-center mb-12"
+   789→          >
+   790→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   791→              Housekeeping near me · FAQ
+   792→            </span>
+   793→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   794→              Frequently Asked Questions
+   795→            </h2>
+   796→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   797→              Straight answers to the questions our local housekeeping clients ask most often.
+   798→              Can&rsquo;t find what you need? Call us on{" "}
+   799→              <a
+   800→                href={contactInfo.phoneHref}
+   801→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+   802→              >
+   803→                {contactInfo.phone}
+   804→              </a>{" "}
+   805→              and we&rsquo;ll talk it through.
+   806→            </p>
+   807→          </motion.div>
+   808→
+   809→          <div className="space-y-4">
+   810→            {NEAR_ME_FAQS.map((faq, i) => (
+   811→              <motion.div
+   812→                key={faq.q}
+   813→                initial={{ opacity: 0, y: 16 }}
+   814→                whileInView={{ opacity: 1, y: 0 }}
+   815→                viewport={{ once: true, margin: "-40px" }}
+   816→                transition={{ duration: 0.4, delay: i * 0.06 }}
+   817→                className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+   818→              >
+   819→                <details className="group">
+   820→                  <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+   821→                    <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+   822→                      {faq.q}
+   823→                    </h3>
+   824→                    <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+   825→                      <span className="relative w-3.5 h-3.5">
+   826→                        <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+   827→                        <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+   828→                      </span>
+   829→                    </span>
+   830→                  </summary>
+   831→                  <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+   832→                    <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   833→                      {faq.a}
+   834→                    </p>
+   835→                  </div>
+   836→                </details>
+   837→              </motion.div>
+   838→            ))}
+   839→          </div>
+   840→
+   841→          <motion.div
+   842→            initial={{ opacity: 0, y: 16 }}
+   843→            whileInView={{ opacity: 1, y: 0 }}
+   844→            viewport={{ once: true, margin: "-40px" }}
+   845→            transition={{ duration: 0.5, delay: 0.3 }}
+   846→            className="mt-10 text-center"
+   847→          >
+   848→            <Button
+   849→              size="lg"
+   850→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   851→              asChild
+   852→            >
+   853→              <Link href="/quote">
+   854→                Get My 30-Second Instant Quote
+   855→                <ArrowRight className="w-5 h-5" />
+   856→              </Link>
+   857→            </Button>
+   858→          </motion.div>
+   859→        </div>
+   860→      </section>
+   861→    </>
+   862→  );
+   863→}
+   864→

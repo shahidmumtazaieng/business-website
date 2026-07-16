@@ -1,0 +1,1430 @@
+     1→"use client";
+     2→
+     3→import type { ReactNode } from "react";
+     4→import Link from "next/link";
+     5→import { motion } from "framer-motion";
+     6→import {
+     7→  ShieldCheck,
+     8→  Star,
+     9→  Clock,
+    10→  Sparkles,
+    11→  MapPin,
+    12→  ArrowRight,
+    13→  CheckCircle2,
+    14→  Crown,
+    15→  Hammer,
+    16→  UserCheck,
+    17→  ClipboardCheck,
+    18→  FileText,
+    19→  HeartPulse,
+    20→  Building2,
+    21→  Leaf,
+    22→  KeyRound,
+    23→  Layers,
+    24→  Brush,
+    25→  Home,
+    26→} from "lucide-react";
+    27→import { Button } from "@/components/ui/button";
+    28→import { contactInfo } from "@/lib/site-data";
+    29→
+    30→// ============================================================
+    31→// Images - hand-picked from in-house search service
+    32→// (VCT-specific imagery, drawn from the existing floor-care
+    33→// image pool plus the dedicated VCT hero image)
+    34→// ============================================================
+    35→const IMG = {
+    36→  heroWide:
+    37→    "https://sfile.chatglm.cn/images-ppt/vct-floor-care.jpg",
+    38→  introSplit:
+    39→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    40→  whyCrew:
+    41→    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    42→  checklistStrip:
+    43→    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    44→  checklistFinish:
+    45→    "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+    46→  checklistDetail:
+    47→    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    48→  leaseRecurring:
+    49→    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    50→  leaseTenancy:
+    51→    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    52→  leaseBuilders:
+    53→    "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
+    54→  leaseUpholstery:
+    55→    "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
+    56→  nearMeMap:
+    57→    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    58→};
+    59→
+    60→// ============================================================
+    61→// 36 Scottish locations covered by the near-me grid
+    62→// (city-centre + neighbourhood coverage across Scotland)
+    63→// ============================================================
+    64→const NEAR_ME_LOCATIONS: { city: string; slug: string }[] = [
+    65→  { city: "Glasgow", slug: "glasgow" },
+    66→  { city: "Edinburgh", slug: "edinburgh" },
+    67→  { city: "Aberdeen", slug: "aberdeen" },
+    68→  { city: "Dundee", slug: "dundee" },
+    69→  { city: "Stirling", slug: "stirling" },
+    70→  { city: "Inverness", slug: "inverness" },
+    71→  { city: "Perth", slug: "perth" },
+    72→  { city: "Falkirk", slug: "falkirk" },
+    73→  { city: "Paisley", slug: "paisley" },
+    74→  { city: "East Kilbride", slug: "east-kilbride" },
+    75→  { city: "Livingston", slug: "livingston" },
+    76→  { city: "Hamilton", slug: "hamilton" },
+    77→  { city: "Ayr", slug: "ayr" },
+    78→  { city: "Kilmarnock", slug: "kilmarnock" },
+    79→  { city: "Greenock", slug: "greenock" },
+    80→  { city: "Coatbridge", slug: "coatbridge" },
+    81→  { city: "Airdrie", slug: "airdrie" },
+    82→  { city: "Motherwell", slug: "motherwell" },
+    83→  { city: "Wishaw", slug: "wishaw" },
+    84→  { city: "Dunfermline", slug: "dunfermline" },
+    85→  { city: "Kirkcaldy", slug: "kirkcaldy" },
+    86→  { city: "Glenrothes", slug: "glenrothes" },
+    87→  { city: "Dundonald", slug: "dundonald" },
+    88→  { city: "Bearsden", slug: "bearsden" },
+    89→  { city: "Milngavie", slug: "milngavie" },
+    90→  { city: "Bishopbriggs", slug: "bishopbriggs" },
+    91→  { city: "Lenzie", slug: "lenzie" },
+    92→  { city: "Giffnock", slug: "giffnock" },
+    93→  { city: "Newton Mearns", slug: "newton-mearns" },
+    94→  { city: "Clarkston", slug: "clarkston" },
+    95→  { city: "Barrhead", slug: "barrhead" },
+    96→  { city: "Johnstone", slug: "johnstone" },
+    97→  { city: "Renfrew", slug: "renfrew" },
+    98→  { city: "Rutherglen", slug: "rutherglen" },
+    99→  { city: "Cambuslang", slug: "cambuslang" },
+   100→  { city: "Bellshill", slug: "bellshill" },
+   101→];
+   102→
+   103→// ============================================================
+   104→// Section 0 - Full-width hero banner
+   105→// Semantic H1: "Professional VCT Floor Care & Stripping Services Scotland"
+   106→// ============================================================
+   107→
+   108→export function VctFloorCareSeoHeroBanner() {
+   109→  return (
+   110→    <section className="relative overflow-hidden">
+   111→      {/* Full-width background image */}
+   112→      <div className="absolute inset-0">
+   113→        <img
+   114→          src={IMG.heroWide}
+   115→          alt="Maundy Clean VCT floor care specialist stripping, refinishing and burnishing a commercial vinyl composition tile floor to a wet-look high-gloss shine in a Scottish property"
+   116→          className="w-full h-full object-cover"
+   117→          loading="eager"
+   118→          fetchPriority="high"
+   119→        />
+   120→        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   121→        <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   122→      </div>
+   123→
+   124→      <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   125→        <motion.div
+   126→          initial="hidden"
+   127→          animate="visible"
+   128→          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   129→          className="max-w-3xl"
+   130→        >
+   131→          <motion.div
+   132→            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   133→            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   134→          >
+   135→            <span className="relative flex w-2 h-2">
+   136→              <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   137→              <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   138→            </span>
+   139→            VCT Floor Care &amp; Stripping &middot; Glasgow &middot; Edinburgh &middot; Central Belt
+   140→          </motion.div>
+   141→
+   142→          <motion.h1
+   143→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   144→            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   145→          >
+   146→            Professional VCT Floor Care &amp; Stripping Services Scotland
+   147→          </motion.h1>
+   148→
+   149→          <motion.p
+   150→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   151→            className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   152→          >
+   153→            Restore, Maintain, and Preserve: Technical Surface Resets,
+   154→            High-Gloss Buffing, and the Maundy Tradition of Excellence.
+   155→            MaundyClean brings vetted VCT specialists, technical stripping
+   156→            and re-sealing, high-solids metal-interlock polish, multi-layer
+   157→            waxing, high-speed burnishing, deep soil extraction, edge &amp;
+   158→            corner detailing, eco-friendly non-toxic chemistry, colour-coded
+   159→            pad systems, manufacturer-standard care, and a
+   160→            &ldquo;speechlessly spotless&rdquo; wet-look finish to every VCT
+   161→            floor we serve &mdash; from Glasgow corporate receptions to
+   162→            Edinburgh retail entrances and Aberdeen school corridors.
+   163→          </motion.p>
+   164→
+   165→          <motion.div
+   166→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   167→            className="mt-7 flex flex-col sm:flex-row gap-3"
+   168→          >
+   169→            <Button
+   170→              size="lg"
+   171→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   172→              asChild
+   173→            >
+   174→              <Link href="/quote">
+   175→                Request Your Free Floor Survey Today
+   176→                <ArrowRight className="w-5 h-5" />
+   177→              </Link>
+   178→            </Button>
+   179→            <Button
+   180→              size="lg"
+   181→              variant="outline"
+   182→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   183→              asChild
+   184→            >
+   185→              <Link href="#checklist">
+   186→                <CheckCircle2 className="w-4 h-4" />
+   187→                View Our Hard Floor Care Checklist
+   188→              </Link>
+   189→            </Button>
+   190→          </motion.div>
+   191→
+   192→          <motion.div
+   193→            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   194→            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   195→          >
+   196→            <div className="flex items-center gap-1.5">
+   197→              <div className="flex">
+   198→                {[1, 2, 3, 4, 5].map((s) => (
+   199→                  <Star key={s} className="w-4 h-4 fill-[var(--gold)] text-[var(--gold)]" />
+   200→                ))}
+   201→              </div>
+   202→              <span className="font-semibold text-white">4.9/5</span>
+   203→              <span className="text-white/70">&middot; 6,200+ reviews</span>
+   204→            </div>
+   205→            <div className="flex items-center gap-1.5">
+   206→              <ShieldCheck className="w-4 h-4 text-[var(--gold)]" /> Fully Insured &amp; PVG-Checked
+   207→            </div>
+   208→            <div className="flex items-center gap-1.5">
+   209→              <UserCheck className="w-4 h-4 text-[var(--gold)]" /> Same Trusted Floor Crew Every Visit
+   210→            </div>
+   211→            <div className="flex items-center gap-1.5">
+   212→              <Sparkles className="w-4 h-4 text-[var(--gold)]" /> High-Gloss &ldquo;Wet-Look&rdquo; Burnish
+   213→            </div>
+   214→          </motion.div>
+   215→        </motion.div>
+   216→      </div>
+   217→    </section>
+   218→  );
+   219→}
+   220→
+   221→// ============================================================
+   222→// Section 1 - Long-form semantic SEO intro
+   223→// Sits right after the hero, before the existing ServiceOverview.
+   224→// Split-layout with aspect-[4/3] image on the left and the
+   225→// verbatim intro paragraphs on the right. Paragraph 2 contains
+   226→// ONE inline <Link>: /services/recurring-home-cleaning for
+   227→// "Recurring Home Cleaning". The brief gives two intro
+   228→// paragraphs (p1 + p2-with-link).
+   229→// ============================================================
+   230→
+   231→export function VctFloorCareSeoIntro() {
+   232→  return (
+   233→    <section className="py-16 lg:py-24 bg-background">
+   234→      <div className="max-w-[1400px] mx-auto px-6">
+   235→        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+   236→          {/* Image side */}
+   237→          <motion.div
+   238→            initial={{ opacity: 0, scale: 0.96 }}
+   239→            whileInView={{ opacity: 1, scale: 1 }}
+   240→            viewport={{ once: true, margin: "-80px" }}
+   241→            transition={{ duration: 0.6 }}
+   242→            className="relative order-2 lg:order-1"
+   243→          >
+   244→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   245→              <img
+   246→                src={IMG.introSplit}
+   247→                alt="Maundy Clean VCT floor care specialist stripping old wax and refinishing a commercial vinyl composition tile floor with high-solids metal-interlock polish in a Scottish commercial property"
+   248→                className="absolute inset-0 w-full h-full object-cover"
+   249→                loading="lazy"
+   250→              />
+   251→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   252→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   253→                <div className="flex items-center gap-2 mb-1">
+   254→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   255→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   256→                    A Motivated Partner, Not an Impersonal Agency
+   257→                  </span>
+   258→                </div>
+   259→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   260→                  The same level of technical intimacy, &ldquo;same-staff&rdquo; consistency, and
+   261→                  &ldquo;sanctuary&rdquo; care we bring to Scotland&rsquo;s finest properties
+   262→                  &mdash; applied to your VCT entrances, corridors, retail aisles, school halls,
+   263→                  and clinical zones.
+   264→                </p>
+   265→              </div>
+   266→            </div>
+   267→            <motion.div
+   268→              animate={{ y: [0, -8, 0] }}
+   269→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   270→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   271→            >
+   272→              <div className="flex items-center gap-2">
+   273→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   274→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   275→                </div>
+   276→                <div>
+   277→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   278→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   279→                </div>
+   280→              </div>
+   281→            </motion.div>
+   282→          </motion.div>
+   283→
+   284→          {/* Copy side */}
+   285→          <motion.div
+   286→            initial={{ opacity: 0, y: 20 }}
+   287→            whileInView={{ opacity: 1, y: 0 }}
+   288→            viewport={{ once: true, margin: "-80px" }}
+   289→            transition={{ duration: 0.5 }}
+   290→            className="order-1 lg:order-2"
+   291→          >
+   292→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   293→              VCT floor care &amp; stripping &middot; Scotland
+   294→            </span>
+   295→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   296→              The MaundyClean Standard for Scottish VCT Restoration
+   297→            </h2>
+   298→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   299→              In high-traffic commercial environments across Glasgow, Edinburgh,
+   300→              and the Central Belt, your Vinyl Composition Tile (VCT) is the
+   301→              workhorse of your facility. However, even the most durable floors
+   302→              eventually lose their luster. When a quick mop won&rsquo;t cut it,
+   303→              our specialist commercial and industrial floor cleaning services
+   304→              provide the technical reset your business needs. At{" "}
+   305→              <strong className="font-semibold text-[var(--ink)]">MaundyClean</strong>,
+   306→              we provide an advanced VCT floor care service designed to breathe
+   307→              life and beauty back into your floors, restoring even heavily
+   308→              soiled tiles to a &ldquo;like new&rdquo; brilliance.
+   309→            </p>
+   310→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+   311→              While we are the recognized authority in{" "}
+   312→              <Link
+   313→                href="/services/recurring-home-cleaning"
+   314→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+   315→              >
+   316→                Recurring Home Cleaning
+   317→              </Link>{" "}
+   318→              for Scotland&rsquo;s finest residences, we bring that same level of
+   319→              technical intimacy, &ldquo;same-staff&rdquo; consistency, and meticulous
+   320→              attention to detail to the commercial sector. We act as your
+   321→              strategic partner, ensuring your floors look immediately cleaner,
+   322→              polished, and professional.
+   323→            </p>
+   324→
+   325→            {/* Compact trust strip */}
+   326→            <motion.div
+   327→              initial={{ opacity: 0, y: 16 }}
+   328→              whileInView={{ opacity: 1, y: 0 }}
+   329→              viewport={{ once: true, margin: "-40px" }}
+   330→              transition={{ duration: 0.5, delay: 0.2 }}
+   331→              className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-7"
+   332→            >
+   333→              {[
+   334→                { icon: UserCheck, label: "Same crew every visit" },
+   335→                { icon: Hammer, label: "Heavy-duty machinery" },
+   336→                { icon: Leaf, label: "Sustainable chemistry" },
+   337→                { icon: ShieldCheck, label: "Manufacturer-standard" },
+   338→              ].map((badge) => {
+   339→                const Icon = badge.icon;
+   340→                return (
+   341→                  <div
+   342→                    key={badge.label}
+   343→                    className="flex items-center gap-2 bg-white rounded-lg p-2.5 border border-[var(--border)]"
+   344→                  >
+   345→                    <Icon className="w-4 h-4 text-[var(--brand)] shrink-0" />
+   346→                    <span className="text-xs font-semibold text-[var(--ink)] leading-tight">
+   347→                      {badge.label}
+   348→                    </span>
+   349→                  </div>
+   350→                );
+   351→              })}
+   352→            </motion.div>
+   353→          </motion.div>
+   354→        </div>
+   355→      </div>
+   356→    </section>
+   357→  );
+   358→}
+   359→
+   360→// ============================================================
+   361→// Section 2 - Why MaundyClean is Scotland's Authority in VCT Maintenance
+   362→// (Semantic H2: "Why MaundyClean is Scotland's Authority in VCT Maintenance")
+   363→// Image+copy split layout with 4 trust pillars.
+   364→// Per the brief: pillars UserCheck / Hammer / Leaf / Building2
+   365→// (icons chosen to reflect the brief's pillar themes: same trusted
+   366→// team every visit / heavy-duty technical machinery / sustainable &
+   367→// safe products / manufacturer-standard care).
+   368→// ALL 4 pillar bodies start with the brief sentence verbatim and
+   369→// are extended with VCT-specific prose (no inline Links),
+   370→// but typed as ReactNode for codebase consistency with
+   371→// restroom-sanitation-seo.tsx and floor-care-stripping-seo.tsx
+   372→// (which use ReactNode so a pillar can support an inline Link
+   373→// when needed).
+   374→// ============================================================
+   375→
+   376→type TrustCard = {
+   377→  icon: typeof ShieldCheck;
+   378→  title: string;
+   379→  description: ReactNode;
+   380→};
+   381→
+   382→const TRUST_CARDS: TrustCard[] = [
+   383→  {
+   384→    icon: UserCheck,
+   385→    title: "The Same Trusted Team Every Visit",
+   386→    description:
+   387→      "Reliability is the foundation of our service. We ensure the same vetted professionals manage your floor maintenance, allowing them to build a deep understanding of your facility&rsquo;s layout and specific high-traffic wear patterns. The same PVG-checked VCT specialists return every visit &mdash; learning your traffic-flow map (entrance grind zones here, lift-lobby scuffing there, warehouse-aisle forklift tyre tracks, washroom-edge moisture damage), your polish spec, your access window, and your inspection regime. When your regular crew is on annual leave, we send a trained backup who has been briefed on your floors &mdash; and we tell you in advance. Never a rotating cast of agency strangers walking a Scottish commercial VCT floor.",
+   388→  },
+   389→  {
+   390→    icon: Hammer,
+   391→    title: "Heavy-Duty Technical Machinery",
+   392→    description:
+   393→      "We utilize a variety of heavy-duty cleaning machines and high-speed buffers designed to remove stains, dirt, and debris from every floor surface. Low-speed rotary machines (175 RPM) for stripping and deep scrubbing, high-speed burnishers (1500-2000 RPM) for the &ldquo;wet-look&rdquo; high-gloss shine that reflects your brand&rsquo;s quality, HEPA-filtered wet/dry vacuums for slurry pickup, air movers for fast curing between polish coats, gloss meters for objective 60-degree GU measurement, and colour-coded pad systems (black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish) to prevent the cross-contamination mistakes that ruin commercial VCT. The kit standard mop-and-bucket contractors cannot match &mdash; because VCT is a specialist discipline, not a chore.",
+   394→  },
+   395→  {
+   396→    icon: Leaf,
+   397→    title: "Sustainable & Safe Products",
+   398→    description:
+   399→      "We use only sustainable, safe cleaning products that are certified non-toxic. This is essential for maintaining a healthy environment for your staff and customers while preserving the longevity of your floor coverings. pH-neutral maintenance chemistry between strips (alkaline-sensitive VCT binder degrades under repeated heavy-alkaline exposure), biodegradable strippers where the floor schedule allows the longer dwell time, low-VOC polish formulations for occupied buildings, EN 14476 virucidal disinfectant for clinical VCT zones, fragrance-free and child-safe surface cleaners by default for schools and nurseries, COSHH-documented biodegradable chemistry, and impregnating sealers (penetrating, not film-forming) where substrate requires. The finishes you&rsquo;ve invested in are protected &mdash; and the staff who walk on the floor the morning after are not walking into chemical fumes.",
+   400→  },
+   401→  {
+   402→    icon: Building2,
+   403→    title: "Manufacturer-Standard Care",
+   404→    description:
+   405→      "Our approach follows both contemporary and traditional cleaning methodologies, ensuring your VCT is maintained to the highest architectural standards. We work to manufacturer specification on strip chemistry, polish solids content (25% commercial, 30% premium), coat count (4-6 standard, 6-8 high-traffic), cure time (30-45 min between coats, 24-hour final cure), and burnish programme (daily/weekly/monthly per traffic pattern). Where the floor falls under a regulatory regime &mdash; HTM 01-05 for clinical VCT, HSE HSG272 for slip resistance, BS 7976 for pendulum testing &mdash; we follow the regulation to the letter. The result: polish that lasts 12-18 months on high-traffic, 24-36 months on medium-traffic, with audit-ready documentation for your compliance file.",
+   406→  },
+   407→];
+   408→
+   409→export function VctFloorCareSeoWhy() {
+   410→  return (
+   411→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   412→      <div className="max-w-[1400px] mx-auto px-6">
+   413→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   414→          {/* Image side */}
+   415→          <motion.div
+   416→            initial={{ opacity: 0, scale: 0.96 }}
+   417→            whileInView={{ opacity: 1, scale: 1 }}
+   418→            viewport={{ once: true, margin: "-80px" }}
+   419→            transition={{ duration: 0.6 }}
+   420→            className="relative order-2 lg:order-1"
+   421→          >
+   422→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   423→              <img
+   424→                src={IMG.whyCrew}
+   425→                alt="Maundy Clean VCT floor care crew &mdash; PVG-checked, uniformed, trained in stripping, refinishing, burnishing, sealing, and finishing for commercial vinyl composition tile floors"
+   426→                className="absolute inset-0 w-full h-full object-cover"
+   427→                loading="lazy"
+   428→              />
+   429→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   430→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   431→                <div className="flex items-center gap-2 mb-1">
+   432→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   433→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   434→                    A Motivated Partner, Not an Impersonal Agency
+   435→                  </span>
+   436→                </div>
+   437→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   438→                  Employed, vetted, PVG-checked, uniformed, and trained in
+   439→                  VCT-specific protocols &mdash; stripping, refinishing,
+   440→                  burnishing, multi-layer waxing, high-solids sealing,
+   441→                  high-speed buffing, edge &amp; corner detailing, slip-resistant
+   442→                  treatment, and stain removal. Same crew every visit &mdash;
+   443→                  never a rotating cast of agency strangers walking a Scottish
+   444→                  commercial VCT floor.
+   445→                </p>
+   446→              </div>
+   447→            </div>
+   448→            <motion.div
+   449→              animate={{ y: [0, -8, 0] }}
+   450→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   451→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   452→            >
+   453→              <div className="flex items-center gap-2">
+   454→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   455→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   456→                </div>
+   457→                <div>
+   458→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   459→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   460→                </div>
+   461→              </div>
+   462→            </motion.div>
+   463→          </motion.div>
+   464→
+   465→          {/* Copy side */}
+   466→          <motion.div
+   467→            initial={{ opacity: 0, y: 20 }}
+   468→            whileInView={{ opacity: 1, y: 0 }}
+   469→            viewport={{ once: true, margin: "-80px" }}
+   470→            transition={{ duration: 0.5 }}
+   471→            className="order-1 lg:order-2"
+   472→          >
+   473→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   474→              Why choose Maundy Clean for VCT
+   475→            </span>
+   476→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   477→              Why MaundyClean is Scotland&rsquo;s Authority in VCT Maintenance
+   478→            </h2>
+   479→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   480→              Many commercial contractors provide a generic &ldquo;wash and wax&rdquo;
+   481→              that leads to yellowing and wax build-up. MaundyClean addresses these
+   482→              exploitable weaknesses by focusing on specialist knowledge and
+   483→              vocational excellence. Our VCT crews carry the technical kit, the
+   484→              chemistry, and the protocols standard mopping cannot match
+   485→              &mdash; and the same vetted team returns every visit to build the
+   486→              deep familiarity your floors deserve.
+   487→            </p>
+   488→
+   489→            <div className="space-y-3">
+   490→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   491→                const Icon = card.icon;
+   492→                return (
+   493→                  <div
+   494→                    key={card.title}
+   495→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   496→                  >
+   497→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   498→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   499→                    </div>
+   500→                    <div>
+   501→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   502→                        {card.title}
+   503→                      </h3>
+   504→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   505→                        {typeof card.description === "string" ? (
+   506→                          <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   507→                        ) : (
+   508→                          card.description
+   509→                        )}
+   510→                      </p>
+   511→                    </div>
+   512→                  </div>
+   513→                );
+   514→              })}
+   515→            </div>
+   516→          </motion.div>
+   517→        </div>
+   518→
+   519→        <div className="grid md:grid-cols-2 gap-6">
+   520→          {TRUST_CARDS.slice(2).map((card, i) => {
+   521→            const Icon = card.icon;
+   522→            return (
+   523→              <motion.div
+   524→                key={card.title}
+   525→                initial={{ opacity: 0, y: 24 }}
+   526→                whileInView={{ opacity: 1, y: 0 }}
+   527→                viewport={{ once: true, margin: "-40px" }}
+   528→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   529→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   530→              >
+   531→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   532→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   533→                </div>
+   534→                <div>
+   535→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   536→                    {card.title}
+   537→                  </h3>
+   538→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   539→                    {typeof card.description === "string" ? (
+   540→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   541→                    ) : (
+   542→                      card.description
+   543→                    )}
+   544→                  </p>
+   545→                </div>
+   546→              </motion.div>
+   547→            );
+   548→          })}
+   549→        </div>
+   550→      </div>
+   551→    </section>
+   552→  );
+   553→}
+   554→
+   555→// ============================================================
+   556→// Section 3 - Our Total VCT Maintenance & Stripping Checklist
+   557→// (Semantic H2: "Our Total VCT Maintenance & Stripping Checklist")
+   558→// Brief-specific section with 3 H3 sub-sections:
+   559→//   1. Professional Stripping & Deep Cleaning
+   560→//   2. Technical Sealing & Finishing
+   561→//   3. Often-Missed Technical Details
+   562→// Carries the id="checklist" anchor that the CTA buttons link to.
+   563→// Per the brief: NO intro paragraphs on the 3 checklist cards
+   564→// (just H3 title + sub-points). ALL sub-point bodies in ALL 3
+   565→// cards are plain strings per the brief (no inline Links), but
+   566→// typed as ReactNode (via ChecklistPoint.text) for codebase
+   567→// consistency.
+   568→// ============================================================
+   569→
+   570→type ChecklistPoint = {
+   571→  title: string;
+   572→  text: ReactNode;
+   573→};
+   574→
+   575→const CHECKLIST_ITEMS: {
+   576→  icon: typeof Building2;
+   577→  image: string;
+   578→  imageAlt: string;
+   579→  title: string;
+   580→  description: string;
+   581→  points: ChecklistPoint[];
+   582→}[] = [
+   583→  {
+   584→    icon: Hammer,
+   585→    image: IMG.checklistStrip,
+   586→    imageAlt:
+   587→      "Maundy Clean VCT floor care specialist stripping old yellowed wax from a commercial vinyl composition tile floor with a low-speed rotary machine and chemical stripper in a Scottish property",
+   588→    title: "1. Professional Stripping & Deep Cleaning",
+   589→    description: "",
+   590→    points: [
+   591→      {
+   592→        title: "Old Finish Removal",
+   593→        text: "Technical stripping of old, yellowed, or damaged wax layers to reach the original tile surface. Chemical stripper (alkaline-based, formulated specifically for VCT) applied at the correct dilution, allowed to dwell per manufacturer spec (typically 8-12 minutes), then aggressively worked with a black pad under a low-speed (175 RPM) rotary machine. Slurry picked up immediately by wet vacuum &mdash; never re-spread. Double-rinse with clean water. Neutraliser rinse to bring floor back to pH 7 (critical &mdash; alkaline residue prevents polish bonding and causes the new finish to peel within weeks). Floor dried thoroughly with air movers before any new chemistry is applied. The technical reset your VCT needs &mdash; not a &ldquo;top-up&rdquo; that traps the old yellowing under fresh polish.",
+   594→      },
+   595→      {
+   596→        title: "Deep Soil Extraction",
+   597→        text: "Removing ingrained city-center dust and traffic film using revolutionary cleaning and restoration techniques. Glasgow city-centre soot, Edinburgh traffic film, Aberdeen harbour dust &mdash; the airborne soil that bonds into the polish layer and cannot be lifted by daily mopping. Alkaline degreaser pre-spray on high-soil zones (entrances, lift lobbies, warehouse-to-office transitions), agitation with a green pad to break the soil-to-polish bond, wet vacuum pickup, then double-rinse. Stain-specific treatment where required: gum remover, scuff-mark eraser, rust remover for steel-trolley marks, poultice for deep organic stains. The detail work that lifts the floor from &lsquo;stripped&rsquo; to &lsquo;speechlessly spotless&rsquo;.",
+   598→      },
+   599→      {
+   600→        title: "Edge & Corner Detailing",
+   601→        text: "Hand-scrubbing edges and corners where machines can&rsquo;t reach to ensure a &ldquo;speechlessly spotless&rdquo; finish. The 5-10cm perimeter strip where the rotary machine can&rsquo;t reach &mdash; under radiators, behind pipework, around floor-box electrics, along skirting-board bottoms, in door-sweep tracks, inside lift-lobby trims. Hand-scrubbed with the same chemistry and the same pad grade as the machine work, then hand-rinsed and hand-dried. Polish applied by hand with a microfibre applicator to match the machine-applied polish depth. The detail most contractors skip &mdash; and the detail every facilities manager notices on the snagging walk.",
+   602→      },
+   603→    ],
+   604→  },
+   605→  {
+   606→    icon: Layers,
+   607→    image: IMG.checklistFinish,
+   608→    imageAlt:
+   609→      "Maundy Clean VCT floor care specialist applying high-solids sealer and multi-layer floor finish to a stripped commercial vinyl composition tile floor in a Scottish retail or office space",
+   610→    title: "2. Technical Sealing & Finishing",
+   611→    description: "",
+   612→    points: [
+   613→      {
+   614→        title: "High-Solids Sealer",
+   615→        text: "Applying premium-grade sealers to protect the VCT from moisture and future staining. The sealer is the foundation &mdash; it penetrates the porous limestone filler in VCT, blocks moisture and stain pathways, and creates the bonding layer the polish needs. Premium-grade high-solids sealer applied in 1-2 thin coats (not thick &mdash; thick sealer pools, cracks, and fails), each coat dried 20-30 minutes before the next. The right sealer for the right environment: standard acrylic sealer for general commercial, water-based low-VOC sealer for occupied buildings, alkali-resistant sealer for concrete-substrate VCT, and slip-resistant sealer additive for wet zones. Without the right sealer, polish peels within months &mdash; with the right sealer, polish lasts years.",
+   616→      },
+   617→      {
+   618→        title: "Multi-Layer Waxing",
+   619→        text: "Applying multiple coats of high-quality floor finish to create a durable, slip-resistant barrier. 4-6 coats of high-solids metal-interlock polish (25% solids commercial, 30% premium for high-traffic), each coat dried 30-45 minutes before the next, applied in a figure-8 pattern with a clean microfibre mop. Coat count tailored to traffic: 4 coats for low-traffic offices, 5 for medium-traffic retail, 6 for high-traffic entrances and corridors, 8 for school halls and hospital corridors. Final coat cured 24 hours before traffic (the cure is what gives the polish its hardness &mdash; traffic too soon relevels the polish and ruins the gloss). The depth of polish is the depth of protection &mdash; and the depth of the wet-look shine.",
+   620→      },
+   621→      {
+   622→        title: "High-Speed Buffing",
+   623→        text: "Utilizing industrial burnishers to achieve a &ldquo;wet look&rdquo; high-gloss shine that reflects your brand&rsquo;s quality. High-speed burnish (1500-2000 RPM) with a hogs-hair pad and burnish cream where required. Heat from the burnisher softens the top microns of polish, the pad relevels it, restoring the wet-look gloss that signals &ldquo;this floor is cared for&rdquo;. Burnishing does not remove polish &mdash; it relevels it. 15-30 minutes per 100m&sup2;. Daily for premium floors (hotel lobbies, retail entrances, corporate reception), weekly for medium-traffic, monthly for low-traffic. Burnish programme extends polish life significantly &mdash; and the gloss readings on a gloss meter prove it.",
+   624→      },
+   625→    ],
+   626→  },
+   627→  {
+   628→    icon: Sparkles,
+   629→    image: IMG.checklistDetail,
+   630→    imageAlt:
+   631→      "Maundy Clean VCT floor care specialist meticulously wiping skirting boards and cleaning internal window partitions after a commercial VCT strip and refinish in a Scottish property",
+   632→    title: "3. Often-Missed Technical Details",
+   633→    description: "",
+   634→    points: [
+   635→      {
+   636→        title: "Visible Skirting Boards",
+   637→        text: "Our technicians meticulously wipe all skirting boards and door frames to remove any splash-back from the stripping process. Stripper slurry splashes 10-20cm up the skirting during the rotary machine work &mdash; if left, it dries to a chalky alkaline residue that discolours paint and damages varnish. We hand-wipe every linear metre of skirting with a neutraliser-dampened microfibre cloth, then dry-buff to a clean finish. Door frames, architraves, radiator backs, and pipework collars get the same treatment. The perimeter work that separates a &ldquo;floor clean&rdquo; from a &ldquo;floor reset&rdquo; &mdash; and the work your facilities manager will inspect first on the snagging walk.",
+   638→      },
+   639→      {
+   640→        title: "Inside Window Care",
+   641→        text: "Cleaning internal glass partitions to maximize natural light and enhance the reflective beauty of your newly polished floors. The gloss of a freshly burnished VCT floor is wasted if the internal glass partitions are smeared &mdash; the floor reflects the smears, not the light. We squeegee internal glass partitions, low-level internal glazing, and glass balustrades with a non-streak glass cleaner. Frame tracks vacuumed. Handles and push-plates sanitised. The finishing touch that makes the floor look as good as it is &mdash; and the touch most contractors skip because it&rsquo;s &ldquo;not in the brief&rdquo;. At MaundyClean, it&rsquo;s in every brief.",
+   642→      },
+   643→    ],
+   644→  },
+   645→];
+   646→
+   647→export function VctFloorCareSeoChecklist() {
+   648→  return (
+   649→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   650→      <div className="max-w-[1400px] mx-auto px-6">
+   651→        <motion.div
+   652→          initial={{ opacity: 0, y: 20 }}
+   653→          whileInView={{ opacity: 1, y: 0 }}
+   654→          viewport={{ once: true, margin: "-80px" }}
+   655→          transition={{ duration: 0.5 }}
+   656→          className="max-w-3xl mb-12"
+   657→        >
+   658→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   659→            Beyond the standard mop
+   660→          </span>
+   661→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   662→            Our Total VCT Maintenance &amp; Stripping Checklist
+   663→          </h2>
+   664→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   665→            Our deep cleaning services for floors move beyond the surface to deliver
+   666→            a complete restoration of the tile&rsquo;s protective layers. From
+   667→            technical stripping of old wax through multi-layer refinishing and
+   668→            high-speed burnishing to the often-missed perimeter details that
+   669→            separate a &ldquo;floor clean&rdquo; from a &ldquo;floor reset&rdquo;
+   670→            &mdash; below is the scope we deliver as standard, regardless of
+   671→            building type, footprint, or occupancy schedule.
+   672→          </p>
+   673→        </motion.div>
+   674→
+   675→        <div className="grid lg:grid-cols-3 gap-6">
+   676→          {CHECKLIST_ITEMS.map((item, i) => {
+   677→            const Icon = item.icon;
+   678→            return (
+   679→              <motion.div
+   680→                key={item.title}
+   681→                initial={{ opacity: 0, y: 24 }}
+   682→                whileInView={{ opacity: 1, y: 0 }}
+   683→                viewport={{ once: true, margin: "-40px" }}
+   684→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   685→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   686→              >
+   687→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   688→                  <img
+   689→                    src={item.image}
+   690→                    alt={item.imageAlt}
+   691→                    className="absolute inset-0 w-full h-full object-cover"
+   692→                    loading="lazy"
+   693→                  />
+   694→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   695→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   696→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   697→                  </div>
+   698→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   699→                    {item.title}
+   700→                  </h3>
+   701→                </div>
+   702→                <div className="p-6 flex-1 flex flex-col">
+   703→                  {item.description ? (
+   704→                    <p
+   705→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   706→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   707→                    />
+   708→                  ) : null}
+   709→                  <ul className="space-y-3 mt-auto">
+   710→                    {item.points.map((point) => {
+   711→                      const PointIcon = CheckCircle2;
+   712→                      return (
+   713→                        <li
+   714→                          key={point.title}
+   715→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   716→                        >
+   717→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   718→                          <span>
+   719→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   720→                            &mdash;{" "}
+   721→                            {typeof point.text === "string" ? (
+   722→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   723→                            ) : (
+   724→                              point.text
+   725→                            )}
+   726→                          </span>
+   727→                        </li>
+   728→                      );
+   729→                    })}
+   730→                  </ul>
+   731→                </div>
+   732→              </motion.div>
+   733→            );
+   734→          })}
+   735→        </div>
+   736→      </div>
+   737→    </section>
+   738→  );
+   739→}
+   740→
+   741→// ============================================================
+   742→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   743→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   744→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   745→// (FileText imported for safety/template parity even if not used.)
+   746→// Brief HAS a [H3] marker on this heading, so we use <h3>
+   747→// (matches the day-porter pattern; restroom-sanitation had
+   748→// no [H3] marker so it used <h2>).
+   749→// ============================================================
+   750→
+   751→const BOOKING_STEPS = [
+   752→  {
+   753→    icon: ClipboardCheck,
+   754→    step: "01",
+   755→    title: "Site Survey & Floor Analysis",
+   756→    description:
+   757→      "Contact us for a free site survey. We will assess the condition of your VCT and develop a bespoke plan &mdash; the larger your floor, the better. On-site VCT audit: every VCT zone mapped (entrances, corridors, lift lobbies, warehouse-to-office transitions, washroom edges, canteen zones), traffic pattern assessed (high/medium/low), existing polish depth measured, gloss meter reading taken (60-degree GU), floor condition assessed (yellowing, scuffing, scratching, staining, polish pop, edge build-up). Existing chemistry checked (if any). Polish type, seal type, and finishing schedule recommended per zone per traffic pattern. Strip/refinish schedule designed (annual for high-traffic, biennial for medium, quarterly scrub-and-recoat for top-up, daily/weekly burnish programme scoped if required). Priced per m&sup2; per protocol. Itemised proposal within 2 business days.",
+   758→  },
+   759→  {
+   760→    icon: UserCheck,
+   761→    step: "02",
+   762→    title: "Professional Matching",
+   763→    description:
+   764→      "We hand-pick a team of trained technicians with the necessary certifications to handle commercial and industrial floor restoration. Your allocated VCT crew is PVG-checked, uniformed, and trained in VCT-specific protocols &mdash; stripping, refinishing, multi-layer waxing, high-speed burnishing, high-solids sealing, edge &amp; corner detailing, slip-resistant treatment, and stain removal. We brief the crew on your VCT zone map, your polish spec (25% commercial / 30% premium / coat count per zone), your access window (in-hours presence, after-hours unsupervised, key-safes and alarm codes), your staff communications protocol, your premium finishes, and any operational constraints on chemistry or method. The same crew returns every visit, building real knowledge of your floors and your inspection regime.",
+   765→  },
+   766→  {
+   767→    icon: Sparkles,
+   768→    step: "03",
+   769→    title: "Enjoy a Pristine Foundation",
+   770→    description:
+   771→      "Experience a floor that feels fresh, safe, and professional, backed by our MaundyClean satisfaction guarantee. You receive a signed VCT care log after every visit (crew name, time in/out, areas treated, products used, gloss meter reading, polish depth, and any issues flagged), arrival and departure times, before-and-after photographs for major restoration work, and issue-flagging for low-gloss zones, scratch patterns, stain build-up, or polish pop &mdash; before they undermine a client visit, an environmental health inspection, or a guest impression. From &pound;4 per m&sup2; for quarterly scrub-and-recoat through to &pound;18 per m&sup2; for full strip and refinish with premium 30% solids polish. We hold &pound;5m public liability as standard and can name your business on our policy as additional insured. If you&rsquo;re not 100% satisfied, we return within 24 to 48 hours free of charge.",
+   772→  },
+   773→];
+   774→
+   775→export function VctFloorCareSeoBooking() {
+   776→  return (
+   777→    <section className="py-16 lg:py-24 bg-background">
+   778→      <div className="max-w-[1400px] mx-auto px-6">
+   779→        <motion.div
+   780→          initial={{ opacity: 0, y: 20 }}
+   781→          whileInView={{ opacity: 1, y: 0 }}
+   782→          viewport={{ once: true, margin: "-80px" }}
+   783→          transition={{ duration: 0.5 }}
+   784→          className="text-center mb-14"
+   785→        >
+   786→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   787→            Hassle-free booking
+   788→          </span>
+   789→          <h3 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   790→            The MaundyClean 3-Step &ldquo;Hassle-Free&rdquo; Process
+   791→          </h3>
+   792→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+   793→            We have optimized our booking experience to be uncomplicated and
+   794→            straightforward, providing the responsive expertise Scottish business
+   795→            owners demand. From free site survey and floor analysis through
+   796→            specialist crew matching to a pristine foundation &mdash; no friction,
+   797→            no waiting, no surprises. Just a restored VCT floor, every entrance,
+   798→            every corridor, every lift lobby, and a compliance file that&rsquo;s
+   799→            audit-ready the day an environmental health officer, insurer, or
+   800→            operations director walks in.
+   801→          </p>
+   802→        </motion.div>
+   803→
+   804→        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+   805→          {/* Connector line */}
+   806→          <div className="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-[var(--brand)]/10 via-[var(--brand)]/30 to-[var(--brand)]/10" />
+   807→
+   808→          {BOOKING_STEPS.map((step, i) => {
+   809→            const Icon = step.icon;
+   810→            return (
+   811→              <motion.div
+   812→                key={step.step}
+   813→                initial={{ opacity: 0, y: 24 }}
+   814→                whileInView={{ opacity: 1, y: 0 }}
+   815→                viewport={{ once: true, margin: "-40px" }}
+   816→                transition={{ duration: 0.5, delay: i * 0.12 }}
+   817→                className="relative bg-white rounded-2xl p-7 border border-[var(--border)] shadow-sm text-center"
+   818→              >
+   819→                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+   820→                  <div className="absolute inset-0 rounded-full bg-[var(--brand-light)]" />
+   821→                  <div className="absolute inset-2 rounded-full bg-white border border-[var(--brand)]/20" />
+   822→                  <Icon className="relative w-8 h-8 text-[var(--brand)]" />
+   823→                  <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand)] text-white text-xs font-bold flex items-center justify-center shadow-md">
+   824→                    {step.step}
+   825→                  </span>
+   826→                </div>
+   827→                <h3 className="font-display font-bold text-lg text-[var(--ink)] mb-3 leading-tight">
+   828→                  {step.title}
+   829→                </h3>
+   830→                <p
+   831→                  className="text-sm text-[var(--muted-foreground)] leading-relaxed"
+   832→                  dangerouslySetInnerHTML={{ __html: step.description }}
+   833→                />
+   834→              </motion.div>
+   835→            );
+   836→          })}
+   837→        </div>
+   838→
+   839→        <motion.div
+   840→          initial={{ opacity: 0, y: 16 }}
+   841→          whileInView={{ opacity: 1, y: 0 }}
+   842→          viewport={{ once: true }}
+   843→          transition={{ duration: 0.5, delay: 0.3 }}
+   844→          className="text-center mt-10"
+   845→        >
+   846→          <Button
+   847→            size="lg"
+   848→            className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 px-7 h-12 text-base"
+   849→            asChild
+   850→          >
+   851→            <Link href="/quote">
+   852→              Request Your Free Floor Survey Today
+   853→              <ArrowRight className="w-5 h-5" />
+   854→            </Link>
+   855→          </Button>
+   856→        </motion.div>
+   857→      </div>
+   858→    </section>
+   859→  );
+   860→}
+   861→
+   862→// ============================================================
+   863→// Section 5 - Solutions for Every Property Need
+   864→// (Semantic H2: "Solutions for Every Property Need")
+   865→// Brief drops the "Semantic Interlinking:" prefix per the cleanup rules.
+   866→// Image-topped cards with internal links to specialist services.
+   867→// All 4 card descriptions are ReactNode values (each contains an
+   868→// inline <Link> per the brief) - rendered via the
+   869→// typeof sol.description === "string" check.
+   870→// Card 4 (Total Surface Care) has TWO inline <Link>s per the brief
+   871→// ("Ask about our [Carpet Cleaning] or [Upholstery Cleaning]").
+   872→// ============================================================
+   873→
+   874→type InterlinkSolution = {
+   875→  icon: typeof Sparkles;
+   876→  title: string;
+   877→  href: string;
+   878→  image: string;
+   879→  imageAlt: string;
+   880→  description: ReactNode;
+   881→  cta: string;
+   882→};
+   883→
+   884→const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
+   885→  {
+   886→    icon: Home,
+   887→    title: "Maintaining the Sanctuary",
+   888→    href: "/services/recurring-home-cleaning",
+   889→    image: IMG.leaseRecurring,
+   890→    imageAlt:
+   891→      "Recurring home cleaning bringing VCT-care standards of meticulous maintenance to a Scottish private residence on a weekly or fortnightly basis",
+   892→    description: (
+   893→      <>
+   894→        Enjoy the same technical excellence in your personal home with our{" "}
+   895→        <Link
+   896→          href="/services/recurring-home-cleaning"
+   897→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   898→        >
+   899→          Recurring Home Cleaning
+   900→        </Link>{" "}
+   901→        service, keeping your private sanctuary maintained to a 5-star standard.
+   902→        The same vetted uniformed crew, the same child-safe eco chemistry, the
+   903→        same signed cleaning log after every visit &mdash; so the standard you
+   904→        see in your commercial space follows you home.
+   905→      </>
+   906→    ),
+   907→    cta: "Explore recurring home cleaning",
+   908→  },
+   909→  {
+   910→    icon: KeyRound,
+   911→    title: "Property Transitions",
+   912→    href: "/services/move-in-out-cleaning",
+   913→    image: IMG.leaseTenancy,
+   914→    imageAlt:
+   915→      "End of tenancy handover clean including hard floor reset for a Scottish commercial or residential unit being vacated",
+   916→    description: (
+   917→      <>
+   918→        Moving units? Our{" "}
+   919→        <Link
+   920→          href="/services/move-in-out-cleaning"
+   921→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   922→        >
+   923→          End of Tenancy Cleaning
+   924→        </Link>{" "}
+   925→        protocol includes hard floor resets to ensure properties are front-line
+   926→        ready for the next occupant. Every surface detailed top-to-bottom,
+   927→        deposit-back guarantees met, and the same trusted vetted crew your VCT
+   928→        care team knows &mdash; so your unit handover starts from a
+   929→        &ldquo;speechlessly spotless&rdquo; baseline.
+   930→      </>
+   931→    ),
+   932→    cta: "Explore end of tenancy cleaning",
+   933→  },
+   934→  {
+   935→    icon: Hammer,
+   936→    title: "Post-Renovation",
+   937→    href: "/services/post-construction-cleaning",
+   938→    image: IMG.leaseBuilders,
+   939→    imageAlt:
+   940→      "After builders clean removing heavy layers of builders dust and plaster from newly laid VCT floors in a Scottish post-construction site",
+   941→    description: (
+   942→      <>
+   943→        If your facility has undergone shopfitting, our{" "}
+   944→        <Link
+   945→          href="/services/post-construction-cleaning"
+   946→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   947→        >
+   948→          After Builders Clean
+   949→        </Link>{" "}
+   950→        is designed to remove heavy layers of builders&rsquo; dust and plaster
+   951→        from your floors. Fine dust left on a freshly laid VCT floor acts like
+   952→        sandpaper under foot traffic &mdash; we vacuum, damp-wipe, and protect
+   953→        the finish before the dust causes permanent scratches.
+   954→      </>
+   955→    ),
+   956→    cta: "Explore after builders cleaning",
+   957→  },
+   958→  {
+   959→    icon: HeartPulse,
+   960→    title: "Total Surface Care",
+   961→    href: "/services/carpet-rug-cleaning",
+   962→    image: IMG.leaseUpholstery,
+   963→    imageAlt:
+   964→      "Carpet cleaning and upholstery cleaning refreshing soft floors and furniture alongside a newly restored VCT floor in a Scottish commercial space",
+   965→    description: (
+   966→      <>
+   967→        Ask about our{" "}
+   968→        <Link
+   969→          href="/services/carpet-rug-cleaning"
+   970→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   971→        >
+   972→          Carpet Cleaning
+   973→        </Link>{" "}
+   974→        or{" "}
+   975→        <Link
+   976→          href="/services/upholstery-cleaning"
+   977→          className="font-semibold text-[var(--brand)] underline underline-offset-2 hover:text-[var(--brand-dark)]"
+   978→        >
+   979→          Upholstery Cleaning
+   980→        </Link>{" "}
+   981→        to refresh your entire interior environment alongside your VCT.
+   982→        Stain-specific chemistry for fabric, leather, and microfibre suites,
+   983→        hot-water extraction for deep soil, and the same &ldquo;Maundy&rdquo;
+   984→        standard applied to every fibre and every cushion.
+   985→      </>
+   986→    ),
+   987→    cta: "Explore carpet & upholstery cleaning",
+   988→  },
+   989→];
+   990→
+   991→export function VctFloorCareSeoInterlinking() {
+   992→  return (
+   993→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   994→      <div className="max-w-[1400px] mx-auto px-6">
+   995→        <motion.div
+   996→          initial={{ opacity: 0, y: 20 }}
+   997→          whileInView={{ opacity: 1, y: 0 }}
+   998→          viewport={{ once: true, margin: "-80px" }}
+   999→          transition={{ duration: 0.5 }}
+  1000→          className="max-w-3xl mb-12"
+  1001→        >
+  1002→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1003→            Beyond the VCT &middot; property lifecycle
+  1004→          </span>
+  1005→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1006→            Solutions for Every Property Need
+  1007→          </h2>
+  1008→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+  1009→            Our VCT floor care is a critical part of your building&rsquo;s
+  1010→            preservation, but we offer specialized resets for major property
+  1011→            milestones: from recurring home cleaning that maintains your
+  1012→            sanctuary standard through end-of-tenancy handovers and
+  1013→            post-renovation dust clear-outs to soft-floor and upholstery refreshes
+  1014→            that complete the picture. The same trusted, vetted crew can step up
+  1015→            whenever your property needs more than a standard VCT care visit.
+  1016→          </p>
+  1017→        </motion.div>
+  1018→
+  1019→        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  1020→          {INTERLINK_SOLUTIONS.map((sol, i) => {
+  1021→            const Icon = sol.icon;
+  1022→            return (
+  1023→              <motion.div
+  1024→                key={sol.title}
+  1025→                initial={{ opacity: 0, y: 24 }}
+  1026→                whileInView={{ opacity: 1, y: 0 }}
+  1027→                viewport={{ once: true, margin: "-40px" }}
+  1028→                transition={{ duration: 0.5, delay: i * 0.1 }}
+  1029→              >
+  1030→                <Link
+  1031→                  href={sol.href}
+  1032→                  className="group block bg-white rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-brand hover:border-[var(--brand)]/40 hover:-translate-y-1 transition-all h-full"
+  1033→                >
+  1034→                  <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+  1035→                    <img
+  1036→                      src={sol.image}
+  1037→                      alt={sol.imageAlt}
+  1038→                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+  1039→                      loading="lazy"
+  1040→                    />
+  1041→                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-[var(--brand-dark)]/20 to-transparent" />
+  1042→                    <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+  1043→                      <Icon className="w-6 h-6 text-[var(--brand)]" />
+  1044→                    </div>
+  1045→                    <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-base text-white leading-tight group-hover:text-[var(--gold)] transition-colors">
+  1046→                      {sol.title}
+  1047→                    </h3>
+  1048→                  </div>
+  1049→                  <div className="p-5">
+  1050→                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4">
+  1051→                      {typeof sol.description === "string" ? (
+  1052→                        <span dangerouslySetInnerHTML={{ __html: sol.description }} />
+  1053→                      ) : (
+  1054→                        sol.description
+  1055→                      )}
+  1056→                    </p>
+  1057→                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] group-hover:text-[var(--brand-dark)]">
+  1058→                      {sol.cta}
+  1059→                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  1060→                    </span>
+  1061→                  </div>
+  1062→                </Link>
+  1063→              </motion.div>
+  1064→            );
+  1065→          })}
+  1066→        </div>
+  1067→      </div>
+  1068→    </section>
+  1069→  );
+  1070→}
+  1071→
+  1072→// ============================================================
+  1073→// Section 6 - "Near Me" Location Internal Links
+  1074→// (Semantic H2: "VCT Floor Care Near Me in Scotland")
+  1075→// Split layout with map image + 36-location grid.
+  1076→// The "Browse the near-me directory" button links to
+  1077→// /services/vct-floor-care-near-me#locations
+  1078→// (WITH the #locations anchor) per the brief bug-warning —
+  1079→// yields 37 anchored near-me links on the main page.
+  1080→// ============================================================
+  1081→
+  1082→export function VctFloorCareSeoNearMe() {
+  1083→  return (
+  1084→    <section className="py-16 lg:py-24 bg-background">
+  1085→      <div className="max-w-[1400px] mx-auto px-6">
+  1086→        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-14 items-start">
+  1087→          {/* Left: copy + map image */}
+  1088→          <motion.div
+  1089→            initial={{ opacity: 0, y: 20 }}
+  1090→            whileInView={{ opacity: 1, y: 0 }}
+  1091→            viewport={{ once: true, margin: "-80px" }}
+  1092→            transition={{ duration: 0.5 }}
+  1093→          >
+  1094→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1095→              Local VCT floor care &amp; stripping across Scotland
+  1096→            </span>
+  1097→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1098→              VCT Floor Care Near Me in Scotland
+  1099→            </h2>
+  1100→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+  1101→              Searching for &ldquo;VCT floor care near me&rdquo; or &ldquo;VCT
+  1102→              stripping and refinishing near me&rdquo; in Scotland? Maundy Clean
+  1103→              covers facilities managers, office managers, retail operations
+  1104→              leads, school estates teams, and commercial estates across the
+  1105→              Central Belt, Highlands, Borders, and Islands &mdash; from
+  1106→              Glasgow&rsquo;s IFSD and Edinburgh&rsquo;s New Town to
+  1107→              Aberdeen&rsquo;s granite-built West End and Dundee&rsquo;s
+  1108→              Waterfront, plus commercial estates in Stirling, Perth, Inverness,
+  1109→              and Ayr. Same PVG-checked, uniformed VCT specialists, same
+  1110→              dedicated crew every visit, same rapid response to spills and
+  1111→              finish failures &mdash; wherever your property happens to be. Find
+  1112→              your local VCT floor care specialist below.
+  1113→            </p>
+  1114→
+  1115→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+  1116→              <img
+  1117→                src={IMG.nearMeMap}
+  1118→                alt="Map of Scotland showing Maundy Clean VCT floor care &amp; stripping coverage areas"
+  1119→                className="absolute inset-0 w-full h-full object-cover"
+  1120→                loading="lazy"
+  1121→              />
+  1122→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+  1123→              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+  1124→                <div className="flex items-center gap-2 mb-1">
+  1125→                  <MapPin className="w-4 h-4 text-[var(--brand)]" />
+  1126→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+  1127→                    72+ Scottish towns covered
+  1128→                  </span>
+  1129→                </div>
+  1130→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+  1131→                  Same PVG-checked VCT floor care crews, same 100% satisfaction guarantee &mdash; from
+  1132→                  Glasgow to Inverness.
+  1133→                </p>
+  1134→              </div>
+  1135→            </div>
+  1136→
+  1137→            <div className="mt-6">
+  1138→              <Button
+  1139→                size="lg"
+  1140→                className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+  1141→                asChild
+  1142→              >
+  1143→                <Link href="/services/vct-floor-care-near-me#locations">
+  1144→                  <MapPin className="w-4 h-4" />
+  1145→                  Browse the near-me directory
+  1146→                  <ArrowRight className="w-4 h-4" />
+  1147→                </Link>
+  1148→              </Button>
+  1149→            </div>
+  1150→          </motion.div>
+  1151→
+  1152→          {/* Right: location grid */}
+  1153→          <motion.div
+  1154→            initial={{ opacity: 0, y: 20 }}
+  1155→            whileInView={{ opacity: 1, y: 0 }}
+  1156→            viewport={{ once: true, margin: "-60px" }}
+  1157→            transition={{ duration: 0.5 }}
+  1158→            className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+  1159→          >
+  1160→            <div className="flex items-center justify-between mb-5">
+  1161→              <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+  1162→                Find your local VCT floor care crew
+  1163→              </h3>
+  1164→              <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations</span>
+  1165→            </div>
+  1166→            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+  1167→              {NEAR_ME_LOCATIONS.map((loc, i) => (
+  1168→                <motion.div
+  1169→                  key={loc.slug}
+  1170→                  initial={{ opacity: 0 }}
+  1171→                  whileInView={{ opacity: 1 }}
+  1172→                  viewport={{ once: true }}
+  1173→                  transition={{ delay: Math.min(i * 0.015, 0.6) }}
+  1174→                >
+  1175→                  <Link
+  1176→                    href={`/services/vct-floor-care-near-me#${loc.slug}`}
+  1177→                    className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40"
+  1178→                  >
+  1179→                    <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+  1180→                    <span>
+  1181→                      <span className="font-medium">{loc.city}</span>
+  1182→                      <span className="text-[var(--muted-foreground)]"> VCT care</span>
+  1183→                    </span>
+  1184→                  </Link>
+  1185→                </motion.div>
+  1186→              ))}
+  1187→            </div>
+  1188→
+  1189→            <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+  1190→              <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+  1191→                <Clock className="w-4 h-4 text-[var(--brand)]" />
+  1192→                <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+  1193→              </div>
+  1194→              <Link
+  1195→                href="/locations"
+  1196→                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+  1197→              >
+  1198→                View all 72 Scottish locations
+  1199→                <ArrowRight className="w-4 h-4" />
+  1200→              </Link>
+  1201→            </div>
+  1202→          </motion.div>
+  1203→        </div>
+  1204→
+  1205→        {/* SEO long-form paragraph for "near me" search intent */}
+  1206→        <motion.div
+  1207→          initial={{ opacity: 0, y: 16 }}
+  1208→          whileInView={{ opacity: 1, y: 0 }}
+  1209→          viewport={{ once: true, margin: "-40px" }}
+  1210→          transition={{ duration: 0.5, delay: 0.2 }}
+  1211→          className="mt-10 max-w-4xl mx-auto text-center"
+  1212→        >
+  1213→          <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+  1214→            Our local VCT floor care crews operate across Glasgow&rsquo;s
+  1215→            International Financial Services District, Merchant City and West End
+  1216→            corporate towers (facilities managers, office managers and retail
+  1217→            operations leads), Edinburgh&rsquo;s Exchange District, New Town and
+  1218→            Quartermile business quarters (commercial estates and retail chains),
+  1219→            Aberdeen&rsquo;s energy-corridor West End and Tullos industrial
+  1220→            offices (energy operators and service companies), Dundee&rsquo;s
+  1221→            Waterfront and City Centre professional services buildings
+  1222→            (facilities teams and office managers), and Scottish commercial
+  1223→            districts across the Central Belt &mdash; from Inverness to Perth,
+  1224→            Falkirk to Ayr. Whether you&rsquo;re searching for a VCT
+  1225→            strip-and-refinish in Glasgow, a high-speed burnish programme in
+  1226→            Edinburgh, a school-holiday VCT strip in Aberdeen, or a
+  1227→            retail-entrance polish restoration anywhere in between, Maundy Clean
+  1228→            assigns a vetted, PAYE-employed, PVG-checked VCT care crew that
+  1229→            stays with you for the long run. Same crew, same standard, same
+  1230→            locked-in rate for 12 months.
+  1231→          </p>
+  1232→        </motion.div>
+  1233→      </div>
+  1234→    </section>
+  1235→  );
+  1236→}
+  1237→
+  1238→// ============================================================
+  1239→// Section 7 - Final SEO CTA strip (companion to ServiceFinalCta)
+  1240→// (Semantic H2: "Request Your Free Floor Survey Today")
+  1241→// Placed BEFORE the FAQ sections so the page does not end with two stacked CTAs
+  1242→// ============================================================
+  1243→
+  1244→export function VctFloorCareSeoFinalCta() {
+  1245→  return (
+  1246→    <section className="py-16 lg:py-20 bg-[var(--brand-dark)] relative overflow-hidden">
+  1247→      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[var(--gold)]/15 blur-3xl" />
+  1248→      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[var(--brand)]/30 blur-3xl" />
+  1249→
+  1250→      <div className="relative max-w-[1100px] mx-auto px-6 text-center">
+  1251→        <motion.div
+  1252→          initial={{ opacity: 0, y: 20 }}
+  1253→          whileInView={{ opacity: 1, y: 0 }}
+  1254→          viewport={{ once: true, margin: "-80px" }}
+  1255→          transition={{ duration: 0.5 }}
+  1256→        >
+  1257→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--gold)] mb-3 inline-block">
+  1258→            Ready to book your free floor survey?
+  1259→          </span>
+  1260→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-white tracking-tight mb-4">
+  1261→            Request Your Free Floor Survey Today
+  1262→          </h2>
+  1263→          <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+  1264→            Facilities managers, office managers, retail operations leads and
+  1265→            building operations teams &mdash; book a free, no-obligation VCT
+  1266→            floor survey with our management team and receive an itemised
+  1267→            proposal within 2 business days. Technical stripping and
+  1268→            re-sealing, high-solids metal-interlock polish, multi-layer waxing,
+  1269→            high-speed burnishing, deep soil extraction, edge &amp; corner
+  1270→            detailing, slip-resistant treatment, colour-coded pad systems,
+  1271→            eco-friendly non-toxic chemistry, manufacturer-standard care
+  1272→            methodologies, a fixed per-m&sup2; rate that locks for 12 months,
+  1273→            PVG-checked uniformed professionals who become part of your team,
+  1274→            and the multi-site one-invoice convenience that lets you consolidate
+  1275→            every Scottish property on a single audit-ready compliance file.
+  1276→            From &pound;4 per m&sup2; for quarterly scrub-and-recoat through to
+  1277→            &pound;18 per m&sup2; for full strip and refinish with premium 30%
+  1278→            solids polish. No pushy sales call, no waiting 24 hours for a
+  1279→            callback.
+  1280→          </p>
+  1281→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1282→            <Button
+  1283→              size="lg"
+  1284→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1285→              asChild
+  1286→            >
+  1287→              <Link href="/quote">
+  1288→                Request Your Free Floor Survey Today
+  1289→                <ArrowRight className="w-5 h-5" />
+  1290→              </Link>
+  1291→            </Button>
+  1292→            <Button
+  1293→              size="lg"
+  1294→              variant="outline"
+  1295→              className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+  1296→              asChild
+  1297→            >
+  1298→              <Link href="#checklist">
+  1299→                <CheckCircle2 className="w-4 h-4" />
+  1300→                View Our Hard Floor Care Checklist
+  1301→              </Link>
+  1302→            </Button>
+  1303→          </div>
+  1304→        </motion.div>
+  1305→      </div>
+  1306→    </section>
+  1307→  );
+  1308→}
+  1309→
+  1310→// ============================================================
+  1311→// Section 8 - SEO FAQ block
+  1312→// (Semantic H2: "Frequently Asked Questions")
+  1313→// 3 Q&As from the brief (stripping frequency, insured technicians,
+  1314→// provide own machinery)
+  1315→// ============================================================
+  1316→
+  1317→const SEO_FAQS = [
+  1318→  {
+  1319→    q: "How often should VCT floors be stripped and waxed?",
+  1320→    a: "This depends on foot traffic, but typically high-traffic commercial spaces require a full strip and seal every 12 to 18 months, with regular buffing in between to maintain the shine. We tailor the schedule to your specific environment: annual full strip for entrances, lift lobbies, retail aisles, school corridors, and hospital wards; biennial strip for medium-traffic office corridors and meeting rooms; quarterly scrub-and-recoat top-up to extend polish life by 6-12 months between full strips; and daily, weekly, or monthly burnish programmes (high-speed 1500-2000 RPM with hogs-hair pad) to keep the &ldquo;wet-look&rdquo; gloss between maintenance visits. Gloss meter readings taken every quarter tell us when polish depth is dropping and a top-up is needed &mdash; before yellowing or scuffing becomes visible to your staff or visitors. We never strip before it is needed (over-stripping shortens VCT life) and we never delay a strip past the point where polish failure would damage the bare tile.",
+  1321→  },
+  1322→  {
+  1323→    q: "Are your floor technicians insured?",
+  1324→    a: "Absolutely. MaundyClean is a fully insured and certified professional cleaning company with extensive experience in both residential and commercial flooring sectors. We carry &pound;5m public liability as standard &mdash; covering VCT, linoleum, rubber, terrazzo, sealed concrete, natural stone, and resilient surface floors &mdash; and every VCT specialist is PVG-checked (essential for schools, nurseries, hospitals, GP surgeries, dental practices, and any building where staff, patients, or visitors are present), uniformed, and trained in VCT-specific protocols: stripping, refinishing, multi-layer waxing, high-speed burnishing, high-solids sealing, edge &amp; corner detailing, slip-resistant treatment, and stain removal. We hold full employer&rsquo;s liability, professional indemnity, and contingent employer&rsquo;s liability, and we can name your business on our policy as additional insured &mdash; a common requirement for facilities management contracts, head-lease landlord approvals, retail-chain compliance, and corporate insurance files. Our documentation is audit-ready for environmental health inspection, HSE review, and operations director review; we provide signed VCT care logs, gloss meter readings, RAMS, COSHH datasheets, training records, and vetting records (PVG) for your compliance file.",
+  1325→  },
+  1326→  {
+  1327→    q: "Do you provide your own cleaning machinery?",
+  1328→    a: "Yes. We supply all our own heavy-duty cleaning machines and professional-grade stripping chemicals, which are included in your competitive quote. From low-speed rotary machines (175 RPM) for stripping and deep scrubbing, high-speed burnishers (1500-2000 RPM) for the &ldquo;wet-look&rdquo; high-gloss shine, HEPA-filtered wet/dry vacuums for slurry pickup, air movers for fast curing between polish coats, gloss meters for objective 60-degree GU measurement, and colour-coded pad systems (black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish) to prevent cross-contamination between zones. Chemistry is matched to floor type and environment &mdash; alkaline stripper for VCT, low-VOC polish formulations for occupied buildings, EN 14476 virucidal disinfectant for clinical VCT zones, slip-resistant polish additives for wet zones, and fragrance-free child-safe maintenance cleaners for schools and nurseries. COSHH-documented chemistry on file. Non-toxic, biodegradable, surface-safe by default. You provide the floor and the access; we provide everything else &mdash; machinery, chemistry, pads, PPE, signage, and the crew trained to use all of it.",
+  1329→  },
+  1330→];
+  1331→
+  1332→export function VctFloorCareSeoFaq() {
+  1333→  return (
+  1334→    <section className="py-16 lg:py-24 bg-background">
+  1335→      <div className="max-w-4xl mx-auto px-6">
+  1336→        <motion.div
+  1337→          initial={{ opacity: 0, y: 20 }}
+  1338→          whileInView={{ opacity: 1, y: 0 }}
+  1339→          viewport={{ once: true, margin: "-80px" }}
+  1340→          transition={{ duration: 0.5 }}
+  1341→          className="text-center mb-12"
+  1342→        >
+  1343→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+  1344→            VCT floor care &amp; stripping &middot; FAQ
+  1345→          </span>
+  1346→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+  1347→            Frequently Asked Questions
+  1348→          </h2>
+  1349→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
+  1350→            Straight answers to the questions our VCT floor care clients ask most
+  1351→            often. Can&rsquo;t find what you need? Call us on{" "}
+  1352→            <a
+  1353→              href={contactInfo.phoneHref}
+  1354→              className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
+  1355→            >
+  1356→              {contactInfo.phone}
+  1357→            </a>{" "}
+  1358→            and we&rsquo;ll talk it through.
+  1359→          </p>
+  1360→        </motion.div>
+  1361→
+  1362→        <div className="space-y-4">
+  1363→          {SEO_FAQS.map((faq, i) => (
+  1364→            <motion.div
+  1365→              key={faq.q}
+  1366→              initial={{ opacity: 0, y: 16 }}
+  1367→              whileInView={{ opacity: 1, y: 0 }}
+  1368→              viewport={{ once: true, margin: "-40px" }}
+  1369→              transition={{ duration: 0.4, delay: i * 0.06 }}
+  1370→              className="bg-white rounded-2xl border border-[var(--border)] overflow-hidden"
+  1371→            >
+  1372→              <details className="group">
+  1373→                <summary className="flex items-center justify-between gap-4 p-5 lg:p-6 cursor-pointer list-none">
+  1374→                  <h3 className="font-display font-bold text-base lg:text-lg text-[var(--ink)] leading-tight">
+  1375→                    {faq.q}
+  1376→                  </h3>
+  1377→                  <span className="shrink-0 w-8 h-8 rounded-full bg-[var(--brand-light)] flex items-center justify-center transition-transform group-open:rotate-45">
+  1378→                    <span className="relative w-3.5 h-3.5">
+  1379→                      <span className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--brand)] -translate-y-1/2" />
+  1380→                      <span className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[var(--brand)] -translate-x-1/2" />
+  1381→                    </span>
+  1382→                  </span>
+  1383→                </summary>
+  1384→                <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
+  1385→                  <p
+  1386→                    className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed"
+  1387→                    dangerouslySetInnerHTML={{ __html: faq.a }}
+  1388→                  />
+  1389→                </div>
+  1390→              </details>
+  1391→            </motion.div>
+  1392→          ))}
+  1393→        </div>
+  1394→
+  1395→        <motion.div
+  1396→          initial={{ opacity: 0, y: 16 }}
+  1397→          whileInView={{ opacity: 1, y: 0 }}
+  1398→          viewport={{ once: true, margin: "-40px" }}
+  1399→          transition={{ duration: 0.5, delay: 0.3 }}
+  1400→          className="mt-10 text-center"
+  1401→        >
+  1402→          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+  1403→            <Button
+  1404→              size="lg"
+  1405→              className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+  1406→              asChild
+  1407→            >
+  1408→              <Link href="/quote">
+  1409→                Request Your Free Floor Survey Today
+  1410→                <ArrowRight className="w-5 h-5" />
+  1411→              </Link>
+  1412→            </Button>
+  1413→            <Button
+  1414→              size="lg"
+  1415→              variant="outline"
+  1416→              className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+  1417→              asChild
+  1418→            >
+  1419→              <Link href="#checklist">
+  1420→                <CheckCircle2 className="w-4 h-4" />
+  1421→                View Our Hard Floor Care Checklist
+  1422→              </Link>
+  1423→            </Button>
+  1424→          </div>
+  1425→        </motion.div>
+  1426→      </div>
+  1427→    </section>
+  1428→  );
+  1429→}
+  1430→

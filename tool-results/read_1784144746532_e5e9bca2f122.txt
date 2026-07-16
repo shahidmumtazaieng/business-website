@@ -1,0 +1,452 @@
+   100→// ============================================================
+   101→// Trust badges for the hero
+   102→// ============================================================
+   103→const HERO_BADGES = [
+   104→  { icon: Star, label: "4.9/5 \u00b7 6,200+ reviews" },
+   105→  { icon: Shield, label: "Fully Insured & PVG-Checked" },
+   106→  { icon: Leaf, label: "Eco-Friendly Non-Toxic Products" },
+   107→  { icon: Clock, label: "100% Satisfaction Guarantee" },
+   108→];
+   109→
+   110→// ============================================================
+   111→// The 4 trust pillars
+   112→// ============================================================
+   113→const TRUST_PILLARS = [
+   114→  {
+   115→    icon: Users,
+   116→    title: "The Same Trusted VCT Care Crew Every Time",
+   117→    description:
+   118→      "Unlike gig-economy cleaning apps, we only employ our own staff. The same vetted, uniformed, and background-checked VCT specialists who manage your regular floor care are the ones performing your stripping, refinishing, and burnishing. Continuity matters when the stakes are a Glasgow IFSD corporate VCT entrance, an Edinburgh retail-chain aisle, or an Aberdeen school corridor &mdash; we don&rsquo;t send rotating crews of strangers to your property.",
+   119→  },
+   120→  {
+   121→    icon: Layers,
+   122→    title: "Material-Matched Chemistry & Multi-Layer Waxing",
+   123→    description:
+   124→      "Our VCT specialists understand every variety of commercial vinyl composition tile &mdash; from standard VCT through homogeneous vinyl, safety vinyl, anti-static VCT for server rooms, and conductive VCT for theatres and operating rooms. We identify the substrate, the existing finish, and the traffic pattern before we touch the floor, then apply the right protocol: alkaline stripper for VCT (not pH-neutral which won&rsquo;t cut the acrylic), 4-6 coats of high-solids metal-interlock polish (25% commercial, 30% premium for high-traffic), high-speed burnish (1500-2000 RPM with hogs-hair pad), and slip-resistant polish additives for wet zones. Wrong chemistry on VCT equals permanent damage &mdash; we refuse to clean what we cannot safely treat.",
+   125→  },
+   126→  {
+   127→    icon: Hammer,
+   128→    title: "Heavy-Duty Machinery & Eco-Friendly Products",
+   129→    description:
+   130→      "Low-speed rotary machines (175 RPM) for stripping and deep scrubbing, high-speed burnishers (1500-2000 RPM) for wet-look gloss restoration, HEPA-filtered wet/dry vacuums for slurry pickup, air movers for fast curing between polish coats, gloss meters for objective 60-degree GU measurement, and colour-coded pad systems (black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish) to prevent cross-contamination between zones. All cleaning solutions are certified non-toxic, biodegradable, child-safe, and surface-safe &mdash; no harsh solvents, no optical brighteners. The floor is safe for crawling babies and pets once dry.",
+   131→  },
+   132→  {
+   133→    icon: Award,
+   134→    title: "Fully Insured & 100% Satisfaction Guaranteed",
+   135→    description:
+   136→      "Every VCT specialist is Disclosure Scotland PVG-checked, we hold &pound;5m public liability cover, and we offer a free re-clean within 24 to 48 hours if you are not 100% satisfied. We are a registered Scottish company &mdash; not a gig-economy agency &mdash; and the Maundy Clean standard applies on every visit. From &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;18/m&sup2; for full strip and refinish with premium 30% solids polish, with a 5-10 year guarantee on every full refinish.",
+   137→  },
+   138→];
+   139→
+   140→// ============================================================
+   141→// The 3-step booking process
+   142→// ============================================================
+   143→const BOOKING_STEPS = [
+   144→  {
+   145→    icon: Zap,
+   146→    step: "01",
+   147→    title: "Free Site Survey & Floor Analysis",
+   148→    description:
+   149→      "Tell us about your VCT zones, footprint, and traffic pattern &mdash; and receive a fixed-price VCT care quote in under a minute. Our team will advise on the best specialist stripping, sealing, and finishing options for your unique floor type. No pushy sales call, no waiting 24 hours for a callback. The price you see is the price you pay &mdash; locked in for 12 months, with no on-the-day upsells for sealer or polish.",
+   150→  },
+   151→  {
+   152→    icon: UserCheck,
+   153→    step: "02",
+   154→    title: "Local Technician Matching",
+   155→    description:
+   156→      "We match you with a vetted, material-trained VCT specialist in your postcode. They confirm the substrate, finish type, and condition of your floor, flag any permanent stains, scratch patterns, or polish build-up, and walk you through the stripping and refinishing plan before any chemistry touches the surface &mdash; so there are no surprises on the day.",
+   157→  },
+   158→  {
+   159→    icon: CalendarCheck,
+   160→    step: "03",
+   161→    title: "A Pristine Foundation",
+   162→    description:
+   163→      "Walk onto a floor that looks, feels, and stays fresh, backed by our 100% satisfaction guarantee. We finish every visit with a gloss meter reading, a wear-pattern inspection, a care card update, and a re-clean reminder for the next quarter. From &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;18/m&sup2; for full strip and refinish with premium 30% solids polish.",
+   164→  },
+   165→];
+   166→
+   167→// ============================================================
+   168→// FAQ for the near-me page
+   169→// ============================================================
+   170→const NEAR_ME_FAQS = [
+   171→  {
+   172→    q: "How do I know if you cover my area?",
+   173→    a: "We cover 72+ towns and cities across Scotland &mdash; from Glasgow and Edinburgh in the Central Belt to Lerwick in Shetland and everywhere in between. Use the location grid above to find your town. If you don&rsquo;t see your postcode listed, call us &mdash; we add new coverage areas every month and may already have a VCT floor care specialist near you.",
+   174→  },
+   175→  {
+   176→    q: "How quickly can a local VCT specialist start?",
+   177→    a: "From quote to clean in under 48 hours for most postcodes in the Central Belt. For more remote areas (Highlands, Islands, Borders), allow 5-7 working days for technician routing and travel planning. Same-day starts are occasionally possible in Glasgow, Edinburgh, Stirling, and Dundee &mdash; call us to check availability. Full strip-and-refinish bookings typically schedule 1-2 weeks out to allow for polish curing; school-holiday strips typically schedule 4-8 weeks out to align with closure windows.",
+   178→  },
+   179→  {
+   180→    q: "Will the technician travel to me, or do I need to bring the floor to you?",
+   181→    a: "All VCT floor care and restoration is performed on-site at your property &mdash; we never transport your floor anywhere. Our crews arrive in fully-equipped vans with low-speed rotary machines, high-speed burnishers, HEPA-filtered wet/dry vacuums, air movers, gloss meters, colour-coded pad systems, and chemistry matched to VCT and adjacent resilient surfaces. The only exception is small loose VCT tile samples, which can be brought to our workshop for colour-matching against polish swatches.",
+   182→  },
+   183→  {
+   184→    q: "Do you have VCT specialists available in rural Scotland?",
+   185→    a: "Yes. We cover rural Scotland including Perthshire, Angus, Fife, the Borders, Argyll, Aberdeenshire, and parts of the Highlands. For very remote properties (Islands, far North), we may operate on a minimum-area basis or schedule combined visits with neighbouring properties to keep travel costs down. Call us to discuss your specific location &mdash; we&rsquo;ll always give you a straight answer on coverage and lead time.",
+   186→  },
+   187→  {
+   188→    q: "Can you strip and refinish the VCT in my Glasgow school during the holidays?",
+   189→    a: "Absolutely &mdash; school-holiday VCT strips are one of our specialities, particularly across Glasgow City Council, Edinburgh City Council, Aberdeen City Council, and Dundee City Council estates. School holidays give us the 7-14 day window we need to fully strip, refinish, and cure VCT in corridors, halls, classrooms, and dining areas without disrupting classes. We work to APUC framework pricing for Scottish local authority contracts and provide all PVG, RAMS, COSHH, and insurance documentation in advance. References from recent school projects available on request.",
+   190→  },
+   191→  {
+   192→    q: "What&rsquo;s the difference between scrub-and-recoat, full strip-and-refinish, and high-speed burnishing near me?",
+   193→    a: "Scrub-and-recoat (&pound;4/m&sup2;) is the quarterly top-up &mdash; light scrub with red pad and neutral cleaner, 2 top-up coats of metal-interlock polish, 12-hour cure. Extends polish life by 6-12 months. Full strip-and-refinish (&pound;12-&pound;18/m&sup2; depending on solids content) is the annual cycle for high-traffic VCT &mdash; full strip back to bare tile, 4-6 coats of high-solids polish, 24-hour cure. High-speed burnishing (from &pound;1.50/m&sup2; per visit) is the daily, weekly, or monthly gloss-restoration programme &mdash; 1500-2000 RPM with hogs-hair pad relevels the polish and restores the &ldquo;wet-look&rdquo; shine. We&rsquo;ll recommend the right approach at the free floor analysis.",
+   194→  },
+   195→];
+   196→
+   197→// ============================================================
+   198→// Main page component
+   199→// ============================================================
+   200→
+   201→export function VctFloorCareNearMeHero() {
+   202→  return (
+   203→    <>
+   204→      {/* ============================================================ */}
+   205→      {/* SECTION 1 - Hero */}
+   206→      {/* H1: VCT Floor Care Services Near Me in Scotland */}
+   207→      {/* ============================================================ */}
+   208→      <section className="relative overflow-hidden">
+   209→        <div className="absolute inset-0">
+   210→          <img
+   211→            src={IMG.heroWide}
+   212→            alt="Maundy Clean VCT floor care specialist stripping, refinishing and burnishing a commercial vinyl composition tile floor to a wet-look gloss in a Scottish property"
+   213→            className="w-full h-full object-cover"
+   214→            loading="eager"
+   215→            fetchPriority="high"
+   216→          />
+   217→          <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-dark)]/95 via-[var(--brand-dark)]/75 to-[var(--brand-dark)]/40" />
+   218→          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/80 via-transparent to-transparent" />
+   219→        </div>
+   220→
+   221→        <div className="relative max-w-[1400px] mx-auto px-6 py-20 lg:py-28">
+   222→          <motion.div
+   223→            initial="hidden"
+   224→            animate="visible"
+   225→            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+   226→            className="max-w-3xl"
+   227→          >
+   228→            <motion.div
+   229→              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+   230→              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 text-xs font-semibold text-white mb-5"
+   231→            >
+   232→              <span className="relative flex w-2 h-2">
+   233→                <span className="absolute inline-flex w-full h-full rounded-full bg-[var(--gold)] animate-pulse-ring" />
+   234→                <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--gold)]" />
+   235→              </span>
+   236→              72+ Scottish towns &middot; Local VCT-trained specialists &middot; Same crew every visit
+   237→            </motion.div>
+   238→
+   239→            <motion.h1
+   240→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   241→              className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] tracking-tight"
+   242→            >
+   243→              VCT Floor Care Services Near Me in Scotland
+   244→            </motion.h1>
+   245→
+   246→            <motion.p
+   247→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   248→              className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
+   249→            >
+   250→              Searching for &ldquo;VCT floor care near me&rdquo; or &ldquo;VCT stripping
+   251→              and refinishing near me&rdquo; in Scotland? Maundy Clean covers 72+ towns
+   252→              and cities across the Central Belt, Highlands, Borders, and Islands. Same
+   253→              VCT-trained standard, same high-speed burnish technology, same dedicated
+   254→              VCT specialist &mdash; wherever your property happens to be. From
+   255→              &pound;4/m&sup2; for quarterly scrub-and-recoat through to &pound;18/m&sup2;
+   256→              for full strip and refinish with premium 30% solids polish.
+   257→            </motion.p>
+   258→
+   259→            <motion.div
+   260→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   261→              className="mt-7 flex flex-col sm:flex-row gap-3"
+   262→            >
+   263→              <Button
+   264→                size="lg"
+   265→                className="bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-[var(--ink)] shadow-brand gap-2 px-7 h-12 text-base"
+   266→                asChild
+   267→              >
+   268→                <Link href="/quote">
+   269→                  Request Your Free Floor Survey Today
+   270→                  <ArrowRight className="w-5 h-5" />
+   271→                </Link>
+   272→              </Button>
+   273→              <Button
+   274→                size="lg"
+   275→                variant="outline"
+   276→                className="gap-2 h-12 text-base border-white/30 text-white hover:bg-white/10 bg-white/5 backdrop-blur"
+   277→                asChild
+   278→              >
+   279→                <Link href="#locations">
+   280→                  <MapPin className="w-4 h-4" />
+   281→                  Find Your Local VCT Crew
+   282→                </Link>
+   283→              </Button>
+   284→            </motion.div>
+   285→
+   286→            <motion.div
+   287→              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+   288→              className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85"
+   289→            >
+   290→              {HERO_BADGES.map((badge) => {
+   291→                const Icon = badge.icon;
+   292→                return (
+   293→                  <div key={badge.label} className="flex items-center gap-1.5">
+   294→                    <Icon className="w-4 h-4 text-[var(--gold)]" /> {badge.label}
+   295→                  </div>
+   296→                );
+   297→              })}
+   298→            </motion.div>
+   299→          </motion.div>
+   300→        </div>
+   301→      </section>
+   302→
+   303→      {/* ============================================================ */}
+   304→      {/* SECTION 2 - Intro + stats */}
+   305→      {/* H2: Local VCT Floor Care You Can Trust */}
+   306→      {/* ============================================================ */}
+   307→      <section className="py-16 lg:py-24 bg-background">
+   308→        <div className="max-w-[1100px] mx-auto px-6">
+   309→          <motion.div
+   310→            initial={{ opacity: 0, y: 20 }}
+   311→            whileInView={{ opacity: 1, y: 0 }}
+   312→            viewport={{ once: true, margin: "-80px" }}
+   313→            transition={{ duration: 0.5 }}
+   314→            className="max-w-3xl mx-auto text-center mb-10"
+   315→          >
+   316→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   317→              Local VCT floor care, stripping &amp; refinishing &middot; Scotland-wide
+   318→            </span>
+   319→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-5">
+   320→              Local VCT Floor Care You Can Trust
+   321→            </h2>
+   322→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75]">
+   323→              Maundy Clean is a Scottish VCT floor care company built on the Maundy tradition
+   324→              of service and care. We don&rsquo;t operate as an impersonal national
+   325→              agency &mdash; we&rsquo;re a local specialist with VCT-trained floor care
+   326→              crews living and working in your area. Whether you&rsquo;re searching
+   327→              for a VCT strip-and-refinish in Glasgow&rsquo;s IFSD, a retail-entrance
+   328→              polish restoration in Edinburgh&rsquo;s New Town, a school-holiday VCT
+   329→              strip in Aberdeen, or a hospital-corridor burnish programme anywhere in
+   330→              between, we assign a vetted, PAYE-employed professional that stays with
+   331→              you for the long run. Same crew, same standard, same locked-in rate for
+   332→              12 months.
+   333→            </p>
+   334→          </motion.div>
+   335→
+   336→          <motion.div
+   337→            initial={{ opacity: 0, y: 16 }}
+   338→            whileInView={{ opacity: 1, y: 0 }}
+   339→            viewport={{ once: true, margin: "-60px" }}
+   340→            transition={{ duration: 0.5 }}
+   341→            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+   342→          >
+   343→            {[
+   344→              { label: "VCT zones covered", value: "All types" },
+   345→              { label: "Polish solids", value: "25&ndash;30%" },
+   346→              { label: "Refinish guarantee", value: "5-10 yrs" },
+   347→              { label: "Star rating", value: "4.9/5" },
+   348→            ].map((stat) => (
+   349→              <div
+   350→                key={stat.label}
+   351→                className="bg-[var(--cream)] rounded-xl p-4 border border-[var(--brand)]/10 text-center"
+   352→              >
+   353→                <div
+   354→                  className="font-display font-extrabold text-2xl text-gradient-brand"
+   355→                  dangerouslySetInnerHTML={{ __html: stat.value }}
+   356→                />
+   357→                <div
+   358→                  className="text-xs text-[var(--muted-foreground)] mt-1"
+   359→                  dangerouslySetInnerHTML={{ __html: stat.label }}
+   360→                />
+   361→              </div>
+   362→            ))}
+   363→          </motion.div>
+   364→        </div>
+   365→      </section>
+   366→
+   367→      {/* ============================================================ */}
+   368→      {/* SECTION 3 - Location grid (id="locations" anchor target) */}
+   369→      {/* H2: Find Your Local VCT Crew */}
+   370→      {/* ============================================================ */}
+   371→      <section id="locations" className="py-16 lg:py-24 bg-[var(--cream)] scroll-mt-20">
+   372→        <div className="max-w-[1400px] mx-auto px-6">
+   373→          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-14 items-start">
+   374→            {/* Left: copy + map */}
+   375→            <motion.div
+   376→              initial={{ opacity: 0, y: 20 }}
+   377→              whileInView={{ opacity: 1, y: 0 }}
+   378→              viewport={{ once: true, margin: "-80px" }}
+   379→              transition={{ duration: 0.5 }}
+   380→            >
+   381→              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   382→                Coverage across Scotland
+   383→              </span>
+   384→              <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   385→                Find Your Local VCT Crew
+   386→              </h2>
+   387→              <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   388→                Our network of vetted, VCT-trained floor care specialists spans
+   389→                the entire country. From the Central Belt to the Highlands and Islands,
+   390→                we have a local professional ready to care for your commercial VCT
+   391→                floors. Browse by region below, or call us to confirm coverage for
+   392→                your specific postcode.
+   393→              </p>
+   394→
+   395→              <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   396→                <img
+   397→                  src={IMG.scotlandMap}
+   398→                  alt="Map of Scotland showing Maundy Clean VCT floor care &amp; stripping coverage areas"
+   399→                  className="absolute inset-0 w-full h-full object-cover"
+   400→                  loading="lazy"
+   401→                />
+   402→                <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 to-transparent" />
+   403→                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-xl p-4">
+   404→                  <div className="flex items-center gap-2 mb-1">
+   405→                    <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   406→                    <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   407→                      72+ Scottish towns covered
+   408→                    </span>
+   409→                  </div>
+   410→                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   411→                    Same VCT-trained floor care specialists, same 100% satisfaction
+   412→                    guarantee &mdash; from Glasgow to Lerwick.
+   413→                  </p>
+   414→                </div>
+   415→              </div>
+   416→
+   417→              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+   418→                <Button
+   419→                  size="lg"
+   420→                  className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white shadow-brand gap-2 h-12 text-base"
+   421→                  asChild
+   422→                >
+   423→                  <Link href="/quote">
+   424→                    <Zap className="w-4 h-4" />
+   425→                    Request Your Free Floor Survey
+   426→                  </Link>
+   427→                </Button>
+   428→                <Button
+   429→                  size="lg"
+   430→                  variant="outline"
+   431→                  className="gap-2 h-12 text-base border-[var(--brand)]/30 text-[var(--brand)] hover:bg-[var(--brand-light)]/40"
+   432→                  asChild
+   433→                >
+   434→                  <a href={contactInfo.phoneHref}>
+   435→                    <Phone className="w-4 h-4" />
+   436→                    {contactInfo.phone}
+   437→                  </a>
+   438→                </Button>
+   439→              </div>
+   440→            </motion.div>
+   441→
+   442→            {/* Right: regional location grid */}
+   443→            <motion.div
+   444→              initial={{ opacity: 0, y: 20 }}
+   445→              whileInView={{ opacity: 1, y: 0 }}
+   446→              viewport={{ once: true, margin: "-60px" }}
+   447→              transition={{ duration: 0.5 }}
+   448→              className="bg-white rounded-3xl p-6 lg:p-8 border border-[var(--border)] shadow-sm"
+   449→            >
+   450→              <div className="flex items-center justify-between mb-5">
+   451→                <h3 className="font-display font-bold text-lg text-[var(--ink)]">
+   452→                  Browse by region
+   453→                </h3>
+   454→                <span className="text-xs text-[var(--muted-foreground)]">36 of 72 locations shown</span>
+   455→              </div>
+   456→
+   457→              <div className="space-y-6">
+   458→                {locationsByRegion.map((regionGroup) => (
+   459→                  <div key={regionGroup.region} id={regionGroup.region.toLowerCase().replace(/[^a-z]+/g, "-")}>
+   460→                    <div className="flex items-center gap-2 mb-3">
+   461→                      <MapPin className="w-4 h-4 text-[var(--brand)]" />
+   462→                      <span className="text-xs font-bold uppercase tracking-wider text-[var(--brand)]">
+   463→                        {regionGroup.region}
+   464→                      </span>
+   465→                      <div className="flex-1 h-px bg-[var(--border)]" />
+   466→                      <span className="text-[10px] text-[var(--muted-foreground)]">
+   467→                        {regionGroup.cities.length} towns
+   468→                      </span>
+   469→                    </div>
+   470→                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+   471→                      {regionGroup.cities.map((loc) => (
+   472→                        <Link
+   473→                          key={loc.slug}
+   474→                          id={loc.slug}
+   475→                          href={`/services/vct-floor-care-near-me#${loc.slug}`}
+   476→                          className="flex items-center gap-2 text-sm text-[var(--ink)]/80 hover:text-[var(--brand)] transition-colors py-2 px-2.5 rounded-lg hover:bg-[var(--brand-light)]/40 scroll-mt-24"
+   477→                        >
+   478→                          <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
+   479→                          <span>
+   480→                            <span className="font-medium">{loc.city}</span>
+   481→                            <span className="text-[var(--muted-foreground)]"> VCT</span>
+   482→                          </span>
+   483→                        </Link>
+   484→                      ))}
+   485→                    </div>
+   486→                  </div>
+   487→                ))}
+   488→              </div>
+   489→
+   490→              <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+   491→                <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
+   492→                  <Clock className="w-4 h-4 text-[var(--brand)]" />
+   493→                  <span>Don&rsquo;t see your town? We add new postcodes every month.</span>
+   494→                </div>
+   495→                <Link
+   496→                  href="/locations"
+   497→                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] whitespace-nowrap"
+   498→                >
+   499→                  View all 72 Scottish locations
+   500→                  <ArrowRight className="w-4 h-4" />
+   501→                </Link>
+   502→              </div>
+   503→            </motion.div>
+   504→          </div>
+   505→        </div>
+   506→      </section>
+   507→
+   508→      {/* ============================================================ */}
+   509→      {/* SECTION 4 - Why Maundy Clean for your local VCT care */}
+   510→      {/* H2: Why Scottish Property Owners Choose Maundy Clean */}
+   511→      {/* ============================================================ */}
+   512→      <section className="py-16 lg:py-24 bg-background">
+   513→        <div className="max-w-[1400px] mx-auto px-6">
+   514→          <motion.div
+   515→            initial={{ opacity: 0, y: 20 }}
+   516→            whileInView={{ opacity: 1, y: 0 }}
+   517→            viewport={{ once: true, margin: "-80px" }}
+   518→            transition={{ duration: 0.5 }}
+   519→            className="max-w-3xl mx-auto text-center mb-14"
+   520→          >
+   521→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   522→              The Maundy Clean difference
+   523→            </span>
+   524→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   525→              Why Scottish Property Owners Choose Maundy Clean
+   526→            </h2>
+   527→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   528→              We&rsquo;re a local specialist, not an impersonal national agency. Our
+   529→              VCT-trained floor care specialists live in your area, know your
+   530→              neighbourhood, and stay with you for the long run. Here&rsquo;s what sets
+   531→              us apart from the gig-economy apps and high-turnover agencies operating
+   532→              in Scotland.
+   533→            </p>
+   534→          </motion.div>
+   535→
+   536→          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+   537→            {TRUST_PILLARS.map((pillar, i) => {
+   538→              const Icon = pillar.icon;
+   539→              return (
+   540→                <motion.div
+   541→                  key={pillar.title}
+   542→                  initial={{ opacity: 0, y: 24 }}
+   543→                  whileInView={{ opacity: 1, y: 0 }}
+   544→                  viewport={{ once: true, margin: "-40px" }}
+   545→                  transition={{ duration: 0.5, delay: i * 0.1 }}
+   546→                  className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col md:flex-row items-start gap-5"
+   547→                >
+   548→                  <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   549→                    <Icon className="w-7 h-7 text-[var(--brand)]" />
+
+[showing lines 100-549 of 908; use offset=550 with limit to continue reading]

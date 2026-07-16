@@ -1,0 +1,452 @@
+     1→   300→   300→              and the Central Belt, your floors are the foundation of your
+     2→   301→   301→              property&rsquo;s character. Whether you manage a heritage site with
+     3→   302→   302→              original solid wood or a modern commercial space with polished
+     4→   303→   303→              concrete, keeping your floors in fantastic condition is essential.
+     5→   304→   304→              At <strong className="font-semibold text-[var(--ink)]">MaundyClean</strong>,
+     6→   305→   305→              we provide a premium floor care and stripping service designed to
+     7→   306→   306→              ensure your floors look great, can be relied on, and remain a source
+     8→   307→   307→              of pride for years to come.
+     9→   308→   308→            </p>
+    10→   309→   309→            <p className="text-base lg:text-lg text-[var(--ink)]/85 leading-[1.75] mb-5">
+    11→   310→   310→              While we are the recognized authority in{" "}
+    12→   311→   311→              <Link
+    13→   312→   312→                href="/services/recurring-home-cleaning"
+    14→   313→   313→                className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4 decoration-[var(--brand)]/30"
+    15→   314→   314→              >
+    16→   315→   315→                Recurring Home Cleaning
+    17→   316→   316→              </Link>{" "}
+    18→   317→   317→              for Scotland&rsquo;s finest residences, we bring that same level of
+    19→   318→   318→              technical intimacy and meticulous attention to detail to the complex
+    20→   319→   319→              world of hard floor restoration. We act as your strategic partner,
+    21→   320→   320→              utilizing contemporary and traditional cleaning methodologies to
+    22→   321→   321→              protect your architectural investment.
+    23→   322→   322→            </p>
+    24→   323→   323→
+    25→   324→   324→            {/* Compact trust strip */}
+    26→   325→   325→            <motion.div
+    27→   326→   326→              initial={{ opacity: 0, y: 16 }}
+    28→   327→   327→              whileInView={{ opacity: 1, y: 0 }}
+    29→   328→   328→              viewport={{ once: true, margin: "-40px" }}
+    30→   329→   329→              transition={{ duration: 0.5, delay: 0.15 }}
+    31→   330→   330→              className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3"
+    32→   331→   331→            >
+    33→   332→   332→              {[
+    34→   333→   333→                { label: "Visits completed in 2025", value: "99.6%" },
+    35→   334→   334→                { label: "PVG-checked operatives", value: "100%" },
+    36→   335→   335→                { label: "From per m&sup2;", value: "&pound;4" },
+    37→   336→   336→                { label: "Star rating", value: "4.9/5" },
+    38→   337→   337→              ].map((stat) => (
+    39→   338→   338→                <div
+    40→   339→   339→                  key={stat.label}
+    41→   340→   340→                  className="bg-[var(--cream)] rounded-xl p-3 border border-[var(--brand)]/10 text-center"
+    42→   341→   341→                >
+    43→   342→   342→                  <div
+    44→   343→   343→                    className="font-display font-extrabold text-xl text-gradient-brand"
+    45→   344→   344→                    dangerouslySetInnerHTML={{ __html: stat.value }}
+    46→   345→   345→                  />
+    47→   346→   346→                  <div
+    48→   347→   347→                    className="text-[11px] text-[var(--muted-foreground)] mt-0.5"
+    49→   348→   348→                    dangerouslySetInnerHTML={{ __html: stat.label }}
+    50→   349→   349→                  />
+    51→   350→   350→                </div>
+    52→   351→   351→              ))}
+    53→   352→   352→            </motion.div>
+    54→   353→   353→          </motion.div>
+    55→   354→   354→        </div>
+    56→   355→   355→      </div>
+    57→   356→   356→    </section>
+    58→   357→   357→  );
+    59→   358→   358→}
+    60→   359→   359→
+    61→   360→   360→// ============================================================
+    62→   361→   361→// Section 2 - Why MaundyClean is Scotland's Expert in Floor Restoration
+    63→   362→   362→// (Semantic H2: "Why MaundyClean is Scotland's Expert in Floor Restoration")
+    64→   363→   363→// Image+copy split layout with 4 trust pillars.
+    65→   364→   364→// Per the brief: pillars UserCheck / Building2 / Hammer / Leaf
+    66→   365→   365→// (icons chosen to reflect the brief's pillar themes: same trusted
+    67→   366→   366→// team every visit / heritage & architectural specialists / latest
+    68→   367→   367→// technology in machinery / sustainable & safe products).
+    69→   368→   368→// ALL 4 pillar bodies start with the brief sentence verbatim and
+    70→   369→   369→// are extended with floor-care-specific prose (no inline Links),
+    71→   370→   370→// but typed as ReactNode for codebase consistency with
+    72→   371→   371→// restroom-sanitation-seo.tsx (which uses ReactNode so a pillar
+    73→   372→   372→// can support an inline Link when needed).
+    74→   373→   373→// ============================================================
+    75→   374→   374→
+    76→   375→   375→type TrustCard = {
+    77→   376→   376→  icon: typeof ShieldCheck;
+    78→   377→   377→  title: string;
+    79→   378→   378→  description: ReactNode;
+    80→   379→   379→};
+    81→   380→   380→
+    82→   381→   381→const TRUST_CARDS: TrustCard[] = [
+    83→   382→   382→  {
+    84→   383→   383→    icon: UserCheck,
+    85→   384→   384→    title: "The Same Trusted Team Every Visit",
+    86→   385→   385→    description:
+    87→   386→   386→      "Reliability is built on familiarity. We ensure the same vetted professionals manage your floor maintenance to build a deep understanding of your specific floor coverings and the nuances of your property&rsquo;s layout. The same PVG-checked floor care specialists return every visit &mdash; learning your floor type map (VCT here, linoleum there, marble in the lobby, sealed concrete in the warehouse), your traffic patterns, your polish spec, your access window, and your inspection regime. When your regular crew is on annual leave, we send a trained backup who has been briefed on your floors &mdash; and we tell you in advance. Never a rotating cast of agency strangers walking a Scottish heritage floor.",
+    88→   387→   387→  },
+    89→   388→   388→  {
+    90→   389→   389→    icon: Building2,
+    91→   390→   390→    title: "Heritage & Architectural Specialists",
+    92→   391→   391→    description:
+    93→   392→   392→      "We provide highly detailed cleaning and restoration services for all floor coverings in Heritage & Architectural properties, ensuring that historical integrity is maintained through specialized preservation techniques. Original Edinburgh tenement pine boards (often 100-130 years old, sometimes paint-stripped, sometimes original-oiled), Glasgow sandstone-terrace encaustic tiles, Aberdeen granite-entrance terrazzo, Stirling heritage-listed marbles &mdash; each substrate demands its own protocol. We work with conservation officers where required, document our methods, and refuse to apply modern film-forming coatings to substrates that require traditional breathable treatments. We never use wax on natural stone, we never use alkaline chemistry on linoleum, and we never use aggressive pads on marble softer than the silicon carbide in the pad.",
+    94→   393→   393→  },
+    95→   394→   394→  {
+    96→   395→   395→    icon: Hammer,
+    97→   396→   396→    title: "Latest Technology in Machinery",
+    98→   397→   397→    description:
+    99→   398→   398→      "We utilize the latest technology in cleaning machinery and professional-grade stripping equipment to remove old seals and ingrained city-center grime without compromising the material&rsquo;s surface. Low-speed rotary machines (175 RPM) for stripping and scrubbing, high-speed burnishers (1500-2000 RPM) for wet-look gloss restoration, diamond-grit honing systems (50-grit through 3000-grit) for natural stone and terrazzo restoration, HEPA-filtered dust extractors for dust-free stripping where possible, professional wet/dry vacuums for slurry pickup, air movers for fast curing, gloss meters for objective measurement, and colour-coded pad systems (black strip, green heavy scrub, red light scrub, white polish, hogs-hair burnish) to prevent the cross-contamination mistakes that damage floors permanently.",
+   100→   399→   399→  },
+   101→   400→   400→  {
+   102→   401→   401→    icon: Leaf,
+   103→   402→   402→    title: "Sustainable & Safe Products",
+   104→   403→   403→    description:
+   105→   404→   404→      "We use only sustainable, safe cleaning products that are certified non-toxic. This is essential for maintaining a healthy environment in private homes and commercial spaces while protecting delicate natural stones. pH-neutral chemistry for linoleum (alkaline-sensitive), water-based acrylic for rubber (solvent-based discolours permanently), non-toxic biodegradable strippers where floor type allows, EN 14476 virucidal chemistry for clinical zones, fragrance-free and child-safe surface cleaners by default, COSHH-documented biodegradable chemistry, and impregnating sealers (penetrating, not film-forming) that protect without trapping moisture. The finishes you&rsquo;ve invested in are protected &mdash; and the staff who walk on the floor the morning after are not walking into chemical fumes.",
+   106→   405→   405→  },
+   107→   406→   406→];
+   108→   407→   407→
+   109→   408→   408→export function FloorCareStrippingSeoWhy() {
+   110→   409→   409→  return (
+   111→   410→   410→    <section className="py-16 lg:py-24 bg-[var(--cream)]">
+   112→   411→   411→      <div className="max-w-[1400px] mx-auto px-6">
+   113→   412→   412→        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-14">
+   114→   413→   413→          {/* Image side */}
+   115→   414→   414→          <motion.div
+   116→   415→   415→            initial={{ opacity: 0, scale: 0.96 }}
+   117→   416→   416→            whileInView={{ opacity: 1, scale: 1 }}
+   118→   417→   417→            viewport={{ once: true, margin: "-80px" }}
+   119→   418→   418→            transition={{ duration: 0.6 }}
+   120→   419→   419→            className="relative order-2 lg:order-1"
+   121→   420→   420→          >
+   122→   421→   421→            <div className="relative rounded-3xl overflow-hidden shadow-brand aspect-[4/3] bg-[var(--brand-dark)]">
+   123→   422→   422→              <img
+   124→   423→   423→                src={IMG.whyCrew}
+   125→   424→   424→                alt="Maundy Clean floor care crew &mdash; PVG-checked, uniformed, trained in stripping, refinishing, burnishing, diamond-grit restoration, sealing, and finishing"
+   126→   425→   425→                className="absolute inset-0 w-full h-full object-cover"
+   127→   426→   426→                loading="lazy"
+   128→   427→   427→              />
+   129→   428→   428→              <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/55 to-transparent" />
+   130→   429→   429→              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+   131→   430→   430→                <div className="flex items-center gap-2 mb-1">
+   132→   431→   431→                  <Crown className="w-4 h-4 text-[var(--brand)]" />
+   133→   432→   432→                  <span className="text-xs font-bold text-[var(--ink)] uppercase tracking-wider">
+   134→   433→   433→                    A Motivated Partner, Not an Impersonal Agency
+   135→   434→   434→                  </span>
+   136→   435→   435→                </div>
+   137→   436→   436→                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
+   138→   437→   437→                  Employed, vetted, PVG-checked, uniformed, and trained in
+   139→   438→   438→                  floor-care-specific protocols &mdash; stripping, refinishing,
+   140→   439→   439→                  burnishing, diamond-grit restoration, sealing, finishing, anti-slip
+   141→   440→   440→                  treatment, grout &amp; tile detailing, and stain removal. Same crew
+   142→   441→   441→                  every visit &mdash; never a rotating cast of agency strangers
+   143→   442→   442→                  walking a Scottish commercial or heritage floor.
+   144→   443→   443→                </p>
+   145→   444→   444→              </div>
+   146→   445→   445→            </div>
+   147→   446→   446→            <motion.div
+   148→   447→   447→              animate={{ y: [0, -8, 0] }}
+   149→   448→   448→              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+   150→   449→   449→              className="absolute -top-3 -right-3 bg-white rounded-xl shadow-xl p-3 border border-[var(--border)] w-36"
+   151→   450→   450→            >
+   152→   451→   451→              <div className="flex items-center gap-2">
+   153→   452→   452→                <div className="w-8 h-8 rounded-lg bg-[var(--gold)]/20 flex items-center justify-center">
+   154→   453→   453→                  <ShieldCheck className="w-4 h-4 text-[var(--gold-dark)]" />
+   155→   454→   454→                </div>
+   156→   455→   455→                <div>
+   157→   456→   456→                  <div className="text-[10px] text-[var(--muted-foreground)]">Public liability</div>
+   158→   457→   457→                  <div className="text-xs font-bold text-[var(--ink)]">&pound;5m</div>
+   159→   458→   458→                </div>
+   160→   459→   459→              </div>
+   161→   460→   460→            </motion.div>
+   162→   461→   461→          </motion.div>
+   163→   462→   462→
+   164→   463→   463→          {/* Copy side */}
+   165→   464→   464→          <motion.div
+   166→   465→   465→            initial={{ opacity: 0, y: 20 }}
+   167→   466→   466→            whileInView={{ opacity: 1, y: 0 }}
+   168→   467→   467→            viewport={{ once: true, margin: "-80px" }}
+   169→   468→   468→            transition={{ duration: 0.5 }}
+   170→   469→   469→            className="order-1 lg:order-2"
+   171→   470→   470→          >
+   172→   471→   471→            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   173→   472→   472→              Why choose Maundy Clean
+   174→   473→   473→            </span>
+   175→   474→   474→            <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   176→   475→   475→              Why MaundyClean is Scotland&rsquo;s Expert in Floor Restoration
+   177→   476→   476→            </h2>
+   178→   477→   477→            <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
+   179→   478→   478→              Every floor is unique, and a &ldquo;one-size-fits-all&rdquo; approach can
+   180→   479→   479→              lead to permanent damage. MaundyClean focuses on specialist knowledge
+   181→   480→   480→              and vocational training to deliver a &ldquo;speechlessly spotless&rdquo;
+   182→   481→   481→              and preserved finish. Our floor care crews carry the technical kit,
+   183→   482→   482→              the chemistry, and the protocols standard mopping cannot match
+   184→   483→   483→              &mdash; and the same vetted team returns every visit to build the deep
+   185→   484→   484→              familiarity your floors deserve.
+   186→   485→   485→            </p>
+   187→   486→   486→
+   188→   487→   487→            <div className="space-y-3">
+   189→   488→   488→              {TRUST_CARDS.slice(0, 2).map((card) => {
+   190→   489→   489→                const Icon = card.icon;
+   191→   490→   490→                return (
+   192→   491→   491→                  <div
+   193→   492→   492→                    key={card.title}
+   194→   493→   493→                    className="flex items-start gap-3 bg-white rounded-xl p-4 border border-[var(--border)]"
+   195→   494→   494→                  >
+   196→   495→   495→                    <div className="w-10 h-10 rounded-lg bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   197→   496→   496→                      <Icon className="w-5 h-5 text-[var(--brand)]" />
+   198→   497→   497→                    </div>
+   199→   498→   498→                    <div>
+   200→   499→   499→                      <h3 className="font-display font-bold text-base text-[var(--ink)] mb-1">
+   201→   500→   500→                        {card.title}
+   202→   501→   501→                      </h3>
+   203→   502→   502→                      <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+   204→   503→   503→                        {typeof card.description === "string" ? (
+   205→   504→   504→                          <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   206→   505→   505→                        ) : (
+   207→   506→   506→                          card.description
+   208→   507→   507→                        )}
+   209→   508→   508→                      </p>
+   210→   509→   509→                    </div>
+   211→   510→   510→                  </div>
+   212→   511→   511→                );
+   213→   512→   512→              })}
+   214→   513→   513→            </div>
+   215→   514→   514→          </motion.div>
+   216→   515→   515→        </div>
+   217→   516→   516→
+   218→   517→   517→        <div className="grid md:grid-cols-2 gap-6">
+   219→   518→   518→          {TRUST_CARDS.slice(2).map((card, i) => {
+   220→   519→   519→            const Icon = card.icon;
+   221→   520→   520→            return (
+   222→   521→   521→              <motion.div
+   223→   522→   522→                key={card.title}
+   224→   523→   523→                initial={{ opacity: 0, y: 24 }}
+   225→   524→   524→                whileInView={{ opacity: 1, y: 0 }}
+   226→   525→   525→                viewport={{ once: true, margin: "-40px" }}
+   227→   526→   526→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   228→   527→   527→                className="bg-white rounded-2xl p-7 border border-[var(--border)] flex flex-col sm:flex-row items-start gap-5"
+   229→   528→   528→              >
+   230→   529→   529→                <div className="w-14 h-14 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
+   231→   530→   530→                  <Icon className="w-7 h-7 text-[var(--brand)]" />
+   232→   531→   531→                </div>
+   233→   532→   532→                <div>
+   234→   533→   533→                  <h3 className="font-display font-bold text-xl text-[var(--ink)] mb-2">
+   235→   534→   534→                    {card.title}
+   236→   535→   535→                  </h3>
+   237→   536→   536→                  <p className="text-sm lg:text-base text-[var(--muted-foreground)] leading-relaxed">
+   238→   537→   537→                    {typeof card.description === "string" ? (
+   239→   538→   538→                      <span dangerouslySetInnerHTML={{ __html: card.description }} />
+   240→   539→   539→                    ) : (
+   241→   540→   540→                      card.description
+   242→   541→   541→                    )}
+   243→   542→   542→                  </p>
+   244→   543→   543→                </div>
+   245→   544→   544→              </motion.div>
+   246→   545→   545→            );
+   247→   546→   546→          })}
+   248→   547→   547→        </div>
+   249→   548→   548→      </div>
+   250→   549→   549→    </section>
+   251→   550→   550→  );
+   252→   551→   551→}
+   253→   552→   552→
+   254→   553→   553→// ============================================================
+   255→   554→   554→// Section 3 - Our Total Floor Maintenance & Stripping Checklist
+   256→   555→   555→// (Semantic H2: "Our Total Floor Maintenance & Stripping Checklist")
+   257→   556→   556→// Brief-specific section with 3 H3 sub-sections:
+   258→   557→   557→//   1. Natural Stone & Concrete Restoration
+   259→   558→   558→//   2. Wood Floor Preservation
+   260→   559→   559→//   3. Commercial Vinyl & Resilient Surfaces
+   261→   560→   560→// Carries the id="checklist" anchor that the CTA buttons link to.
+   262→   561→   561→// Per the brief: NO intro paragraphs on the 3 checklist cards
+   263→   562→   562→// (just H3 title + sub-points). ALL sub-point bodies in ALL 3
+   264→   563→   563→// cards are plain strings per the brief (no inline Links), but
+   265→   564→   564→// typed as ReactNode (via ChecklistPoint.text) for codebase
+   266→   565→   565→// consistency with restroom-sanitation-seo.tsx.
+   267→   566→   566→// ============================================================
+   268→   567→   567→
+   269→   568→   568→type ChecklistPoint = {
+   270→   569→   569→  title: string;
+   271→   570→   570→  text: ReactNode;
+   272→   571→   571→};
+   273→   572→   572→
+   274→   573→   573→const CHECKLIST_ITEMS: {
+   275→   574→   574→  icon: typeof Building2;
+   276→   575→   575→  image: string;
+   277→   576→   576→  imageAlt: string;
+   278→   577→   577→  title: string;
+   279→   578→   578→  description: string;
+   280→   579→   579→  points: ChecklistPoint[];
+   281→   580→   580→}[] = [
+   282→   581→   581→  {
+   283→   582→   582→    icon: Gem,
+   284→   583→   583→    image: IMG.checklistStone,
+   285→   584→   584→    imageAlt:
+   286→   585→   585→      "Maundy Clean floor care specialist restoring natural stone, marble and polished concrete floors with diamond-grit honing in a Scottish property",
+   287→   586→   586→    title: "1. Natural Stone & Concrete Restoration",
+   288→   587→   587→    description: "",
+   289→   588→   588→    points: [
+   290→   589→   589→      {
+   291→   590→   590→        title: "Stone Floor Cleaning",
+   292→   591→   591→        text: "Specialized care for natural stone like marble and limestone, removing traffic film and restoring natural luster. Marble (Mohs 3 &mdash; softer than aggressive silicon-carbide pads), limestone, travertine, slate, and granite each require their own protocol. We diamond-hone through 50-grit to 3000-grit, then crystallise marble (acid-based chemical reaction creates a harder, glossier surface), apply an impregnating sealer (penetrating, not film-forming), and poultice for stain removal (oil, rust, organic stains). We do NOT use wax on natural stone &mdash; wax traps moisture and discolours. Annual re-polish maintains the gloss.",
+   293→   592→   592→      },
+   294→   593→   593→      {
+   295→   594→   594→        title: "Concrete Floor Polishing",
+   296→   595→   595→        text: "Professional cleaning and buffing of polished concrete to maintain a high-gloss, durable finish. Lithium-silicate densifier applied (reacts with calcium hydroxide in concrete to form calcium silicate hydrate, hardening the surface), floor then diamond-polished through 200-grit to 3000-grit to the desired gloss level, impregnating sealer applied for stain resistance. No film-forming coating (which would peel under forklift traffic). Annual re-polish with 800-grit and burnish to maintain gloss. Stain removal with alkaline degreaser and poultice. The right way to care for sealed concrete &mdash; long-lasting, low-maintenance, no peeling.",
+   297→   596→   596→      },
+   298→   597→   597→      {
+   299→   598→   598→        title: "Grout & Tile Detailing",
+   300→   599→   599→        text: "Intensive cleaning of floor tiles and grout lines to remove deep-seated bacteria and stains. Rotary-machine deep scrub with anti-fungal treatment on tile joints (the main odour reservoir in any commercial kitchen, washroom, or entrance), alkaline degreaser for ingrained soil on ceramic and porcelain tiles, steam treatment for sanitisation, grout colour restoration where the original colour has been lost to staining, and silicone grout sealer applied to slow future soiling. The detail work that lifts the floor from &lsquo;cleaned&rsquo; to &lsquo;restored&rsquo; &mdash; and the work most general cleaners skip.",
+   301→   600→   600→      },
+   302→   601→   601→    ],
+   303→   602→   602→  },
+   304→   603→   603→  {
+   305→   604→   604→    icon: Brush,
+   306→   605→   605→    image: IMG.checklistWood,
+   307→   606→   606→    imageAlt:
+   308→   607→   607→      "Maundy Clean floor care specialist maintaining and preserving a solid wood floor with non-damaging solutions and high-quality seals in a Scottish heritage property",
+   309→   608→   608→    title: "2. Wood Floor Preservation",
+   310→   609→   609→    description: "",
+   311→   610→   610→    points: [
+   312→   611→   611→      {
+   313→   612→   612→        title: "Solid & Engineered Wood",
+   314→   613→   613→        text: "Meticulous maintenance for all types of timber, using non-damaging solutions to restore grain clarity. Solid timber (oak, ash, pine, walnut, beech), engineered wood (veneer over ply substrate &mdash; sensitive to over-wetting), parquet and herringbone (finger blocks, complex patterns), and laminate (which cannot be refinished &mdash; only maintained). We identify species, cut, and finish before we touch the floor, then apply the right protocol: pH-neutral cleaner for lacquer, oil-replenishing products for oiled finishes, ultra-low moisture for engineered veneers, dry-only methods for laminate joins. Wrong chemistry on wrong timber equals permanent damage.",
+   315→   614→   614→      },
+   316→   615→   615→      {
+   317→   616→   616→        title: "Sealing & Finishing",
+   318→   617→   617→        text: "Applying high-quality seals and finishes to protect wood from moisture and high-traffic wear and tear. Hardwax oil (Osmo Polyx-Oil, Blanchon) for oiled finishes &mdash; breathable, repairable, food-safe. Bona Traffic HD or Junckers HP lacquer for film-forming finishes &mdash; durable, high-traffic-rated, 5-10 year guarantee. Screen-and-recoat (light sand of existing finish, new topcoat applied) to extend floor life by 3-5 years without the dust and disruption of a full sand. Full sand and refinish (drum sanding, edge sanding, optional stain colour change, multiple finish coats) for the complete restoration. The right seal and finish for the right floor &mdash; we never apply film-forming over oiled, and we never apply wax over lacquer.",
+   319→   618→   618→      },
+   320→   619→   619→    ],
+   321→   620→   620→  },
+   322→   621→   621→  {
+   323→   622→   622→    icon: Layers,
+   324→   623→   623→    image: IMG.checklistVinyl,
+   325→   624→   624→    imageAlt:
+   326→   625→   625→      "Maundy Clean floor care specialist stripping and re-sealing a commercial VCT vinyl composition tile floor with high-solids metal-interlock polish in a Scottish retail or commercial space",
+   327→   626→   626→    title: "3. Commercial Vinyl & Resilient Surfaces",
+   328→   627→   627→    description: "",
+   329→   628→   628→    points: [
+   330→   629→   629→      {
+   331→   630→   630→        title: "Stripping & Re-Sealing",
+   332→   631→   631→        text: "Technical removal of old, discolored floor wax and application of fresh, protective coatings on Vinyl, Linoleum, Rubber, and Cork. Full strip back to bare floor &mdash; chemical stripper (chemistry matched to floor type: alkaline for VCT, pH-neutral for linoleum, water-based for rubber), aggressive pad (black for VCT, green for linoleum, white for rubber), wet vacuum pickup, double-rinse with clean water, neutraliser rinse to bring floor back to pH 7 (critical &mdash; alkaline residue prevents polish bonding). Then refinish: 4-6 coats of high-solids metal-interlock polish (25% solids commercial, 30% premium), each coat dried 30-45 minutes. Final coat cured 24 hours before traffic. Floor restored to wet-look gloss.",
+   333→   632→   632→      },
+   334→   633→   633→      {
+   335→   634→   634→        title: "Anti-Slip Treatment",
+   336→   635→   635→        text: "Ensuring your floors are not only beautiful but also compliant with health and safety standards. Slip-resistance testing (pendulum test to BS 7976) on high-risk zones (entrance matting transitions, wet washroom surrounds, commercial kitchen wet zones, swimming pool surrounds). Anti-slip polish additives for VCT and linoleum, anti-slip tapes and coatings for stair nosings, and slip-resistant matting specification where polish alone cannot meet the HSE requirement. Quarterly slip audit with documented pendulum readings for your compliance file. The right treatment for the right risk zone &mdash; and the documentation that proves to your insurer and your HSE inspector that you take floor safety seriously.",
+   337→   636→   636→      },
+   338→   637→   637→    ],
+   339→   638→   638→  },
+   340→   639→   639→];
+   341→   640→   640→
+   342→   641→   641→export function FloorCareStrippingSeoChecklist() {
+   343→   642→   642→  return (
+   344→   643→   643→    <section id="checklist" className="py-16 lg:py-24 bg-background scroll-mt-20">
+   345→   644→   644→      <div className="max-w-[1400px] mx-auto px-6">
+   346→   645→   645→        <motion.div
+   347→   646→   646→          initial={{ opacity: 0, y: 20 }}
+   348→   647→   647→          whileInView={{ opacity: 1, y: 0 }}
+   349→   648→   648→          viewport={{ once: true, margin: "-80px" }}
+   350→   649→   649→          transition={{ duration: 0.5 }}
+   351→   650→   650→          className="max-w-3xl mb-12"
+   352→   651→   651→        >
+   353→   652→   652→          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
+   354→   653→   653→            Beyond the standard mop
+   355→   654→   654→          </span>
+   356→   655→   655→          <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
+   357→   656→   656→            Our Total Floor Maintenance &amp; Stripping Checklist
+   358→   657→   657→          </h2>
+   359→   658→   658→          <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
+   360→   659→   659→            Our deep cleaning services for floors move beyond the standard mop to
+   361→   660→   660→            include technical stripping, sealing, and finishing tailored to your
+   362→   661→   661→            specific material. From natural stone diamond-grit restoration through
+   363→   662→   662→            wood floor preservation to commercial vinyl and resilient surface
+   364→   663→   663→            protocols &mdash; every floor type has its own chemistry, its own pad,
+   365→   664→   664→            its own technique. Below is the scope we deliver as standard,
+   366→   665→   665→            regardless of building type, footprint, or occupancy schedule.
+   367→   666→   666→          </p>
+   368→   667→   667→        </motion.div>
+   369→   668→   668→
+   370→   669→   669→        <div className="grid lg:grid-cols-3 gap-6">
+   371→   670→   670→          {CHECKLIST_ITEMS.map((item, i) => {
+   372→   671→   671→            const Icon = item.icon;
+   373→   672→   672→            return (
+   374→   673→   673→              <motion.div
+   375→   674→   674→                key={item.title}
+   376→   675→   675→                initial={{ opacity: 0, y: 24 }}
+   377→   676→   676→                whileInView={{ opacity: 1, y: 0 }}
+   378→   677→   677→                viewport={{ once: true, margin: "-40px" }}
+   379→   678→   678→                transition={{ duration: 0.5, delay: i * 0.1 }}
+   380→   679→   679→                className="bg-white rounded-3xl overflow-hidden border border-[var(--border)] shadow-sm flex flex-col"
+   381→   680→   680→              >
+   382→   681→   681→                <div className="relative aspect-[16/9] bg-[var(--brand-dark)] overflow-hidden">
+   383→   682→   682→                  <img
+   384→   683→   683→                    src={item.image}
+   385→   684→   684→                    alt={item.imageAlt}
+   386→   685→   685→                    className="absolute inset-0 w-full h-full object-cover"
+   387→   686→   686→                    loading="lazy"
+   388→   687→   687→                  />
+   389→   688→   688→                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/70 via-transparent to-transparent" />
+   390→   689→   689→                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur flex items-center justify-center shadow-md">
+   391→   690→   690→                    <Icon className="w-6 h-6 text-[var(--brand)]" />
+   392→   691→   691→                  </div>
+   393→   692→   692→                  <h3 className="absolute bottom-4 left-4 right-4 font-display font-bold text-lg text-white leading-tight">
+   394→   693→   693→                    {item.title}
+   395→   694→   694→                  </h3>
+   396→   695→   695→                </div>
+   397→   696→   696→                <div className="p-6 flex-1 flex flex-col">
+   398→   697→   697→                  {item.description ? (
+   399→   698→   698→                    <p
+   400→   699→   699→                      className="text-sm text-[var(--muted-foreground)] leading-relaxed mb-4"
+   401→   700→   700→                      dangerouslySetInnerHTML={{ __html: item.description }}
+   402→   701→   701→                    />
+   403→   702→   702→                  ) : null}
+   404→   703→   703→                  <ul className="space-y-3 mt-auto">
+   405→   704→   704→                    {item.points.map((point) => {
+   406→   705→   705→                      const PointIcon = CheckCircle2;
+   407→   706→   706→                      return (
+   408→   707→   707→                        <li
+   409→   708→   708→                          key={point.title}
+   410→   709→   709→                          className="flex items-start gap-2.5 text-sm text-[var(--ink)]/85"
+   411→   710→   710→                        >
+   412→   711→   711→                          <PointIcon className="w-4 h-4 text-[var(--brand)] shrink-0 mt-0.5" />
+   413→   712→   712→                          <span>
+   414→   713→   713→                            <strong className="font-semibold text-[var(--ink)]">{point.title}</strong>
+   415→   714→   714→                            &mdash;{" "}
+   416→   715→   715→                            {typeof point.text === "string" ? (
+   417→   716→   716→                              <span dangerouslySetInnerHTML={{ __html: point.text }} />
+   418→   717→   717→                            ) : (
+   419→   718→   718→                              point.text
+   420→   719→   719→                            )}
+   421→   720→   720→                          </span>
+   422→   721→   721→                        </li>
+   423→   722→   722→                      );
+   424→   723→   723→                    })}
+   425→   724→   724→                  </ul>
+   426→   725→   725→                </div>
+   427→   726→   726→              </motion.div>
+   428→   727→   727→            );
+   429→   728→   728→          })}
+   430→   729→   729→        </div>
+   431→   730→   730→      </div>
+   432→   731→   731→    </section>
+   433→   732→   732→  );
+   434→   733→   733→}
+   435→   734→   734→
+   436→   735→   735→// ============================================================
+   437→   736→   736→// Section 4 - 3-Step "Hassle-Free" Booking Process
+   438→   737→   737→// (Semantic H3: "The MaundyClean 3-Step 'Hassle-Free' Process")
+   439→   738→   738→// Per the brief: icons ClipboardCheck / UserCheck / Sparkles
+   440→   739→   739→// (FileText imported for safety/template parity even if not used.)
+   441→   740→   740→// Brief HAS a [H3] marker on this heading, so we use <h3>
+   442→   741→   741→// (matches the day-porter pattern; restroom-sanitation had
+   443→   742→   742→// no [H3] marker so it used <h2>).
+   444→   743→   743→// ============================================================
+   445→   744→   744→
+   446→   745→   745→const BOOKING_STEPS = [
+   447→   746→   746→  {
+   448→   747→   747→    icon: ClipboardCheck,
+   449→   748→   748→    step: "01",
+   450→   749→   749→    title: "Free Estimate & Floor Analysis",
+   451→
+   452→[showing lines 300-749 of 1413; use offset=750 with limit to continue reading]
