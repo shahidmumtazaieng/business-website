@@ -1,37 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
-  Shield,
   ShieldCheck,
   Leaf,
-  Star,
-  Clock,
-  Sparkles,
   MapPin,
   ArrowRight,
-  CheckCircle2,
-  Droplets,
-  Wind,
-  SprayCan,
-  Crown,
-  Users,
   Home,
   KeyRound,
   Hammer,
-  UserCheck,
-  CalendarCheck,
-  Award,
-  Gem,
-  Phone,
-  ClipboardCheck,
-  FileText,
+  Users,
   HeartPulse,
-  Biohazard,
-  Lightbulb,
-  Boxes,
-  Wrench,
   ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -104,8 +83,8 @@ const REGIONAL_GROUPS = [
 const TRUST_PILLARS = [
   {
     icon: ShieldCheck,
-    title: "Licensed Forensic Technicians",
-    text: "Maundy Clean is fully qualified and accredited in forensic, trauma, and crime scene decontaminations. We never sub-contract or use unvetted labor.",
+    title: "Licensed Trauma Technicians",
+    text: "Maundy Clean is fully qualified and accredited in forensic, trauma, and biohazard decontaminations. We never sub-contract or use unvetted labor.",
   },
   {
     icon: Users,
@@ -126,11 +105,11 @@ const TRUST_PILLARS = [
 
 const NEAR_ME_FAQS = [
   {
-    q: "How quickly can a crime scene cleaning crew respond?",
+    q: "How quickly can a trauma cleaning crew respond?",
     a: "We operate a 24/7 emergency hotline across Scotland and can typically dispatch a certified crew to any Central Belt location in under 2 hours, with slightly longer transit windows for rural Highlands and Border areas.",
   },
   {
-    q: "Do your crime scene services cover domestic residences?",
+    q: "Do your trauma services cover domestic residences?",
     a: "Yes. We work extensively with private homeowners, tenants, local authorities, and housing associations to restore residential properties, tenement flats, and estate buildings back to complete safety.",
   },
   {
@@ -143,7 +122,7 @@ const NEAR_ME_FAQS = [
   },
 ];
 
-export function CrimeSceneCleanupNearMeHero() {
+export function TraumaCleanupNearMeHero() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
@@ -154,7 +133,7 @@ export function CrimeSceneCleanupNearMeHero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg"
-            alt="Crime Scene Cleaning Near Me"
+            alt="Trauma Cleanup Near Me"
             className="w-full h-full object-cover object-center opacity-20 scale-105 select-none"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-dark)]/90 via-[var(--brand-dark)]/85 to-[var(--brand-dark)]" />
@@ -166,10 +145,10 @@ export function CrimeSceneCleanupNearMeHero() {
             24/7 National Dispatch Directories
           </div>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight">
-            Crime Scene Cleaning Near Me in Scotland
+            Trauma Cleanup Near Me in Scotland
           </h1>
           <p className="text-base sm:text-lg text-white/95 max-w-3xl mx-auto leading-relaxed font-medium">
-            Find certified, discreet, and HSE-compliant crime scene and trauma scene decontamination crews in your local Scottish area. On-site within 2 hours across the Central Belt.
+            Find certified, discreet, and HSE-compliant trauma scene and biohazard decontamination crews in your local Scottish area. On-site within 2 hours across the Central Belt.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-2">
@@ -273,10 +252,10 @@ export function CrimeSceneCleanupNearMeHero() {
         <div className="max-w-[1200px] mx-auto px-6 space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="font-display text-3xl font-extrabold tracking-tight leading-tight">
-              A Higher Standard of Forensic Cleanliness
+              A Higher Standard of Biological Cleanliness
             </h2>
             <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-              Crime scene and trauma cleanup requires certified specialists. At Maundy Clean, our technical staff are rigorously trained and equipped for any sensitive environment.
+              Trauma scene and biohazard cleanup requires certified specialists. At Maundy Clean, our technical staff are rigorously trained and equipped for any sensitive environment.
             </p>
           </div>
 
@@ -411,7 +390,7 @@ export function CrimeSceneCleanupNearMeHero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,color-mix(in_oklch,var(--gold)_8%,transparent)_0,transparent_50%)]" />
         <div className="relative z-10 max-w-[800px] mx-auto px-6 space-y-6">
           <h2 className="font-display text-3xl font-extrabold">
-            Request Local Crime Scene Cleaning Dispatch
+            Request Local Trauma Cleanup Dispatch
           </h2>
           <p className="text-sm text-white/90 max-w-xl mx-auto leading-relaxed">
             Our teams are strategically positioned in Glasgow, Edinburgh, Aberdeen, and Inverness for maximum speed. Get a safe, discreet, and fast estimate.

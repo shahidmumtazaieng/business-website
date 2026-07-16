@@ -17,31 +17,21 @@ import {
   CheckCircle2,
   Droplets,
   Wind,
-  SprayCan,
-  Crown,
+  Biohazard,
   Users,
   Home,
   KeyRound,
   Hammer,
   UserCheck,
-  CalendarCheck,
-  Award,
-  Gem,
-  Phone,
   ClipboardCheck,
   FileText,
-  HeartPulse,
-  Biohazard,
-  Lightbulb,
-  Boxes,
-  Wrench,
   ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { contactInfo } from "@/lib/site-data";
 
 // ============================================================
-// Images - hand-picked and aligned with biohazard aesthetics
+// Images - hand-picked and aligned with trauma cleanup aesthetics
 // ============================================================
 const IMG = {
   heroWide: "https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg",
@@ -50,10 +40,6 @@ const IMG = {
   checklistSanitisation: "https://sfile.chatglm.cn/images-ppt/2be4158b7bb6.jpg",
   checklistWaste: "https://sfile.chatglm.cn/images-ppt/2505b6c51368.jpg",
   checklistDetails: "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
-  leaseRecurring: "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
-  leaseTenancy: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
-  leaseBuilders: "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
-  leaseTrauma: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
   nearMeMap: "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
 };
 
@@ -125,7 +111,7 @@ const itemVariants = {
 // ============================================================
 // SECTION 1 — Full-width Hero Banner
 // ============================================================
-export function BiohazardCleaningSeoHeroBanner() {
+export function TraumaCleanupSeoHeroBanner() {
   return (
     <section className="relative min-h-[580px] flex items-center justify-center bg-[var(--brand-dark)] text-white overflow-hidden py-16 lg:py-24">
       {/* Background Image with Dark Overlay */}
@@ -133,7 +119,7 @@ export function BiohazardCleaningSeoHeroBanner() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={IMG.heroWide}
-          alt="Professional Biohazard Cleanup & Trauma Decontamination in Scotland"
+          alt="Professional Trauma Cleanup & Biohazard Decontamination in Scotland"
           className="w-full h-full object-cover object-center opacity-25 scale-105 select-none"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-dark)]/90 via-[var(--brand-dark)]/85 to-[var(--brand-dark)]" />
@@ -148,13 +134,13 @@ export function BiohazardCleaningSeoHeroBanner() {
         >
           <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-            Specialist Emergency & Trauma Service
+            Specialist Trauma & Biohazard Restoration
           </div>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight">
-            Professional Biohazard Cleanup & Trauma Decontamination Scotland
+            Professional Trauma Cleanup & Biohazard Decontamination Scotland
           </h1>
           <p className="text-base sm:text-lg text-white/95 font-medium leading-relaxed max-w-2xl">
-            Technical Microbiological Restoration, Total Incident Management, and the Maundy Tradition of Discretion. Swift, safe, and regulatory-compliant solutions for complex hygiene incidents.
+            Technical Microbiological Restoration, Total Incident Management, and the Maundy Tradition of Discretion.
           </p>
 
           {/* Quick trust strip */}
@@ -209,7 +195,7 @@ export function BiohazardCleaningSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;In an incredibly challenging situation, the Maundy Clean team handled everything with extreme professionalism and profound discretion. Their technical team was prompt, compassionate, and restored our premises to absolute biological safety.&quot;
+            &quot;In an incredibly challenging situation, the Maundy Clean team handled everything with extreme professionalism and profound discretion. Their technical team was prompt, compassionate, and restored our premises to absolute safety.&quot;
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -229,7 +215,7 @@ export function BiohazardCleaningSeoHeroBanner() {
 // ============================================================
 // SECTION 2 — Deep Semantic Introduction
 // ============================================================
-export function BiohazardCleaningSeoIntro() {
+export function TraumaCleanupSeoIntro() {
   return (
     <section className="py-16 bg-background text-[var(--ink)]">
       <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
@@ -238,14 +224,14 @@ export function BiohazardCleaningSeoIntro() {
             Professional Incident Management
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            Meticulous Care & Discretion in Critical Biological Restoration
+            Meticulous Technical Restoration and Forensic Hygiene
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              Biohazardous situations are among the most delicate and challenging events a property owner can face. Whether dealing with human bodily fluids, faecal matter, or the aftermath of a traumatic event, these scenarios carry significant risks of disease and airborne pathogens, including dangerous viruses such as Hepatitis B, Hepatitis C, and HIV. At Maundy Clean, we provide a premium biohazard cleanup service designed to deliver swift, thorough, and compassionate solutions, restoring your space to a biologically safe and livable environment.
+              The aftermath of a traumatic event is one of the most challenging situations a property owner can face, requiring a level of care that goes far beyond standard domestic maintenance. Trauma cleanup is a technical discipline designed to deliver swift, thorough, and compassionate solutions in the face of unexpected events. At Maundy Clean, we provide premium forensic-level decontamination across Glasgow, Edinburgh, and the Central Belt, restoring your space to a safe, healthy environment.
             </p>
             <p>
-              While we are the recognised authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s most prestigious residences, we bring that same level of technical intimacy and meticulous attention to detail to specialized forensic hygiene. Serving Glasgow, Edinburgh, and across the Central Belt, our technical teams are fully qualified in the decontamination and disposal process for any eventuality, returning properties for general, public, or private use.
+              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s most prestigious residences, we bring that same level of technical intimacy and &quot;same-staff&quot; consistency to specialized trauma recovery. We act as your strategic partner, ensuring that all surfaces are cleaned to eliminate the risk of disease and airborne pathogens, including dangerous viruses such as Hepatitis B, Hepatitis C, and HIV.
             </p>
           </div>
         </div>
@@ -254,12 +240,12 @@ export function BiohazardCleaningSeoIntro() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={IMG.introSplit}
-            alt="Biohazard Decontamination Techs"
+            alt="Trauma Scene Decontamination Team"
             className="w-full h-full object-cover scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/50 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6 text-white p-4 bg-black/40 backdrop-blur rounded-xl border border-white/10">
-            <div className="text-xs font-bold text-[var(--gold)] uppercase tracking-wider">HSE Compliant</div>
+            <div className="text-xs font-bold text-[var(--gold)] uppercase tracking-wider">Accredited Experts</div>
             <div className="text-sm font-semibold mt-0.5">Operated under strict Health and Safety Executive guidance.</div>
           </div>
         </div>
@@ -281,26 +267,26 @@ const TRUST_CARDS: TrustCard[] = [
   {
     icon: Users,
     title: "The Same Trusted Professionals",
-    description: "Sensitivity and privacy are critical. We ensure the same vetted, background-checked professionals manage your site to maintain absolute discretion and build a deep understanding of your property's specific layout and risky hotspots.",
+    description: "Privacy and reliability are critical during sensitive recoveries. We ensure the same vetted, background-checked professionals manage your restoration to maintain absolute discretion and build a deep understanding of your property’s specific requirements.",
   },
   {
     icon: ShieldCheck,
-    title: "Total Regulatory Compliance & Safety",
-    description: "We provide Total Incident Management, including full RAMS (Risk Assessments and Method Statements) for every project. Our technicians are certified in a complete range of techniques and cleaning solutions, with regular updates to their training to ensure the highest quality assurance.",
+    title: "Total Incident Management",
+    description: "We handle the complete range of forensic hygiene, from chemical bio-hazards to human waste remediation. Our technical teams are fully qualified in the decontamination and disposal process for any eventuality, returning the scene for general, public, or private use.",
   },
   {
-    icon: Hammer,
-    title: "Difficult Access & Confined Spaces",
-    description: "Our comprehensive service plan covers complex cleaning scenarios that many competitors simply cannot offer, including difficult access and confined spaces decontamination.",
+    icon: Sparkles,
+    title: "Specialized Sterilisation Technology",
+    description: "We utilize Ozone treatments for sterilising all types of material, ensuring that even hidden pathogens in porous surfaces are neutralized.",
   },
   {
     icon: Leaf,
-    title: "Eco-Friendly & Occupant Safe",
-    description: "We utilize only certified child-safe and pet-safe products once biological pathogens have been neutralized. This ensures your home or workplace remains a non-toxic sanctuary without the harsh chemical residues common in industrial-only services.",
+    title: "Eco-Friendly & Sanctuary-Safe",
+    description: "Once biological risks are neutralized, we utilize only certified child-safe and pet-safe products. This ensures a fresh, non-toxic environment that feels like a sanctuary again, without the harsh chemical odors common in industrial agencies.",
   },
 ];
 
-export function BiohazardCleaningSeoWhy() {
+export function TraumaCleanupSeoWhy() {
   return (
     <section className="py-16 bg-[var(--cream)] text-[var(--ink)]">
       <div className="max-w-[1200px] mx-auto px-6 space-y-12">
@@ -309,10 +295,10 @@ export function BiohazardCleaningSeoWhy() {
             Professional Reliability
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            Why Maundy Clean is Scotland’s Authority in Incident Management
+            Why Maundy Clean is Scotland’s Authority in Trauma Recovery
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            Generic cleaning contractors often sub-contract biohazard work because they lack the technical depth required. Maundy Clean manages every project in-house, focusing on rigorous attention to detail and professional reliability.
+            Many commercial contractors lack the technical depth required for trauma scenes and may sub-contract the work. Maundy Clean manages every project in-house with vocationally trained professionals who prioritize rigorous attention to detail.
           </p>
         </div>
 
@@ -365,38 +351,38 @@ const CHECKLIST_GROUPS: ChecklistGroup[] = [
   {
     image: IMG.checklistSanitisation,
     icon: Droplets,
-    title: "1. Biological Decontamination & Sanitisation",
+    title: "1. Biological Decontamination & Debris Removal",
     points: [
       {
         title: "Pathogen Neutralization",
-        text: "Specially tailored cleaning of any and all surfaces to eliminate bacteria and viruses.",
+        text: "Specially tailored cleaning of all surfaces to eliminate bacteria and viruses.",
       },
       {
         title: "Human Waste Remediation",
         text: "Safe removal and disposal of human bodily fluids and faecal matter following strict health protocols.",
       },
       {
-        title: "Ozone Treatments",
-        text: "Utilizing ozone technology for sterilising all types of material, ensuring even hidden surfaces are free of contaminants.",
+        title: "Needle & Sharps Management",
+        text: "Professional removal and safe disposal of needles, syringes, and other sharp objects.",
       },
     ],
   },
   {
     image: IMG.checklistWaste,
     icon: Biohazard,
-    title: "2. Specialist Waste & Sharps Management",
+    title: "2. Technical Surface & Air Quality Restoration",
     points: [
       {
-        title: "Needle & Sharps Disposal",
-        text: "Professional removal and safe disposal of needles, syringes, and other sharp objects.",
+        title: "Ozone Sterilisation",
+        text: "Utilizing industrial-grade ozone technology to neutralize odors and airborne contaminants.",
       },
       {
-        title: "Animal Fouling Restoration",
-        text: "Specialized cleaning and sterilisation of areas affected by animal waste.",
+        title: "Animal Fouling Cleanup",
+        text: "Specialized cleaning and sterilisation of areas affected by animal waste or infestations.",
       },
       {
-        title: "Evidence Collection Support",
-        text: "Working discreetly to ensure the scene is decontaminated while respecting any ongoing official requirements.",
+        title: "Intensive Floor Recovery",
+        text: "Deep cleaning of carpets and hard floors to remove all traces of biological residue.",
       },
     ],
   },
@@ -406,18 +392,18 @@ const CHECKLIST_GROUPS: ChecklistGroup[] = [
     title: "3. Often-Missed Technical Details",
     points: [
       {
-        title: "Visible Skirting Boards & Vents",
-        text: "Our cleaners meticulously wipe all skirting boards, door frames, and ventilation grilles as part of the deep-clean process to ensure no micro-residue remains.",
+        title: "Visible Skirting Boards & Fixtures",
+        text: "Meticulously wiping all skirting boards, door frames, and internal glazing as part of the total reset.",
       },
       {
         title: "Inside Window Care",
-        text: "Meticulous cleaning of internal glazing and partitions to maintain a bright, healthy atmosphere after decontamination.",
+        text: "Cleaning internal glass and partitions to maximize natural light and improve the property's atmosphere.",
       },
     ],
   },
 ];
 
-export function BiohazardCleaningSeoChecklist() {
+export function TraumaCleanupSeoChecklist() {
   return (
     <section id="checklist" className="scroll-mt-20 py-16 bg-background text-[var(--ink)]">
       <div className="max-w-[1200px] mx-auto px-6 space-y-12">
@@ -426,10 +412,10 @@ export function BiohazardCleaningSeoChecklist() {
             Rigorous Protocols
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            Our Total Biohazard & Trauma Decontamination Checklist
+            Our Total Trauma & Biohazard Restoration Checklist
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            Our deep cleaning services for biohazard scenarios follow a rigorous, agency-approved checklist designed to eliminate the risk of disease and return the scene to safety.
+            Our deep cleaning services for trauma scenes follow a rigorous, agency-approved checklist designed to meet the highest health and safety standards.
           </p>
         </div>
 
@@ -506,24 +492,24 @@ const BOOKING_STEPS: BookingStep[] = [
   {
     icon: ClipboardCheck,
     step: "01",
-    title: "Swift Site Assessment & Quote",
+    title: "Swift Site Assessment",
     description: "Contact us for an immediate consultation. We assess the risk level (Low, Medium, or High) to provide a thorough, compassionate, and fixed-price solution.",
   },
   {
     icon: UserCheck,
     step: "02",
     title: "Professional Matching",
-    description: "We hand-pick a team with specific experience in trauma scene decontamination and technical forensic hygiene.",
+    description: "We hand-pick a team with specific experience in trauma & crime scene decontamination and technical forensic hygiene.",
   },
   {
     icon: Sparkles,
     step: "03",
-    title: "Enjoy a Pristine Environment",
-    description: "Experience a property that is &quot;speechlessly spotless&quot; and biologically safe, backed by our Maundy Clean satisfaction guarantee.",
+    title: "Enjoy a Pristine Sanctuary",
+    description: "Experience a property that is safe, clean, and fresh, backed by our Maundy Clean 100% satisfaction guarantee.",
   },
 ];
 
-export function BiohazardCleaningSeoBooking() {
+export function TraumaCleanupSeoBooking() {
   return (
     <section className="py-16 bg-background text-[var(--ink)] border-t border-[var(--border)]">
       <div className="max-w-[1200px] mx-auto px-6 space-y-12">
@@ -589,30 +575,30 @@ const INTERLINK_SOLUTIONS: InterlinkSolution[] = [
   {
     icon: Home,
     title: "Restoring the Sanctuary",
-    description: "Once decontamination is complete, our Recurring Home Cleaning service ensures your home remains a manageable, 5-star sanctuary on a weekly or fortnightly basis.",
+    description: "Once the technical recovery is complete, our Recurring Home Cleaning service ensures your home remains a manageable, 5-star sanctuary on a weekly or fortnightly basis.",
     href: "/services/recurring-home-cleaning",
   },
   {
     icon: KeyRound,
     title: "Property Transitions",
-    description: "Preparing a property for sale or new tenants? Our End of Tenancy Cleaning protocol ensures units pass all final inspections and are front-line ready.",
+    description: "If the incident occurred in a rental or property for sale, our End of Tenancy Cleaning protocol ensures the unit passes all final inspections.",
     href: "/services/move-in-out-cleaning",
   },
   {
     icon: Hammer,
     title: "After Builders Reset",
-    description: "If the incident required structural repairs, our After Builders Clean is designed to remove heavy construction dust and debris.",
+    description: "If structural repairs were required following the incident, our After Builders Clean is designed to remove heavy construction dust and debris.",
     href: "/services/post-construction-cleaning",
   },
   {
     icon: ShieldCheck,
     title: "Hygiene Maintenance",
-    description: "Ask about our Antiviral Sanitisation session for ongoing protection from bacteria transmission in communal areas.",
+    description: "Ask about our Antiviral Sanitisation session for ongoing protection from bacteria and viruses in communal areas.",
     href: "/services/disinfection-services",
   },
 ];
 
-export function BiohazardCleaningSeoInterlinking() {
+export function TraumaCleanupSeoInterlinking() {
   return (
     <section className="py-16 bg-[var(--cream)] text-[var(--ink)]">
       <div className="max-w-[1200px] mx-auto px-6 space-y-12">
@@ -624,7 +610,7 @@ export function BiohazardCleaningSeoInterlinking() {
             Solutions for Every Property Milestone
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            A biohazard cleanup is a critical technical reset, but we offer specialized support for every subsequent stage of your property’s life.
+            A trauma cleanup is a critical technical reset, but maintaining the health of your home or workspace is an ongoing journey. We offer specialized support for every subsequent stage.
           </p>
         </div>
 
@@ -670,7 +656,7 @@ export function BiohazardCleaningSeoInterlinking() {
 // ============================================================
 // SECTION 7 — Near Me Directory Map & Grid
 // ============================================================
-export function BiohazardCleaningSeoNearMe() {
+export function TraumaCleanupSeoNearMe() {
   return (
     <section className="py-16 bg-background text-[var(--ink)]">
       <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[1fr_1.3fr] gap-12 items-center">
@@ -679,14 +665,14 @@ export function BiohazardCleaningSeoNearMe() {
             Regional Coverage
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            Biohazard Cleaning Near Me in Scotland
+            Trauma Cleanup Near Me in Scotland
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              Biological emergencies require localized, rapid dispatch to control pathogen transmission and limit structural damage. Maundy Clean operates dedicated specialty crews based in regional hubs across Scotland, allowing us to deploy compliant incident management quickly.
+              In sensitive trauma situations, having a local specialist who understands your area can make all the difference. Maundy Clean has dedicated regional teams across Scotland, allowing us to respond quickly and execute our services with complete discretion.
             </p>
             <p>
-              From tenement-block decontaminations in Edinburgh and Glasgow to rural cottages in the Highlands, our mobile units are fully stocked with high-grade sanitisation machinery. Explore our regional directory to locate a certified team near you.
+              Our mobile units are fully equipped and ready to respond across the country. Find a location below to learn more about our local services.
             </p>
           </div>
 
@@ -695,7 +681,7 @@ export function BiohazardCleaningSeoNearMe() {
               className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white gap-2 font-bold"
               asChild
             >
-              <Link href="/services/biohazard-cleaning-near-me#locations">
+              <Link href="/services/trauma-cleanup-near-me#locations">
                 Browse Near-Me Directory <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
@@ -714,7 +700,7 @@ export function BiohazardCleaningSeoNearMe() {
             {NEAR_ME_LOCATIONS.slice(0, 18).map((loc, i) => (
               <Link
                 key={i}
-                href={`/services/biohazard-cleaning-near-me#${loc.slug}`}
+                href={`/services/trauma-cleanup-near-me#${loc.slug}`}
                 className="p-2.5 bg-white rounded-lg border border-[var(--border)] hover:border-[var(--brand)] text-xs font-semibold text-[var(--ink)] flex items-center gap-1.5 transition-colors"
               >
                 <MapPin className="w-3.5 h-3.5 text-[var(--brand)] shrink-0" />
@@ -735,7 +721,7 @@ export function BiohazardCleaningSeoNearMe() {
 // ============================================================
 // SECTION 8 — Mid-page Conversion Banner (Placed ABOVE FAQ)
 // ============================================================
-export function BiohazardCleaningSeoFinalCta() {
+export function TraumaCleanupSeoFinalCta() {
   return (
     <section className="py-16 bg-[var(--brand-dark)] text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,color-mix(in_oklch,var(--gold)_8%,transparent)_0,transparent_50%)]" />
@@ -760,7 +746,7 @@ export function BiohazardCleaningSeoFinalCta() {
             className="border border-white/30 text-white hover:bg-white/10 hover:text-white font-bold"
             asChild
           >
-            <Link href="#checklist">View Our Technical Cleaning Checklist</Link>
+            <Link href="#checklist">View Our Technical Restoration Checklist</Link>
           </Button>
         </div>
         <div className="text-xs text-white/60 flex items-center justify-center gap-2 pt-2">
@@ -783,12 +769,12 @@ type FaqItem = {
 
 const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "Are your cleaners insured for biohazard work?",
-    a: "Absolutely. Maundy Clean is a fully insured, registered professional cleaning company with extensive experience serving Scotland’s Government bodies and local residents in sensitive hygiene scenarios.",
+    q: "Are your cleaners insured for forensic and trauma work?",
+    a: "Absolutely. Maundy Clean is a fully insured, registered professional cleaning company with technicians trained in the complete range of biohazard and trauma techniques.",
   },
   {
     q: "Do you provide your own specialist equipment?",
-    a: "Yes. We supply all our own professional-grade machinery, including ozone generators, fogging machines, and non-toxic sterilising detergents.",
+    a: "Yes. We supply all our own professional-grade machinery, including ozone generators, HEPA vacuums, and non-toxic sterilising detergents, which are included in your quote.",
   },
   {
     q: "Can you work out-of-hours for discretion?",
@@ -796,7 +782,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
-export function BiohazardCleaningSeoFaq() {
+export function TraumaCleanupSeoFaq() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
@@ -807,7 +793,7 @@ export function BiohazardCleaningSeoFaq() {
             Frequently Asked Questions
           </div>
           <h2 className="font-display text-3xl font-extrabold tracking-tight leading-tight">
-            Common Inquiries About Biohazard Cleanup & Decontamination
+            Common Inquiries About Trauma Cleanup & Decontamination
           </h2>
         </div>
 

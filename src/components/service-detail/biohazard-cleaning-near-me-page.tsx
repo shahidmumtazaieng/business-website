@@ -182,8 +182,8 @@ export function BiohazardCleaningNearMeHero() {
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white font-bold"
+              variant="ghost"
+              className="border border-white/30 text-white hover:bg-white/10 hover:text-white font-bold"
               asChild
             >
               <Link href="#locations">Browse Regional Directories</Link>
@@ -424,8 +424,8 @@ export function BiohazardCleaningNearMeHero() {
               <Link href="/quote">Request Emergency Decontamination</Link>
             </Button>
             <Button
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 font-bold"
+              variant="ghost"
+              className="border border-white/30 text-white hover:bg-white/10 hover:text-white font-bold"
               asChild
             >
               <a href={`tel:${contactInfo.phone}`}>Call Urgent Line: {contactInfo.phone}</a>
