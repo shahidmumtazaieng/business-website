@@ -32,7 +32,7 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg", // bright tenement hallway encaustic tiles (matches ServiceDetail heroImage)
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg", // bright tenement hallway encaustic tiles (matches ServiceDetail heroImage)
   whyCrew:
     "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
   checklistClose:
@@ -44,13 +44,13 @@ const IMG = {
   checklistWindows:
     "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // sash window detail / paint removal
   stageMoveInOut:
-    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty tenement flat move-in
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2011.14.04%20PM.jpeg", // empty tenement flat move-in
   stageBuilders:
     "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg", // post-builders cleanup
   stageSpring:
     "https://sfile.chatglm.cn/images-ppt/2353ab471a3d.jpg", // bright spring-cleaned tenement room
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg", // map of Scotland
 };
 
 // ============================================================

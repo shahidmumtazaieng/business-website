@@ -39,9 +39,9 @@ const IMG = {
   checklistWindows:
     "https://sfile.chatglm.cn/images-ppt/0ae5e527798e.jpg", // squeegee window cleaning
   checklistRural:
-    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg", // coastal cottage living room — rural character
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg", // coastal cottage living room — rural character
   stageDeep:
-    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty cottage being deep cleaned
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2011.14.04%20PM.jpeg", // empty cottage being deep cleaned
   stageAirbnb:
     "https://sfile.chatglm.cn/images-ppt/2353ab471a3d.jpg", // bright holiday-let cottage
   stageSpring:
@@ -49,7 +49,7 @@ const IMG = {
   stageCarpet:
     "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg", // cottage bathroom / soft-furnishing care
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg", // map of Scotland
 };
 
 // ============================================================

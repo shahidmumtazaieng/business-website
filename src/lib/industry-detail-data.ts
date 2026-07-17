@@ -2540,7 +2540,7 @@ export const schools: IndustryDetail = {
   heroHeadline: "A clean school\nis a healthy\nlearning environment.",
   heroSubhead:
     "We clean primary schools, secondary schools, and additional support needs (ASN) schools across Scotland. Care Inspectorate and Education Scotland aligned protocols, low-allergen products, and PVG-checked crews who genuinely like working around children.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   metaTitle: "School Cleaning Scotland | Primary & Secondary | Care Inspectorate | Maundy Clean",
   metaDescription:
     "School cleaning across Scotland. Primary, secondary, and ASN schools. Care Inspectorate and Education Scotland aligned. Low-allergen products. PVG-checked crews. Daily term-time and deep clean during holidays.",
@@ -2817,7 +2817,7 @@ export const schools: IndustryDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "School cleaning",
       caption: "Term-time daily clean — classroom reset, floor mopping, touchpoint sanitising",
     },
@@ -2850,7 +2850,7 @@ export const universitiesColleges: IndustryDetail = {
   heroHeadline: "A campus that\nsupports world-class\nresearch and teaching.",
   heroSubhead:
     "We clean universities, colleges, and research institutes across Scotland. Campus-scale protocols covering lecture theatres, research laboratories, libraries, halls of residence, and student union buildings. APUC framework-aligned and AUDE-compatible.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   metaTitle: "University & College Cleaning Scotland | Campus Scale | APUC | Maundy Clean",
   metaDescription:
     "University and college cleaning across Scotland. Lecture theatres, labs, libraries, halls of residence, student unions. APUC framework-aligned. AUDE-compatible reporting. 24/7 cover during term.",
@@ -3127,7 +3127,7 @@ export const universitiesColleges: IndustryDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "University campus cleaning",
       caption: "Overnight lecture theatre reset — floors, desks, touchpoints, presentation ready",
     },
@@ -3160,7 +3160,7 @@ export const nurseriesPreschools: IndustryDetail = {
   heroHeadline: "A nursery clean\nenough for a baby\nto crawl on.",
   heroSubhead:
     "We clean private nurseries, local authority nurseries, preschools, and playgroups across Scotland. Care Inspectorate early years alignment, with protocols designed for children who crawl, mouth toys, and explore at floor level. PVG-checked, low-allergen, child-safe.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   metaTitle: "Nursery & Preschool Cleaning Scotland | Care Inspectorate | Maundy Clean",
   metaDescription:
     "Nursery and preschool cleaning across Scotland. Care Inspectorate early years alignment, child-safe products, floor-level cleaning focus. PVG-checked crews. Daily term-time and deep clean during closures.",
@@ -3437,7 +3437,7 @@ export const nurseriesPreschools: IndustryDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Nursery cleaning",
       caption: "Out-of-hours nursery deep clean — play area carpet extraction, touchpoint sanitising",
     },
@@ -3470,7 +3470,7 @@ export const trainingTutoringCentres: IndustryDetail = {
   heroHeadline: "A learning space\nthat feels\nprofessional.",
   heroSubhead:
     "We clean private training centres, professional development facilities, language schools, and after-school tutoring centres across Scotland. Flexible scheduling around classes, low-allergen products, and presentation standards that match your brand.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   metaTitle: "Training & Tutoring Centre Cleaning Scotland | Flexible Scheduling | Maundy Clean",
   metaDescription:
     "Training and tutoring centre cleaning across Scotland. Adult learning, professional training, language schools, after-school tutoring. Flexible scheduling. Low-allergen. PVG-checked for child-facing settings.",
@@ -3741,7 +3741,7 @@ export const trainingTutoringCentres: IndustryDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Training centre cleaning",
       caption: "Pre-opening classroom reset — desks, floor, touchpoints, whiteboards",
     },
@@ -4676,7 +4676,7 @@ export const propertyManagementFirms: IndustryDetail = {
       caption: "Residential block common area — lobby, lifts, stairwell, mail area",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "End-of-tenancy deep clean",
       caption: "End-of-tenancy deep clean — deposit-return standard, factor-approved checklist",
     },
@@ -7454,7 +7454,7 @@ export const faithBasedFacilities: IndustryDetail = {
       caption: "Worship area cleaning — respectful protocols, heritage-aware methods",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Heritage floor care",
       caption: "Historic stone floor care — pH-neutral, conservation-appropriate",
     },

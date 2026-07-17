@@ -2,16 +2,23 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileStickyCta } from "@/components/mobile-sticky-cta";
-import { ServiceHero } from "@/components/service-detail/service-hero";
-import { ServiceOverview } from "@/components/service-detail/service-overview";
-import { ServiceWhatsIncluded } from "@/components/service-detail/service-whats-included";
 import { ServicePricing } from "@/components/service-detail/service-pricing";
-import { ServiceFinalCta } from "@/components/service-detail/service-final-cta";
 import { odourRemoval } from "@/lib/service-detail-data";
+import {
+  OdourRemovalSeoHeroBanner,
+  OdourRemovalSeoIntro,
+  OdourRemovalSeoWhy,
+  OdourRemovalSeoChecklist,
+  OdourRemovalSeoBooking,
+  OdourRemovalSeoInterlinking,
+  OdourRemovalSeoNearMe,
+  OdourRemovalSeoFinalCta,
+  OdourRemovalSeoFaq,
+} from "@/components/service-detail/odour-removal-seo";
 
 export const metadata: Metadata = {
-  title: odourRemoval.metaTitle,
-  description: odourRemoval.metaDescription,
+  title: "Professional Odour Removal & Air Quality Restoration Scotland | Maundy Clean",
+  description: "Specialist environmental neutralisation, molecular deodorisation and ozone treatment for homes and businesses across Scotland. Uncompromising discretion and PVG checked.",
   keywords: [
     "odour removal Scotland",
     "ozone treatment",
@@ -24,8 +31,8 @@ export const metadata: Metadata = {
     "Maundy Clean odour",
   ],
   openGraph: {
-    title: odourRemoval.metaTitle,
-    description: odourRemoval.metaDescription,
+    title: "Professional Odour Removal & Air Quality Restoration Scotland | Maundy Clean",
+    description: "Specialist environmental neutralisation, molecular deodorisation and ozone treatment for homes and businesses across Scotland.",
     type: "website",
     images: [{ url: odourRemoval.heroImage }],
   },
@@ -38,11 +45,35 @@ export default function OdourRemovalPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <ServiceHero service={service} />
-        <ServiceOverview service={service} />
-        <ServiceWhatsIncluded service={service} />
+        {/* SECTION 1 — Full-width Hero Banner */}
+        <OdourRemovalSeoHeroBanner />
+
+        {/* SECTION 2 — Deep Semantic Introduction */}
+        <OdourRemovalSeoIntro />
+
+        {/* SECTION 3 — Why Choose Maundy Clean */}
+        <OdourRemovalSeoWhy />
+
+        {/* SECTION 4 — Technical Checklist */}
+        <OdourRemovalSeoChecklist />
+
+        {/* SECTION 5 — 3-Step Booking Process */}
+        <OdourRemovalSeoBooking />
+
+        {/* SECTION 6 — Standard Transparent Pricing */}
         <ServicePricing service={service} />
-        <ServiceFinalCta service={service} />
+
+        {/* SECTION 7 — Semantic Interlinking */}
+        <OdourRemovalSeoInterlinking />
+
+        {/* SECTION 8 — Near Me Directory Map & Grid */}
+        <OdourRemovalSeoNearMe />
+
+        {/* SECTION 9 — Mid-page Conversion Banner */}
+        <OdourRemovalSeoFinalCta />
+
+        {/* SECTION 10 — Accessible Expandable FAQ */}
+        <OdourRemovalSeoFaq />
       </main>
       <SiteFooter />
       <MobileStickyCta />

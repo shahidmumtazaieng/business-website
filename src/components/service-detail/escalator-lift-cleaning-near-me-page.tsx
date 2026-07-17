@@ -33,7 +33,7 @@ const IMG = {
   heroWide:
     "https://sfile.chatglm.cn/images-ppt/escalator-lift-cleaning.jpg",
   scotlandMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg",
   localCrew:
     "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
   homeClean:

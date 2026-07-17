@@ -927,7 +927,7 @@ export const moveInOutCleaning: ServiceDetail = {
   heroHeadline: "Get your deposit\nback. Every time.\nGuaranteed.",
   heroSubhead:
     "Our move-in/out clean follows the exact 47-point checklist Scottish letting agents use to assess deposit returns. We've audited 1,200 move-out walk-throughs to build a service that doesn't just clean — it passes inspection. Bond-back guarantee included.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Residential Cleaning",
   metaTitle: "Move-In / Move-Out Cleaning Scotland | Deposit-Back Guarantee | Maundy Clean",
   metaDescription:
@@ -1172,7 +1172,7 @@ export const moveInOutCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Empty flat being professionally cleaned at end of tenancy",
       caption: "Empty property — the only way to pass a checkout inspection properly.",
     },
@@ -1483,7 +1483,7 @@ export const holidayLetTurnover: ServiceDetail = {
   heroHeadline: "Five-star reviews\nstart with a\nflawless turnover.",
   heroSubhead:
     "Scottish short-term let hosts lose £420/month on average to bad reviews caused by turnover slips. We stop that. Same crew every changeover, photographic proof, 90-minute response window, and a checklist tuned to Airbnb & Booking.com guest expectations.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Residential Cleaning",
   metaTitle: "Holiday Let Turnover Cleaning Scotland | Airbnb & Booking.com | Maundy Clean",
   metaDescription:
@@ -1728,7 +1728,7 @@ export const holidayLetTurnover: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Beautifully turned-over holiday let bedroom",
       caption: "Bedroom reset — fresh linens, plumped pillows, wardrobe emptied of previous guest items.",
     },
@@ -5639,7 +5639,7 @@ export const tileGroutCleaning: ServiceDetail = {
   heroHeadline: "Grout that's grey\nwas once white.\nWe can prove it.",
   heroSubhead:
     "Grout is porous. From the day it's installed, it absorbs dirty mop water, cooking grease, body oils, soap scum, and limescale. Within 2-3 years, light grout is grey; within 5, it's black. The tile surface often looks fine — the dirt is hidden in the grout joints and the tile micropores. Our process combines high-pressure hot-water extraction with a rotating brush head, grout-specific alkaline pre-spray, and a final sealer that keeps the grout clean for 3-5 years. Suitable for ceramic, porcelain, natural stone (travertine, limestone, marble, slate, sandstone), and Victorian encaustic tiles.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Specialist Cleaning",
   metaTitle: "Professional Tile & Grout Cleaning Services Scotland | Maundy Clean",
   metaDescription:
@@ -5882,7 +5882,7 @@ export const tileGroutCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "High-pressure tile and grout extraction",
       caption: "Self-contained rotating jet at 800-1,200 PSI with simultaneous vacuum extraction.",
     },
@@ -5915,7 +5915,7 @@ export const hotelHospitalityCleaning: ServiceDetail = {
   heroHeadline: "Five-star clean.\nEvery check-in.\nEvery checkout.",
   heroSubhead:
     "Hotel cleaning is judged in seconds. A guest opening the door to a hair on the pillow, a smudge on the mirror, or a stale smell in the bathroom writes a one-star review before they've unpacked. We provide housekeeping support, public-space presentation, back-of-house deep cleaning, and full turnover service for hotels, inns, guest houses, and serviced apartments across Scotland. Our teams work to your brand standard, your SOPs, and your audit checklist — invisible to guests, completely reliable for management.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Commercial Cleaning",
   metaTitle: "Hotel & Hospitality Cleaning in Scotland | Hotels, Inns & Guest Houses | Maundy Clean",
   metaDescription:
@@ -6159,7 +6159,7 @@ export const hotelHospitalityCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Hotel room turnover cleaning",
       caption: "Daily turnover to brand standard — linen change, bathroom sanitation, amenity refresh, QC inspection.",
     },
@@ -6192,7 +6192,7 @@ export const postConstructionCleaning: ServiceDetail = {
   heroHeadline: "Builder dust\neverywhere.\nNot for long.",
   heroSubhead:
     "Construction dust isn't ordinary household dust. It's a fine, abrasive particulate of plaster, cement, timber, and silica that travels through every duct, settling on every surface and inside every drawer, cupboard, and light fitting. Standard cleaning approaches push it around — wet-wiping redistributes the plaster dust into a paste, vacuuming without HEPA filtration blows it back through the room. Our post-construction protocol uses commercial HEPA vacuums (H-class, 99.995% efficient at 0.3 microns), tack-cloth wiping, and a top-down, room-by-room methodology that captures the dust rather than spreading it. Suitable for new builds, extensions, renovations, and refits — handed over ready to furnish.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Residential Cleaning",
   metaTitle: "Post-Construction Cleaning in Scotland | Builder Dust Removal | Maundy Clean",
   metaDescription:
@@ -6435,7 +6435,7 @@ export const postConstructionCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Post-construction HEPA vacuum cleaning",
       caption: "HEPA H-class commercial vacuum — captures 99.995% of construction dust at 0.3 microns.",
     },
@@ -6468,7 +6468,7 @@ export const tenementCleaning: ServiceDetail = {
   heroHeadline: "Original cornicing.\nOriginal sash windows.\nOriginal care.",
   heroSubhead:
     "Scottish tenements are a category of their own. Built between 1840 and 1930, they have original cornicing, ceiling roses, sash-and-case windows, working shutters, mosaic hallway tiles, pitch-pine floors, and cast-iron fireplaces. Standard domestic cleaning methods damage these features — abrasive cleaners strip the patina on brass, wet-wiping cornicing stains the plaster, wrong chemistry on pitch-pine floors strips the finish. Our tenement specialists understand the materials, the era, and the correct methods. We clean period properties without compromising their character — and we know the common issues (rising damp, single-glaze condensation, common-stair rot) that need flagging.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Residential Cleaning",
   metaTitle: "Tenement Cleaning in Edinburgh & Glasgow | Period Property Specialists | Maundy Clean",
   metaDescription:
@@ -6711,7 +6711,7 @@ export const tenementCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Original encaustic tenement hallway tiles restored",
       caption: "pH-neutral cleaner and soft brush — restores depth of colour without dissolving the lime bed.",
     },
@@ -7003,7 +7003,7 @@ export const cafeCoffeeShopCleaning: ServiceDetail = {
       caption: "PVG-checked, allergen-awareness trained, uniformed, dedicated to your café — no rotating temps.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Customer WC presentation",
       caption: "Highest-impact moment in a café visit — clean on every open, every close, plus mid-morning and mid-afternoon refresh.",
     },
@@ -7280,7 +7280,7 @@ export const retailStoreCleaning: ServiceDetail = {
       caption: "PIN pad, card terminal, counter, pen, receipt printer — disinfected on every close with EN 1276 food-safe chemistry.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Storefront glass and door presentation",
       caption: "Pure-water squeegee system — no streaks, no chemical haze. Door handles disinfected on every open and close.",
     },
@@ -7298,7 +7298,7 @@ export const marblePolishing: ServiceDetail = {
   heroHeadline: "Marble that mirrors.\nNot marble that\nhas given up.",
   heroSubhead:
     "Marble is the most demanding natural stone to maintain. Walked on, it dulls within months. Spilled on (wine, citrus, vinegar, perfume), it etches within seconds — the acid dissolves the calcium carbonate, leaving a dull spot that no cleaner can remove. The only way to restore polished marble is mechanical: diamond-grit honing to remove the damage, then progressive polishing to restore the mirror finish. We provide marble restoration, polishing, and crystallisation for hotels, office lobbies, retail flagships, and luxury homes across Scotland.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Janitorial & Facility",
   metaTitle:
     "Professional Marble Polishing & Stone Restoration Scotland | Maundy Clean",
@@ -7542,7 +7542,7 @@ export const marblePolishing: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Marble diamond-grit honing and polishing",
       caption: "Weighted rotary machine with progressive diamond-grit pads — 200, 400, 800, 1500, 3000, 5000.",
     },
@@ -7575,7 +7575,7 @@ export const highDusting: ServiceDetail = {
   heroHeadline: "Out of sight.\nNot out of lung.\nNot anymore.",
   heroSubhead:
     "High dusting is the most-overlooked cleaning discipline in commercial and industrial properties. Dust settles on every horizontal surface above head-height — ceiling trusses, ductwork, beam clips, light fittings, top of racking, pipe runs, extractor fans — and stays there for years. Out of sight, but not out of effect: every time the heating cycles or a door opens, a portion of that dust re-enters the air, where it's breathed by occupants and settles on lower surfaces. We provide MEWP-access (mobile elevated work platform) high dusting for warehouses, factories, retail units, hotels, and historic buildings across Scotland. IPAF-certified operatives, HSE-compliant methodology, full risk assessment.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Janitorial & Facility",
   metaTitle:
     "Professional High-Level Dusting & Commercial Dusting Services Scotland | Maundy Clean",
@@ -7819,7 +7819,7 @@ export const highDusting: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "MEWP cherry-picker high dusting in warehouse",
       caption: "Cherry-picker access for warehouses and factories — IPAF-certified operatives, HSE-compliant.",
     },
@@ -7852,7 +7852,7 @@ export const mouldRemediationCleaning: ServiceDetail = {
   heroHeadline: "Black mould\nis a symptom.\nWe treat the cause.",
   heroSubhead:
     "Mould isn't a cleaning problem — it's a moisture problem with a cleaning consequence. Wipe the visible mould away and it returns within weeks because the underlying moisture source (condensation, leak, penetrating damp, rising damp) hasn't been addressed. Our mould remediation protocol follows HSE guidance (HSG272): moisture source identified, contamination contained, mould physically removed (not just bleached), spores filtered from the air, and the surface treated with a long-life biocidal inhibitor. We also write the moisture-source report so you can give it to your builder, factor, or landlord.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Specialty Cleaning",
   metaTitle: "Mould Remediation Cleaning in Scotland | HSE-Compliant Protocol | Maundy Clean",
   metaDescription:
@@ -8095,7 +8095,7 @@ export const mouldRemediationCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Mould remediation with HEPA vacuum and containment",
       caption: "Containment, negative pressure, HEPA H-class vacuum — physical removal, not just bleach.",
     },
@@ -8376,7 +8376,7 @@ export const dentalSurgeryCleaning: ServiceDetail = {
       caption: "End-of-day terminal clean — full surgery strip-down, hospital-grade chemistry, HTM 01-05 protocol.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Decontamination room clean with separate chemistry",
       caption: "Decontamination room — separate chemistry, separate equipment, separate protocol from the surgery.",
     },
@@ -8404,7 +8404,7 @@ export const universityCampusCleaning: ServiceDetail = {
   heroHeadline: "A campus is a city.\nWe clean\nthe whole thing.",
   heroSubhead:
     "A university campus is the most complex cleaning environment in Scotland. Lecture theatres with 500-seat turnover between classes, research laboratories with biosafety level protocols, libraries with 24/7 occupancy, halls of residence with student-life mess, sports facilities with high-traffic changing rooms, food outlets with FSA compliance, and admin offices with corporate standards. All on the same site, all with different protocols, all coordinated through a single cleaning contractor. We provide full-estate university cleaning for institutions across Scotland — single point of contact, dedicated estate team, audit-trail reporting.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Medical & Educational",
   metaTitle: "University Campus Cleaning in Scotland | Full Estate Coverage | Maundy Clean",
   metaDescription:
@@ -8647,7 +8647,7 @@ export const universityCampusCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "University lecture theatre end-of-day clean",
       caption: "End-of-day full clean — floor mopped, seats wipe-down on visible soiling, all touch-points disinfected.",
     },
@@ -8928,7 +8928,7 @@ export const foodProcessingFacilityCleaning: ServiceDetail = {
       caption: "Food-safe alkaline foam, contact time, rinse at 82°C — production line between product runs.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "High-care zone colour-coded cleaning equipment",
       caption: "Blue high-care, red medium-risk, green low-risk — strict zone separation, no cross-contamination.",
     },
@@ -8956,7 +8956,7 @@ export const flatCleaning: ServiceDetail = {
   heroHeadline: "Flat-cleaned\nin every\ncorner.",
   heroSubhead:
     "Scottish flats have their own quirks — close stairs, shared drying greens, compact kitchens, and tenement ceilings that catch every cobweb. Our flat cleaning service is purpose-built for the realities of Edinburgh crescents, Glasgow sandstone, Aberdeen granite, and modern developments alike. Whether you're in a one-bed city-centre flat or a three-bed family tenement, we clean with the right plan, the right products, and the right team for the space.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Residential Cleaning",
   metaTitle: "Flat Cleaning in Scotland | Tenements, Towers & Modern Flats | Maundy Clean",
   metaDescription:
@@ -9200,7 +9200,7 @@ export const flatCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Tenement flat living room clean",
       caption: "Living room in a Marchmont tenement — high ceilings, sash windows, original cornicing dusted with extension poles.",
     },
@@ -9483,7 +9483,7 @@ export const maidService: ServiceDetail = {
       caption: "Same maid every visit — your maid learns your home, your preferences, and your routines.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Laundry service — wash, dry, fold, iron",
       caption: "Laundry handled: washing, drying, folding, ironing. Bed linen, shirts, school uniforms, table linen.",
     },
@@ -9765,7 +9765,7 @@ export const housekeepingServices: ServiceDetail = {
       caption: "Linen cupboard rotation — sheets, towels, tablecloths flagged for replacement when threadbare. Dry-cleaning coordinated.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Silver and antiques care",
       caption: "Silver, antiques, and fine art — handled by experienced housekeepers with appropriate care products and techniques.",
     },
@@ -10037,7 +10037,7 @@ export const ovenCleaning: ServiceDetail = {
       caption: "Cavity hand-cleaned with non-caustic paste — carbonised grease removed, enamel undamaged, food-safe.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Oven racks in dip-tank",
       caption: "Racks, side rails, and fan cover soaked in our heated dip-tank — non-caustic solution, food-safe, racks restored to chrome shine.",
     },
@@ -10314,7 +10314,7 @@ export const fridgeCleaning: ServiceDetail = {
       caption: "Cavity sprayed with food-safe sanitiser — kills 99.9% of bacteria including listeria, salmonella, and E. coli. No rinse required.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Fridge shelves and drawers washed separately",
       caption: "Glass shelves, crisper drawers, door racks removed and washed separately — non-scratch sponges, lint-free drying.",
     },
@@ -10342,7 +10342,7 @@ export const hardwoodFloorCare: ServiceDetail = {
   heroHeadline: "Wood floors,\nrestored to\ntheir grain.",
   heroSubhead:
     "Hardwood floors are an investment — £60-£200 per square metre installed, and they can last 100+ years with proper care. But neglect them and they degrade fast: grit scratches the finish, spills stain the wood, UV fades the colour, and wear patterns develop in traffic areas. Our hardwood floor care service covers the full lifecycle — from routine maintenance cleans through to full sanding and refinishing — using the right techniques for solid wood, engineered wood, and parquet.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Specialty Surface Cleaning",
   metaTitle: "Professional Hardwood Floor Care & Recurring Home Cleaning Scotland | Maundy Clean",
   metaDescription:
@@ -10586,12 +10586,12 @@ export const hardwoodFloorCare: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Refinished oak hardwood floor",
       caption: "Oak floor sanded and refinished with Bona Traffic HD — virtually dust-free sanding, 5-year guarantee.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Pine boards in Edinburgh tenement",
       caption: "Original 1890s pine boards restored to golden finish — paint splashes and old varnish removed.",
     },
@@ -11145,7 +11145,7 @@ export const showroomCleaning: ServiceDetail = {
       caption: "Car showroom with high-gloss floor — dust-mopped, machine-scrubbed, buffed to a shine. White-glove inspection before team leaves.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Kitchen display showroom cleaning",
       caption: "High-gloss kitchen display — microfibre cloth, pH-neutral cleaner, wipe in one direction. Chrome dried separately to prevent water spots.",
     },
@@ -11173,7 +11173,7 @@ export const coWorkingSpaceCleaning: ServiceDetail = {
   heroHeadline: "Workspaces\nthat work.\nFor everyone.",
   heroSubhead:
     "Co-working spaces are the modern office — flexible memberships, hot-desking, drop-in meeting rooms, communal kitchens, phone booths, event spaces. They're also a cleaning challenge: high churn of members and visitors, shared equipment that needs constant sanitising, varied spaces with different cleaning needs, and members who judge the brand by the cleanliness of the kitchen and the toilets. Our co-working cleaning service is purpose-built for the rhythm of flexible workspaces across Scotland.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Commercial Cleaning",
   metaTitle: "Professional Co-Working Space Cleaning Services Scotland | Maundy Clean",
   metaDescription:
@@ -11417,7 +11417,7 @@ export const coWorkingSpaceCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Co-working hot-desk area cleaning",
       caption: "Hot-desks sanitised daily — desks wiped, chairs lint-rolled, cables tidied, bins emptied. High-traffic area, daily cleaning essential.",
     },
@@ -11450,7 +11450,7 @@ export const springCleaning: ServiceDetail = {
   heroHeadline: "A fresh start.\nTop to bottom.\nRoom by room.",
   heroSubhead:
     "Spring cleaning is a tradition for a reason. After a Scottish winter — windows closed for months, central heating drying the air, mud and salt tracked in, condensation encouraging mould — homes need more than a regular clean. They need a full reset: behind the furniture, inside the cupboards, atop the kitchen units, behind the radiators, inside the light fittings. Our spring cleaning service is the comprehensive deep clean your home needs once or twice a year to truly reset.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Residential Cleaning",
   metaTitle: "Spring Cleaning in Scotland | Top-to-Bottom Annual Deep Clean | Maundy Clean",
   metaDescription:
@@ -11694,12 +11694,12 @@ export const springCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Spring clean in a family living room",
       caption: "Living room reset — furniture moved, ceiling cornicing dusted, skirtings washed, full floor vacuum and mop.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Spring clean kitchen — cupboards and behind appliances",
       caption: "Kitchen spring clean — inside cupboards (with permission), behind fridge, behind oven, full woodwork wash.",
     },
@@ -11976,7 +11976,7 @@ export const cottageCleaning: ServiceDetail = {
       caption: "Highland cottage kitchen — Aga surround cleaned, hard water descaled, soot-managed throughout.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Coastal cottage living room",
       caption: "Coastal cottage — sea salt protocol on door furniture, windows cleaned regularly, sand managed at entrance.",
     },
@@ -12253,7 +12253,7 @@ export const warehouseCleaning: ServiceDetail = {
       caption: "Ride-on scrubber-dryer in operation — 18,000 sqm warehouse floor scrubbed nightly. Forklift-safe, slip-hazard-free.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "High-racking dusting with IPAF scissor lift",
       caption: "High-racking dusting using IPAF-operated scissor lift and HEPA vacuum — beam tops, uprights, pallet locations.",
     },
@@ -12530,7 +12530,7 @@ export const carParkCleaning: ServiceDetail = {
       caption: "Ride-on sweeper in multi-storey car park — 3,000-6,000 sqm per hour, edges and corners detailed manually.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Car park oil stain treatment",
       caption: "Oil stain bioremediation — product applied, agitated, absorbed with specialist granules. Genuine removal, not redistribution.",
     },
@@ -12807,7 +12807,7 @@ export const eventVenueCleaning: ServiceDetail = {
       caption: "Auditorium reset between events — floor swept, seats wiped, cup holders emptied, lost property collected.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Venue foyer and concourse cleaning",
       caption: "Foyer and concourse — continuous litter picking during events, full clean between events, glazing streak-free.",
     },
@@ -13084,7 +13084,7 @@ export const autoDealershipCleaning: ServiceDetail = {
       caption: "Showroom floor dust-mopped and buffed daily — high-gloss finish that reflects the cars displayed on it.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Display car wipe-down with microfibre",
       caption: "Display car wiped with detailing spray and microfibre — cloths folded to multiple faces, one direction, paintwork-safe.",
     },
@@ -13361,7 +13361,7 @@ export const propertyManagementCleaning: ServiceDetail = {
       caption: "Tenement close — stone stairs mopped, banisters sanitised, glazing cleaned, door furniture polished. Photo evidence every clean.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Bin store cleaning and disinfection",
       caption: "Bin store — bins washed, floor disinfected, surrounds degreased and deodorised. Fly-tipping flagged to factor with photos.",
     },
@@ -13389,7 +13389,7 @@ export const nightlyJanitorial: ServiceDetail = {
   heroHeadline: "Empty building.\nSpotless by morning.\nZero disruption.",
   heroSubhead:
     "Nightly janitorial is the backbone of commercial cleaning. When the building empties at 7pm, our team arrives. By 7am, the building is spotless — bins emptied, desks wiped, floors vacuumed and mopped, toilets restocked, kitchen reset, and any issues flagged. Your team arrives to a fresh, clean, ready-to-work environment every morning. No disruption, no distraction, no cleaning equipment in the way during business hours.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Janitorial & Facility",
   metaTitle: "Nightly Janitorial Services Scotland | Commercial Workspace Hygiene | Maundy Clean",
   metaDescription:
@@ -13633,7 +13633,7 @@ export const nightlyJanitorial: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Nightly office janitorial — desks and floors",
       caption: "Office reset nightly — desks wiped, bins emptied, floors vacuumed and mopped. Fresh, ready-to-work by morning.",
     },
@@ -13915,7 +13915,7 @@ export const glassPartitionCleaning: ServiceDetail = {
       caption: "Glass partition — squeegee technique, both sides, frames and fittings. Streak-free finish verified by flashlight.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Glass meeting room door cleaning",
       caption: "Glass meeting room door — glass, handle sanitised, hinge wiped, push plate sanitised. High-touch surface protocols.",
     },
@@ -14192,7 +14192,7 @@ export const graffitiRemoval: ServiceDetail = {
       caption: "Graffiti removal from sandstone wall — poultice stripper, low-pressure rinse, no damage to stone face.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Graffiti removal from metal door",
       caption: "Graffiti removal from painted metal door — coating-compatible solvent, no damage to underlying paint.",
     },
@@ -14469,7 +14469,7 @@ export const blindShadeCleaning: ServiceDetail = {
       caption: "Venetian blind in ultrasonic tank — microscopic bubbles lift dirt from every slat, cord, and mechanism.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Fabric Roman blind hand-clean",
       caption: "Roman blind hand-clean — low-moisture, fabric-safe products, fold-by-fold attention. No soaking, no shrinkage.",
     },
@@ -14497,7 +14497,7 @@ export const corporateFacilityCleaning: ServiceDetail = {
   heroHeadline: "Corporate grade.\nCorporate standards.\nFully managed.",
   heroSubhead:
     "Corporate facility cleaning is a discipline apart. You're managing not just cleaning — but security protocols, brand standards, multi-tenant coordination, sustainability reporting, audit trails, and stakeholder expectations. Our corporate facility service is purpose-built for Scottish corporate HQs, multi-tenant business centres, and business parks — single point of contact, full documentation, and standards that support your corporate reputation.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Commercial Cleaning",
   metaTitle: "Professional Corporate Facility Cleaning Services Scotland | Maundy Clean",
   metaDescription:
@@ -14741,7 +14741,7 @@ export const corporateFacilityCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Corporate reception and atrium cleaning",
       caption: "Corporate reception — floor polished to mirror finish, glazing streak-free, reception desk polished, seating plumped.",
     },
@@ -15023,7 +15023,7 @@ export const restroomSanitation: ServiceDetail = {
       caption: "Toilet full sanitisation — under the rim, behind the bowl, seat, cistern, base, flush handle. Specialist commercial products.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Restroom basins and taps descaled",
       caption: "Basins and taps descaled (limescale is a major Scottish issue) and polished. Mirrors streak-free. Dispensers restocked.",
     },
@@ -15300,7 +15300,7 @@ export const hoardingCleanup: ServiceDetail = {
       caption: "Compassionate approach — sorting with the individual, at their pace, with their involvement in every decision.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Hoarding property deep clean",
       caption: "Deep clean after clearance — sanitisation, odour removal, full property restoration to habitable standard.",
     },
@@ -15577,7 +15577,7 @@ export const waterDamageCleaning: ServiceDetail = {
       caption: "Water extraction — submersible pumps for standing water, wet vacuums for soaked carpets. Fast, efficient, professional.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Professional drying equipment setup",
       caption: "Professional drying — dehumidifiers, air movers, drying chambers. Daily moisture monitoring. 3-21 days depending on extent.",
     },
@@ -15859,7 +15859,7 @@ export const hospitalEnvironmentalServices: ServiceDetail = {
       caption: "Theatre terminal clean — every surface disinfected, floors deep-scrubbed. Specialist theatre team, sterile field aware.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Colour-coded hospital cleaning equipment",
       caption: "Colour-coded equipment: red (toilets), blue (general), green (kitchens), yellow (isolation). Strictly enforced, no cross-contamination.",
     },
@@ -15882,7 +15882,7 @@ export const veterinaryPracticeCleaning: ServiceDetail = {
   heroHeadline: "Animal care.\nHuman standards.\nZoonotic-aware.",
   heroSubhead:
     "Veterinary practice cleaning is a hybrid discipline — clinical standards (infection control, surgery, sterile areas) combined with animal-specific risks (zoonotic disease, animal waste, hair, behavioural considerations). Our veterinary practice service is purpose-built for Scottish veterinary surgeries, animal hospitals, equine clinics, and specialist practices.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Healthcare Cleaning",
   metaTitle: "Veterinary Practice Cleaning in Scotland | Vet Surgeries & Animal Hospitals | Maundy Clean",
   metaDescription:
@@ -16126,7 +16126,7 @@ export const veterinaryPracticeCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Veterinary practice consulting room cleaning",
       caption: "Consulting room — examination table sanitised between patients, surfaces disinfected, floor cleaned. Veterinary disinfectants.",
     },
@@ -16159,7 +16159,7 @@ export const libraryCleaning: ServiceDetail = {
   heroHeadline: "Books protected.\nReaders served.\nStandards met.",
   heroSubhead:
     "Library cleaning is a careful discipline. You have thousands (often tens of thousands) of books, archives, and documents that need protection from dust, mould, pests, and careless cleaning. You have readers who need a clean, quiet, comfortable environment. You have public-access computers, study spaces, children's areas, and often cafes. Our library cleaning service is purpose-built for Scottish public libraries, university libraries, and specialist archives.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   breadcrumbParent: "Education & Public Buildings",
   metaTitle: "Library Cleaning in Scotland | Public, University & Archive Libraries | Maundy Clean",
   metaDescription:
@@ -16403,12 +16403,12 @@ export const libraryCleaning: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
       alt: "Library reading room cleaning",
       caption: "Reading room — tables wiped, floor HEPA-vacuumed. Book-aware protocols: no sprays, no wet mops near shelves.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Bookshelf dusting with soft natural-hair brush",
       caption: "Bookshelf dusting — soft natural-hair brush, book spines and top edges. No synthetic brushes (static), no sprays (damage).",
     },
@@ -16685,7 +16685,7 @@ export const cleanroomCleaning: ServiceDetail = {
       caption: "Cleanroom floor mopping — one-way technique, sterile disinfectant, autoclaved mop, stainless steel bucket. No redistribution.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Cleanroom surface wiping with sterile wipes",
       caption: "Surface wiping — sterile polyester wipes, cleanroom-grade disinfectant, one-way wiping. Each wipe surface used once.",
     },
@@ -16967,7 +16967,7 @@ export const patioPaverCleaning: ServiceDetail = {
       caption: "Block paving restored — weeds removed, joints re-sanded with kiln-dried sand, biocide applied. Sealed for protection.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Indian sandstone patio cleaning",
       caption: "Indian sandstone — delicate surface, low pressure, biocide treatment. Polymeric sand in wider joints. Sealed.",
     },
@@ -17236,7 +17236,7 @@ export const bankFinancialOfficeCleaning: ServiceDetail = {
       caption: "High-street bank branch counter — streak-free glass, polished surfaces, PCI-DSS-aware operatives, dual-control where required.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Wealth management boardroom with hospitality finish",
       caption: "Wealth management boardroom — glass tables polished, leather conditioned, hospitality glassware lint-free.",
     },
@@ -17510,7 +17510,7 @@ export const distributionCentreCleaning: ServiceDetail = {
       caption: "Ride-on scrubber-dryer in a DC during shift-change lull — 2,000m²/hour, no interruption to operation.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "High-bay racking aisle deep clean",
       caption: "High-bay racking aisle deep-cleaned during planned shutdown — floor to lowest rack beam, no MHE in motion.",
     },
@@ -17783,7 +17783,7 @@ export const rubbishRecycling: ServiceDetail = {
       caption: "Colour-coded bins, clear signage, Scotland's Recycle brand. General, DMR, glass, food — every stream segregated at source.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Baling equipment producing card bales",
       caption: "Vertical baler for medium-volume card — 50-150kg bales, revenue share on baled material, payback 12-18 months.",
     },
@@ -18057,7 +18057,7 @@ export const floorCareStripping: ServiceDetail = {
       caption: "VCT floor after full strip and refinish — 5 coats high-solids metal-interlock polish, daily burnish, wet-look gloss.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Diamond-grit honing on marble floor",
       caption: "Marble floor diamond-honed 50-grit through 3000-grit, crystallised, impregnating sealer. Mirror finish achieved.",
     },
@@ -18331,7 +18331,7 @@ export const vctFloorCare: ServiceDetail = {
       caption: "VCT after full strip and refinish — 5 coats high-solids metal-interlock polish, daily burnish, wet-look gloss.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Dust-free wet stripping of VCT floor",
       caption: "Dust-free wet stripping — chemical stripper, black pad, wet vacuum pickup. No airborne dust. Operatives in correct PPE.",
     },
@@ -18605,7 +18605,7 @@ export const escalatorLiftCleaning: ServiceDetail = {
       caption: "Specialist escalator cleaning machine — rotary brush, rubber-safe chemistry, vacuum pickup. Step treads visibly cleaner.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Lift car interior polished to premium standard",
       caption: "Lift car — stainless steel grain-aligned, mirror lint-free, marble floor diamond-honed, control panel sanitised.",
     },
@@ -18878,7 +18878,7 @@ export const biohazardCleanup: ServiceDetail = {
       caption: "Full RPE/PPE — FFP3 respirator, full-face mask, Tyvec suit, double nitrile gloves, gumboots. HSE HSG272 compliant.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Containment area sealed with polythene sheeting",
       caption: "Containment — area sealed, air flow controlled, exclusion zone marked. Prevents cross-contamination.",
     },
@@ -19151,7 +19151,7 @@ export const fireSmokeRestorationCleaning: ServiceDetail = {
       caption: "IICRC S700 protocol, dry soot removal, full RPE/PPE (soot contains harmful PAHs). Insurance-preferred contractor.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Dry soot removal with chemical sponges",
       caption: "Chemical sponges absorb soot without water — wet soot sets permanently. HEPA vacuum for floors and cavities.",
     },
@@ -19424,7 +19424,7 @@ export const clinicCleaning: ServiceDetail = {
       caption: "Aesthetics treatment room — EN 14476 virucidal, single-use cloths, premium appearance. CQC inspection-ready.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Colour-coded equipment for clinic zones",
       caption: "Colour-coded: red toilet, blue clinical, green kitchen, yellow isolation. No cross-contamination between zones.",
     },
@@ -19698,7 +19698,7 @@ export const labResearchFacilityCleaning: ServiceDetail = {
       caption: "Bench disinfection with single-use cloth (per bench), EN 14476 virucidal chemistry, GLP/MHRA aligned documentation.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "BSL-2 biological lab cleaning with full PPE",
       caption: "BSL-2 zone — HSE HSG272 protocol, EN 14476 virucidal, full PPE (lab coat, nitrile gloves, safety glasses).",
     },
@@ -19942,7 +19942,7 @@ export const insideCabinetCleaning: ServiceDetail = {
       caption: "Every shelf to bare surface, fresh liner applied, items replaced neatly with labels faced forward.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Drawer runner clean and lubrication",
       caption: "Drawer runners vacuumed, wiped, dried, lubricated with food-safe silicone. Drawers glide again.",
     },
@@ -20187,7 +20187,7 @@ export const garageCleaning: ServiceDetail = {
       caption: "Concrete floor degreased, oil stains reduced, squeegee-dried. Floor looks like a floor again.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Garage workbench and tools cleaned",
       caption: "Workbench degreased, tools wiped and oiled to prevent rust. Tool chest drawers emptied and wiped.",
     },
@@ -20432,7 +20432,7 @@ export const loftCleaning: ServiceDetail = {
       caption: "HEPA-vacuumed trusses, insulation top-surface cleaned, cobwebs gone. Insulation R-value protected.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Operative in RPE/PPE cleaning loft",
       caption: "FFP3 respirator, Tyvec suit, nitrile gloves, knee pads for joist work. Hantavirus and fall-risk awareness.",
     },
@@ -20676,7 +20676,7 @@ export const laundryFoldingAddOn: ServiceDetail = {
       caption: "Marie Kondo-style folding — items stand upright so you can see everything at a glance. Drawers look organised.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Ironed shirts on hangers in wardrobe",
       caption: "Shirts ironed in sections, hung on hangers, spaced evenly, colours grouped light to dark.",
     },
@@ -20921,7 +20921,7 @@ export const ironingService: ServiceDetail = {
       caption: "Shirts ironed in sections — collar, cuffs, yoke, body, sleeves. Hotel finish. 5 shirts per hour per operative.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Bedding ironed folded on ironing board",
       caption: "Bedding ironed folded — fitted sheet, flat sheet, duvet cover, pillowcases. Crisp hotel-bed feel.",
     },
@@ -21165,7 +21165,7 @@ export const pantryOrganisation: ServiceDetail = {
       caption: "Matching Kilner jars, decanted and labelled. Bins for snacks and packets. Zoned by function. Pinterest-board finish.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Decanted dry goods in clear jars",
       caption: "Dry goods decanted — flour, sugar, pasta, rice, cereals. Clear jars show level at a glance. Stays fresh longer.",
     },
@@ -21410,7 +21410,7 @@ export const wardrobeOrganisation: ServiceDetail = {
       caption: "Matching velvet hangers, correctly spaced, colour-grouped, length-sorted. Boutique finish — everything visible.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Marie Kondo-style folded drawers",
       caption: "Marie Kondo-style folding — upright rectangles, see every item at a glance. Drawer dividers keep categories separate.",
     },
@@ -21654,7 +21654,7 @@ export const binCleaning: ServiceDetail = {
       caption: "Hot water pressure wash (60°C, 150 bar) — removes food residue, fat, maggots. Bin genuinely clean, not 'looks clean'.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Bin disinfection with EN 14476 chemistry",
       caption: "EN 14476 virucidal disinfectant — kills E. coli, Salmonella, Listeria, Norovirus. Lid, handle, exterior disinfected.",
     },
@@ -21899,7 +21899,7 @@ export const petAreaSanitisation: ServiceDetail = {
       caption: "Litter tray emptied, washed, EN 14476 sanitised, dried, fresh litter added. Pet-safe chemistry throughout.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Dog bed cover being laundered at 60°C",
       caption: "Bed cover laundered at 60°C (kills ringworm, fleas, dust mites). Inner cushion aired in UV sunlight.",
     },
@@ -22144,7 +22144,7 @@ export const postPartyCleanup: ServiceDetail = {
       caption: "80 glasses washed, dried, polished lint-free. Champagne flutes particularly need lint-free polishing.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Red wine stain treatment on carpet",
       caption: "Red wine — blot, salt, specialist remover, contact time, blot again. Saved many a cream carpet.",
     },
@@ -22253,7 +22253,7 @@ export const residentialPressureWashing: ServiceDetail = {
   ],
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Block paving driveway half-cleaned showing dramatic contrast", caption: "Block paving driveway in East Kilbride. Left side pressure-washed at 2400 PSI, right side untouched. Re-sanding complete." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Sandstone patio being cleaned with low pressure fan jet", caption: "Sandstone patio in Stirling. Fan jet at 700 PSI — no scoring, no damage. Original stone colour restored." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Sandstone patio being cleaned with low pressure fan jet", caption: "Sandstone patio in Stirling. Fan jet at 700 PSI — no scoring, no damage. Original stone colour restored." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Indian sandstone before and after pressure washing", caption: "Indian sandstone patio in Glasgow. Heavy algae growth removed with biocidal pre-wash and 1000 PSI fan jet." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Render soft-wash with chemical application", caption: "K-Rend render in Edinburgh. Low-pressure biocide application — high pressure would force water behind the render." },
   ],
@@ -22351,7 +22351,7 @@ export const commercialPressureWashing: ServiceDetail = {
   ],
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Retail car park being cleaned with ride-on scrubber drier", caption: "12,000m² retail car park, Livingston. Ride-on scrubber-drier at 1.2m brush width, 6-hour continuous runtime." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Loading bay hot-water pressure washing", caption: "Loading bay in Coatbridge. Hot-water pressure washer at 4500 PSI, 80°C, removing hydraulic oil contamination." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Loading bay hot-water pressure washing", caption: "Loading bay in Coatbridge. Hot-water pressure washer at 4500 PSI, 80°C, removing hydraulic oil contamination." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Multi-storey car park deck cleaning", caption: "Multi-storey car park, Edinburgh. Low-pressure chemical wash to protect the waterproofing membrane, followed by line-marking refresh." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Petrol forecourt pressure washing", caption: "Petrol forecourt, Aberdeen. ATEX-awareness-trained crew, COSHH-compliant chemicals, full waste water reclaim." },
   ],
@@ -22368,7 +22368,7 @@ export const deckingFenceRestoration: ServiceDetail = {
   heroHeadline: "Restore\nyour timber\nthis season.",
   heroSubhead:
     "Scottish weather punishes exterior timber. UV degrades lignin, rain cycles moisture in and out causing splitting, and organic growth (algae, lichen, moss) locks moisture against the surface and accelerates rot. Our restoration process — clean, treat, stain, seal — adds 5-10 years to decking and fence life and brings weathered grey timber back to its original tone.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Outdoor & Exterior",
   metaTitle: "Decking & Fence Restoration Scotland | Clean, Treat, Stain & Seal | Maundy Clean",
   metaDescription:
@@ -22448,7 +22448,7 @@ export const deckingFenceRestoration: ServiceDetail = {
     { name: "Garden Furniture Cleaning", href: "/services/residential-pressure-washing", description: "Stone, metal and timber garden furniture pressure-washed as an add-on to decking restoration." },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Softwood deck half-restored showing dramatic colour change", caption: "Softwood deck in Edinburgh. Left side pressure-washed and sanded, right side untouched. About to receive two coats of Osmo UV Protection Oil." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Softwood deck half-restored showing dramatic colour change", caption: "Softwood deck in Edinburgh. Left side pressure-washed and sanded, right side untouched. About to receive two coats of Osmo UV Protection Oil." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Fence panels before and after pressure washing and staining", caption: "Fence panels in Perth. Pressure-washed at 1000 PSI, fungicidal-treated, two coats of Cuprinol Ducksback in Cedar." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Hardwood ipe deck being sanded after pressure wash", caption: "Ipe hardwood deck in Inverness. 60-grit orbital sanding after low-pressure wash — opens the grain for oil absorption." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "End-grain sealer being applied to deck post cut ends", caption: "End-grain wax sealer on cut post ends. End-grain acts like a straw, wicking water into the timber — sealing it is critical." },
@@ -22548,7 +22548,7 @@ export const concreteSealing: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Concrete driveway half-sealed showing water beading", caption: "Block paving driveway, Glasgow. Water beads on the sealed half (right), soaks into the unsealed half (left). Silane/siloxane penetrating sealer." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Polyurethane-sealed warehouse floor", caption: "Warehouse slab, Falkirk. Two-component polyurethane sealer after acid etch. 18 months of forklift traffic, no staining." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Acrylic-sealed stamped concrete patio", caption: "Stamped concrete patio, Edinburgh. Acrylic film-forming sealer with gloss finish. Anti-slip additive in the final coat." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Acrylic-sealed stamped concrete patio", caption: "Stamped concrete patio, Edinburgh. Acrylic film-forming sealer with gloss finish. Anti-slip additive in the final coat." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Polyurethane-sealed garage floor with oil beading", caption: "Power-floated garage floor, Aberdeen. Polyurethane sealer after acid etch. Oil wipes off with a rag." },
   ],
 };
@@ -22646,7 +22646,7 @@ export const windowCleaningLowRise: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Carbon fibre reach-and-wash pole cleaning windows", caption: "Carbon fibre reach-and-wash pole, three storeys from the ground. No ladders, no risk, no environmental chemicals." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Edinburgh New Town sash and case windows being cleaned", caption: "Sash and case windows, Edinburgh New Town. Soft-bristle brush, low flow rate, no pressure on glazing bars." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Conservatory roof being cleaned with pure water", caption: "Conservatory roof, Stirling. Pure water clean with angled brush head. Frames, gutters and ridge caps included." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Conservatory roof being cleaned with pure water", caption: "Conservatory roof, Stirling. Pure water clean with angled brush head. Frames, gutters and ridge caps included." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Shopfront windows being cleaned with reach-and-wash", caption: "Shopfront clean, Glasgow. Fortnightly contract. Same cleaner, standing-order payment, photo confirmation." },
   ],
 };
@@ -22662,7 +22662,7 @@ export const windowCleaningHighRise: ServiceDetail = {
   heroHeadline: "Working\nat height.\nDone properly.",
   heroSubhead:
     "Above four storeys, window cleaning becomes a height-safety discipline. Our IRATA-qualified abseil technicians, BMU (building maintenance unit) operators and MEWP (mobile elevating work platform) drivers clean glass on office towers, hotels, residential apartment blocks and landmark buildings across Scotland — with full risk assessment, method statement and emergency rescue plan.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Outdoor & Exterior",
   metaTitle: "High Rise Window Cleaning Scotland | IRATA Abseil, BMU, MEWP | Maundy Clean",
   metaDescription:
@@ -22742,7 +22742,7 @@ export const windowCleaningHighRise: ServiceDetail = {
     { name: "Escalator & Lift Cleaning", href: "/services/escalator-lift-cleaning", description: "Escalator, travelator and lift interior cleaning for commercial buildings and transport hubs." },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "IRATA abseil technician cleaning high-rise facade", caption: "IRATA abseil technician on a Glasgow office tower. Two-technician team, secondary safety line, continuous radio contact." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "IRATA abseil technician cleaning high-rise facade", caption: "IRATA abseil technician on a Glasgow office tower. Two-technician team, secondary safety line, continuous radio contact." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "BMU cradle being deployed on hotel facade", caption: "BMU cradle, Edinburgh hotel. Daily pre-use inspection, LOLER thorough examination every 6 months — included in the contract." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "MEWP cherry picker cleaning atrium glass", caption: "MEWP boom lift reaching atrium glass on a Stirling hotel. IPAF-certified operator, full traffic management, pavement licence arranged." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Curtain wall facade being inspected during clean", caption: "Curtain wall inspection during a high-rise clean. Failed sealed unit flagged, photographed, and reported to facilities team." },
@@ -22843,7 +22843,7 @@ export const awningCleaning: ServiceDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Canvas café awning half-cleaned showing dramatic contrast", caption: "Canvas café awning, Edinburgh. Left side low-pressure chemical wash with soft brush, right side untouched. Re-proofed after clean." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Retractable residential awning being cleaned in extended position", caption: "Retractable sun awning, Glasgow. Cleaned in extended position. Mechanism lubricated and cycled to check operation." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Powder-coated alu awning being cleaned with soft brush", caption: "Powder-coated alu awning, Aberdeen. Coastal exposure — salt spray removed, two small areas of powder-coat damage flagged." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Awning re-proofer being applied by extension pole", caption: "Fluorocarbon re-proofer applied by extension pole after cleaning. Restores water repellency and UV resistance." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Awning re-proofer being applied by extension pole", caption: "Fluorocarbon re-proofer applied by extension pole after cleaning. Restores water repellency and UV resistance." },
   ],
 };
 
@@ -22940,7 +22940,7 @@ export const poolSurroundCleaning: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Pool surround half-cleaned showing biofilm removal", caption: "Ceramic pool surround, Dundee leisure centre. Left side biofilm-removed with chloramine-neutralising detergent and rotary scrub. Right side untouched." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Pool edge tile band being descaled", caption: "Pool edge tile band, St Andrews hotel. Calcium scale removed with acid-based descaler. Original tile colour restored." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Anti-slip treatment being applied to pool surround", caption: "Anti-slip chemical etch applied to ceramic pool surround. Invisible micro-texture, PTV increased from 24 to 42 — well above HSE threshold." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Anti-slip treatment being applied to pool surround", caption: "Anti-slip chemical etch applied to ceramic pool surround. Invisible micro-texture, PTV increased from 24 to 42 — well above HSE threshold." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Pendulum slip test being conducted on pool surround", caption: "Pendulum slip test on wet pool surround. HSE's preferred method. Numerical PTV value reported before and after cleaning." },
   ],
 };
@@ -23037,7 +23037,7 @@ export const cellarCleaning: ServiceDetail = {
   ],
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Victorian pantry cellar half-cleaned", caption: "Victorian pantry cellar, Edinburgh. Left side HEPA-vacuumed and biocidal-treated. Right side untouched. Original Baltic pine shelving preserved." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Stone-flagged cellar floor with efflorescence", caption: "Stone-flagged cellar, Perth. Efflorescence (white mineral salts) treated with specialist remover. pH-neutral clean — no pressure washing." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Stone-flagged cellar floor with efflorescence", caption: "Stone-flagged cellar, Perth. Efflorescence (white mineral salts) treated with specialist remover. pH-neutral clean — no pressure washing." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Earth-floored root cellar dressed with sand", caption: "Earth-floored root cellar, Fife. Surface dressed with kiln-dried sand to bind dust. No water used — would turn to mud." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Dehumidifier running in cleaned cellar", caption: "Desiccant dehumidifier running for 7 days post-clean. Pulls residual moisture from substrate before re-fitting storage." },
   ],
@@ -23136,7 +23136,7 @@ export const festiveDecoratingPrep: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Festive-prepped living room ready for tree", caption: "Living room, Glasgow. High-dusted, glass polished, hearth prepped. Tree goes up the next day on a spotless canvas." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Chandelier being detailed before festive season", caption: "Chandelier detailing, Edinburgh. Every bauble hand-cleaned with a soft cloth. Festive lights will sparkle through clean crystal." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Mantelpiece prepped for stockings and garlands", caption: "Mantelpiece and hearth, Stirling. Brushed down, ash removed (solid fuel fire), stonework detailed. Ready for stockings and garlands." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Mantelpiece prepped for stockings and garlands", caption: "Mantelpiece and hearth, Stirling. Brushed down, ash removed (solid fuel fire), stonework detailed. Ready for stockings and garlands." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "January pack-down with labelled decoration boxes", caption: "Post-festive pack-down. Fragile baubles wrapped in tissue paper, packed in labelled archive boxes. Pine needles swept. Room reset." },
   ],
 };
@@ -23152,7 +23152,7 @@ export const furnitureMovingAddOn: ServiceDetail = {
   heroHeadline: "Heavy lifting\n— done safely,\ndone properly.",
   heroSubhead:
     "Some cleans need the sofa pulled out, the beds moved, the wardrobes shifted, the bookcases rolled. Our furniture moving add-on pairs a second crew member with PAT-tested lifting straps, furniture sliders, floor protection and £5m public liability cover — so the clean under and behind heavy items is done properly, without damage to floors, walls or backs.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Add-On & Specialty Services",
   metaTitle: "Furniture Moving Add-On Scotland | Heavy Item Lifting & Floor Protection | Maundy Clean",
   metaDescription:
@@ -23232,7 +23232,7 @@ export const furnitureMovingAddOn: ServiceDetail = {
     { name: "Spring Cleaning", href: "/services/spring-cleaning", description: "Spring clean with furniture moving — the annual reset that gets dust you didn't know was there." },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Sofa moved with lifting straps revealing dust behind", caption: "Sofa moved with forearm lifting straps. Dust behind revealed — HEPA vacuum extracted before damp mop. Felt pads applied to feet." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Sofa moved with lifting straps revealing dust behind", caption: "Sofa moved with forearm lifting straps. Dust behind revealed — HEPA vacuum extracted before damp mop. Felt pads applied to feet." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Wardrobe on felt slider being moved across hardwood floor", caption: "Solid oak wardrobe on felt-backed slider. Hardwood floor protected. Sliding rather than lifting — safer for floor and crew." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Bed frame disassembled for under-bed deep clean", caption: "Bed frame disassembled for full under-bed clean. Reassembled in original (or new) position. Bolts and fixings carefully tracked." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Felt furniture pads being applied to chair feet", caption: "Felt furniture pads applied to chair feet after move. Small detail, big difference — prevents future floor marking. Included as standard." },
@@ -23332,7 +23332,7 @@ export const plantCareAddOn: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Monstera being leaf-shined with microfibre cloth", caption: "Monstera deliciosa leaf-shined with soft damp microfibre cloth. Dust removal restores photosynthetic capacity. Never aerosol leaf shine — clogs stomata." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Calathea being watered with rainwater", caption: "Calathea orbifolia watered with rainwater. Calatheas are fluoride-sensitive — tap water burns their leaf tips over time. We bring the right water." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Root-bound plant being repotted one size up", caption: "Spring repotting. Root-bound plant moved one pot size up with peat-free multipurpose compost. Roots teased out before potting on." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Root-bound plant being repotted one size up", caption: "Spring repotting. Root-bound plant moved one pot size up with peat-free multipurpose compost. Roots teased out before potting on." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Spider mite webbing caught on underside of leaf", caption: "Spider mite webbing caught on a Thai Constellation monstera. Early detection — before damage appears — saves the plant. Inspected every visit." },
   ],
 };
@@ -23429,7 +23429,7 @@ export const wallSkirtingWipeDown: ServiceDetail = {
   ],
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Painted wall half-cleaned showing dust removal", caption: "Painted wall, Edinburgh tenement. Left side HEPA-vacuumed and damp-wiped. Right side untouched. Top-down discipline." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Skirting board detailing with soft brush", caption: "Victorian deep skirting, Edinburgh. Top edge (dust), front face (scuffs), and bottom gap (dust bunnies) all detailed." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Skirting board detailing with soft brush", caption: "Victorian deep skirting, Edinburgh. Top edge (dust), front face (scuffs), and bottom gap (dust bunnies) all detailed." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Behind-radiator HEPA vacuum extraction", caption: "Long-handled flexible brush and HEPA vacuum extension behind radiator. Significant dust extraction. Allergy benefit." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Wallpaper dry-clean with soft brush attachment", caption: "Vintage wallpaper dry-clean only. Soft brush vacuum attachment and dry cleaning sponge. No wet cleaning — would stain the paper." },
   ],
@@ -23446,7 +23446,7 @@ export const lightFixtureCleaning: ServiceDetail = {
   heroHeadline: "Light through\nclean glass.",
   heroSubhead:
     "Dirty light fixtures absorb 20-40% of the light they emit. Dust on lampshades, grease on kitchen pendants, fly spots on chandeliers, and cobwebs in wall lights all reduce light output and shift the colour temperature. Our light fixture cleaning add-on details every fixture in your home — without removing them from the ceiling.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Add-On & Specialty Services",
   metaTitle: "Light Fixture Cleaning Scotland | Chandeliers, Pendants, Lampshades | Maundy Clean",
   metaDescription:
@@ -23526,7 +23526,7 @@ export const lightFixtureCleaning: ServiceDetail = {
     { name: "Recurring Home Cleaning", href: "/services/recurring-home-cleaning", description: "Weekly or fortnightly home cleaning — light fixture cleaning as an annual add-on to a regular plan." },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Crystal chandelier being detailed crystal-by-crystal", caption: "1890s crystal chandelier, Edinburgh. Each crystal cleaned individually with crystal-safe detergent and soft microfibre. No spray en masse." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Crystal chandelier being detailed crystal-by-crystal", caption: "1890s crystal chandelier, Edinburgh. Each crystal cleaned individually with crystal-safe detergent and soft microfibre. No spray en masse." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Kitchen pendant lights being degreased", caption: "Kitchen pendant lights, Glasgow restaurant. Grease build-up removed with cloth-applied degreaser. No spraying onto fittings." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Vaulted ceiling chandelier accessed by scissor lift", caption: "Vaulted ceiling chandelier at 5 metres, Perth. IPAF-certified scissor lift access. Isolated at consumer unit before cleaning." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Fabric lampshade being vacuumed with soft brush", caption: "Fabric lampshade vacuumed with soft brush HEPA attachment. Then spot-cleaned if stained. Paper and parchment shades dry-dusted only." },
@@ -23626,7 +23626,7 @@ export const ceilingFanCleaning: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Ceiling fan blade being vacuumed with soft brush", caption: "Bedroom ceiling fan blade vacuumed with soft-brush HEPA attachment. Dry dust extracted before damp wipe. Leading edge gets extra attention." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Kitchen ceiling fan blade degreased", caption: "Kitchen ceiling fan, Glasgow restaurant. Blade bottoms degreased with cloth-applied degreaser. No spraying onto fittings." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Fan being balanced with clip-on weights", caption: "Fan re-balanced after cleaning. Dust build-up had shifted the factory balance. Clip-on weights restore smooth running." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Fan being balanced with clip-on weights", caption: "Fan re-balanced after cleaning. Dust build-up had shifted the factory balance. Clip-on weights restore smooth running." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Pull chain toggle replaced", caption: "Missing wooden pull chain toggle replaced from our standard selection. Chain untangled and wiped. Light kit cleaned." },
   ],
 };
@@ -23724,7 +23724,7 @@ export const smartHomeDeviceWipe: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Smart display being wiped with dry microfibre", caption: "Smart display, Edinburgh. Dry microfibre wipe first. 70% IPA only for visible finger marks. Oleophobic coating preserved." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Smart speaker grille being vacuumed with soft brush", caption: "Kitchen smart speaker grille vacuumed with soft-brush HEPA attachment. Cooking grease removed. Sound noticeably clearer." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Video doorbell lens being cleaned with optical wipe", caption: "Video doorbell lens cleaned with lens-safe optical wipe. Image crystal clear after cleaning. Housing wiped with 70% IPA." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Video doorbell lens being cleaned with optical wipe", caption: "Video doorbell lens cleaned with lens-safe optical wipe. Image crystal clear after cleaning. Housing wiped with 70% IPA." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "USB-C port being cleaned with compressed air", caption: "USB-C port cleaned with short burst of compressed air. Lint and dust removed. Prevents 'loose connection' issues." },
   ],
 };
@@ -23822,7 +23822,7 @@ export const electrostaticDisinfectionAddOn: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Electrostatic sprayer in operation with charged droplets visible", caption: "Electrostatic sprayer in operation. Charged droplets visible wrapping around chair backs and table edges. 360° coverage." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Touchpoint hand-wipe after electrostatic spray", caption: "Touchpoint hand-wipe after spray. Door handles, light switches, tap handles — the surfaces that account for 80% of cross-contamination." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Soft furnishings being treated with electrostatic spray", caption: "Sofa and cushions treated with electrostatic spray. Chemistry is fabric-safe and dries without residue. Reduces viral load on items that can't be easily washed." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Soft furnishings being treated with electrostatic spray", caption: "Sofa and cushions treated with electrostatic spray. Chemistry is fabric-safe and dries without residue. Reduces viral load on items that can't be easily washed." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Disinfection certificate with batch numbers", caption: "Disinfection certificate issued after treatment. Batch numbers, contact time, EN standard test results. Audit-ready for insurance and compliance." },
   ],
 };
@@ -23919,7 +23919,7 @@ export const beddingChangeService: ServiceDetail = {
   ],
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Bed re-made with hospital corners and crisp white linen", caption: "Bed re-made with hospital corners, proper tension, duvet aligned, pillows fluffed. Hotel-standard finish in your own home." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Linen being washed at 60°C", caption: "Bed linen washed at 60°C — the temperature at which dust mites die. Non-biological detergent as standard. Significant benefit for allergy sufferers." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Linen being washed at 60°C", caption: "Bed linen washed at 60°C — the temperature at which dust mites die. Non-biological detergent as standard. Significant benefit for allergy sufferers." },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Mattress being vacuumed with UV-C HEPA vacuum", caption: "Mattress vacuumed with HEPA-filtered UV-C vacuum. Kills surface bacteria, removes dust mites and skin cells. Mattress rotated 180°." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "Freshly ironed duvet cover being folded", caption: "Duvet cover ironed (optional add-on) and folded ready for the airing cupboard. Hotel-crisp finish. Starch never used — causes skin irritation." },
   ],
@@ -24018,7 +24018,7 @@ export const ecoFriendlyGreenClean: ServiceDetail = {
   gallery: [
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "EU Ecolabel-certified product line-up in refillable 5L containers", caption: "EU Ecolabel-certified products in refillable 5L containers. No single-use trigger sprays. Closed-loop supply chain." },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Microfibre cloths being used per-room to prevent cross-contamination", caption: "Per-room microfibre cloths laundered at 90°C between visits. 99% bacterial removal without disinfectant. 200+ wash cycles before retirement." },
-    { src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", alt: "Eco cleaning in progress with no chemical smell", caption: "Eco clean in progress. No chemical smell, no fume-induced headache, no airing-the-house-for-3-hours. Air quality often better after the clean than before." },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", alt: "Eco cleaning in progress with no chemical smell", caption: "Eco clean in progress. No chemical smell, no fume-induced headache, no airing-the-house-for-3-hours. Air quality often better after the clean than before." },
     { src: "https://sfile.chatglm.cn/images-ppt/post-party-cleanup.jpg", alt: "EU Ecolabel certification close-up", caption: "EU Ecolabel — the strictest ecolabel in Europe. Bans bleach, phosphates, NTA, EDTA. Requires 28-day biodegradability and EN standard cleaning performance." },
   ],
 };
@@ -24301,7 +24301,7 @@ export const crimeSceneCleanup: ServiceDetail = {
       caption: "Containment zone with 6-mil polythene sheeting and biohazard signage. Negative-pressure HEPA extraction deployed where cross-contamination risk is high.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "EN 14476 virucidal chemistry applied by sprayer",
       caption: "EN 14476 virucidal chemistry applied by electrostatic sprayer for full surface coverage. Contact time per manufacturer, double application in high-risk zones.",
     },
@@ -24588,7 +24588,7 @@ export const traumaCleanup: ServiceDetail = {
       caption: "Trauma remediation team in full RPE/PPE. All operatives have completed Scotland's Mental Health First Aid or equivalent. Compassion is built into the protocol, not an add-on.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Hydroxyl generator deployed for odour remediation",
       caption: "Hydroxyl generator deployed for 24-72 hours of odour remediation. Breaks down odour molecules at the structural level - no masking, no chemical residue, safe for soft furnishings.",
     },
@@ -24615,7 +24615,7 @@ export const vandalismGraffitiCleanup: ServiceDetail = {
   tagline: "Fast, discreet restoration after vandalism - graffiti, smashed glass, paint, faeces, and malicious damage.",
   heroHeadline: "Vandalism\nrestored. Fast.\nDiscreetly.",
   heroSubhead: "Waking up to find your property vandalised - whether by opportunistic graffiti, smashed windows, paint stripper on your car, or worse - is a horrible experience. Our vandalism restoration team removes graffiti from any substrate, boards and replaces broken glass, sanitises biological vandalism (faeces, urine), neutralises chemical damage, and restores your property to pre-incident condition. We work with insurers, police, and landlords. 24/7 response across Scotland.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   breadcrumbParent: "Specialty Cleaning",
   metaTitle: "Vandalism & Graffiti Cleanup Scotland | 24/7 Response | Maundy Clean",
   metaDescription: "Vandalism & graffiti cleanup across Scotland. Spray paint, smashed glass, paint, faeces, chemical damage. 24/7 discreet response. From £280/visit. 4.9-star.",
@@ -24874,7 +24874,7 @@ export const vandalismGraffitiCleanup: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Graffiti removal in progress on brick wall",
       caption: "Alkaline gel graffiti remover applied to porous brick. Dwell time 30-60 minutes, agitate with nylon brush, low-pressure rinse. No substrate damage.",
     },
@@ -25181,7 +25181,7 @@ export const asbestosPrepCleaning: ServiceDetail = {
       caption: "All asbestos waste double-bagged in UN-approved red asbestos bags, labelled per CAR 2012, consigned to licensed hazardous waste facility. Consignment note per uplift, kept on file 3 years per SEPA.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Four-stage clearance Reoccupation Certificate issued by UKAS analyst",
       caption: "Four-stage clearance Reoccupation Certificate issued by UKAS-accredited analyst. Our cleaning is calibrated to pass stages 1 (visual) and 2 (decon zone) first time, minimising re-clean costs.",
     },
@@ -25752,7 +25752,7 @@ export const leadDustCleanup: ServiceDetail = {
       caption: "Containment zone with polythene sheeting, negative-pressure HEPA extraction, and lead hazard signage. HVAC isolated. Dirty/clean decontamination zone established.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Lead-specific chelating detergent being applied to surface",
       caption: "Lead-specific chelating detergent binds to lead particles, lifting them from the surface. Standard detergent doesn't work for lead - the chelating agent is essential.",
     },
@@ -26046,7 +26046,7 @@ export const drugLabCleanup: ServiceDetail = {
       caption: "Sealed 6-mil polythene containment with gas-proof taped seams, negative-pressure HEPA extraction with activated carbon filter. HVAC fully isolated. Adjacent properties monitored for cross-contamination.",
     },
     {
-      src: "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
       alt: "Hydroxyl generators and activated carbon scrubbers deployed",
       caption: "Hydroxyl generators and activated carbon scrubbers deployed for 24-72 hours to break down residual solvent vapour at the molecular level. No masking - vapours are chemically neutralised.",
     },

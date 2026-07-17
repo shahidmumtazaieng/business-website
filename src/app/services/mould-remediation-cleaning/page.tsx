@@ -2,12 +2,18 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileStickyCta } from "@/components/mobile-sticky-cta";
-import { ServiceHero } from "@/components/service-detail/service-hero";
-import { ServiceOverview } from "@/components/service-detail/service-overview";
-import { ServiceWhatsIncluded } from "@/components/service-detail/service-whats-included";
-import { ServicePricing } from "@/components/service-detail/service-pricing";
-import { ServiceFinalCta } from "@/components/service-detail/service-final-cta";
 import { mouldRemediationCleaning } from "@/lib/service-detail-data";
+import {
+  MouldRemediationSeoHeroBanner,
+  MouldRemediationSeoIntro,
+  MouldRemediationSeoWhy,
+  MouldRemediationSeoChecklist,
+  MouldRemediationSeoBooking,
+  MouldRemediationSeoInterlinking,
+  MouldRemediationSeoNearMe,
+  MouldRemediationSeoFinalCta,
+  MouldRemediationSeoFaq,
+} from "@/components/service-detail/mould-remediation-seo";
 
 export const metadata: Metadata = {
   title: mouldRemediationCleaning.metaTitle,
@@ -32,16 +38,36 @@ export const metadata: Metadata = {
 };
 
 export default function MouldRemediationCleaningPage() {
-  const service = mouldRemediationCleaning;
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <ServiceHero service={service} />
-        <ServiceOverview service={service} />
-        <ServiceWhatsIncluded service={service} />
-        <ServicePricing service={service} />
-        <ServiceFinalCta service={service} />
+        {/* Step 1: Hero Banner */}
+        <MouldRemediationSeoHeroBanner />
+
+        {/* Step 2: Semantic Introduction */}
+        <MouldRemediationSeoIntro />
+
+        {/* Step 3: Why Choose Maundy Clean */}
+        <MouldRemediationSeoWhy />
+
+        {/* Step 4: Technical Checklist */}
+        <MouldRemediationSeoChecklist />
+
+        {/* Step 5: 3-Step Booking Process */}
+        <MouldRemediationSeoBooking />
+
+        {/* Step 6: Semantic Interlinking */}
+        <MouldRemediationSeoInterlinking />
+
+        {/* Step 7: Regional Map & Directory Hub */}
+        <MouldRemediationSeoNearMe />
+
+        {/* Step 8: Mid-page Conversion Banner */}
+        <MouldRemediationSeoFinalCta />
+
+        {/* Step 9: Accessible FAQ */}
+        <MouldRemediationSeoFaq />
       </main>
       <SiteFooter />
       <MobileStickyCta />

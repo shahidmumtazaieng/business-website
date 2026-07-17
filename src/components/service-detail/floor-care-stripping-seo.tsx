@@ -36,17 +36,17 @@ const IMG = {
   heroWide:
     "https://sfile.chatglm.cn/images-ppt/floor-care-stripping.jpg",
   introSplit:
-    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
   whyCrew:
     "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
   checklistStone:
     "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
   checklistWood:
-    "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   checklistVinyl:
     "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
   leaseTenancy:
-    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2011.14.04%20PM.jpeg",
   leaseBuilders:
     "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",
   leaseSpring:
@@ -54,7 +54,7 @@ const IMG = {
   leaseUpholstery:
     "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg",
 };
 
 // ============================================================

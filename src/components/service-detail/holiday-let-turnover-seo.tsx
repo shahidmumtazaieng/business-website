@@ -32,7 +32,7 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", // beautifully turned-over holiday let bedroom
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", // beautifully turned-over holiday let bedroom
   whyCrew:
     "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // Maundy Clean turnover crew
   checklistLiving:
@@ -46,13 +46,13 @@ const IMG = {
   leaseDeep:
     "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // deep clean living room
   leaseTenancy:
-    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty flat move-in
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2011.14.04%20PM.jpeg", // empty flat move-in
   leaseBuilders:
     "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg", // post-builders cleanup
   leaseCarpet:
     "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg", // eco-labelled supplies / fabric care
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg", // map of Scotland
 };
 
 // ============================================================

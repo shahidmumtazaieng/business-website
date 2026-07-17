@@ -35,9 +35,9 @@ export type BlogPostFull = {
 
 // ---- Image constants (kept here so the file is self-contained) ----
 const IMG = {
-  blogDeep: "https://sfile.chatglm.cn/images-ppt/ca678862de5f.jpg",
+  blogDeep: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.23.18%20PM.jpeg",
   blogElectro: "https://sfile.chatglm.cn/images-ppt/2be4158b7bb6.jpg",
-  blogMove: "https://sfile.chatglm.cn/images-ppt/fffec8f75cf2.jpg",
+  blogMove: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
   blogRoof: "https://sfile.chatglm.cn/images-ppt/23f9d6e7b05c.png",
   blogRestroom: "https://sfile.chatglm.cn/images-ppt/7fb67803598c.jpg",
   blogOps: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",

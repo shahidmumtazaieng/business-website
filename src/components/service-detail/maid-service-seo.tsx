@@ -46,13 +46,13 @@ const IMG = {
   leaseSpring:
     "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg", // spring-clean / maid refresh
   leaseTenancy:
-    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg", // empty flat move-in
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2011.14.04%20PM.jpeg", // empty flat move-in
   leaseBuilders:
     "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg", // post-builders cleanup
   leaseOffice:
-    "https://sfile.chatglm.cn/images-ppt/3e21505dadac.jpg", // office / commercial space clean
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", // office / commercial space clean
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg", // map of Scotland
 };
 
 // ============================================================

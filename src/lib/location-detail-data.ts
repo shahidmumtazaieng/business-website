@@ -76,7 +76,7 @@ export const glasgow: LocationDetail = {
   tagline: "Local Glasgow crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Glasgow.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Glasgow since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Glasgow | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Glasgow cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -136,10 +136,10 @@ export const glasgow: LocationDetail = {
     { name: "Motherwell", href: "/locations/motherwell", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Glasgow", caption: "Local crew working in Glasgow" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Glasgow", caption: "Local crew working in Glasgow" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Glasgow", caption: "Local Glasgow team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Glasgow", caption: "Living room refresh in a Glasgow family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Glasgow", caption: "Nightly janitorial at a Glasgow office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Glasgow", caption: "Nightly janitorial at a Glasgow office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -156,7 +156,7 @@ export const paisley: LocationDetail = {
   tagline: "Local Paisley crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Paisley.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Paisley since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Paisley | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Paisley cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -213,10 +213,10 @@ export const paisley: LocationDetail = {
     { name: "Motherwell", href: "/locations/motherwell", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Paisley", caption: "Local crew working in Paisley" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Paisley", caption: "Local crew working in Paisley" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Paisley", caption: "Local Paisley team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Paisley", caption: "Living room refresh in a Paisley family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Paisley", caption: "Nightly janitorial at a Paisley office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Paisley", caption: "Nightly janitorial at a Paisley office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -233,7 +233,7 @@ export const east_kilbride: LocationDetail = {
   tagline: "Local East Kilbride crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin East Kilbride.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in East Kilbride since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in East Kilbride | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local East Kilbride cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -290,10 +290,10 @@ export const east_kilbride: LocationDetail = {
     { name: "Motherwell", href: "/locations/motherwell", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in East Kilbride", caption: "Local crew working in East Kilbride" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in East Kilbride", caption: "Local crew working in East Kilbride" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in East Kilbride", caption: "Local East Kilbride team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in East Kilbride", caption: "Living room refresh in a East Kilbride family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in East Kilbride", caption: "Nightly janitorial at a East Kilbride office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in East Kilbride", caption: "Nightly janitorial at a East Kilbride office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -310,7 +310,7 @@ export const hamilton: LocationDetail = {
   tagline: "Local Hamilton crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Hamilton.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Hamilton since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Hamilton | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Hamilton cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -367,10 +367,10 @@ export const hamilton: LocationDetail = {
     { name: "Motherwell", href: "/locations/motherwell", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Hamilton", caption: "Local crew working in Hamilton" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Hamilton", caption: "Local crew working in Hamilton" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Hamilton", caption: "Local Hamilton team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Hamilton", caption: "Living room refresh in a Hamilton family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Hamilton", caption: "Nightly janitorial at a Hamilton office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Hamilton", caption: "Nightly janitorial at a Hamilton office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -387,7 +387,7 @@ export const cumbernauld: LocationDetail = {
   tagline: "Local Cumbernauld crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Cumbernauld.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Cumbernauld since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Cumbernauld | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Cumbernauld cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -444,10 +444,10 @@ export const cumbernauld: LocationDetail = {
     { name: "Motherwell", href: "/locations/motherwell", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Cumbernauld", caption: "Local crew working in Cumbernauld" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Cumbernauld", caption: "Local crew working in Cumbernauld" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Cumbernauld", caption: "Local Cumbernauld team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Cumbernauld", caption: "Living room refresh in a Cumbernauld family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Cumbernauld", caption: "Nightly janitorial at a Cumbernauld office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Cumbernauld", caption: "Nightly janitorial at a Cumbernauld office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -464,7 +464,7 @@ export const coatbridge: LocationDetail = {
   tagline: "Local Coatbridge crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Coatbridge.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Coatbridge since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Coatbridge | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Coatbridge cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -521,10 +521,10 @@ export const coatbridge: LocationDetail = {
     { name: "Motherwell", href: "/locations/motherwell", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Coatbridge", caption: "Local crew working in Coatbridge" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Coatbridge", caption: "Local crew working in Coatbridge" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Coatbridge", caption: "Local Coatbridge team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Coatbridge", caption: "Living room refresh in a Coatbridge family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Coatbridge", caption: "Nightly janitorial at a Coatbridge office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Coatbridge", caption: "Nightly janitorial at a Coatbridge office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -541,7 +541,7 @@ export const motherwell: LocationDetail = {
   tagline: "Local Motherwell crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Motherwell.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Motherwell since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Motherwell | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Motherwell cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -598,10 +598,10 @@ export const motherwell: LocationDetail = {
     { name: "Coatbridge", href: "/locations/coatbridge", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Motherwell", caption: "Local crew working in Motherwell" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Motherwell", caption: "Local crew working in Motherwell" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Motherwell", caption: "Local Motherwell team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Motherwell", caption: "Living room refresh in a Motherwell family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Motherwell", caption: "Nightly janitorial at a Motherwell office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Motherwell", caption: "Nightly janitorial at a Motherwell office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -618,7 +618,7 @@ export const newton_mearns: LocationDetail = {
   tagline: "Local Newton Mearns crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Newton Mearns.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Newton Mearns since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Newton Mearns | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Newton Mearns cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -675,10 +675,10 @@ export const newton_mearns: LocationDetail = {
     { name: "Coatbridge", href: "/locations/coatbridge", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Newton Mearns", caption: "Local crew working in Newton Mearns" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Newton Mearns", caption: "Local crew working in Newton Mearns" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Newton Mearns", caption: "Local Newton Mearns team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Newton Mearns", caption: "Living room refresh in a Newton Mearns family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Newton Mearns", caption: "Nightly janitorial at a Newton Mearns office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Newton Mearns", caption: "Nightly janitorial at a Newton Mearns office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -695,7 +695,7 @@ export const rutherglen: LocationDetail = {
   tagline: "Local Rutherglen crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Rutherglen.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Rutherglen since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Rutherglen | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Rutherglen cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -752,10 +752,10 @@ export const rutherglen: LocationDetail = {
     { name: "Coatbridge", href: "/locations/coatbridge", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Rutherglen", caption: "Local crew working in Rutherglen" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Rutherglen", caption: "Local crew working in Rutherglen" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Rutherglen", caption: "Local Rutherglen team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Rutherglen", caption: "Living room refresh in a Rutherglen family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Rutherglen", caption: "Nightly janitorial at a Rutherglen office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Rutherglen", caption: "Nightly janitorial at a Rutherglen office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -772,7 +772,7 @@ export const bearsden: LocationDetail = {
   tagline: "Local Bearsden crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Bearsden.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Bearsden since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Bearsden | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Bearsden cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -829,10 +829,10 @@ export const bearsden: LocationDetail = {
     { name: "Coatbridge", href: "/locations/coatbridge", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Bearsden", caption: "Local crew working in Bearsden" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Bearsden", caption: "Local crew working in Bearsden" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Bearsden", caption: "Local Bearsden team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Bearsden", caption: "Living room refresh in a Bearsden family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Bearsden", caption: "Nightly janitorial at a Bearsden office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Bearsden", caption: "Nightly janitorial at a Bearsden office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -909,7 +909,7 @@ export const milngavie: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Milngavie", caption: "Local crew working in Milngavie" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Milngavie", caption: "Local Milngavie team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Milngavie", caption: "Living room refresh in a Milngavie family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Milngavie", caption: "Nightly janitorial at a Milngavie office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Milngavie", caption: "Nightly janitorial at a Milngavie office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -926,7 +926,7 @@ export const bishopbriggs: LocationDetail = {
   tagline: "Local Bishopbriggs crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Bishopbriggs.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Bishopbriggs since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Bishopbriggs | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Bishopbriggs cleaners covering every Scottish postcode in Greater Glasgow. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -983,10 +983,10 @@ export const bishopbriggs: LocationDetail = {
     { name: "Coatbridge", href: "/locations/coatbridge", region: "Greater Glasgow" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Bishopbriggs", caption: "Local crew working in Bishopbriggs" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Bishopbriggs", caption: "Local crew working in Bishopbriggs" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Bishopbriggs", caption: "Local Bishopbriggs team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Bishopbriggs", caption: "Living room refresh in a Bishopbriggs family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Bishopbriggs", caption: "Nightly janitorial at a Bishopbriggs office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Bishopbriggs", caption: "Nightly janitorial at a Bishopbriggs office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1003,7 +1003,7 @@ export const edinburgh: LocationDetail = {
   tagline: "Local Edinburgh crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Edinburgh.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Edinburgh since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Edinburgh | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Edinburgh cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1063,10 +1063,10 @@ export const edinburgh: LocationDetail = {
     { name: "Linlithgow", href: "/locations/linlithgow", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Edinburgh", caption: "Local crew working in Edinburgh" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Edinburgh", caption: "Local crew working in Edinburgh" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Edinburgh", caption: "Local Edinburgh team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Edinburgh", caption: "Living room refresh in a Edinburgh family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Edinburgh", caption: "Nightly janitorial at a Edinburgh office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Edinburgh", caption: "Nightly janitorial at a Edinburgh office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1083,7 +1083,7 @@ export const livingston: LocationDetail = {
   tagline: "Local Livingston crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Livingston.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Livingston since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Livingston | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Livingston cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1140,10 +1140,10 @@ export const livingston: LocationDetail = {
     { name: "Linlithgow", href: "/locations/linlithgow", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Livingston", caption: "Local crew working in Livingston" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Livingston", caption: "Local crew working in Livingston" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Livingston", caption: "Local Livingston team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Livingston", caption: "Living room refresh in a Livingston family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Livingston", caption: "Nightly janitorial at a Livingston office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Livingston", caption: "Nightly janitorial at a Livingston office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1160,7 +1160,7 @@ export const musselburgh: LocationDetail = {
   tagline: "Local Musselburgh crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Musselburgh.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Musselburgh since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Musselburgh | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Musselburgh cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1217,10 +1217,10 @@ export const musselburgh: LocationDetail = {
     { name: "Linlithgow", href: "/locations/linlithgow", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Musselburgh", caption: "Local crew working in Musselburgh" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Musselburgh", caption: "Local crew working in Musselburgh" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Musselburgh", caption: "Local Musselburgh team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Musselburgh", caption: "Living room refresh in a Musselburgh family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Musselburgh", caption: "Nightly janitorial at a Musselburgh office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Musselburgh", caption: "Nightly janitorial at a Musselburgh office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1237,7 +1237,7 @@ export const dalkeith: LocationDetail = {
   tagline: "Local Dalkeith crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Dalkeith.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Dalkeith since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Dalkeith | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Dalkeith cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1294,10 +1294,10 @@ export const dalkeith: LocationDetail = {
     { name: "Linlithgow", href: "/locations/linlithgow", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Dalkeith", caption: "Local crew working in Dalkeith" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Dalkeith", caption: "Local crew working in Dalkeith" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dalkeith", caption: "Local Dalkeith team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dalkeith", caption: "Living room refresh in a Dalkeith family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dalkeith", caption: "Nightly janitorial at a Dalkeith office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dalkeith", caption: "Nightly janitorial at a Dalkeith office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1314,7 +1314,7 @@ export const bathgate: LocationDetail = {
   tagline: "Local Bathgate crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Bathgate.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Bathgate since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Bathgate | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Bathgate cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1371,10 +1371,10 @@ export const bathgate: LocationDetail = {
     { name: "Linlithgow", href: "/locations/linlithgow", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Bathgate", caption: "Local crew working in Bathgate" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Bathgate", caption: "Local crew working in Bathgate" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Bathgate", caption: "Local Bathgate team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Bathgate", caption: "Living room refresh in a Bathgate family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Bathgate", caption: "Nightly janitorial at a Bathgate office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Bathgate", caption: "Nightly janitorial at a Bathgate office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1391,7 +1391,7 @@ export const haddington: LocationDetail = {
   tagline: "Local Haddington crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Haddington.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Haddington since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Haddington | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Haddington cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1448,10 +1448,10 @@ export const haddington: LocationDetail = {
     { name: "Linlithgow", href: "/locations/linlithgow", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Haddington", caption: "Local crew working in Haddington" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Haddington", caption: "Local crew working in Haddington" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Haddington", caption: "Local Haddington team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Haddington", caption: "Living room refresh in a Haddington family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Haddington", caption: "Nightly janitorial at a Haddington office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Haddington", caption: "Nightly janitorial at a Haddington office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1468,7 +1468,7 @@ export const linlithgow: LocationDetail = {
   tagline: "Local Linlithgow crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Linlithgow.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Linlithgow since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Linlithgow | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Linlithgow cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1525,10 +1525,10 @@ export const linlithgow: LocationDetail = {
     { name: "Haddington", href: "/locations/haddington", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Linlithgow", caption: "Local crew working in Linlithgow" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Linlithgow", caption: "Local crew working in Linlithgow" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Linlithgow", caption: "Local Linlithgow team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Linlithgow", caption: "Living room refresh in a Linlithgow family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Linlithgow", caption: "Nightly janitorial at a Linlithgow office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Linlithgow", caption: "Nightly janitorial at a Linlithgow office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1545,7 +1545,7 @@ export const penicuik: LocationDetail = {
   tagline: "Local Penicuik crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Penicuik.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Penicuik since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Penicuik | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Penicuik cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1602,10 +1602,10 @@ export const penicuik: LocationDetail = {
     { name: "Haddington", href: "/locations/haddington", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Penicuik", caption: "Local crew working in Penicuik" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Penicuik", caption: "Local crew working in Penicuik" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Penicuik", caption: "Local Penicuik team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Penicuik", caption: "Living room refresh in a Penicuik family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Penicuik", caption: "Nightly janitorial at a Penicuik office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Penicuik", caption: "Nightly janitorial at a Penicuik office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1622,7 +1622,7 @@ export const north_berwick: LocationDetail = {
   tagline: "Local North Berwick crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin North Berwick.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in North Berwick since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in North Berwick | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local North Berwick cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1679,10 +1679,10 @@ export const north_berwick: LocationDetail = {
     { name: "Haddington", href: "/locations/haddington", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in North Berwick", caption: "Local crew working in North Berwick" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in North Berwick", caption: "Local crew working in North Berwick" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in North Berwick", caption: "Local North Berwick team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in North Berwick", caption: "Living room refresh in a North Berwick family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in North Berwick", caption: "Nightly janitorial at a North Berwick office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in North Berwick", caption: "Nightly janitorial at a North Berwick office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1699,7 +1699,7 @@ export const dunbar: LocationDetail = {
   tagline: "Local Dunbar crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Dunbar.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Dunbar since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg",
   metaTitle: "Cleaning Services in Dunbar | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Dunbar cleaners covering every Scottish postcode in Edinburgh & Lothians. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -1756,10 +1756,10 @@ export const dunbar: LocationDetail = {
     { name: "Haddington", href: "/locations/haddington", region: "Edinburgh & Lothians" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/03a7522d88d5.jpg", alt: "Maundy Clean in Dunbar", caption: "Local crew working in Dunbar" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.02.55%20PM.jpeg", alt: "Maundy Clean in Dunbar", caption: "Local crew working in Dunbar" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dunbar", caption: "Local Dunbar team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dunbar", caption: "Living room refresh in a Dunbar family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dunbar", caption: "Nightly janitorial at a Dunbar office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dunbar", caption: "Nightly janitorial at a Dunbar office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1836,7 +1836,7 @@ export const dunfermline: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in Dunfermline", caption: "Local crew working in Dunfermline" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dunfermline", caption: "Local Dunfermline team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dunfermline", caption: "Living room refresh in a Dunfermline family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dunfermline", caption: "Nightly janitorial at a Dunfermline office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dunfermline", caption: "Nightly janitorial at a Dunfermline office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1913,7 +1913,7 @@ export const kirkcaldy: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in Kirkcaldy", caption: "Local crew working in Kirkcaldy" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Kirkcaldy", caption: "Local Kirkcaldy team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Kirkcaldy", caption: "Living room refresh in a Kirkcaldy family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Kirkcaldy", caption: "Nightly janitorial at a Kirkcaldy office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Kirkcaldy", caption: "Nightly janitorial at a Kirkcaldy office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -1990,7 +1990,7 @@ export const st_andrews: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in St Andrews", caption: "Local crew working in St Andrews" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in St Andrews", caption: "Local St Andrews team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in St Andrews", caption: "Living room refresh in a St Andrews family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in St Andrews", caption: "Nightly janitorial at a St Andrews office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in St Andrews", caption: "Nightly janitorial at a St Andrews office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2067,7 +2067,7 @@ export const cupar: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in Cupar", caption: "Local crew working in Cupar" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Cupar", caption: "Local Cupar team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Cupar", caption: "Living room refresh in a Cupar family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Cupar", caption: "Nightly janitorial at a Cupar office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Cupar", caption: "Nightly janitorial at a Cupar office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2084,7 +2084,7 @@ export const falkirk: LocationDetail = {
   tagline: "Local Falkirk crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Falkirk.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Falkirk since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Falkirk | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Falkirk cleaners covering every Scottish postcode in Fife & Central. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -2141,10 +2141,10 @@ export const falkirk: LocationDetail = {
     { name: "Alloa", href: "/locations/alloa", region: "Fife & Central" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Falkirk", caption: "Local crew working in Falkirk" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Falkirk", caption: "Local crew working in Falkirk" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Falkirk", caption: "Local Falkirk team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Falkirk", caption: "Living room refresh in a Falkirk family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Falkirk", caption: "Nightly janitorial at a Falkirk office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Falkirk", caption: "Nightly janitorial at a Falkirk office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2161,7 +2161,7 @@ export const stirling: LocationDetail = {
   tagline: "Local Stirling crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Stirling.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Stirling since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Stirling | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Stirling cleaners covering every Scottish postcode in Fife & Central. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -2218,10 +2218,10 @@ export const stirling: LocationDetail = {
     { name: "Alloa", href: "/locations/alloa", region: "Fife & Central" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Stirling", caption: "Local crew working in Stirling" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Stirling", caption: "Local crew working in Stirling" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Stirling", caption: "Local Stirling team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Stirling", caption: "Living room refresh in a Stirling family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Stirling", caption: "Nightly janitorial at a Stirling office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Stirling", caption: "Nightly janitorial at a Stirling office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2238,7 +2238,7 @@ export const alloa: LocationDetail = {
   tagline: "Local Alloa crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Alloa.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Alloa since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Alloa | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Alloa cleaners covering every Scottish postcode in Fife & Central. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -2295,10 +2295,10 @@ export const alloa: LocationDetail = {
     { name: "Stirling", href: "/locations/stirling", region: "Fife & Central" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Alloa", caption: "Local crew working in Alloa" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Alloa", caption: "Local crew working in Alloa" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Alloa", caption: "Local Alloa team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Alloa", caption: "Living room refresh in a Alloa family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Alloa", caption: "Nightly janitorial at a Alloa office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Alloa", caption: "Nightly janitorial at a Alloa office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2315,7 +2315,7 @@ export const crieff: LocationDetail = {
   tagline: "Local Crieff crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Crieff.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Crieff since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Crieff | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Crieff cleaners covering every Scottish postcode in Fife & Central. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -2372,10 +2372,10 @@ export const crieff: LocationDetail = {
     { name: "Stirling", href: "/locations/stirling", region: "Fife & Central" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Crieff", caption: "Local crew working in Crieff" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Crieff", caption: "Local crew working in Crieff" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Crieff", caption: "Local Crieff team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Crieff", caption: "Living room refresh in a Crieff family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Crieff", caption: "Nightly janitorial at a Crieff office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Crieff", caption: "Nightly janitorial at a Crieff office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2452,7 +2452,7 @@ export const perth: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in Perth", caption: "Local crew working in Perth" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Perth", caption: "Local Perth team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Perth", caption: "Living room refresh in a Perth family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Perth", caption: "Nightly janitorial at a Perth office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Perth", caption: "Nightly janitorial at a Perth office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2529,7 +2529,7 @@ export const dundee: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in Dundee", caption: "Local crew working in Dundee" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dundee", caption: "Local Dundee team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dundee", caption: "Living room refresh in a Dundee family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dundee", caption: "Nightly janitorial at a Dundee office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dundee", caption: "Nightly janitorial at a Dundee office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2606,7 +2606,7 @@ export const blairgowrie: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/a2d5407ece51.jpg", alt: "Maundy Clean in Blairgowrie", caption: "Local crew working in Blairgowrie" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Blairgowrie", caption: "Local Blairgowrie team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Blairgowrie", caption: "Living room refresh in a Blairgowrie family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Blairgowrie", caption: "Nightly janitorial at a Blairgowrie office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Blairgowrie", caption: "Nightly janitorial at a Blairgowrie office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2623,7 +2623,7 @@ export const auchterarder: LocationDetail = {
   tagline: "Local Auchterarder crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Auchterarder.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Auchterarder since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Auchterarder | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Auchterarder cleaners covering every Scottish postcode in Fife & Central. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -2680,10 +2680,10 @@ export const auchterarder: LocationDetail = {
     { name: "Stirling", href: "/locations/stirling", region: "Fife & Central" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Auchterarder", caption: "Local crew working in Auchterarder" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Auchterarder", caption: "Local crew working in Auchterarder" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Auchterarder", caption: "Local Auchterarder team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Auchterarder", caption: "Living room refresh in a Auchterarder family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Auchterarder", caption: "Nightly janitorial at a Auchterarder office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Auchterarder", caption: "Nightly janitorial at a Auchterarder office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2763,7 +2763,7 @@ export const aberdeen: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Aberdeen", caption: "Local crew working in Aberdeen" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Aberdeen", caption: "Local Aberdeen team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Aberdeen", caption: "Living room refresh in a Aberdeen family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Aberdeen", caption: "Nightly janitorial at a Aberdeen office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Aberdeen", caption: "Nightly janitorial at a Aberdeen office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2840,7 +2840,7 @@ export const elgin: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Elgin", caption: "Local crew working in Elgin" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Elgin", caption: "Local Elgin team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Elgin", caption: "Living room refresh in a Elgin family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Elgin", caption: "Nightly janitorial at a Elgin office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Elgin", caption: "Nightly janitorial at a Elgin office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2917,7 +2917,7 @@ export const peterhead: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Peterhead", caption: "Local crew working in Peterhead" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Peterhead", caption: "Local Peterhead team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Peterhead", caption: "Living room refresh in a Peterhead family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Peterhead", caption: "Nightly janitorial at a Peterhead office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Peterhead", caption: "Nightly janitorial at a Peterhead office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -2994,7 +2994,7 @@ export const fraserburgh: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Fraserburgh", caption: "Local crew working in Fraserburgh" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Fraserburgh", caption: "Local Fraserburgh team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Fraserburgh", caption: "Living room refresh in a Fraserburgh family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Fraserburgh", caption: "Nightly janitorial at a Fraserburgh office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Fraserburgh", caption: "Nightly janitorial at a Fraserburgh office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3071,7 +3071,7 @@ export const inverurie: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Inverurie", caption: "Local crew working in Inverurie" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Inverurie", caption: "Local Inverurie team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Inverurie", caption: "Living room refresh in a Inverurie family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Inverurie", caption: "Nightly janitorial at a Inverurie office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Inverurie", caption: "Nightly janitorial at a Inverurie office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3148,7 +3148,7 @@ export const stonehaven: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Stonehaven", caption: "Local crew working in Stonehaven" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Stonehaven", caption: "Local Stonehaven team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Stonehaven", caption: "Living room refresh in a Stonehaven family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Stonehaven", caption: "Nightly janitorial at a Stonehaven office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Stonehaven", caption: "Nightly janitorial at a Stonehaven office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3225,7 +3225,7 @@ export const huntly: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Huntly", caption: "Local crew working in Huntly" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Huntly", caption: "Local Huntly team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Huntly", caption: "Living room refresh in a Huntly family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Huntly", caption: "Nightly janitorial at a Huntly office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Huntly", caption: "Nightly janitorial at a Huntly office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3302,7 +3302,7 @@ export const westhill: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Westhill", caption: "Local crew working in Westhill" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Westhill", caption: "Local Westhill team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Westhill", caption: "Living room refresh in a Westhill family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Westhill", caption: "Nightly janitorial at a Westhill office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Westhill", caption: "Nightly janitorial at a Westhill office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3379,7 +3379,7 @@ export const portlethen: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Portlethen", caption: "Local crew working in Portlethen" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Portlethen", caption: "Local Portlethen team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Portlethen", caption: "Living room refresh in a Portlethen family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Portlethen", caption: "Nightly janitorial at a Portlethen office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Portlethen", caption: "Nightly janitorial at a Portlethen office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3456,7 +3456,7 @@ export const banchory: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/f7024e2e1a58.jpg", alt: "Maundy Clean in Banchory", caption: "Local crew working in Banchory" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Banchory", caption: "Local Banchory team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Banchory", caption: "Living room refresh in a Banchory family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Banchory", caption: "Nightly janitorial at a Banchory office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Banchory", caption: "Nightly janitorial at a Banchory office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3536,7 +3536,7 @@ export const inverness: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Inverness", caption: "Local crew working in Inverness" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Inverness", caption: "Local Inverness team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Inverness", caption: "Living room refresh in a Inverness family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Inverness", caption: "Nightly janitorial at a Inverness office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Inverness", caption: "Nightly janitorial at a Inverness office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3613,7 +3613,7 @@ export const aviemore: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Aviemore", caption: "Local crew working in Aviemore" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Aviemore", caption: "Local Aviemore team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Aviemore", caption: "Living room refresh in a Aviemore family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Aviemore", caption: "Nightly janitorial at a Aviemore office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Aviemore", caption: "Nightly janitorial at a Aviemore office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3690,7 +3690,7 @@ export const oban: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Oban", caption: "Local crew working in Oban" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Oban", caption: "Local Oban team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Oban", caption: "Living room refresh in a Oban family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Oban", caption: "Nightly janitorial at a Oban office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Oban", caption: "Nightly janitorial at a Oban office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3767,7 +3767,7 @@ export const fort_william: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Fort William", caption: "Local crew working in Fort William" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Fort William", caption: "Local Fort William team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Fort William", caption: "Living room refresh in a Fort William family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Fort William", caption: "Nightly janitorial at a Fort William office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Fort William", caption: "Nightly janitorial at a Fort William office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3844,7 +3844,7 @@ export const thurso: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Thurso", caption: "Local crew working in Thurso" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Thurso", caption: "Local Thurso team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Thurso", caption: "Living room refresh in a Thurso family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Thurso", caption: "Nightly janitorial at a Thurso office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Thurso", caption: "Nightly janitorial at a Thurso office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3921,7 +3921,7 @@ export const wick: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Wick", caption: "Local crew working in Wick" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Wick", caption: "Local Wick team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Wick", caption: "Living room refresh in a Wick family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Wick", caption: "Nightly janitorial at a Wick office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Wick", caption: "Nightly janitorial at a Wick office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -3998,7 +3998,7 @@ export const kirkwall: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Kirkwall (Orkney)", caption: "Local crew working in Kirkwall (Orkney)" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Kirkwall (Orkney)", caption: "Local Kirkwall (Orkney) team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Kirkwall (Orkney)", caption: "Living room refresh in a Kirkwall (Orkney) family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Kirkwall (Orkney)", caption: "Nightly janitorial at a Kirkwall (Orkney) office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Kirkwall (Orkney)", caption: "Nightly janitorial at a Kirkwall (Orkney) office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4075,7 +4075,7 @@ export const lerwick: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Lerwick (Shetland)", caption: "Local crew working in Lerwick (Shetland)" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Lerwick (Shetland)", caption: "Local Lerwick (Shetland) team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Lerwick (Shetland)", caption: "Living room refresh in a Lerwick (Shetland) family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Lerwick (Shetland)", caption: "Nightly janitorial at a Lerwick (Shetland) office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Lerwick (Shetland)", caption: "Nightly janitorial at a Lerwick (Shetland) office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4152,7 +4152,7 @@ export const stornoway: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Stornoway (Lewis)", caption: "Local crew working in Stornoway (Lewis)" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Stornoway (Lewis)", caption: "Local Stornoway (Lewis) team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Stornoway (Lewis)", caption: "Living room refresh in a Stornoway (Lewis) family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Stornoway (Lewis)", caption: "Nightly janitorial at a Stornoway (Lewis) office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Stornoway (Lewis)", caption: "Nightly janitorial at a Stornoway (Lewis) office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4229,7 +4229,7 @@ export const portree: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Portree (Skye)", caption: "Local crew working in Portree (Skye)" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Portree (Skye)", caption: "Local Portree (Skye) team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Portree (Skye)", caption: "Living room refresh in a Portree (Skye) family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Portree (Skye)", caption: "Nightly janitorial at a Portree (Skye) office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Portree (Skye)", caption: "Nightly janitorial at a Portree (Skye) office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4306,7 +4306,7 @@ export const ballater: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Ballater", caption: "Local crew working in Ballater" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Ballater", caption: "Local Ballater team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Ballater", caption: "Living room refresh in a Ballater family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Ballater", caption: "Nightly janitorial at a Ballater office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Ballater", caption: "Nightly janitorial at a Ballater office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4383,7 +4383,7 @@ export const nairn: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Nairn", caption: "Local crew working in Nairn" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Nairn", caption: "Local Nairn team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Nairn", caption: "Living room refresh in a Nairn family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Nairn", caption: "Nightly janitorial at a Nairn office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Nairn", caption: "Nightly janitorial at a Nairn office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4460,7 +4460,7 @@ export const dornoch: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Dornoch", caption: "Local crew working in Dornoch" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dornoch", caption: "Local Dornoch team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dornoch", caption: "Living room refresh in a Dornoch family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dornoch", caption: "Nightly janitorial at a Dornoch office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dornoch", caption: "Nightly janitorial at a Dornoch office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4537,7 +4537,7 @@ export const ullapool: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Ullapool", caption: "Local crew working in Ullapool" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Ullapool", caption: "Local Ullapool team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Ullapool", caption: "Living room refresh in a Ullapool family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Ullapool", caption: "Nightly janitorial at a Ullapool office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Ullapool", caption: "Nightly janitorial at a Ullapool office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4554,7 +4554,7 @@ export const galashiels: LocationDetail = {
   tagline: "Local Galashiels crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Galashiels.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Galashiels since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Galashiels | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Galashiels cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -4611,10 +4611,10 @@ export const galashiels: LocationDetail = {
     { name: "Troon", href: "/locations/troon", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Galashiels", caption: "Local crew working in Galashiels" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Galashiels", caption: "Local crew working in Galashiels" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Galashiels", caption: "Local Galashiels team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Galashiels", caption: "Living room refresh in a Galashiels family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Galashiels", caption: "Nightly janitorial at a Galashiels office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Galashiels", caption: "Nightly janitorial at a Galashiels office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4631,7 +4631,7 @@ export const ayr: LocationDetail = {
   tagline: "Local Ayr crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Ayr.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Ayr since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Ayr | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Ayr cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -4688,10 +4688,10 @@ export const ayr: LocationDetail = {
     { name: "Troon", href: "/locations/troon", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Ayr", caption: "Local crew working in Ayr" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Ayr", caption: "Local crew working in Ayr" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Ayr", caption: "Local Ayr team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Ayr", caption: "Living room refresh in a Ayr family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Ayr", caption: "Nightly janitorial at a Ayr office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Ayr", caption: "Nightly janitorial at a Ayr office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4708,7 +4708,7 @@ export const kilmarnock: LocationDetail = {
   tagline: "Local Kilmarnock crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Kilmarnock.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Kilmarnock since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Kilmarnock | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Kilmarnock cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -4765,10 +4765,10 @@ export const kilmarnock: LocationDetail = {
     { name: "Troon", href: "/locations/troon", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Kilmarnock", caption: "Local crew working in Kilmarnock" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Kilmarnock", caption: "Local crew working in Kilmarnock" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Kilmarnock", caption: "Local Kilmarnock team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Kilmarnock", caption: "Living room refresh in a Kilmarnock family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Kilmarnock", caption: "Nightly janitorial at a Kilmarnock office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Kilmarnock", caption: "Nightly janitorial at a Kilmarnock office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4785,7 +4785,7 @@ export const dumfries: LocationDetail = {
   tagline: "Local Dumfries crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Dumfries.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Dumfries since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Dumfries | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Dumfries cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -4842,10 +4842,10 @@ export const dumfries: LocationDetail = {
     { name: "Troon", href: "/locations/troon", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Dumfries", caption: "Local crew working in Dumfries" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Dumfries", caption: "Local crew working in Dumfries" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dumfries", caption: "Local Dumfries team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dumfries", caption: "Living room refresh in a Dumfries family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dumfries", caption: "Nightly janitorial at a Dumfries office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dumfries", caption: "Nightly janitorial at a Dumfries office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4862,7 +4862,7 @@ export const greenock: LocationDetail = {
   tagline: "Local Greenock crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Greenock.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Greenock since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Greenock | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Greenock cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -4919,10 +4919,10 @@ export const greenock: LocationDetail = {
     { name: "Troon", href: "/locations/troon", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Greenock", caption: "Local crew working in Greenock" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Greenock", caption: "Local crew working in Greenock" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Greenock", caption: "Local Greenock team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Greenock", caption: "Living room refresh in a Greenock family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Greenock", caption: "Nightly janitorial at a Greenock office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Greenock", caption: "Nightly janitorial at a Greenock office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -4939,7 +4939,7 @@ export const stranraer: LocationDetail = {
   tagline: "Local Stranraer crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Stranraer.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Stranraer since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Stranraer | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Stranraer cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -4996,10 +4996,10 @@ export const stranraer: LocationDetail = {
     { name: "Troon", href: "/locations/troon", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Stranraer", caption: "Local crew working in Stranraer" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Stranraer", caption: "Local crew working in Stranraer" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Stranraer", caption: "Local Stranraer team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Stranraer", caption: "Living room refresh in a Stranraer family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Stranraer", caption: "Nightly janitorial at a Stranraer office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Stranraer", caption: "Nightly janitorial at a Stranraer office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5016,7 +5016,7 @@ export const troon: LocationDetail = {
   tagline: "Local Troon crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Troon.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Troon since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Troon | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Troon cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5073,10 +5073,10 @@ export const troon: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Troon", caption: "Local crew working in Troon" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Troon", caption: "Local crew working in Troon" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Troon", caption: "Local Troon team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Troon", caption: "Living room refresh in a Troon family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Troon", caption: "Nightly janitorial at a Troon office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Troon", caption: "Nightly janitorial at a Troon office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5093,7 +5093,7 @@ export const irvine: LocationDetail = {
   tagline: "Local Irvine crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Irvine.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Irvine since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Irvine | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Irvine cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5150,10 +5150,10 @@ export const irvine: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Irvine", caption: "Local crew working in Irvine" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Irvine", caption: "Local crew working in Irvine" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Irvine", caption: "Local Irvine team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Irvine", caption: "Living room refresh in a Irvine family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Irvine", caption: "Nightly janitorial at a Irvine office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Irvine", caption: "Nightly janitorial at a Irvine office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5170,7 +5170,7 @@ export const prestwick: LocationDetail = {
   tagline: "Local Prestwick crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Prestwick.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Prestwick since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Prestwick | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Prestwick cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5227,10 +5227,10 @@ export const prestwick: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Prestwick", caption: "Local crew working in Prestwick" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Prestwick", caption: "Local crew working in Prestwick" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Prestwick", caption: "Local Prestwick team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Prestwick", caption: "Living room refresh in a Prestwick family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Prestwick", caption: "Nightly janitorial at a Prestwick office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Prestwick", caption: "Nightly janitorial at a Prestwick office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5247,7 +5247,7 @@ export const melrose: LocationDetail = {
   tagline: "Local Melrose crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Melrose.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Melrose since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Melrose | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Melrose cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5304,10 +5304,10 @@ export const melrose: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Melrose", caption: "Local crew working in Melrose" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Melrose", caption: "Local crew working in Melrose" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Melrose", caption: "Local Melrose team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Melrose", caption: "Living room refresh in a Melrose family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Melrose", caption: "Nightly janitorial at a Melrose office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Melrose", caption: "Nightly janitorial at a Melrose office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5324,7 +5324,7 @@ export const peebles: LocationDetail = {
   tagline: "Local Peebles crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Peebles.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Peebles since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Peebles | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Peebles cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5381,10 +5381,10 @@ export const peebles: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Peebles", caption: "Local crew working in Peebles" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Peebles", caption: "Local crew working in Peebles" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Peebles", caption: "Local Peebles team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Peebles", caption: "Living room refresh in a Peebles family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Peebles", caption: "Nightly janitorial at a Peebles office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Peebles", caption: "Nightly janitorial at a Peebles office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5401,7 +5401,7 @@ export const hawick: LocationDetail = {
   tagline: "Local Hawick crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Hawick.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Hawick since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg",
   metaTitle: "Cleaning Services in Hawick | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Hawick cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5458,10 +5458,10 @@ export const hawick: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/333aca9a5389.jpg", alt: "Maundy Clean in Hawick", caption: "Local crew working in Hawick" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.07.12%20PM.jpeg", alt: "Maundy Clean in Hawick", caption: "Local crew working in Hawick" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Hawick", caption: "Local Hawick team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Hawick", caption: "Living room refresh in a Hawick family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Hawick", caption: "Nightly janitorial at a Hawick office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Hawick", caption: "Nightly janitorial at a Hawick office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5478,7 +5478,7 @@ export const dumbarton: LocationDetail = {
   tagline: "Local Dumbarton crews. Same PVG-checked team every visit. 98 services, one phone number.",
   heroHeadline: "Cleaning services\nin Dumbarton.\nDone properly.",
   heroSubhead: "Maundy Clean has been operating in Dumbarton since 2014. Our local branch covers every postcode in the area with the same PVG-checked, PAYE-employed crew every visit — backed by a 100% re-clean guarantee if anything's missed. Recurring home, commercial, deep clean, move-in/out, holiday-let, medical-grade and 90+ more services. All in one phone call.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png",
   metaTitle: "Cleaning Services in Dumbarton | 98 Services · Same PVG-Checked Crew | Maundy Clean",
   metaDescription: "Local Dumbarton cleaners covering every Scottish postcode in Borders & South-West. 98 cleaning services — recurring home, commercial, deep clean, move-in/out, holiday-let & more. Free re-clean guarantee. 4.9★ across 6,200+ reviews. Quote within 1 hour.",
   overviewParagraphs: [
@@ -5535,10 +5535,10 @@ export const dumbarton: LocationDetail = {
     { name: "Stranraer", href: "/locations/stranraer", region: "Borders & South-West" },
   ],
   gallery: [
-    { src: "https://sfile.chatglm.cn/images-ppt/2d1f20c0ffe9.jpg", alt: "Maundy Clean in Dumbarton", caption: "Local crew working in Dumbarton" },
+    { src: "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_rbkd85rbkd85rbkd.png", alt: "Maundy Clean in Dumbarton", caption: "Local crew working in Dumbarton" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Dumbarton", caption: "Local Dumbarton team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Dumbarton", caption: "Living room refresh in a Dumbarton family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Dumbarton", caption: "Nightly janitorial at a Dumbarton office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Dumbarton", caption: "Nightly janitorial at a Dumbarton office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };
@@ -5615,7 +5615,7 @@ export const lochgilphead: LocationDetail = {
     { src: "https://sfile.chatglm.cn/images-ppt/92b17b381a85.jpg", alt: "Maundy Clean in Lochgilphead", caption: "Local crew working in Lochgilphead" },
     { src: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", alt: "Maundy Clean crew on-site in Lochgilphead", caption: "Local Lochgilphead team mid-visit" },
     { src: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", alt: "Residential clean in Lochgilphead", caption: "Living room refresh in a Lochgilphead family home" },
-    { src: "https://sfile.chatglm.cn/images-ppt/7506876cba69.jpg", alt: "Commercial contract in Lochgilphead", caption: "Nightly janitorial at a Lochgilphead office" },
+    { src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%209.54.33%20PM.jpeg", alt: "Commercial contract in Lochgilphead", caption: "Nightly janitorial at a Lochgilphead office" },
   ],
   servicesByCategory: sharedServicesByCategory,
 };

@@ -54,7 +54,7 @@ const IMG = {
   interlinkSpring:
     "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg", // bright modern living room
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg", // map of Scotland
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg", // map of Scotland
 };
 
 // ============================================================

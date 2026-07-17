@@ -48,13 +48,13 @@ const IMG = {
   leaseRecurring:
     "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
   leaseTenancy:
-    "https://sfile.chatglm.cn/images-ppt/9a55cbb5acf7.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2011.14.04%20PM.jpeg",
   leaseDeep:
     "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
   leaseSpring:
     "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
   nearMeMap:
-    "https://sfile.chatglm.cn/images-ppt/392a7cbbe123.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg",
 };
 
 // ============================================================
