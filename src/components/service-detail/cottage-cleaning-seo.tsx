@@ -323,7 +323,7 @@ export function CottageSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Authority in Cottage Maintenance
+              Why Maundy Clean is Scotland\'s Authority in Cottage Maintenance
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               While many cleaning companies operate as impersonal booking platforms, Maundy Clean
@@ -581,7 +581,7 @@ export function CottageSeoIncludedDetail() {
           className="max-w-3xl mb-12"
         >
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
-            What&apos;s included · the detail
+            What\'s included · the detail
           </span>
           <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
             Our Comprehensive Recurring Cleaning Checklist
@@ -825,7 +825,7 @@ export function CottageSeoFaq() {
             Frequently Asked Questions
           </h2>
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
-            Straight answers to the questions our cottage clients ask most often. Can&apos;t find
+            Straight answers to the questions our cottage clients ask most often. Can\'t find
             what you need? Call us on{" "}
             <a
               href={contactInfo.phoneHref}
@@ -833,7 +833,7 @@ export function CottageSeoFaq() {
             >
               {contactInfo.phone}
             </a>{" "}
-            and we&apos;ll talk it through.
+            and we\'ll talk it through.
           </p>
         </motion.div>
 
@@ -1008,7 +1008,7 @@ export function CottageSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your village? We add new postcodes every month.</span>
+                <span>Don\'t see your village? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"
@@ -1034,7 +1034,7 @@ export function CottageSeoNearMe() {
             Ballater, Inverurie, and Inverness; the coastal retreats of Fife, Argyll, Aberdeenshire,
             and Ayrshire; the Borders farmhouses around Peebles, Galashiels, and Melrose; and the
             Islands from Portree to Stornoway, Lerwick to Kirkwall &mdash; from Oban to Thurso, Fort
-            William to Dunbar. Whether you&apos;re searching for recurring cottage cleaning in
+            William to Dunbar. Whether you\'re searching for recurring cottage cleaning in
             Perth, holiday-let turnover in St Andrews, wood-burner soot management in Aviemore, or
             coastal cottage maintenance in Ayr, Maundy Clean assigns a PVG-checked, PAYE-employed
             specialist who stays with you for the long run. Same specialist, same day, same

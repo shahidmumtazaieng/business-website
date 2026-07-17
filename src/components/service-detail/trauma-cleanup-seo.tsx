@@ -195,7 +195,7 @@ export function TraumaCleanupSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;In an incredibly challenging situation, the Maundy Clean team handled everything with extreme professionalism and profound discretion. Their technical team was prompt, compassionate, and restored our premises to absolute safety.&quot;
+            \"In an incredibly challenging situation, the Maundy Clean team handled everything with extreme professionalism and profound discretion. Their technical team was prompt, compassionate, and restored our premises to absolute safety.\"
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -231,7 +231,7 @@ export function TraumaCleanupSeoIntro() {
               The aftermath of a traumatic event is one of the most challenging situations a property owner can face, requiring a level of care that goes far beyond standard domestic maintenance. Trauma cleanup is a technical discipline designed to deliver swift, thorough, and compassionate solutions in the face of unexpected events. At Maundy Clean, we provide premium forensic-level decontamination across Glasgow, Edinburgh, and the Central Belt, restoring your space to a safe, healthy environment.
             </p>
             <p>
-              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s most prestigious residences, we bring that same level of technical intimacy and &quot;same-staff&quot; consistency to specialized trauma recovery. We act as your strategic partner, ensuring that all surfaces are cleaned to eliminate the risk of disease and airborne pathogens, including dangerous viruses such as Hepatitis B, Hepatitis C, and HIV.
+              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s most prestigious residences, we bring that same level of technical intimacy and \"same-staff\" consistency to specialized trauma recovery. We act as your strategic partner, ensuring that all surfaces are cleaned to eliminate the risk of disease and airborne pathogens, including dangerous viruses such as Hepatitis B, Hepatitis C, and HIV.
             </p>
           </div>
         </div>
@@ -518,7 +518,7 @@ export function TraumaCleanupSeoBooking() {
             Responsive Operations
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            The Maundy Clean 3-Step &quot;Hassle-Free&quot; Process
+            The Maundy Clean 3-Step \"Hassle-Free\" Process
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             We have optimized our booking experience to be uncomplicated and straightforward, providing the responsive support Scottish families and businesses demand.
@@ -710,7 +710,7 @@ export function TraumaCleanupSeoNearMe() {
           </div>
 
           <p className="text-[11px] text-[var(--muted-foreground)] text-center italic">
-            Don&apos;t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
+            Don\'t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
           </p>
         </div>
       </div>

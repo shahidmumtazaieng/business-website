@@ -475,7 +475,7 @@ export function BungalowSeoIncludedDetail() {
           className="max-w-3xl mb-12"
         >
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
-            What&apos;s included · the detail
+            What\'s included · the detail
           </span>
           <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
             Our Comprehensive Bungalow Cleaning Checklist
@@ -910,7 +910,7 @@ export function BungalowSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"
@@ -1044,7 +1044,7 @@ export function BungalowSeoFaq() {
             Frequently Asked Questions
           </h2>
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
-            Straight answers to the questions our bungalow clients ask most often. Can&apos;t find
+            Straight answers to the questions our bungalow clients ask most often. Can\'t find
             what you need? Call us on{" "}
             <a
               href={contactInfo.phoneHref}
@@ -1052,7 +1052,7 @@ export function BungalowSeoFaq() {
             >
               {contactInfo.phone}
             </a>{" "}
-            and we&apos;ll talk it through.
+            and we\'ll talk it through.
           </p>
         </motion.div>
 

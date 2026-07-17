@@ -195,7 +195,7 @@ export function AsbestosCleanupPrepSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;Asbestos remains a significant technical challenge for property owners across Scotland. Standard cleaning methods are insufficient and potentially dangerous. Maundy Clean provided a total environmental reset that met the highest safety criteria.&quot;
+            \"Asbestos remains a significant technical challenge for property owners across Scotland. Standard cleaning methods are insufficient and potentially dangerous. Maundy Clean provided a total environmental reset that met the highest safety criteria.\"
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -228,10 +228,10 @@ export function AsbestosCleanupPrepSeoIntro() {
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              Asbestos remains a significant technical challenge for property owners across Glasgow, Edinburgh, and the Central Belt, particularly within historic tenements and industrial sites undergoing renovation. Whether you are preparing for a licensed abatement or require a specialized deep clean following a structural disturbance, standard cleaning methods are insufficient and potentially dangerous. At Maundy Clean, we provide a premium asbestos cleanup prep service designed to deliver a total environmental reset, ensuring your home or business is &quot;speechlessly spotless&quot; and meets the highest safety criteria.
+              Asbestos remains a significant technical challenge for property owners across Glasgow, Edinburgh, and the Central Belt, particularly within historic tenements and industrial sites undergoing renovation. Whether you are preparing for a licensed abatement or require a specialized deep clean following a structural disturbance, standard cleaning methods are insufficient and potentially dangerous. At Maundy Clean, we provide a premium asbestos cleanup prep service designed to deliver a total environmental reset, ensuring your home or business is \"speechlessly spotless\" and meets the highest safety criteria.
             </p>
             <p>
-              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and &quot;same-staff&quot; consistency to the high-stakes world of hazardous material preparation. We act as your strategic partner, working alongside licensed removal specialists to ensure all surfaces are prepared and decontaminated to eliminate the risk of airborne pathogens and structural pollutants.
+              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and \"same-staff\" consistency to the high-stakes world of hazardous material preparation. We act as your strategic partner, working alongside licensed removal specialists to ensure all surfaces are prepared and decontaminated to eliminate the risk of airborne pathogens and structural pollutants.
             </p>
           </div>
         </div>
@@ -269,7 +269,7 @@ const TRUST_CARDS: TrustCard[] = [
     title: "The Same Trusted Team Every Visit",
     description: (
       <>
-        Reliability is the cornerstone of safety. We ensure the same vetted, background-checked professionals manage your decontamination project to build a deep understanding of your property&apos;s specific layout and &quot;risky&quot; high-accumulation zones.
+        Reliability is the cornerstone of safety. We ensure the same vetted, background-checked professionals manage your decontamination project to build a deep understanding of your property\'s specific layout and \"risky\" high-accumulation zones.
       </>
     ),
   },
@@ -431,7 +431,7 @@ export function AsbestosCleanupPrepSeoChecklist() {
             Our Total Asbestos Prep & Post-Clean Checklist
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            Our deep cleaning services for asbestos scenarios follow a rigorous, agency-approved checklist designed to address both pre-abatement preparation and post-removal &quot;resets&quot;.
+            Our deep cleaning services for asbestos scenarios follow a rigorous, agency-approved checklist designed to address both pre-abatement preparation and post-removal \"resets\".
           </p>
         </div>
 
@@ -546,7 +546,7 @@ export function AsbestosCleanupPrepSeoBooking() {
             Hassle-Free Process
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            The Maundy Clean 3-Step &quot;Hassle-Free&quot; Process
+            The Maundy Clean 3-Step \"Hassle-Free\" Process
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             We have optimized our booking experience to be uncomplicated and straightforward, providing the responsive support Scottish property owners demand.
@@ -754,7 +754,7 @@ export function AsbestosCleanupPrepSeoNearMe() {
           </div>
 
           <p className="text-[11px] text-[var(--muted-foreground)] text-center italic">
-            Don&apos;t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
+            Don\'t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
           </p>
         </div>
       </div>

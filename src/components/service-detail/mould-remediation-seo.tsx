@@ -195,7 +195,7 @@ export function MouldRemediationSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;Mould growth is a technical challenge that impacts the structural integrity of your building and the health of its occupants. Maundy Clean provided a premium mould remediation service designed to neutralise spores, remove damp-related mustiness, and restore our property to a speechlessly spotless and biologically safe condition.&quot;
+            \"Mould growth is a technical challenge that impacts the structural integrity of your building and the health of its occupants. Maundy Clean provided a premium mould remediation service designed to neutralise spores, remove damp-related mustiness, and restore our property to a speechlessly spotless and biologically safe condition.\"
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -228,10 +228,10 @@ export function MouldRemediationSeoIntro() {
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              Mould growth is more than an aesthetic issue; it is a technical challenge that impacts the structural integrity of your building and the health of its occupants. Whether you are dealing with black mould in a historic Edinburgh tenement or damp-related spores in a modern Glasgow workspace, standard cleaning often fails to address the root biological cause. At Maundy Clean, we provide a premium mould remediation cleaning service designed to neutralise spores, remove &quot;damp-related mustiness,&quot; and restore your environment to a &quot;speechlessly spotless&quot; and biologically safe condition.
+              Mould growth is more than an aesthetic issue; it is a technical challenge that impacts the structural integrity of your building and the health of its occupants. Whether you are dealing with black mould in a historic Edinburgh tenement or damp-related spores in a modern Glasgow workspace, standard cleaning often fails to address the root biological cause. At Maundy Clean, we provide a premium mould remediation cleaning service designed to neutralise spores, remove \"damp-related mustiness,\" and restore your environment to a \"speechlessly spotless\" and biologically safe condition.
             </p>
             <p>
-              While we are the recognised authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and &quot;same-staff&quot; consistency to specialized microbial remediation. We act as your strategic partner, delivering a technical reset that returns your property to a healthy sanctuary.
+              While we are the recognised authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and \"same-staff\" consistency to specialized microbial remediation. We act as your strategic partner, delivering a technical reset that returns your property to a healthy sanctuary.
             </p>
           </div>
         </div>
@@ -267,7 +267,7 @@ const TRUST_CARDS: TrustCard[] = [
   {
     icon: Users,
     title: "The Same Trusted Team Every Visit",
-    description: "Reliability is our anchor. We ensure the same vetted, background-checked professionals manage your remediation project to build a deep understanding of your property's specific ventilation challenges and moisture-prone &quot;risky&quot; zones.",
+    description: "Reliability is our anchor. We ensure the same vetted, background-checked professionals manage your remediation project to build a deep understanding of your property's specific ventilation challenges and moisture-prone \"risky\" zones.",
   },
   {
     icon: ShieldCheck,
@@ -374,7 +374,7 @@ const CHECKLIST_GROUPS: ChecklistGroup[] = [
     points: [
       {
         title: "Molecular Deodorisation",
-        text: "Utilizing Ozone treatments or thermal fogging to neutralise the &quot;musty&quot; smells associated with damp and mould.",
+        text: "Utilizing Ozone treatments or thermal fogging to neutralise the \"musty\" smells associated with damp and mould.",
       },
       {
         title: "Inside Window Care",
@@ -518,7 +518,7 @@ export function MouldRemediationSeoBooking() {
             Responsive Operations
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            The Maundy Clean 3-Step &quot;Hassle-Free&quot; Process
+            The Maundy Clean 3-Step \"Hassle-Free\" Process
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             We have optimised our booking experience to be uncomplicated and straightforward, providing the responsive support Scottish property owners demand.
@@ -710,7 +710,7 @@ export function MouldRemediationSeoNearMe() {
           </div>
 
           <p className="text-[11px] text-[var(--muted-foreground)] text-center italic">
-            Don&apos;t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
+            Don\'t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
           </p>
         </div>
       </div>

@@ -934,7 +934,7 @@ export function CarpetRugSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/services/carpet-rug-cleaning-near-me"
@@ -1082,14 +1082,14 @@ export function CarpetRugSeoFaq() {
           </h2>
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
             Straight answers to the questions our carpet &amp; rug cleaning clients ask most often.
-            Can&apos;t find what you need? Call us on{" "}
+            Can\'t find what you need? Call us on{" "}
             <a
               href={contactInfo.phoneHref}
               className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
             >
               {contactInfo.phone}
             </a>{" "}
-            and we&apos;ll talk it through.
+            and we\'ll talk it through.
           </p>
         </motion.div>
 

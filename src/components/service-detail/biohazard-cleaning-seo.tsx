@@ -209,7 +209,7 @@ export function BiohazardCleaningSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;In an incredibly challenging situation, the Maundy Clean team handled everything with extreme professionalism and profound discretion. Their technical team was prompt, compassionate, and restored our premises to absolute biological safety.&quot;
+            \"In an incredibly challenging situation, the Maundy Clean team handled everything with extreme professionalism and profound discretion. Their technical team was prompt, compassionate, and restored our premises to absolute biological safety.\"
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -519,7 +519,7 @@ const BOOKING_STEPS: BookingStep[] = [
     icon: Sparkles,
     step: "03",
     title: "Enjoy a Pristine Environment",
-    description: "Experience a property that is &quot;speechlessly spotless&quot; and biologically safe, backed by our Maundy Clean satisfaction guarantee.",
+    description: "Experience a property that is \"speechlessly spotless\" and biologically safe, backed by our Maundy Clean satisfaction guarantee.",
   },
 ];
 
@@ -532,7 +532,7 @@ export function BiohazardCleaningSeoBooking() {
             Responsive Operations
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            The Maundy Clean 3-Step &quot;Hassle-Free&quot; Process
+            The Maundy Clean 3-Step \"Hassle-Free\" Process
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             We have optimized our booking experience to be uncomplicated and straightforward, providing the responsive support Scottish families and businesses demand.
@@ -724,7 +724,7 @@ export function BiohazardCleaningSeoNearMe() {
           </div>
 
           <p className="text-[11px] text-[var(--muted-foreground)] text-center italic">
-            Don&apos;t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
+            Don\'t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
           </p>
         </div>
       </div>

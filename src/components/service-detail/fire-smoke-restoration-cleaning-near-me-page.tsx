@@ -257,7 +257,7 @@ export function FireSmokeRestorationCleaningNearMeDispatch() {
               When dealing with post-fire residues, timing is crucial. Our localized dispatch procedure ensures that within hours of your contact, a fully prepared Maundy Clean crew is on-site with the necessary containment tools.
             </p>
             <p>
-              We don&apos;t just wipe away the visible dry soot; we identify the underlying carbon residues and use specialized ozone generators and HEPA air scrubbers to neutralize persistent smoke odors, preventing cross-contamination to unaffected rooms.
+              We don\'t just wipe away the visible dry soot; we identify the underlying carbon residues and use specialized ozone generators and HEPA air scrubbers to neutralize persistent smoke odors, preventing cross-contamination to unaffected rooms.
             </p>
           </div>
 
@@ -303,7 +303,7 @@ export function FireSmokeRestorationCleaningNearMeCta() {
           Ready to Connect with Your Local Fire & Smoke Restoration Specialists?
         </h3>
         <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto leading-relaxed">
-          Don&apos;t let soot and smoke affect the air quality and structure of your property. Our localized teams are on standby across Scotland to restore safety, cleanliness, and peace of mind.
+          Don\'t let soot and smoke affect the air quality and structure of your property. Our localized teams are on standby across Scotland to restore safety, cleanliness, and peace of mind.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Button

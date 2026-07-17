@@ -318,7 +318,7 @@ export function SpringSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Trusted Choice for Spring Cleaning
+              Why Maundy Clean is Scotland\'s Trusted Choice for Spring Cleaning
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               Maundy Clean is a local, personal, and affordable cleaning specialist across the
@@ -568,7 +568,7 @@ export function SpringSeoIncludedDetail() {
           className="max-w-3xl mb-12"
         >
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
-            What&apos;s included · the detail
+            What\'s included · the detail
           </span>
           <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
             Our Comprehensive Domestic Cleaning Scope
@@ -884,7 +884,7 @@ export function SpringSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"

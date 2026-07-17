@@ -195,7 +195,7 @@ export function WaterDamageCleaningSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;Water damage is one of the most urgent and destructive events a property owner in Glasgow or Edinburgh can face. Whether it is a burst pipe, a localized leak, or environmental flooding, the damage extends far beyond the surface. Maundy Clean provided a speechlessly spotless and biologically safe condition.&quot;
+            \"Water damage is one of the most urgent and destructive events a property owner in Glasgow or Edinburgh can face. Whether it is a burst pipe, a localized leak, or environmental flooding, the damage extends far beyond the surface. Maundy Clean provided a speechlessly spotless and biologically safe condition.\"
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -228,10 +228,10 @@ export function WaterDamageCleaningSeoIntro() {
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              Water damage is one of the most urgent and destructive events a property owner in Glasgow or Edinburgh can face. Whether it is a burst pipe, a localized leak, or environmental flooding, the damage extends far beyond the surface, often leading to structural instability, &quot;damp-related mustiness,&quot; and the rapid growth of pathogens. At Maundy Clean, we provide a premium water damage cleaning service designed to deliver a total reset of flood-damaged buildings, ensuring your home or business is returned to a &quot;speechlessly spotless&quot; and biologically safe condition.
+              Water damage is one of the most urgent and destructive events a property owner in Glasgow or Edinburgh can face. Whether it is a burst pipe, a localized leak, or environmental flooding, the damage extends far beyond the surface, often leading to structural instability, \"damp-related mustiness,\" and the rapid growth of pathogens. At Maundy Clean, we provide a premium water damage cleaning service designed to deliver a total reset of flood-damaged buildings, ensuring your home or business is returned to a \"speechlessly spotless\" and biologically safe condition.
             </p>
             <p>
-              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and &quot;same-staff&quot; consistency to the high-stakes world of emergency flood recovery. We act as your motivated partner, providing the specialized deep cleaning after a building flood that standard domestic services simply cannot manage.
+              While we are the recognized authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and \"same-staff\" consistency to the high-stakes world of emergency flood recovery. We act as your motivated partner, providing the specialized deep cleaning after a building flood that standard domestic services simply cannot manage.
             </p>
           </div>
         </div>
@@ -269,7 +269,7 @@ const TRUST_CARDS: TrustCard[] = [
     title: "The Same Trusted Team Every Visit",
     description: (
       <>
-        Reliability is the bedrock of recovery. We ensure the same vetted, uniformed professionals manage your restoration project, allowing them to build a deep understanding of your property&apos;s specific layout and &quot;risky&quot; moisture-prone zones.
+        Reliability is the bedrock of recovery. We ensure the same vetted, uniformed professionals manage your restoration project, allowing them to build a deep understanding of your property\'s specific layout and \"risky\" moisture-prone zones.
       </>
     ),
   },
@@ -287,7 +287,7 @@ const TRUST_CARDS: TrustCard[] = [
     title: "Antiviral & Pathogen Control",
     description: (
       <>
-        Floodwater often carries &quot;structural pollutants&quot; and bacteria. We utilize professional <Link href="/services/disinfection-services" className="text-[var(--brand)] font-semibold hover:underline">Antiviral Sanitisation</Link> protocols to ensure every surface is 99.99% virus and bacteria-free after the water is removed.
+        Floodwater often carries \"structural pollutants\" and bacteria. We utilize professional <Link href="/services/disinfection-services" className="text-[var(--brand)] font-semibold hover:underline">Antiviral Sanitisation</Link> protocols to ensure every surface is 99.99% virus and bacteria-free after the water is removed.
       </>
     ),
   },
@@ -314,7 +314,7 @@ export function WaterDamageCleaningSeoWhy() {
             Why Maundy Clean is Scotland’s Expert in Flood Recovery
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            Many national agencies provide impersonal &quot;extraction-only&quot; services. Maundy Clean focuses on vocational excellence and a high-trust model to ensure your property is not just dry, but fully restored to its original standard.
+            Many national agencies provide impersonal \"extraction-only\" services. Maundy Clean focuses on vocational excellence and a high-trust model to ensure your property is not just dry, but fully restored to its original standard.
           </p>
         </div>
 
@@ -546,7 +546,7 @@ export function WaterDamageCleaningSeoBooking() {
             Simple 3-Step Recovery
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            The Maundy Clean 3-Step &quot;Hassle-Free&quot; Process
+            The Maundy Clean 3-Step \"Hassle-Free\" Process
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             We have optimized our booking experience to be uncomplicated and straightforward, providing the responsive support Scottish property owners demand during a crisis.
@@ -654,7 +654,7 @@ export function WaterDamageCleaningSeoInterlinking() {
             Maintaining Your Property Post-Flood
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            A water damage reset is the foundation of your home’s recovery, but maintaining that &quot;speechlessly spotless&quot; standard requires an ongoing strategy:
+            A water damage reset is the foundation of your home’s recovery, but maintaining that \"speechlessly spotless\" standard requires an ongoing strategy:
           </p>
         </div>
 
@@ -754,7 +754,7 @@ export function WaterDamageCleaningSeoNearMe() {
           </div>
 
           <p className="text-[11px] text-[var(--muted-foreground)] text-center italic">
-            Don&apos;t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
+            Don\'t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
           </p>
         </div>
       </div>

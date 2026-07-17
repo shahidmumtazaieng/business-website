@@ -107,7 +107,7 @@ export function FlatSeoHeroBanner() {
             Consistent care and professional housekeeping for your urban sanctuary.
             The same PVG-checked professional every visit, a 32-point flat-specific
             checklist, HEPA filtration for compact spaces, and a 100% re-clean guarantee
-            if anything&apos;s missed. Weekly, fortnightly &amp; monthly plans from £18/hr.
+            if anything\'s missed. Weekly, fortnightly &amp; monthly plans from £18/hr.
           </motion.p>
 
           <motion.div
@@ -241,7 +241,7 @@ const TRUST_CARDS = [
     icon: Users,
     title: "The Same Trusted Professional Every Visit",
     description:
-      "We believe reliability and trust are paramount. That is why we ensure the same vetted professional gets to know your property in detail every time. Our crew leads stay with us an average of 4.2 years — they learn your flat&apos;s quirks, your priority zones, and the close etiquette of your building, visit after visit.",
+      "We believe reliability and trust are paramount. That is why we ensure the same vetted professional gets to know your property in detail every time. Our crew leads stay with us an average of 4.2 years — they learn your flat\'s quirks, your priority zones, and the close etiquette of your building, visit after visit.",
   },
   {
     icon: Building2,
@@ -259,7 +259,7 @@ const TRUST_CARDS = [
     icon: Leaf,
     title: "Eco-Friendly & Family Safe",
     description:
-      "Your health is our priority. We supply all our own professional-grade equipment and use only certified child-safe and pet-safe products as standard — EU Ecolabel and DEFRA-approved low-VOC formulations that won&apos;t linger in compact flat spaces with limited ventilation.",
+      "Your health is our priority. We supply all our own professional-grade equipment and use only certified child-safe and pet-safe products as standard — EU Ecolabel and DEFRA-approved low-VOC formulations that won\'t linger in compact flat spaces with limited ventilation.",
   },
 ];
 
@@ -326,7 +326,7 @@ export function FlatSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Trusted Choice for Flat Cleaning
+              Why Maundy Clean is Scotland\'s Trusted Choice for Flat Cleaning
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               Maundy Clean is a local, premium cleaning specialist focused on building
@@ -587,7 +587,7 @@ export function FlatSeoIncludedDetail() {
           className="max-w-3xl mb-12"
         >
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
-            What&apos;s included · the detail
+            What\'s included · the detail
           </span>
           <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
             Our Comprehensive Flat Maintenance Checklist
@@ -821,14 +821,14 @@ export function FlatSeoFaq() {
           </h2>
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
             Straight answers to the questions our flat cleaning clients ask most often.
-            Can&apos;t find what you need? Call us on{" "}
+            Can\'t find what you need? Call us on{" "}
             <a
               href={contactInfo.phoneHref}
               className="font-semibold text-[var(--brand)] hover:text-[var(--brand-dark)] underline underline-offset-4"
             >
               {contactInfo.phone}
             </a>{" "}
-            and we&apos;ll talk it through.
+            and we\'ll talk it through.
           </p>
         </motion.div>
 
@@ -1003,7 +1003,7 @@ export function FlatSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"

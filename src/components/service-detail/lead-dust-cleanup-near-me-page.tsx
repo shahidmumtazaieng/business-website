@@ -81,14 +81,14 @@ const IMG = {
 // ============================================================
 // Hero Section
 // ============================================================
-export function AsbestosCleanupPrepNearMeHero() {
+export function LeadDustCleanupNearMeHero() {
   return (
     <section className="relative min-h-[460px] flex items-center justify-center bg-[var(--brand-dark)] text-white overflow-hidden py-16">
       <div className="absolute inset-0 z-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={IMG.hero}
-          alt="Asbestos Prep Cleaning Scotland Near Me"
+          alt="Lead Dust Cleanup Scotland Near Me"
           className="w-full h-full object-cover opacity-20 scale-105 select-none"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-dark)]/90 via-[var(--brand-dark)]/85 to-[var(--brand-dark)]" />
@@ -100,10 +100,10 @@ export function AsbestosCleanupPrepNearMeHero() {
           Local Emergency & Programmed Response
         </div>
         <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.15]">
-          Asbestos Cleanup Prep & Decontamination Near Me
+          Lead Dust Cleanup & Decontamination Near Me
         </h1>
         <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-          Localised emergency pre-abatement prep and post-removal dust reset specialists serving Glasgow, Edinburgh, Aberdeen, Dundee, and all surrounding Scottish areas.
+          Localised emergency lead particulate removal and structural decontamination specialists serving Glasgow, Edinburgh, Aberdeen, Dundee, and all surrounding Scottish areas.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Button
@@ -130,7 +130,7 @@ export function AsbestosCleanupPrepNearMeHero() {
 // ============================================================
 // Regional Interactive Grid
 // ============================================================
-export function AsbestosCleanupPrepNearMeGrid() {
+export function LeadDustCleanupNearMeGrid() {
   const [activeTab, setActiveTab] = useState<string>("All Regions");
 
   const regions = ["All Regions", ...Object.keys(REGIONAL_LOCATIONS)];
@@ -143,7 +143,7 @@ export function AsbestosCleanupPrepNearMeGrid() {
             Regional Directory
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Our Certified Local Asbestos Prep Cleaning Coverage Areas
+            Our Certified Local Lead Dust Cleanup Coverage Areas
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             Maundy Clean dispatch depots are strategically situated across Scotland. Select your region below to find local postcode details and book a local team.
@@ -200,7 +200,7 @@ export function AsbestosCleanupPrepNearMeGrid() {
                         </div>
 
                         <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
-                          Professional pre-abatement prep, HEPA dust containment, post-removal wet-wiping, and comprehensive safety sanitisation services for residential and commercial spaces in {city.city}.
+                          Professional lead paint prep, HEPA dust containment, post-renovation wet-wiping, and comprehensive safety sanitisation services for residential and commercial spaces in {city.city}.
                         </p>
 
                         <div className="space-y-2 border-t border-[var(--border)] pt-4">
@@ -222,7 +222,7 @@ export function AsbestosCleanupPrepNearMeGrid() {
                           asChild
                         >
                           <Link href={`/quote?location=${city.slug}`}>
-                            Book {city.city} Asbestos Prep Team
+                            Book {city.city} Lead Dust Team
                           </Link>
                         </Button>
                       </div>
@@ -241,7 +241,7 @@ export function AsbestosCleanupPrepNearMeGrid() {
 // ============================================================
 // Service Dispatch Hub Map / Graphic Side-by-Side
 // ============================================================
-export function AsbestosCleanupPrepNearMeDispatch() {
+export function LeadDustCleanupNearMeDispatch() {
   return (
     <section className="py-16 bg-[var(--cream)] text-[var(--ink)]">
       <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
@@ -254,10 +254,10 @@ export function AsbestosCleanupPrepNearMeDispatch() {
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              When managing hazardous materials, timing and containment are crucial. Our localized dispatch procedure ensures that within hours of your contact, a fully prepared Maundy Clean crew is on-site with the necessary containment tools.
+              When managing hazardous heavy metals, timing and containment are crucial. Our localized dispatch procedure ensures that within hours of your contact, a fully prepared Maundy Clean crew is on-site with the necessary containment tools.
             </p>
             <p>
-              We don\'t just wipe away the visible dust; we use specialized HEPA-filtered air scrubbers and wet-wiping protocols to trap airborne fibers, preventing cross-contamination to unaffected rooms.
+              We don\'t just wipe away the visible dust; we use specialized HEPA-filtered air scrubbers and wet-wiping protocols to trap airborne lead paint particles, preventing cross-contamination to unaffected rooms.
             </p>
           </div>
 
@@ -294,16 +294,16 @@ export function AsbestosCleanupPrepNearMeDispatch() {
 // ============================================================
 // Mid-Page Call-To-Action (Above FAQ)
 // ============================================================
-export function AsbestosCleanupPrepNearMeCta() {
+export function LeadDustCleanupNearMeCta() {
   return (
     <section className="py-16 bg-[var(--brand-dark)] text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,color-mix(in_oklch,var(--gold)_8%,transparent)_0,transparent_50%)]" />
       <div className="relative z-10 max-w-[900px] mx-auto px-6 text-center space-y-6">
         <h3 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-          Ready to Connect with Your Local Asbestos Prep Specialists?
+          Ready to Connect with Your Local Lead Dust Cleanup Specialists?
         </h3>
         <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto leading-relaxed">
-          Don\'t let dust and fine fibers affect the safety and structure of your property. Our localized teams are on standby across Scotland to restore biological safety, cleanliness, and peace of mind.
+          Don\'t let heavy metals and paint particles affect the safety and structure of your property. Our localized teams are on standby across Scotland to restore safety, cleanliness, and peace of mind.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Button
@@ -319,7 +319,7 @@ export function AsbestosCleanupPrepNearMeCta() {
             className="border border-white/30 text-white hover:bg-white/10 hover:text-white font-bold"
             asChild
           >
-            <Link href="/services/asbestos-prep-cleaning">View Service Details</Link>
+            <Link href="/services/lead-dust-cleanup">View Service Details</Link>
           </Button>
         </div>
         <div className="text-xs text-white/60 pt-2">
@@ -340,20 +340,20 @@ type FaqItem = {
 
 const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "How quickly can your local asbestos prep team arrive?",
+    q: "How quickly can your local lead dust cleanup team arrive?",
     a: "We have local dispatch depots across Scotland's major cities, allowing us to respond to emergency requests within under 2 hours in most Central Belt municipalities.",
   },
   {
     q: "Are your local crews fully certified and insured?",
-    a: "Yes. All our technicians are fully vetted, background-checked, and highly trained in HSE guidelines and COSHH compliance. We carry £5M public liability insurance as standard.",
+    a: "Yes. All our technicians are fully vetted, background-checked, and highly trained in HSE lead guidelines and COSHH compliance. We carry £5M public liability insurance as standard.",
   },
   {
-    q: "Do you personally remove the asbestos materials?",
-    a: "No. Maundy Clean specializes in the technical preparation and decontamination cleaning. We work in tandem with licensed asbestos removal contractors who handle the actual abatement, while we ensure the surrounding environment is speechlessly spotless and safe for return to use.",
+    q: "Do you supply all your own specialized HEPA equipment?",
+    a: "Absolutely. As part of our professional service, we utilize advanced HEPA-filtered vacuum extraction and wet-wiping protocols specifically designed for heavy metal particulates, ensuring 100% safety.",
   },
 ];
 
-export function AsbestosCleanupPrepNearMeFaq() {
+export function LeadDustCleanupNearMeFaq() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
@@ -364,7 +364,7 @@ export function AsbestosCleanupPrepNearMeFaq() {
             Frequently Asked Questions
           </div>
           <h2 className="font-display text-3xl font-extrabold tracking-tight leading-tight">
-            Common Local Asbestos Prep & Decontamination Questions
+            Common Local Lead Dust Cleanup Questions
           </h2>
         </div>
 

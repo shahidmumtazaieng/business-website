@@ -243,7 +243,7 @@ const TRUST_CARDS = [
     icon: Users,
     title: "The Same Trusted Specialist Every Visit",
     description:
-      "Trust is paramount in communal spaces. That is why we ensure the same vetted specialist visits your building every time — building a deep understanding of your close, your stair, your sash windows, and your priority zones. Our specialists stay with us an average of 4.2 years, so they know your building&apos;s quirks as well as you do.",
+      "Trust is paramount in communal spaces. That is why we ensure the same vetted specialist visits your building every time — building a deep understanding of your close, your stair, your sash windows, and your priority zones. Our specialists stay with us an average of 4.2 years, so they know your building\'s quirks as well as you do.",
   },
   {
     icon: Building2,
@@ -328,7 +328,7 @@ export function TenementSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Trusted Choice for Tenement Cleaning
+              Why Maundy Clean is Scotland\'s Trusted Choice for Tenement Cleaning
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               Maundy Clean is a local, premium cleaning specialist focused on building
@@ -418,7 +418,7 @@ const BOOKING_STEPS = [
     step: "02",
     title: "Professional Matching",
     description:
-      "We match your building or flat with a local tenement specialist who fits your schedule, offering appointments five days a week. For communal close cleans we coordinate with your factor or resident association; for private flats we operate a secure key-safe protocol if you can&apos;t be home. Your specialist is briefed on your building&apos;s original features before the first visit.",
+      "We match your building or flat with a local tenement specialist who fits your schedule, offering appointments five days a week. For communal close cleans we coordinate with your factor or resident association; for private flats we operate a secure key-safe protocol if you can\'t be home. Your specialist is briefed on your building\'s original features before the first visit.",
   },
   {
     icon: CalendarCheck,
@@ -591,7 +591,7 @@ export function TenementSeoIncludedDetail() {
           className="max-w-3xl mb-12"
         >
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
-            What&apos;s included · the detail
+            What\'s included · the detail
           </span>
           <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
             Our Total Tenement Maintenance Checklist
@@ -825,7 +825,7 @@ export function TenementSeoFaq() {
             Frequently Asked Questions
           </h2>
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed max-w-2xl mx-auto">
-            Straight answers to the questions our tenement clients ask most often. Can&apos;t
+            Straight answers to the questions our tenement clients ask most often. Can\'t
             find what you need? Call us on{" "}
             <a
               href={contactInfo.phoneHref}
@@ -833,7 +833,7 @@ export function TenementSeoFaq() {
             >
               {contactInfo.phone}
             </a>{" "}
-            and we&apos;ll talk it through.
+            and we\'ll talk it through.
           </p>
         </motion.div>
 
@@ -1008,7 +1008,7 @@ export function TenementSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"
@@ -1030,11 +1030,11 @@ export function TenementSeoNearMe() {
           className="mt-10 max-w-4xl mx-auto text-center"
         >
           <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            Our local tenement specialists operate across Glasgow&apos;s West End, Hyndland,
-            Dowanhill, Partick, and Dennistoun; Edinburgh&apos;s New Town, Marchmont,
-            Bruntsfield, Morningside, and Leith; Paisley&apos;s historic centre; Aberdeen&apos;s
-            granite tenements; and Dundee&apos;s West End &mdash; from Inverness to Thurso, Fort
-            William to Lerwick. Whether you&apos;re searching for recurring tenement cleaning in
+            Our local tenement specialists operate across Glasgow\'s West End, Hyndland,
+            Dowanhill, Partick, and Dennistoun; Edinburgh\'s New Town, Marchmont,
+            Bruntsfield, Morningside, and Leith; Paisley\'s historic centre; Aberdeen\'s
+            granite tenements; and Dundee\'s West End &mdash; from Inverness to Thurso, Fort
+            William to Lerwick. Whether you\'re searching for recurring tenement cleaning in
             Glasgow, close and stair cleaning in Edinburgh, period-property specialist cleaning
             in Aberdeen, or one-off tenement deep cleaning anywhere in between, Maundy Clean
             assigns a PVG-checked, PAYE-employed specialist who stays with you for the long run.

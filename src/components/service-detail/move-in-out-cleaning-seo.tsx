@@ -198,7 +198,7 @@ export function MoveSeoIntro() {
             combining the{" "}
             <strong className="font-semibold text-[var(--ink)]">&ldquo;Same Cleaner&rdquo;</strong>{" "}
             trust factor with a granular technical checklist that covers every corner a landlord or
-            inventory clerk will inspect. Maintaining a pristine home in today&apos;s busy world
+            inventory clerk will inspect. Maintaining a pristine home in today\'s busy world
             requires more than a simple tidy-up — it requires a professional cleaning partner you can
             trust at every property milestone.
           </p>
@@ -328,7 +328,7 @@ export function MoveSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Trusted Choice for Move-In / Move-Out Cleaning
+              Why Maundy Clean is Scotland\'s Trusted Choice for Move-In / Move-Out Cleaning
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               Maundy Clean is a local specialist focused on building long-term relationships with
@@ -489,7 +489,7 @@ export function MoveSeoChecklist() {
             Our move-in / move-out cleaning is designed to reset your property from top to bottom.
             We follow a rigorous, agency-approved 47-point checklist — audited from 1,200+ real
             Scottish checkout inspections — to ensure no detail is overlooked. Below is the
-            room-by-room breakdown of what&apos;s included as standard.
+            room-by-room breakdown of what\'s included as standard.
           </p>
         </motion.div>
 
@@ -729,7 +729,7 @@ export function MoveSeoInterlinking() {
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
             While move-in / move-out cleaning provides the essential reset at property milestones,
             we offer a full spectrum of specialist &ldquo;reset&rdquo; services for every stage of
-            your property&apos;s lifecycle. The same trusted crew, the same PVG-checked standard, the
+            your property\'s lifecycle. The same trusted crew, the same PVG-checked standard, the
             same 100% re-clean guarantee — whatever the transition.
           </p>
         </motion.div>
@@ -928,7 +928,7 @@ export function MoveSeoNearMe() {
               Searching for &ldquo;move-out cleaning near me&rdquo; or &ldquo;end of tenancy cleaning
               near me&rdquo; in Scotland? Maundy Clean covers 72+ towns and cities across the Central
               Belt, Highlands, Borders, and Islands. Same 47-point letting-agent checklist, same
-              bond-back guarantee, same PVG-checked crews — wherever you&apos;re moving from or to.
+              bond-back guarantee, same PVG-checked crews — wherever you\'re moving from or to.
               Find your local crew below.
             </p>
 
@@ -995,7 +995,7 @@ export function MoveSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"
@@ -1017,12 +1017,12 @@ export function MoveSeoNearMe() {
           className="mt-10 max-w-4xl mx-auto text-center"
         >
           <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            Our local move-in / move-out crews operate across Glasgow&apos;s West End, Edinburgh&apos;s
-            New Town, Aberdeen&apos;s suburbs, Dundee&apos;s city centre, and the Highlands — from
-            Inverness to Thurso, Fort William to Lerwick. Whether you&apos;re searching for end of
+            Our local move-in / move-out crews operate across Glasgow\'s West End, Edinburgh\'s
+            New Town, Aberdeen\'s suburbs, Dundee\'s city centre, and the Highlands — from
+            Inverness to Thurso, Fort William to Lerwick. Whether you\'re searching for end of
             tenancy cleaning in Glasgow, deposit-back move-out cleaning in Edinburgh, bond-back
             cleaning in Aberdeen, or move-in cleaning anywhere in between, Maundy Clean assigns a
-            PVG-checked, PAYE-employed crew that works to the letting agent&apos;s 47-point
+            PVG-checked, PAYE-employed crew that works to the letting agent\'s 47-point
             checklist. Same crew lead from walk-through to PDF report, same fixed price, same 7-day
             bond-back guarantee.
           </p>

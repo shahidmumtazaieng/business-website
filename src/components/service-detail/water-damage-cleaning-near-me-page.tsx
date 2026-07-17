@@ -257,7 +257,7 @@ export function WaterDamageCleaningNearMeDispatch() {
               When dealing with severe moisture issues, timing is crucial. Our localized dispatch procedure ensures that within hours of your contact, a fully prepared Maundy Clean crew is on-site with the necessary containment tools.
             </p>
             <p>
-              We don&apos;t just wipe away the visible moisture; we identify the underlying moisture sources (such as leaks or condensation issues) and use specialized dehumidification and air scrubbers to trap biological pollutants, preventing cross-contamination to unaffected rooms.
+              We don\'t just wipe away the visible moisture; we identify the underlying moisture sources (such as leaks or condensation issues) and use specialized dehumidification and air scrubbers to trap biological pollutants, preventing cross-contamination to unaffected rooms.
             </p>
           </div>
 
@@ -303,7 +303,7 @@ export function WaterDamageCleaningNearMeCta() {
           Ready to Connect with Your Local Water Damage Restoration Specialists?
         </h3>
         <p className="text-sm sm:text-base text-white/90 max-w-2xl mx-auto leading-relaxed">
-          Don&apos;t let water damage affect the air quality and structure of your property. Our localized teams are on standby across Scotland to restore biological safety, cleanliness, and peace of mind.
+          Don\'t let water damage affect the air quality and structure of your property. Our localized teams are on standby across Scotland to restore biological safety, cleanliness, and peace of mind.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Button

@@ -195,7 +195,7 @@ export function FireSmokeRestorationCleaningSeoHeroBanner() {
             ))}
           </div>
           <p className="text-sm sm:text-base italic text-white/90 leading-relaxed">
-            &quot;The aftermath of a fire is a traumatic experience that requires immediate, expert intervention. Beyond the visible charred remains, soot particles and acidic smoke residues can compromise structural integrity. Maundy Clean provided an outstanding environmental reset.&quot;
+            \"The aftermath of a fire is a traumatic experience that requires immediate, expert intervention. Beyond the visible charred remains, soot particles and acidic smoke residues can compromise structural integrity. Maundy Clean provided an outstanding environmental reset.\"
           </p>
           <div className="flex items-center gap-3 pt-2">
             <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center font-display font-bold text-white text-sm shadow">
@@ -228,10 +228,10 @@ export function FireSmokeRestorationCleaningSeoIntro() {
           </h2>
           <div className="space-y-4 text-sm sm:text-base leading-relaxed text-[var(--muted-foreground)]">
             <p>
-              The aftermath of a fire is a traumatic experience that requires immediate, expert intervention to prevent permanent corrosive damage. Beyond the visible charred remains, the &quot;invisible&quot; threats of soot particles and acidic smoke residues can compromise the structural integrity of your building and the health of its occupants. At Maundy Clean, we provide a premium after fire deep cleaning service designed to deliver a total environmental reset, ensuring your home or business in Glasgow, Edinburgh, or the Central Belt is returned to a &quot;speechlessly spotless&quot; and safe condition.
+              The aftermath of a fire is a traumatic experience that requires immediate, expert intervention to prevent permanent corrosive damage. Beyond the visible charred remains, the \"invisible\" threats of soot particles and acidic smoke residues can compromise the structural integrity of your building and the health of its occupants. At Maundy Clean, we provide a premium after fire deep cleaning service designed to deliver a total environmental reset, ensuring your home or business in Glasgow, Edinburgh, or the Central Belt is returned to a \"speechlessly spotless\" and safe condition.
             </p>
             <p>
-              While we are the recognised authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and &quot;same-staff&quot; consistency to the complex world of fire restoration. We act as your strategic partner, providing the specialised deep cleaning required to neutralize structural pollutants that standard domestic services cannot manage.
+              While we are the recognised authority in <Link href="/services/recurring-home-cleaning" className="text-[var(--brand)] font-semibold hover:underline">Recurring Home Cleaning</Link> for Scotland’s finest residences, we bring that same level of technical intimacy and \"same-staff\" consistency to the complex world of fire restoration. We act as your strategic partner, providing the specialised deep cleaning required to neutralize structural pollutants that standard domestic services cannot manage.
             </p>
           </div>
         </div>
@@ -269,7 +269,7 @@ const TRUST_CARDS: TrustCard[] = [
     title: "The Same Trusted Team Every Visit",
     description: (
       <>
-        Reliability is critical during a crisis. We ensure the same vetted, background-checked professionals manage your restoration project, allowing them to build a deep understanding of your property&apos;s specific materials and &quot;risky&quot; high-absorbency zones.
+        Reliability is critical during a crisis. We ensure the same vetted, background-checked professionals manage your restoration project, allowing them to build a deep understanding of your property\'s specific materials and \"risky\" high-absorbency zones.
       </>
     ),
   },
@@ -296,7 +296,7 @@ const TRUST_CARDS: TrustCard[] = [
     title: "Eco-Friendly & Sanctuary-Safe",
     description: (
       <>
-        Once the technical soot removal is complete, we utilize only certified child-safe and pet-safe products. This ensures a fresh, non-toxic environment for your family without the harsh chemical &quot;hospital smells&quot; common with industrial agencies.
+        Once the technical soot removal is complete, we utilize only certified child-safe and pet-safe products. This ensures a fresh, non-toxic environment for your family without the harsh chemical \"hospital smells\" common with industrial agencies.
       </>
     ),
   },
@@ -546,7 +546,7 @@ export function FireSmokeRestorationCleaningSeoBooking() {
             Hassle-Free Restoration
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-            The Maundy Clean 3-Step &quot;Hassle-Free&quot; Process
+            The Maundy Clean 3-Step \"Hassle-Free\" Process
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
             We have optimised our booking experience to be uncomplicated and straightforward, providing the responsive support Scottish property owners demand.
@@ -654,7 +654,7 @@ export function FireSmokeRestorationCleaningSeoInterlinking() {
             Protecting Your Property Post-Restoration
           </h2>
           <p className="text-sm sm:text-base text-[var(--muted-foreground)] leading-relaxed">
-            A fire restoration is a total technical reset, but maintaining that &quot;speechlessly spotless&quot; standard requires an ongoing strategy:
+            A fire restoration is a total technical reset, but maintaining that \"speechlessly spotless\" standard requires an ongoing strategy:
           </p>
         </div>
 
@@ -754,7 +754,7 @@ export function FireSmokeRestorationCleaningSeoNearMe() {
           </div>
 
           <p className="text-[11px] text-[var(--muted-foreground)] text-center italic">
-            Don&apos;t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
+            Don\'t see your area listed? We cover 72 towns and cities across Scotland. Contact us for emergency dispatch details.
           </p>
         </div>
       </div>

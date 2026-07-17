@@ -102,7 +102,7 @@ export function RecurringSeoHeroBanner() {
           >
             Experience the Maundy Clean Standard: consistent, trusted, and thorough. The same
             PVG-checked crew every visit, a personalised checklist you control from your phone, and
-            a 100% re-clean guarantee if anything&apos;s missed. Weekly, fortnightly &amp; monthly
+            a 100% re-clean guarantee if anything\'s missed. Weekly, fortnightly &amp; monthly
             plans from £62/visit.
           </motion.p>
 
@@ -281,7 +281,7 @@ export function RecurringSeoWhy() {
                 </div>
                 <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
                   PVG-checked, PAYE-employed, and uniformed. Crew leads stay with us 4.2 years on
-                  average — you&apos;ll know them by name.
+                  average — you\'ll know them by name.
                 </p>
               </div>
             </div>
@@ -314,7 +314,7 @@ export function RecurringSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Trusted Choice for Regular Cleaning
+              Why Maundy Clean is Scotland\'s Trusted Choice for Regular Cleaning
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               Maundy Clean is a local, premium cleaning service that treats every client
@@ -564,7 +564,7 @@ export function RecurringSeoIncludedDetail() {
           className="max-w-3xl mb-12"
         >
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand)] mb-3 inline-block">
-            What&apos;s included · the detail
+            What\'s included · the detail
           </span>
           <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
             What is Included in Your Recurring Clean?
@@ -878,7 +878,7 @@ export function RecurringSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"

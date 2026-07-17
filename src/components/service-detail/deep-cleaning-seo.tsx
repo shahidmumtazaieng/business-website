@@ -109,7 +109,7 @@ export function DeepSeoHeroBanner() {
             className="mt-5 text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed"
           >
             Experience the Maundy Clean Standard: consistent, trusted, and thoroughly deep. We
-            don&apos;t just wipe surfaces — we move furniture, steam grout, degrease appliances
+            don\'t just wipe surfaces — we move furniture, steam grout, degrease appliances
             inside and out, and reset the zones regular cleaners skip. From £179, with PVG-checked
             crews and a 100% re-clean guarantee.
           </motion.p>
@@ -324,7 +324,7 @@ export function DeepSeoWhy() {
               Why choose Maundy Clean
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-[var(--ink)] tracking-tight mb-4">
-              Why Maundy Clean is Scotland&apos;s Trusted Choice for Deep Cleaning
+              Why Maundy Clean is Scotland\'s Trusted Choice for Deep Cleaning
             </h2>
             <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed mb-6">
               Most cleaning companies focus on the visible surfaces — we focus on{" "}
@@ -332,7 +332,7 @@ export function DeepSeoWhy() {
               the extractor hood filter to the skirting board gap. Our deep clean service is designed
               to bridge the gap between a standard tidy-up and the kind of intensive, top-to-bottom
               reset that genuinely transforms a property. We bring the kit, the chemistry, and the
-              crew that regular cleaners don&apos;t carry.
+              crew that regular cleaners don\'t carry.
             </p>
 
             <div className="space-y-3">
@@ -431,7 +431,7 @@ const CHECKLIST_ROOMS = [
     image: IMG.checklistWindows,
     imageAlt: "Professional cleaner using a squeegee on interior window glass",
     description:
-      "We don&apos;t just wipe surfaces — we polish wood, chrome, glass, and mirrors to keep them shining. Internal windows are cleaned with a squeegee finish, frames and sills are wiped down, and tracks are vacuumed. Technical uPVC cleaning brings yellowed sills and switches back to a like-new white.",
+      "We don\'t just wipe surfaces — we polish wood, chrome, glass, and mirrors to keep them shining. Internal windows are cleaned with a squeegee finish, frames and sills are wiped down, and tracks are vacuumed. Technical uPVC cleaning brings yellowed sills and switches back to a like-new white.",
     points: [
       "Polish wood, chrome, glass, and mirrors",
       "Interior window glass squeegeed streak-free",
@@ -479,7 +479,7 @@ export function DeepSeoChecklist() {
           <p className="text-base lg:text-lg text-[var(--muted-foreground)] leading-relaxed">
             Following our agency-approved checklist, we ensure that every &ldquo;risky&rdquo; or
             often-missed area is treated with professional care during every deep clean. Below is
-            the room-by-room breakdown of what&apos;s included as standard — no add-on fees, no
+            the room-by-room breakdown of what\'s included as standard — no add-on fees, no
             surprise charges, no skipped zones.
           </p>
         </motion.div>
@@ -985,7 +985,7 @@ export function DeepSeoNearMe() {
             <div className="mt-6 pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)]">
                 <Clock className="w-4 h-4 text-[var(--brand)]" />
-                <span>Don&apos;t see your town? We add new postcodes every month.</span>
+                <span>Don\'t see your town? We add new postcodes every month.</span>
               </div>
               <Link
                 href="/locations"
@@ -1007,9 +1007,9 @@ export function DeepSeoNearMe() {
           className="mt-10 max-w-4xl mx-auto text-center"
         >
           <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-            Our local deep-clean crews operate across Glasgow&apos;s West End, Edinburgh&apos;s New
-            Town, Aberdeen&apos;s suburbs, Dundee&apos;s city centre, and the Highlands — from
-            Inverness to Thurso, Fort William to Lerwick. Whether you&apos;re searching for a
+            Our local deep-clean crews operate across Glasgow\'s West End, Edinburgh\'s New
+            Town, Aberdeen\'s suburbs, Dundee\'s city centre, and the Highlands — from
+            Inverness to Thurso, Fort William to Lerwick. Whether you\'re searching for a
             one-off deep clean in Glasgow, a quarterly deep clean in Edinburgh, an end-of-tenancy
             reset in Aberdeen, or a post-builders deep clean anywhere in between, Maundy Clean
             assigns a PVG-checked, PAYE-employed crew with specialist equipment and a 100% re-clean
