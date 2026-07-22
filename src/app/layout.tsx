@@ -43,6 +43,13 @@ export const metadata: Metadata = {
     title: "Maundy Clean — Premium Cleaning Services",
     description: "Premium residential & commercial cleaning across 36 cities.",
   },
+  verification: {
+    google: "1SyKTO2CuIuaQRlY3soylsLWXijf7iWdt46IFmqOKOc",
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

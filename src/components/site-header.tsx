@@ -26,6 +26,7 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
+  type NavChild,
   serviceCategories,
   industryCategories,
   locationCategories,
@@ -697,7 +698,7 @@ function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
                     onToggle={() =>
                       setSubExpanded(subExpanded === g.title ? null : g.title)
                     }
-                    items={g.children.map((c) => c.name)}
+                    items={g.children}
                   />
                 ))}
               </MobileSection>
@@ -718,7 +719,7 @@ function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
                     onToggle={() =>
                       setSubExpanded(subExpanded === g.title ? null : g.title)
                     }
-                    items={g.children.map((c) => c.name)}
+                    items={g.children}
                   />
                 ))}
               </MobileSection>
@@ -739,7 +740,7 @@ function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
                     onToggle={() =>
                       setSubExpanded(subExpanded === g.title ? null : g.title)
                     }
-                    items={g.children.map((c) => c.name)}
+                    items={g.children}
                   />
                 ))}
               </MobileSection>
@@ -837,7 +838,7 @@ function MobileSubSection({
   count: number;
   expanded: boolean;
   onToggle: () => void;
-  items: string[];
+  items: NavChild[];
 }) {
   return (
     <div className="ml-2 border-l-2 border-[var(--brand-light)] pl-3 mb-1">
@@ -855,14 +856,14 @@ function MobileSubSection({
       </button>
       {expanded && (
         <div className="space-y-0.5">
-          {items.map((it) => (
-            <a
-              key={it}
-              href="#"
+          {items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
               className="block py-1.5 text-xs text-[var(--muted-foreground)] hover:text-[var(--brand)]"
             >
-              {it}
-            </a>
+              {item.name}
+            </Link>
           ))}
         </div>
       )}
