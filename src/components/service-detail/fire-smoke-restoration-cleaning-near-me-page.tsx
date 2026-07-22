@@ -74,7 +74,7 @@ const REGIONAL_LOCATIONS = {
 };
 
 const IMG = {
-  hero: "https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg",
+  hero: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.39.51%20PM.jpeg",
   mapPlaceholder: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg",
 };
 

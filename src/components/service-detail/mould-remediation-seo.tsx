@@ -34,9 +34,9 @@ import { contactInfo } from "@/lib/site-data";
 // Images - hand-picked and aligned with mould remediation aesthetics
 // ============================================================
 const IMG = {
-  heroWide: "https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg",
-  introSplit: "https://sfile.chatglm.cn/images-ppt/0520b4be848e.jpg",
-  whyCrew: "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+  heroWide: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.30.33%20PM.jpeg",
+  introSplit: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.30.33%20PM.jpeg",
+  whyCrew: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.30.33%20PM.jpeg",
   checklistSanitisation: "https://sfile.chatglm.cn/images-ppt/2be4158b7bb6.jpg",
   checklistWaste: "https://sfile.chatglm.cn/images-ppt/2505b6c51368.jpg",
   checklistDetails: "https://sfile.chatglm.cn/images-ppt/853d939edb7b.jpg",

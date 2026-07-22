@@ -3422,7 +3422,7 @@ export const medicalOfficeCleaning: ServiceDetail = {
   heroHeadline: "Healthcare-grade\nclean. Audit-ready\nrecords. Always.",
   heroSubhead:
     "GP surgeries, dental practices, physio clinics, and aesthetic treatment rooms require a fundamentally higher cleaning standard than commercial offices. Our healthcare protocol uses EN 14476 virucidal disinfectants on every clinical touchpoint, ATP swab verification, colour-coded microfibre to prevent cross-contamination, and full GDPR-compliant documentation for your Care Inspectorate or HIS inspection.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.52.59%20PM.jpeg",
   breadcrumbParent: "Healthcare Cleaning",
   metaTitle: "Medical Office Cleaning in Scotland | GP, Dental & Clinic Disinfection | Maundy Clean",
   metaDescription:
@@ -8128,7 +8128,7 @@ export const dentalSurgeryCleaning: ServiceDetail = {
   heroHeadline: "Cross-infection control\nis non-negotiable.\nNeither are we.",
   heroSubhead:
     "Dental surgeries are the highest-cross-infection-risk environment outside of a hospital theatre. Aerosol-generating procedures, blood-borne pathogen exposure, instrument decontamination, and immunocompromised patients all combine to require a cleaning protocol that goes far beyond general medical or commercial cleaning. Our dental surgery service follows HTM 01-05 (Health Technical Memorandum 01-05: Decontamination in primary care dental practices) — surgery clean between patients, end-of-day terminal clean, weekly deep clean, and full decontamination room protocol. GDP-compliant documentation, blood-borne pathogen-trained operatives, £5m liability.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.59.41%20PM.jpeg",
   breadcrumbParent: "Medical & Educational",
   metaTitle: "Dental Surgery Cleaning in Scotland | HTM 01-05 Compliant | Maundy Clean",
   metaDescription:
@@ -15605,7 +15605,7 @@ export const hospitalEnvironmentalServices: ServiceDetail = {
   heroHeadline: "Healthcare grade.\nZero compromise.\nAudit-ready.",
   heroSubhead:
     "Hospital environmental services is the most demanding cleaning discipline there is. The standards are governed by HTM 01-05 (health technical memorandum), HAI (healthcare-associated infection) control protocols, NHS National Cleaning Standards, and Healthcare Improvement Scotland inspection. Lives depend on the cleaning being right. Our hospital environmental service is purpose-built for Scottish NHS Trusts, private hospitals, and clinical facilities.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/578618d70f52.png",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%209.04.16%20PM.jpeg",
   breadcrumbParent: "Healthcare Cleaning",
   metaTitle: "Hospital Environmental Services in Scotland | NHS Trusts & Private Hospitals | Maundy Clean",
   metaDescription:
@@ -24615,7 +24615,7 @@ export const vandalismGraffitiCleanup: ServiceDetail = {
   tagline: "Fast, discreet restoration after vandalism - graffiti, smashed glass, paint, faeces, and malicious damage.",
   heroHeadline: "Vandalism\nrestored. Fast.\nDiscreetly.",
   heroSubhead: "Waking up to find your property vandalised - whether by opportunistic graffiti, smashed windows, paint stripper on your car, or worse - is a horrible experience. Our vandalism restoration team removes graffiti from any substrate, boards and replaces broken glass, sanitises biological vandalism (faeces, urine), neutralises chemical damage, and restores your property to pre-incident condition. We work with insurers, police, and landlords. 24/7 response across Scotland.",
-  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%206.21.49%20PM.jpeg",
   breadcrumbParent: "Specialty Cleaning",
   metaTitle: "Vandalism & Graffiti Cleanup Scotland | 24/7 Response | Maundy Clean",
   metaDescription: "Vandalism & graffiti cleanup across Scotland. Spray paint, smashed glass, paint, faeces, chemical damage. 24/7 discreet response. From £280/visit. 4.9-star.",
@@ -24874,7 +24874,7 @@ export const vandalismGraffitiCleanup: ServiceDetail = {
   ],
   gallery: [
     {
-      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
+      src: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%206.21.49%20PM.jpeg",
       alt: "Graffiti removal in progress on brick wall",
       caption: "Alkaline gel graffiti remover applied to porous brick. Dwell time 30-60 minutes, agitate with nylon brush, low-pressure rinse. No substrate damage.",
     },

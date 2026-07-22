@@ -37,11 +37,11 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%205.46.24%20PM.jpeg",
   introSplit:
-    "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%205.46.24%20PM.jpeg",
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_1on43k1on43k1on4.png",
   checklistStrip:
     "https://sfile.chatglm.cn/images-ppt/c915ed688be7.jpg",
   checklistFinish:

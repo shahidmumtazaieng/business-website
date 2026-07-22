@@ -49,11 +49,11 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%206.00.47%20PM.jpeg",
   introSplit:
-    "https://sfile.chatglm.cn/images-ppt/8a7c4d6e0b51.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%206.00.47%20PM.jpeg",
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_h014vsh014vsh014.png",
   checklistHighTouch:
     "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
   checklistFogging:

@@ -153,7 +153,7 @@ export function CrimeSceneCleanupNearMeHero() {
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://sfile.chatglm.cn/images-ppt/biohazard-cleaning.jpg"
+            src="https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-22%20at%208.04.12%20PM.jpeg"
             alt="Crime Scene Cleaning Near Me"
             className="w-full h-full object-cover object-center opacity-20 scale-105 select-none"
           />
