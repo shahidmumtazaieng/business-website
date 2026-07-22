@@ -32,9 +32,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", // beautifully turned-over holiday let bedroom
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.02.26%20PM.jpeg", // beautifully turned-over holiday let bedroom
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // Maundy Clean turnover crew
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.02.26%20PM.jpeg", // Maundy Clean turnover crew
   checklistLiving:
     "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg", // bright living room, morning light
   checklistKitchen:

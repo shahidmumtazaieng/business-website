@@ -34,7 +34,7 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.47.03%20PM.jpeg",
   scotlandMap:
     "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.47.32%20PM.jpeg",
   localCrew:

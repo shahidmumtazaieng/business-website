@@ -5363,7 +5363,7 @@ export const gutterCleaning: ServiceDetail = {
   heroHeadline: "Gutters that flow.\nNo overflow.\nNo damp wall.",
   heroSubhead:
     "Blocked gutters are the single most common cause of preventable property damage in Scotland. Leaves, moss, twigs, and roof debris accumulate through autumn and winter; by spring, water overflows the gutter edge, saturates the fascia, runs down the wall, and penetrates the pointing. The result is rising damp, blown plaster, and rotting joists — repairs that run into thousands. A £99-£185 gutter clear prevents all of it. We hand-clear from a cherry-picker or with ground-level vacuum, flush the run with a hose, and check every downpipe for blockage.",
-  heroImage: "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
+  heroImage: "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.51.39%20PM.jpeg",
   breadcrumbParent: "Exterior Cleaning",
   metaTitle: "Gutter Cleaning in Scotland | Hand-Clear, Flush & Downpipe Check | Maundy Clean",
   metaDescription:

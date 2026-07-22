@@ -31,9 +31,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", // bright tenement flat living room (matches ServiceDetail heroImage)
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%206.26.42%20PM.jpeg", // bright tenement flat living room (matches ServiceDetail heroImage)
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%206.26.42%20PM.jpeg", // uniformed cleaning crew
   checklistLiving:
     "https://sfile.chatglm.cn/images-ppt/8c109fd7dbba.jpg", // spotless living room sunlight
   checklistKitchen:

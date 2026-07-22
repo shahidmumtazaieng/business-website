@@ -35,11 +35,11 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%209.37.33%20PM.jpeg",
   introSplit:
-    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%209.37.33%20PM.jpeg",
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_843lox843lox843l.png",
   checklistKitchen:
     "https://sfile.chatglm.cn/images-ppt/dea1c37b8960.jpeg",
   checklistFront:

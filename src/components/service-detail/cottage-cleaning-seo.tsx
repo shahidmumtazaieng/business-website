@@ -29,9 +29,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg", // Highland cottage kitchen (matches cottageCleaning.heroImage)
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%206.42.15%20PM.jpeg", // Highland cottage kitchen (matches cottageCleaning.heroImage)
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%206.42.15%20PM.jpeg", // uniformed cleaning crew
   checklistLiving:
     "https://sfile.chatglm.cn/images-ppt/8c109fd7dbba.jpg", // spotless living room sunlight
   checklistKitchen:

@@ -31,9 +31,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.12.26%20PM.jpeg", // post-construction HEPA vacuum (matches ServiceDetail heroImage)
+    "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_vd6irgvd6irgvd6i.png", // post-construction HEPA vacuum (matches ServiceDetail heroImage)
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    "https://maundyclean.sirv.com/Images/Gemini_Generated_Image_vd6irgvd6irgvd6i.png", // uniformed cleaning crew
   checklistLiving:
     "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // handed-over new build interior
   checklistKitchen:

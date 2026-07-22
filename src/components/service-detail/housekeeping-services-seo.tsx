@@ -35,9 +35,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg", // housekeeping in a Scottish country home
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.16.43%20PM.jpeg", // housekeeping in a Scottish country home
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg", // uniformed Maundy Clean housekeeper
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.16.43%20PM.jpeg", // uniformed Maundy Clean housekeeper
   specializedCare:
     "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // hardwood floor buffing
   checklistLiving:

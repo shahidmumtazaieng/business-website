@@ -34,9 +34,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://sfile.chatglm.cn/images-ppt/4b2ba7df1e86.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.37.27%20PM.jpeg",
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/92ca5d04541e.jpg",
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%207.37.27%20PM.jpeg",
   checklistAssessment:
     "https://sfile.chatglm.cn/images-ppt/ee5b0f8279a8.jpg",
   checklistStain:

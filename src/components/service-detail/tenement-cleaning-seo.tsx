@@ -32,9 +32,9 @@ import { contactInfo } from "@/lib/site-data";
 // ============================================================
 const IMG = {
   heroWide:
-    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-17%20at%2010.28.09%20PM.jpeg", // bright tenement hallway encaustic tiles (matches ServiceDetail heroImage)
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%206.32.30%20PM.jpeg", // bright tenement hallway encaustic tiles (matches ServiceDetail heroImage)
   whyCrew:
-    "https://sfile.chatglm.cn/images-ppt/0ba2e6837712.jpg", // uniformed cleaning crew
+    "https://maundyclean.sirv.com/Images/WhatsApp%20Image%202026-07-21%20at%206.32.30%20PM.jpeg", // uniformed cleaning crew
   checklistClose:
     "https://sfile.chatglm.cn/images-ppt/578618d70f52.png", // restored tenement close / hallway
   checklistInterior:
